@@ -1,0 +1,38 @@
+Package: travailleR
+Title: Working with R
+Version: 5.dev
+Authors@R: c(
+  person("Eric", "Marcon", , "e.marcon@free.fr", c("aut", "cre"))
+  )
+URL: https://github.com/EricMarcon/WorkingWithR
+Depends:
+  R (>= 4.0.0)
+Imports:
+  compiler,
+  dbmss,
+  doParallel,
+  entropart,
+  flextable,
+  foreach,
+  formatR,
+  gridExtra,
+  htmlwidgets, 
+  kableExtra,
+  magrittr,
+  microbenchmark,
+  parallel,
+  profvis,
+  pryr,
+  R6,
+  ragg,
+  Rcpp,
+  RcppParallel,
+  secret,
+  spatstat,
+  targets,
+  tidyverse,
+  usethis,
+  visNetwork
+Suggests: 
+  testthat
+License: CC BY 4.0
