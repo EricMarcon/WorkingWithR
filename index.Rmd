@@ -195,6 +195,7 @@ Finally, chapter \@ref(chap-enseigner) introduces the tools for teaching R.
 Package names are in bold in the text, for example: **ggplot2**.
 
 The identifier used on GitHub is noted *GitHubID*.
+Project names are the same as their GitHub repository, noted *RepoID*.
 
 The sign `|>` in the code of the examples indicates that the rest of the code should be on the same line, but is cut for the formatting of this document.
 Its use is limited to YAML configuration files, mostly used in chapter \@ref(chap-ci).

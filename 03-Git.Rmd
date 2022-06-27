@@ -187,7 +187,7 @@ Instead of the previous manipulation, the link between Git and GitHub can be set
 These are displayed on the home page of any newly created empty repository on GitHub and can therefore be copied and pasted directly to the terminal.
 
 ```
-git remote add origin git@github.com:GitHubID/NomDuDepot.git
+git remote add origin git@github.com:<GitHubID>/<RepoID>.git
 git branch -M master
 git push -u origin master
 ```
@@ -195,7 +195,7 @@ git push -u origin master
 The first command declares the GitHub repository as a remote repository.
 The name *origin* is a git convention.
 It can be changed, but the organization of the project will be more readable if it follows the convention.
-The repository address is `https://github.com/GitHubID/NomDuDepot.git` if HTTPS authentication is chosen.
+The repository address is `https://github.com/<GitHubID>/<RepoID>.git` if HTTPS authentication is chosen.
 
 The following commands activate the main branch of the project and push its content to GitHub.
 
@@ -656,14 +656,14 @@ Generate a key in RSA format in the RStudio terminal:
 ssh-keygen -t rsa -b 4096" 
 ``` 
 
-- Enter the name of the key: `ProjectName.rsa`.
+- Enter the name of the key: `<RepoID>.rsa`.
 - Do not enter a passphrase to allow the key to be used without interaction.
 
-The private key `ProjectName.rsa` should only be distributed to the rightful owners of the project.
+The private key `<RepoID>.rsa` should only be distributed to the rightful owners of the project.
 You must therefore add the line `*.rsa` to the `.gitignore` file of the project to avoid pushing the key on GitHub.
 
 To allow the continuous integration of the project (chapter \@ref(chap-ci)), the private key must be stored as a secret of the GitHub repository containing the project.
-Apply the procedure in the section \@ref(sec:secrets-ci) to create a secret named "RSA" and paste the content of the file `ProjectName.rsa` in the "Value" field of the form.
+Apply the procedure in the section \@ref(sec:secrets-ci) to create a secret named "RSA" and paste the content of the file `<RepoID><RepoID>.rsa` in the "Value" field of the form.
 
 The use of the secret is described in the section \@ref(sec:secretsCI).
 
