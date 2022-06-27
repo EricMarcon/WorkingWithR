@@ -30,7 +30,7 @@ _bookdown_files/
 *.toc
 *-concordance.tex
 *(busy)
-*.tex
+#*.tex
 *.nav
 *.snm
 *.vrb
