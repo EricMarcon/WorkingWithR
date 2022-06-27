@@ -491,7 +491,6 @@ If the user's personal folder is backed up (for example, if it is replicated in 
 This solution is much more efficient than Zotero's default synchronization, which is limited in volume.
 
 [^120]: https://www.zotero.org/
-[^120]: https://www.zotero.org/
 [^121]: https://retorque.re/zotero-better-bibtex/installation/
 [^122]: http://zotfile.com/
 
