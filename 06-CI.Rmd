@@ -1,0 +1,795 @@
+# Continuous integration {#chap-ci}
+
+\toc{1}
+
+Continuous integration is the process of assigning an external service to verify a package, produce Markdown documents for web pages in a GitHub repository, or completely knit a website from code.
+
+All of these tasks can be done locally on the desktop but are time consuming and may not be repeated with each update.
+In the context of continuous integration, they are systematically performed, in a transparent way for the user.
+In case of failure, an alert message is sent.
+
+The implementation of continuous integration is justified for heavy projects, with regular updates.
+rather than for projects containing a simple Markdown document that is rarely modified.
+
+
+## Tools
+
+### GitHub Actions
+
+The most frequently used tool for R projects filed on GitHub was *Travis CI*[^ci-1] but the service became fee-based in 2021.
+
+[^ci-1]: <https://travis-ci.org/>
+
+GitHub Shares is a good replacement for Travis. 
+This service is integrated with GitHub.
+
+### Codecov
+
+To evaluate the code coverage rate of R packages, i.e. the proportion of code tested in some way (examples, unit tests, thumbnail), the *Codecov*[^ci-2] service integrates perfectly with GitHub.
+
+[^ci-2]: <https://codecov.io/>
+
+You need to open an account, preferably by authenticating through GitHub.
+
+### GitHub Pages
+
+GitHub web pages can be hosted in the `docs` directory of the master branch of the project: this is the solution chosen when they are produced on the workstation.
+
+If they are produced by continuous integration, they will be hosted in a dedicated branch called `gh-pages`.
+
+
+## Principles
+
+A draft document is treated as an example.
+The objective is to have GitHub knit a Markdown project.
+This practice is appropriate for book projects, which require a lot of resources for their construction.
+In this type of project, the code is knit by knitr to produce several documents, typically in HTML and PDF formats, accessible on GitHub pages.
+When documents are produced locally, they are placed in the `docs` folder and pushed to GitHub.
+
+In order for GitHub to do this, a few settings are required.
+
+
+### Getting a personal access token
+
+To write to GitHub, the continuous integration service will have to authenticate itself with a Personal Access Token (PAT) whose creation is described in section \@ref(sec:pat).
+
+Generate a new token, describe it as "GitHub Actions" and give it "repo" authorization, i.e. modify *all* repositories (it is not possible to limit access to a particular repository).
+
+
+### Project secrets {#sec:secrets-ci}
+
+On GitHub, display the project settings and select "Secrets".
+The "New Repository Secret" button allows you to store variables used in GitHub Actions scripts (publicly visible) without broadcasting their value.
+The personal access token is essential for GitHub Actions to write their production in the project.
+Create a secret named "GH_PAT" and enter the previously saved token value.
+After clicking on "Add Secret", the token cannot be read anymore.
+
+To allow sending success or failure messages without broadcasting your email address, create a secret named "EMAIL" which contains it.
+
+
+### Activation of the repository on CodeCov
+
+The analysis of the code coverage of packages is useful to detect untested code portions.
+On the other hand, the analysis of the coverage of document projects is not useful.
+
+To activate a repository, you need to authenticate on the CodeCov website with your GitHub account.
+The list of repositories is displayed and can be updated.
+If the repositories to be processed are hosted by an organization, for example the repositories of a GitHub classroom, you have to update the list of organizations by following the instructions (a link allows you to quickly modify the GitHub options to authorize the reading of an organization by Codecov) and update the list of repositories again.
+Finally, when the repository you are looking for is visible, you have to activate it.
+It is useless to use Codecov's token system.
+
+
+### Scripting GitHub actions
+
+A GitHub workflow (*workflow*) is a succession of tasks (*jobs*) with steps (*steps*).
+A workflow is triggered by an event, usually every *push* of the project, but also at regular intervals (*cron*).
+
+Typically, the workflows created here contain two tasks: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.
+
+The workflows are configured in a file in YAML format placed in the `.github/workflows/` folder of the project.
+The different parts of the script are presented below.
+The full script is the one in this document, accessible on GitHub[^ci-10].
+
+[^ci-10]: <https://github.com/EricMarcon/travailleR/blob/master/.github/workflows/bookdown.yml>
+
+
+#### Trigger {#sec:declenchement}
+
+The action is triggered whenever updates are pushed to GitHub:
+
+```
+on:
+  push:
+     branches:
+       - master
+```
+
+The branch taken into account is *master* (to be replaced by *main* if necessary).
+
+To trigger the action periodically, use the syntax of *cron* (the Unix job scheduling system):
+
+```
+on:
+  schedule:
+    - cron: '0 22 * * 0' # every sunday at 22:00
+```
+
+The successive values are for minutes, hours, day (day of the month), month and day of the week (0 for Sunday to 6 for Saturday). 
+The `*` allow to ignore a value.
+
+The `push` and `schedule` entries can be used together:
+
+```
+on:
+  push:
+     branches:
+       - master
+  schedule:
+    - cron: '0 22 * * 0'
+```
+
+Currently, scheduling is only taken into account in the *master* branch.
+
+
+#### Workflow name
+
+The name of the workflow is free.
+It will be displayed by the badge that will be added to the project's `README.md` file (see section \@ref(sec:ci-badges)).
+
+```
+name: bookdown
+```
+
+#### First task
+
+The tasks are described in the `jobs` section.
+`renderbook` is the name of the first task: it is free.
+Here, the main action will be to produce a bookdown with the `render_book()` function, hence the name. 
+
+```
+jobs:
+  renderbook:
+    runs-on: macOS-latest
+```
+
+The `runs-on` statement describes the operating system on which the job should run.
+The possible choices are Windows, Ubuntu or MacOS[^ci-11].
+Continuous integration of R on GitHub usually uses MacOS which has the advantage of using compiled R packages so much simpler (some packages require libraries outside of R for their compilation) and quicker to install, while allowing the use of scripts.
+
+[^ci-11]: <https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on>
+
+
+#### First steps
+
+The steps are described in the `steps` section.
+
+```
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+      - name: Install pandoc
+        run: |
+          brew install pandoc
+```
+
+Each step is described by its name (free) and what it does. 
+
+The strength of GitHub Actions is to allow the use of *actions* written by others and stored in a public GitHub project.
+An action is a script with metadata describing its use.
+Its development is accompanied by successive version numbers.
+An action is called by the statement `uses:`, the GitHub project that contains it and its version.
+
+In their respective GitHub project, actions exist in their development version (`@master`) and in step versions (*release*) accessible by their number (`@v1`).
+These stage versions are preferable because they are stable.
+
+General actions are made available by GitHub in the GitHub Actions organization [^ci-12].
+The "actions/checkout" action is used to get into the main branch of the project processed by the workflow: it is usually the first step of all workflows.
+
+[^ci-12]: https://github.com/actions/
+
+The next action is the installation of R, provided by the *R infrastructure* organization [^ci-13].
+
+[^ci-13]: https://github.com/r-lib/
+
+The installation of pandoc (software external to R but necessary for R Markdown) can be done by a command executed by MacOS.
+It is called by `run:` and can contain several lines (hence the `|`).
+This script depends on the operating system: `brew` is the package manager of MacOS.
+To avoid system specifics, it is better to use an action:
+
+```
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+```
+
+
+#### Caches
+
+Installing R packages takes time, a lot if they are installed from source (the standard procedure under Ubuntu, but not under MacOS and Windows where binary packages are used by default).
+Computing the code snippets is usually the longest step in the workflow.
+The `cache` action caches the results of both operations.
+
+```
+      - name: Cache Renv packages
+        uses: actions/cache@v2
+        with:
+          path: $HOME/.local/share/renv
+          key: r-${{ hashFiles('renv.lock') }}
+          restore-keys: r-
+      - name: Cache bookdown results
+        uses: actions/cache@v2
+        with:
+          path: _bookdown_files
+          key: bookdown-${{ hashFiles('**/*Rmd') }}
+          restore-keys: bookdown-
+```
+
+The cache is updated when a package or a piece of code is modified, which requires a quick way to check the modifications: a control value (*hashtag*) is computed by the `hashFiles()` function from the `renv.lock` file (see below) for packages and the set of `.Rmd` files for pieces of code.
+Any change leads to the reinstallation of the packages or the recalculation of the whole code: the cache management is less fine-grained than that of R on a workstation, which only recalculates the modified code snippets.
+
+
+#### Packages {#sec:packages-ci}
+
+The installation of packages is handled by the `install.packages()` function.
+Rather than listing the packages to be installed in the arguments to the function, which is a source of errors, it is better to use the **renv** package to register all the packages used by the project and install them at once for continuous integration. 
+**renv** will install the packages in the registered version, which avoids unexpected effects due to different versions between the workstation and GitHub Actions.
+
+```
+      - name: Install packages
+        run: |
+          R -e 'install.packages("renv")'
+          R -e 'renv::restore()'
+```
+
+It is necessary to install **renv** on the workstation used for the development of the project.
+
+A `DESCRIPTION` file should be used to list the packages for any project, as if it were an R package.
+For this document:
+
+```
+Package: WorkingWithR
+Title: Working with R
+Version: 1.1.0
+Authors@R: c(
+  person("Eric", "Marcon", , "e.marcon@free.fr", c("aut", "cre"))
+  )
+URL: https://github.com/EricMarcon/WorkingWithR
+Imports:
+  bookdown,
+  (...)
+```
+
+Before triggering the workflow, it is necessary to create the list of packages in their current version on the workstation:
+
+```{r snapshot, eval=FALSE}
+renv::snapshot(type="explicit")
+```
+
+When first used, the **renv** package informs of some adaptations to the working environment, which must be accepted.
+
+This command creates the `renv.lock` file which is used by GitHub Actions to install packages during continuous integration.
+It can be updated at any time to take into account their update.
+
+Alternatively, the necessary packages can be installed without the help of **Renv**:
+
+```
+      - name: Install packages
+        env:
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("remotes", "bookdown", "formatR", "tinytex"))
+          tinytex::install_tinytex()
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+```
+
+This step uses `Rscript` as a command environment, which allows it to execute R commands directly (compare to the use of `R -e` in the previous examples).
+
+The packages used to produce the document are listed:
+
+- **remotes** for its `install_deps()` function;
+- **bookdown** for knitting;
+- **formatR** for formatting code snippets (`tidy=TRUE`);
+- **tinytex** to have a LaTeX distribution.
+
+The other packages, those used by the project, are read in the `DESCRIPTION` file by the `install_deps()` function.
+
+On MacOS, packages are installed by default in binary version, but from their source code if it is more recent.
+The creation of binary packages takes a few days at CRAN: this situation is not rare.
+Packages containing only R code or C++ code without reference to external libraries can be installed without problems.
+On the other hand, if the package requires libraries external to R or a compilation of Fortran code, the installation fails.
+It would therefore be necessary to install the necessary libraries (and possibly a Fortran compiler) for all the packages on which the project depends: this solution is not realistic because it implies an inventory of all the dependencies, which may change, and a large number of time-consuming and useless installations most of the time, when the binary packages are up to date.
+A better solution is to force the installation of binary packages even if the source code is newer: this is the purpose of the two R options defined before calling `install.packages()`.
+
+Finally, the secret `GH_PAT` is passed to R in an environment variable, `GITHUB_PAT`, necessary to install packages from their source code on GitHub.
+GitHub limits the rate of anonymous access for all GitHub actions (all accounts) and may reject the request: in practice, using `install_github()` in a GitHub action is only possible with this environment variable.
+
+In this approach, packages are not cached.
+
+
+#### Knitting
+
+The production of the document is started by an R command. 
+
+```
+      - name: Render pdf book
+        run: |
+          bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+        shell: Rscript {0}
+      - name: Render gitbook
+        run: |
+          bookdown::render_book("index.Rmd", "bookdown::gitbook")
+        shell: Rscript {0}
+```
+
+The formats set in `_output.yml` are ignored.
+
+The PDF file must be produced before the GitBook format in order for its download link to be added to the menu bar of the GitBook site.
+On the other hand, R must be closed and reopened between the two renderings otherwise the tables are not created correctly in GitBook[^ci-6].
+The two steps should not be combined into one.
+
+[^ci-6]: <https://stackoverflow.com/questions/46080853/why-does-rendering-a-pdf-from-rmarkdown-require-closing-rstudio-between-renders/46083308#46083308>
+
+
+#### Backup
+
+The result of the knitting, placed in the `docs` folder of the virtual machine in charge of continuous integration, must be preserved so that the next task can use it.
+
+The last step of the production task uses the `upload-artifact` action for this.
+
+```
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: _book
+          path: docs/
+```
+
+The content of `docs` is saved as an *artifact* named "_book".
+Artifacts are publicly visible on the GitHub Project Actions page.
+
+After its last step, the virtual machine used for this step is destroyed.
+
+
+#### Publication
+
+Publishing the artifact to the `gh-pages` branch of the project requires another task.
+
+```
+  deploy:
+    runs-on: ubuntu-latest
+    needs: renderbook
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v1
+        with:
+          # Artifact name
+          name: _book
+          # Destination path
+          path: docs
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          email: ${{ secrets.EMAIL }}
+          build_dir: docs
+          jekyll: no
+```
+
+The task is named "deploy" (the name is free).
+It runs on a virtual machine under Ubuntu.
+It can only be launched if the "renderbook" task has succeeded.
+Its steps are the following:
+
+- *Download artifact*: Restore the `docs` folder;
+- *Deploy to GitHub Pages*: copy the `docs` folder to the `gh-pages` branch.
+
+This last step uses the `GitHub-Pages-deploy` action provided by the *Cecilapp* organization.
+It uses an environment variable, `GITHUB_TOKEN`, to authenticate and parameters:
+
+- *email*: the email address to which the run report is sent.
+To avoid exposing the address publicly, it has been stored in a project secret;
+- *buid_dir*: the directory to publish,
+- *jekyll:no* to create an empty file named `.nojekyll` that tells GitHub pages not to try to treat their content as a Jekyll website.
+
+
+
+### Confidential data in a public repository {#sec:confidentielCI}
+
+If the project contains confidential data (section \@ref(sec:confidential)), GitHub Actions must use the project's private key to extract it from their vault.
+
+The private key must be stored in a project secret, named "RSA".
+The next step, to be inserted before the knitting step, writes the key to a file for the project code to access.
+
+```
+      - name: Private key
+        run: |
+          cat("${{ secrets.rsa }}", file="<RepoID>.rsa"
+        shell: Rscript {0}
+```
+
+
+## Script templates
+
+Script templates for all types of projects are presented here.
+All of them require the same preparation:
+
+- `GH_PAT` and `EMAIL` secrets must be registered in the GitHub project (section \@ref(sec:secrets-ci));
+- a `DESCRIPTION` file must be used to list the required packages (section \@ref(sec:package-description)), regardless of the project type;
+- a snapshot of the installed packages (`renv.lock`) must be made if **renv** (section \@ref(sec:packages-ci)) is used.
+
+The `gh-pages` branch is created automatically by the scripts.
+Check after the first execution that GitHub pages are enabled on this branch (section \@ref(sec:github-pages)).
+Then delete the `docs` folder if it existed, push the modification on GitHub and finally add the following line to the `.gitignore` file to be able to knit locally the projects without disturbing GitHub:
+
+```
+docs/
+```
+
+### memoiR {#sec:memoiR-ci}
+
+The `build_ghworkflow()` function of the **memoiR** package automatically creates the scripts needed to produce the package's models.
+The script is always named `memoir.yml`.
+
+These scripts do not use **renv** or cache.
+They do not need a `DESCRIPTION` file for the installation of the dependencies but each document must contain in its parameter code (`Options`) the list of all packages needed for its knitting (stored in the `Packages` variable).
+
+
+### Book or thesis {#sec:bookdown-ci}
+
+The workflow is called `rmarkdown`; its production task `render`.
+
+```
+on:
+  push:
+   branches:
+     - master
+
+name: rmarkdown
+
+jobs:
+  render:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+      - name: Install dependencies
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("memoiR", "rmdformats", "tinytex"))
+          tinytex::install_tinytex()
+        shell: Rscript {0}
+      - name: Render pdf book
+        run: |
+          bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+        shell: Rscript {0}
+      - name: Render gitbook
+        run: |
+          bookdown::render_book("index.Rmd", "bookdown::gitbook")
+        shell: Rscript {0}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ghpages
+          path: docs
+  deploy:
+    runs-on: ubuntu-latest
+    needs: render
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: ghpages
+          path: docs
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          email: ${{ secrets.EMAIL }}
+          build_dir: docs
+          jekyll: no
+```
+
+
+### Articles or slideshows
+
+The workflow is called `rmarkdown`; its production task `render`.
+
+```
+on:
+  push:
+   branches:
+     - master
+
+name: rmarkdown
+
+jobs:
+  render:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+      - name: Install dependencies
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("memoiR", "rmdformats", "tinytex"))
+          tinytex::install_tinytex()
+        shell: Rscript {0}
+      - name: Render Rmarkdown files
+        run: |
+          RMD_PATH=($(ls | grep "[.]Rmd$"))
+          Rscript -e 'for (file in commandArgs(TRUE)) |>
+              rmarkdown::render(file, "all")' ${RMD_PATH[*]}
+          Rscript -e 'memoiR::build_githubpages()'
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ghpages
+          path: docs
+  deploy:
+    runs-on: ubuntu-latest
+    needs: render
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: ghpages
+          path: docs
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          email: ${{ secrets.EMAIL }}
+          build_dir: docs
+          jekyll: yes
+```
+
+The knitting stage uses a script to list all the `.Rmd` files, process them (all the output formats listed in their yaml header are produced).
+The `build_githubpages()` function (see section \@ref(sec:memo)) places the results in `docs`.
+
+The deployment task tells GitHub pages to use Jekyll, i.e. to use the `README.md` file as the home page.
+
+
+#### Localization
+
+If the knitting step needs to change the language used by R, for example to correctly display the production date of documents, it can be changed like this:
+
+```
+      - name: Render Rmarkdown files
+        run: |
+          Sys.setlocale("LC_TIME", "fr_FR")
+          lapply(list.files(pattern="*.Rmd"), function(file) rmarkdown::render(file, "all"))
+          memoiR::build_githubpages()
+        shell: Rscript {0}
+```
+
+The selection of files is done here by an R script, which includes a localization command, here in French.
+
+This step can be completed by selecting a GitHub Pages theme so that the home page contains a link to the code:
+
+```
+        run: |
+          echo 'theme: jekyll-theme-slate' > docs/_config.yml
+```
+
+The theme here is "Slate", one of the choices offered by the GitHub pages.
+
+#### Debugging
+
+It can happen that the compilation of the `.tex` file to produce the PDF file fails, although knitting in HTML does not generate an error.
+The LaTeX compiler is indeed more demanding than pandoc (which produces the HTML file).
+
+The first check consists in knitting the problematic document into PDF locally, on your workstation, with **tinytex**.
+The LaTeX packages must be updated to be the same as those used by the GitHub actions: to do this, run:
+
+```{r tlmgr_update_6, eval=FALSE}
+tinytex::tlmgr_update()
+```
+
+If the compilation works locally but not on Github, you have to inspect the `.log` file which records all the events generated by the compiler, but this file is not kept after the failure of GitHub Actions. 
+So you have to modify the script to copy the file in `docs` and then create a save result despite the error.
+
+The "Upload artifact" step is modified to run despite the failure of the previous step by adding the line `if:`:
+
+```
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: _book
+          path: docs/
+```
+
+A step is added before "Upload artifact" to copy the result of the knitting and the `.log` file:
+
+```
+      - name: Move files to docs
+        if: always()
+        run: |
+          Rscript -e 'memoiR::build_githubpages()'
+          cp *.log docs
+```
+
+After the action fails, the saved artifact can be downloaded from GitHub: it is on the action summary page.
+It is a compressed file that contains the whole `docs` folder.
+
+
+### Blogdown website {#sec:blogdown-ci}
+
+The file called `blogdown.yml` is very similar.
+The name of the workflow is `blogdown` and the name of the production task is `buildsite`.
+
+```
+on:
+  push:
+     branches:
+       - master
+  schedule:
+    - cron: '0 22 * * 0'
+
+name: blogdown
+
+jobs:
+  buildsite:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+      - name: Install packages
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("remotes", "blogdown", "formatR"))
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+      - name: Build website
+        run: |
+          blogdown::install_hugo(force = TRUE)
+          blogdown::build_site(local = TRUE, build_rmd = TRUE)
+        shell: Rscript {0}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: _website
+          path: public/
+  deploy:
+    runs-on: ubuntu-latest
+    needs: buildsite
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v1
+        with:
+          # Artifact name
+          name: _website
+          # Destination path
+          path: public
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          build_dir: public
+          email: ${{ secrets.EMAIL }}
+          jekyll: no
+```
+
+The `checkout` action is placed in the `source` branch with its `ref` variable.
+
+The `Build website` task uses the **blogdown** package to install Hugo (the website generator) and then build the website.
+
+If the website uses online data that warrants periodic updating, GitHub Actions can be run daily, weekly or monthly in addition to the rebuilds triggered by a repository change (see section `ref(sec:declenchement)).
+Here, the site is rebuilt every Sunday at 10pm.
+
+Example: the page that displays the bibliometry of the author's website[^ci-4] queries Google Scholar to display the citations of the publications.
+The site is updated weekly to keep the statistics current.
+
+[^ci-4]: <https://EricMarcon.github.io/fr/publication/>
+
+
+### R Packages {#sec:package-ci6}
+
+An optimal script for checking a package is as follows:
+
+```
+on:
+  push:
+    branches:
+      - master
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GH_PAT }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+      - name: Install dependencies
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown"))
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+      - name: Check
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning")
+        shell: Rscript {0}
+      - name: Test coverage
+        run: covr::codecov(type="all")
+        shell: Rscript {0}
+      - name: Install package
+        run: R CMD INSTALL .
+      - name: Pkgdown
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+```
+
+The file is named `check.yml`.
+It contains only one task, named `R-CMD-check` like the flow.
+
+The script does not use **Renv** to handle packages because package checking must work with the current versions on CRAN.
+**Remotes** installs the necessary packages from the `DESCRIPTION` file.
+
+The `Check` step checks the package.
+Warnings are treated as errors.
+
+The `Test coverage` step uses the **covr** package to measure the coverage rate and uploads the results to the Codecov site.
+
+Finally, the last two steps install the package and then use **pkgdown** to create the documentation site for the package and push it into the `gh-pages` branch of the project.
+
+This script contains only one task: the deployment of the documentation site is directly executed by **pkgdown**.
+Its success is displayed by a badge in the `README.md` file (see section \@ref(sec:ci-badges))
+
+More complex scripts are proposed by R-lib[^ci-5], in particular to run the tests on several operating systems and several versions of R.
+These advanced tests are to be performed before submitting to CRAN (section \@ref(sec:package-cran)) but consume too much resource for systematic use.
+
+[^ci-5]: <https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow>
+
+
+## Add badges {#sec:ci-badges}
+
+The success of GitHub Actions can be seen by adding a badge to the `README.md` file, right after the file title.
+On the project page, choose "Actions" then select the action (in "Workflows").
+Click on the "..." button and then on "Create Status Badge".
+Paste the Markdown code:
+
+```
+# Project name
+![bookdown](https://github.com/<GitHubID>/<RepoID>/workflows/<Workflow>/badge.svg)
+```
+
+The name of the workflow was declared in the `name:` entry in the GitHub actions configuration file.
+
+The coverage rate measured by Codecov can also be displayed by a badge:
+
+```
+[![codecov](https://codecov.io/github/<GitHubID>/
+  <RepoID>/branch/master/graphs/badge.svg)]
+  (https://codecov.io/github/<GitHubID>/<RepoID>)
+```
