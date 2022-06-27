@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Software | Working with R</title>
+  <meta name="description" content="Organization of work around R and RStudio" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Software | Working with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Organization of work around R and RStudio" />
+  <meta name="github-repo" content="EricMarcon/WorkingWithR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Software | Working with R" />
+  
+  <meta name="twitter:description" content="Organization of work around R and RStudio" />
+  
+
+<meta name="author" content="Eric Marcon" />
+
+
+<meta name="date" content="2022-06-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="chap-utiliseR.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+<script src="libs/vis-9.1.0/vis-network.min.js"></script>
+<script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7NVD1TWMCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7NVD1TWMCJ');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Working With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Présentation</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectives"><i class="fa fa-check"></i>Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i>Conventions</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap-logiciels.html"><a href="chap-logiciels.html"><i class="fa fa-check"></i><b>1</b> Software</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation"><i class="fa fa-check"></i><b>1.1.1</b> Installation</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#rtools"><i class="fa fa-check"></i><b>1.1.2</b> Rtools</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#update"><i class="fa fa-check"></i><b>1.1.3</b> Update</a></li>
+<li class="chapter" data-level="1.1.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:librairies"><i class="fa fa-check"></i><b>1.1.4</b> Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-1"><i class="fa fa-check"></i><b>1.2.1</b> Installation</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#file-encoding"><i class="fa fa-check"></i><b>1.2.2</b> File encoding</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#working-folder"><i class="fa fa-check"></i><b>1.2.3</b> Working folder</a></li>
+<li class="chapter" data-level="1.2.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:solution-dossiers"><i class="fa fa-check"></i><b>1.2.4</b> Solution chosen</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#packages"><i class="fa fa-check"></i><b>1.3</b> Packages</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-cran"><i class="fa fa-check"></i><b>1.3.1</b> Installation from CRAN</a></li>
+<li class="chapter" data-level="1.3.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-github"><i class="fa fa-check"></i><b>1.3.2</b> Installation from GitHub</a></li>
+<li class="chapter" data-level="1.3.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-bioconductor"><i class="fa fa-check"></i><b>1.3.3</b> Installation from Bioconductor</a></li>
+<li class="chapter" data-level="1.3.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#selected-solution"><i class="fa fa-check"></i><b>1.3.4</b> Selected solution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> git and GitHub</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#git"><i class="fa fa-check"></i><b>1.4.1</b> git</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#github"><i class="fa fa-check"></i><b>1.4.2</b> GitHub</a></li>
+<li class="chapter" data-level="1.4.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:SSH"><i class="fa fa-check"></i><b>1.4.3</b> SSH authentication</a></li>
+<li class="chapter" data-level="1.4.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:pat"><i class="fa fa-check"></i><b>1.4.4</b> Obtaining a personal access token</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="chap-logiciels.html"><a href="chap-logiciels.html#latex-compiler"><i class="fa fa-check"></i><b>1.5</b> LaTeX compiler</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#tinytex"><i class="fa fa-check"></i><b>1.5.1</b> tinytex</a></li>
+<li class="chapter" data-level="1.5.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#miktex"><i class="fa fa-check"></i><b>1.5.2</b> MiKTeX</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:Zotero"><i class="fa fa-check"></i><b>1.6</b> Zotero</a></li>
+<li class="chapter" data-level="1.7" data-path="chap-logiciels.html"><a href="chap-logiciels.html#go"><i class="fa fa-check"></i><b>1.7</b> Go</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html"><i class="fa fa-check"></i><b>2</b> Use R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#the-languages-of-r"><i class="fa fa-check"></i><b>2.1</b> The languages of R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#base"><i class="fa fa-check"></i><b>2.1.1</b> Base</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:S3"><i class="fa fa-check"></i><b>2.1.2</b> S3</a></li>
+<li class="chapter" data-level="2.1.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#s4"><i class="fa fa-check"></i><b>2.1.3</b> S4</a></li>
+<li class="chapter" data-level="2.1.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rc"><i class="fa fa-check"></i><b>2.1.4</b> RC</a></li>
+<li class="chapter" data-level="2.1.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#s6"><i class="fa fa-check"></i><b>2.1.5</b> S6</a></li>
+<li class="chapter" data-level="2.1.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#tidyverse"><i class="fa fa-check"></i><b>2.1.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:environnements"><i class="fa fa-check"></i><b>2.2</b> Environments</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#organization"><i class="fa fa-check"></i><b>2.2.1</b> Organization</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#search"><i class="fa fa-check"></i><b>2.2.2</b> Search</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#espaces-de-nom-des-packages"><i class="fa fa-check"></i><b>2.2.3</b> Espaces de nom des packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#measuring-execution-time"><i class="fa fa-check"></i><b>2.3</b> Measuring execution time</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#system.time"><i class="fa fa-check"></i><b>2.3.1</b> system.time</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#microbenchmark"><i class="fa fa-check"></i><b>2.3.2</b> microbenchmark</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#profiling"><i class="fa fa-check"></i><b>2.3.3</b> Profiling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#loops"><i class="fa fa-check"></i><b>2.4</b> Loops</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#vector-functions"><i class="fa fa-check"></i><b>2.4.1</b> Vector functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#lapply"><i class="fa fa-check"></i><b>2.4.2</b> lapply</a></li>
+<li class="chapter" data-level="2.4.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#for-loops"><i class="fa fa-check"></i><b>2.4.3</b> For loops</a></li>
+<li class="chapter" data-level="2.4.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#replicate"><i class="fa fa-check"></i><b>2.4.4</b> replicate</a></li>
+<li class="chapter" data-level="2.4.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#vectorize"><i class="fa fa-check"></i><b>2.4.5</b> Vectorize</a></li>
+<li class="chapter" data-level="2.4.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#marginal-statistics"><i class="fa fa-check"></i><b>2.4.6</b> Marginal statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:cpp"><i class="fa fa-check"></i><b>2.5</b> C++ code</a></li>
+<li class="chapter" data-level="2.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#parallelizing-r"><i class="fa fa-check"></i><b>2.6</b> Parallelizing R</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#mclapply-fork"><i class="fa fa-check"></i><b>2.6.1</b> mclapply (fork)</a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#parlapply-socket"><i class="fa fa-check"></i><b>2.6.2</b> parLapply (socket)</a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#foreach"><i class="fa fa-check"></i><b>2.6.3</b> foreach</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:cas"><i class="fa fa-check"></i><b>2.7</b> Case study</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#creation-of-the-data"><i class="fa fa-check"></i><b>2.7.1</b> Creation of the data</a></li>
+<li class="chapter" data-level="2.7.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#spatstat"><i class="fa fa-check"></i><b>2.7.2</b> Spatstat</a></li>
+<li class="chapter" data-level="2.7.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#apply"><i class="fa fa-check"></i><b>2.7.3</b> apply</a></li>
+<li class="chapter" data-level="2.7.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-for"><i class="fa fa-check"></i><b>2.7.4</b> boucle for</a></li>
+<li class="chapter" data-level="2.7.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-foreach"><i class="fa fa-check"></i><b>2.7.5</b> boucle foreach</a></li>
+<li class="chapter" data-level="2.7.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcpp"><i class="fa fa-check"></i><b>2.7.6</b> RCpp</a></li>
+<li class="chapter" data-level="2.7.7" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcppparallel"><i class="fa fa-check"></i><b>2.7.7</b> RcppParallel</a></li>
+<li class="chapter" data-level="2.7.8" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#conclusions-on-code-speed-optimization"><i class="fa fa-check"></i><b>2.7.8</b> Conclusions on code speed optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:targets"><i class="fa fa-check"></i><b>2.8</b> Workflow</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#how-it-works-1"><i class="fa fa-check"></i><b>2.8.1</b> How it works</a></li>
+<li class="chapter" data-level="2.8.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#minimal-example"><i class="fa fa-check"></i><b>2.8.2</b> Minimal example</a></li>
+<li class="chapter" data-level="2.8.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#practical-interest"><i class="fa fa-check"></i><b>2.8.3</b> Practical interest</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-git.html"><a href="chap-git.html"><i class="fa fa-check"></i><b>3</b> Git and GitHub</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chap-git.html"><a href="chap-git.html#sec:principes-git"><i class="fa fa-check"></i><b>3.1</b> Principles</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chap-git.html"><a href="chap-git.html#sec:git-cds"><i class="fa fa-check"></i><b>3.1.1</b> Source control</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap-git.html"><a href="chap-git.html#git-and-github-1"><i class="fa fa-check"></i><b>3.1.2</b> git and GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap-git.html"><a href="chap-git.html#sec:creerdepot"><i class="fa fa-check"></i><b>3.2</b> Create a new repository</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="chap-git.html"><a href="chap-git.html#from-an-existing-project"><i class="fa fa-check"></i><b>3.2.1</b> From an existing project</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chap-git.html"><a href="chap-git.html#taking-files-into-account"><i class="fa fa-check"></i><b>3.2.2</b> Taking files into account</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chap-git.html"><a href="chap-git.html#committing-changes"><i class="fa fa-check"></i><b>3.2.3</b> Committing changes</a></li>
+<li class="chapter" data-level="3.2.4" data-path="chap-git.html"><a href="chap-git.html#create-an-empty-repository-on-github"><i class="fa fa-check"></i><b>3.2.4</b> Create an empty repository on GitHub</a></li>
+<li class="chapter" data-level="3.2.5" data-path="chap-git.html"><a href="chap-git.html#linking-git-and-github"><i class="fa fa-check"></i><b>3.2.5</b> Linking git and GitHub</a></li>
+<li class="chapter" data-level="3.2.6" data-path="chap-git.html"><a href="chap-git.html#push-the-first-modifications"><i class="fa fa-check"></i><b>3.2.6</b> Push the first modifications</a></li>
+<li class="chapter" data-level="3.2.7" data-path="chap-git.html"><a href="chap-git.html#clone-a-repository-from-github"><i class="fa fa-check"></i><b>3.2.7</b> Clone a repository from GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap-git.html"><a href="chap-git.html#common-usage"><i class="fa fa-check"></i><b>3.3</b> Common usage</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="chap-git.html"><a href="chap-git.html#pull-modify-commit-push"><i class="fa fa-check"></i><b>3.3.1</b> Pull, modify, commit, push</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chap-git.html"><a href="chap-git.html#resolve-conflicts"><i class="fa fa-check"></i><b>3.3.2</b> Resolve conflicts</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chap-git.html"><a href="chap-git.html#see-the-differences"><i class="fa fa-check"></i><b>3.3.3</b> See the differences</a></li>
+<li class="chapter" data-level="3.3.4" data-path="chap-git.html"><a href="chap-git.html#revert"><i class="fa fa-check"></i><b>3.3.4</b> Revert</a></li>
+<li class="chapter" data-level="3.3.5" data-path="chap-git.html"><a href="chap-git.html#view-history"><i class="fa fa-check"></i><b>3.3.5</b> View history</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap-git.html"><a href="chap-git.html#sec:branches"><i class="fa fa-check"></i><b>3.4</b> Branches</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chap-git.html"><a href="chap-git.html#create-a-new-branch"><i class="fa fa-check"></i><b>3.4.1</b> Create a new branch</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chap-git.html"><a href="chap-git.html#change-branch"><i class="fa fa-check"></i><b>3.4.2</b> Change branch</a></li>
+<li class="chapter" data-level="3.4.3" data-path="chap-git.html"><a href="chap-git.html#pushing-the-new-branch"><i class="fa fa-check"></i><b>3.4.3</b> Pushing the new branch</a></li>
+<li class="chapter" data-level="3.4.4" data-path="chap-git.html"><a href="chap-git.html#filesystem-behavior"><i class="fa fa-check"></i><b>3.4.4</b> Filesystem behavior</a></li>
+<li class="chapter" data-level="3.4.5" data-path="chap-git.html"><a href="chap-git.html#merge-with-merge"><i class="fa fa-check"></i><b>3.4.5</b> Merge with `merge</a></li>
+<li class="chapter" data-level="3.4.6" data-path="chap-git.html"><a href="chap-git.html#merging-with-a-pull-request"><i class="fa fa-check"></i><b>3.4.6</b> Merging with a pull request</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chap-git.html"><a href="chap-git.html#advanced-usage"><i class="fa fa-check"></i><b>3.5</b> Advanced usage</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="chap-git.html"><a href="chap-git.html#git-commands"><i class="fa fa-check"></i><b>3.5.1</b> Git commands</a></li>
+<li class="chapter" data-level="3.5.2" data-path="chap-git.html"><a href="chap-git.html#size-of-a-repository"><i class="fa fa-check"></i><b>3.5.2</b> Size of a repository</a></li>
+<li class="chapter" data-level="3.5.3" data-path="chap-git.html"><a href="chap-git.html#delete-a-folder"><i class="fa fa-check"></i><b>3.5.3</b> Delete a folder</a></li>
+<li class="chapter" data-level="3.5.4" data-path="chap-git.html"><a href="chap-git.html#revert-1"><i class="fa fa-check"></i><b>3.5.4</b> Revert</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="chap-git.html"><a href="chap-git.html#sec:confidential"><i class="fa fa-check"></i><b>3.6</b> Confidential data in a public repository</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="chap-git.html"><a href="chap-git.html#generating-a-key-pair-for-the-project-owner"><i class="fa fa-check"></i><b>3.6.1</b> Generating a key pair for the project owner</a></li>
+<li class="chapter" data-level="3.6.2" data-path="chap-git.html"><a href="chap-git.html#generating-a-key-pair-for-the-project"><i class="fa fa-check"></i><b>3.6.2</b> Generating a key pair for the project</a></li>
+<li class="chapter" data-level="3.6.3" data-path="chap-git.html"><a href="chap-git.html#creating-a-safe"><i class="fa fa-check"></i><b>3.6.3</b> Creating a safe</a></li>
+<li class="chapter" data-level="3.6.4" data-path="chap-git.html"><a href="chap-git.html#adding-users"><i class="fa fa-check"></i><b>3.6.4</b> Adding users</a></li>
+<li class="chapter" data-level="3.6.5" data-path="chap-git.html"><a href="chap-git.html#storing-the-data"><i class="fa fa-check"></i><b>3.6.5</b> Storing the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="chap-git.html"><a href="chap-git.html#sec:github-pages"><i class="fa fa-check"></i><b>3.7</b> GitHub pages</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="chap-git.html"><a href="chap-git.html#activation"><i class="fa fa-check"></i><b>3.7.1</b> Activation</a></li>
+<li class="chapter" data-level="3.7.2" data-path="chap-git.html"><a href="chap-git.html#badges"><i class="fa fa-check"></i><b>3.7.2</b> Badges</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-rediger.html"><a href="chap-rediger.html"><i class="fa fa-check"></i><b>4</b> Writing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-rediger.html"><a href="chap-rediger.html#markdown-notebook-r-notebook"><i class="fa fa-check"></i><b>4.1</b> Markdown notebook (R Notebook)</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-rediger.html"><a href="chap-rediger.html#r-markdown-templates"><i class="fa fa-check"></i><b>4.2</b> R Markdown templates</a></li>
+<li class="chapter" data-level="4.3" data-path="chap-rediger.html"><a href="chap-rediger.html#articles-with-bookdown"><i class="fa fa-check"></i><b>4.3</b> Articles with bookdown</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="chap-rediger.html"><a href="chap-rediger.html#writing"><i class="fa fa-check"></i><b>4.3.1</b> Writing</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:memo"><i class="fa fa-check"></i><b>4.3.2</b> Simple Article template</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chap-rediger.html"><a href="chap-rediger.html#other-templates"><i class="fa fa-check"></i><b>4.3.3</b> Other templates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chap-rediger.html"><a href="chap-rediger.html#beamer-presentation"><i class="fa fa-check"></i><b>4.4</b> Beamer Presentation</a></li>
+<li class="chapter" data-level="4.5" data-path="chap-rediger.html"><a href="chap-rediger.html#memoir"><i class="fa fa-check"></i><b>4.5</b> memoir</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-rediger.html"><a href="chap-rediger.html#create-1"><i class="fa fa-check"></i><b>4.5.1</b> Create</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-rediger.html"><a href="chap-rediger.html#write-1"><i class="fa fa-check"></i><b>4.5.2</b> Write</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-rediger.html"><a href="chap-rediger.html#knit-1"><i class="fa fa-check"></i><b>4.5.3</b> Knit</a></li>
+<li class="chapter" data-level="4.5.4" data-path="chap-rediger.html"><a href="chap-rediger.html#finishing"><i class="fa fa-check"></i><b>4.5.4</b> Finishing</a></li>
+<li class="chapter" data-level="4.5.5" data-path="chap-rediger.html"><a href="chap-rediger.html#gitbook-site"><i class="fa fa-check"></i><b>4.5.5</b> Gitbook site</a></li>
+<li class="chapter" data-level="4.5.6" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:rediger-ouvrage-ci"><i class="fa fa-check"></i><b>4.5.6</b> Continuous integration</a></li>
+<li class="chapter" data-level="4.5.7" data-path="chap-rediger.html"><a href="chap-rediger.html#google-analytics"><i class="fa fa-check"></i><b>4.5.7</b> Google Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="chap-rediger.html"><a href="chap-rediger.html#r-markdown-web-site"><i class="fa fa-check"></i><b>4.6</b> R Markdown web site</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="chap-rediger.html"><a href="chap-rediger.html#template"><i class="fa fa-check"></i><b>4.6.1</b> Template</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chap-rediger.html"><a href="chap-rediger.html#improvements"><i class="fa fa-check"></i><b>4.6.2</b> Improvements</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control"><i class="fa fa-check"></i><b>4.6.3</b> Source control</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:blogdown"><i class="fa fa-check"></i><b>4.7</b> Personal web site: blogdown</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="chap-rediger.html"><a href="chap-rediger.html#installing-the-tools"><i class="fa fa-check"></i><b>4.7.1</b> Installing the tools</a></li>
+<li class="chapter" data-level="4.7.2" data-path="chap-rediger.html"><a href="chap-rediger.html#create-2"><i class="fa fa-check"></i><b>4.7.2</b> Create</a></li>
+<li class="chapter" data-level="4.7.3" data-path="chap-rediger.html"><a href="chap-rediger.html#building-the-site"><i class="fa fa-check"></i><b>4.7.3</b> Building the site</a></li>
+<li class="chapter" data-level="4.7.4" data-path="chap-rediger.html"><a href="chap-rediger.html#multilingual-site"><i class="fa fa-check"></i><b>4.7.4</b> Multilingual site</a></li>
+<li class="chapter" data-level="4.7.5" data-path="chap-rediger.html"><a href="chap-rediger.html#set-up"><i class="fa fa-check"></i><b>4.7.5</b> Set up</a></li>
+<li class="chapter" data-level="4.7.6" data-path="chap-rediger.html"><a href="chap-rediger.html#write-2"><i class="fa fa-check"></i><b>4.7.6</b> Write</a></li>
+<li class="chapter" data-level="4.7.7" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:rediger-web-ci"><i class="fa fa-check"></i><b>4.7.7</b> Continuous integration</a></li>
+<li class="chapter" data-level="4.7.8" data-path="chap-rediger.html"><a href="chap-rediger.html#updates-1"><i class="fa fa-check"></i><b>4.7.8</b> Updates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="chap-rediger.html"><a href="chap-rediger.html#exporting-figures"><i class="fa fa-check"></i><b>4.8</b> Exporting figures</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="chap-rediger.html"><a href="chap-rediger.html#vector-and-raster-formats"><i class="fa fa-check"></i><b>4.8.1</b> Vector and Raster Formats</a></li>
+<li class="chapter" data-level="4.8.2" data-path="chap-rediger.html"><a href="chap-rediger.html#functions"><i class="fa fa-check"></i><b>4.8.2</b> Functions</a></li>
+<li class="chapter" data-level="4.8.3" data-path="chap-rediger.html"><a href="chap-rediger.html#ragg-package"><i class="fa fa-check"></i><b>4.8.3</b> ragg package</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:targetsmd"><i class="fa fa-check"></i><b>4.9</b> Workflow</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-the-workflow"><i class="fa fa-check"></i><b>4.9.1</b> Declaration of the workflow</a></li>
+<li class="chapter" data-level="4.9.2" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-targets"><i class="fa fa-check"></i><b>4.9.2</b> Declaration of targets</a></li>
+<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-flow"><i class="fa fa-check"></i><b>4.9.3</b> Running the flow</a></li>
+<li class="chapter" data-level="4.9.4" data-path="chap-rediger.html"><a href="chap-rediger.html#using-the-results"><i class="fa fa-check"></i><b>4.9.4</b> Using the results</a></li>
+<li class="chapter" data-level="4.9.5" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control-1"><i class="fa fa-check"></i><b>4.9.5</b> Source control</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-package.html"><a href="chap-package.html"><i class="fa fa-check"></i><b>5</b> Package</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-package.html"><a href="chap-package.html#first-package"><i class="fa fa-check"></i><b>5.1</b> First package</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chap-package.html"><a href="chap-package.html#creation"><i class="fa fa-check"></i><b>5.1.1</b> Creation</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap-package.html"><a href="chap-package.html#first-function"><i class="fa fa-check"></i><b>5.1.2</b> First function</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chap-package.html"><a href="chap-package.html#sec:package-cds"><i class="fa fa-check"></i><b>5.1.3</b> Source control</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chap-package.html"><a href="chap-package.html#package.r"><i class="fa fa-check"></i><b>5.1.4</b> package.R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="chap-package.html"><a href="chap-package.html#package-organization"><i class="fa fa-check"></i><b>5.2</b> Package organization</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-package.html"><a href="chap-package.html#sec:package-description"><i class="fa fa-check"></i><b>5.2.1</b> DESCRIPTION file</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-package.html"><a href="chap-package.html#news.md-file"><i class="fa fa-check"></i><b>5.2.2</b> NEWS.md file</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-package.html"><a href="chap-package.html#vignette"><i class="fa fa-check"></i><b>5.3</b> Vignette</a></li>
+<li class="chapter" data-level="5.4" data-path="chap-package.html"><a href="chap-package.html#pkgdown"><i class="fa fa-check"></i><b>5.4</b> pkgdown</a></li>
+<li class="chapter" data-level="5.5" data-path="chap-package.html"><a href="chap-package.html#package-specific-code"><i class="fa fa-check"></i><b>5.5</b> Package specific code</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-package.html"><a href="chap-package.html#importing-functions"><i class="fa fa-check"></i><b>5.5.1</b> Importing functions</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-package.html"><a href="chap-package.html#s3-methods"><i class="fa fa-check"></i><b>5.5.2</b> S3 methods</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-package.html"><a href="chap-package.html#in-practice"><i class="fa fa-check"></i><b>5.5.3</b> In practice</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-package.html"><a href="chap-package.html#c-code"><i class="fa fa-check"></i><b>5.5.4</b> C++ code</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-package.html"><a href="chap-package.html#tidy-package"><i class="fa fa-check"></i><b>5.5.5</b> Tidy package</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-package.html"><a href="chap-package.html#bibliography-1"><i class="fa fa-check"></i><b>5.6</b> Bibliography</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="chap-package.html"><a href="chap-package.html#preparation"><i class="fa fa-check"></i><b>5.6.1</b> Preparation</a></li>
+<li class="chapter" data-level="5.6.2" data-path="chap-package.html"><a href="chap-package.html#citations"><i class="fa fa-check"></i><b>5.6.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="chap-package.html"><a href="chap-package.html#data"><i class="fa fa-check"></i><b>5.7</b> Data</a></li>
+<li class="chapter" data-level="5.8" data-path="chap-package.html"><a href="chap-package.html#unit-tests"><i class="fa fa-check"></i><b>5.8</b> Unit tests</a></li>
+<li class="chapter" data-level="5.9" data-path="chap-package.html"><a href="chap-package.html#gitignore-file"><i class="fa fa-check"></i><b>5.9</b> .gitignore file</a></li>
+<li class="chapter" data-level="5.10" data-path="chap-package.html"><a href="chap-package.html#sec:package-ci5"><i class="fa fa-check"></i><b>5.10</b> Continuous integration</a></li>
+<li class="chapter" data-level="5.11" data-path="chap-package.html"><a href="chap-package.html#sec:package-cran"><i class="fa fa-check"></i><b>5.11</b> CRAN</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="chap-package.html"><a href="chap-package.html#testing-the-package"><i class="fa fa-check"></i><b>5.11.1</b> Testing the package</a></li>
+<li class="chapter" data-level="5.11.2" data-path="chap-package.html"><a href="chap-package.html#submission"><i class="fa fa-check"></i><b>5.11.2</b> Submission</a></li>
+<li class="chapter" data-level="5.11.3" data-path="chap-package.html"><a href="chap-package.html#maintenance"><i class="fa fa-check"></i><b>5.11.3</b> Maintenance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-ci.html"><a href="chap-ci.html"><i class="fa fa-check"></i><b>6</b> Continuous integration</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-ci.html"><a href="chap-ci.html#tools"><i class="fa fa-check"></i><b>6.1</b> Tools</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-ci.html"><a href="chap-ci.html#github-actions"><i class="fa fa-check"></i><b>6.1.1</b> GitHub Actions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-ci.html"><a href="chap-ci.html#codecov"><i class="fa fa-check"></i><b>6.1.2</b> Codecov</a></li>
+<li class="chapter" data-level="6.1.3" data-path="chap-ci.html"><a href="chap-ci.html#github-pages"><i class="fa fa-check"></i><b>6.1.3</b> GitHub Pages</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-ci.html"><a href="chap-ci.html#principles"><i class="fa fa-check"></i><b>6.2</b> Principles</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="chap-ci.html"><a href="chap-ci.html#getting-a-personal-access-token"><i class="fa fa-check"></i><b>6.2.1</b> Getting a personal access token</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap-ci.html"><a href="chap-ci.html#sec:secrets-ci"><i class="fa fa-check"></i><b>6.2.2</b> Project secrets</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap-ci.html"><a href="chap-ci.html#activation-of-the-repository-on-codecov"><i class="fa fa-check"></i><b>6.2.3</b> Activation of the repository on CodeCov</a></li>
+<li class="chapter" data-level="6.2.4" data-path="chap-ci.html"><a href="chap-ci.html#scripting-github-actions"><i class="fa fa-check"></i><b>6.2.4</b> Scripting GitHub actions</a></li>
+<li class="chapter" data-level="6.2.5" data-path="chap-ci.html"><a href="chap-ci.html#sec:confidentielCI"><i class="fa fa-check"></i><b>6.2.5</b> Confidential data in a public repository</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap-ci.html"><a href="chap-ci.html#script-templates"><i class="fa fa-check"></i><b>6.3</b> Script templates</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chap-ci.html"><a href="chap-ci.html#sec:memoiR-ci"><i class="fa fa-check"></i><b>6.3.1</b> memoiR</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-ci.html"><a href="chap-ci.html#sec:bookdown-ci"><i class="fa fa-check"></i><b>6.3.2</b> Book or thesis</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-ci.html"><a href="chap-ci.html#articles-or-slideshows"><i class="fa fa-check"></i><b>6.3.3</b> Articles or slideshows</a></li>
+<li class="chapter" data-level="6.3.4" data-path="chap-ci.html"><a href="chap-ci.html#sec:blogdown-ci"><i class="fa fa-check"></i><b>6.3.4</b> Blogdown website</a></li>
+<li class="chapter" data-level="6.3.5" data-path="chap-ci.html"><a href="chap-ci.html#sec:package-ci6"><i class="fa fa-check"></i><b>6.3.5</b> R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap-ci.html"><a href="chap-ci.html#sec:ci-badges"><i class="fa fa-check"></i><b>6.4</b> Add badges</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-shiny.html"><a href="chap-shiny.html"><i class="fa fa-check"></i><b>7</b> Shiny</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chap-shiny.html"><a href="chap-shiny.html#first-application"><i class="fa fa-check"></i><b>7.1</b> First application</a></li>
+<li class="chapter" data-level="7.2" data-path="chap-shiny.html"><a href="chap-shiny.html#more-elaborate-application"><i class="fa fa-check"></i><b>7.2</b> More elaborate application</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="chap-shiny.html"><a href="chap-shiny.html#working-method"><i class="fa fa-check"></i><b>7.2.1</b> Working method</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap-shiny.html"><a href="chap-shiny.html#example"><i class="fa fa-check"></i><b>7.2.2</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chap-shiny.html"><a href="chap-shiny.html#sec:hebergement-shiny"><i class="fa fa-check"></i><b>7.3</b> Hosting</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-enseigner.html"><a href="chap-enseigner.html"><i class="fa fa-check"></i><b>8</b> Teaching with R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#learnr"><i class="fa fa-check"></i><b>8.1</b> learnr</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#first-tutorial"><i class="fa fa-check"></i><b>8.1.1</b> First tutorial</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#broadcasting"><i class="fa fa-check"></i><b>8.1.2</b> Broadcasting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#github-classrooms"><i class="fa fa-check"></i><b>8.2</b> GitHub Classrooms</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#registration"><i class="fa fa-check"></i><b>8.2.1</b> Registration</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#organizations"><i class="fa fa-check"></i><b>8.2.2</b> Organizations</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chap-enseigner.html"><a href="chap-enseigner.html#new-classroom"><i class="fa fa-check"></i><b>8.2.3</b> New Classroom</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chap-enseigner.html"><a href="chap-enseigner.html#prepare-a-repository-template"><i class="fa fa-check"></i><b>8.2.4</b> Prepare a repository template</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li>
+  <a href="https://github.com/EricMarcon/WorkingWithR" target="blank">
+    Hosted on GitHub, published with bookdown
+  </a>
+</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Working with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-logiciels" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Software<a href="chap-logiciels.html#chap-logiciels" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The central tool is obviously R, but its operation is today difficult to consider without its development environment RStudio.
+For source control, git and GitHub are the de facto standards.
+The set must be completed by a LaTeX distribution for the production of documents in PDF format.
+A bibliographic management tool is essential: Zotero and its extension Better BibTeX are perfectly adapted to the framework presented here.
+Finally, other software of more occasional use may be necessary, such as Go.</p>
+<p>Their installation and coherent organization are presented in this chapter.</p>
+<div id="r" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> R<a href="chap-logiciels.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="installation" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Installation<a href="chap-logiciels.html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R is included in the Linux distributions: the package is named <code>r-base</code>.
+It does not contain development tools that are often needed, so it is better to install the <code>r-base-dev</code> package as well.
+The version of R is often a bit old.
+To get the latest version, you have to use a CRAN mirror as a source for the packages: see the full documentation for Ubuntu <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>Under Windows or Mac, install R after downloading it from CRAN<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+</div>
+<div id="rtools" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Rtools<a href="chap-logiciels.html#rtools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On Mac, the installation of R is sufficient from version 4.0.0.</p>
+<p>On Windows, the installation must be completed by the “Rtools”, which contain the development tools, including those necessary to compile packages containing C++ code.</p>
+<p>The path of the Rtools (before version 4.2) must be declared to R, by executing the following command in the RStudio console (adapted to version 4.0 of the Rtools):</p>
+<p></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chap-logiciels.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rtools : path declaration, </span></span>
+<span id="cb1-2"><a href="chap-logiciels.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># requires restarting RStudio</span></span>
+<span id="cb1-3"><a href="chap-logiciels.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="st">&#39;PATH=&quot;${RTOOLS40_HOME}</span><span class="sc">\\</span><span class="st">usr</span><span class="sc">\\</span><span class="st">bin;${PATH}&quot;&#39;</span>,</span>
+<span id="cb1-4"><a href="chap-logiciels.html#cb1-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">con =</span> <span class="st">&quot;~/.Renviron&quot;</span>)</span></code></pre></div>
+<p></p>
+<p>Since version 4.2, this action is unnecessary.</p>
+<p>The Rtools must be completed by some missing utilities, to be installed when the need appears (usually a warning from R that the software is not installed).</p>
+<p>The package check returns a warning if <em>qpdf</em><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> is not installed.
+Download the zip file and paste the entire contents of the <code>bin</code> folder into the <code>usr/bin</code> folder of <code>Rtools</code> (<code>C:\Rtools42\r\bin</code> for version 4.2).</p>
+<p>Another warning is returned if there is no <em>Ghostscript</em><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> to download and install.
+Then copy the contents of the <code>bin' folder to the</code>usr/bin’ folder of `Rtools’.</p>
+</div>
+<div id="update" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Update<a href="chap-logiciels.html#update" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is recommended to use the latest minor version of R: for example, 4.0.x until the release of version 4.1.
+It is mandatory to use the latest version to prepare a package submitted to CRAN.</p>
+<p>Important changes occur between major versions (version 4 does not allow to use a package compiled for version 3) but also sometimes between minor versions (a binary data file <code>.rda</code> saved under version 3.3 cannot be read by version 3.6).
+It is therefore useful to update R regularly.</p>
+<p>Installing a new version does not automatically uninstall older versions, which allows you to use more than one version if necessary (for example, if an old and essential package is no longer available).
+In common use, it is preferable to uninstall old versions manually after installing a new one.</p>
+</div>
+<div id="sec:librairies" class="section level3 hasAnchor" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Libraries<a href="chap-logiciels.html#sec:librairies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R packages are found in two folders:</p>
+<ul>
+<li>the system library (<em>System Library</em>) contains the packages that come with R: <strong>base</strong>, <strong>utils</strong>, <strong>graphics</strong> for example.
+It is located in a subdirectory of the installation program (<code>C:\Program Files\R-4.1.0\library</code> for R version 4.1.0 on Windows 10).</li>
+<li>The <em>User Library</em> contains those installed by the user.
+Until version 4.1, it is located in the user’s home folder, in a subfolder <code>R\win-library\4.1\</code>).
+Since version 4.2, this folder is in the user’s local settings, whose folder location is in the environment variable <code>%LOCALAPPDATA%</code>.</li>
+</ul>
+<p>Until version 4.1, if the user’s home folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), it is not optimal to place the packages there: the traffic generated by backing them up would be heavy and unnecessary.
+In order for packages to be installed automatically in the system library, the user must have the right to write to it.
+Under Windows, give the computer’s user group the “Modify” right to the library folder, in addition to the default read right (fig:R-library).
+From version 4.2 onwards, there is no reason to change the default operation: local settings are not saved.</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:R-library"></span>
+<img src="images/R-library.png" alt="Enable the right to modify the system library under Windows." width="80%" />
+<p class="caption">
+Figure 1.1: Enable the right to modify the system library under Windows.
+</p>
+</div>
+<p></p>
+<p>If the user library is selected, you must remember to empty the folder corresponding to the old version of R in case of minor version change.</p>
+<p>The location of the libraries is given by the function <code>.libPaths()</code>:</p>
+<p></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="chap-logiciels.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/runner/work/_temp/Library&quot;                              
+## [2] &quot;/Library/Frameworks/R.framework/Versions/4.2/Resources/library&quot;</code></pre>
+<p></p>
+</div>
+</div>
+<div id="rstudio" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> RStudio<a href="chap-logiciels.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>RStudio is a graphical interface for R and much more: it is designed to simplify project management, make writing and producing documents easier and integrate source control for example.</p>
+<div id="installation-1" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Installation<a href="chap-logiciels.html#installation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Install the latest version of <em>RStudio Desktop</em> from the RStudio website <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+<p>A command is available in the “Help” menu of RStudio to check for a more recent version to install.</p>
+</div>
+<div id="file-encoding" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> File encoding<a href="chap-logiciels.html#file-encoding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The files manipulated in R are mostly text files.
+Special characters, especially accents, can be encoded in various ways, but the encoding declaration is not integrated in the files.
+The default encoding depends on the operating system, which regularly causes problems with the readability of shared files.
+The UTF8 encoding has become the standard because it is universally recognized and supports all alphabets without ambiguity.</p>
+<p>The first time you use RStudio, create a new R file (“File &gt; New File &gt; R Script” menu), save it in UTF8 format (“File &gt; Save with Encoding…”), choose UTF8 in the list of formats and check the box “Set as default encoding for source files”.
+Delete the file after saving it.</p>
+<p>New files will be encoded in UTF8 format.
+Files encoded in another format will not be displayed correctly: they can be reopened with their original encoding (“File &gt; Reopen with Encoding…”), possibly trying several encodings until they are displayed correctly, and then saved in UTF8 format.</p>
+</div>
+<div id="working-folder" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Working folder<a href="chap-logiciels.html#working-folder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The default working folder is the user’s home folder, called <code>~</code> by RStudio:</p>
+<p></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="chap-logiciels.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.getenv</span>(<span class="st">&quot;R_USER&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;&quot;</code></pre>
+<p></p>
+<ul>
+<li><code>My Documents</code> under Windows;</li>
+<li><code>Home</code> under Mac or Linux.</li>
+</ul>
+<p>You should always work in subfolders of <code>~</code>, for example: <code>~Training</code>.</p>
+<p>For <em>RTools</em> to work properly, the full name of the working directory must not contain spaces (use underscores <code>_</code>) or special characters.
+The current working directory is obtained by the command <code>getwd()</code>.</p>
+<p></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="chap-logiciels.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/runner/work/WorkingWithR/WorkingWithR&quot;</code></pre>
+<p></p>
+<p>Using source control (see chapter <a href="chap-git.html#chap-git">3</a>) creates many working files.
+Source-controlled projects should not be located in a folder that is already backed up by another means, such as a OneDrive on Windows, otherwise resources will be used excessively: each change validation generates a backup of the modified files, but also of the control files, which can be very large.</p>
+</div>
+<div id="sec:solution-dossiers" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Solution chosen<a href="chap-logiciels.html#sec:solution-dossiers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The organization of the work environment is a personal matter, depending on the preferences of each individual.
+The organization proposed here is only a possibility, to be adapted to one’s own choices, but respecting the constraints mentioned.</p>
+<p>Under Windows, an optimal organization is as follows:</p>
+<ul>
+<li>In one’s personal folder (<code>My Documents</code>, <code>~</code> for R), a <code>R</code> folder is used for simple projects, without source control.
+The backup of this folder is managed elsewhere.</li>
+<li>A folder outside the home folder is used for source-controlled projects.
+The user must have the right to write to it.
+In the Windows organization, the folder corresponding to these criteria is <code>%LOCALAPPDATA%</code>, typically <code>C:\Users\Name\AppData</code>.
+The folder will therefore be <code>%LOCALAPPDATA%\ProjectsR</code> to create: run <code>md %LOCALAPPDATA%\ProjectsR</code> in a command prompt.
+Pin this folder to the quick access of the file explorer (figure <a href="chap-logiciels.html#fig:R-ProjetsR">1.2</a>): paste <code>%LOCALAPPDATA%\ProjetsR</code> in the address bar of the file explorer, validate, then right click on “Quick Access” and pin the folder.</li>
+</ul>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:R-ProjetsR"></span>
+<img src="images/R-ProjetsR.png" alt="Folder for projects under source control, under Windows." width="100%" />
+<p class="caption">
+Figure 1.2: Folder for projects under source control, under Windows.
+</p>
+</div>
+<p></p>
+</div>
+</div>
+<div id="packages" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Packages<a href="chap-logiciels.html#packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="installation-from-cran" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Installation from CRAN<a href="chap-logiciels.html#installation-from-cran" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The classic installation of packages uses CRAN.
+There is an “Install” button in the <em>Packages</em> window of RStudio.</p>
+<p>Packages are uploaded to CRAN by their authors as source code, compressed in a <code>.tar.gz</code> file.
+They are available for download as soon as they are validated.
+They must then be put in binary format for Windows (in a `.zip’ file), which takes some time.</p>
+<p>When asked to install a package under Windows, CRAN proposes the source version rather than the binary version if it is more recent (fig:R-BinaryPkg)).</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:R-BinaryPkg"></span>
+<img src="images/R-BinaryPkg.png" alt="Enable the right to modify the system library under Windows." width="80%" />
+<p class="caption">
+Figure 1.3: Enable the right to modify the system library under Windows.
+</p>
+</div>
+<p></p>
+<p>The list of packages concerned is displayed in the console, for example:</p>
+<pre><code>  There are binary versions available but the source 
+  versions are later:
+              binary   source needs_compilation
+boot          1.3-24   1.3-25             FALSE
+class         7.3-16   7.3-17              TRUE</code></pre>
+<p>Some packages require compilation (column <code>needs_compilation</code>), usually because they contain C++ code.
+They can only be installed by <em>Rtools</em>.</p>
+<p>The installation of packages in source version is much longer than in binary version.
+Unless a specific version of a package is needed, it is better to refuse the installation of source versions.</p>
+<p>Packages can be updated a little later, after they have been compiled by CRAN.</p>
+<p>The “Update” button in the RStudio <em>Packages</em> window allows you to update all installed packages.</p>
+</div>
+<div id="installation-from-github" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Installation from GitHub<a href="chap-logiciels.html#installation-from-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Some packages are not available on CRAN but only on GitHub because they are still under development or because they are not intended to be widely used by the R user community.
+It can also be useful to install a development version of a package published on CRAN for a specific use like testing new features.</p>
+<p>The installation is handled by the <strong>remotes</strong> package.
+The <code>build_thumbnails</code> argument is needed to create the thumbnails of the package.</p>
+<p></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chap-logiciels.html#cb9-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;EricMarcon/memoiR&quot;</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p></p>
+<p>The package name is entered as “GitHubID/PackageName”.
+The installation is done from the source code and therefore requires the <em>Rtools</em> if a build is needed.
+<code>install_github()</code> checks that the version on GitHub is more recent than the version installed on the workstation and does nothing if they are identical.</p>
+</div>
+<div id="installation-from-bioconductor" class="section level3 hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Installation from Bioconductor<a href="chap-logiciels.html#installation-from-bioconductor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bioconductor is a complementary platform to CRAN that hosts packages specialized in genomics.
+Installing packages from Bioconductor requires the <strong>BiocManager</strong> package for its <code>install()</code> function.
+The first argument of the function is a vector of characters containing the names of the packages to be installed, for example:</p>
+<p></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="chap-logiciels.html#cb10-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(<span class="st">&quot;GenomicFeatures&quot;</span>, <span class="st">&quot;AnnotationDbi&quot;</span>))</span></code></pre></div>
+<p></p>
+<p>The <code>install()</code> function called without arguments updates the packages.</p>
+</div>
+<div id="selected-solution" class="section level3 hasAnchor" number="1.3.4">
+<h3><span class="header-section-number">1.3.4</span> Selected solution<a href="chap-logiciels.html#selected-solution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>At each minor update of R, all packages must be reinstalled.
+The most efficient way to do this is to create a <code>Packages.R</code> script to place in <code>~\R</code>.
+It contains a function that checks if each package is already installed so that it is not redone unnecessarily.</p>
+<p></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chap-logiciels.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install R packages ####</span></span>
+<span id="cb11-2"><a href="chap-logiciels.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="chap-logiciels.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Install packages if necessary ####</span></span>
+<span id="cb11-4"><a href="chap-logiciels.html#cb11-4" aria-hidden="true" tabindex="-1"></a>InstallPackages <span class="ot">&lt;-</span> <span class="cf">function</span>(Packages) {</span>
+<span id="cb11-5"><a href="chap-logiciels.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(Packages, <span class="cf">function</span>(Package) </span>
+<span id="cb11-6"><a href="chap-logiciels.html#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span>Package <span class="sc">%in%</span> <span class="fu">installed.packages</span>()[, <span class="dv">1</span>]) </span>
+<span id="cb11-7"><a href="chap-logiciels.html#cb11-7" aria-hidden="true" tabindex="-1"></a>      {<span class="fu">install.packages</span>(Package)})</span>
+<span id="cb11-8"><a href="chap-logiciels.html#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-9"><a href="chap-logiciels.html#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="chap-logiciels.html#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="chap-logiciels.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Development tools ####</span></span>
+<span id="cb11-12"><a href="chap-logiciels.html#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">InstallPackages</span>(<span class="fu">c</span>(</span>
+<span id="cb11-13"><a href="chap-logiciels.html#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Development tools. Import remotes, etc.</span></span>
+<span id="cb11-14"><a href="chap-logiciels.html#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;devtools&quot;</span>,</span>
+<span id="cb11-15"><a href="chap-logiciels.html#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Run Check by RStudio</span></span>
+<span id="cb11-16"><a href="chap-logiciels.html#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;rcmdcheck&quot;</span>,</span>
+<span id="cb11-17"><a href="chap-logiciels.html#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Formatting R code (used by knitr)</span></span>
+<span id="cb11-18"><a href="chap-logiciels.html#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;formatR&quot;</span>,</span>
+<span id="cb11-19"><a href="chap-logiciels.html#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Documentation of packages in /docs on GitHub</span></span>
+<span id="cb11-20"><a href="chap-logiciels.html#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;pkgdown&quot;</span>,</span>
+<span id="cb11-21"><a href="chap-logiciels.html#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Bibliography with roxygen</span></span>
+<span id="cb11-22"><a href="chap-logiciels.html#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Rdpack&quot;</span>,</span>
+<span id="cb11-23"><a href="chap-logiciels.html#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Performance measurement</span></span>
+<span id="cb11-24"><a href="chap-logiciels.html#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;rbenchmark&quot;</span>,</span>
+<span id="cb11-25"><a href="chap-logiciels.html#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Automatic package documentation</span></span>
+<span id="cb11-26"><a href="chap-logiciels.html#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;roxygen2&quot;</span>,</span>
+<span id="cb11-27"><a href="chap-logiciels.html#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Package testing</span></span>
+<span id="cb11-28"><a href="chap-logiciels.html#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;testthat&quot;</span></span>
+<span id="cb11-29"><a href="chap-logiciels.html#cb11-29" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb11-30"><a href="chap-logiciels.html#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="chap-logiciels.html#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Markdown ####</span></span>
+<span id="cb11-32"><a href="chap-logiciels.html#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="fu">InstallPackages</span>(<span class="fu">c</span>(</span>
+<span id="cb11-33"><a href="chap-logiciels.html#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Knit</span></span>
+<span id="cb11-34"><a href="chap-logiciels.html#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;knitr&quot;</span>,</span>
+<span id="cb11-35"><a href="chap-logiciels.html#cb11-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Complex markdown documents</span></span>
+<span id="cb11-36"><a href="chap-logiciels.html#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;bookdown&quot;</span>,</span>
+<span id="cb11-37"><a href="chap-logiciels.html#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Websites</span></span>
+<span id="cb11-38"><a href="chap-logiciels.html#cb11-38" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;blogdown&quot;</span>,</span>
+<span id="cb11-39"><a href="chap-logiciels.html#cb11-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Document templates</span></span>
+<span id="cb11-40"><a href="chap-logiciels.html#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;memoiR&quot;</span></span>
+<span id="cb11-41"><a href="chap-logiciels.html#cb11-41" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb11-42"><a href="chap-logiciels.html#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="chap-logiciels.html#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse ####</span></span>
+<span id="cb11-44"><a href="chap-logiciels.html#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="fu">InstallPackages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p></p>
+<p>The last part of the script is to be completed with the packages used regularly.</p>
+<p>This script is to be executed each time R is updated, after having activated the right to write in the system library (see section <a href="chap-logiciels.html#sec:librairies">1.1.4</a>).</p>
+</div>
+</div>
+<div id="git-and-github" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> git and GitHub<a href="chap-logiciels.html#git-and-github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="git" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> git<a href="chap-logiciels.html#git" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>git is the source control software used here.
+Its use is detailed in the chapter <a href="chap-git.html#chap-git">3</a>.</p>
+<p>For Windows and Mac, the installation is done from the git website <a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
+<p>git is integrated in Linux distributions.
+For Ubuntu, the apt package is <code>git-all</code>.</p>
+<p>git is installed without a graphical interface, provided by RStudio.</p>
+<p>In RStudio, modify the global options (menu “Tools &gt; Global Options…”).
+Select <em>Terminal</em> and the option <em>New Terminals open with</em>: GitBash.</p>
+<p>Check that git is installed correctly by typing the command <code>git -h</code> in the RStudio terminal: the help should be displayed.</p>
+<p>After installing git, the RStudio terminal may not work properly and return an error message containing the following:</p>
+<pre><code>*** fatal error - cygheap base mismatch detected
+This problem is probably due to using incompatible 
+versions of the cygwin DLL.</code></pre>
+<p>The error message is inaccurate: the library that should only exist in one copy is not <code>cygwin1.dll</code> but <code>msys-2.0.dll</code>.
+Look for this file in the git and Rtools installation folders.
+They are normally found in <code>usr/bin</code>.
+Replace the git one by the Rtools one: the version of the two files must be identical.</p>
+<p>Enter your credentials by running the following commands in the terminal:</p>
+<pre><code>git config user.name
+git config user.email</code></pre>
+<p>The user name is free, preferably “FirstName LastName”.</p>
+</div>
+<div id="github" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> GitHub<a href="chap-logiciels.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>GitHub</em> is the platform accessible through a <a href="https://github.com/">website</a> that allows to share the content of <em>git</em> repositories.
+To use it, you just have to open an account with the same email address as the one registered in git.</p>
+<p>The name of the GitHub account is noted here <em>GitHubID</em>.
+Each GitHub account allows to host repositories (a repository contains the files of a project) at the address <a href="https://github.com/GitHubID/NomDuDepot" class="uri">https://github.com/GitHubID/NomDuDepot</a><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.
+Each repository can have a website at <a href="https://GitHubID.github.io/NomDuDepot/" class="uri">https://GitHubID.github.io/NomDuDepot/</a><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.
+Finally, a global web site is provided for each user at <a href="https://GitHubID.github.io/" class="uri">https://GitHubID.github.io/</a><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p>
+</div>
+<div id="sec:SSH" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> SSH authentication<a href="chap-logiciels.html#sec:SSH" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Communication between git (installed on the local computer) and GitHub (online platform) requires authentication.</p>
+<p>Two methods are available: HTTPS (also called SSL) and SSH.
+SSH is the most robust but requires the creation of a private key.</p>
+<p>In the RStudio terminal, run:</p>
+<pre><code>ssh-keygen -t ed25519 -C &quot;user.email&quot;</code></pre>
+<p>The email address (which replaces “user.email”) must be the one registered in the git configuration and the GitHub account.
+The key is saved in the <code>.ssh</code> folder of the user’s home directory.
+It is possible to add a password (<em>passphrase</em>) to the key, which will have to be typed the first time each work session is used.
+If the computer is properly secured (no physical access by third parties), leaving it empty allows to gain fluidity.</p>
+<p>Warning: the private key is strictly confidential and must not be copied anywhere where it could be read by a third party (beware of automatic backups in particular).
+It does not need to be well backed up: in case of loss, it will be easily replaced.</p>
+<p>Keys are normally stored in the <code>~/.ssh</code> folder, regardless of the operating system, but the location of the <code>~</code> home folder is ambiguous under Windows: for R, it is the <code>Documents</code> folder, but for other software, it is the user’s root folder, parent of <code>Documents</code>.</p>
+<p>In the RStudio terminal, check that the key is working correctly:</p>
+<pre><code>ssh -T git@github.com</code></pre>
+<p>If an error message indicates that no key is found, there are two possible solutions:</p>
+<ul>
+<li>Duplicate the <code>.ssh</code> folder (with File Explorer) in <code>Documents</code>;</li>
+<li>Duplicate the <code>.ssh</code> folder in the RStudio program folder (usually <code>C:\Program Files\RStudio</code>), in <code>resourcesterminalbash</code>.</li>
+</ul>
+<p>If successful, a message indicates that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
+Check with GitHub that the server’s fingerprint is correct <a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> and type <code>yes</code>.
+The server is automatically added to the list of known servers, in the <code>known_hosts</code> file.</p>
+<p>In the <code>.ssh</code> folder, two files are created: one contains the private key, the other, with the <code>.pub</code> extension, the corresponding public key.
+Open the second one with a text editor and copy the public key to the clipboard.
+On GitHub, display the settings of your account (“Settings” menu), select “SSH and GPG Keys”, click on “New SSH Key” and paste the key in the “Key” field.
+Give a name to the key in the “Title” field.
+The name can be the name of the computer on which the key was created.
+The key must not be copied on several computers: if necessary, create a new key on each workstation used.</p>
+<p>If the key is compromised (lost or loaned from the computer that contains it), delete it on GitHub and create a new one.</p>
+</div>
+<div id="sec:pat" class="section level3 hasAnchor" number="1.4.4">
+<h3><span class="header-section-number">1.4.4</span> Obtaining a personal access token<a href="chap-logiciels.html#sec:pat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>HTTPS authentication is the alternative to SSL authentication: choose a method and stick to it afterwards.
+To use HTTPS authentication, the creation of a personal access token is required.</p>
+<p>Tokens are created on GitHub, in the settings of one’s user account, in “Developer Settings &gt; Personal Access Tokens”<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>.</p>
+<p>Generate a new token, describe it as “git-RStudio” and give it “repo” permission, i.e. modify <em>all</em> repositories (it is not possible to limit access to a particular repository).
+The token is a string that cannot be read later: it must be saved as a password.</p>
+</div>
+</div>
+<div id="latex-compiler" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> LaTeX compiler<a href="chap-logiciels.html#latex-compiler" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To produce documents in PDF format, a LaTeX distribution is needed.
+The light solution is to install the <strong>tinytex</strong> package which in turn installs a LaTeX distribution optimized for R Markdown.</p>
+<p>A full distribution allows the use of Latex beyond RStudio but is useless if the use of LaTeX is limited to knitting R Markdown documents.
+MiKTeX is a very good solution for Windows and Mac.</p>
+<div id="tinytex" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> tinytex<a href="chap-logiciels.html#tinytex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Install the package and run it:</p>
+<p></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-logiciels.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<p></p>
+<p>Adding LaTeX packages not included in the minimal starting distribution is automatic but can be slow.</p>
+<p>The distribution can be updated by the command:</p>
+<p></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chap-logiciels.html#cb17-1" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">tlmgr_update</span>()</span></code></pre></div>
+<p></p>
+</div>
+<div id="miktex" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> MiKTeX<a href="chap-logiciels.html#miktex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="installation-2" class="section level4 hasAnchor" number="1.5.2.1">
+<h4><span class="header-section-number">1.5.2.1</span> Installation<a href="chap-logiciels.html#installation-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Download the installation file <a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> and run it.
+There are several choices to make during the installation:</p>
+<ul>
+<li>Install the program for all users (with administrator rights);</li>
+<li>The default paper size: choose A4;</li>
+<li>The installation mode of the missing packages: choose “Always Install” so that they are downloaded automatically if needed.</li>
+</ul>
+<p>For Linux, follow the instructions on the MiKTeX website.</p>
+</div>
+<div id="updates" class="section level4 hasAnchor" number="1.5.2.2">
+<h4><span class="header-section-number">1.5.2.2</span> Updates<a href="chap-logiciels.html#updates" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>MiKTeX is installed with the most used LaTeX packages.
+If a document needs a missing package, it is loaded automatically.
+Package updates should be done periodically with the MiKTeX console, accessible from the Start menu.</p>
+<p>When launched without elevation of privileges, the console offers to switch to administrator mode.
+Click on “Switch to Administrator mode”.</p>
+<p>In the settings (<em>Settings</em>), check that the packages always install automatically and that the paper size is A4.</p>
+<p>In the updates menu (<em>Updates</em>), click on “Check for updates” then “Update now”.</p>
+<p>If the automatic installation fails, it is possible to manually install a package in the “Packages” menu.</p>
+</div>
+</div>
+</div>
+<div id="sec:Zotero" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Zotero<a href="chap-logiciels.html#sec:Zotero" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Zotero<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> is the most used bibliographic management software.
+Its extensions allow you to complete its functionalities according to your needs.
+Better BibTeX allows you to export and maintain a selection of bibliographic references (a Zotero collection) as a BibTeX file in an R project, where it can be used in writing documents or documenting packages.</p>
+<p>Download the installation file and run it.
+Create a user account on the Zotero website.
+Link the local installation to the account: in the “Edit &gt; Preferences” menu, select “Synchronization &gt; Settings” and authenticate yourself in the “Data synchronization” area.
+Then check the box “Synchronize automatically” but not “Synchronize full text of indexed attachments” because the total size of full text synchronized in this way between the online Zotero account and the workstation is limited to 300 MB.</p>
+<p>Download the Better BibTeX extension<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> and install it with the “Tools &gt; Extensions” menu: click on the settings button at the top right of the window, then “Install Add-on From File…” and select the file just downloaded.</p>
+<p>Set up Better BibTeX from the menu “Edit &gt; Preferences &gt; Better BibTeX”.
+The options to modify are the following:</p>
+<ul>
+<li>“Citation Keys &gt; Key Format”: <code>[auth:capitalize][year]</code> so that citations have a unique identifier of the form “Name2021”;</li>
+<li>“Citation Keys &gt; Keep unique citation keys in”: “All collections” so that citation identifiers are not ambiguous.</li>
+<li>“Export &gt; Field management &gt; Fields to exclude from export”: “abstract, file” to avoid generating bibliographic files overloaded with useless information in R projects.</li>
+</ul>
+<p>It is recommended to use the ZotFile<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a> extension to better control the location of the full text (the PDF files linked to the bibliographic references).
+Install it and then set it up in “Tools &gt; ZotFile Preferences…&gt; General settings &gt; File location &gt; Custom folder”: choose the folder for storing full text.
+If the user’s personal folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), placing this storage folder there allows both to save the full texts and to access them from multiple workstations or directly online.
+This solution is much more efficient than Zotero’s default synchronization, which is limited in volume.</p>
+</div>
+<div id="go" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Go<a href="chap-logiciels.html#go" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Go<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> is only used by the Hugo web site generator (see section <a href="chap-rediger.html#sec:blogdown">4.7</a>).</p>
+<p>Download the installation file and run it.
+At the end of the installation, run the command <code>go version</code> in a terminal to check that it works.</p>
+<p>Upgrades are done by installing the new version over the previous one.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><a href="https://doc.ubuntu-fr.org/r" class="uri">https://doc.ubuntu-fr.org/r</a><a href="chap-logiciels.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a><a href="chap-logiciels.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://sourceforge.net/projects/qpdf/" class="uri">https://sourceforge.net/projects/qpdf/</a><a href="chap-logiciels.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.ghostscript.com/" class="uri">https://www.ghostscript.com/</a><a href="chap-logiciels.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a><a href="chap-logiciels.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://git-scm.com/" class="uri">https://git-scm.com/</a><a href="chap-logiciels.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Example: <a href="https://github.com/EricMarcon/travailleR" class="uri">https://github.com/EricMarcon/travailleR</a><a href="chap-logiciels.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Example: <a href="https://EricMarcon.github.io/travailleR/" class="uri">https://EricMarcon.github.io/travailleR/</a><a href="chap-logiciels.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Example: <a href="https://EricMarcon.github.io/" class="uri">https://EricMarcon.github.io/</a><a href="chap-logiciels.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints" class="uri">https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints</a><a href="chap-logiciels.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line" class="uri">https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line</a><a href="chap-logiciels.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://miktex.org/download" class="uri">https://miktex.org/download</a><a href="chap-logiciels.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://www.zotero.org/" class="uri">https://www.zotero.org/</a><a href="chap-logiciels.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p><a href="https://retorque.re/zotero-better-bibtex/installation/" class="uri">https://retorque.re/zotero-better-bibtex/installation/</a><a href="chap-logiciels.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p><a href="http://zotfile.com/" class="uri">http://zotfile.com/</a><a href="chap-logiciels.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p><a href="https://golang.org/" class="uri">https://golang.org/</a><a href="chap-logiciels.html#fnref16" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-utiliseR.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["WwR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

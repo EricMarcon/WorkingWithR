@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Package | Working with R</title>
+  <meta name="description" content="Organization of work around R and RStudio" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Package | Working with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Organization of work around R and RStudio" />
+  <meta name="github-repo" content="EricMarcon/WorkingWithR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Package | Working with R" />
+  
+  <meta name="twitter:description" content="Organization of work around R and RStudio" />
+  
+
+<meta name="author" content="Eric Marcon" />
+
+
+<meta name="date" content="2022-06-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-rediger.html"/>
+<link rel="next" href="chap-ci.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+<script src="libs/vis-9.1.0/vis-network.min.js"></script>
+<script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7NVD1TWMCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7NVD1TWMCJ');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Working With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Présentation</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectives"><i class="fa fa-check"></i>Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i>Conventions</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap-logiciels.html"><a href="chap-logiciels.html"><i class="fa fa-check"></i><b>1</b> Software</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation"><i class="fa fa-check"></i><b>1.1.1</b> Installation</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#rtools"><i class="fa fa-check"></i><b>1.1.2</b> Rtools</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#update"><i class="fa fa-check"></i><b>1.1.3</b> Update</a></li>
+<li class="chapter" data-level="1.1.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:librairies"><i class="fa fa-check"></i><b>1.1.4</b> Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-1"><i class="fa fa-check"></i><b>1.2.1</b> Installation</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#file-encoding"><i class="fa fa-check"></i><b>1.2.2</b> File encoding</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#working-folder"><i class="fa fa-check"></i><b>1.2.3</b> Working folder</a></li>
+<li class="chapter" data-level="1.2.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:solution-dossiers"><i class="fa fa-check"></i><b>1.2.4</b> Solution chosen</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#packages"><i class="fa fa-check"></i><b>1.3</b> Packages</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-cran"><i class="fa fa-check"></i><b>1.3.1</b> Installation from CRAN</a></li>
+<li class="chapter" data-level="1.3.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-github"><i class="fa fa-check"></i><b>1.3.2</b> Installation from GitHub</a></li>
+<li class="chapter" data-level="1.3.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-bioconductor"><i class="fa fa-check"></i><b>1.3.3</b> Installation from Bioconductor</a></li>
+<li class="chapter" data-level="1.3.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#selected-solution"><i class="fa fa-check"></i><b>1.3.4</b> Selected solution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> git and GitHub</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#git"><i class="fa fa-check"></i><b>1.4.1</b> git</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#github"><i class="fa fa-check"></i><b>1.4.2</b> GitHub</a></li>
+<li class="chapter" data-level="1.4.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:SSH"><i class="fa fa-check"></i><b>1.4.3</b> SSH authentication</a></li>
+<li class="chapter" data-level="1.4.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:pat"><i class="fa fa-check"></i><b>1.4.4</b> Obtaining a personal access token</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="chap-logiciels.html"><a href="chap-logiciels.html#latex-compiler"><i class="fa fa-check"></i><b>1.5</b> LaTeX compiler</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#tinytex"><i class="fa fa-check"></i><b>1.5.1</b> tinytex</a></li>
+<li class="chapter" data-level="1.5.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#miktex"><i class="fa fa-check"></i><b>1.5.2</b> MiKTeX</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:Zotero"><i class="fa fa-check"></i><b>1.6</b> Zotero</a></li>
+<li class="chapter" data-level="1.7" data-path="chap-logiciels.html"><a href="chap-logiciels.html#go"><i class="fa fa-check"></i><b>1.7</b> Go</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html"><i class="fa fa-check"></i><b>2</b> Use R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#the-languages-of-r"><i class="fa fa-check"></i><b>2.1</b> The languages of R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#base"><i class="fa fa-check"></i><b>2.1.1</b> Base</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:S3"><i class="fa fa-check"></i><b>2.1.2</b> S3</a></li>
+<li class="chapter" data-level="2.1.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#s4"><i class="fa fa-check"></i><b>2.1.3</b> S4</a></li>
+<li class="chapter" data-level="2.1.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rc"><i class="fa fa-check"></i><b>2.1.4</b> RC</a></li>
+<li class="chapter" data-level="2.1.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#s6"><i class="fa fa-check"></i><b>2.1.5</b> S6</a></li>
+<li class="chapter" data-level="2.1.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#tidyverse"><i class="fa fa-check"></i><b>2.1.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:environnements"><i class="fa fa-check"></i><b>2.2</b> Environments</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#organization"><i class="fa fa-check"></i><b>2.2.1</b> Organization</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#search"><i class="fa fa-check"></i><b>2.2.2</b> Search</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#espaces-de-nom-des-packages"><i class="fa fa-check"></i><b>2.2.3</b> Espaces de nom des packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#measuring-execution-time"><i class="fa fa-check"></i><b>2.3</b> Measuring execution time</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#system.time"><i class="fa fa-check"></i><b>2.3.1</b> system.time</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#microbenchmark"><i class="fa fa-check"></i><b>2.3.2</b> microbenchmark</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#profiling"><i class="fa fa-check"></i><b>2.3.3</b> Profiling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#loops"><i class="fa fa-check"></i><b>2.4</b> Loops</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#vector-functions"><i class="fa fa-check"></i><b>2.4.1</b> Vector functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#lapply"><i class="fa fa-check"></i><b>2.4.2</b> lapply</a></li>
+<li class="chapter" data-level="2.4.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#for-loops"><i class="fa fa-check"></i><b>2.4.3</b> For loops</a></li>
+<li class="chapter" data-level="2.4.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#replicate"><i class="fa fa-check"></i><b>2.4.4</b> replicate</a></li>
+<li class="chapter" data-level="2.4.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#vectorize"><i class="fa fa-check"></i><b>2.4.5</b> Vectorize</a></li>
+<li class="chapter" data-level="2.4.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#marginal-statistics"><i class="fa fa-check"></i><b>2.4.6</b> Marginal statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:cpp"><i class="fa fa-check"></i><b>2.5</b> C++ code</a></li>
+<li class="chapter" data-level="2.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#parallelizing-r"><i class="fa fa-check"></i><b>2.6</b> Parallelizing R</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#mclapply-fork"><i class="fa fa-check"></i><b>2.6.1</b> mclapply (fork)</a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#parlapply-socket"><i class="fa fa-check"></i><b>2.6.2</b> parLapply (socket)</a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#foreach"><i class="fa fa-check"></i><b>2.6.3</b> foreach</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:cas"><i class="fa fa-check"></i><b>2.7</b> Case study</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#creation-of-the-data"><i class="fa fa-check"></i><b>2.7.1</b> Creation of the data</a></li>
+<li class="chapter" data-level="2.7.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#spatstat"><i class="fa fa-check"></i><b>2.7.2</b> Spatstat</a></li>
+<li class="chapter" data-level="2.7.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#apply"><i class="fa fa-check"></i><b>2.7.3</b> apply</a></li>
+<li class="chapter" data-level="2.7.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-for"><i class="fa fa-check"></i><b>2.7.4</b> boucle for</a></li>
+<li class="chapter" data-level="2.7.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-foreach"><i class="fa fa-check"></i><b>2.7.5</b> boucle foreach</a></li>
+<li class="chapter" data-level="2.7.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcpp"><i class="fa fa-check"></i><b>2.7.6</b> RCpp</a></li>
+<li class="chapter" data-level="2.7.7" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcppparallel"><i class="fa fa-check"></i><b>2.7.7</b> RcppParallel</a></li>
+<li class="chapter" data-level="2.7.8" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#conclusions-on-code-speed-optimization"><i class="fa fa-check"></i><b>2.7.8</b> Conclusions on code speed optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:targets"><i class="fa fa-check"></i><b>2.8</b> Workflow</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#how-it-works-1"><i class="fa fa-check"></i><b>2.8.1</b> How it works</a></li>
+<li class="chapter" data-level="2.8.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#minimal-example"><i class="fa fa-check"></i><b>2.8.2</b> Minimal example</a></li>
+<li class="chapter" data-level="2.8.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#practical-interest"><i class="fa fa-check"></i><b>2.8.3</b> Practical interest</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-git.html"><a href="chap-git.html"><i class="fa fa-check"></i><b>3</b> Git and GitHub</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chap-git.html"><a href="chap-git.html#sec:principes-git"><i class="fa fa-check"></i><b>3.1</b> Principles</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chap-git.html"><a href="chap-git.html#sec:git-cds"><i class="fa fa-check"></i><b>3.1.1</b> Source control</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap-git.html"><a href="chap-git.html#git-and-github-1"><i class="fa fa-check"></i><b>3.1.2</b> git and GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap-git.html"><a href="chap-git.html#sec:creerdepot"><i class="fa fa-check"></i><b>3.2</b> Create a new repository</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="chap-git.html"><a href="chap-git.html#from-an-existing-project"><i class="fa fa-check"></i><b>3.2.1</b> From an existing project</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chap-git.html"><a href="chap-git.html#taking-files-into-account"><i class="fa fa-check"></i><b>3.2.2</b> Taking files into account</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chap-git.html"><a href="chap-git.html#committing-changes"><i class="fa fa-check"></i><b>3.2.3</b> Committing changes</a></li>
+<li class="chapter" data-level="3.2.4" data-path="chap-git.html"><a href="chap-git.html#create-an-empty-repository-on-github"><i class="fa fa-check"></i><b>3.2.4</b> Create an empty repository on GitHub</a></li>
+<li class="chapter" data-level="3.2.5" data-path="chap-git.html"><a href="chap-git.html#linking-git-and-github"><i class="fa fa-check"></i><b>3.2.5</b> Linking git and GitHub</a></li>
+<li class="chapter" data-level="3.2.6" data-path="chap-git.html"><a href="chap-git.html#push-the-first-modifications"><i class="fa fa-check"></i><b>3.2.6</b> Push the first modifications</a></li>
+<li class="chapter" data-level="3.2.7" data-path="chap-git.html"><a href="chap-git.html#clone-a-repository-from-github"><i class="fa fa-check"></i><b>3.2.7</b> Clone a repository from GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap-git.html"><a href="chap-git.html#common-usage"><i class="fa fa-check"></i><b>3.3</b> Common usage</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="chap-git.html"><a href="chap-git.html#pull-modify-commit-push"><i class="fa fa-check"></i><b>3.3.1</b> Pull, modify, commit, push</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chap-git.html"><a href="chap-git.html#resolve-conflicts"><i class="fa fa-check"></i><b>3.3.2</b> Resolve conflicts</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chap-git.html"><a href="chap-git.html#see-the-differences"><i class="fa fa-check"></i><b>3.3.3</b> See the differences</a></li>
+<li class="chapter" data-level="3.3.4" data-path="chap-git.html"><a href="chap-git.html#revert"><i class="fa fa-check"></i><b>3.3.4</b> Revert</a></li>
+<li class="chapter" data-level="3.3.5" data-path="chap-git.html"><a href="chap-git.html#view-history"><i class="fa fa-check"></i><b>3.3.5</b> View history</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap-git.html"><a href="chap-git.html#sec:branches"><i class="fa fa-check"></i><b>3.4</b> Branches</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chap-git.html"><a href="chap-git.html#create-a-new-branch"><i class="fa fa-check"></i><b>3.4.1</b> Create a new branch</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chap-git.html"><a href="chap-git.html#change-branch"><i class="fa fa-check"></i><b>3.4.2</b> Change branch</a></li>
+<li class="chapter" data-level="3.4.3" data-path="chap-git.html"><a href="chap-git.html#pushing-the-new-branch"><i class="fa fa-check"></i><b>3.4.3</b> Pushing the new branch</a></li>
+<li class="chapter" data-level="3.4.4" data-path="chap-git.html"><a href="chap-git.html#filesystem-behavior"><i class="fa fa-check"></i><b>3.4.4</b> Filesystem behavior</a></li>
+<li class="chapter" data-level="3.4.5" data-path="chap-git.html"><a href="chap-git.html#merge-with-merge"><i class="fa fa-check"></i><b>3.4.5</b> Merge with `merge</a></li>
+<li class="chapter" data-level="3.4.6" data-path="chap-git.html"><a href="chap-git.html#merging-with-a-pull-request"><i class="fa fa-check"></i><b>3.4.6</b> Merging with a pull request</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chap-git.html"><a href="chap-git.html#advanced-usage"><i class="fa fa-check"></i><b>3.5</b> Advanced usage</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="chap-git.html"><a href="chap-git.html#git-commands"><i class="fa fa-check"></i><b>3.5.1</b> Git commands</a></li>
+<li class="chapter" data-level="3.5.2" data-path="chap-git.html"><a href="chap-git.html#size-of-a-repository"><i class="fa fa-check"></i><b>3.5.2</b> Size of a repository</a></li>
+<li class="chapter" data-level="3.5.3" data-path="chap-git.html"><a href="chap-git.html#delete-a-folder"><i class="fa fa-check"></i><b>3.5.3</b> Delete a folder</a></li>
+<li class="chapter" data-level="3.5.4" data-path="chap-git.html"><a href="chap-git.html#revert-1"><i class="fa fa-check"></i><b>3.5.4</b> Revert</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="chap-git.html"><a href="chap-git.html#sec:confidential"><i class="fa fa-check"></i><b>3.6</b> Confidential data in a public repository</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="chap-git.html"><a href="chap-git.html#generating-a-key-pair-for-the-project-owner"><i class="fa fa-check"></i><b>3.6.1</b> Generating a key pair for the project owner</a></li>
+<li class="chapter" data-level="3.6.2" data-path="chap-git.html"><a href="chap-git.html#generating-a-key-pair-for-the-project"><i class="fa fa-check"></i><b>3.6.2</b> Generating a key pair for the project</a></li>
+<li class="chapter" data-level="3.6.3" data-path="chap-git.html"><a href="chap-git.html#creating-a-safe"><i class="fa fa-check"></i><b>3.6.3</b> Creating a safe</a></li>
+<li class="chapter" data-level="3.6.4" data-path="chap-git.html"><a href="chap-git.html#adding-users"><i class="fa fa-check"></i><b>3.6.4</b> Adding users</a></li>
+<li class="chapter" data-level="3.6.5" data-path="chap-git.html"><a href="chap-git.html#storing-the-data"><i class="fa fa-check"></i><b>3.6.5</b> Storing the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="chap-git.html"><a href="chap-git.html#sec:github-pages"><i class="fa fa-check"></i><b>3.7</b> GitHub pages</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="chap-git.html"><a href="chap-git.html#activation"><i class="fa fa-check"></i><b>3.7.1</b> Activation</a></li>
+<li class="chapter" data-level="3.7.2" data-path="chap-git.html"><a href="chap-git.html#badges"><i class="fa fa-check"></i><b>3.7.2</b> Badges</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-rediger.html"><a href="chap-rediger.html"><i class="fa fa-check"></i><b>4</b> Writing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-rediger.html"><a href="chap-rediger.html#markdown-notebook-r-notebook"><i class="fa fa-check"></i><b>4.1</b> Markdown notebook (R Notebook)</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-rediger.html"><a href="chap-rediger.html#r-markdown-templates"><i class="fa fa-check"></i><b>4.2</b> R Markdown templates</a></li>
+<li class="chapter" data-level="4.3" data-path="chap-rediger.html"><a href="chap-rediger.html#articles-with-bookdown"><i class="fa fa-check"></i><b>4.3</b> Articles with bookdown</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="chap-rediger.html"><a href="chap-rediger.html#writing"><i class="fa fa-check"></i><b>4.3.1</b> Writing</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:memo"><i class="fa fa-check"></i><b>4.3.2</b> Simple Article template</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chap-rediger.html"><a href="chap-rediger.html#other-templates"><i class="fa fa-check"></i><b>4.3.3</b> Other templates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chap-rediger.html"><a href="chap-rediger.html#beamer-presentation"><i class="fa fa-check"></i><b>4.4</b> Beamer Presentation</a></li>
+<li class="chapter" data-level="4.5" data-path="chap-rediger.html"><a href="chap-rediger.html#memoir"><i class="fa fa-check"></i><b>4.5</b> memoir</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-rediger.html"><a href="chap-rediger.html#create-1"><i class="fa fa-check"></i><b>4.5.1</b> Create</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-rediger.html"><a href="chap-rediger.html#write-1"><i class="fa fa-check"></i><b>4.5.2</b> Write</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-rediger.html"><a href="chap-rediger.html#knit-1"><i class="fa fa-check"></i><b>4.5.3</b> Knit</a></li>
+<li class="chapter" data-level="4.5.4" data-path="chap-rediger.html"><a href="chap-rediger.html#finishing"><i class="fa fa-check"></i><b>4.5.4</b> Finishing</a></li>
+<li class="chapter" data-level="4.5.5" data-path="chap-rediger.html"><a href="chap-rediger.html#gitbook-site"><i class="fa fa-check"></i><b>4.5.5</b> Gitbook site</a></li>
+<li class="chapter" data-level="4.5.6" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:rediger-ouvrage-ci"><i class="fa fa-check"></i><b>4.5.6</b> Continuous integration</a></li>
+<li class="chapter" data-level="4.5.7" data-path="chap-rediger.html"><a href="chap-rediger.html#google-analytics"><i class="fa fa-check"></i><b>4.5.7</b> Google Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="chap-rediger.html"><a href="chap-rediger.html#r-markdown-web-site"><i class="fa fa-check"></i><b>4.6</b> R Markdown web site</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="chap-rediger.html"><a href="chap-rediger.html#template"><i class="fa fa-check"></i><b>4.6.1</b> Template</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chap-rediger.html"><a href="chap-rediger.html#improvements"><i class="fa fa-check"></i><b>4.6.2</b> Improvements</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control"><i class="fa fa-check"></i><b>4.6.3</b> Source control</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:blogdown"><i class="fa fa-check"></i><b>4.7</b> Personal web site: blogdown</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="chap-rediger.html"><a href="chap-rediger.html#installing-the-tools"><i class="fa fa-check"></i><b>4.7.1</b> Installing the tools</a></li>
+<li class="chapter" data-level="4.7.2" data-path="chap-rediger.html"><a href="chap-rediger.html#create-2"><i class="fa fa-check"></i><b>4.7.2</b> Create</a></li>
+<li class="chapter" data-level="4.7.3" data-path="chap-rediger.html"><a href="chap-rediger.html#building-the-site"><i class="fa fa-check"></i><b>4.7.3</b> Building the site</a></li>
+<li class="chapter" data-level="4.7.4" data-path="chap-rediger.html"><a href="chap-rediger.html#multilingual-site"><i class="fa fa-check"></i><b>4.7.4</b> Multilingual site</a></li>
+<li class="chapter" data-level="4.7.5" data-path="chap-rediger.html"><a href="chap-rediger.html#set-up"><i class="fa fa-check"></i><b>4.7.5</b> Set up</a></li>
+<li class="chapter" data-level="4.7.6" data-path="chap-rediger.html"><a href="chap-rediger.html#write-2"><i class="fa fa-check"></i><b>4.7.6</b> Write</a></li>
+<li class="chapter" data-level="4.7.7" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:rediger-web-ci"><i class="fa fa-check"></i><b>4.7.7</b> Continuous integration</a></li>
+<li class="chapter" data-level="4.7.8" data-path="chap-rediger.html"><a href="chap-rediger.html#updates-1"><i class="fa fa-check"></i><b>4.7.8</b> Updates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="chap-rediger.html"><a href="chap-rediger.html#exporting-figures"><i class="fa fa-check"></i><b>4.8</b> Exporting figures</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="chap-rediger.html"><a href="chap-rediger.html#vector-and-raster-formats"><i class="fa fa-check"></i><b>4.8.1</b> Vector and Raster Formats</a></li>
+<li class="chapter" data-level="4.8.2" data-path="chap-rediger.html"><a href="chap-rediger.html#functions"><i class="fa fa-check"></i><b>4.8.2</b> Functions</a></li>
+<li class="chapter" data-level="4.8.3" data-path="chap-rediger.html"><a href="chap-rediger.html#ragg-package"><i class="fa fa-check"></i><b>4.8.3</b> ragg package</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:targetsmd"><i class="fa fa-check"></i><b>4.9</b> Workflow</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-the-workflow"><i class="fa fa-check"></i><b>4.9.1</b> Declaration of the workflow</a></li>
+<li class="chapter" data-level="4.9.2" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-targets"><i class="fa fa-check"></i><b>4.9.2</b> Declaration of targets</a></li>
+<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-flow"><i class="fa fa-check"></i><b>4.9.3</b> Running the flow</a></li>
+<li class="chapter" data-level="4.9.4" data-path="chap-rediger.html"><a href="chap-rediger.html#using-the-results"><i class="fa fa-check"></i><b>4.9.4</b> Using the results</a></li>
+<li class="chapter" data-level="4.9.5" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control-1"><i class="fa fa-check"></i><b>4.9.5</b> Source control</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-package.html"><a href="chap-package.html"><i class="fa fa-check"></i><b>5</b> Package</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-package.html"><a href="chap-package.html#first-package"><i class="fa fa-check"></i><b>5.1</b> First package</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chap-package.html"><a href="chap-package.html#creation"><i class="fa fa-check"></i><b>5.1.1</b> Creation</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap-package.html"><a href="chap-package.html#first-function"><i class="fa fa-check"></i><b>5.1.2</b> First function</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chap-package.html"><a href="chap-package.html#sec:package-cds"><i class="fa fa-check"></i><b>5.1.3</b> Source control</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chap-package.html"><a href="chap-package.html#package.r"><i class="fa fa-check"></i><b>5.1.4</b> package.R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="chap-package.html"><a href="chap-package.html#package-organization"><i class="fa fa-check"></i><b>5.2</b> Package organization</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-package.html"><a href="chap-package.html#sec:package-description"><i class="fa fa-check"></i><b>5.2.1</b> DESCRIPTION file</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-package.html"><a href="chap-package.html#news.md-file"><i class="fa fa-check"></i><b>5.2.2</b> NEWS.md file</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-package.html"><a href="chap-package.html#vignette"><i class="fa fa-check"></i><b>5.3</b> Vignette</a></li>
+<li class="chapter" data-level="5.4" data-path="chap-package.html"><a href="chap-package.html#pkgdown"><i class="fa fa-check"></i><b>5.4</b> pkgdown</a></li>
+<li class="chapter" data-level="5.5" data-path="chap-package.html"><a href="chap-package.html#package-specific-code"><i class="fa fa-check"></i><b>5.5</b> Package specific code</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-package.html"><a href="chap-package.html#importing-functions"><i class="fa fa-check"></i><b>5.5.1</b> Importing functions</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-package.html"><a href="chap-package.html#s3-methods"><i class="fa fa-check"></i><b>5.5.2</b> S3 methods</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-package.html"><a href="chap-package.html#in-practice"><i class="fa fa-check"></i><b>5.5.3</b> In practice</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-package.html"><a href="chap-package.html#c-code"><i class="fa fa-check"></i><b>5.5.4</b> C++ code</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-package.html"><a href="chap-package.html#tidy-package"><i class="fa fa-check"></i><b>5.5.5</b> Tidy package</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-package.html"><a href="chap-package.html#bibliography-1"><i class="fa fa-check"></i><b>5.6</b> Bibliography</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="chap-package.html"><a href="chap-package.html#preparation"><i class="fa fa-check"></i><b>5.6.1</b> Preparation</a></li>
+<li class="chapter" data-level="5.6.2" data-path="chap-package.html"><a href="chap-package.html#citations"><i class="fa fa-check"></i><b>5.6.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="chap-package.html"><a href="chap-package.html#data"><i class="fa fa-check"></i><b>5.7</b> Data</a></li>
+<li class="chapter" data-level="5.8" data-path="chap-package.html"><a href="chap-package.html#unit-tests"><i class="fa fa-check"></i><b>5.8</b> Unit tests</a></li>
+<li class="chapter" data-level="5.9" data-path="chap-package.html"><a href="chap-package.html#gitignore-file"><i class="fa fa-check"></i><b>5.9</b> .gitignore file</a></li>
+<li class="chapter" data-level="5.10" data-path="chap-package.html"><a href="chap-package.html#sec:package-ci5"><i class="fa fa-check"></i><b>5.10</b> Continuous integration</a></li>
+<li class="chapter" data-level="5.11" data-path="chap-package.html"><a href="chap-package.html#sec:package-cran"><i class="fa fa-check"></i><b>5.11</b> CRAN</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="chap-package.html"><a href="chap-package.html#testing-the-package"><i class="fa fa-check"></i><b>5.11.1</b> Testing the package</a></li>
+<li class="chapter" data-level="5.11.2" data-path="chap-package.html"><a href="chap-package.html#submission"><i class="fa fa-check"></i><b>5.11.2</b> Submission</a></li>
+<li class="chapter" data-level="5.11.3" data-path="chap-package.html"><a href="chap-package.html#maintenance"><i class="fa fa-check"></i><b>5.11.3</b> Maintenance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-ci.html"><a href="chap-ci.html"><i class="fa fa-check"></i><b>6</b> Continuous integration</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-ci.html"><a href="chap-ci.html#tools"><i class="fa fa-check"></i><b>6.1</b> Tools</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-ci.html"><a href="chap-ci.html#github-actions"><i class="fa fa-check"></i><b>6.1.1</b> GitHub Actions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-ci.html"><a href="chap-ci.html#codecov"><i class="fa fa-check"></i><b>6.1.2</b> Codecov</a></li>
+<li class="chapter" data-level="6.1.3" data-path="chap-ci.html"><a href="chap-ci.html#github-pages"><i class="fa fa-check"></i><b>6.1.3</b> GitHub Pages</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-ci.html"><a href="chap-ci.html#principles"><i class="fa fa-check"></i><b>6.2</b> Principles</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="chap-ci.html"><a href="chap-ci.html#getting-a-personal-access-token"><i class="fa fa-check"></i><b>6.2.1</b> Getting a personal access token</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap-ci.html"><a href="chap-ci.html#sec:secrets-ci"><i class="fa fa-check"></i><b>6.2.2</b> Project secrets</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap-ci.html"><a href="chap-ci.html#activation-of-the-repository-on-codecov"><i class="fa fa-check"></i><b>6.2.3</b> Activation of the repository on CodeCov</a></li>
+<li class="chapter" data-level="6.2.4" data-path="chap-ci.html"><a href="chap-ci.html#scripting-github-actions"><i class="fa fa-check"></i><b>6.2.4</b> Scripting GitHub actions</a></li>
+<li class="chapter" data-level="6.2.5" data-path="chap-ci.html"><a href="chap-ci.html#sec:confidentielCI"><i class="fa fa-check"></i><b>6.2.5</b> Confidential data in a public repository</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap-ci.html"><a href="chap-ci.html#script-templates"><i class="fa fa-check"></i><b>6.3</b> Script templates</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chap-ci.html"><a href="chap-ci.html#sec:memoiR-ci"><i class="fa fa-check"></i><b>6.3.1</b> memoiR</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-ci.html"><a href="chap-ci.html#sec:bookdown-ci"><i class="fa fa-check"></i><b>6.3.2</b> Book or thesis</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-ci.html"><a href="chap-ci.html#articles-or-slideshows"><i class="fa fa-check"></i><b>6.3.3</b> Articles or slideshows</a></li>
+<li class="chapter" data-level="6.3.4" data-path="chap-ci.html"><a href="chap-ci.html#sec:blogdown-ci"><i class="fa fa-check"></i><b>6.3.4</b> Blogdown website</a></li>
+<li class="chapter" data-level="6.3.5" data-path="chap-ci.html"><a href="chap-ci.html#sec:package-ci6"><i class="fa fa-check"></i><b>6.3.5</b> R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap-ci.html"><a href="chap-ci.html#sec:ci-badges"><i class="fa fa-check"></i><b>6.4</b> Add badges</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-shiny.html"><a href="chap-shiny.html"><i class="fa fa-check"></i><b>7</b> Shiny</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chap-shiny.html"><a href="chap-shiny.html#first-application"><i class="fa fa-check"></i><b>7.1</b> First application</a></li>
+<li class="chapter" data-level="7.2" data-path="chap-shiny.html"><a href="chap-shiny.html#more-elaborate-application"><i class="fa fa-check"></i><b>7.2</b> More elaborate application</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="chap-shiny.html"><a href="chap-shiny.html#working-method"><i class="fa fa-check"></i><b>7.2.1</b> Working method</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap-shiny.html"><a href="chap-shiny.html#example"><i class="fa fa-check"></i><b>7.2.2</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chap-shiny.html"><a href="chap-shiny.html#sec:hebergement-shiny"><i class="fa fa-check"></i><b>7.3</b> Hosting</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-enseigner.html"><a href="chap-enseigner.html"><i class="fa fa-check"></i><b>8</b> Teaching with R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#learnr"><i class="fa fa-check"></i><b>8.1</b> learnr</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#first-tutorial"><i class="fa fa-check"></i><b>8.1.1</b> First tutorial</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#broadcasting"><i class="fa fa-check"></i><b>8.1.2</b> Broadcasting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#github-classrooms"><i class="fa fa-check"></i><b>8.2</b> GitHub Classrooms</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#registration"><i class="fa fa-check"></i><b>8.2.1</b> Registration</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#organizations"><i class="fa fa-check"></i><b>8.2.2</b> Organizations</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chap-enseigner.html"><a href="chap-enseigner.html#new-classroom"><i class="fa fa-check"></i><b>8.2.3</b> New Classroom</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chap-enseigner.html"><a href="chap-enseigner.html#prepare-a-repository-template"><i class="fa fa-check"></i><b>8.2.4</b> Prepare a repository template</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li>
+  <a href="https://github.com/EricMarcon/WorkingWithR" target="blank">
+    Hosted on GitHub, published with bookdown
+  </a>
+</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Working with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-package" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Package<a href="chap-package.html#chap-package" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>R packages allow the software’s functionality to be extended by code provided by the developer community.
+They are the key to the success of R because they allow to quickly spread new methods resulting from research or to add new tools that can become standards, like the <strong>tidyverse</strong>.</p>
+<p>It is useful to produce a package when you have written new functions that form a coherent whole.
+A package for personal use or limited to a work team is simple to set up and the time saved by easily using the updated version of each function very quickly amortizes the time spent on making the package.
+This type of package is intended to be hosted on GitHub.</p>
+<p>Packages with a wider use, which provide for example the code corresponding to a published method, are placed in the CRAN repository, from where they can be installed by the standard command <code>install.packages()</code>.
+CRAN performs extensive code checks and only accepts packages that pass its test suite without any warning.
+They must respect the<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a> policy of the repository.</p>
+<p>The documentation for package creation is abundant.
+The reference book is <span class="citation">Wickham (<a href="#ref-Wickham2015" role="doc-biblioref">2015</a>)</span>, which should be consulted as a reference.</p>
+<p>The approach used here is to create a first package very quickly to understand that the process is quite simple.
+It will then be enriched with the elements necessary for a package distributed to other users than its designer: a complete documentation and tests of correct operation in particular.</p>
+<div id="first-package" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> First package<a href="chap-package.html#first-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This introduction follows the recommendations of the blog <em>Creating a package in minutes</em><a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a> from ThinkR.</p>
+<div id="creation" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Creation<a href="chap-package.html#creation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Packages have a strict organization in a fixed file and directory structure.
+It is possible to create this structure manually but specialized packages can do it:</p>
+<p><strong>usethis</strong> automates the creation of folders;
+<strong>roxygen2</strong> automates the mandatory documentation of packages;
+<strong>devtools</strong> is the developer’s toolbox, allowing to build and test packages;</p>
+<p>All three are to be installed first:</p>
+<p></p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="chap-package.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;usethis&quot;</span>, <span class="st">&quot;roxygen2&quot;</span>, <span class="st">&quot;devtools&quot;</span>))</span></code></pre></div>
+<p></p>
+<p>The package to create will be an RStudio project.
+In the project menu, select “New Project &gt; New Directory &gt; R package using devtools…”, choose the name of the project and its parent folder.
+The package will be called <strong>multiple</strong>, in the <code>%LOCALAPPDATA%\ProjectsR</code> folder, following the recommendations in the section <a href="#sec:solution-folders"><strong>??</strong></a>.</p>
+<p>The name of the package must respect the constraints of project names: no special characters, no spaces…
+It must also be evocative of the purpose of the package.
+If the package is to be distributed, all its documentation will be written in English, including its name.</p>
+<p>The minimal structure is created:</p>
+<ul>
+<li>a <code>DESCRIPTION</code> file which indicates that the folder contains a package and specifies at least its name;</li>
+<li>a <code>NAMESPACE</code> file which declares how the package intervenes in the management of the names of R objects (its content will be updated by <strong>roxygen2</strong>);</li>
+<li>an <code>R</code> file which contains the code of the functions offered by the package (empty at this stage).</li>
+</ul>
+<p>The package can be tested right away: in the RStudio <em>Build</em> window, clicking on “Install and Restart” builds the package and loads it into R, after restarting the program to avoid any conflicts.</p>
+<p>In the <em>Packages</em> window, <strong>multiple</strong> is now visible.
+It is loaded, but contains nothing.</p>
+</div>
+<div id="first-function" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> First function<a href="chap-package.html#first-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="files" class="section level4 hasAnchor" number="5.1.2.1">
+<h4><span class="header-section-number">5.1.2.1</span> Files<a href="chap-package.html#files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Functions are placed in one or more <code>.R</code> files in the <code>R</code> folder.
+The organization of these files is free.
+For this example, a file with the name of each function will be created.
+Files grouping similar functions or a single file containing all the code are possible choices.</p>
+<p>The choice made here is the following:</p>
+<ul>
+<li>a file that will contain the code common to the whole package: <code>package.R</code>;</li>
+<li>one file common to all functions: <code>functions.R</code>.</li>
+</ul>
+</div>
+<div id="creation-1" class="section level4 hasAnchor" number="5.1.2.2">
+<h4><span class="header-section-number">5.1.2.2</span> Creation<a href="chap-package.html#creation-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The first function, <code>double()</code>, is created and stored in the <code>functions.R</code> file:</p>
+<p></p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="chap-package.html#cb342-1" aria-hidden="true" tabindex="-1"></a>double <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
+<span id="cb342-2"><a href="chap-package.html#cb342-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">2</span> <span class="sc">*</span> number)</span>
+<span id="cb342-3"><a href="chap-package.html#cb342-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p></p>
+<p>At this point, the function is internal to the package and is not accessible from the working environment.
+To be sure, build the package (<em>Install and Restart</em>) and check that the function works:</p>
+<p></p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="chap-package.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">double</span>(<span class="dv">2</span>)</span></code></pre></div>
+<p></p>
+<p>The result is a vector composed of two 0’s because the called function is a homonym of the <strong>base</strong> package (see its documentation by typing <code>?double</code>):</p>
+<p></p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="chap-package.html#cb344-1" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">double</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0 0</code></pre>
+<p></p>
+<p>In order for the function in our package to be visible, it must be <em>exported</em> by declaring it in the <code>NAMESPACE</code> file.
+This is the job of <strong>roxygen2</strong> which manages the documentation of each function at the same time.
+To activate it, place the cursor in the function and call the menu “Code &gt; Insert Roxygen Skeleton”.
+Comments are added before the function:</p>
+<p></p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="chap-package.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Title</span></span>
+<span id="cb346-2"><a href="chap-package.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb346-3"><a href="chap-package.html#cb346-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param number </span></span>
+<span id="cb346-4"><a href="chap-package.html#cb346-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb346-5"><a href="chap-package.html#cb346-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return</span></span>
+<span id="cb346-6"><a href="chap-package.html#cb346-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb346-7"><a href="chap-package.html#cb346-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb346-8"><a href="chap-package.html#cb346-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb346-9"><a href="chap-package.html#cb346-9" aria-hidden="true" tabindex="-1"></a>double <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
+<span id="cb346-10"><a href="chap-package.html#cb346-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">2</span> <span class="sc">*</span> number)</span>
+<span id="cb346-11"><a href="chap-package.html#cb346-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p></p>
+<p>Comments to <strong>roxygen2</strong> begin with <code>#</code>:</p>
+<ul>
+<li>the first line contains the title of the function, i.e. a very short description: its name in general;</li>
+<li>the next line (separated by a line break) may contain its description (see <em>Description</em> in the help);</li>
+<li>the next line (after another line break) can contain more information (<em>Details</em> in the help);</li>
+<li>the arguments of the function are described by the <code>@param</code> lines;</li>
+<li><code>@return</code> describes the result of the function;</li>
+<li><code>@export</code> declares that the function is exported: it will be usable in the working environment;</li>
+<li>examples can be added.</li>
+</ul>
+<p>The documentation must be completed:</p>
+<p></p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="chap-package.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; double</span></span>
+<span id="cb347-2"><a href="chap-package.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb347-3"><a href="chap-package.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Double value of numbers.</span></span>
+<span id="cb347-4"><a href="chap-package.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb347-5"><a href="chap-package.html#cb347-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Calculate the double values of numbers.</span></span>
+<span id="cb347-6"><a href="chap-package.html#cb347-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb347-7"><a href="chap-package.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param number a numeric vector.</span></span>
+<span id="cb347-8"><a href="chap-package.html#cb347-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb347-9"><a href="chap-package.html#cb347-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return A vector of the same length as `number` containing the </span></span>
+<span id="cb347-10"><a href="chap-package.html#cb347-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   transformed values.</span></span>
+<span id="cb347-11"><a href="chap-package.html#cb347-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb347-12"><a href="chap-package.html#cb347-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb347-13"><a href="chap-package.html#cb347-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb347-14"><a href="chap-package.html#cb347-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; double(2)</span></span>
+<span id="cb347-15"><a href="chap-package.html#cb347-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; double(1:4)</span></span>
+<span id="cb347-16"><a href="chap-package.html#cb347-16" aria-hidden="true" tabindex="-1"></a>double <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
+<span id="cb347-17"><a href="chap-package.html#cb347-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">2</span> <span class="sc">*</span> number)</span>
+<span id="cb347-18"><a href="chap-package.html#cb347-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p></p>
+<p>Don’t hesitate to use the help of existing functions to respect R standards (here: <code>?log</code>):</p>
+<ul>
+<li>think that functions are normally vector: <code>number</code> is by default a vector, not a scalar;</li>
+<li>some elements start with a capital letter and end with a dot because they are paragraphs in the help file;</li>
+<li>the title does not have a period;</li>
+<li>the description of the parameters does not start with a capital letter.</li>
+</ul>
+<p>Taking into account the changes in the documentation requires calling the <code>roxygenize()</code> function.
+In the <em>Build</em> window, the “More &gt; Document” menu allows you to do this.
+Then build the package (<em>Install and Restart</em>) and check the result by running the function and displaying its help:</p>
+<p></p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="chap-package.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">double</span>(<span class="dv">2</span>)</span>
+<span id="cb348-2"><a href="chap-package.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(double)</span></code></pre></div>
+<p></p>
+<p>It is possible to automate the update of the documentation at each build of the package by the menu “Build &gt; Configure Build Tools…”: click on “Configure” and check the box “Automatically reoxygenize when running Install and Restart”.
+This is an efficient choice for a small package but penalizing when the time to update the documentation increases with the complexity of the package. The package rebuild is most often used to test code changes: its speed is essential.</p>
+<p>The documentation for <strong>roxygen2</strong> supports the Markdown<a href="#fn93" class="footnote-ref" id="fnref93"><sup>93</sup></a> format.</p>
+<p>At this stage, the package is functional: it contains a function and a beginning of documentation.
+It is time to run a check of its code: in the <em>Build</em> window, click on “Check” or use the <code>devtools::check()</code> command.
+The operation <em>reoxygenates</em> the package (updates its documentation), performs a large number of tests and returns a list of errors, warnings and notes detected.
+The goal is always to have no warnings: they must be handled immediately.
+For example, the following return is a warning about the non-conformity of the declared license:</p>
+<pre><code>&gt; checking DESCRIPTION meta-information ... WARNING
+  Non-standard license specification:
+    `use_gpl3_license()`
+  Standardizable: FALSE
+
+0 errors v | 1 warning x | 0 notes v
+Erreur : R CMD check found WARNINGs</code></pre>
+<p>To correct it, update, run the update license command, starting with your name:</p>
+<p></p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="chap-package.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">usethis.full_name =</span> <span class="st">&quot;Eric Marcon&quot;</span>)</span>
+<span id="cb350-2"><a href="chap-package.html#cb350-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_gpl3_license</span>()</span></code></pre></div>
+<p></p>
+<p>The list of valid licenses is provided by R<a href="#fn94" class="footnote-ref" id="fnref94"><sup>94</sup></a>.</p>
+<p>After correction, run the tests again until the alerts disappear.</p>
+</div>
+</div>
+<div id="sec:package-cds" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Source control<a href="chap-package.html#sec:package-cds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is time to put the code under source control.</p>
+<p>Enable source control in the project options (figure <a href="chap-git.html#fig:git-Project">3.2</a>).
+Restart RStudio on demand.</p>
+<p>Create a repository on GitHub and push the local repository to it, as explained in the chapter <a href="chap-git.html#chap-git">3</a>.</p>
+<p>Create the file <code>README.md</code>:</p>
+<pre><code># multiple
+
+An R package to compute mutiple of numbers.</code></pre>
+<p>The development of the package is punctuated by many commits at each modification and a push at each step, validated by a version number increment.</p>
+</div>
+<div id="package.r" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> package.R<a href="chap-package.html#package.r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>package.R</code> file is intended to receive the R code and especially the comments for <strong>roxygen2</strong> which concern the whole package.</p>
+<p>The first comment block will produce the package help (<code>?multiple</code>).</p>
+<pre><code>#&#39; multiple-package
+#&#39;
+#&#39; Multiples of numbers
+#&#39; 
+#&#39; This package allows simple computation of multiples 
+#&#39; of numbers, including fast algorithms for integers.
+#&#39;
+#&#39; @name multiple
+#&#39; @docType package
+NULL</code></pre>
+<p>Its organization is identical to that of the function documentations, with two particular declarations for the package name and the documentation type.
+The <code>NULL</code> code after the comments tells <strong>roxygen2</strong> that there is no related R code.</p>
+<p>The documentation is updated by the <code>roxygen2::roxygenise()</code> command.
+After rebuilding the package, check that the help has appeared: <code>?multiple</code>.</p>
+</div>
+</div>
+<div id="package-organization" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Package organization<a href="chap-package.html#package-organization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sec:package-description" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> DESCRIPTION file<a href="chap-package.html#sec:package-description" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The file must be completed:</p>
+<pre><code>Package: multiple
+Title: Calculate multiples of numbers
+Version: 0.0.0.9000
+Authors@R: 
+  person(given = &quot;Eric&quot;,
+           family = &quot;Marcon&quot;,
+           role = c(&quot;aut&quot;, &quot;cre&quot;),
+           email = &quot;e.marcon@free.fr&quot;,
+           comment = c(ORCID = &quot;0000-0002-5249-321X&quot;))
+Description: This package allows simple computation
+  of multiples of numbers, including fast algorithms
+  for integers.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1</code></pre>
+<p>The package name is fixed and must not be changed.</p>
+<p>Its title must describe in one line what it is used for.
+The title is displayed in the <em>Packages</em> window next to the package names.</p>
+<p>The version must respect the conventions:</p>
+<ul>
+<li>The first number is the major version, 0 as long as the package is not stable then 1.
+The major version only changes if the package is no longer compatible with its previous versions, which forces users to modify their code.</li>
+<li>The second is the minor version, incremented when new features are added.</li>
+<li>The third is the correction version: 0 at the origin, incremented at each code correction without new functionality.</li>
+<li>The fourth is reserved for development, and starts at 9000.
+It is incremented with each unstable version and disappears when a new stable version (<em>release</em>) is produced.</li>
+</ul>
+<p>Example: a bug fix on version 1.3.0 produces version 1.3.1.
+The following development versions (unstable, not intended for production use) are 1.3.1.9000 then 1.3.1.9001, etc.
+The version number must be updated each time the package is pushed on GitHub.
+When the development is stabilized, the new version, intended to be used in production, is 1.3.2 if it does not bring any new functionality or 1.4.0 in the opposite case.</p>
+<p>The description of the authors is rather heavy but simple to understand.
+The Orcid identifiers of the academic authors can be used.
+If the package has several authors, they are placed in a <code>c()</code> function: <code>c(person(...), person())</code> for two authors.
+In this case, the role of each must be specified:</p>
+<ul>
+<li>“cre” for the creator of the package</li>
+<li>“aut” for one of the other authors</li>
+<li>“ctb” for a contributor, who may have reported a bug or provided some code.</li>
+</ul>
+<p>The description of the package in one paragraph allows to give more information.</p>
+<p>The license specifies how the package can be used and modified.
+GPL-3 is a good default, but other choices are possible<a href="#fn95" class="footnote-ref" id="fnref95"><sup>95</sup></a>.</p>
+<p>The <code>LazyData</code> option means that the example data provided with the package can be used without calling it first by the <code>data()</code> function: this is the current standard.</p>
+<p>Finally, the last two lines are handled by <strong>roxygen2</strong>.</p>
+</div>
+<div id="news.md-file" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> NEWS.md file<a href="chap-package.html#news.md-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>NEWS.md</code> file contains the history of the package.
+New versions are added to the top of the file.</p>
+<p>Create a first version of the file:</p>
+<pre><code># multiple 0.0.0.9000
+
+## New features
+
+* Initial version of the package</code></pre>
+<p>The first level titles must contain the package name and version.
+Level 2 titles are free, but usually contain headings like “New features” and “Bug Fixes”.</p>
+<p>To avoid multiplying the versions described, it is advisable to change the current version and complete the documentation until the correction version changes (third number).
+Then, the entry corresponding to this version remains frozen and a new entry is added.</p>
+</div>
+</div>
+<div id="vignette" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Vignette<a href="chap-package.html#vignette" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A vignette is essential to document the package correctly:</p>
+<p></p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="chap-package.html#cb355-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_vignette</span>(<span class="st">&quot;multiple&quot;</span>)</span></code></pre></div>
+<p></p>
+<p>The file <code>multiple.Rmd</code> is created in the <code>thumbnail</code> folder.
+Add a subtitle in its header: the short description of the package:</p>
+<pre><code>title: &quot;multiple&quot;
+subtitle: &quot;Multiples of numbers&quot;</code></pre>
+<p>The rest of the header allows R to build the thumbnail from R Markdown code.</p>
+<p>The body of the thumbnail contains by default R code to declare the options for presenting the code snippets and loading the package.
+An introduction to the use of the package should be written in this document, in R Markdown.</p>
+<p>During the development of the package, the thumbnail can be built manually by running:</p>
+<p></p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="chap-package.html#cb357-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">build_vignettes</span>(<span class="st">&quot;multiple&quot;</span>)</span></code></pre></div>
+<p></p>
+<p>The resulting files are placed in <code>doc/</code>: open the <code>.html</code> file to check the result.</p>
+<p>RStudio does not create the package thumbnail when the “Install and Restart” command in the Build window is called.
+For a complete installation, two solutions are possible:</p>
+<ul>
+<li>Build the package source file (“Build &gt; More &gt; Build Source Package”) and then install it (“Packages &gt; Install &gt; Install from &gt; Package Archive file”).
+The source file is next to the project file.</li>
+<li>Push the package code on GitHub and then run:</li>
+</ul>
+<p></p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="chap-package.html#cb358-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;multiple&quot;</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p></p>
+<p>The vignette can then be displayed by the command:</p>
+<p></p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="chap-package.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;multiple&quot;</span>)</span></code></pre></div>
+<p></p>
+</div>
+<div id="pkgdown" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> pkgdown<a href="chap-package.html#pkgdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>pkgdown</strong> package creates a companion site to the package<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>, which includes the <code>README.md</code> file as the home page, the thumbnail in a “Get Started” section, all of the help files with their executed examples (the “Reference” section), the <code>NEWS.md</code> file for a history of the package (the “Changelog” section), and information from the <code>DESCRIPTION</code> file.</p>
+<p>Create the site with <strong>usethis</strong>:</p>
+<p></p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="chap-package.html#cb360-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown</span>()</span></code></pre></div>
+<p></p>
+<p>Then build the site.
+This command will be executed again at each version change of the package:</p>
+<p></p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="chap-package.html#cb361-1" aria-hidden="true" tabindex="-1"></a>pkgdown<span class="sc">::</span><span class="fu">build_site</span>()</span></code></pre></div>
+<p></p>
+<p>The site is placed in the <code>docs</code> folder.
+Open the file <code>index.htm</code> with a web browser to view it.
+As soon as the project is pushed to GitHub, activate the repository pages so that the site is visible online (see section <a href="chap-git.html#sec:github-pages">3.7</a>).</p>
+<p><strong>pkgdown</strong> places the site in the <code>docs</code> folder.</p>
+<p>Add the address of the GitHub pages to a new line in the <code>DESCRIPTION</code> file:</p>
+<pre><code>URL: https://GitHubID.github.io/multiple</code></pre>
+<p>Also add it to the <code>_pkgdown.yml</code> file that was created empty, along with the following option:</p>
+<pre><code>url: https://GitHubID.github.io/multiple
+
+development:
+  mode: auto</code></pre>
+<p><strong>pkgdown</strong> places the site in the <code>docs/dev</code> folder if the site for a stable (three-numbered) version of the package exists in <code>docs</code> and the current version is a development version (four-numbered).
+This way, users of a production version of the package have access to the site without it being disturbed by the development versions.</p>
+<p>The site can be enriched in several ways:</p>
+<ul>
+<li>By adding articles in R Markdown format to the <code>thumbnails/articles</code> folder.
+The thumbnail does not require significant computational resources to present examples because it is built at the same time as the package.
+The articles are generated by <strong>pkgdown</strong>, independently, and can therefore be more ambitious;</li>
+<li>By improving its presentation (grouping functions by themes, adding badges, a sticker<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>…): refer to the thumbnail of <strong>pkgdown</strong>.</li>
+</ul>
+<p>To enrich the documentation of the package, it is possible to use a <code>README.Rmd</code> file in R Markdown format, to be knitted to create the standard <code>README.md</code> of GitHub, used as the home page of the <strong>pkgdown</strong> site, which can in this way present examples of use of the code.
+The approach is detailed in <em>R Packages</em><a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a>.
+The added complexity is to be compared to the gain: a simple homepage (without code) with links to the thumbnail and articles is easier to implement.</p>
+</div>
+<div id="package-specific-code" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Package specific code<a href="chap-package.html#package-specific-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="importing-functions" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Importing functions<a href="chap-package.html#importing-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s create a new function in <code>functions.R</code> that adds random noise to the double value:</p>
+<p></p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="chap-package.html#cb364-1" aria-hidden="true" tabindex="-1"></a>fuzzydouble <span class="ot">&lt;-</span> <span class="cf">function</span>(number, <span class="at">sd =</span> <span class="dv">1</span>) {</span>
+<span id="cb364-2"><a href="chap-package.html#cb364-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">2</span> <span class="sc">*</span> number <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(number), <span class="dv">0</span>, sd))</span>
+<span id="cb364-3"><a href="chap-package.html#cb364-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>
+The noise is drawn in a centered normal distribution of standard deviation <code>sd</code> and added to the calculated value.</p>
+<p><code>rnorm()</code> is a function of the <strong>stats</strong> package.
+Even if the package is systematically loaded by R, the package to which the function belongs must be declared: the only exceptions are functions from the <strong>base</strong> package.</p>
+<p>The <strong>stats</strong> package must first be declared in <code>DESCRIPTION</code> which contains an <code>Imports:</code> statement.
+All packages used by the <strong>multiple</strong> code will be listed, separated by commas.</p>
+<pre><code>Imports: stats</code></pre>
+<p>This “import” simply means that the <strong>stats</strong> package must be loaded, but not necessarily attached (see section `<span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(sec:environnements)), for <strong>multiple</strong> to work.</p>
+<p>Then, the <code>rnorm()</code> function must be found in the <strong>multiple</strong> package environment.
+There are several ways to fulfill this requirement.
+First, the following comment could be provided for <strong>roxygen2</strong>:</p>
+<p></p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="chap-package.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @import stats</span></span></code></pre></div>
+<p></p>
+<p>The entire namespace of the <strong>stats</strong> package would be attached to and accessible by the <strong>multiple</strong> package.
+This is not a good practice because it multiplies the risks of name conflicts (see section <a href="chap-utiliseR.html#sec:environnements">2.2</a>).
+Note that the notion of import used here is different from that of <code>DESCRIPTION</code>, although they have the same name.</p>
+<p>It is best to import only the <code>rnorm()</code> function by declaring it in the function documentation:</p>
+<p></p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="chap-package.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom stats rnorm</span></span></code></pre></div>
+<p></p>
+<p>This is not an ideal practice either because the origin of the function would not be clear in the package code.</p>
+<p>The best practice is to import nothing (in the sense of <strong>roxygen2</strong>) and to systematically qualify functions from other packages with the syntax <code>package::function()</code>.
+This is the solution chosen here because the <code>@importFrom</code> directive would import the function in the whole <strong>multiple</strong> package, not only in the <code>fuzzydouble()</code> function, at the risk of creating side effects (modifying the behavior of another function of the package which would not assume the import of <code>rnorm()</code>).
+Finally, the code of the function is as follows:</p>
+<p></p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="chap-package.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; fuzzydouble</span></span>
+<span id="cb368-2"><a href="chap-package.html#cb368-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb368-3"><a href="chap-package.html#cb368-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Double value of numbers with an error</span></span>
+<span id="cb368-4"><a href="chap-package.html#cb368-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb368-5"><a href="chap-package.html#cb368-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Calculate the double values of numbers </span></span>
+<span id="cb368-6"><a href="chap-package.html#cb368-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; and add a random error to the result.</span></span>
+<span id="cb368-7"><a href="chap-package.html#cb368-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb368-8"><a href="chap-package.html#cb368-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param number a numeric vector.</span></span>
+<span id="cb368-9"><a href="chap-package.html#cb368-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param sd the standard deviation of the Gaussian error added.</span></span>
+<span id="cb368-10"><a href="chap-package.html#cb368-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb368-11"><a href="chap-package.html#cb368-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return A vector of the same length as `number`</span></span>
+<span id="cb368-12"><a href="chap-package.html#cb368-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;  containing the transformed values.</span></span>
+<span id="cb368-13"><a href="chap-package.html#cb368-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb368-14"><a href="chap-package.html#cb368-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb368-15"><a href="chap-package.html#cb368-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb368-16"><a href="chap-package.html#cb368-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; fuzzydouble(2)</span></span>
+<span id="cb368-17"><a href="chap-package.html#cb368-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; fuzzydouble(1:4)</span></span>
+<span id="cb368-18"><a href="chap-package.html#cb368-18" aria-hidden="true" tabindex="-1"></a>fuzzydouble <span class="ot">&lt;-</span> <span class="cf">function</span>(number, <span class="at">sd =</span> <span class="dv">1</span>) {</span>
+<span id="cb368-19"><a href="chap-package.html#cb368-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">2</span> <span class="sc">*</span> number <span class="sc">+</span> stats<span class="sc">::</span><span class="fu">rnorm</span>(<span class="fu">length</span>(number), <span class="dv">0</span>, sd))</span>
+<span id="cb368-20"><a href="chap-package.html#cb368-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p></p>
+</div>
+<div id="s3-methods" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> S3 methods<a href="chap-package.html#s3-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>S3 methods are presented in section <a href="chap-utiliseR.html#sec:S3">2.1.2</a>.</p>
+<div id="classes" class="section level4 hasAnchor" number="5.5.2.1">
+<h4><span class="header-section-number">5.5.2.1</span> Classes<a href="chap-package.html#classes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Objects belong to classes:</p>
+<p></p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="chap-package.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Class of a number</span></span>
+<span id="cb369-2"><a href="chap-package.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="chap-package.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Class of a function</span></span>
+<span id="cb371-2"><a href="chap-package.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sum)</span></code></pre></div>
+<pre><code>## [1] &quot;function&quot;</code></pre>
+<p></p>
+<p>In addition to the basic classes, developers can create others.</p>
+</div>
+<div id="methods" class="section level4 hasAnchor" number="5.5.2.2">
+<h4><span class="header-section-number">5.5.2.2</span> Methods<a href="chap-package.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The point of creating new classes is to adapt existing methods to them, the most common case being <code>plot()</code>.
+This is a generic method, i.e. a function template, without code, to be adapted to the class of object to be processed.</p>
+<p></p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="chap-package.html#cb373-1" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div>
+<pre><code>## function (x, y, ...) 
+## UseMethod(&quot;plot&quot;)
+## &lt;bytecode: 0x7ff4105af438&gt;
+## &lt;environment: namespace:base&gt;</code></pre>
+<p></p>
+<p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
+<strong>Stats</strong> provides a function <code>plot.lm()</code> to create a figure from a linear model.
+Many packages create classes tailored to their objects and provide a <code>plot</code> method for each class.
+The functions can be listed:</p>
+<p></p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="chap-package.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some functions plot()</span></span>
+<span id="cb375-2"><a href="chap-package.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">methods</span>(plot))</span></code></pre></div>
+<pre><code>## [1] &quot;plot,ANY-method&quot;   &quot;plot,color-method&quot;
+## [3] &quot;plot.AccumCurve&quot;   &quot;plot.acf&quot;         
+## [5] &quot;plot.ACF&quot;          &quot;plot.addvar&quot;</code></pre>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="chap-package.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Total number</span></span>
+<span id="cb377-2"><a href="chap-package.html#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">methods</span>(plot))</span></code></pre></div>
+<pre><code>## [1] 150</code></pre>
+<p></p>
+<p>Conversely, the available methods for a class can be displayed:</p>
+<p></p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="chap-package.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(<span class="at">class =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] add1           alias          anova         
+##  [4] as_flextable   case.names     coerce        
+##  [7] confint        cooks.distance deviance      
+## [10] dfbeta         dfbetas        drop1         
+## [13] dummy.coef     effects        extractAIC    
+## [16] family         formula        fortify       
+## [19] hatvalues      influence      initialize    
+## [22] kappa          labels         logLik        
+## [25] model.frame    model.matrix   nobs          
+## [28] plot           predict        print         
+## [31] proj           qqnorm         qr            
+## [34] residuals      response       rstandard     
+## [37] rstudent       show           simulate      
+## [40] slotsFromS3    summary        variable.names
+## [43] vcov          
+## see &#39;?methods&#39; for accessing help and source code</code></pre>
+<p></p>
+<p>The <code>print</code> method is used to display any object (it is implicit when only the name of an object is entered):</p>
+<p></p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="chap-package.html#cb381-1" aria-hidden="true" tabindex="-1"></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb381-2"><a href="chap-package.html#cb381-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent de &#39;&gt; my_lm&#39;</span></span>
+<span id="cb381-3"><a href="chap-package.html#cb381-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_lm)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Coefficients:
+## (Intercept)        speed  
+##     -17.579        3.932</code></pre>
+<p></p>
+<p>The <code>summary</code> method displays a readable summary of the object:</p>
+<p></p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="chap-package.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_lm)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -29.069  -9.525  -2.272   9.215  43.201 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -17.5791     6.7584  -2.601   0.0123 *  
+## speed         3.9324     0.4155   9.464 1.49e-12 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 15.38 on 48 degrees of freedom
+## Multiple R-squared:  0.6511, Adjusted R-squared:  0.6438 
+## F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12</code></pre>
+<p></p>
+<p>The other methods have been created specifically for the needs of the <strong>stats</strong> package.</p>
+</div>
+<div id="assigning-an-object-to-a-class" class="section level4 hasAnchor" number="5.5.2.3">
+<h4><span class="header-section-number">5.5.2.3</span> Assigning an object to a class<a href="chap-package.html#assigning-an-object-to-a-class" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In order for an object to belong to a class, it is sufficient to declare it:</p>
+<p></p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="chap-package.html#cb385-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb385-2"><a href="chap-package.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x) <span class="ot">&lt;-</span> <span class="st">&quot;MyClass&quot;</span></span>
+<span id="cb385-3"><a href="chap-package.html#cb385-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;MyClass&quot;</code></pre>
+<p></p>
+<p>A more elegant way to do this is to add the new class to the set of classes to which the object already belongs:</p>
+<p></p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="chap-package.html#cb387-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb387-2"><a href="chap-package.html#cb387-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;MyClass&quot;</span>, <span class="fu">class</span>(y))</span>
+<span id="cb387-3"><a href="chap-package.html#cb387-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
+<pre><code>## [1] &quot;MyClass&quot; &quot;numeric&quot;</code></pre>
+<p></p>
+<p>There is no consistency check between the real structure of the object and a structure of the class that would be declared elsewhere: the developer must make sure that the methods will find the right data in the objects that declare to belong to it.
+If not, errors will occur:</p>
+<p></p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="chap-package.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y) <span class="ot">&lt;-</span> <span class="st">&quot;lm&quot;</span></span>
+<span id="cb389-2"><a href="chap-package.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tryCatch</span>(<span class="fu">print</span>(y), <span class="at">error =</span> <span class="cf">function</span>(e) <span class="fu">print</span>(e))</span></code></pre></div>
+<pre><code>## &lt;simpleError in x$call: $ operator is invalid for atomic vectors&gt;</code></pre>
+<p></p>
+</div>
+</div>
+<div id="in-practice" class="section level3 hasAnchor" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> In practice<a href="chap-package.html#in-practice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="creating-a-generic-method" class="section level4 hasAnchor" number="5.5.3.1">
+<h4><span class="header-section-number">5.5.3.1</span> Creating a generic method<a href="chap-package.html#creating-a-generic-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>New generic methods can be created and declined according to the classes.</p>
+<p>As an example, let’s create a generic method <code>triple</code> which will calculate the triple of the values in the package <strong>multiple</strong>, declined in two distinct functions: one for integers and one for reals.
+Calculations on integers are faster than those on reals, which justifies the effort of writing two versions of the code.</p>
+<p></p>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="chap-package.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Méthode générique</span></span>
+<span id="cb391-2"><a href="chap-package.html#cb391-2" aria-hidden="true" tabindex="-1"></a>triple <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb391-3"><a href="chap-package.html#cb391-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">UseMethod</span>(<span class="st">&quot;triple&quot;</span>)</span>
+<span id="cb391-4"><a href="chap-package.html#cb391-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p></p>
+<p>The generic method contains no code beyond its declaration.
+Its signature (i.e., the set of arguments) is important because functions derived from this method will necessarily have to have the same arguments in the same order and can only add additional arguments before <code>...</code> (which is mandatory).
+As the nature of the first argument will depend on the class of each object, it is usual to call it <code>x</code>.</p>
+<p>The method is declined in two functions:</p>
+<p></p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="chap-package.html#cb392-1" aria-hidden="true" tabindex="-1"></a>triple.integer<span class="ot">&lt;-</span> <span class="cf">function</span> (x, ...){</span>
+<span id="cb392-2"><a href="chap-package.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x <span class="sc">*</span> 3L)</span>
+<span id="cb392-3"><a href="chap-package.html#cb392-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb392-4"><a href="chap-package.html#cb392-4" aria-hidden="true" tabindex="-1"></a>triple.numeric<span class="ot">&lt;-</span> <span class="cf">function</span> (x, ...){</span>
+<span id="cb392-5"><a href="chap-package.html#cb392-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x <span class="sc">*</span> <span class="fl">3.0</span>)</span>
+<span id="cb392-6"><a href="chap-package.html#cb392-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p></p>
+<p>In its integer version, <code>x</code> is multiplied by <code>3L</code>, the suffix <code>L</code> meaning that 3 should be understood as an integer.
+In its real version, 3 can be written <code>3.0</code> to make it clear that it is a real.
+Under R, <code>3</code> without further specification is understood as a real.</p>
+<p>The choice of function depends on the class of the object passed as argument.</p>
+<p></p>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="chap-package.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer argument</span></span>
+<span id="cb393-2"><a href="chap-package.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(2L)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="chap-package.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer result by the function triple.integer</span></span>
+<span id="cb395-2"><a href="chap-package.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">triple</span>(2L))</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="chap-package.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Real argument</span></span>
+<span id="cb397-2"><a href="chap-package.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="chap-package.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Real result by the function triple.numeric</span></span>
+<span id="cb399-2"><a href="chap-package.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">triple</span>(<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="chap-package.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Performance</span></span>
+<span id="cb401-2"><a href="chap-package.html#cb401-2" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(<span class="fu">triple.integer</span>(2L), <span class="fu">triple.numeric</span>(<span class="dv">2</span>),</span>
+<span id="cb401-3"><a href="chap-package.html#cb401-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triple</span>(2L))</span></code></pre></div>
+<pre><code>## Unit: nanoseconds
+##                expr  min     lq     mean median     uq
+##  triple.integer(2L)  327  332.5 23756.82  342.0  355.0
+##   triple.numeric(2)  325  336.5 20677.19  342.5  356.5
+##          triple(2L) 1331 1363.0  1623.87 1393.0 1471.5
+##      max neval
+##  2339615   100
+##  2031043   100
+##    13141   100</code></pre>
+<p></p>
+<p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
+The generic method consumes much more time than the very simple calculations here.
+R indeed tests the existence of functions corresponding to the class of the object passed as argument to the generic methods.
+As an object can belong to several classes, it searches for a function adapted to the first class, then to the following classes successively.
+This search takes a lot of time and justifies the use of generic methods for the readability of the code rather than for performance: the interest of generic methods is to provide the user of the code with a single function for a given objective (<code>plot</code> to make a figure) whatever the data to be processed.</p>
+</div>
+<div id="creating-a-class" class="section level4 hasAnchor" number="5.5.3.2">
+<h4><span class="header-section-number">5.5.3.2</span> Creating a class<a href="chap-package.html#creating-a-class" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In a package, classes are created if the results of the functions justify it: list structure and identification of the class with an object (“lm” is the class of linear models).
+For each class created, the <code>print</code>, <code>summary</code> and <code>plot</code> methods (if a graphical representation is possible) must be written.</p>
+<p>Let’s write a function <code>multiple()</code> whose result will be an object of a new class, <code>multiple</code>, which will be a list storing the values to multiply, the multiplier and the result.</p>
+<p></p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="chap-package.html#cb403-1" aria-hidden="true" tabindex="-1"></a>multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(number, <span class="at">times =</span> <span class="dv">1</span>) {</span>
+<span id="cb403-2"><a href="chap-package.html#cb403-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the multiples</span></span>
+<span id="cb403-3"><a href="chap-package.html#cb403-3" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> number <span class="sc">*</span> times</span>
+<span id="cb403-4"><a href="chap-package.html#cb403-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save in a list</span></span>
+<span id="cb403-5"><a href="chap-package.html#cb403-5" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> number, <span class="at">y =</span> y, <span class="at">times =</span> times)</span>
+<span id="cb403-6"><a href="chap-package.html#cb403-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set the class</span></span>
+<span id="cb403-7"><a href="chap-package.html#cb403-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">class</span>(result) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;multiple&quot;</span>, <span class="fu">class</span>(result))</span>
+<span id="cb403-8"><a href="chap-package.html#cb403-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(result)</span>
+<span id="cb403-9"><a href="chap-package.html#cb403-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb403-10"><a href="chap-package.html#cb403-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Classe du résultat</span></span>
+<span id="cb403-11"><a href="chap-package.html#cb403-11" aria-hidden="true" tabindex="-1"></a>my_multiple <span class="ot">&lt;-</span> <span class="fu">multiple</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb403-12"><a href="chap-package.html#cb403-12" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_multiple)</span></code></pre></div>
+<pre><code>## [1] &quot;multiple&quot; &quot;list&quot;</code></pre>
+<p></p>
+<p>The call to the <code>multiple()</code> function returns an object of class <code>multiple</code>, which is also of class <code>list'. In the absence of a</code>print.multiple()<code>function, R looks for the</code>print.list()<code>function, which does not exist, and falls back on the</code>print.default()` function:</p>
+<p></p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="chap-package.html#cb405-1" aria-hidden="true" tabindex="-1"></a>my_multiple</span></code></pre></div>
+<pre><code>## $x
+## [1] 1 2 3
+## 
+## $y
+## [1] 2 4 6
+## 
+## $times
+## [1] 2
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;multiple&quot; &quot;list&quot;</code></pre>
+<p></p>
+<p>The <code>print.multiple</code> function must therefore be written for a readable display, limited to the result:</p>
+<p></p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="chap-package.html#cb407-1" aria-hidden="true" tabindex="-1"></a>print.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb407-2"><a href="chap-package.html#cb407-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print.default</span>(x<span class="sc">$</span>y)</span>
+<span id="cb407-3"><a href="chap-package.html#cb407-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb407-4"><a href="chap-package.html#cb407-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Nouvel affichage</span></span>
+<span id="cb407-5"><a href="chap-package.html#cb407-5" aria-hidden="true" tabindex="-1"></a>my_multiple</span></code></pre></div>
+<pre><code>## [1] 2 4 6</code></pre>
+<p></p>
+<p>Details can be presented in the <code>summary</code> function:</p>
+<p></p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="chap-package.html#cb409-1" aria-hidden="true" tabindex="-1"></a>summary.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(object, ...) {</span>
+<span id="cb409-2"><a href="chap-package.html#cb409-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print.default</span>(object<span class="sc">$</span>x)</span>
+<span id="cb409-3"><a href="chap-package.html#cb409-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;multiplied by&quot;</span>, object<span class="sc">$</span>times, <span class="st">&quot;is:</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb409-4"><a href="chap-package.html#cb409-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print.default</span>(object<span class="sc">$</span>y)</span>
+<span id="cb409-5"><a href="chap-package.html#cb409-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb409-6"><a href="chap-package.html#cb409-6" aria-hidden="true" tabindex="-1"></a><span class="co"># New display</span></span>
+<span id="cb409-7"><a href="chap-package.html#cb409-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_multiple)</span></code></pre></div>
+<pre><code>## [1] 1 2 3
+## multiplied by 2 is:
+## [1] 2 4 6</code></pre>
+<p></p>
+<p>Finally, a <code>plot</code> function and an <code>autoplot</code> function complete the set:</p>
+<p></p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="chap-package.html#cb411-1" aria-hidden="true" tabindex="-1"></a>plot.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, ...) {</span>
+<span id="cb411-2"><a href="chap-package.html#cb411-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot.default</span>(<span class="at">y=</span>x<span class="sc">$</span>y, <span class="at">x=</span>x<span class="sc">$</span>x, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, </span>
+<span id="cb411-3"><a href="chap-package.html#cb411-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Multiplication by&quot;</span>, x<span class="sc">$</span>times), ...)</span>
+<span id="cb411-4"><a href="chap-package.html#cb411-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb411-5"><a href="chap-package.html#cb411-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-6"><a href="chap-package.html#cb411-6" aria-hidden="true" tabindex="-1"></a>autoplot.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(object, ...) {</span>
+<span id="cb411-7"><a href="chap-package.html#cb411-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> object<span class="sc">$</span>x, <span class="at">y =</span> object<span class="sc">$</span>y) <span class="sc">%&gt;%</span> </span>
+<span id="cb411-8"><a href="chap-package.html#cb411-8" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb411-9"><a href="chap-package.html#cb411-9" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y)) <span class="sc">+</span></span>
+<span id="cb411-10"><a href="chap-package.html#cb411-10" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;Multiplication by&quot;</span>, </span>
+<span id="cb411-11"><a href="chap-package.html#cb411-11" aria-hidden="true" tabindex="-1"></a>                                object<span class="sc">$</span>times))</span>
+<span id="cb411-12"><a href="chap-package.html#cb411-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb411-13"><a href="chap-package.html#cb411-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-14"><a href="chap-package.html#cb411-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_multiple)</span></code></pre></div>
+<p><img src="WwR_files/figure-html/plot.multiple-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="chap-package.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(my_multiple)</span></code></pre></div>
+<p><img src="WwR_files/figure-html/plot.multiple-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<p></p>
+<p>For technical reasons related to unconventional evaluation in the tidyverse, variable names used by <code>aes()</code> must be prefixed with <code>.data$</code> in packages and <code>rlang::.data</code> must be imported.
+Otherwise, the package check returns a note that the variables <code>x</code> and <code>y</code>, used by the arguments to <code>aes()</code> have not been declared and may not exist in the local environment (see section <a href="chap-utiliseR.html#sec:environnements">2.2</a>).</p>
+</div>
+<div id="documentation" class="section level4 hasAnchor" number="5.5.3.3">
+<h4><span class="header-section-number">5.5.3.3</span> Documentation<a href="chap-package.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Generic methods and functions that declare them must be documented like any other function.</p>
+<p>Namespace management is a bit more complex:</p>
+<ul>
+<li>Generic methods must be exported:</li>
+</ul>
+<pre><code>#&#39; @export</code></pre>
+<ul>
+<li>Functions derived from generic methods should not be exported but declared as methods, with the name of the generic method and the processed class.
+<strong>roxygen2</strong> requires that an export directive be added but does not enforce it (as it should) in the <code>NAMESPACE</code> file that is used by R:</li>
+</ul>
+<pre><code>#&#39; @method plot multiple
+#&#39; @export</code></pre>
+<ul>
+<li><p>Since version 3 of <strong>roxygen2</strong>, the declaration <code>@method</code> is useless as long as the function name is unambiguously decomposable, like <code>plot.multiple</code>: <code>@export</code> is sufficient.
+If the derived function name has multiple dots, <strong>roxygen2</strong> may not automatically detect the generic and the object and <code>@method</code> must be maintained.</p></li>
+<li><p>Functions derived from generic methods from another package need to import the generic method, unless it is provided by <strong>base</strong> (<code>print</code> is provided by <strong>base</strong> and is therefore not affected):</p></li>
+</ul>
+<pre><code>#&#39; @importFrom graphics plot
+#&#39; @importFrom ggplot2 autoplot</code></pre>
+<ul>
+<li>The generics imported in this way must be re-exported by a directive to be placed for example just after the code of the derived function:</li>
+</ul>
+<pre><code>#&#39; @export
+graphics::plot
+
+#&#39; @export
+ggplot2::autoplot</code></pre>
+<ul>
+<li>roxygen2** automatically creates a help file <code>reexports.Rd</code> in which there is a link to the original documentation of the re-exported generics.</li>
+</ul>
+<p>In <code>DESCRIPTION</code>, the original package for each generic must be listed in the <code>Imports:</code> directive:</p>
+<pre><code>Imports: ggplot2, graphics</code></pre>
+<p>Finally, importing functions from the tidyverse also requires some precautions:</p>
+<ul>
+<li>the <strong>tidyverse</strong> package is reserved for interactive use in R: there is no way to import it into <code>DESCRIPTION</code> because its dependencies may change and lead to unpredictable results.
+The <strong>magrittr</strong> package provides the pipes, mainly <code>%&gt;%</code>.
+The <strong>rlang</strong> package provides the <code>.data</code> object shown below.
+They must be imported into <code>DESCRIPTION</code>.</li>
+</ul>
+<pre><code>Imports: magrittr, rlang, stats</code></pre>
+<ul>
+<li>Since it is not possible to prefix the <code>%&gt;%</code> with the package name, the function must be imported using the delimiters provided for functions whose names contain special characters:</li>
+</ul>
+<p></p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="chap-package.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom magrittr `%&gt;%`</span></span></code></pre></div>
+<p></p>
+<ul>
+<li>Functions in the tidyverse that use column names from tibbles or dataframes generate warnings at package check time because these names are confused with undefined variable names.
+To avoid this confusion, the <code>.data</code> object of the <strong>rlang</strong> package is used (for example in <code>aes()</code> seen above).
+It must be imported:</li>
+</ul>
+<p></p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="chap-package.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span></code></pre></div>
+<p></p>
+<p>Finally, the complete code is as follows:</p>
+<p></p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="chap-package.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Multiplication of a numeric vector</span></span>
+<span id="cb421-2"><a href="chap-package.html#cb421-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-3"><a href="chap-package.html#cb421-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param number a numeric vector</span></span>
+<span id="cb421-4"><a href="chap-package.html#cb421-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param times a number to multiply</span></span>
+<span id="cb421-5"><a href="chap-package.html#cb421-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-6"><a href="chap-package.html#cb421-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return an object of class `multiple`</span></span>
+<span id="cb421-7"><a href="chap-package.html#cb421-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb421-8"><a href="chap-package.html#cb421-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-9"><a href="chap-package.html#cb421-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb421-10"><a href="chap-package.html#cb421-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; multiple(1:2,3)</span></span>
+<span id="cb421-11"><a href="chap-package.html#cb421-11" aria-hidden="true" tabindex="-1"></a>multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(number, <span class="at">times =</span> <span class="dv">1</span>) {</span>
+<span id="cb421-12"><a href="chap-package.html#cb421-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the multiples</span></span>
+<span id="cb421-13"><a href="chap-package.html#cb421-13" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> number <span class="sc">*</span> times</span>
+<span id="cb421-14"><a href="chap-package.html#cb421-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Save in a list</span></span>
+<span id="cb421-15"><a href="chap-package.html#cb421-15" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> number, <span class="at">y =</span> y, <span class="at">times =</span> times)</span>
+<span id="cb421-16"><a href="chap-package.html#cb421-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set the class</span></span>
+<span id="cb421-17"><a href="chap-package.html#cb421-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">class</span>(result) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;multiple&quot;</span>, <span class="fu">class</span>(result))</span>
+<span id="cb421-18"><a href="chap-package.html#cb421-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb421-19"><a href="chap-package.html#cb421-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb421-20"><a href="chap-package.html#cb421-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb421-21"><a href="chap-package.html#cb421-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Print objects of class multiple</span></span>
+<span id="cb421-22"><a href="chap-package.html#cb421-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-23"><a href="chap-package.html#cb421-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x an object of class `multiple`.</span></span>
+<span id="cb421-24"><a href="chap-package.html#cb421-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param ... further arguments passed to the generic method.</span></span>
+<span id="cb421-25"><a href="chap-package.html#cb421-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-26"><a href="chap-package.html#cb421-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb421-27"><a href="chap-package.html#cb421-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-28"><a href="chap-package.html#cb421-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb421-29"><a href="chap-package.html#cb421-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; print(multiple(2,3))</span></span>
+<span id="cb421-30"><a href="chap-package.html#cb421-30" aria-hidden="true" tabindex="-1"></a>print.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb421-31"><a href="chap-package.html#cb421-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print.default</span>(x<span class="sc">$</span>y)</span>
+<span id="cb421-32"><a href="chap-package.html#cb421-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb421-33"><a href="chap-package.html#cb421-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb421-34"><a href="chap-package.html#cb421-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Summarize objects of class multiple</span></span>
+<span id="cb421-35"><a href="chap-package.html#cb421-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-36"><a href="chap-package.html#cb421-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param object an object of class `multiple`.</span></span>
+<span id="cb421-37"><a href="chap-package.html#cb421-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param ... further arguments passed to the generic method.</span></span>
+<span id="cb421-38"><a href="chap-package.html#cb421-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-39"><a href="chap-package.html#cb421-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb421-40"><a href="chap-package.html#cb421-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-41"><a href="chap-package.html#cb421-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb421-42"><a href="chap-package.html#cb421-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; summary(multiple(2,3))</span></span>
+<span id="cb421-43"><a href="chap-package.html#cb421-43" aria-hidden="true" tabindex="-1"></a>summary.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(object, ...) {</span>
+<span id="cb421-44"><a href="chap-package.html#cb421-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print.default</span>(object<span class="sc">$</span>x)</span>
+<span id="cb421-45"><a href="chap-package.html#cb421-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;multiplied by&quot;</span>, object<span class="sc">$</span>times, <span class="st">&quot;is:</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb421-46"><a href="chap-package.html#cb421-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print.default</span>(object<span class="sc">$</span>y)</span>
+<span id="cb421-47"><a href="chap-package.html#cb421-47" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb421-48"><a href="chap-package.html#cb421-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb421-49"><a href="chap-package.html#cb421-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Plot objects of class multiple</span></span>
+<span id="cb421-50"><a href="chap-package.html#cb421-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-51"><a href="chap-package.html#cb421-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x a vector of numbers</span></span>
+<span id="cb421-52"><a href="chap-package.html#cb421-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y a vector of multiplied numbers</span></span>
+<span id="cb421-53"><a href="chap-package.html#cb421-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param ... further arguments passed to the generic method.</span></span>
+<span id="cb421-54"><a href="chap-package.html#cb421-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-55"><a href="chap-package.html#cb421-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom graphics plot</span></span>
+<span id="cb421-56"><a href="chap-package.html#cb421-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb421-57"><a href="chap-package.html#cb421-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb421-58"><a href="chap-package.html#cb421-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb421-59"><a href="chap-package.html#cb421-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; plot(multiple(2,3))</span></span>
+<span id="cb421-60"><a href="chap-package.html#cb421-60" aria-hidden="true" tabindex="-1"></a>plot.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, ...) {</span>
+<span id="cb421-61"><a href="chap-package.html#cb421-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot.default</span>(<span class="at">y=</span>x<span class="sc">$</span>y, <span class="at">x=</span>x<span class="sc">$</span>x, <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, </span>
+<span id="cb421-62"><a href="chap-package.html#cb421-62" aria-hidden="true" tabindex="-1"></a>               <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Multiplication by&quot;</span>, x<span class="sc">$</span>times), ...)</span>
+<span id="cb421-63"><a href="chap-package.html#cb421-63" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb421-64"><a href="chap-package.html#cb421-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb421-65"><a href="chap-package.html#cb421-65" aria-hidden="true" tabindex="-1"></a>graphics<span class="sc">::</span>plot</span></code></pre></div>
+<pre><code>## function (x, y, ...) 
+## UseMethod(&quot;plot&quot;)
+## &lt;bytecode: 0x7ff4105af438&gt;
+## &lt;environment: namespace:base&gt;</code></pre>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="chap-package.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; autoplot</span></span>
+<span id="cb423-2"><a href="chap-package.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb423-3"><a href="chap-package.html#cb423-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; ggplot of the `multiple` objects.</span></span>
+<span id="cb423-4"><a href="chap-package.html#cb423-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb423-5"><a href="chap-package.html#cb423-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param object an object of class `multiple`.</span></span>
+<span id="cb423-6"><a href="chap-package.html#cb423-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param ... ignored.</span></span>
+<span id="cb423-7"><a href="chap-package.html#cb423-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb423-8"><a href="chap-package.html#cb423-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return a `ggplot` object</span></span>
+<span id="cb423-9"><a href="chap-package.html#cb423-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom ggplot2 autoplot</span></span>
+<span id="cb423-10"><a href="chap-package.html#cb423-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom magrittr `%&gt;%`</span></span>
+<span id="cb423-11"><a href="chap-package.html#cb423-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom rlang .data</span></span>
+<span id="cb423-12"><a href="chap-package.html#cb423-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb423-13"><a href="chap-package.html#cb423-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb423-14"><a href="chap-package.html#cb423-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples</span></span>
+<span id="cb423-15"><a href="chap-package.html#cb423-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; autoplot(multiple(2,3))</span></span>
+<span id="cb423-16"><a href="chap-package.html#cb423-16" aria-hidden="true" tabindex="-1"></a>autoplot.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(object, ...) {</span>
+<span id="cb423-17"><a href="chap-package.html#cb423-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> object<span class="sc">$</span>x, <span class="at">y =</span> object<span class="sc">$</span>y) <span class="sc">%&gt;%</span></span>
+<span id="cb423-18"><a href="chap-package.html#cb423-18" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb423-19"><a href="chap-package.html#cb423-19" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>x, <span class="at">y =</span> .data<span class="sc">$</span>y)) <span class="sc">+</span></span>
+<span id="cb423-20"><a href="chap-package.html#cb423-20" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;Multiplication by&quot;</span>, </span>
+<span id="cb423-21"><a href="chap-package.html#cb423-21" aria-hidden="true" tabindex="-1"></a>                                object<span class="sc">$</span>times))</span>
+<span id="cb423-22"><a href="chap-package.html#cb423-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb423-23"><a href="chap-package.html#cb423-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb423-24"><a href="chap-package.html#cb423-24" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span>autoplot</span></code></pre></div>
+<pre><code>## function (object, ...) 
+## {
+##     UseMethod(&quot;autoplot&quot;)
+## }
+## &lt;bytecode: 0x7ff40feb94e8&gt;
+## &lt;environment: namespace:ggplot2&gt;</code></pre>
+<p></p>
+</div>
+</div>
+<div id="c-code" class="section level3 hasAnchor" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> C++ code<a href="chap-package.html#c-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The use of C++ code has been seen in section <a href="chap-utiliseR.html#sec:cpp">2.5</a>.
+To integrate these functions in a package, the following rules must be respected:</p>
+<ul>
+<li>the <code>.cpp</code> files containing the code are placed in the <code>/src</code> folder of the project;</li>
+<li>the code is commented for <strong>roxygen2</strong> in the same way as for R functions, but with the C language comment marker:</li>
+</ul>
+<p></p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb425-1"><a href="chap-package.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb425-2"><a href="chap-package.html#cb425-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span>
+<span id="cb425-3"><a href="chap-package.html#cb425-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb425-4"><a href="chap-package.html#cb425-4" aria-hidden="true" tabindex="-1"></a><span class="co">//&#39; timesTwo</span></span>
+<span id="cb425-5"><a href="chap-package.html#cb425-5" aria-hidden="true" tabindex="-1"></a><span class="co">//&#39;</span></span>
+<span id="cb425-6"><a href="chap-package.html#cb425-6" aria-hidden="true" tabindex="-1"></a><span class="co">//&#39; Calculates the double of a value.</span></span>
+<span id="cb425-7"><a href="chap-package.html#cb425-7" aria-hidden="true" tabindex="-1"></a><span class="co">//&#39;</span></span>
+<span id="cb425-8"><a href="chap-package.html#cb425-8" aria-hidden="true" tabindex="-1"></a><span class="co">//&#39; @param x A numeric vector.</span></span>
+<span id="cb425-9"><a href="chap-package.html#cb425-9" aria-hidden="true" tabindex="-1"></a><span class="co">//&#39; @export</span></span>
+<span id="cb425-10"><a href="chap-package.html#cb425-10" aria-hidden="true" tabindex="-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb425-11"><a href="chap-package.html#cb425-11" aria-hidden="true" tabindex="-1"></a>NumericVector timesTwo<span class="op">(</span>NumericVector x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb425-12"><a href="chap-package.html#cb425-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb425-13"><a href="chap-package.html#cb425-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p></p>
+<ul>
+<li>in <code>DESCRIPTION</code>, import the packages.
+<strong>Rcpp</strong>, and <strong>RcppParallel</strong> if parallelized code is used (delete its references otherwise), must be declared in <code>LinkingTo</code>:</li>
+</ul>
+<pre><code>Imports: Rcpp, RcppParallel
+LinkingTo: Rcpp, RcppParallel</code></pre>
+<ul>
+<li>comments for <strong>roxygen2</strong> should be added to <code>package.R</code> (“multiple” is the package name):</li>
+</ul>
+<p></p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="chap-package.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom Rcpp sourceCpp</span></span>
+<span id="cb427-2"><a href="chap-package.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom RcppParallel RcppParallelLibs</span></span>
+<span id="cb427-3"><a href="chap-package.html#cb427-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @useDynLib multiple, .registration = TRUE</span></span></code></pre></div>
+<p></p>
+<ul>
+<li>C++ working files are excluded from source control in <code>.gitignore</code>:</li>
+</ul>
+<pre><code># C binaries
+src/*.o
+src/*.so
+src/*.dll</code></pre>
+<p>These changes are partly done automatically, for <strong>Rcpp</strong> only, by <strong>usethis</strong>, but manual insertion of the code is faster and more reliable: do not use this command.</p>
+<p></p>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="chap-package.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="co"># usethis::use_rcpp()</span></span></code></pre></div>
+<p></p>
+<p>Building the package will lead to compiling the code: Rtools are therefore essential.</p>
+</div>
+<div id="tidy-package" class="section level3 hasAnchor" number="5.5.5">
+<h3><span class="header-section-number">5.5.5</span> Tidy package<a href="chap-package.html#tidy-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Any modern package must be tidyverse compatible, which requires little effort:</p>
+<ul>
+<li>to allow pipelines, the main argument of functions must be the first one;</li>
+<li>functions that transform data must accept a dataframe or tibble as the first argument and return an object of the same format;</li>
+<li>methods <code>plot()</code> must be doubled with methods <code>autoplot()</code> with the same arguments that produce the same graph with <strong>ggplot2</strong>.</li>
+</ul>
+</div>
+</div>
+<div id="bibliography-1" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Bibliography<a href="chap-package.html#bibliography-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The documentation of a package uses bibliographic references.
+They can be managed automatically with <strong>Rdpack</strong> and <strong>roxygen2</strong>.
+References used in R Markdown files (thumbnail, site produced by <strong>pkgdown</strong>) are not concerned.</p>
+<div id="preparation" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Preparation<a href="chap-package.html#preparation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bibliographic references must be placed in a bibtex file <code>REFERENCES.bib</code> placed in the <code>inst</code> folder.
+This folder contains files that will be placed in the root of the package folder when it is installed.</p>
+<p>Add the following line to <code>DESCRIPTION</code>:</p>
+<pre><code>RdMacros: Rdpack</code></pre>
+<p>Also add the package <code>Rdpack</code> to the list of imported packages:</p>
+<pre><code>Imports: magrittr, stats, Rcpp, Rdpack</code></pre>
+<p>Finally, import the <code>reprompt()</code> function from <strong>Rdpack</strong> by adding the following lines to the documentation for <strong>roxygen2</strong> in <code>package.R</code>:</p>
+<p></p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="chap-package.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @importFrom Rdpack reprompt</span></span></code></pre></div>
+<p></p>
+</div>
+<div id="citations" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Citations<a href="chap-package.html#citations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>References are cited by the command <code>\insertCite{key}{package}</code> in the documentation for <strong>roxygen2</strong>.
+package<code>is the name of the package in which the</code>REFERENCES.bib` file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use <strong>Rdpack</strong>.</p>
+<p>key<code>is the identifier of the reference in the file. The following example[^507] is from the documentation of the **SpatDiv** package hosted on GitHub, in its</code>.R` file:</p>
+<p></p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="chap-package.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; SpatDiv</span></span>
+<span id="cb433-2"><a href="chap-package.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb433-3"><a href="chap-package.html#cb433-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Spatially Explicit Measures of Diversity</span></span>
+<span id="cb433-4"><a href="chap-package.html#cb433-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb433-5"><a href="chap-package.html#cb433-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; This package extends the **entropart** package</span></span>
+<span id="cb433-6"><a href="chap-package.html#cb433-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; \insertCite{Marcon2014c}{SpatDiv}.</span></span>
+<span id="cb433-7"><a href="chap-package.html#cb433-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; It provides spatially explicit measures of </span></span>
+<span id="cb433-8"><a href="chap-package.html#cb433-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; diversity such as the mixing index.</span></span></code></pre></div>
+<p></p>
+<p>The cited reference is in <code>inst/REFERENCES.bib</code>:</p>
+<pre><code>@Article{Marcon2014c,
+  author  = {Marcon, Eric and Herault, Bruno},
+  title   = {entropart, an R Package to Partition 
+             Diversity},
+  journal = {Journal of Statistical Software},
+  year    = {2015},
+  volume  = {67},
+  number  = {8},
+  pages   = {1--26},
+}</code></pre>
+<p>Citations are enclosed in parentheses.
+To place the author’s name outside the parenthesis, add the statement <code>;textual</code>:</p>
+<pre><code>\insertCite{Marcon2014c;textual}{SpatDiv}</code></pre>
+<p>To quote several references (necessarily from the same package), separate them with commas.</p>
+<p>At the end of the documentation of an object using quotes, systematically add a list of references:</p>
+<p></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="chap-package.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @references</span></span>
+<span id="cb436-2"><a href="chap-package.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; \insertAllCited{}</span></span></code></pre></div>
+<p></p>
+</div>
+</div>
+<div id="data" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Data<a href="chap-package.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Data can be embedded in a package, especially for the clarity of the examples.</p>
+<p>The simplest method is to use <strong>usethis</strong>.
+Create variables containing the data to be saved and then save them:</p>
+<p></p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="chap-package.html#cb437-1" aria-hidden="true" tabindex="-1"></a>seq1_10 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb437-2"><a href="chap-package.html#cb437-2" aria-hidden="true" tabindex="-1"></a>seq1_100 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb437-3"><a href="chap-package.html#cb437-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(seq1_10, seq1_100)</span></code></pre></div>
+<p></p>
+<p>An <code>.rda</code> file is created in the <code>data</code> folder for each variable created.
+With the <code>LazyData</code> option enabled in <code>DESCRIPTION</code>, variables will be available as soon as the package is loaded, but will not actually be loaded into memory until after they are used for the first time.</p>
+<p>Each variable must be documented in the <code>package.R</code> file:</p>
+<p></p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="chap-package.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; seq1_10</span></span>
+<span id="cb438-2"><a href="chap-package.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb438-3"><a href="chap-package.html#cb438-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; A sequence of numbers from 1 to 10</span></span>
+<span id="cb438-4"><a href="chap-package.html#cb438-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb438-5"><a href="chap-package.html#cb438-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @format A numeric vector.</span></span>
+<span id="cb438-6"><a href="chap-package.html#cb438-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @source Values computed by the R software, </span></span>
+<span id="cb438-7"><a href="chap-package.html#cb438-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;   \url{https://www.r-project.org/}</span></span>
+<span id="cb438-8"><a href="chap-package.html#cb438-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;seq1_10&quot;</span></span></code></pre></div>
+<p></p>
+<p>The name of the variable is given in quotes after the comment block (instead of the R code of a function).
+<code>@format</code> describes the format of the data and <code>@source</code> is used to indicate its source.</p>
+</div>
+<div id="unit-tests" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Unit tests<a href="chap-package.html#unit-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ideally, all code included in a package should be tested in multiple ways:</p>
+<ul>
+<li>against syntax errors: R’s checking procedures handle this quite well;</li>
+<li>to check the conformity of the computation results to the expected values;</li>
+<li>against the occurrence of errors if users do not use the code as the developer intended (incorrect arguments passed to functions, inadequate data…).</li>
+</ul>
+<p>Unit tests are used for the last two objectives.
+They are based on <strong>testthat</strong> to be integrated in the package:</p>
+<p></p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="chap-package.html#cb439-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_testthat</span>()</span></code></pre></div>
+<p></p>
+<p></p>
+<pre><code>## 
+## Attaching package: &#39;testthat&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:targets&#39;:
+## 
+##     matches</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     matches</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     is_null</code></pre>
+<pre><code>## The following objects are masked from &#39;package:readr&#39;:
+## 
+##     edition_get, local_edition</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     matches</code></pre>
+<p></p>
+<p>The tests must be added as <code>.R' files whose names must begin with</code>test’ in the `tests/testthat’ folder.</p>
+<p>Each test (so the content of each file) starts with its context, i.e. a set of tests. For example, in a file <code>test_double.R</code>:</p>
+<p></p>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="chap-package.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;function double&quot;</span>)</span></code></pre></div>
+<p></p>
+<p>The tests are contained in files that group them by topic, for example <code>test_double.R</code>.
+The name of each test is passed as an argument to the function <code>test_that())</code>:</p>
+<p></p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="chap-package.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;Double values are correct&quot;</span>, {</span>
+<span id="cb447-2"><a href="chap-package.html#cb447-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">skip_on_cran</span>()</span>
+<span id="cb447-3"><a href="chap-package.html#cb447-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="cb447-4"><a href="chap-package.html#cb447-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2 x 2 should be 4</span></span>
+<span id="cb447-5"><a href="chap-package.html#cb447-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_equal</span>(<span class="fu">double</span>(x), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>))</span>
+<span id="cb447-6"><a href="chap-package.html#cb447-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The result should be a number (type = &#39;double&#39;)</span></span>
+<span id="cb447-7"><a href="chap-package.html#cb447-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_type</span>(<span class="fu">double</span>(x), <span class="st">&quot;double&quot;</span>)</span>
+<span id="cb447-8"><a href="chap-package.html#cb447-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Error management</span></span>
+<span id="cb447-9"><a href="chap-package.html#cb447-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_error</span>(<span class="fu">double</span>(<span class="st">&quot;a&quot;</span>))</span>
+<span id="cb447-10"><a href="chap-package.html#cb447-10" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<pre><code>## Test passed 🎊</code></pre>
+<p></p>
+<p>All functions starting with <code>expect</code> allow to compare their first argument to a result: in the above example, the result of <code>double(1:2)</code> must be <code>2 4</code> and the type of this vector must be double precision real.
+The last test checks whether a string passed as an argument generates an error, which is not optimal: if the package handled the error, the returned message could be tested.</p>
+<p>The <code>skip_on_cran()</code> command, to be used systematically, avoids running the tests on CRAN when the package is dropped there: CRAN has limited resources and strictly limits the time for checking packages on its platform.
+The tests will therefore have to be run on GitHub, thanks to continuous integration, see section <a href="chap-package.html#sec:package-ci5">5.10</a>.</p>
+<p>The tests can be launched by the “More &gt; Test package” menu of the <em>Build</em> window or by the <code>devtools::test()</code> command.</p>
+<p>It is advisable to write the tests as soon as a function of the package is stabilized.</p>
+</div>
+<div id="gitignore-file" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> .gitignore file<a href="chap-package.html#gitignore-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>.gitignore</code> file obtained at this stage is incomplete.
+It can be replaced by this one:</p>
+<pre><code># History files
+.Rhistory
+.Rapp.history
+# Session Data files
+.RData
+# Example code in package build process
+*-Ex.R
+# Output files from R CMD build
+/*.tar.gz
+# Output files from R CMD check
+/*.Rcheck/
+# RStudio files
+.Rproj.user/
+.Rprofile
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+# C binaries
+src/*.o
+src/*.so
+src/*.dll
+/src-i386/
+/src-x64/
+# uncomment if pkgdown is run by CI
+# docs/</code></pre>
+<p>The last line is for the <code>docs/</code> folder, which receives the web site produced by <strong>pkgdown</strong>.
+It is commented out as long as the production of the site is done locally, but uncommented if it is entrusted to GitHub Actions (see next section).</p>
+</div>
+<div id="sec:package-ci5" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Continuous integration<a href="chap-package.html#sec:package-ci5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A package check must be done at each step of the development, which consumes a considerable amount of time.
+It can be automated very easily with the GitHub Actions service, triggered at each modification of the repository on GitHub.
+The analysis of the code coverage by tests (which parts of the code are tested or not) will be added.</p>
+<p>GitHub is also able to rebuild the package documentation with <strong>pkgdown</strong>, another resource-consuming operation, after the tests have passed.</p>
+<p>The section <a href="chap-ci.html#sec:package-ci6">6.3.5</a> details how to do this.</p>
+</div>
+<div id="sec:package-cran" class="section level2 hasAnchor" number="5.11">
+<h2><span class="header-section-number">5.11</span> CRAN<a href="chap-package.html#sec:package-cran" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Packages with an audience beyond the author’s circle can be uploaded to CRAN.
+The rules to respect on CRAN are numerous <a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>. They are checked by the <code>R CMD check</code> command with the <code>-- as.cran</code> option.
+The check must not return any errors, warnings, or notes before submitting the package.</p>
+<div id="testing-the-package" class="section level3 hasAnchor" number="5.11.1">
+<h3><span class="header-section-number">5.11.1</span> Testing the package<a href="chap-package.html#testing-the-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Verification of the package by GitHub as part of continuous integration is not sufficient.
+The package must be tested on the development version of R.
+The <em>R-hub builder</em><a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a> site allows to do it easily.</p>
+<p>The package, which must not be a development version (limited to three numbers, see section <a href="chap-package.html#sec:package-description">5.2.1</a>), must be built in source format: in the <em>Build</em> window of RStudio, click on “More &gt; Build Source Package”.
+On the <em>R-hub builder</em> site, click on “Advanced”, select the package source file and the test platform: <em>Debian Linux, R-devel, GCC</em>.</p>
+<p>The <strong>rhub</strong> package allows you to use the same verification platform as the <em>R-hub builder</em> site from RStudio.
+The first step is to validate your email address with the <code>validate_email()</code> command.
+Then, just call the <code>check_for_cran()</code> function to run a full verification.</p>
+</div>
+<div id="submission" class="section level3 hasAnchor" number="5.11.2">
+<h3><span class="header-section-number">5.11.2</span> Submission<a href="chap-package.html#submission" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the package is ready, submission to CRAN is done through the dedicated web site<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a>.</p>
+<p>In case of rejection, process the requests and resubmit by incrementing the version number.</p>
+</div>
+<div id="maintenance" class="section level3 hasAnchor" number="5.11.3">
+<h3><span class="header-section-number">5.11.3</span> Maintenance<a href="chap-package.html#maintenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Requests for corrections are sent by CRAN from time to time, especially when the version of R changes.
+The email address of the package maintainer (<em>maintainer</em>) must remain valid and the requests must be processed quickly.
+Otherwise, the package is archived.</p>
+<p>New versions of the package are submitted in the same way as the first one.</p>
+
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Wickham2015" class="csl-entry">
+———. 2015. <em>R Packages</em>. 1st ed. <span>O’Reilly Media, Inc.</span>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="91">
+<li id="fn91"><p><a href="https://cran.r-project.org/web/packages/policies.html" class="uri">https://cran.r-project.org/web/packages/policies.html</a><a href="chap-package.html#fnref91" class="footnote-back">↩︎</a></p></li>
+<li id="fn92"><p><a href="https://thinkr.fr/creer-package-r-quelques-minutes/" class="uri">https://thinkr.fr/creer-package-r-quelques-minutes/</a><a href="chap-package.html#fnref92" class="footnote-back">↩︎</a></p></li>
+<li id="fn93"><p><a href="https://roxygen2.r-lib.org/articles/markdown.html" class="uri">https://roxygen2.r-lib.org/articles/markdown.html</a><a href="chap-package.html#fnref93" class="footnote-back">↩︎</a></p></li>
+<li id="fn94"><p><a href="https://svn.r-project.org/R/trunk/share/licenses/license.db" class="uri">https://svn.r-project.org/R/trunk/share/licenses/license.db</a><a href="chap-package.html#fnref94" class="footnote-back">↩︎</a></p></li>
+<li id="fn95"><p><a href="https://r-pkgs.org/description.html#description-license" class="uri">https://r-pkgs.org/description.html#description-license</a><a href="chap-package.html#fnref95" class="footnote-back">↩︎</a></p></li>
+<li id="fn96"><p>Example: <a href="https://EricMarcon.github.io/entropart/" class="uri">https://EricMarcon.github.io/entropart/</a><a href="chap-package.html#fnref96" class="footnote-back">↩︎</a></p></li>
+<li id="fn97"><p>L’application Shiny <strong>hexmake</strong> permet de créer facilement un sticker: <a href="https://connect.thinkr.fr/hexmake/" class="uri">https://connect.thinkr.fr/hexmake/</a><a href="chap-package.html#fnref97" class="footnote-back">↩︎</a></p></li>
+<li id="fn98"><p><a href="https://r-pkgs.org/release.html?q=readme#readme-rmd" class="uri">https://r-pkgs.org/release.html?q=readme#readme-rmd</a><a href="chap-package.html#fnref98" class="footnote-back">↩︎</a></p></li>
+<li id="fn99"><p><a href="https://cran.r-project.org/web/packages/policies.html" class="uri">https://cran.r-project.org/web/packages/policies.html</a><a href="chap-package.html#fnref99" class="footnote-back">↩︎</a></p></li>
+<li id="fn100"><p><a href="https://builder.r-hub.io/" class="uri">https://builder.r-hub.io/</a><a href="chap-package.html#fnref100" class="footnote-back">↩︎</a></p></li>
+<li id="fn101"><p><a href="https://xmpalantir.wu.ac.at/cransubmit/" class="uri">https://xmpalantir.wu.ac.at/cransubmit/</a><a href="chap-package.html#fnref101" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-rediger.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-ci.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["WwR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

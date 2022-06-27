@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Git and GitHub | Working with R</title>
+  <meta name="description" content="Organization of work around R and RStudio" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Git and GitHub | Working with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Organization of work around R and RStudio" />
+  <meta name="github-repo" content="EricMarcon/WorkingWithR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Git and GitHub | Working with R" />
+  
+  <meta name="twitter:description" content="Organization of work around R and RStudio" />
+  
+
+<meta name="author" content="Eric Marcon" />
+
+
+<meta name="date" content="2022-06-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-utiliseR.html"/>
+<link rel="next" href="chap-rediger.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
+<script src="libs/vis-9.1.0/vis-network.min.js"></script>
+<script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7NVD1TWMCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7NVD1TWMCJ');
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Working With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Présentation</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objectives"><i class="fa fa-check"></i>Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i>Conventions</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap-logiciels.html"><a href="chap-logiciels.html"><i class="fa fa-check"></i><b>1</b> Software</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation"><i class="fa fa-check"></i><b>1.1.1</b> Installation</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#rtools"><i class="fa fa-check"></i><b>1.1.2</b> Rtools</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#update"><i class="fa fa-check"></i><b>1.1.3</b> Update</a></li>
+<li class="chapter" data-level="1.1.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:librairies"><i class="fa fa-check"></i><b>1.1.4</b> Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-1"><i class="fa fa-check"></i><b>1.2.1</b> Installation</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#file-encoding"><i class="fa fa-check"></i><b>1.2.2</b> File encoding</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#working-folder"><i class="fa fa-check"></i><b>1.2.3</b> Working folder</a></li>
+<li class="chapter" data-level="1.2.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:solution-dossiers"><i class="fa fa-check"></i><b>1.2.4</b> Solution chosen</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#packages"><i class="fa fa-check"></i><b>1.3</b> Packages</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-cran"><i class="fa fa-check"></i><b>1.3.1</b> Installation from CRAN</a></li>
+<li class="chapter" data-level="1.3.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-github"><i class="fa fa-check"></i><b>1.3.2</b> Installation from GitHub</a></li>
+<li class="chapter" data-level="1.3.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#installation-from-bioconductor"><i class="fa fa-check"></i><b>1.3.3</b> Installation from Bioconductor</a></li>
+<li class="chapter" data-level="1.3.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#selected-solution"><i class="fa fa-check"></i><b>1.3.4</b> Selected solution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> git and GitHub</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#git"><i class="fa fa-check"></i><b>1.4.1</b> git</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#github"><i class="fa fa-check"></i><b>1.4.2</b> GitHub</a></li>
+<li class="chapter" data-level="1.4.3" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:SSH"><i class="fa fa-check"></i><b>1.4.3</b> SSH authentication</a></li>
+<li class="chapter" data-level="1.4.4" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:pat"><i class="fa fa-check"></i><b>1.4.4</b> Obtaining a personal access token</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="chap-logiciels.html"><a href="chap-logiciels.html#latex-compiler"><i class="fa fa-check"></i><b>1.5</b> LaTeX compiler</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="chap-logiciels.html"><a href="chap-logiciels.html#tinytex"><i class="fa fa-check"></i><b>1.5.1</b> tinytex</a></li>
+<li class="chapter" data-level="1.5.2" data-path="chap-logiciels.html"><a href="chap-logiciels.html#miktex"><i class="fa fa-check"></i><b>1.5.2</b> MiKTeX</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="chap-logiciels.html"><a href="chap-logiciels.html#sec:Zotero"><i class="fa fa-check"></i><b>1.6</b> Zotero</a></li>
+<li class="chapter" data-level="1.7" data-path="chap-logiciels.html"><a href="chap-logiciels.html#go"><i class="fa fa-check"></i><b>1.7</b> Go</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html"><i class="fa fa-check"></i><b>2</b> Use R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#the-languages-of-r"><i class="fa fa-check"></i><b>2.1</b> The languages of R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#base"><i class="fa fa-check"></i><b>2.1.1</b> Base</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:S3"><i class="fa fa-check"></i><b>2.1.2</b> S3</a></li>
+<li class="chapter" data-level="2.1.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#s4"><i class="fa fa-check"></i><b>2.1.3</b> S4</a></li>
+<li class="chapter" data-level="2.1.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rc"><i class="fa fa-check"></i><b>2.1.4</b> RC</a></li>
+<li class="chapter" data-level="2.1.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#s6"><i class="fa fa-check"></i><b>2.1.5</b> S6</a></li>
+<li class="chapter" data-level="2.1.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#tidyverse"><i class="fa fa-check"></i><b>2.1.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:environnements"><i class="fa fa-check"></i><b>2.2</b> Environments</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#organization"><i class="fa fa-check"></i><b>2.2.1</b> Organization</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#search"><i class="fa fa-check"></i><b>2.2.2</b> Search</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#espaces-de-nom-des-packages"><i class="fa fa-check"></i><b>2.2.3</b> Espaces de nom des packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#measuring-execution-time"><i class="fa fa-check"></i><b>2.3</b> Measuring execution time</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#system.time"><i class="fa fa-check"></i><b>2.3.1</b> system.time</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#microbenchmark"><i class="fa fa-check"></i><b>2.3.2</b> microbenchmark</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#profiling"><i class="fa fa-check"></i><b>2.3.3</b> Profiling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#loops"><i class="fa fa-check"></i><b>2.4</b> Loops</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#vector-functions"><i class="fa fa-check"></i><b>2.4.1</b> Vector functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#lapply"><i class="fa fa-check"></i><b>2.4.2</b> lapply</a></li>
+<li class="chapter" data-level="2.4.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#for-loops"><i class="fa fa-check"></i><b>2.4.3</b> For loops</a></li>
+<li class="chapter" data-level="2.4.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#replicate"><i class="fa fa-check"></i><b>2.4.4</b> replicate</a></li>
+<li class="chapter" data-level="2.4.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#vectorize"><i class="fa fa-check"></i><b>2.4.5</b> Vectorize</a></li>
+<li class="chapter" data-level="2.4.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#marginal-statistics"><i class="fa fa-check"></i><b>2.4.6</b> Marginal statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:cpp"><i class="fa fa-check"></i><b>2.5</b> C++ code</a></li>
+<li class="chapter" data-level="2.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#parallelizing-r"><i class="fa fa-check"></i><b>2.6</b> Parallelizing R</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#mclapply-fork"><i class="fa fa-check"></i><b>2.6.1</b> mclapply (fork)</a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#parlapply-socket"><i class="fa fa-check"></i><b>2.6.2</b> parLapply (socket)</a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#foreach"><i class="fa fa-check"></i><b>2.6.3</b> foreach</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:cas"><i class="fa fa-check"></i><b>2.7</b> Case study</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#creation-of-the-data"><i class="fa fa-check"></i><b>2.7.1</b> Creation of the data</a></li>
+<li class="chapter" data-level="2.7.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#spatstat"><i class="fa fa-check"></i><b>2.7.2</b> Spatstat</a></li>
+<li class="chapter" data-level="2.7.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#apply"><i class="fa fa-check"></i><b>2.7.3</b> apply</a></li>
+<li class="chapter" data-level="2.7.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-for"><i class="fa fa-check"></i><b>2.7.4</b> boucle for</a></li>
+<li class="chapter" data-level="2.7.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-foreach"><i class="fa fa-check"></i><b>2.7.5</b> boucle foreach</a></li>
+<li class="chapter" data-level="2.7.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcpp"><i class="fa fa-check"></i><b>2.7.6</b> RCpp</a></li>
+<li class="chapter" data-level="2.7.7" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcppparallel"><i class="fa fa-check"></i><b>2.7.7</b> RcppParallel</a></li>
+<li class="chapter" data-level="2.7.8" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#conclusions-on-code-speed-optimization"><i class="fa fa-check"></i><b>2.7.8</b> Conclusions on code speed optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#sec:targets"><i class="fa fa-check"></i><b>2.8</b> Workflow</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#how-it-works-1"><i class="fa fa-check"></i><b>2.8.1</b> How it works</a></li>
+<li class="chapter" data-level="2.8.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#minimal-example"><i class="fa fa-check"></i><b>2.8.2</b> Minimal example</a></li>
+<li class="chapter" data-level="2.8.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#practical-interest"><i class="fa fa-check"></i><b>2.8.3</b> Practical interest</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-git.html"><a href="chap-git.html"><i class="fa fa-check"></i><b>3</b> Git and GitHub</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chap-git.html"><a href="chap-git.html#sec:principes-git"><i class="fa fa-check"></i><b>3.1</b> Principles</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chap-git.html"><a href="chap-git.html#sec:git-cds"><i class="fa fa-check"></i><b>3.1.1</b> Source control</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap-git.html"><a href="chap-git.html#git-and-github-1"><i class="fa fa-check"></i><b>3.1.2</b> git and GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap-git.html"><a href="chap-git.html#sec:creerdepot"><i class="fa fa-check"></i><b>3.2</b> Create a new repository</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="chap-git.html"><a href="chap-git.html#from-an-existing-project"><i class="fa fa-check"></i><b>3.2.1</b> From an existing project</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chap-git.html"><a href="chap-git.html#taking-files-into-account"><i class="fa fa-check"></i><b>3.2.2</b> Taking files into account</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chap-git.html"><a href="chap-git.html#committing-changes"><i class="fa fa-check"></i><b>3.2.3</b> Committing changes</a></li>
+<li class="chapter" data-level="3.2.4" data-path="chap-git.html"><a href="chap-git.html#create-an-empty-repository-on-github"><i class="fa fa-check"></i><b>3.2.4</b> Create an empty repository on GitHub</a></li>
+<li class="chapter" data-level="3.2.5" data-path="chap-git.html"><a href="chap-git.html#linking-git-and-github"><i class="fa fa-check"></i><b>3.2.5</b> Linking git and GitHub</a></li>
+<li class="chapter" data-level="3.2.6" data-path="chap-git.html"><a href="chap-git.html#push-the-first-modifications"><i class="fa fa-check"></i><b>3.2.6</b> Push the first modifications</a></li>
+<li class="chapter" data-level="3.2.7" data-path="chap-git.html"><a href="chap-git.html#clone-a-repository-from-github"><i class="fa fa-check"></i><b>3.2.7</b> Clone a repository from GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap-git.html"><a href="chap-git.html#common-usage"><i class="fa fa-check"></i><b>3.3</b> Common usage</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="chap-git.html"><a href="chap-git.html#pull-modify-commit-push"><i class="fa fa-check"></i><b>3.3.1</b> Pull, modify, commit, push</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chap-git.html"><a href="chap-git.html#resolve-conflicts"><i class="fa fa-check"></i><b>3.3.2</b> Resolve conflicts</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chap-git.html"><a href="chap-git.html#see-the-differences"><i class="fa fa-check"></i><b>3.3.3</b> See the differences</a></li>
+<li class="chapter" data-level="3.3.4" data-path="chap-git.html"><a href="chap-git.html#revert"><i class="fa fa-check"></i><b>3.3.4</b> Revert</a></li>
+<li class="chapter" data-level="3.3.5" data-path="chap-git.html"><a href="chap-git.html#view-history"><i class="fa fa-check"></i><b>3.3.5</b> View history</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap-git.html"><a href="chap-git.html#sec:branches"><i class="fa fa-check"></i><b>3.4</b> Branches</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chap-git.html"><a href="chap-git.html#create-a-new-branch"><i class="fa fa-check"></i><b>3.4.1</b> Create a new branch</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chap-git.html"><a href="chap-git.html#change-branch"><i class="fa fa-check"></i><b>3.4.2</b> Change branch</a></li>
+<li class="chapter" data-level="3.4.3" data-path="chap-git.html"><a href="chap-git.html#pushing-the-new-branch"><i class="fa fa-check"></i><b>3.4.3</b> Pushing the new branch</a></li>
+<li class="chapter" data-level="3.4.4" data-path="chap-git.html"><a href="chap-git.html#filesystem-behavior"><i class="fa fa-check"></i><b>3.4.4</b> Filesystem behavior</a></li>
+<li class="chapter" data-level="3.4.5" data-path="chap-git.html"><a href="chap-git.html#merge-with-merge"><i class="fa fa-check"></i><b>3.4.5</b> Merge with `merge</a></li>
+<li class="chapter" data-level="3.4.6" data-path="chap-git.html"><a href="chap-git.html#merging-with-a-pull-request"><i class="fa fa-check"></i><b>3.4.6</b> Merging with a pull request</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chap-git.html"><a href="chap-git.html#advanced-usage"><i class="fa fa-check"></i><b>3.5</b> Advanced usage</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="chap-git.html"><a href="chap-git.html#git-commands"><i class="fa fa-check"></i><b>3.5.1</b> Git commands</a></li>
+<li class="chapter" data-level="3.5.2" data-path="chap-git.html"><a href="chap-git.html#size-of-a-repository"><i class="fa fa-check"></i><b>3.5.2</b> Size of a repository</a></li>
+<li class="chapter" data-level="3.5.3" data-path="chap-git.html"><a href="chap-git.html#delete-a-folder"><i class="fa fa-check"></i><b>3.5.3</b> Delete a folder</a></li>
+<li class="chapter" data-level="3.5.4" data-path="chap-git.html"><a href="chap-git.html#revert-1"><i class="fa fa-check"></i><b>3.5.4</b> Revert</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="chap-git.html"><a href="chap-git.html#sec:confidential"><i class="fa fa-check"></i><b>3.6</b> Confidential data in a public repository</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="chap-git.html"><a href="chap-git.html#generating-a-key-pair-for-the-project-owner"><i class="fa fa-check"></i><b>3.6.1</b> Generating a key pair for the project owner</a></li>
+<li class="chapter" data-level="3.6.2" data-path="chap-git.html"><a href="chap-git.html#generating-a-key-pair-for-the-project"><i class="fa fa-check"></i><b>3.6.2</b> Generating a key pair for the project</a></li>
+<li class="chapter" data-level="3.6.3" data-path="chap-git.html"><a href="chap-git.html#creating-a-safe"><i class="fa fa-check"></i><b>3.6.3</b> Creating a safe</a></li>
+<li class="chapter" data-level="3.6.4" data-path="chap-git.html"><a href="chap-git.html#adding-users"><i class="fa fa-check"></i><b>3.6.4</b> Adding users</a></li>
+<li class="chapter" data-level="3.6.5" data-path="chap-git.html"><a href="chap-git.html#storing-the-data"><i class="fa fa-check"></i><b>3.6.5</b> Storing the data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="chap-git.html"><a href="chap-git.html#sec:github-pages"><i class="fa fa-check"></i><b>3.7</b> GitHub pages</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="chap-git.html"><a href="chap-git.html#activation"><i class="fa fa-check"></i><b>3.7.1</b> Activation</a></li>
+<li class="chapter" data-level="3.7.2" data-path="chap-git.html"><a href="chap-git.html#badges"><i class="fa fa-check"></i><b>3.7.2</b> Badges</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-rediger.html"><a href="chap-rediger.html"><i class="fa fa-check"></i><b>4</b> Writing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-rediger.html"><a href="chap-rediger.html#markdown-notebook-r-notebook"><i class="fa fa-check"></i><b>4.1</b> Markdown notebook (R Notebook)</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-rediger.html"><a href="chap-rediger.html#r-markdown-templates"><i class="fa fa-check"></i><b>4.2</b> R Markdown templates</a></li>
+<li class="chapter" data-level="4.3" data-path="chap-rediger.html"><a href="chap-rediger.html#articles-with-bookdown"><i class="fa fa-check"></i><b>4.3</b> Articles with bookdown</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="chap-rediger.html"><a href="chap-rediger.html#writing"><i class="fa fa-check"></i><b>4.3.1</b> Writing</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:memo"><i class="fa fa-check"></i><b>4.3.2</b> Simple Article template</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chap-rediger.html"><a href="chap-rediger.html#other-templates"><i class="fa fa-check"></i><b>4.3.3</b> Other templates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chap-rediger.html"><a href="chap-rediger.html#beamer-presentation"><i class="fa fa-check"></i><b>4.4</b> Beamer Presentation</a></li>
+<li class="chapter" data-level="4.5" data-path="chap-rediger.html"><a href="chap-rediger.html#memoir"><i class="fa fa-check"></i><b>4.5</b> memoir</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-rediger.html"><a href="chap-rediger.html#create-1"><i class="fa fa-check"></i><b>4.5.1</b> Create</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-rediger.html"><a href="chap-rediger.html#write-1"><i class="fa fa-check"></i><b>4.5.2</b> Write</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-rediger.html"><a href="chap-rediger.html#knit-1"><i class="fa fa-check"></i><b>4.5.3</b> Knit</a></li>
+<li class="chapter" data-level="4.5.4" data-path="chap-rediger.html"><a href="chap-rediger.html#finishing"><i class="fa fa-check"></i><b>4.5.4</b> Finishing</a></li>
+<li class="chapter" data-level="4.5.5" data-path="chap-rediger.html"><a href="chap-rediger.html#gitbook-site"><i class="fa fa-check"></i><b>4.5.5</b> Gitbook site</a></li>
+<li class="chapter" data-level="4.5.6" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:rediger-ouvrage-ci"><i class="fa fa-check"></i><b>4.5.6</b> Continuous integration</a></li>
+<li class="chapter" data-level="4.5.7" data-path="chap-rediger.html"><a href="chap-rediger.html#google-analytics"><i class="fa fa-check"></i><b>4.5.7</b> Google Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="chap-rediger.html"><a href="chap-rediger.html#r-markdown-web-site"><i class="fa fa-check"></i><b>4.6</b> R Markdown web site</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="chap-rediger.html"><a href="chap-rediger.html#template"><i class="fa fa-check"></i><b>4.6.1</b> Template</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chap-rediger.html"><a href="chap-rediger.html#improvements"><i class="fa fa-check"></i><b>4.6.2</b> Improvements</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control"><i class="fa fa-check"></i><b>4.6.3</b> Source control</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:blogdown"><i class="fa fa-check"></i><b>4.7</b> Personal web site: blogdown</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="chap-rediger.html"><a href="chap-rediger.html#installing-the-tools"><i class="fa fa-check"></i><b>4.7.1</b> Installing the tools</a></li>
+<li class="chapter" data-level="4.7.2" data-path="chap-rediger.html"><a href="chap-rediger.html#create-2"><i class="fa fa-check"></i><b>4.7.2</b> Create</a></li>
+<li class="chapter" data-level="4.7.3" data-path="chap-rediger.html"><a href="chap-rediger.html#building-the-site"><i class="fa fa-check"></i><b>4.7.3</b> Building the site</a></li>
+<li class="chapter" data-level="4.7.4" data-path="chap-rediger.html"><a href="chap-rediger.html#multilingual-site"><i class="fa fa-check"></i><b>4.7.4</b> Multilingual site</a></li>
+<li class="chapter" data-level="4.7.5" data-path="chap-rediger.html"><a href="chap-rediger.html#set-up"><i class="fa fa-check"></i><b>4.7.5</b> Set up</a></li>
+<li class="chapter" data-level="4.7.6" data-path="chap-rediger.html"><a href="chap-rediger.html#write-2"><i class="fa fa-check"></i><b>4.7.6</b> Write</a></li>
+<li class="chapter" data-level="4.7.7" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:rediger-web-ci"><i class="fa fa-check"></i><b>4.7.7</b> Continuous integration</a></li>
+<li class="chapter" data-level="4.7.8" data-path="chap-rediger.html"><a href="chap-rediger.html#updates-1"><i class="fa fa-check"></i><b>4.7.8</b> Updates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="chap-rediger.html"><a href="chap-rediger.html#exporting-figures"><i class="fa fa-check"></i><b>4.8</b> Exporting figures</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="chap-rediger.html"><a href="chap-rediger.html#vector-and-raster-formats"><i class="fa fa-check"></i><b>4.8.1</b> Vector and Raster Formats</a></li>
+<li class="chapter" data-level="4.8.2" data-path="chap-rediger.html"><a href="chap-rediger.html#functions"><i class="fa fa-check"></i><b>4.8.2</b> Functions</a></li>
+<li class="chapter" data-level="4.8.3" data-path="chap-rediger.html"><a href="chap-rediger.html#ragg-package"><i class="fa fa-check"></i><b>4.8.3</b> ragg package</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="chap-rediger.html"><a href="chap-rediger.html#sec:targetsmd"><i class="fa fa-check"></i><b>4.9</b> Workflow</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-the-workflow"><i class="fa fa-check"></i><b>4.9.1</b> Declaration of the workflow</a></li>
+<li class="chapter" data-level="4.9.2" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-targets"><i class="fa fa-check"></i><b>4.9.2</b> Declaration of targets</a></li>
+<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-flow"><i class="fa fa-check"></i><b>4.9.3</b> Running the flow</a></li>
+<li class="chapter" data-level="4.9.4" data-path="chap-rediger.html"><a href="chap-rediger.html#using-the-results"><i class="fa fa-check"></i><b>4.9.4</b> Using the results</a></li>
+<li class="chapter" data-level="4.9.5" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control-1"><i class="fa fa-check"></i><b>4.9.5</b> Source control</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-package.html"><a href="chap-package.html"><i class="fa fa-check"></i><b>5</b> Package</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-package.html"><a href="chap-package.html#first-package"><i class="fa fa-check"></i><b>5.1</b> First package</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="chap-package.html"><a href="chap-package.html#creation"><i class="fa fa-check"></i><b>5.1.1</b> Creation</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap-package.html"><a href="chap-package.html#first-function"><i class="fa fa-check"></i><b>5.1.2</b> First function</a></li>
+<li class="chapter" data-level="5.1.3" data-path="chap-package.html"><a href="chap-package.html#sec:package-cds"><i class="fa fa-check"></i><b>5.1.3</b> Source control</a></li>
+<li class="chapter" data-level="5.1.4" data-path="chap-package.html"><a href="chap-package.html#package.r"><i class="fa fa-check"></i><b>5.1.4</b> package.R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="chap-package.html"><a href="chap-package.html#package-organization"><i class="fa fa-check"></i><b>5.2</b> Package organization</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-package.html"><a href="chap-package.html#sec:package-description"><i class="fa fa-check"></i><b>5.2.1</b> DESCRIPTION file</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-package.html"><a href="chap-package.html#news.md-file"><i class="fa fa-check"></i><b>5.2.2</b> NEWS.md file</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-package.html"><a href="chap-package.html#vignette"><i class="fa fa-check"></i><b>5.3</b> Vignette</a></li>
+<li class="chapter" data-level="5.4" data-path="chap-package.html"><a href="chap-package.html#pkgdown"><i class="fa fa-check"></i><b>5.4</b> pkgdown</a></li>
+<li class="chapter" data-level="5.5" data-path="chap-package.html"><a href="chap-package.html#package-specific-code"><i class="fa fa-check"></i><b>5.5</b> Package specific code</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-package.html"><a href="chap-package.html#importing-functions"><i class="fa fa-check"></i><b>5.5.1</b> Importing functions</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-package.html"><a href="chap-package.html#s3-methods"><i class="fa fa-check"></i><b>5.5.2</b> S3 methods</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-package.html"><a href="chap-package.html#in-practice"><i class="fa fa-check"></i><b>5.5.3</b> In practice</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-package.html"><a href="chap-package.html#c-code"><i class="fa fa-check"></i><b>5.5.4</b> C++ code</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-package.html"><a href="chap-package.html#tidy-package"><i class="fa fa-check"></i><b>5.5.5</b> Tidy package</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-package.html"><a href="chap-package.html#bibliography-1"><i class="fa fa-check"></i><b>5.6</b> Bibliography</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="chap-package.html"><a href="chap-package.html#preparation"><i class="fa fa-check"></i><b>5.6.1</b> Preparation</a></li>
+<li class="chapter" data-level="5.6.2" data-path="chap-package.html"><a href="chap-package.html#citations"><i class="fa fa-check"></i><b>5.6.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="chap-package.html"><a href="chap-package.html#data"><i class="fa fa-check"></i><b>5.7</b> Data</a></li>
+<li class="chapter" data-level="5.8" data-path="chap-package.html"><a href="chap-package.html#unit-tests"><i class="fa fa-check"></i><b>5.8</b> Unit tests</a></li>
+<li class="chapter" data-level="5.9" data-path="chap-package.html"><a href="chap-package.html#gitignore-file"><i class="fa fa-check"></i><b>5.9</b> .gitignore file</a></li>
+<li class="chapter" data-level="5.10" data-path="chap-package.html"><a href="chap-package.html#sec:package-ci5"><i class="fa fa-check"></i><b>5.10</b> Continuous integration</a></li>
+<li class="chapter" data-level="5.11" data-path="chap-package.html"><a href="chap-package.html#sec:package-cran"><i class="fa fa-check"></i><b>5.11</b> CRAN</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="chap-package.html"><a href="chap-package.html#testing-the-package"><i class="fa fa-check"></i><b>5.11.1</b> Testing the package</a></li>
+<li class="chapter" data-level="5.11.2" data-path="chap-package.html"><a href="chap-package.html#submission"><i class="fa fa-check"></i><b>5.11.2</b> Submission</a></li>
+<li class="chapter" data-level="5.11.3" data-path="chap-package.html"><a href="chap-package.html#maintenance"><i class="fa fa-check"></i><b>5.11.3</b> Maintenance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-ci.html"><a href="chap-ci.html"><i class="fa fa-check"></i><b>6</b> Continuous integration</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-ci.html"><a href="chap-ci.html#tools"><i class="fa fa-check"></i><b>6.1</b> Tools</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-ci.html"><a href="chap-ci.html#github-actions"><i class="fa fa-check"></i><b>6.1.1</b> GitHub Actions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-ci.html"><a href="chap-ci.html#codecov"><i class="fa fa-check"></i><b>6.1.2</b> Codecov</a></li>
+<li class="chapter" data-level="6.1.3" data-path="chap-ci.html"><a href="chap-ci.html#github-pages"><i class="fa fa-check"></i><b>6.1.3</b> GitHub Pages</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-ci.html"><a href="chap-ci.html#principles"><i class="fa fa-check"></i><b>6.2</b> Principles</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="chap-ci.html"><a href="chap-ci.html#getting-a-personal-access-token"><i class="fa fa-check"></i><b>6.2.1</b> Getting a personal access token</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap-ci.html"><a href="chap-ci.html#sec:secrets-ci"><i class="fa fa-check"></i><b>6.2.2</b> Project secrets</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap-ci.html"><a href="chap-ci.html#activation-of-the-repository-on-codecov"><i class="fa fa-check"></i><b>6.2.3</b> Activation of the repository on CodeCov</a></li>
+<li class="chapter" data-level="6.2.4" data-path="chap-ci.html"><a href="chap-ci.html#scripting-github-actions"><i class="fa fa-check"></i><b>6.2.4</b> Scripting GitHub actions</a></li>
+<li class="chapter" data-level="6.2.5" data-path="chap-ci.html"><a href="chap-ci.html#sec:confidentielCI"><i class="fa fa-check"></i><b>6.2.5</b> Confidential data in a public repository</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap-ci.html"><a href="chap-ci.html#script-templates"><i class="fa fa-check"></i><b>6.3</b> Script templates</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chap-ci.html"><a href="chap-ci.html#sec:memoiR-ci"><i class="fa fa-check"></i><b>6.3.1</b> memoiR</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-ci.html"><a href="chap-ci.html#sec:bookdown-ci"><i class="fa fa-check"></i><b>6.3.2</b> Book or thesis</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-ci.html"><a href="chap-ci.html#articles-or-slideshows"><i class="fa fa-check"></i><b>6.3.3</b> Articles or slideshows</a></li>
+<li class="chapter" data-level="6.3.4" data-path="chap-ci.html"><a href="chap-ci.html#sec:blogdown-ci"><i class="fa fa-check"></i><b>6.3.4</b> Blogdown website</a></li>
+<li class="chapter" data-level="6.3.5" data-path="chap-ci.html"><a href="chap-ci.html#sec:package-ci6"><i class="fa fa-check"></i><b>6.3.5</b> R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap-ci.html"><a href="chap-ci.html#sec:ci-badges"><i class="fa fa-check"></i><b>6.4</b> Add badges</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-shiny.html"><a href="chap-shiny.html"><i class="fa fa-check"></i><b>7</b> Shiny</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chap-shiny.html"><a href="chap-shiny.html#first-application"><i class="fa fa-check"></i><b>7.1</b> First application</a></li>
+<li class="chapter" data-level="7.2" data-path="chap-shiny.html"><a href="chap-shiny.html#more-elaborate-application"><i class="fa fa-check"></i><b>7.2</b> More elaborate application</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="chap-shiny.html"><a href="chap-shiny.html#working-method"><i class="fa fa-check"></i><b>7.2.1</b> Working method</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap-shiny.html"><a href="chap-shiny.html#example"><i class="fa fa-check"></i><b>7.2.2</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chap-shiny.html"><a href="chap-shiny.html#sec:hebergement-shiny"><i class="fa fa-check"></i><b>7.3</b> Hosting</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-enseigner.html"><a href="chap-enseigner.html"><i class="fa fa-check"></i><b>8</b> Teaching with R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#learnr"><i class="fa fa-check"></i><b>8.1</b> learnr</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#first-tutorial"><i class="fa fa-check"></i><b>8.1.1</b> First tutorial</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#broadcasting"><i class="fa fa-check"></i><b>8.1.2</b> Broadcasting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#github-classrooms"><i class="fa fa-check"></i><b>8.2</b> GitHub Classrooms</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#registration"><i class="fa fa-check"></i><b>8.2.1</b> Registration</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#organizations"><i class="fa fa-check"></i><b>8.2.2</b> Organizations</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chap-enseigner.html"><a href="chap-enseigner.html#new-classroom"><i class="fa fa-check"></i><b>8.2.3</b> New Classroom</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chap-enseigner.html"><a href="chap-enseigner.html#prepare-a-repository-template"><i class="fa fa-check"></i><b>8.2.4</b> Prepare a repository template</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li>
+  <a href="https://github.com/EricMarcon/WorkingWithR" target="blank">
+    Hosted on GitHub, published with bookdown
+  </a>
+</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Working with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-git" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Git and GitHub<a href="chap-git.html#chap-git" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Source control consists in recording all the modifications made on the tracked files.
+The advantages are numerous: traceability and security of the project, possibility to collaborate efficiently, to go back, to try new developments without jeopardizing the stable version…</p>
+<div id="sec:principes-git" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Principles<a href="chap-git.html#sec:principes-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sec:git-cds" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Source control<a href="chap-git.html#sec:git-cds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The standard tool today is <em>git</em>.</p>
+<p>The git commands can be executed in the RStudio terminal.</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-Status"></span>
+<img src="images/git-Status.png" alt="Screenshot of the RStudio terminal. The git status command, which is supposed to describe the state of the repository, returns an error if the R project is not under source control." width="80%" />
+<p class="caption">
+Figure 3.1: Screenshot of the RStudio terminal. The <code>git status</code> command, which is supposed to describe the state of the repository, returns an error if the R project is not under source control.
+</p>
+</div>
+<p></p>
+<p>The <code>git status</code> command (figure <a href="chap-git.html#fig:git-Status">3.1</a>) returns the status of the repository (<em>repository</em>), that is, the set of data managed by git to track the current project.</p>
+<p>RStudio integrates a graphical interface for git that is sufficient to do without the command line for standard use, presented here.</p>
+</div>
+<div id="git-and-github-1" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> git and GitHub<a href="chap-git.html#git-and-github-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>git</em> is the software installed on the workstation.</p>
+<p><em>GitHub</em> is a platform, accessible via the web<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>, which allows to share the content of git repositories (to work with several people) and to share documentation in the form of a web site (<em>GitHub Pages</em>).</p>
+<p>As GitHub allows at least the backup of git repositories, the two are always used together.
+GitHub is not the only platform that can be used but the main one.
+Alternatives are Bitbucket<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a> and GitLab<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a> for example.</p>
+</div>
+</div>
+<div id="sec:creerdepot" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Create a new repository<a href="chap-git.html#sec:creerdepot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="from-an-existing-project" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> From an existing project<a href="chap-git.html#from-an-existing-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In an existing R project, enable source control in the project options (figure <a href="chap-git.html#fig:git-Project">3.2</a>).
+The command executed is <code>git init</code>.
+Restart RStudio on demand.</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-Project"></span>
+<img src="images/git-Project.png" alt="Activation du contrôle de source dans le menu “Tools &gt; Project Options…”." width="80%" />
+<p class="caption">
+Figure 3.2: Activation du contrôle de source dans le menu “Tools &gt; Project Options…”.
+</p>
+</div>
+<p></p>
+<p>A new <em>Git</em> window appears in the upper right panel.
+It contains the list of project files (figure <a href="chap-git.html#fig:git-Fichiers">3.3</a>).</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-Fichiers"></span>
+<img src="images/git-Fichiers.png" alt="Project files, not yet taken into account by git." width="80%" />
+<p class="caption">
+Figure 3.3: Project files, not yet taken into account by git.
+</p>
+</div>
+<p></p>
+<p>At this point, the files are not taken into account by git: their status is a double yellow question mark.
+For git, the local working directory is a <em>sandbox</em> where all changes are possible without consequences.</p>
+<p>The <code>.gitignore</code> file contains the list of files that are never intended to be taken into account, so there is no need to display them in the list: automatically produced intermediate files for example.
+The syntax of <code>.gitignore</code> files is detailed in the git<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a> documentation.
+As a general rule, use an existing file: document templates in particular include their <code>.gitignore</code> file.</p>
+</div>
+<div id="taking-files-into-account" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Taking files into account<a href="chap-git.html#taking-files-into-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the git window, checking the <em>Staged</em> checkbox allows you to stage each file.
+The command executed is <code>git add &lt;FileName&gt;</code>.
+Files taken into account the first time have the status “A” for “Added”.</p>
+<p>The files taken into account are part of the git <em>index</em>.</p>
+</div>
+<div id="committing-changes" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Committing changes<a href="chap-git.html#committing-changes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-Commit"></span>
+<img src="images/git-Commit.png" alt="Commit window." width="80%" />
+<p class="caption">
+Figure 3.4: Commit window.
+</p>
+</div>
+<p></p>
+<p>The committed files can be validated (<em>Commit</em>) by clicking on the “Commit” button in the <em>Git</em> window.
+A new window opens (figure <a href="chap-git.html#fig:git-Commit">3.4</a>), which allows to visualize all the modifications by file (additions in green, deletions in red).
+The modification grain treated by git is the text line, ended by a line break.
+Binary files like images are processed in block.</p>
+<p>Each commit (<em>Commit</em>) is accompanied by a description text.
+The first line is the short description.
+A detailed description can be added after a line break.
+For the readability of the project history, each <em>commit</em> corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
+The command executed is <code>git commit -m "Commit message"</code>.</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-id"></span>
+<img src="images/git-id.png" alt="Login window." width="80%" />
+<p class="caption">
+Figure 3.5: Login window.
+</p>
+</div>
+<p></p>
+<p>Commits are linked to their author, who must be identified by git.
+Generally, git uses the system information.
+If it does not succeed, a window asks the user to identify himself before making his first <em>commit</em> (figure <a href="chap-git.html#fig:git-id">3.5</a>).
+The commands shown are to be executed in the RStudio terminal.
+They can also be used to check the values known by git:</p>
+<pre><code>git config user.name
+git config user.email</code></pre>
+<p>After the first commit, the main branch of the repository, called “master”, is created.
+A branch is a version of the repository, with its own history and therefore its own files.
+Branches allow:</p>
+<ul>
+<li>to develop new features in a project, without disturbing the main branch which may contain a stable version. If the development is accepted, its branch can be merged with the <em>master</em> branch to create a new stable version.
+The <em>master</em> branch can contain files totally different from those of the main branch, for other purposes. On GitHub, the project presentation web pages can be placed in a branch called “gh-pages” which will never be merged.</li>
+</ul>
+<p>The git repository is fully constituted.
+In git vocabulary, it consists of three <em>trees</em> (figure <a href="chap-git.html#fig:git-Trees">3.6</a>):</p>
+<ul>
+<li>the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed (<em>Staged</em> box unchecked);</li>
+<li>the index, which contains the files taken into account (<em>Staged</em> box checked);</li>
+<li>the head, which contains the validated files.</li>
+</ul>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-Trees"></span>
+<img src="images/git-Trees.png" alt="Les trois arbres de git. Source: https://rogerdudler.github.io/git-guide/index.fr.html" width="80%" />
+<p class="caption">
+Figure 3.6: Les trois arbres de git. Source: <a href="https://rogerdudler.github.io/git-guide/index.fr.html" class="uri">https://rogerdudler.github.io/git-guide/index.fr.html</a>
+</p>
+</div>
+<p></p>
+<p>The status of the files is represented by two icons in the RStudio <em>Git</em> window: two question marks when they have not been taken into account by git.
+Then, the icon on the right describes the difference between the working directory and the index.
+The one on the left describes the difference between the index and the head.
+So a modified file will have the <code>M</code> icon displayed on the right before it is taken into account, then on the left after it is taken into account.
+It is possible, although better to avoid it, to modify again a file that has been taken into account before it is validated: then, both icons will be displayed.</p>
+</div>
+<div id="create-an-empty-repository-on-github" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Create an empty repository on GitHub<a href="chap-git.html#create-an-empty-repository-on-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:CreateRepo"></span>
+<img src="images/CreateRepo.png" alt="Create a repository on GitHub." width="80%" />
+<p class="caption">
+Figure 3.7: Create a repository on GitHub.
+</p>
+</div>
+<p></p>
+<p>An empty repository on GitHub must be created (figure <a href="chap-git.html#fig:CreateRepo">3.7</a>):</p>
+<ul>
+<li>On GitHub, click on the green “New repository” button.</li>
+<li>Enter the name of the repository, identical to the local R project.</li>
+<li>Add a description, which will appear only on the GitHub page of the repository.</li>
+<li>Choose the status of the repository:
+<ul>
+<li>Public: visible to everyone,</li>
+<li>Private: visible only to project collaborators, which excludes adding presentation web pages.</li>
+</ul></li>
+<li>Do not add any <code>README</code>, <code>.gitignore</code> or license: the project must be empty.</li>
+<li>Click on “create Repository”.</li>
+<li>Copy the address of the repository (<a href="https://github.com/" class="uri">https://github.com/</a>… or <a href="mailto:git@github.com" class="email">git@github.com</a>:…).</li>
+</ul>
+<p>The choice of the address is linked to the authentication method.
+SSH authentication (see section <a href="chap-logiciels.html#sec:SSH">1.4.3</a>) is to be preferred.</p>
+</div>
+<div id="linking-git-and-github" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Linking git and GitHub<a href="chap-git.html#linking-git-and-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In RStudio, a first <em>commit</em> must at least have taken place for the main branch of the project, named “master”, to exist.
+At the top right of the <em>Git</em> window (figure <a href="chap-git.html#fig:git-Fichiers">3.3</a>), it shows “(no branch)” before that.
+Then it is displayed “master”, the default name of the main branch of the project.
+The project can then be linked to the GitHub repository.</p>
+<div id="graphical-method" class="section level4 hasAnchor" number="3.2.5.1">
+<h4><span class="header-section-number">3.2.5.1</span> Graphical method<a href="chap-git.html#graphical-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Click on the purple button next to “master”: a window appears (usually used for creating a new branch, see section <a href="chap-git.html#sec:branches">3.4</a>).
+Enter the name of the “master” branch, click on “Add Remotes” and complete:</p>
+<ul>
+<li>Remote Name: <code>origin</code>;</li>
+<li>Remote URL: paste the address of the GitHub repository;</li>
+<li>Click on “Add”.</li>
+</ul>
+<p>Check the “Sync with Remote” box.</p>
+<p>At the message indicating that a <em>master</em> branch already exists, click on “Overwrite”.</p>
+</div>
+<div id="on-the-command-line" class="section level4 hasAnchor" number="3.2.5.2">
+<h4><span class="header-section-number">3.2.5.2</span> On the command line<a href="chap-git.html#on-the-command-line" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Instead of the previous manipulation, the link between Git and GitHub can be set up by some git commands executed in the RStudio terminal.
+These are displayed on the home page of any newly created empty repository on GitHub and can therefore be copied and pasted directly to the terminal.</p>
+<pre><code>git remote add origin git@github.com:&lt;GitHubID&gt;/&lt;RepoID&gt;.git
+git branch -M master
+git push -u origin master</code></pre>
+<p>The first command declares the GitHub repository as a remote repository.
+The name <em>origin</em> is a git convention.
+It can be changed, but the organization of the project will be more readable if it follows the convention.
+The repository address is <code>https://github.com/&lt;GitHubID&gt;/&lt;RepoID&gt;.git</code> if HTTPS authentication is chosen.</p>
+<p>The following commands activate the main branch of the project and push its content to GitHub.</p>
+<p>Be careful with the name of the main branch (see section <a href="chap-git.html#sec:branches">3.4</a>): by default, it is called “master” in a project created in RStudio but “main” on GitHub.
+The above command lines provided by GitHub therefore replace <code>master</code> with <code>main</code> and must be corrected to match the name of the branch created by RStudio.</p>
+</div>
+<div id="authentication" class="section level4 hasAnchor" number="3.2.5.3">
+<h4><span class="header-section-number">3.2.5.3</span> Authentication<a href="chap-git.html#authentication" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If HTTPS authentication is chosen, the first time RStudio connects to GitHub, a window allows you to enter your GitHub credentials (figure <a href="chap-git.html#fig:git-PAT">3.8</a>).</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-PAT"></span>
+<img src="images/git-PAT.png" alt="Identification HTTPS sur GitHub." width="80%" />
+<p class="caption">
+Figure 3.8: Identification HTTPS sur GitHub.
+</p>
+</div>
+<p></p>
+<p>As of August 2021, GitHub no longer accepts the user’s account password for this authentication: the personal token (PAT) created in section <a href="chap-logiciels.html#sec:pat">1.4.4</a> must be entered instead.</p>
+<p>If SSH authentication is chosen and has been configured at git installation (section <a href="chap-logiciels.html#sec:SSH">1.4.3</a>), no action is necessary.</p>
+</div>
+</div>
+<div id="push-the-first-modifications" class="section level3 hasAnchor" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Push the first modifications<a href="chap-git.html#push-the-first-modifications" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The previous manipulation has automatically pushed (<em>Push</em>) the validated modifications on GitHub.
+Afterwards, you will have to click on the “Push” button of the <em>Git</em> window to do it.</p>
+<p>On GitHub, the files resulting from the modifications recorded by git are now visible.</p>
+<p>Each <em>commit</em> done locally is counted by git and a message “Your branch is ahead of ‘origin/master’ by <em>n</em> commits” displayed in the top of the <em>Git</em> window indicates that it is time to update GitHub by pushing all these <em>commits</em>.
+Click on the “Push” button to do so.</p>
+<p>At this point, the project should have a <code>README.md</code> file that presents its contents on GitHub.
+Its minimal content is a title and a few lines of description:</p>
+<pre><code># Project name
+
+Description in a few lines.
+</code></pre>
+<p>It is advisable to use badges<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>, to be placed just after the title, to declare the maturity status of the project, for example:</p>
+<pre><code>![stability-wip](https://img.shields.io/badge/|&gt;
+stability-work_in_progress-lightgrey.svg)</code></pre>
+</div>
+<div id="clone-a-repository-from-github" class="section level3 hasAnchor" number="3.2.7">
+<h3><span class="header-section-number">3.2.7</span> Clone a repository from GitHub<a href="chap-git.html#clone-a-repository-from-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-Clone"></span>
+<img src="images/git-Clone.png" alt="Cloning a repository from GitHub." width="80%" />
+<p class="caption">
+Figure 3.9: Cloning a repository from <em>GitHub.</em>
+</p>
+</div>
+<p></p>
+<p>Any repository on GitHub can be installed (we say <em>cloned</em>) on the workstation by copying its address which appears by clicking on the green button (figure <a href="chap-git.html#fig:git-Clone">3.9</a>).</p>
+<p>In RStudio, create a new project and, in the wizard, choose “Version Control”, “Git” and paste the address in the “Repository URL” field.
+The name of the directory to create for the project is automatically deduced from the address.
+Choose the directory in which the project will be created and click on “Create Project”.
+The created project is linked to the remote repository on GitHub.</p>
+<p>To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e. other GitHub users in the repository settings (<em>Settings</em>).</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-Access"></span>
+<img src="images/git-Access.png" alt="Assigning access rights on GitHub." width="80%" />
+<p class="caption">
+Figure 3.10: Assigning access rights on GitHub.
+</p>
+</div>
+<p></p>
+<p>Collaborators are invited by a message sent by <em>GitHub</em>.</p>
+</div>
+</div>
+<div id="common-usage" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Common usage<a href="chap-git.html#common-usage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pull-modify-commit-push" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Pull, modify, commit, push<a href="chap-git.html#pull-modify-commit-push" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Any work session on a project starts by pulling (“Pull” button) from the <em>Git</em> window to integrate to the local repository the updates made on GitHub by other collaborators.</p>
+<p>The changes made to the project files are then taken into account (check the <em>Staged</em> boxes) and validated (<em>Commit</em>) with an explanatory message.
+A good practice is to validate changes each time an elementary task, which can be described in the explanatory message, is completed rather than making <em>commits</em> that group many changes with a vague description.</p>
+<p>As soon as possible, <em>Push</em> updates so that they are visible to collaborators.</p>
+</div>
+<div id="resolve-conflicts" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Resolve conflicts<a href="chap-git.html#resolve-conflicts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is not possible to push validated changes if a collaborator has modified the remote repository on GitHub.
+In this case, you have to pull them to the local repository before pushing the merged changes.</p>
+<p>A conflict occurs if a <em>Pull</em> imports a change into the local file that cannot be merged automatically because a conflicting change occurred locally.
+Git considers each line to be indivisible: changing the same line in the remote repository and the local repository therefore generates a conflict.</p>
+<p>Git inserts both versions in the file containing a conflict with a particular presentation:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD # Imported version of the conflict
+Lines in conflict, imported version
+========= # boundary between the two versions
+Lines in conflict, local version
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; # End of conflict</code></pre>
+<p>The formatting lines containing the <code>&lt;&lt;&lt;&lt;</code>, the <code>====</code> and the <code>&gt;&gt;&gt;&gt;</code> must be deleted and only one version of the problematic lines kept, which can be different from the two original versions.
+The conflict resolution must be taken into account and validated.</p>
+<p>To limit conflicts in a document containing text (typically, an R Markdown document), a good practice is to treat each sentence as a line, terminated by a line break that will not be visible in the formatted document: a line break is required to separate paragraphs.</p>
+</div>
+<div id="see-the-differences" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> See the differences<a href="chap-git.html#see-the-differences" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the RStudio <em>Git</em> window, the context menu (displayed by right-clicking) “Diff” can be used to display the changes made to each file (figure <a href="chap-git.html#fig:git-diff">3.11</a>).</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-diff"></span>
+<img src="images/git-diff.png" alt="Differences between the working directory and the head." width="80%" />
+<p class="caption">
+Figure 3.11: Differences between the working directory and the head.
+</p>
+</div>
+<p></p>
+</div>
+<div id="revert" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Revert<a href="chap-git.html#revert" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The contextual menu “Revert” allows you to undo all the modifications made to a file (displayed by <em>Diff</em>) and to restore its content validated the last time (its state in the head).</p>
+<p>It is not easy to go back beyond the last validation because the modifications may have been taken into account by collaborators: deleting them would make the project incoherent.</p>
+</div>
+<div id="view-history" class="section level3 hasAnchor" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> View history<a href="chap-git.html#view-history" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The clock-shaped button in the RStudio <em>Git</em> window displays the history of the project (figure <a href="chap-git.html#fig:git-history">3.12</a>).</p>
+
+<p></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-history"></span>
+<img src="images/git-historique.png" alt="History of commits in the repository." width="80%" />
+<p class="caption">
+Figure 3.12: History of commits in the repository.
+</p>
+</div>
+<p></p>
+<p>At the top is the head, and then all the commits that made it up.
+For each validation, the differences of each file can be displayed by clicking on the file name in the lower part of the window.</p>
+</div>
+</div>
+<div id="sec:branches" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Branches<a href="chap-git.html#sec:branches" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The branches of a project are different but simultaneous versions.
+A typical use is the development of a new feature.
+If it takes a long time to write, the project is disturbed by the current work in progress: the code may not work anymore.
+If the development turns out to be impossible or useless, it must be abandoned without damage.
+In order to isolate it during its development and to be able to validate or abandon it at the end, it must be placed in a branch.</p>
+<p>The main branch of the project is called “master” or “main” from November 2020<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>.
+It must always be in a stable state: it is the one that is cloned from GitHub by other possible users.</p>
+<p>The change of convention for the name of the “master” branch means that from November 2020, projects created on GitHub cloned in RStudio have the main branch “main” while projects created on RStudio and then linked to GitHub keep the “master” name.</p>
+<div id="create-a-new-branch" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Create a new branch<a href="chap-git.html#create-a-new-branch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Click on the purple “New Branch” button in the RStudio <em>git</em> window.
+Enter its name and click on “Create”.</p>
+<p>The new branch is now active.</p>
+<p>The git commands can also be run in the terminal (to create the branch and activate it):</p>
+<pre><code>git branch new_branch
+git checkout new_branch</code></pre>
+</div>
+<div id="change-branch" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Change branch<a href="chap-git.html#change-branch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Select the branch to activate from the list of local branches in the <em>git</em> window.</p>
+<p>The <em>commits</em> apply to the active branch.
+Each branch behaves as a different version of the project.</p>
+<p>Warning: to avoid confusion, save the changes, take them into account and validate them before changing branch.</p>
+</div>
+<div id="pushing-the-new-branch" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Pushing the new branch<a href="chap-git.html#pushing-the-new-branch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first modifications of the new branch must be pushed in command line because the “Push” and “Pull” buttons of the <em>Git</em> window do not work as long as the branch does not exist on the remote repository.</p>
+<p>Run, in the terminal:</p>
+<pre><code>git push -u origin new_branch</code></pre>
+</div>
+<div id="filesystem-behavior" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Filesystem behavior<a href="chap-git.html#filesystem-behavior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Each time a branch changes, git rewrites the project files to reflect the state of the branch.
+The changes can be seen outside of RStudio, in the file browser for example.</p>
+<p>Files ignored by <code>.gitignore</code> are not changed.
+It is therefore essential that the <code>.gitignore</code> files in the different branches are identical, otherwise files ignored in one branch will appear as added in the displayed branch after a change.</p>
+<p>Development branches have a content close to that of the main branch.
+This is not the case with specialized branches seen later, such as <code>gh-pages</code> (see section <a href="chap-git.html#sec:github-pages">3.7</a>) which contains the repository’s presentation web site.
+It is best not to attempt to display these branches in RStudio: their content is produced automatically and should not be modified manually.
+If it is necessary, it will be necessary to copy the <code>.gitignore</code> file of the main branch and keep in mind that the ignored files actually belong to another branch than the one displayed.</p>
+</div>
+<div id="merge-with-merge" class="section level3 hasAnchor" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> Merge with `merge<a href="chap-git.html#merge-with-merge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Merging a development branch with the main branch marks the achievement of its goal: its code will be integrated into the project.
+RStudio’s GUI does not allow for merging, so you have to use the terminal: first, go to the target branch (possible with the GUI):</p>
+<pre><code>git checkout master</code></pre>
+<p>Then, merge:</p>
+<pre><code>git merge new_branch</code></pre>
+<p>In most situations, the merge will be automatic (“Fast Forward”).
+It is possible that conflicts appear: use the <code>git status</code> command to display the list of files concerned, open them, resolve the conflict and perform a <em>commit</em>.</p>
+<p>The merged branch is not deleted: it can be used again for further development or deleted manually with the following command:</p>
+<pre><code>git branch -d new_branch</code></pre>
+</div>
+<div id="merging-with-a-pull-request" class="section level3 hasAnchor" number="3.4.6">
+<h3><span class="header-section-number">3.4.6</span> Merging with a pull request<a href="chap-git.html#merging-with-a-pull-request" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The other way of merging is more formal but also more general: it allows you to merge a branch into another user’s repository to contribute to it, or to have your branch validated by another team member in a collaborative project.</p>
+<p>To contribute to another GitHub user’s project<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>, you have to start by creating a <em>fork</em> of it, i.e. a copy in the form of a repository linked to the original.
+It will be possible to pull changes from the original to stay up to date<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a> (as opposed to a simple snapshot copy possible by downloading a Zip of the project) and, at the end of the development, to merge the <em>fork</em> to the original repository (as opposed to a clone that would not allow to contribute afterwards).</p>
+<p>Next, create a development branch as before, modify it and finally ask the repository owner to merge it.
+This process is described in detail in the git documentation.</p>
+<p>In the simpler case of a branch of one’s own project as in the case of a <em>fork</em>, the development branch is ready to be merged.
+It must have been pushed on GitHub.
+On the GitHub page of the project, a “Create Pull Request” button allows to request the merge.
+A message describing the proposed changes with their arguments must be added.</p>
+<p>The owner of the project (the team members in the case of a collaborative project, or yourself if the team is reduced to one person) is notified of the pull request.
+On the original project page, it is possible to see the message, the list of modifications (chronology of <em>commits</em> or comparison of files), to start a discussion with the author of the request…
+If the request is not accepted, it can be closed.
+If it is validated, the “Merge Pull Request” button allows to merge the development branch with the “master” branch (or another one) of the source project.</p>
+<p>Pull requests are the only way to contribute to a repository on which you don’t have write rights.
+It is also the way to merge a development branch into your own project by keeping an explicit trace of it (in the <em>Pull requests</em> section of the project’s GitHub page).
+In a collaborative project, the proposals of a member (author of the request) can be validated by another (who accepts the merge).</p>
+</div>
+</div>
+<div id="advanced-usage" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Advanced usage<a href="chap-git.html#advanced-usage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="git-commands" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Git commands<a href="chap-git.html#git-commands" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Beyond the common use allowed by the RStudio graphical interface, advanced manipulations of projects are allowed by using git in command line.
+Some useful examples are presented here.</p>
+<p>A short guide of commands is proposed by Roger Dudler<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>.
+It summarizes the essential commands, thus integrated in the graphical interface of RStudio.
+Links to more complete references are given at the bottom of the page.</p>
+</div>
+<div id="size-of-a-repository" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Size of a repository<a href="chap-git.html#size-of-a-repository" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To find out how much disk space a repository occupies, use the command <code>git count-objects -vH</code><a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>.</p>
+<p>The data for this document at the time of writing is presented as an example.</p>
+<pre><code>$ git count-objects -v
+count: 200
+size: 2.66 MiB
+in-pack: 0
+packs: 0
+size-pack: 0
+prune-packable: 0
+garbage: 0
+size-garbage: 0</code></pre>
+<p>The total size is on the <em>size</em> line.
+Packs are a method used by git to reduce the size of the repository: similar files are stored as a common part and differences.
+The <em>prune-packable</em> line gives the size of objects stored both individually and in packs.
+If their size is large, run <code>git prune-packed</code> to reduce it to zero.</p>
+<p>The <em>size-garbage</em> line gives the size of objects that can be deleted.
+git gc` removes them, but not only that: it optimizes storage.</p>
+<pre><code>git gc
+Enumerating objects: 194, done.
+Counting objects: 100% (194/194), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (188/188), done.
+Writing objects: 100% (194/194), done.
+Total 194 (delta 83), reused 0 (delta 0)
+
+$ git count-objects -vH
+count: 1
+size: 5.72 KiB
+in-pack: 194
+packs: 1
+size-pack: 4.00 MiB
+prune-packable: 0
+garbage: 0
+size-garbage: 0 bytes</code></pre>
+<p>Here, the majority of the objects in the repository have been placed in a pack (but its size is larger than the individual objects).</p>
+<p>There is usually no need to do garbage collection manually: git handles the organization of its repositories well.</p>
+<p>GitHub limits the size of repositories.
+As of May 2020, the limit is 100 GB.
+The size of all repositories of an authenticated user can be displayed in his account settings (“Personal Settings”, “Repositories”)<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>.</p>
+</div>
+<div id="delete-a-folder" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Delete a folder<a href="chap-git.html#delete-a-folder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>All changes made to a repository are stored in its history.
+It can be useful to delete them in some particular cases</p>
+<ul>
+<li>if a file containing confidential information was inadvertently validated.
+Validating its deletion does not remove it from the history, and the confidential information remains visible when consulting the history.</li>
+<li>if large files are no longer needed, e.g. PDF files produced by R Markdown (chapter ``ref(chap-rediger)’’), binary (thus unsuitable for git) and reproducible from code.</li>
+</ul>
+<p>Typically, the <code>docs</code> folder is used to store documents produced from R Markdown code.
+The HTML and PDF files must be in this folder to constitute the GitHub pages of the project.
+Each modification of the repository generates a new version of these files whose history volume quickly becomes considerable.
+An efficient solution is to delegate the creation of these files to a continuous integration system (chapter <a href="chap-ci.html#chap-ci">6</a>) and to remove the <code>docs</code> folder from the main branch (<em>master</em>) of the repository.
+You then have to delete all its history to recover the space it occupies, which can be most of the size of the repository.</p>
+<p>The commands to completely delete a folder from a repository are presented here<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>.
+The repository must be clean, i.e. without unvalidated changes, and the remote and local versions synchronized.</p>
+<p>The following three commands completely remove the <code>docs</code> folder from the git repository history:</p>
+<pre><code>git filter-branch --tree-filter &quot;rm -rf docs&quot; |&gt;
+    --prune-empty HEAD
+git for-each-ref --format=&quot;%(refname)&quot; refs/original/ |&gt;
+    | xargs -n 1 git update-ref -d</code></pre>
+<p>The file is not removed from the working directory.
+It must therefore be added to the <code>.gitignore</code> file so that it is no longer tracked.
+The modification of <code>.gitignore</code> must be validated.
+These operations can be done with the RStudio interface or on the command line:</p>
+<pre><code>echo docs/ &gt;&gt; .gitignore
+git add .gitignore
+git commit -m &#39;Removing docs folder from git history</code></pre>
+<p>The repository cleanup is necessary to physically remove the removed data:</p>
+<pre><code>git gc</code></pre>
+<p>Finally, the repository must be pushed.
+The <code>--force</code> option involves replacing the contents of the remote repository with those of the local repository: all changes made by collaborators are erased, so this cleanup operation involves shutting down the project while it takes place.</p>
+<pre><code>git push origin master --force</code></pre>
+<p>This code can be used to completely remove any file or folder from a repository by simply replacing <code>docs</code> in the initial <code>git filter-branch</code> command.
+The reduction in repository size can be tracked using <code>git count-objects -vH</code> before the operation, before <code>git gc</code> (the repository size remains stable but has been moved to <em>garbage</em>) and at the end (the repository size is significantly reduced).</p>
+</div>
+<div id="revert-1" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Revert<a href="chap-git.html#revert-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is possible to restore a repository to a previous state by placing its head (figure <a href="chap-git.html#fig:git-Trees">3.6</a>) at the level of an old <em>commit</em>.
+All subsequent modifications are then destroyed.
+This operation should not be performed on a shared repository: other users would not be able to push their modifications anymore.</p>
+<p>Display the repository history and look for the identifier (SHA) of the last <em>commit</em> to keep.
+In the RStudio terminal, run:</p>
+<pre><code>git reset --hard &lt;SHA&gt;
+git push -f</code></pre>
+<p>All repository history after the chosen restore point is lost.</p>
+<p>A less drastic method that can be used on a shared repository is to perform a <em>commit</em> that undoes another’s changes but does not destroy any history data.
+This operation only undoes one <em>commit</em> at a time, so it must be repeated to undo several, starting with the most recent.
+In the RStudio terminal, run:</p>
+<pre><code>git revert &lt;SHA&gt;</code></pre>
+<p>To undo the last <em>commit</em>, execute:</p>
+<pre><code>git revert HEAD</code></pre>
+<p>Using <code>HEAD</code> simply avoids searching for the corresponding ID.</p>
+</div>
+</div>
+<div id="sec:confidential" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Confidential data in a public repository<a href="chap-git.html#sec:confidential" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A public repository on GitHub causes problems when data used in the project is not.</p>
+<p>An unsatisfactory solution is to not include the data in the project, which makes it non-reproducible.
+A better solution is to encrypt them, allowing some users to decrypt them.
+This is the purpose of the <strong>secret</strong> package.</p>
+<p>A safe (<code>vault</code> folder) is created in the project.
+It contains a list of authorized users: each of them must have a pair of encryption keys, a public key included in the safe and a private key, kept secret.
+The data is encrypted with all the public keys available (and therefore duplicated).
+The users then each use their own private key for decryption.</p>
+<p>To avoid duplicating data, the repository owner should create a generic user for the project, whose private key he will communicate outside GitHub.
+The vault will contain the keys of the project owner and the generic user only.
+If the generic user’s private key is compromised, it will be sufficient to remove it from the vault and create a new one.</p>
+<div id="generating-a-key-pair-for-the-project-owner" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Generating a key pair for the project owner<a href="chap-git.html#generating-a-key-pair-for-the-project-owner" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The keys are generated by the <em>ssh</em> software, installed with <em>git</em> or by default under Linux.</p>
+<p>The procedure is the same as in the section <a href="chap-logiciels.html#sec:SSH">1.4.3</a>, but the key used must be in RSA format (supported by the <strong>secret</strong> package, as opposed to the more secure ed25519 format used for authentication on GitHub).</p>
+<p>Run the following command in the RStudio terminal to create an RSA key:</p>
+<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;user.email&quot;</code></pre>
+<p>Store the public key on GitHub in “Settings &gt; SSH and GPG Keys”.
+Locate the position of the key: if an authentication key has already been stored for two workstations for example, the RSA key will be the third one.</p>
+</div>
+<div id="generating-a-key-pair-for-the-project" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Generating a key pair for the project<a href="chap-git.html#generating-a-key-pair-for-the-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Generate a key in RSA format in the RStudio terminal:</p>
+<pre><code>ssh-keygen -t rsa -b 4096&quot; </code></pre>
+<ul>
+<li>Enter the name of the key: <code>&lt;RepoID&gt;.rsa</code>.</li>
+<li>Do not enter a passphrase to allow the key to be used without interaction.</li>
+</ul>
+<p>The private key <code>&lt;RepoID&gt;.rsa</code> should only be distributed to the rightful owners of the project.
+You must therefore add the line <code>*.rsa</code> to the <code>.gitignore</code> file of the project to avoid pushing the key on GitHub.</p>
+<p>To allow the continuous integration of the project (chapter <a href="chap-ci.html#chap-ci">6</a>), the private key must be stored as a secret of the GitHub repository containing the project.
+Apply the procedure in the section <a href="chap-ci.html#sec:secrets-ci">6.2.2</a> to create a secret named “RSA” and paste the content of the file <code>&lt;RepoID&gt;&lt;RepoID&gt;.rsa</code> in the “Value” field of the form.</p>
+<p>The use of the secret is described in the section <a href="#secrets-ci"><strong>??</strong></a>.</p>
+</div>
+<div id="creating-a-safe" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Creating a safe<a href="chap-git.html#creating-a-safe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Execute:</p>
+<p></p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="chap-git.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;secret&quot;</span>)</span>
+<span id="cb251-2"><a href="chap-git.html#cb251-2" aria-hidden="true" tabindex="-1"></a>vault <span class="ot">&lt;-</span> <span class="st">&quot;vault&quot;</span></span>
+<span id="cb251-3"><a href="chap-git.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="fu">create_vault</span>(vault)</span></code></pre></div>
+<p></p>
+</div>
+<div id="adding-users" class="section level3 hasAnchor" number="3.6.4">
+<h3><span class="header-section-number">3.6.4</span> Adding users<a href="chap-git.html#adding-users" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The owner of the project is added from his public key stored on GitHub, which is the third one in our example.</p>
+<p></p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="chap-git.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub ID of the project owner</span></span>
+<span id="cb252-2"><a href="chap-git.html#cb252-2" aria-hidden="true" tabindex="-1"></a>github_user <span class="ot">&lt;-</span> <span class="st">&quot;EricMarcon&quot;</span></span>
+<span id="cb252-3"><a href="chap-git.html#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read and store the key, i is the key number</span></span>
+<span id="cb252-4"><a href="chap-git.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add_github_user</span>(github_user, <span class="at">vault =</span> vault, <span class="at">i =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p></p>
+<p>The generic project user’s key is added by:</p>
+<p></p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="chap-git.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;openssl&quot;</span>)</span></code></pre></div>
+<pre><code>## Linking to: OpenSSL 1.1.1m  14 Dec 2021</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="chap-git.html#cb255-1" aria-hidden="true" tabindex="-1"></a>project_id <span class="ot">&lt;-</span> <span class="st">&quot;ProjectName&quot;</span></span>
+<span id="cb255-2"><a href="chap-git.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the key</span></span>
+<span id="cb255-3"><a href="chap-git.html#cb255-3" aria-hidden="true" tabindex="-1"></a>rsa_project <span class="ot">&lt;-</span> <span class="fu">read_pubkey</span>(<span class="fu">paste0</span>(project_id, <span class="st">&quot;.rsa.pub&quot;</span>))</span>
+<span id="cb255-4"><a href="chap-git.html#cb255-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add to the vault</span></span>
+<span id="cb255-5"><a href="chap-git.html#cb255-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_user</span>(project_id, <span class="at">public_key =</span> rsa_project, <span class="at">vault =</span> vault)</span></code></pre></div>
+<p></p>
+</div>
+<div id="storing-the-data" class="section level3 hasAnchor" number="3.6.5">
+<h3><span class="header-section-number">3.6.5</span> Storing the data<a href="chap-git.html#storing-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The data, stored in R variables, are stored one by one by the <code>add_secret()</code> function.
+In the following example, the variable is called <code>X</code> and is 1.</p>
+<p></p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="chap-git.html#cb256-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb256-2"><a href="chap-git.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="fu">add_secret</span>(</span>
+<span id="cb256-3"><a href="chap-git.html#cb256-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Name of the data</span></span>
+<span id="cb256-4"><a href="chap-git.html#cb256-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;X&quot;</span>, </span>
+<span id="cb256-5"><a href="chap-git.html#cb256-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Value</span></span>
+<span id="cb256-6"><a href="chap-git.html#cb256-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> X, </span>
+<span id="cb256-7"><a href="chap-git.html#cb256-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Authorized users: owner and generic</span></span>
+<span id="cb256-8"><a href="chap-git.html#cb256-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">users =</span> <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="st">&quot;github-&quot;</span>, github_user), project_id), </span>
+<span id="cb256-9"><a href="chap-git.html#cb256-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Vault</span></span>
+<span id="cb256-10"><a href="chap-git.html#cb256-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vault =</span> vault)</span></code></pre></div>
+<p></p>
+<p>The contents of the vault can be checked:</p>
+<p></p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="chap-git.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of vault data</span></span>
+<span id="cb257-2"><a href="chap-git.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list_secrets</span>(<span class="at">vault =</span> vault)</span></code></pre></div>
+<pre><code>##   secret        email
+## 1      X github-E....</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="chap-git.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of owners of the data &#39;X</span></span>
+<span id="cb259-2"><a href="chap-git.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list_owners</span>(<span class="st">&quot;X&quot;</span>, <span class="at">vault =</span> vault)</span></code></pre></div>
+<pre><code>## [1] &quot;github-EricMarcon&quot; &quot;ProjectName&quot;</code></pre>
+<p></p>
+<p>The data will be read into the project code by the <code>get_secret()</code> command.
+The private key of the generic project user, communicated by a secure means to the owners, must be in the project folder.</p>
+<p></p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="chap-git.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the private key</span></span>
+<span id="cb261-2"><a href="chap-git.html#cb261-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">USER_KEY =</span> usethis<span class="sc">::</span><span class="fu">proj_path</span>(<span class="fu">paste0</span>(project_id, <span class="st">&quot;.rsa&quot;</span>)))</span></code></pre></div>
+<pre><code>## ✔ Setting active project to &#39;/Users/runner/work/
+## WorkingWithR/WorkingWithR&#39;</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="chap-git.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data &#39;X</span></span>
+<span id="cb263-2"><a href="chap-git.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_secret</span>(<span class="st">&quot;X&quot;</span>, <span class="at">vault =</span> vault)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p></p>
+<p>The key can be verified:</p>
+<p></p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="chap-git.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">local_key</span>()</span></code></pre></div>
+<pre><code>## [4096-bit rsa private key]
+## md5: e81dcb0745a755286c2dc1fc4c6ad117
+## sha256: cca11ef82e17c3b77b699e7f3c23e083e8f0f79cb70be8274799f076c44b0c2d</code></pre>
+<p></p>
+</div>
+</div>
+<div id="sec:github-pages" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> GitHub pages<a href="chap-git.html#sec:github-pages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Any project on GitHub must have contained a <code>README.md</code> file to present it.
+This file is written in Markdown format.</p>
+<p>The file can be placed in the <code>docs</code> folder to provide both the repository’s home page and its website.
+The <strong>memoiR</strong> package provides commands to automate these tasks in document projects.
+A repository containing an article written in R Markdown (see section <a href="chap-rediger.html#sec:memo">4.3.2</a>) is used as an example<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>.</p>
+<p>Its <code>README.md</code> file exists in both locations: it is written by the developer at the root of the project and duplicated by <code>GitHubPages.R</code>.</p>
+<div id="activation" class="section level3 hasAnchor" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Activation<a href="chap-git.html#activation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To activate GitHub pages, you have to open the repository properties (<em>Settings</em>) and modify the “GitHub Pages” item (in “Options”).
+Select the project branch and the folder containing the web pages, here: <code>master</code> and <code>/docs</code>.
+As an option, choosing a theme customizes the appearance of the pages.</p>
+<p>The web site is accessible at an addres<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a> of the domain <em>github.io</em>.</p>
+<p>The <code>README.md</code> file displayed on the home page has a very different look but the same content as the one displayed with the code on the repository page in GitHub.</p>
+<p>The interest of the GitHub pages is to allow an easy access to the formatted documents when the repository contains a written production and or to the documentation of R packages.
+These contents will be presented in the next chapter.</p>
+<p>A main website is proposed with each GitHub account, at <a href="https://GitHubID.github.io" class="uri">https://GitHubID.github.io</a><a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>.
+It will be used to host a personal website produced by <strong>blogdown</strong>.</p>
+</div>
+<div id="badges" class="section level3 hasAnchor" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> Badges<a href="chap-git.html#badges" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Badges are small images, possibly dynamically updated, that provide quick information about the status of a project.
+They should be placed immediately after the title of the <code>README.md</code> file.</p>
+<p>A good practice is to indicate the progress in the life cycle of the project.
+The corresponding badges are listed on the Tidyverse site<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>.</p>
+<p>Their Markdown code is as follows:</p>
+<pre><code>![stability-wip]
+(https://img.shields.io/badge/lifecycle-maturing-blue.svg)</code></pre>
+<p>The <strong>usethis</strong> package simplifies their creation by placing the necessary code in the clipboard.
+Then just paste it into the file.</p>
+<p></p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="chap-git.html#cb268-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_lifecycle_badge</span>(<span class="st">&quot;maturing&quot;</span>)</span></code></pre></div>
+<p></p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="30">
+<li id="fn30"><p><a href="https://github.com/" class="uri">https://github.com/</a><a href="chap-git.html#fnref30" class="footnote-back">↩︎</a></p></li>
+<li id="fn31"><p><a href="https://bitbucket.org/" class="uri">https://bitbucket.org/</a><a href="chap-git.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<li id="fn32"><p><a href="https://about.gitlab.com/" class="uri">https://about.gitlab.com/</a><a href="chap-git.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<li id="fn33"><p><a href="https://git-scm.com/docs/gitignore" class="uri">https://git-scm.com/docs/gitignore</a><a href="chap-git.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<li id="fn34"><p><a href="https://github.com/orangemug/stability-badges" class="uri">https://github.com/orangemug/stability-badges</a><a href="chap-git.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<li id="fn35"><p><a href="https://github.com/github/renaming" class="uri">https://github.com/github/renaming</a><a href="chap-git.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<li id="fn36"><p><a href="https://git-scm.com/book/fr/v2/GitHub-Contribution-%C3%A0-un-projet" class="uri">https://git-scm.com/book/fr/v2/GitHub-Contribution-%C3%A0-un-projet</a><a href="chap-git.html#fnref36" class="footnote-back">↩︎</a></p></li>
+<li id="fn37"><p><a href="https://ardalis.com/syncing-a-fork-of-a-github-repository-with-upstream/" class="uri">https://ardalis.com/syncing-a-fork-of-a-github-repository-with-upstream/</a><a href="chap-git.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<li id="fn38"><p><a href="https://rogerdudler.github.io/git-guide/index.fr.html" class="uri">https://rogerdudler.github.io/git-guide/index.fr.html</a><a href="chap-git.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<li id="fn39"><p><a href="https://git-scm.com/docs/git-count-objects" class="uri">https://git-scm.com/docs/git-count-objects</a><a href="chap-git.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<li id="fn40"><p><a href="https://github.com/settings/repositories" class="uri">https://github.com/settings/repositories</a><a href="chap-git.html#fnref40" class="footnote-back">↩︎</a></p></li>
+<li id="fn41"><p><a href="https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history" class="uri">https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history</a><a href="chap-git.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<li id="fn42"><p><a href="https://github.com/EricMarcon/Krigeage" class="uri">https://github.com/EricMarcon/Krigeage</a><a href="chap-git.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<li id="fn43"><p><a href="https://EricMarcon.github.io/Krigeage/" class="uri">https://EricMarcon.github.io/Krigeage/</a><a href="chap-git.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<li id="fn44"><p>Example: <a href="https://EricMarcon.github.io/Krigeage/" class="uri">https://EricMarcon.github.io/Krigeage/</a><a href="chap-git.html#fnref44" class="footnote-back">↩︎</a></p></li>
+<li id="fn45"><p><a href="https://www.tidyverse.org/lifecycle/" class="uri">https://www.tidyverse.org/lifecycle/</a><a href="chap-git.html#fnref45" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-utiliseR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-rediger.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["WwR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
