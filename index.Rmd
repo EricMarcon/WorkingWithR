@@ -1,0 +1,205 @@
+--- 
+title: "Working with R"
+author: "Eric Marcon"
+date: "`r format(Sys.Date(), '%m/%d/%Y')`"
+url: https://ericmarcon.github.io/WorkingWithR/
+github-repo: EricMarcon/WorkingWithR
+description: Organization of work around R and RStudio
+# Title page...
+maintitlepage:
+  epigraph: |
+    This document is made in a dynamic and reproducible way thanks to:
+
+    \begin{itemize}
+      \item \LaTeX, in its Miktex distribution (\url{http://miktex.org/}) and the memoir class (\url{http://www.ctan.org/pkg/memoir}).
+      \item R (\url{http://www.r-project.org/}) and RStudio (\url{http://www.rstudio.com/})
+      \item bookdown (\url{http://bookdown.org/}) and memoiR (\url{https://ericmarcon.github.io/memoiR/})
+    \end{itemize}
+    
+    Its source code is on GitHub: \url{https://github.com/EricMarcon/WorkingWithR/}.
+    
+    The continuously updated text can be read at \url{https://ericmarcon.github.io/WorkingWithR/}.
+    
+  credits: |
+    Cover photograph: Hadrien Lalagüe
+  filigrane: filigrane
+# Language
+lang: en-US
+# Paper, font
+papersize: A4
+fontsize: 12pt
+mainfont: texgyretermes
+mainfontoptions:
+  - Extension=.otf
+  - UprightFont=*-regular
+  - BoldFont=*-bold
+  - BoldItalicFont=*-bolditalic
+  - ItalicFont=*-italic
+mathfont: texgyretermes-math.otf
+# memoir Style
+MemoirChapStyle: daleif1
+MemoirPageStyle: Ruled
+# Margins
+largemargins: false 
+smallmargin: 1.5in
+largemargin: 3in
+marginnote:  1.8in
+spinemargin: 1.5in
+uppermargin: 1.5in
+lowermargin: 1in
+# Table of contents
+toc-depth: 2
+# Section numbering
+secnum-depth: subsection
+# List of tables / Figures
+lot: false
+lof: true
+# Bibliography
+bibliography: references.bib
+biblatexoptions:
+  - backend=biber
+  - style=authoryear-ibid
+  - isbn=false
+  - backref=true
+  - giveninits=true
+  - uniquename=init
+  - maxcitenames=2
+  - maxbibnames=150
+  - sorting=nyt
+  - sortcites=false
+# Chapter summary text
+chaptersummary: "L'essentiel"
+# Back Cover
+backcover:
+  - language: english
+    abstract: |
+      This book proposes an organization of work around R and RStudio to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create its website and online R applications (Shiny), produce packages and use R for teaching.
+    abstractlabel: Abstract
+backcoverfontsize: normalsize
+# Figure cropping may be set to no if ghostscript is not installed
+fig_crop: true
+# Do not modify
+documentclass: memoir
+classoption:
+  - extrafontsizes
+  - onecolumn
+  - openright
+site: bookdown::bookdown_site
+always_allow_html: true
+graphics: true
+link-citations: true
+colorlinks: true
+csquotes: true
+---
+
+<!-- Commande nécessaire pour la copie de l'icône "Essentiel" en HTML--> 
+<img src="images/trombone.png" alt="image" hidden/>
+
+```{r DoNotModify, include=FALSE}
+### Utilities. Do not modify.
+# Installation of packages if necessary
+InstallPackages <- function(Packages) {
+  InstallPackage <- function(Package) {
+    if (!Package %in% installed.packages()[, 1]) {
+      install.packages(Package, repos="https://cran.rstudio.com/")
+    }
+  }
+  invisible(sapply(Packages, InstallPackage))
+}
+
+# Basic packages
+InstallPackages(c("bookdown", "formatR", "kableExtra", "magick", "ragg"))
+
+# kableExtra must be loaded 
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
+  # Word output (https://stackoverflow.com/questions/35144130/in-knitr-how-can-i-test-for-if-the-output-will-be-pdf-or-word)
+  # Do not use autoformat (https://github.com/haozhu233/kableExtra/issues/308)
+  options(kableExtra.auto_format = FALSE)
+}
+library("kableExtra")
+
+# Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+
+# Figures with side captions
+if (rmarkdown::metadata$largemargins)
+  knitr::opts_chunk$set(fig.env='SCfigure')
+```
+
+```{r Options, include=FALSE}
+### Customized options for this book
+# Add necessary packages here
+Packages <- c("compiler", "dbmss", "doParallel", "entropart", "flextable", "foreach", "gridExtra", "htmlwidgets", "magrittr", "microbenchmark", "parallel", "profvis", "pryr", "ragg", "R6", "Rcpp", "RcppParallel", "secret", "spatstat", "targets", "testthat", "tidyverse", "usethis", "visNetwork")
+# Install them if necessary
+InstallPackages(Packages)
+
+# knitr options
+knitr::opts_chunk$set(
+  cache = FALSE,   # Cache chunk results
+  echo = TRUE,     # Show/Hide R chunks
+  warning = FALSE, # Show/Hide warnings
+  # Figure alignment and size
+  fig.align='center', out.width='80%', fig.asp=.75,
+  # Graphic devices (ragg_png is better than standard png)
+  dev = c("ragg_png", "pdf"),
+  # Code chunk format
+  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=60),
+  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  )
+options(width=60)
+
+# ggplot style
+library("tidyverse")
+theme_set(theme_bw())
+theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
+             plot.background = element_rect(fill = "transparent", colour = NA))
+knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+
+# Random seed
+set.seed(973)
+
+# Create packages.bib file to reference them as @R-package
+knitr::write_bib(Packages, file="packages.bib")
+```
+
+# Présentation {-}
+
+## Objectives {-}
+
+This document is the support of the course *Working with R*.
+
+It proposes an organization of the work around R and RStudio in order to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create a web site and online R applications (Shiny), produce packages and use R for teaching.
+It complements *Reproducible Research with R and R Studio* [@Gandrud2013] with a more hands-on approach, with ready-to-use solutions.  
+
+Optimizing the use of the many tools available is covered in detail: **rmarkdown**, **bookdown** and **blogdown** for drafting, **roxygen2**, **testthat** and **pkgdown** for packages, source control with git and GitHub, continuous integration with GitHub Actions and Codecov.
+Examples are presented at each step, and the necessary code is provided.
+
+Chapter \@ref(chap-software) is dedicated to the installation of the necessary tools: R, git and LaTeX.
+Chapter \@ref(chap-utiliseR) details some advanced aspects of using R: the different languages, the environments, the performance of the code. 
+The basic use of R is not covered here: good courses are suggested.
+Chapter \@ref(chap-git) presents source control with git and GitHub.
+
+Chapter \@ref(chap-rediger) shows how to write simple (articles) or complex (books) documents with R Markdown, integrating the data, the code to process them and the text to present them. 
+Chapter \@ref(chap-package) presents a step-by-step method to efficiently create a package. 
+Chapter \@ref(chap-this) introduces the use of continuous integration to automatically produce documents, verify package code and produce package thumbnails. 
+Chapter \@ref(chap-shiny) introduces Shiny, the tool for putting R applications online.
+Finally, chapter \@ref(chap-enseigner) introduces the tools for teaching R.
+
+
+## Conventions {-}
+
+Package names are in bold in the text, for example: **ggplot2**.
+
+The identifier used on GitHub is noted *GitHubID*.
+
+The sign `|>` in the code of the examples indicates that the rest of the code should be on the same line, but is cut for the formatting of this document.
+Its use is limited to YAML configuration files, mostly used in chapter \@ref(chap-ci).
+In all other cases, the code can be used directly.
+
+<!-- The \mainmatter command marks the beginning of the body of the LaTeX document--> 
+<!-- It should not be deleted-->
+\mainmatter
