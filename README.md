@@ -1,6 +1,6 @@
 # Working with R
 
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
 ![BuildStatus](https://github.com/EricMarcon/WorkingWithR/workflows/bookdown/badge.svg)
 
 
