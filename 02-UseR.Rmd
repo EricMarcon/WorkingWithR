@@ -64,7 +64,7 @@ Unlike the way a classical object-oriented language works[^210], S3 methods are 
 
 ```{r S3-2, echo=TRUE}
 # Default display
-MyName
+MyFirstName
 print.Firstname <- function(x) cat("The first name is", x) 
 # Modified display
 MyFirstName
@@ -178,11 +178,11 @@ Methods belong to classes, as in C++: they are declared in the class and called 
 ```{r RC-Class, tidy=FALSE}
 library("methods")
 # Declaration of the class
-PersonneRC <- setRefClass("PersonRC", 
+PersonRC <- setRefClass("PersonRC", 
     fields = list(LastName = "character", FirstName = "character"),
     methods = list(print = function() cat(FirstName, LastName)))
 # Constructeur
-MeRC <- new("PersonneRC", LastName = "Marcon", FirstName ="Eric")
+MeRC <- new("PersonRC", LastName = "Marcon", FirstName ="Eric")
 # Language
 pryr::otype(MeRC)
 # Call the print method
@@ -208,7 +208,7 @@ PersonR6 <- R6Class("PersonR6",
                                     initialize = function(LastName=NA, FirstName=NA) {
                                       self$LastName <- LastName ; self$FirstName <- FirstName},
                                     print = function() cat(self$FirstName, self$LastName)))
-MeR6 <- PersonneR6$new(LastName = "Marcon", FirstName ="Eric")
+MeR6 <- PersonR6$new(LastName = "Marcon", FirstName ="Eric")
 MeR6$print()
 ```
 
@@ -219,7 +219,7 @@ The performances of S6 are much better than those of RC but are inferior to thos
 
 The non-inclusion of R6 to R is shown by **pryr**:
 ```{r otype}
-pryr::otype(MoiR6)
+pryr::otype(MeR6)
 ```
 
 
@@ -862,12 +862,12 @@ f <- function(x, time=.25) {
 }
 
 #Leave one core out for the system
- nbCoeurs <- detectCores()-1
+ nbCores <- detectCores()-1
 
 # Serial : theoretical time = nbCores/4 seconds
-(tserie <- system.time(lapply(1:nbCoeurs, f)))
+(tserie <- system.time(lapply(1:nbCores, f)))
 # Parallel : theoretical time = 1/4 second
-(tparallele <- system.time(mclapply(1:nbCoeurs, f, mc.cores=nbCoeurs)))
+(tparallele <- system.time(mclapply(1:nbCores, f, mc.cores=nbCores)))
 ```
 
 Setting up parallelization has a cost of about ```r format(tparallele[3]-1/4, digits=2)``` seconds here.
@@ -876,9 +876,9 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 ```{r serie_parallele}
 # Serial
-system.time(lapply(1:nbCoeurs, f, time=1))
+system.time(lapply(1:nbCores, f, time=1))
 # Parallel
-system.time(mclapply(1:nbCoeurs, f, time=1, mc.cores=nbCoeurs))
+system.time(mclapply(1:nbCores, f, time=1, mc.cores=nbCores))
 ```
 
 The additional time required for parallel execution of the new code is relatively smaller: the costs become less than the savings when the time of each task increases.
@@ -886,8 +886,8 @@ The additional time required for parallel execution of the new code is relativel
 If the number of parallel tasks exceeds the number of cores used, performance collapses because the additional task must be executed after the first ones.
 
 ```{r nbCoeurs}
-system.time(mclapply(1:nbCoeurs, f, time=1, mc.cores=nbCoeurs))
-system.time(mclapply(1:(nbCoeurs+1), f, time=1, mc.cores=nbCoeurs))
+system.time(mclapply(1:nbCores, f, time=1, mc.cores=nbCores))
+system.time(mclapply(1:(nbCores+1), f, time=1, mc.cores=nbCores))
 ```
 
 The time then remains stable until the number of cores is doubled.
@@ -896,7 +896,7 @@ The figure \@ref(fig:r-parallele) shows the evolution of the computation time ac
 (ref:r-parallele) Parallel execution time of tasks requiring one second (each task is a one second pause). The number of tasks varies from 1 to twice the number of cores used (equal to ```r nbCores```) plus one. 
 ```{r r-parallele, fig.cap="(ref:r-parallele)", fig.scap="Temps d'exécution en parallèle", tidy=FALSE}
 Tasks <- 1:(2 * nbCores+1)
-Time <- sapply(Taches, function(nbTasks) {
+Time <- sapply(Tasks, function(nbTasks) {
       system.time(mclapply(1:nbTasks, f, time=1, mc.cores=nbCores))
               })
 library("tidyverse")
@@ -979,11 +979,11 @@ Replacing the `%do%` operator with `%dopar%` parallelizes loops, provided that a
 
 ```{r doParallel}
 library(doParallel)
-registerDoParallel(cores = nbCoeurs)
+registerDoParallel(cores = nbCores)
 # Serial
-system.time(foreach (i=icount(nbCoeurs), .combine="c") %do% {f(i)})
+system.time(foreach (i=icount(nbCores), .combine="c") %do% {f(i)})
 # Parallel
-system.time(foreach (i=icount(nbCoeurs), .combine="c") %dopar% {f(i)})
+system.time(foreach (i=icount(nbCores), .combine="c") %dopar% {f(i)})
 ```
 
 The fixed cost of parallelization is low.
