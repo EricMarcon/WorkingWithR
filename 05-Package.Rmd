@@ -468,7 +468,7 @@ All packages used by the **multiple** code will be listed, separated by commas.
 Imports: stats
 ```
 
-This "import" simply means that the **stats** package must be loaded, but not necessarily attached (see section `@ref(sec:environments)), for **multiple** to work.
+This "import" simply means that the **stats** package must be loaded, but not necessarily attached (see section `@ref(sec:environnements)), for **multiple** to work.
 
 Then, the `rnorm()` function must be found in the **multiple** package environment.
 There are several ways to fulfill this requirement.
@@ -479,7 +479,7 @@ First, the following comment could be provided for **roxygen2**:
 ```
 
 The entire namespace of the **stats** package would be attached to and accessible by the **multiple** package. 
-This is not a good practice because it multiplies the risks of name conflicts (see section \@ref(sec:environments)).
+This is not a good practice because it multiplies the risks of name conflicts (see section \@ref(sec:environnements)).
 Note that the notion of import used here is different from that of `DESCRIPTION`, although they have the same name.
  
 It is best to import only the `rnorm()` function by declaring it in the function documentation:
@@ -740,7 +740,7 @@ autoplot(my_multiple)
 ```
 
 For technical reasons related to unconventional evaluation in the tidyverse, variable names used by `aes()` must be prefixed with `.data$` in packages and `rlang::.data` must be imported.
-Otherwise, the package check returns a note that the variables `x` and `y`, used by the arguments to `aes()` have not been declared and may not exist in the local environment (see section \@ref(sec:environments)).
+Otherwise, the package check returns a note that the variables `x` and `y`, used by the arguments to `aes()` have not been declared and may not exist in the local environment (see section \@ref(sec:environnements)).
 
 #### Documentation
 
@@ -998,11 +998,11 @@ Finally, import the `reprompt()` function from **Rdpack** by adding the followin
 
 ### Citations
 
-References are cited by the command ``insertCite{key}{package}` in the documentation for **roxygen2**.
+References are cited by the command `\insertCite{key}{package}` in the documentation for **roxygen2**.
 package` is the name of the package in which the `REFERENCES.bib` file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use **Rdpack**.
 
 key` is the identifier of the reference in the file.
-Example[^507]: documentation of the **SpatDiv** package hosted on GitHub, `.R` file of the package:
+The following example[^507] is from the documentation of the **SpatDiv** package hosted on GitHub, in its `.R` file:
 
 ```{r Citations}
 #' SpatDiv

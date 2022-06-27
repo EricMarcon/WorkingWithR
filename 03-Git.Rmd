@@ -54,7 +54,7 @@ knitr::include_graphics('images/git-Project.png')
 ```
 
 A new *Git* window appears in the upper right panel.
-It contains the list of project files (figure \@ref(fig:git-Files)).
+It contains the list of project files (figure \@ref(fig:git-Fichiers)).
 
 (ref:git-Fichiers) Project files, not yet taken into account by git.
 ```{r git-Fichiers, fig.cap="(ref:git-Fichiers)", echo=FALSE}
@@ -164,7 +164,7 @@ SSH authentication (see section \@ref(sec:SSH)) is to be preferred.
 ### Linking git and GitHub
 
 In RStudio, a first *commit* must at least have taken place for the main branch of the project, named "master", to exist.
-At the top right of the *Git* window (figure \@ref(fig:git-Files)), it shows "(no branch)" before that.
+At the top right of the *Git* window (figure \@ref(fig:git-Fichiers)), it shows "(no branch)" before that.
 Then it is displayed "master", the default name of the main branch of the project.
 The project can then be linked to the GitHub repository.
 
@@ -665,7 +665,7 @@ You must therefore add the line `*.rsa` to the `.gitignore` file of the project 
 To allow the continuous integration of the project (chapter \@ref(chap-ci)), the private key must be stored as a secret of the GitHub repository containing the project.
 Apply the procedure in the section \@ref(sec:secrets-ci) to create a secret named "RSA" and paste the content of the file `<RepoID><RepoID>.rsa` in the "Value" field of the form.
 
-The use of the secret is described in the section \@ref(sec:secretsCI).
+The use of the secret is described in the section \@ref(secrets-ci).
 
 
 ### Creating a safe

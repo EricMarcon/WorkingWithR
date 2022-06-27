@@ -739,7 +739,7 @@ An R function with the same name as the C++ function is now available.
 timesTwo(1:5)
 ```
 
-The performance is two orders of magnitude faster than the R code (see the case study, section \@ref(sec:case)).
+The performance is two orders of magnitude faster than the R code (see the case study, section \@ref(sec:cas)).
 
 
 ## Parallelizing R

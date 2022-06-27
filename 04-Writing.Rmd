@@ -206,12 +206,12 @@ plot(pressure)
 
 Figures can be created by the R code (figure \@ref(fig:pressure)).
 With Bookdown, a label is associated with each figure: its name is `fig:xxx` where `xxx` is the name of the R code snippet.
-References are made with the command ``@ref(fig:xxx)`.
+References are made with the command `\@ref(fig:xxx)`.
 
-The header of the code snippet of the figure `fig@ref(fig:pressure) is:
+The header of the code snippet of the figure \@ref(fig:pressure) is:
 
 ````
-```{r pressure, fig.cap="Titre de la figure"}`r ''`
+```{r pressure, fig.cap="Caption of the figure"}`r ''`
 ```
 ````
 
@@ -327,7 +327,7 @@ Chapter labels must follow file naming rules by not containing special character
 
 Bookmarks can also be placed freely in the text with the command `(ref:zzz)`.
 
-In all cases, the call to the reference is made by the command ``@ref(ref:zzz)`.
+In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
 
 
 #### Bibliography
@@ -385,7 +385,7 @@ The change of language in the document is managed in LaTeX but not in HTML by in
 ```
 
 The current language only has an effect in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
-The ``selectlanguage'' command is simply ignored in HTML.
+The `\selectlanguage` command is simply ignored in HTML.
 
 The language names are different in the header (IETF codes) and in the text (language name).
 The correspondence and the complete list of languages can be found in table 3 of the package documentation **polyglossia**[^403].
@@ -519,7 +519,7 @@ The `index.Rmd` file is special: it contains the document header and the first c
 ### Write
 
 The first chapter is placed in the foreword of the printed book: it should not be numbered (hence the `{-}` code next to the title) in the HTML version.
-It must end with the LaTeX command ``mainmatter`' which marks the beginning of the body of the book.
+It must end with the LaTeX command `\mainmatter` which marks the beginning of the body of the book.
 
 The outline levels start with `#` for chapters (only one per file), `##` for sections, etc.
 
@@ -542,7 +542,7 @@ The layout is done fully automatically by pandoc (in HTML) and LaTeX (in PDF).
 
 It is often useful to help LaTeX to solve some margin overruns due to too large layout constraints: for optimal readability, columns are narrow, but the code (formatted text between two inverted apostrophes) does not allow hyphenation.
 
-If a line of text protrudes into the right margin in the PDF document, the solution is to manually add the ``break`` code to the desired location for the line break in the R Markdown document.
+If a line of text protrudes into the right margin in the PDF document, the solution is to manually add the `\break` code to the desired location for the line break in the R Markdown document.
 The command has no effect on the HTML document but forces the hyphenation in LaTeX.
 To break formatted text (between asterisks for italics or more frequently between inverted apostrophes for code), you must finish formatting before `\break` and start again afterwards.
 For example, to force a line break before `file.Rmd`:
@@ -1589,4 +1589,4 @@ tar_read(map)
 ### Source control
 
 The **targets** files must be included in the source control.
-This way, calculations done locally will not be repeated by GitHub Actions (chapter \@ref(chap-this)) and the document build will be fast.
+This way, calculations done locally will not be repeated by GitHub Actions (chapter \@ref(chap-ci)) and the document build will be fast.

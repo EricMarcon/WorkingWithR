@@ -178,14 +178,14 @@ It complements *Reproducible Research with R and R Studio* [@Gandrud2013] with a
 Optimizing the use of the many tools available is covered in detail: **rmarkdown**, **bookdown** and **blogdown** for drafting, **roxygen2**, **testthat** and **pkgdown** for packages, source control with git and GitHub, continuous integration with GitHub Actions and Codecov.
 Examples are presented at each step, and the necessary code is provided.
 
-Chapter \@ref(chap-software) is dedicated to the installation of the necessary tools: R, git and LaTeX.
+Chapter \@ref(chap-logiciels) is dedicated to the installation of the necessary tools: R, git and LaTeX.
 Chapter \@ref(chap-utiliseR) details some advanced aspects of using R: the different languages, the environments, the performance of the code. 
 The basic use of R is not covered here: good courses are suggested.
 Chapter \@ref(chap-git) presents source control with git and GitHub.
 
 Chapter \@ref(chap-rediger) shows how to write simple (articles) or complex (books) documents with R Markdown, integrating the data, the code to process them and the text to present them. 
 Chapter \@ref(chap-package) presents a step-by-step method to efficiently create a package. 
-Chapter \@ref(chap-this) introduces the use of continuous integration to automatically produce documents, verify package code and produce package thumbnails. 
+Chapter \@ref(chap-ci) introduces the use of continuous integration to automatically produce documents, verify package code and produce package thumbnails. 
 Chapter \@ref(chap-shiny) introduces Shiny, the tool for putting R applications online.
 Finally, chapter \@ref(chap-enseigner) introduces the tools for teaching R.
 
