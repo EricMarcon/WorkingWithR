@@ -328,7 +328,7 @@ The clock-shaped button in the RStudio *Git* window displays the history of the 
 
 (ref:git-history) History of commits in the repository.
 ```{r git-history, fig.cap="(ref:git-history)", echo=FALSE}
-knitr::include_graphics('images/git-historic.png')
+knitr::include_graphics('images/git-historique.png')
 ```
 
 At the top is the head, and then all the commits that made it up.
@@ -670,14 +670,14 @@ The use of the secret is described in the section \@ref(sec:secretsCI).
 
 ### Creating a safe
 
-``{r unlink_vault, include=FALSE}
+```{r unlink_vault, include=FALSE}
 # Deleting the pre-existing vault
 unlink("vault", recursive = TRUE, force = TRUE)
 ```
 
 Execute:
 
-``{r create_vault}
+```{r create_vault}
 library("secret")
 vault <- "vault"
 create_vault(vault)
