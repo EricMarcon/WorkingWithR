@@ -544,7 +544,7 @@ It is often useful to help LaTeX to solve some margin overruns due to too large 
 
 If a line of text protrudes into the right margin in the PDF document, the solution is to manually add the ``break`` code to the desired location for the line break in the R Markdown document.
 The command has no effect on the HTML document but forces the hyphenation in LaTeX.
-To break formatted text (between asterisks for italics or more frequently between inverted apostrophes for code), you must finish formatting before ``break'' and start again afterwards.
+To break formatted text (between asterisks for italics or more frequently between inverted apostrophes for code), you must finish formatting before `\break` and start again afterwards.
 For example, to force a line break before `file.Rmd`:
 
 ```

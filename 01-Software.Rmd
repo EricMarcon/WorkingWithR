@@ -377,8 +377,8 @@ ssh -T git@github.com
 
 If an error message indicates that no key is found, there are two possible solutions:
 
-- Duplicate the `.ssh' folder (with File Explorer) in `Documents`;
-- Duplicate the `.ssh' folder in the RStudio program folder (usually `C:\Program Files\RStudio'), in `resourcesterminalbash'.
+- Duplicate the `.ssh` folder (with File Explorer) in `Documents`;
+- Duplicate the `.ssh` folder in the RStudio program folder (usually `C:\Program Files\RStudio`), in `resourcesterminalbash`.
 
 If successful, a message indicates that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
 Check with GitHub that the server's fingerprint is correct [^112] and type `yes`.

@@ -68,7 +68,7 @@ It is loaded, but contains nothing.
 
 #### Files
 
-Functions are placed in one or more `.R' files in the `R' folder.
+Functions are placed in one or more `.R` files in the `R` folder.
 The organization of these files is free.
 For this example, a file with the name of each function will be created.
 Files grouping similar functions or a single file containing all the code are possible choices.
@@ -121,7 +121,7 @@ double <- function(number) {
 }
 ```
 
-Comments to **roxygen2** begin with `#'`:
+Comments to **roxygen2** begin with `#`:
 
 * the first line contains the title of the function, i.e. a very short description: its name in general;
 * the next line (separated by a line break) may contain its description (see *Description* in the help);
@@ -688,7 +688,7 @@ my_multiple <- multiple(1:3, 2)
 class(my_multiple)
 ```
 
-The call to the `multiple()` function returns an object of class `multiple', which is also of class `list'.
+The call to the `multiple()` function returns an object of class `multiple`, which is also of class `list'.
 In the absence of a `print.multiple()` function, R looks for the `print.list()` function, which does not exist, and falls back on the `print.default()` function:
 
 ```{r my_multiple}
