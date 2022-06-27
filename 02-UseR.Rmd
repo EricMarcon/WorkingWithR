@@ -1384,19 +1384,19 @@ The workflow file is therefore the following:
 library("targets")
 tar_option_set(packages = c("spatstat", "dbmss"))
 list(
-  # Tirage des points
+  # Draw points
   tar_target(X,
     runifpoint(NbPoints)
   ),
-  # Paramétrage
+  # Choose Parameters
   tar_target(NbPoints,
     1000
   ),
-  # Distance moyenne
+  # Average Distance
   tar_target(d,
     sum(pairdist(X)) / NbPoints / (NbPoints - 1)
   ),
-  # Carte
+  # Map
   tar_target(map, 
     autoplot(as.wmppp(X))
   )
@@ -1410,19 +1410,19 @@ usethis::write_over("_targets.R", c(
   'library(targets)',
   'tar_option_set(packages = c("spatstat", "dbmss"))',
   'list(',
-  '  # Tirage des points',
+  '  # Draw points',
   '  tar_target(X,',
   '    runifpoint(NbPoints)',
   '  ),',
-  '  # Paramétrage',
+  '  # Parameterize',
   '  tar_target(NbPoints,',
   '    1000',
   '  ),',
-  '  # Distance moyenne',
+  '  # Average Distance',
   '  tar_target(d,',
   '    sum(pairdist(X))/NbPoints/(NbPoints-1)',
   '  ),',
-  '  # Carte',
+  '  # Map',
   '  tar_target(map,',
   '    autoplot(as.wmppp(X))',
   '  )',
