@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "Please cite this book as below."
+authors:
+- family-names: "Marcon"
+  given-names: "Eric"
+  orcid: "https://orcid.org/0000-0002-5249-321X"
+title: "Working with R"
+version: 5.dev
+date-released: 2022-06-27
+url: "https://ericmarcon.github.io/WorkingWithR/"
+preferred-citation:
+  type: book
+  authors:
+  - family-names: "Marcon"
+    given-names: "Eric"
+    orcid: "https://orcid.org/0000-0002-5249-321X"
+  title: "Travailler avec R"
+  publisher: "UMR Amap"
+  location: "Montpellier, France"
+  url: "https://ericmarcon.github.io/WorkingWithR/"
+  date-released: 2022-06-27
