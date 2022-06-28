@@ -10,7 +10,7 @@ The tools to do this are the subject of this chapter, completed by the productio
 In an `.R' file, the code should always be commented to make it easier to read.
 When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in text.
 
-The concept of literate programming (*literate programming*) was developed by @Knuth1984.
+The concept of literate programming was developed by @Knuth1984.
 It consists in describing the objectives and methods by text, in which the code is integrated.
 
 The simplest tool is the Markdown notebook (Menu "File > New File > R Notebook").
@@ -54,7 +54,7 @@ output: html_notebook
 
 The first entry is the title, the second the output format: more precisely the name of the function that will process the document.
 
-The document contains Markdown formatted text and code chunks (*code chunks*) surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here `r`.
+The document contains Markdown formatted text and code chunks surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here `r`.
 These code chunks are processed by **knitr** which transforms the result of the execution of the R code into Markdown and integrates it into the text of the document.
 
 Processing an R Markdown document is called *knit*.
@@ -167,7 +167,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (`*i
 
 #### R code
 
-R code is included in code chunks (*code chunks*) that are easily created by clicking on the "Insert a new code chunk" button above the source code window in RStudio.
+R code is included in code chunks that are easily created by clicking on the "Insert a new code chunk" button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example: 
 
@@ -983,7 +983,7 @@ The working method is to progress step by step by testing and then validating ea
 - Build the site and check the result: `blogdown:::serve_site()`;
 - Stop the site: `blogdown::stop_server()`;
 - If the result is not satisfactory, try again;
-- Validate the changes (*commit*).
+- Commit the changes.
 
 #### Home page
 

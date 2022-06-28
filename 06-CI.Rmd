@@ -81,7 +81,7 @@ It is useless to use Codecov's token system.
 
 ### Scripting GitHub actions
 
-A GitHub workflow (*workflow*) is a succession of tasks (*jobs*) with steps (*steps*).
+A GitHub workflow is a succession of jobs with steps.
 A workflow is triggered by an event, usually every *push* of the project, but also at regular intervals (*cron*).
 
 Typically, the workflows created here contain two tasks: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.

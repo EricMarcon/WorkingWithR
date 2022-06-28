@@ -72,7 +72,7 @@ In common use, it is preferable to uninstall old versions manually after install
 
 R packages are found in two folders:
 
-* the system library (*System Library*) contains the packages that come with R: **base**, **utils**, **graphics** for example.
+* the *System Library* contains the packages that come with R: **base**, **utils**, **graphics** for example.
 It is located in a subdirectory of the installation program (`C:\Program Files\R-4.1.0\library` for R version 4.1.0 on Windows 10).
 * The *User Library* contains those installed by the user.
 Until version 4.1, it is located in the user's home folder, in a subfolder `R\win-library\4.1\`).
@@ -362,7 +362,7 @@ ssh-keygen -t ed25519 -C "user.email"
 
 The email address (which replaces "user.email") must be the one registered in the git configuration and the GitHub account.
 The key is saved in the `.ssh` folder of the user's home directory.
-It is possible to add a password (*passphrase*) to the key, which will have to be typed the first time each work session is used.
+It is possible to add a passphrase to the key, which will have to be typed the first time each work session is used.
 If the computer is properly secured (no physical access by third parties), leaving it empty allows to gain fluidity.
 
 Warning: the private key is strictly confidential and must not be copied anywhere where it could be read by a third party (beware of automatic backups in particular).
@@ -458,9 +458,9 @@ Package updates should be done periodically with the MiKTeX console, accessible 
 When launched without elevation of privileges, the console offers to switch to administrator mode.
 Click on "Switch to Administrator mode".
 
-In the settings (*Settings*), check that the packages always install automatically and that the paper size is A4.
+In the settings, check that the packages always install automatically and that the paper size is A4.
 
-In the updates menu (*Updates*), click on "Check for updates" then "Update now".
+In the "Updates" menu, click on "Check for updates" then "Update now".
 
 If the automatic installation fails, it is possible to manually install a package in the "Packages" menu.
 

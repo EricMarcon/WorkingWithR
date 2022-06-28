@@ -1224,7 +1224,7 @@ In case of rejection, process the requests and resubmit by incrementing the vers
 ### Maintenance
 
 Requests for corrections are sent by CRAN from time to time, especially when the version of R changes.
-The email address of the package maintainer (*maintainer*) must remain valid and the requests must be processed quickly. 
+The email address of the package maintainer must remain valid and the requests must be processed quickly. 
 Otherwise, the package is archived.
 
 New versions of the package are submitted in the same way as the first one.

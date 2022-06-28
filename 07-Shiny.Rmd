@@ -44,7 +44,7 @@ Any modification of an element of the interface, precisely of an element display
 
 An application is created by choosing:
 
-* a window layout (*layout*);
+* a window layout;
 * the controls for entering parameters (*intput*);
 * the controls for displaying the results (*output*).
 

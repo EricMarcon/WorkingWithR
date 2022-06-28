@@ -84,17 +84,17 @@ If the organization is not visible on the GitHub Classrooms page, click on "Gran
 
 ### New Classroom
 
-A classroom (*classroom*) is populated with students who will receive tasks (*assignments*) to perform.
+A classroom is populated with students who will receive tasks to perform.
 
 Click on *New Classroom*.
 Select the organization in charge of administering the classroom.
 
-Enter the name of the classroom: a good practice is to prefix it with the name of the course and add the name of the session, for example "Course-R-2020-EdGuyane".
+Enter the name of the classroom: a good practice is to prefix it with the name of the course and add the name of the session, for example "Course-R-2020".
 
 Do not add collaborators (this will be possible later), and eventually enter the list of students (one name per line, also possible later).
 The class is created.
 
-All classrooms are visible from the GitHub Classrooms homepage [^809].
+All classrooms are visible from the GitHub Classrooms homepage[^809].
 Click on a name to open one.
 The "Settings" button allows to change its name or to delete it.
 The "TAs and Admins" button allows you to add collaborators, i.e. other GitHub users who will be able to administer the classroom.

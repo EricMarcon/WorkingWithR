@@ -19,7 +19,7 @@ The git commands can be executed in the RStudio terminal.
 knitr::include_graphics('images/git-Status.png')
 ```
 
-The `git status` command (figure \@ref(fig:git-Status)) returns the status of the repository (*repository*), that is, the set of data managed by git to track the current project.
+The `git status` command (figure \@ref(fig:git-Status)) returns the status of the repository, that is, the set of data managed by git to track the current project.
 
 RStudio integrates a graphical interface for git that is sufficient to do without the command line for standard use, presented here.
 
@@ -86,15 +86,15 @@ The files taken into account are part of the git *index*.
 knitr::include_graphics('images/git-Commit.png')
 ```
 
-The committed files can be validated (*Commit*) by clicking on the "Commit" button in the *Git* window.
+The staged files can be validated (*Committed*) by clicking on the "Commit" button in the *Git* window.
 A new window opens (figure \@ref(fig:git-Commit)), which allows to visualize all the modifications by file (additions in green, deletions in red).
 The modification grain treated by git is the text line, ended by a line break.
 Binary files like images are processed in block.
 
-Each commit (*Commit*) is accompanied by a description text.
+Each commit is accompanied by a description text.
 The first line is the short description.
 A detailed description can be added after a line break.
-For the readability of the project history, each *commit* corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
+For the readability of the project history, each commit corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
 The command executed is `git commit -m "Commit message"`.
 
 (ref:git-id) Login window.
@@ -123,8 +123,8 @@ The *master* branch can contain files totally different from those of the main b
 The git repository is fully constituted.
 In git vocabulary, it consists of three *trees* (figure \@ref(fig:git-Trees)):
 
-* the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed (*Staged* box unchecked);
-* the index, which contains the files taken into account (*Staged* box checked);
+* the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed ("Staged" box unchecked);
+* the index, which contains the files taken into account ("Staged" box checked);
 * the head, which contains the validated files.
 
 (ref:git-Trees) Les trois arbres de git. Source: https://rogerdudler.github.io/git-guide/index.fr.html
@@ -218,12 +218,12 @@ If SSH authentication is chosen and has been configured at git installation (sec
 
 ### Push the first modifications
 
-The previous manipulation has automatically pushed (*Push*) the validated modifications on GitHub.
+The previous manipulation has automatically pushed the validated modifications on GitHub.
 Afterwards, you will have to click on the "Push" button of the *Git* window to do it.
 
 On GitHub, the files resulting from the modifications recorded by git are now visible.
 
-Each *commit* done locally is counted by git and a message "Your branch is ahead of 'origin/master' by *n* commits" displayed in the top of the *Git* window indicates that it is time to update GitHub by pushing all these *commits*.
+Each commit done locally is counted by git and a message "Your branch is ahead of 'origin/master' by *n* commits" displayed in the top of the *Git* window indicates that it is time to update GitHub by pushing all these commits.
 Click on the "Push" button to do so.
 
 At this point, the project should have a `README.md` file that presents its contents on GitHub.
@@ -260,7 +260,7 @@ The name of the directory to create for the project is automatically deduced fro
 Choose the directory in which the project will be created and click on "Create Project".
 The created project is linked to the remote repository on GitHub.
 
-To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e. other GitHub users in the repository settings (*Settings*).
+To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e. other GitHub users in the repository settings.
 
 (ref:git-Access) Assigning access rights on GitHub.
 ```{r git-Access, fig.cap="(ref:git-Access)", echo=FALSE}
@@ -276,7 +276,7 @@ Collaborators are invited by a message sent by *GitHub*.
 
 Any work session on a project starts by pulling ("Pull" button) from the *Git* window to integrate to the local repository the updates made on GitHub by other collaborators.
 
-The changes made to the project files are then taken into account (check the *Staged* boxes) and validated (*Commit*) with an explanatory message.
+The changes made to the project files are then taken into account (check the *Staged* boxes) and committed with an explanatory message.
 A good practice is to validate changes each time an elementary task, which can be described in the explanatory message, is completed rather than making *commits* that group many changes with a vague description.
 
 As soon as possible, *Push* updates so that they are visible to collaborators.
@@ -765,7 +765,7 @@ Its `README.md` file exists in both locations: it is written by the developer at
 
 ### Activation
 
-To activate GitHub pages, you have to open the repository properties (*Settings*) and modify the "GitHub Pages" item (in "Options").
+To activate GitHub pages, you have to open the repository settings and modify the "GitHub Pages" item (in "Options").
 Select the project branch and the folder containing the web pages, here: `master` and `/docs`.
 As an option, choosing a theme customizes the appearance of the pages.
 

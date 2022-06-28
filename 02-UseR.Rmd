@@ -37,7 +37,7 @@ typeof(matrix(1))
 The **pryr** package allows to display the language in which objects are defined.
 The `typeof()` function displays the internal storage type of the objects: 
 
-- `sum()` function belongs to the basic language of R and is a primitive function (*builtin*); 
+- `sum()` function belongs to the basic language of R and is a builtin function; 
 - the elements of the numerical matrix containing a single 1 are double precision reals, and the matrix itself is defined in the basic language. 
 
 Primitive functions are coded in C and are very fast.
