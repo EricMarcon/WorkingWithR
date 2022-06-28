@@ -92,7 +92,7 @@ colorlinks: true
 csquotes: true
 ---
 
-<!-- Commande nécessaire pour la copie de l'icône "Essentiel" en HTML--> 
+<!-- Mandatory command to copy the "Take Home Message" icon in HTML--> 
 <img src="images/trombone.png" alt="image" hidden/>
 
 ```{r DoNotModify, include=FALSE}

@@ -242,17 +242,17 @@ Its most visible contribution for the user is the sequence of commands in a flow
 
 In standard programming, the sequence of functions is written by successive nesting, which makes it difficult to read, especially when arguments are needed:
 ```{r log_mean_runif}
-# Logarithme de base 2 de la moyenne de 100 tirages aléatoires dans une loi uniforme
+# Base-2 logarithm of the mean of 100 random numbers in a uniform distribution
 log(mean(runif(100)), base=2)
 ```
 
 In the tidyverse, the functions are chained together, which often better matches the programmer's thinking about data processing:
 ```{r tidylog, tidy=FALSE}
-# 100 tirages aléatoires dans une loi uniforme
+# 100 random numbers in a uniform distribution
 runif(100) %>% 
-  # Moyenne
+  # Mean
   mean %>% 
-  # Logarithme
+  # Base-2 logarithm
   log(base=2)
 ```
 

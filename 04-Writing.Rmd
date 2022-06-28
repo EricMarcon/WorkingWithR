@@ -150,14 +150,6 @@ A quick and more complete training is offered by RStudio[^402].
 
 [^402]: https://rmarkdown.rstudio.com/lesson-1.html
 
-Le texte est écrit sans aucun autre formatage que les les retours à la ligne.
-Un simple retour à la ligne n'a aucun effet sur le document produit: il permet de séparer les phrases pour simplifier le suivi du code source par git.
-
-Un saut de ligne marque un changement de paragraphe.
-
-Les différents niveaux de plan sont désignés par le nombre de croisillons correspondant en début de ligne: `#` pour un titre de niveau 1, `##` pour un titre de niveau 2, etc.
-Un espace sépare les croisillons et le texte du titre.
-
 The text is written without any formatting other than line breaks.
 A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.
 
@@ -200,7 +192,7 @@ In a document such as a scientific article, which does not display its code, it 
 
 #### Figures
 
-```{r pressure, fig.cap="Titre de la figure"}
+```{r pressure, fig.cap="Figure Title"}
 plot(pressure)
 ```
 
@@ -265,19 +257,19 @@ The **flextable** package allows creating more elaborate arrays, as in the follo
 
 ```{r flextable}
 library("flextable")
-# Rappel du jeu de données initial iris
+# iris dataset
 iris %>%
-  # Premières lignes
+  # First lines
   head() %>% 
-  # Création d'un objet flextable
+  # Create a flextable object
   flextable() %>%
-  # Titre des colonnes
-  set_header_labels(Sepal.Length="Longueur sépales",
-                    Sepal.Width="Largeur", 
-                    Petal.Length="Longueur pétales",
-                    Petal.Width="Largeur",
-                    Species="Espèce") %>%
-  # Sélection des longs sépales (>5) et affichage en rouge
+  # Column titles
+  set_header_labels(Sepal.Length="Sepal Length",
+                    Sepal.Width="Width", 
+                    Petal.Length="Petal Length",
+                    Petal.Width="Width",
+                    Species="Species") %>%
+  # Select long sepals (>5) and display them in red
   color(~Sepal.Length > 5, ~Sepal.Length, color="red")
 ```
 
@@ -932,10 +924,9 @@ These lines are commented out in the template and must therefore be uncommented 
 
 The menus are described below.
 
-params.toml` describes the look of the site.
+`params.toml` describes the look of the site.
 The options are grouped by topic, for example "Theme" for the general appearance.
-In "Basic Info", the linear sujet, par exemple "Theme" pour l'apparence générale.
-Dans "Basic Info", la ligne
+In "Basic Info", the line
 
 ```
 site_type = "Person"
