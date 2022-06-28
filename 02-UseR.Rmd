@@ -128,7 +128,7 @@ library("entropart")
 The `.S3methods()` function displays all available methods for a class, as opposed to `methods()` which displays all classes for which the method passed as an argument is defined.
 
 Many primitive functions in R are generic methods.
-Use the `help(InternalMethods)` helper to find out about them.
+To find out about them, use the `help(InternalMethods)` helper.
 
 
 ### S4
@@ -576,7 +576,7 @@ lapply()` applies a function to each element of a list.
 There are several versions of this function:
 
 - `lapply()` returns a list (saves the time of rearranging them in an array);
-- `sapply()` returns a dataframe by collapsing the lists into a `simplify2array()`;
+- `sapply()` returns a dataframe by collapsing the lists (this is done by the `simplify2array()` function);
 - `vapply()` is almost identical but requires that the data type of the result be provided.
 
 ```{r l_s_v_apply}
@@ -918,10 +918,10 @@ The best practice is to adapt the number of tasks to the number of cores, otherw
 
 ### parLapply (socket)
 
-parLapply` requires to create a cluster, export the useful variables on each node, load the necessary packages on each node, execute the code and finally stop the cluster. 
+`parLapply` requires to create a cluster, export the useful variables on each node, load the necessary packages on each node, execute the code and finally stop the cluster. 
 The code for each step can be found in the `mclapply.hack` function above.
 
-For everyday use, `mclapply` is faster, except under Windows, and simpler (including under Windows thanks to the above workaround.)
+For everyday use, `mclapply` is faster, except under Windows, and simpler (including under Windows thanks to the above workaround).
 
 
 ### foreach

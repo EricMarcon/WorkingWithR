@@ -859,9 +859,9 @@ The optimal method is to use continuous integration (see section \@ref(sec:blogd
 
 ### Multilingual site
 
-If the site is multilingual (French and English for example), its content (`content` folder) must be copied in a folder corresponding to each language.
-For example, the `content/authors/admin/_index.md` file which contains information about the owner of the site is replaced by `content/en/authors/admin/_index.md` and `content/fr/authors/admin/_index.md` if the site supports English and French.
-In practice, create an `en` folder and a `fr` folder in `content`.
+If the site is multilingual (say English and French), its `content` folder must be copied in a folder corresponding to each language.
+The `content/authors/admin/_index.md` file which contains information about the owner of the site is replaced by `content/en/authors/admin/_index.md` (respectively `.../fr/...`).
+In practice, create an `en` folder and an `fr` folder in `content`.
 Copy all the content of content (except the two new folders) into `en` and then move the same content into `fr`.
 
 
@@ -1059,7 +1059,7 @@ knitr::include_graphics('images/rediger-experience.png')
 
 The `accomplishments` component presents the professional trainings and allows to access their certificates.
 
-The `posts` component fetches its content from the `/contents/<language>/post` folder which contains the blog posts (see below).
+The `posts` component fetches its content from the folder which contains the blog posts, i.e. `/contents/<language>/post` (see below).
 The `posts.md` file contains layout options in its header.
 
 The `projects` component works the same way.
@@ -1095,7 +1095,7 @@ To understand how it works, the easiest way is to activate it.
 #### Home page menu
 
 The home page has a menu that allows you to navigate quickly to its components or to other pages.
-It is set up in `config/_default`\break`/menus.toml`.
+It is set up in `config/_default/menus.toml`.
 Menu items have a displayed name, a link (starting with `#` to point to a component or a relative path in the site such as `publication/`), and a weight that defines their display order, similar to the order of the components on the home page.
 
 A two-element menu for pointing to the site's home page and blog posts is thus as follows:
@@ -1112,7 +1112,7 @@ A two-element menu for pointing to the site's home page and blog posts is thus a
   weight = 20
 ```
 
-The menu must be translated into each language in the file `config/_default/languages.toml`:
+In the file `config/_default/languages.toml`, the menu must be translated into each language :
 
 ```
 [fr]
@@ -1203,7 +1203,7 @@ blogdown::serve_site()
 
 #### Publications
 
-Publications are organized like posts, but placed in the `/contents/<language>/publications` folder.
+Publications are organized like posts, but placed in the `/contents/<language>`\break`/publications` folder.
 
 The example used is a journal article[^rediger-29] with its code[^rediger-30].
 
@@ -1272,7 +1272,7 @@ By having the code run regularly, for example through GitHub (see below), the di
 
 #### Communications
 
-Communications are organized like publications, in the `/contents/<language>/talk` folder.
+Communications are organized like publications, in the `/contents/<language>`\break`/talk` folder.
 
 The example used is a communication in French, so in `/contents/en/talk`[^rediger-33] with its code[^rediger-34].
 
