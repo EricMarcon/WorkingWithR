@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-06-27" />
+<meta name="date" content="2022-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -508,7 +508,7 @@ The tools to do this are the subject of this chapter, completed by the productio
 <h2><span class="header-section-number">4.1</span> Markdown notebook (R Notebook)<a href="chap-rediger.html#markdown-notebook-r-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In an `.R’ file, the code should always be commented to make it easier to read.
 When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in text.</p>
-<p>The concept of literate programming (<em>literate programming</em>) was developed by <span class="citation">Knuth (<a href="#ref-Knuth1984" role="doc-biblioref">1984</a>)</span>.
+<p>The concept of literate programming was developed by <span class="citation">Knuth (<a href="#ref-Knuth1984" role="doc-biblioref">1984</a>)</span>.
 It consists in describing the objectives and methods by text, in which the code is integrated.</p>
 <p>The simplest tool is the Markdown notebook (Menu “File &gt; New File &gt; R Notebook”).
 The document template contains its instructions for use.</p>
@@ -522,7 +522,7 @@ The document template contains its instructions for use.</p>
 <p>This language is the core of the pandoc<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a> software, dedicated to converting documents of different formats.</p>
 <p>The <strong>rmarkdown</strong> package <span class="citation">(<a href="#ref-Xie2015" role="doc-biblioref">Xie 2015</a>)</span> bridges the gap between R and Markdown, relying on the RStudio interface which is not essential but greatly simplifies its use.
 The Markdown dialect used by the package is called <em>R Markdown</em>.
-Its syntax is summarized in a cheat sheet <a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a>.
+Its syntax is summarized in a cheat sheet<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a>.
 Its complete documentation is online <span class="citation">(<a href="#ref-Xie2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span>.</p>
 <p>The equations are written in LaTeX format<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>.</p>
 <p>The simplest organization of a <em>R Markdown</em> document can be seen in the notepad template.
@@ -532,7 +532,7 @@ title: &quot;R Notebook&quot;
 output: html_notebook
 ---</code></pre>
 <p>The first entry is the title, the second the output format: more precisely the name of the function that will process the document.</p>
-<p>The document contains Markdown formatted text and code chunks (<em>code chunks</em>) surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here <code>r</code>.
+<p>The document contains Markdown formatted text and code chunks surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here <code>r</code>.
 These code chunks are processed by <strong>knitr</strong> which transforms the result of the execution of the R code into Markdown and integrates it into the text of the document.</p>
 <p>Processing an R Markdown document is called <em>knit</em>.
 The production chain is as follows:</p>
@@ -605,11 +605,6 @@ It must be installed.</p>
 <h3><span class="header-section-number">4.3.1</span> Writing<a href="chap-rediger.html#writing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The main features of Markdown are summarized here.
 A quick and more complete training is offered by RStudio<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a>.</p>
-<p>Le texte est écrit sans aucun autre formatage que les les retours à la ligne.
-Un simple retour à la ligne n’a aucun effet sur le document produit: il permet de séparer les phrases pour simplifier le suivi du code source par git.</p>
-<p>Un saut de ligne marque un changement de paragraphe.</p>
-<p>Les différents niveaux de plan sont désignés par le nombre de croisillons correspondant en début de ligne: <code>#</code> pour un titre de niveau 1, <code>##</code> pour un titre de niveau 2, etc.
-Un espace sépare les croisillons et le texte du titre.</p>
 <p>The text is written without any formatting other than line breaks.
 A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.</p>
 <p>A line break marks a paragraph change.</p>
@@ -622,7 +617,7 @@ Finally, numbered lists are created in the same way by replacing the hyphens by 
 <p>In the text, the italicized parts are surrounded by a star or an underscore (<code>*italic*</code>), while two stars mark the bold.</p>
 <div id="r-code" class="section level4 hasAnchor" number="4.3.1.1">
 <h4><span class="header-section-number">4.3.1.1</span> R code<a href="chap-rediger.html#r-code" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>R code is included in code chunks (<em>code chunks</em>) that are easily created by clicking on the “Insert a new code chunk” button above the source code window in RStudio.
+<p>R code is included in code chunks that are easily created by clicking on the “Insert a new code chunk” button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:</p>
 <pre><code>```{r cars, echo=TRUE}
@@ -643,9 +638,9 @@ In a document such as a scientific article, which does not display its code, it 
 <p></p>
 <div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="chap-rediger.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:pressure"></span>
-<img src="WwR_files/figure-html/pressure-1.png" alt="Titre de la figure" width="80%" />
+<img src="WwR_files/figure-html/pressure-1.png" alt="Figure Title" width="80%" />
 <p class="caption">
-Figure 4.2: Titre de la figure
+Figure 4.2: Figure Title
 </p>
 </div>
 <p></p>
@@ -841,20 +836,18 @@ Finally, the <code>full_width = FALSE</code> option allows to adjust the width o
 <pre><code>## The following objects are masked from &#39;package:kableExtra&#39;:
 ## 
 ##     as_image, footnote</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="chap-rediger.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rappel du jeu de données initial iris</span></span>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="chap-rediger.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iris dataset</span></span>
 <span id="cb280-2"><a href="chap-rediger.html#cb280-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb280-3"><a href="chap-rediger.html#cb280-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Premières lignes</span></span>
+<span id="cb280-3"><a href="chap-rediger.html#cb280-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First lines</span></span>
 <span id="cb280-4"><a href="chap-rediger.html#cb280-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb280-5"><a href="chap-rediger.html#cb280-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Création d&#39;un objet flextable</span></span>
+<span id="cb280-5"><a href="chap-rediger.html#cb280-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a flextable object</span></span>
 <span id="cb280-6"><a href="chap-rediger.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb280-7"><a href="chap-rediger.html#cb280-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Titre des colonnes</span></span>
-<span id="cb280-8"><a href="chap-rediger.html#cb280-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set_header_labels</span>(<span class="at">Sepal.Length =</span> <span class="st">&quot;Longueur sépales&quot;</span>, <span class="at">Sepal.Width =</span> <span class="st">&quot;Largeur&quot;</span>,</span>
-<span id="cb280-9"><a href="chap-rediger.html#cb280-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Petal.Length =</span> <span class="st">&quot;Longueur pétales&quot;</span>, <span class="at">Petal.Width =</span> <span class="st">&quot;Largeur&quot;</span>,</span>
-<span id="cb280-10"><a href="chap-rediger.html#cb280-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Species =</span> <span class="st">&quot;Espèce&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb280-11"><a href="chap-rediger.html#cb280-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sélection des longs sépales (&gt;5) et affichage en</span></span>
-<span id="cb280-12"><a href="chap-rediger.html#cb280-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># rouge</span></span>
-<span id="cb280-13"><a href="chap-rediger.html#cb280-13" aria-hidden="true" tabindex="-1"></a><span class="fu">color</span>(<span class="sc">~</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="sc">~</span>Sepal.Length, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<template id="4556051b-dc12-416d-a47a-437baf5d0203"><style>
+<span id="cb280-7"><a href="chap-rediger.html#cb280-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Column titles</span></span>
+<span id="cb280-8"><a href="chap-rediger.html#cb280-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set_header_labels</span>(<span class="at">Sepal.Length =</span> <span class="st">&quot;Sepal Length&quot;</span>, <span class="at">Sepal.Width =</span> <span class="st">&quot;Width&quot;</span>,</span>
+<span id="cb280-9"><a href="chap-rediger.html#cb280-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Petal.Length =</span> <span class="st">&quot;Petal Length&quot;</span>, <span class="at">Petal.Width =</span> <span class="st">&quot;Width&quot;</span>, <span class="at">Species =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb280-10"><a href="chap-rediger.html#cb280-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select long sepals (&gt;5) and display them in red</span></span>
+<span id="cb280-11"><a href="chap-rediger.html#cb280-11" aria-hidden="true" tabindex="-1"></a><span class="fu">color</span>(<span class="sc">~</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="sc">~</span>Sepal.Length, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<template id="fd4314ae-2c90-4e32-bc94-ef9463d712b9"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -888,12 +881,12 @@ Finally, the <code>full_width = FALSE</code> option allows to adjust the width o
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-a1d4c894{}.cl-a1caa558{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a1caa576{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-a1caca38{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a1caca42{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a1cb24ce{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a1cb24d8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a1cb24e2{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a1cb24e3{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a1cb24ec{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a1cb24ed{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-a1d4c894'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-a1cb24ec"><p class="cl-a1caca38"><span class="cl-a1caa558">Longueur sépales</span></p></td><td class="cl-a1cb24ec"><p class="cl-a1caca38"><span class="cl-a1caa558">Largeur</span></p></td><td class="cl-a1cb24ec"><p class="cl-a1caca38"><span class="cl-a1caa558">Longueur pétales</span></p></td><td class="cl-a1cb24ec"><p class="cl-a1caca38"><span class="cl-a1caa558">Largeur</span></p></td><td class="cl-a1cb24ed"><p class="cl-a1caca42"><span class="cl-a1caa558">Espèce</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa576">5.1</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">3.5</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">1.4</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">0.2</span></p></td><td class="cl-a1cb24d8"><p class="cl-a1caca42"><span class="cl-a1caa558">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">4.9</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">3.0</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">1.4</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">0.2</span></p></td><td class="cl-a1cb24d8"><p class="cl-a1caca42"><span class="cl-a1caa558">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">4.7</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">3.2</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">1.3</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">0.2</span></p></td><td class="cl-a1cb24d8"><p class="cl-a1caca42"><span class="cl-a1caa558">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">4.6</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">3.1</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">1.5</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">0.2</span></p></td><td class="cl-a1cb24d8"><p class="cl-a1caca42"><span class="cl-a1caa558">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">5.0</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">3.6</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">1.4</span></p></td><td class="cl-a1cb24ce"><p class="cl-a1caca38"><span class="cl-a1caa558">0.2</span></p></td><td class="cl-a1cb24d8"><p class="cl-a1caca42"><span class="cl-a1caa558">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a1cb24e2"><p class="cl-a1caca38"><span class="cl-a1caa576">5.4</span></p></td><td class="cl-a1cb24e2"><p class="cl-a1caca38"><span class="cl-a1caa558">3.9</span></p></td><td class="cl-a1cb24e2"><p class="cl-a1caca38"><span class="cl-a1caa558">1.7</span></p></td><td class="cl-a1cb24e2"><p class="cl-a1caca38"><span class="cl-a1caa558">0.4</span></p></td><td class="cl-a1cb24e3"><p class="cl-a1caca42"><span class="cl-a1caa558">setosa</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="9763f276-aae1-43fc-89b2-572e2da31a3f"></div>
+</style><div class="tabwid"><style>.cl-3f5a3f76{}.cl-3f510884{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3f5108a2{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-3f5126a2{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3f5126b6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3f517d1e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3f517d32{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3f517d33{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3f517d3c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3f517d3d{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3f517d3e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-3f5a3f76'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-3f517d3d"><p class="cl-3f5126a2"><span class="cl-3f510884">Sepal Length</span></p></td><td class="cl-3f517d3d"><p class="cl-3f5126a2"><span class="cl-3f510884">Width</span></p></td><td class="cl-3f517d3d"><p class="cl-3f5126a2"><span class="cl-3f510884">Petal Length</span></p></td><td class="cl-3f517d3d"><p class="cl-3f5126a2"><span class="cl-3f510884">Width</span></p></td><td class="cl-3f517d3e"><p class="cl-3f5126b6"><span class="cl-3f510884">Species</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f5108a2">5.1</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">3.5</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">1.4</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">0.2</span></p></td><td class="cl-3f517d32"><p class="cl-3f5126b6"><span class="cl-3f510884">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">4.9</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">3.0</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">1.4</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">0.2</span></p></td><td class="cl-3f517d32"><p class="cl-3f5126b6"><span class="cl-3f510884">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">4.7</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">3.2</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">1.3</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">0.2</span></p></td><td class="cl-3f517d32"><p class="cl-3f5126b6"><span class="cl-3f510884">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">4.6</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">3.1</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">1.5</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">0.2</span></p></td><td class="cl-3f517d32"><p class="cl-3f5126b6"><span class="cl-3f510884">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">5.0</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">3.6</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">1.4</span></p></td><td class="cl-3f517d1e"><p class="cl-3f5126a2"><span class="cl-3f510884">0.2</span></p></td><td class="cl-3f517d32"><p class="cl-3f5126b6"><span class="cl-3f510884">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3f517d33"><p class="cl-3f5126a2"><span class="cl-3f5108a2">5.4</span></p></td><td class="cl-3f517d33"><p class="cl-3f5126a2"><span class="cl-3f510884">3.9</span></p></td><td class="cl-3f517d33"><p class="cl-3f5126a2"><span class="cl-3f510884">1.7</span></p></td><td class="cl-3f517d33"><p class="cl-3f5126a2"><span class="cl-3f510884">0.4</span></p></td><td class="cl-3f517d3c"><p class="cl-3f5126b6"><span class="cl-3f510884">setosa</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="cfd7b96a-177b-4df5-a9aa-3e61462de2da"></div>
 <script>
-var dest = document.getElementById("9763f276-aae1-43fc-89b2-572e2da31a3f");
-var template = document.getElementById("4556051b-dc12-416d-a47a-437baf5d0203");
+var dest = document.getElementById("cfd7b96a-177b-4df5-a9aa-3e61462de2da");
+var template = document.getElementById("fd4314ae-2c90-4e32-bc94-ef9463d712b9");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -907,7 +900,7 @@ fantome.appendChild(templateContent);
 </script>
 
 <p></p>
-<p>The package documentation <a href="#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a> is available online, as well as a gallery <a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>.</p>
+<p>The package documentation<a href="#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a> is available online, as well as a gallery<a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>.</p>
 <p><strong>flextable</strong> does not support caption numbering except in Word documents.
 This limitation is prohibitive.</p>
 </div>
@@ -930,7 +923,7 @@ This limitation is prohibitive.</p>
 <p>Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with <code>fig:</code> and <code>tab:</code>.</p>
 <p>For equations, the label is added manually by the code <code>(\#eq:xxx)</code> before the end of the equation.</p>
 <p>Sections can be given a label by ending their title with <code>{#yyy}</code>.
-Sections receive by default an implicit label <a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a> corresponding to their text, in lower case, where special characters are replaced by dashes.
+Sections receive by default an implicit label<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a> corresponding to their text, in lower case, where special characters are replaced by dashes.
 Implicit labels are unstable (they change with the title of the section) and difficult to predict: this is why it is advisable to add an explicit label to each section being cross-referenced.
 This is the case for chapters, for which the name of the HMTL file produced is identical to the label.
 Chapter labels must follow file naming rules by not containing special characters.</p>
@@ -1037,7 +1030,7 @@ It is not possible to directly exchange standard R Markdown content with documen
 </div>
 <div id="beamer-presentation" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Beamer Presentation<a href="chap-rediger.html#beamer-presentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <em>Beamer Presentation</em> template of <strong>memoiR</strong> allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example <a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a>.</p>
+<p>The <em>Beamer Presentation</em> template of <strong>memoiR</strong> allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example<a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a>.</p>
 <p>The approach is identical to that for articles in the same package.
 The title levels allow you to separate the parts of the presentation (<code>#</code>) and the slides (<code>##</code>).
 Two formats are available in HTML: ioslides<a href="#fn66" class="footnote-ref" id="fnref66"><sup>66</sup></a> and Slidy<a href="#fn67" class="footnote-ref" id="fnref67"><sup>67</sup></a>.
@@ -1228,7 +1221,7 @@ A Hugo site can be hosted for example on the personal page of any GitHub user wh
 <p>Hugo offers many themes, which are templates for site structure, so the <strong>Academic</strong> theme, intended for researchers.
 In RStudio, the <strong>blogdown</strong> package is provided to easily produce web pages with Hugo.
 These pages can contain R code: they are very similar to an article, seen above, whose content can be easily copied and pasted.
-So we will use this solution, for a site like the one proposed in example <a href="#fn74" class="footnote-ref" id="fnref74"><sup>74</sup></a>.</p>
+So we will use this solution, for a site like the one proposed in example<a href="#fn74" class="footnote-ref" id="fnref74"><sup>74</sup></a>.</p>
 <p>The structure of the website is simple:</p>
 <ul>
 <li>a home page, containing various customizable components such as the author’s biography, a selection of publications, blog posts or other elements and a contact form;</li>
@@ -1244,9 +1237,9 @@ So we will use this solution, for a site like the one proposed in example <a hre
 <p></p>
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="chap-rediger.html#cb295-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">install_hugo</span>()</span></code></pre></div>
 <p></p>
-<p>The full documentation for <strong>blogdown</strong> is available <a href="#fn75" class="footnote-ref" id="fnref75"><sup>75</sup></a>.</p>
+<p>The full documentation for <strong>blogdown</strong> is available<a href="#fn75" class="footnote-ref" id="fnref75"><sup>75</sup></a>.</p>
 <p>Recent versions of Hugo use <em>Go</em> (the programming language) to install their modules on the fly: here the Academic theme is loaded from GitHub at the time of site creation.
-Go must therefore be installed <a href="#fn76" class="footnote-ref" id="fnref76"><sup>76</sup></a>.</p>
+Go must therefore be installed<a href="#fn76" class="footnote-ref" id="fnref76"><sup>76</sup></a>.</p>
 </div>
 <div id="create-2" class="section level3 hasAnchor" number="4.7.2">
 <h3><span class="header-section-number">4.7.2</span> Create<a href="chap-rediger.html#create-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1324,9 +1317,9 @@ The optimal method is to use continuous integration (see section <a href="chap-c
 </div>
 <div id="multilingual-site" class="section level3 hasAnchor" number="4.7.4">
 <h3><span class="header-section-number">4.7.4</span> Multilingual site<a href="chap-rediger.html#multilingual-site" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>If the site is multilingual (French and English for example), its content (<code>content</code> folder) must be copied in a folder corresponding to each language.
-For example, the <code>content/authors/admin/_index.md</code> file which contains information about the owner of the site is replaced by <code>content/en/authors/admin/_index.md</code> and <code>content/fr/authors/admin/_index.md</code> if the site supports English and French.
-In practice, create an <code>en</code> folder and a <code>fr</code> folder in <code>content</code>.
+<p>If the site is multilingual (say English and French), its <code>content</code> folder must be copied in a folder corresponding to each language.
+The <code>content/authors/admin/_index.md</code> file which contains information about the owner of the site is replaced by <code>content/en/authors/admin/_index.md</code> (respectively <code>.../fr/...</code>).
+In practice, create an <code>en</code> folder and an <code>fr</code> folder in <code>content</code>.
 Copy all the content of content (except the two new folders) into <code>en</code> and then move the same content into <code>fr</code>.</p>
 </div>
 <div id="set-up" class="section level3 hasAnchor" number="4.7.5">
@@ -1368,10 +1361,9 @@ In the section <code>[fr]</code>:</p>
 (...)</code></pre>
 <p>These lines are commented out in the template and must therefore be uncommented by removing the <code>#</code> at the head of the line.</p>
 <p>The menus are described below.</p>
-<p>params.toml` describes the look of the site.
+<p><code>params.toml</code> describes the look of the site.
 The options are grouped by topic, for example “Theme” for the general appearance.
-In “Basic Info”, the linear sujet, par exemple “Theme” pour l’apparence générale.
-Dans “Basic Info”, la ligne</p>
+In “Basic Info”, the line</p>
 <pre><code>site_type = &quot;Person&quot;</code></pre>
 <p>selects a personal site.
 It is possible to use Academic for a scientific project site or a unit site, not documented in detail here.
@@ -1407,7 +1399,7 @@ The example used here is the author’s personal site<a href="#fn80" class="foot
 <li>Build the site and check the result: <code>blogdown:::serve_site()</code>;</li>
 <li>Stop the site: <code>blogdown::stop_server()</code>;</li>
 <li>If the result is not satisfactory, try again;</li>
-<li>Validate the changes (<em>commit</em>).</li>
+<li>Commit the changes.</li>
 </ul>
 <div id="home-page" class="section level4 hasAnchor" number="4.7.6.1">
 <h4><span class="header-section-number">4.7.6.1</span> Home page<a href="chap-rediger.html#home-page" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1482,7 +1474,7 @@ Figure 4.9: The <code>experience</code> component in Academic.
 </div>
 <p></p>
 <p>The <code>accomplishments</code> component presents the professional trainings and allows to access their certificates.</p>
-<p>The <code>posts</code> component fetches its content from the <code>/contents/&lt;language&gt;/post</code> folder which contains the blog posts (see below).
+<p>The <code>posts</code> component fetches its content from the folder which contains the blog posts, i.e. <code>/contents/&lt;language&gt;/post</code> (see below).
 The <code>posts.md</code> file contains layout options in its header.</p>
 <p>The <code>projects</code> component works the same way.
 The difference between the two components is their formatting: <code>posts</code> is of the “pages” type, which displays the most recent items, while <code>projects</code> is of the “portfolio” type, which displays selected items that contain the description <code>featured: true</code> in their own header.
@@ -1506,7 +1498,7 @@ To understand how it works, the easiest way is to activate it.</p>
 <div id="home-page-menu" class="section level4 hasAnchor" number="4.7.6.2">
 <h4><span class="header-section-number">4.7.6.2</span> Home page menu<a href="chap-rediger.html#home-page-menu" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The home page has a menu that allows you to navigate quickly to its components or to other pages.
-It is set up in <code>config/_default</code><code>/menus.toml</code>.
+It is set up in <code>config/_default/menus.toml</code>.
 Menu items have a displayed name, a link (starting with <code>#</code> to point to a component or a relative path in the site such as <code>publication/</code>), and a weight that defines their display order, similar to the order of the components on the home page.</p>
 <p>A two-element menu for pointing to the site’s home page and blog posts is thus as follows:</p>
 <pre><code>[[main]]
@@ -1518,7 +1510,7 @@ Menu items have a displayed name, a link (starting with <code>#</code> to point 
   name = &quot;Posts&quot;
   url = &quot;#posts&quot;
   weight = 20</code></pre>
-<p>The menu must be translated into each language in the file <code>config/_default/languages.toml</code>:</p>
+<p>In the file <code>config/_default/languages.toml</code>, the menu must be translated into each language :</p>
 <pre><code>[fr]
   [[fr.menu.main]]
     name = &quot;Accueil&quot;
@@ -1586,7 +1578,7 @@ To do this, you must force the <code>build_site()</code> command.</p>
 </div>
 <div id="publications" class="section level4 hasAnchor" number="4.7.6.4">
 <h4><span class="header-section-number">4.7.6.4</span> Publications<a href="chap-rediger.html#publications" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Publications are organized like posts, but placed in the <code>/contents/&lt;language&gt;/publications</code> folder.</p>
+<p>Publications are organized like posts, but placed in the <code>/contents/&lt;language&gt;</code><code>/publications</code> folder.</p>
 <p>The example used is a journal article<a href="#fn83" class="footnote-ref" id="fnref83"><sup>83</sup></a> with its code<a href="#fn84" class="footnote-ref" id="fnref84"><sup>84</sup></a>.</p>
 <p>A <code>cite.bib</code> file containing the reference in BibTex format is placed in the folder.
 The name of the folder is preferably that of the publication identifier.
@@ -1635,7 +1627,7 @@ It can be reused by simply changing the Google Scholar ID on line 30.</p>
 </div>
 <div id="communications" class="section level4 hasAnchor" number="4.7.6.5">
 <h4><span class="header-section-number">4.7.6.5</span> Communications<a href="chap-rediger.html#communications" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Communications are organized like publications, in the <code>/contents/&lt;language&gt;/talk</code> folder.</p>
+<p>Communications are organized like publications, in the <code>/contents/&lt;language&gt;</code><code>/talk</code> folder.</p>
 <p>The example used is a communication in French, so in <code>/contents/en/talk</code><a href="#fn87" class="footnote-ref" id="fnref87"><sup>87</sup></a> with its code<a href="#fn88" class="footnote-ref" id="fnref88"><sup>88</sup></a>.</p>
 <p>An image can be used more easily than for a publication.</p>
 <p>The header contains special lines suitable for communications:</p>
@@ -1903,7 +1895,7 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.12 seconds</code></pre>
+## • end pipeline: 2.034 seconds</code></pre>
 <p></p>
 <p><code>tar_visnetwork()</code> is used to check that the stream is correct before running it.
 When the document is finally produced, the <code>include=FALSE</code> option can be added to the header of this piece of code so that it does not produce any output.</p>

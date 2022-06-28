@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-06-27" />
+<meta name="date" content="2022-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -519,7 +519,7 @@ Figure 3.1: Screenshot of the RStudio terminal. The <code>git status</code> comm
 </p>
 </div>
 <p></p>
-<p>The <code>git status</code> command (figure <a href="chap-git.html#fig:git-Status">3.1</a>) returns the status of the repository (<em>repository</em>), that is, the set of data managed by git to track the current project.</p>
+<p>The <code>git status</code> command (figure <a href="chap-git.html#fig:git-Status">3.1</a>) returns the status of the repository, that is, the set of data managed by git to track the current project.</p>
 <p>RStudio integrates a graphical interface for git that is sufficient to do without the command line for standard use, presented here.</p>
 </div>
 <div id="git-and-github-1" class="section level3 hasAnchor" number="3.1.2">
@@ -582,14 +582,14 @@ Figure 3.4: Commit window.
 </p>
 </div>
 <p></p>
-<p>The committed files can be validated (<em>Commit</em>) by clicking on the “Commit” button in the <em>Git</em> window.
+<p>The staged files can be validated (<em>Committed</em>) by clicking on the “Commit” button in the <em>Git</em> window.
 A new window opens (figure <a href="chap-git.html#fig:git-Commit">3.4</a>), which allows to visualize all the modifications by file (additions in green, deletions in red).
 The modification grain treated by git is the text line, ended by a line break.
 Binary files like images are processed in block.</p>
-<p>Each commit (<em>Commit</em>) is accompanied by a description text.
+<p>Each commit is accompanied by a description text.
 The first line is the short description.
 A detailed description can be added after a line break.
-For the readability of the project history, each <em>commit</em> corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
+For the readability of the project history, each commit corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
 The command executed is <code>git commit -m "Commit message"</code>.</p>
 
 <p></p>
@@ -617,8 +617,8 @@ The <em>master</em> branch can contain files totally different from those of the
 <p>The git repository is fully constituted.
 In git vocabulary, it consists of three <em>trees</em> (figure <a href="chap-git.html#fig:git-Trees">3.6</a>):</p>
 <ul>
-<li>the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed (<em>Staged</em> box unchecked);</li>
-<li>the index, which contains the files taken into account (<em>Staged</em> box checked);</li>
+<li>the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed (“Staged” box unchecked);</li>
+<li>the index, which contains the files taken into account (“Staged” box checked);</li>
 <li>the head, which contains the validated files.</li>
 </ul>
 
@@ -715,10 +715,10 @@ Figure 3.8: Identification HTTPS sur GitHub.
 </div>
 <div id="push-the-first-modifications" class="section level3 hasAnchor" number="3.2.6">
 <h3><span class="header-section-number">3.2.6</span> Push the first modifications<a href="chap-git.html#push-the-first-modifications" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The previous manipulation has automatically pushed (<em>Push</em>) the validated modifications on GitHub.
+<p>The previous manipulation has automatically pushed the validated modifications on GitHub.
 Afterwards, you will have to click on the “Push” button of the <em>Git</em> window to do it.</p>
 <p>On GitHub, the files resulting from the modifications recorded by git are now visible.</p>
-<p>Each <em>commit</em> done locally is counted by git and a message “Your branch is ahead of ‘origin/master’ by <em>n</em> commits” displayed in the top of the <em>Git</em> window indicates that it is time to update GitHub by pushing all these <em>commits</em>.
+<p>Each commit done locally is counted by git and a message “Your branch is ahead of ‘origin/master’ by <em>n</em> commits” displayed in the top of the <em>Git</em> window indicates that it is time to update GitHub by pushing all these commits.
 Click on the “Push” button to do so.</p>
 <p>At this point, the project should have a <code>README.md</code> file that presents its contents on GitHub.
 Its minimal content is a title and a few lines of description:</p>
@@ -746,7 +746,7 @@ Figure 3.9: Cloning a repository from <em>GitHub.</em>
 The name of the directory to create for the project is automatically deduced from the address.
 Choose the directory in which the project will be created and click on “Create Project”.
 The created project is linked to the remote repository on GitHub.</p>
-<p>To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e. other GitHub users in the repository settings (<em>Settings</em>).</p>
+<p>To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e. other GitHub users in the repository settings.</p>
 
 <p></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:git-Access"></span>
@@ -764,7 +764,7 @@ Figure 3.10: Assigning access rights on GitHub.
 <div id="pull-modify-commit-push" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Pull, modify, commit, push<a href="chap-git.html#pull-modify-commit-push" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Any work session on a project starts by pulling (“Pull” button) from the <em>Git</em> window to integrate to the local repository the updates made on GitHub by other collaborators.</p>
-<p>The changes made to the project files are then taken into account (check the <em>Staged</em> boxes) and validated (<em>Commit</em>) with an explanatory message.
+<p>The changes made to the project files are then taken into account (check the “Staged” boxes) and committed with an explanatory message.
 A good practice is to validate changes each time an elementary task, which can be described in the explanatory message, is completed rather than making <em>commits</em> that group many changes with a vague description.</p>
 <p>As soon as possible, <em>Push</em> updates so that they are visible to collaborators.</p>
 </div>
@@ -1121,7 +1121,7 @@ A repository containing an article written in R Markdown (see section <a href="c
 <p>Its <code>README.md</code> file exists in both locations: it is written by the developer at the root of the project and duplicated by <code>GitHubPages.R</code>.</p>
 <div id="activation" class="section level3 hasAnchor" number="3.7.1">
 <h3><span class="header-section-number">3.7.1</span> Activation<a href="chap-git.html#activation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To activate GitHub pages, you have to open the repository properties (<em>Settings</em>) and modify the “GitHub Pages” item (in “Options”).
+<p>To activate GitHub pages, you have to open the repository settings and modify the “GitHub Pages” item (in “Options”).
 Select the project branch and the folder containing the web pages, here: <code>master</code> and <code>/docs</code>.
 As an option, choosing a theme customizes the appearance of the pages.</p>
 <p>The web site is accessible at an addres<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a> of the domain <em>github.io</em>.</p>

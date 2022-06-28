@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-06-27" />
+<meta name="date" content="2022-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -561,7 +561,7 @@ It is useless to use Codecov’s token system.</p>
 </div>
 <div id="scripting-github-actions" class="section level3 hasAnchor" number="6.2.4">
 <h3><span class="header-section-number">6.2.4</span> Scripting GitHub actions<a href="chap-ci.html#scripting-github-actions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A GitHub workflow (<em>workflow</em>) is a succession of tasks (<em>jobs</em>) with steps (<em>steps</em>).
+<p>A GitHub workflow is a succession of jobs with steps.
 A workflow is triggered by an event, usually every <em>push</em> of the project, but also at regular intervals (<em>cron</em>).</p>
 <p>Typically, the workflows created here contain two tasks: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.</p>
 <p>The workflows are configured in a file in YAML format placed in the <code>.github/workflows/</code> folder of the project.
@@ -626,9 +626,9 @@ Its development is accompanied by successive version numbers.
 An action is called by the statement <code>uses:</code>, the GitHub project that contains it and its version.</p>
 <p>In their respective GitHub project, actions exist in their development version (<code>@master</code>) and in step versions (<em>release</em>) accessible by their number (<code>@v1</code>).
 These stage versions are preferable because they are stable.</p>
-<p>General actions are made available by GitHub in the GitHub Actions organization <a href="#fn106" class="footnote-ref" id="fnref106"><sup>106</sup></a>.
+<p>General actions are made available by GitHub in the GitHub Actions organization<a href="#fn106" class="footnote-ref" id="fnref106"><sup>106</sup></a>.
 The “actions/checkout” action is used to get into the main branch of the project processed by the workflow: it is usually the first step of all workflows.</p>
-<p>The next action is the installation of R, provided by the <em>R infrastructure</em> organization <a href="#fn107" class="footnote-ref" id="fnref107"><sup>107</sup></a>.</p>
+<p>The next action is the installation of R, provided by the <em>R infrastructure</em> organization<a href="#fn107" class="footnote-ref" id="fnref107"><sup>107</sup></a>.</p>
 <p>The installation of pandoc (software external to R but necessary for R Markdown) can be done by a command executed by MacOS.
 It is called by <code>run:</code> and can contain several lines (hence the <code>|</code>).
 This script depends on the operating system: <code>brew</code> is the package manager of MacOS.

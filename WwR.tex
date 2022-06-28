@@ -373,7 +373,7 @@
 
 \author{Eric Marcon}
 
-\date{06/27/2022}
+\date{06/28/2022}
 
 
 % Include headers (preamble.tex) here
@@ -509,7 +509,7 @@ Their installation and coherent organization are presented in this chapter.
 R is included in the Linux distributions: the package is named \texttt{r-base}.
 It does not contain development tools that are often needed, so it is better to install the \texttt{r-base-dev} package as well.
 The version of R is often a bit old.
-To get the latest version, you have to use a CRAN mirror as a source for the packages: see the full documentation for Ubuntu \footnote{\url{https://doc.ubuntu-fr.org/r}}.
+To get the latest version, you have to use a CRAN mirror as a source for the packages: see the full documentation for Ubuntu\footnote{\url{https://doc.ubuntu-fr.org/r}}.
 
 Under Windows or Mac, install R after downloading it from CRAN\footnote{\url{https://cran.r-project.org/}}.
 
@@ -565,7 +565,7 @@ R packages are found in two folders:
 \begin{itemize}
 \tightlist
 \item
-  the system library (\emph{System Library}) contains the packages that come with R: \textbf{base}, \textbf{utils}, \textbf{graphics} for example.
+  the \emph{System Library} contains the packages that come with R: \textbf{base}, \textbf{utils}, \textbf{graphics} for example.
   It is located in a subdirectory of the installation program (\texttt{C:\textbackslash{}Program\ Files\textbackslash{}R-4.1.0\textbackslash{}library} for R version 4.1.0 on Windows 10).
 \item
   The \emph{User Library} contains those installed by the user.
@@ -620,7 +620,7 @@ RStudio is a graphical interface for R and much more: it is designed to simplify
 \hypertarget{installation-1}{%
 \subsection{Installation}\label{installation-1}}
 
-Install the latest version of \emph{RStudio Desktop} from the RStudio website \footnote{\url{https://rstudio.com/products/rstudio/download/}}.
+Install the latest version of \emph{RStudio Desktop} from the RStudio website\footnote{\url{https://rstudio.com/products/rstudio/download/}}.
 
 A command is available in the \enquote{Help} menu of RStudio to check for a more recent version to install.
 
@@ -888,7 +888,7 @@ This script is to be executed each time R is updated, after having activated the
 git is the source control software used here.
 Its use is detailed in the chapter \ref{chap-git}.
 
-For Windows and Mac, the installation is done from the git website \footnote{\url{https://git-scm.com/}}.
+For Windows and Mac, the installation is done from the git website\footnote{\url{https://git-scm.com/}}.
 
 git is integrated in Linux distributions.
 For Ubuntu, the apt package is \texttt{git-all}.
@@ -949,7 +949,7 @@ ssh-keygen -t ed25519 -C "user.email"
 
 The email address (which replaces \enquote{user.email}) must be the one registered in the git configuration and the GitHub account.
 The key is saved in the \texttt{.ssh} folder of the user's home directory.
-It is possible to add a password (\emph{passphrase}) to the key, which will have to be typed the first time each work session is used.
+It is possible to add a passphrase to the key, which will have to be typed the first time each work session is used.
 If the computer is properly secured (no physical access by third parties), leaving it empty allows to gain fluidity.
 
 Warning: the private key is strictly confidential and must not be copied anywhere where it could be read by a third party (beware of automatic backups in particular).
@@ -974,7 +974,7 @@ If an error message indicates that no key is found, there are two possible solut
 \end{itemize}
 
 If successful, a message indicates that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
-Check with GitHub that the server's fingerprint is correct \footnote{\url{https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints}} and type \texttt{yes}.
+Check with GitHub that the server's fingerprint is correct\footnote{\url{https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints}} and type \texttt{yes}.
 The server is automatically added to the list of known servers, in the \texttt{known\_hosts} file.
 
 In the \texttt{.ssh} folder, two files are created: one contains the private key, the other, with the \texttt{.pub} extension, the corresponding public key.
@@ -1041,7 +1041,7 @@ The distribution can be updated by the command:
 \hypertarget{installation-2}{%
 \subsubsection{Installation}\label{installation-2}}
 
-Download the installation file \footnote{\url{https://miktex.org/download}} and run it.
+Download the installation file\footnote{\url{https://miktex.org/download}} and run it.
 There are several choices to make during the installation:
 
 \begin{itemize}
@@ -1066,9 +1066,9 @@ Package updates should be done periodically with the MiKTeX console, accessible 
 When launched without elevation of privileges, the console offers to switch to administrator mode.
 Click on \enquote{Switch to Administrator mode}.
 
-In the settings (\emph{Settings}), check that the packages always install automatically and that the paper size is A4.
+In the settings, check that the packages always install automatically and that the paper size is A4.
 
-In the updates menu (\emph{Updates}), click on \enquote{Check for updates} then \enquote{Update now}.
+In the \enquote{Updates} menu, click on \enquote{Check for updates} then \enquote{Update now}.
 
 If the automatic installation fails, it is possible to manually install a package in the \enquote{Packages} menu.
 
@@ -1141,7 +1141,7 @@ Finally, the optimization of code performance is discussed in detail (loops, C++
 \section{The languages of R}\label{the-languages-of-r}}
 
 R includes several programming languages.
-The most common is S3, but it is not the only one \footnote{\url{https://adv-r.had.co.nz/OO-essentials.html}}.
+The most common is S3, but it is not the only one\footnote{\url{https://adv-r.had.co.nz/OO-essentials.html}}.
 
 \hypertarget{base}{%
 \subsection{Base}\label{base}}
@@ -1198,7 +1198,7 @@ The \texttt{typeof()} function displays the internal storage type of the objects
 \begin{itemize}
 \tightlist
 \item
-  \texttt{sum()} function belongs to the basic language of R and is a primitive function (\emph{builtin});
+  \texttt{sum()} function belongs to the basic language of R and is a builtin function;
 \item
   the elements of the numerical matrix containing a single 1 are double precision reals, and the matrix itself is defined in the basic language.
 \end{itemize}
@@ -1293,7 +1293,7 @@ Its code is just a \texttt{UseMethod("print")} declaration:
 \begin{verbatim}
 ## function (x, ...) 
 ## UseMethod("print")
-## <bytecode: 0x7fbd440abec8>
+## <bytecode: 0x7fae5eecdcc8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1414,7 +1414,7 @@ Generics are everywhere but go unnoticed, for example in packages:
 The \texttt{.S3methods()} function displays all available methods for a class, as opposed to \texttt{methods()} which displays all classes for which the method passed as an argument is defined.
 
 Many primitive functions in R are generic methods.
-Use the \texttt{help(InternalMethods)} helper to find out about them.
+To find out about them, use the \texttt{help(InternalMethods)} helper.
 
 \hypertarget{s4}{%
 \subsection{S4}\label{s4}}
@@ -1585,9 +1585,9 @@ The set of essential packages can be loaded by the \textbf{tidyverse} package wh
 
 \normalsize
 
-This is not a new language per se but rather an extension of S3, with deep technical modifications, notably the unconventional evaluation of expressions \footnote{\url{https://dplyr.tidyverse.org/articles/programming.html}}, which it is not essential to master in detail.
+This is not a new language per se but rather an extension of S3, with deep technical modifications, notably the unconventional evaluation of expressions\footnote{\url{https://dplyr.tidyverse.org/articles/programming.html}}, which it is not essential to master in detail.
 
-Its principles are written in a manifesto \footnote{\url{https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html}}.
+Its principles are written in a manifesto\footnote{\url{https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html}}.
 Its most visible contribution for the user is the sequence of commands in a flow (code pipeline).
 
 In standard programming, the sequence of functions is written by successive nesting, which makes it difficult to read, especially when arguments are needed:
@@ -1596,8 +1596,8 @@ In standard programming, the sequence of functions is written by successive nest
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Logarithme de base 2 de la moyenne de 100 tirages}
-\CommentTok{\# aléatoires dans une loi uniforme}
+\CommentTok{\# Base{-}2 logarithm of the mean of 100 random numbers in a}
+\CommentTok{\# uniform distribution}
 \FunctionTok{log}\NormalTok{(}\FunctionTok{mean}\NormalTok{(}\FunctionTok{runif}\NormalTok{(}\DecValTok{100}\NormalTok{)), }\AttributeTok{base =} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1614,11 +1614,11 @@ In the tidyverse, the functions are chained together, which often better matches
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# 100 tirages aléatoires dans une loi uniforme}
+\CommentTok{\# 100 random numbers in a uniform distribution}
 \FunctionTok{runif}\NormalTok{(}\DecValTok{100}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
-  \CommentTok{\# Moyenne}
+  \CommentTok{\# Mean}
 \NormalTok{  mean }\SpecialCharTok{\%\textgreater{}\%} 
-  \CommentTok{\# Logarithme}
+  \CommentTok{\# Base{-}2 logarithm}
   \FunctionTok{log}\NormalTok{(}\AttributeTok{base=}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1774,7 +1774,7 @@ The code of a function called from the console runs in a child environment of th
 \end{Shaded}
 
 \begin{verbatim}
-## <environment: 0x7fbd50c75868>
+## <environment: 0x7fae4d4fdbc0>
 \end{verbatim}
 
 \begin{Shaded}
@@ -1846,7 +1846,7 @@ Example:
 \begin{verbatim}
 ## function (save = "default", status = 0, runLast = TRUE) 
 ## .Internal(quit(save, status, runLast))
-## <bytecode: 0x7fbd324742a8>
+## <bytecode: 0x7fae4e1b3200>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -2035,7 +2035,7 @@ The function returns the execution time of the code.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.024   0.000   0.108
+##    0.02    0.00    0.02
 \end{verbatim}
 
 \normalsize
@@ -2067,15 +2067,15 @@ The goal is to compare the speed of computing the square of a vector (or a numbe
 \begin{verbatim}
 ## Unit: microseconds
 ##   expr     min       lq      mean   median       uq
-##  f1(X)  41.222  43.5570  70.37282  45.7565  49.7440
-##  f2(X)  49.265  51.2035  75.67182  53.5010  56.6085
-##  f3(X) 280.534 285.0075 313.42207 290.5120 302.1880
-##  f4(X) 413.909 422.4255 458.55491 434.5895 440.9090
+##  f1(X)  39.536  42.0655  62.68352  44.3815  46.5935
+##  f2(X)  48.087  49.6010  68.98649  51.3490  54.4110
+##  f3(X) 281.114 283.2460 314.49766 289.4885 301.0705
+##  f4(X) 412.416 414.6440 445.37852 421.3340 433.9670
 ##       max neval
-##  1818.635   100
-##  1974.328   100
-##  1726.976   100
-##  1932.619   100
+##  1432.936   100
+##  1289.131   100
+##  1554.419   100
+##  1874.892   100
 \end{verbatim}
 
 \normalsize
@@ -2098,10 +2098,10 @@ To choose the columns to display, use the following syntax:
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)  45.7565
-## 2 f2(X)  53.5010
-## 3 f3(X) 290.5120
-## 4 f4(X) 434.5895
+## 1 f1(X)  44.3815
+## 2 f2(X)  51.3490
+## 3 f3(X) 289.4885
+## 4 f4(X) 421.3340
 \end{verbatim}
 
 \normalsize
@@ -2131,10 +2131,10 @@ The previous test is displayed again.
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)  45.7565
-## 2 f2(X)  53.5010
-## 3 f3(X) 290.5120
-## 4 f4(X) 434.5895
+## 1 f1(X)  44.3815
+## 2 f2(X)  51.3490
+## 3 f3(X) 289.4885
+## 4 f4(X) 421.3340
 \end{verbatim}
 
 \normalsize
@@ -2191,10 +2191,10 @@ The goal is to detect slow code portions that need to be improved.
 
 \normalsize
 
-The result is an HTML file containing the profiling report \footnote{\url{https://EricMarcon.github.io/WorkingWithR/profile.html}}.
+The result is an HTML file containing the profiling report\footnote{\url{https://EricMarcon.github.io/WorkingWithR/profile.html}}.
 It can be observed that the time to draw the random numbers is similar to that of the cosine calculation.
 
-Read the complete documentation \footnote{\url{https://rstudio.github.io/profvis/}} on the RStudio website.
+Read the complete documentation\footnote{\url{https://rstudio.github.io/profvis/}} on the RStudio website.
 
 \hypertarget{loops}{%
 \section{Loops}\label{loops}}
@@ -2260,7 +2260,7 @@ The function \texttt{lnq} of the package \textbf{entropart} returns the distorte
 ##         return(Log)
 ##     }
 ## }
-## <bytecode: 0x7fbd3359be40>
+## <bytecode: 0x7fae4e86bd98>
 ## <environment: namespace:entropart>
 \end{verbatim}
 
@@ -2282,7 +2282,7 @@ There are several versions of this function:
 \item
   \texttt{lapply()} returns a list (saves the time of rearranging them in an array);
 \item
-  \texttt{sapply()} returns a dataframe by collapsing the lists into a \texttt{simplify2array()};
+  \texttt{sapply()} returns a dataframe by collapsing the lists (this is done by the \texttt{simplify2array()} function);
 \item
   \texttt{vapply()} is almost identical but requires that the data type of the result be provided.
 \end{itemize}
@@ -2313,10 +2313,10 @@ There are several versions of this function:
 
 \begin{verbatim}
 ##                                    expr   median
-## 1                              sqrt(x1)   4.7720
-## 2                lapply(x1, FUN = sqrt) 319.5810
-## 3                sapply(x1, FUN = sqrt) 398.1060
-## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 317.8265
+## 1                              sqrt(x1)   4.6055
+## 2                lapply(x1, FUN = sqrt) 304.1965
+## 3                sapply(x1, FUN = sqrt) 360.7220
+## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 296.3380
 \end{verbatim}
 
 \normalsize
@@ -2369,9 +2369,9 @@ To evaluate the performance gain, the following code removes all automatic compi
 \end{Shaded}
 
 \begin{verbatim}
-##        expr   median
-## 1  Loop(x1) 825.8005
-## 2 Loop2(x1)  79.7470
+##        expr  median
+## 1  Loop(x1) 802.851
+## 2 Loop2(x1)  78.967
 \end{verbatim}
 
 \begin{Shaded}
@@ -2403,8 +2403,8 @@ For loops are now much faster than \texttt{vapply}.
 
 \begin{verbatim}
 ##                        expr   median
-## 1 vapply(x1, FUN = sqrt, 0) 301.4760
-## 2                  Loop(x1)  79.6065
+## 1 vapply(x1, FUN = sqrt, 0) 294.1310
+## 2                  Loop(x1)  77.4405
 \end{verbatim}
 
 \normalsize
@@ -2427,8 +2427,8 @@ Be careful, the performance test can be misleading:
 
 \begin{verbatim}
 ##                                             expr   median
-## 1                      vapply(x1, FUN = sqrt, 0)  312.149
-## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3670.073
+## 1                      vapply(x1, FUN = sqrt, 0)  298.245
+## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3361.976
 \end{verbatim}
 
 \normalsize
@@ -2494,9 +2494,9 @@ This code is equivalent to \texttt{runif(3)}, with performance similar to \textt
 \end{Shaded}
 
 \begin{verbatim}
-##                        expr    median
-## 1 replicate(1000, runif(1)) 3369.1335
-## 2               runif(1000)   34.6935
+##                        expr   median
+## 1 replicate(1000, runif(1)) 4349.722
+## 2               runif(1000)   33.457
 \end{verbatim}
 
 \normalsize
@@ -2534,9 +2534,9 @@ Write the loops instead.
 
 \begin{verbatim}
 ##                              expr   median
-## 1       SumLoop(diamonds[-(2:4)]) 3.829110
-## 2 apply(diamonds[-(2:4)], 2, sum) 9.957108
-## 3       colSums(diamonds[-(2:4)]) 2.625904
+## 1       SumLoop(diamonds[-(2:4)]) 3.732976
+## 2 apply(diamonds[-(2:4)], 2, sum) 9.809735
+## 3       colSums(diamonds[-(2:4)]) 2.541031
 \end{verbatim}
 
 \normalsize
@@ -2744,7 +2744,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.000   0.703
+##   0.003   0.000   0.505
 \end{verbatim}
 
 \begin{Shaded}
@@ -2756,12 +2756,12 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.006   0.023   0.374
+##   0.006   0.012   0.281
 \end{verbatim}
 
 \normalsize
 
-Setting up parallelization has a cost of about \texttt{0.12} seconds here.
+Setting up parallelization has a cost of about \texttt{0.031} seconds here.
 The execution time is much longer in parallel under Windows because setting up the cluster takes much more time than parallelization saves.
 Parallelization is interesting for longer tasks, such as a one second break.
 
@@ -2776,7 +2776,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.000   0.000   2.013
+##   0.000   0.000   2.179
 \end{verbatim}
 
 \begin{Shaded}
@@ -2788,7 +2788,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.004   0.011   1.114
+##   0.002   0.003   1.264
 \end{verbatim}
 
 \normalsize
@@ -2807,7 +2807,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.004   1.111
+##   0.001   0.004   1.032
 \end{verbatim}
 
 \begin{Shaded}
@@ -2818,7 +2818,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.006   2.239
+##   0.003   0.007   2.262
 \end{verbatim}
 
 \normalsize
@@ -2874,9 +2874,10 @@ The best practice is to adapt the number of tasks to the number of cores, otherw
 \hypertarget{parlapply-socket}{%
 \subsection{parLapply (socket)}\label{parlapply-socket}}
 
-parLapply\texttt{requires\ to\ create\ a\ cluster,\ export\ the\ useful\ variables\ on\ each\ node,\ load\ the\ necessary\ packages\ on\ each\ node,\ execute\ the\ code\ and\ finally\ stop\ the\ cluster.\ \ The\ code\ for\ each\ step\ can\ be\ found\ in\ the}mclapply.hack` function above.
+\texttt{parLapply} requires to create a cluster, export the useful variables on each node, load the necessary packages on each node, execute the code and finally stop the cluster.
+The code for each step can be found in the \texttt{mclapply.hack} function above.
 
-For everyday use, \texttt{mclapply} is faster, except under Windows, and simpler (including under Windows thanks to the above workaround.)
+For everyday use, \texttt{mclapply} is faster, except under Windows, and simpler (including under Windows thanks to the above workaround).
 
 \hypertarget{foreach}{%
 \subsection{foreach}\label{foreach}}
@@ -3009,7 +3010,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.000   0.617
+##   0.003   0.000   0.548
 \end{verbatim}
 
 \begin{Shaded}
@@ -3024,7 +3025,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.008   0.018   0.374
+##   0.008   0.015   0.351
 \end{verbatim}
 
 \normalsize
@@ -3037,7 +3038,7 @@ The fixed cost of parallelization is low.
 This case study tests the different techniques seen above to solve a concrete problem.
 The objective is to compute the average distance between two points of a random seed of 1000 points in a square window of side 1.
 
-Its expectation is computable \footnote{\url{https://mindyourdecisions.com/blog/2016/07/03/distance-between-two-random-points-in-a-square-sunday-puzzle/}}.
+Its expectation is computable\footnote{\url{https://mindyourdecisions.com/blog/2016/07/03/distance-between-two-random-points-in-a-square-sunday-puzzle/}}.
 It is equal to \(\frac{2+\sqrt{2}+5\ln{(1+\sqrt{2})}}{15} \approx 0.5214\).
 
 \hypertarget{creation-of-the-data}{%
@@ -3110,7 +3111,7 @@ The distance can be calculated by two nested \texttt{sapply()}.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.672   0.050   6.091
+##   5.564   0.047   6.459
 \end{verbatim}
 
 \begin{Shaded}
@@ -3144,7 +3145,7 @@ The gain is negligible on a long computation like this one but important for sho
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.597   0.041   5.781
+##   5.280   0.021   5.468
 \end{verbatim}
 
 \begin{Shaded}
@@ -3187,7 +3188,7 @@ A more significant improvement is to compute the square roots only at the end of
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.286   0.044   6.680
+##   5.440   0.112   7.037
 \end{verbatim}
 
 \begin{Shaded}
@@ -3226,7 +3227,7 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.040   0.022   3.294
+##   3.189   0.049   4.077
 \end{verbatim}
 
 \begin{Shaded}
@@ -3267,7 +3268,7 @@ Under MacOS or Linux, the computation is accelerated.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.373   0.396   2.737
+##   3.347   0.358   2.336
 \end{verbatim}
 
 \begin{Shaded}
@@ -3308,7 +3309,7 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.128   0.046   2.900
+##   2.016   0.017   2.087
 \end{verbatim}
 
 \begin{Shaded}
@@ -3355,7 +3356,7 @@ The test is run here with 10 times fewer points, so 100 times fewer distances to
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.132   0.050   4.644
+##   2.703   0.023   2.787
 \end{verbatim}
 
 \begin{Shaded}
@@ -3400,7 +3401,7 @@ The performance is still much lower than a simple for loop (remember: 100 times 
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.135   0.071   0.137
+##   0.124   0.054   0.111
 \end{verbatim}
 
 \begin{Shaded}
@@ -3480,7 +3481,7 @@ The execution time is very short.
 \subsection{RcppParallel}\label{rcppparallel}}
 
 \textbf{RcppParallel} allows to interface parallelized C++ code, at the cost of a more complex syntax than \textbf{RCpp}.
-Documentation is available \footnote{\url{http://rcppcore.github.io/RcppParallel/}}.
+Documentation is available\footnote{\url{http://rcppcore.github.io/RcppParallel/}}.
 
 The C++ function exported to R does not perform the computations but only organizes the parallel execution of another, non-exported, function of type \texttt{Worker}.
 
@@ -3574,11 +3575,11 @@ The usage in R is identical to the usage of C++ functions interfaced by \textbf{
 \end{Shaded}
 
 \begin{verbatim}
-## Unit: microseconds
+## Unit: milliseconds
 ##                                                      expr
 ##  d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints - 1) * 2
-##     min       lq     mean   median       uq      max neval
-##  954.85 2127.346 2340.751 2205.843 2470.736 4908.376   100
+##       min       lq    mean   median       uq     max neval
+##  2.067794 2.113499 2.62759 2.129802 2.407034 9.58047   100
 \end{verbatim}
 
 \begin{Shaded}
@@ -3618,13 +3619,13 @@ Multiplying the number of points by 50, the serial computation time must be mult
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   7.151   0.054   7.877
+##   7.267   0.030   8.084
 \end{verbatim}
 
 \normalsize
 
 In parallel, the time increases little: parallelization becomes really efficient.
-This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{7249} seconds.
+This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{5217} seconds.
 
 \scriptsize
 
@@ -3637,7 +3638,7 @@ This time is to be compared to that of the reference for loop, multiplied by 250
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.010   0.051   2.455
+##   5.045   0.046   4.179
 \end{verbatim}
 
 \normalsize
@@ -3790,7 +3791,7 @@ The workflow is run by \texttt{tar\_make()}.
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.283 seconds
+## • end pipeline: 2.424 seconds
 \end{verbatim}
 
 \normalsize
@@ -3818,7 +3819,7 @@ The workflow is now up to date and \texttt{tar\_make()} does not recompute anyth
 ## ✔ skip target X
 ## ✔ skip target d
 ## ✔ skip target map
-## ✔ skip pipeline: 0.077 seconds
+## ✔ skip pipeline: 0.07 seconds
 \end{verbatim}
 
 \normalsize
@@ -3887,7 +3888,7 @@ The git commands can be executed in the RStudio terminal.
 
 \normalsize
 
-The \texttt{git\ status} command (figure \ref{fig:git-Status}) returns the status of the repository (\emph{repository}), that is, the set of data managed by git to track the current project.
+The \texttt{git\ status} command (figure \ref{fig:git-Status}) returns the status of the repository, that is, the set of data managed by git to track the current project.
 
 RStudio integrates a graphical interface for git that is sufficient to do without the command line for standard use, presented here.
 
@@ -3979,15 +3980,15 @@ The files taken into account are part of the git \emph{index}.
 
 \normalsize
 
-The committed files can be validated (\emph{Commit}) by clicking on the \enquote{Commit} button in the \emph{Git} window.
+The staged files can be validated (\emph{Committed}) by clicking on the \enquote{Commit} button in the \emph{Git} window.
 A new window opens (figure \ref{fig:git-Commit}), which allows to visualize all the modifications by file (additions in green, deletions in red).
 The modification grain treated by git is the text line, ended by a line break.
 Binary files like images are processed in block.
 
-Each commit (\emph{Commit}) is accompanied by a description text.
+Each commit is accompanied by a description text.
 The first line is the short description.
 A detailed description can be added after a line break.
-For the readability of the project history, each \emph{commit} corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
+For the readability of the project history, each commit corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
 The command executed is \texttt{git\ commit\ -m\ "Commit\ message"}.
 
 
@@ -4033,9 +4034,9 @@ In git vocabulary, it consists of three \emph{trees} (figure \ref{fig:git-Trees}
 \begin{itemize}
 \tightlist
 \item
-  the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed (\emph{Staged} box unchecked);
+  the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed (\enquote{Staged} box unchecked);
 \item
-  the index, which contains the files taken into account (\emph{Staged} box checked);
+  the index, which contains the files taken into account (\enquote{Staged} box checked);
 \item
   the head, which contains the validated files.
 \end{itemize}
@@ -4187,12 +4188,12 @@ If SSH authentication is chosen and has been configured at git installation (sec
 \hypertarget{push-the-first-modifications}{%
 \subsection{Push the first modifications}\label{push-the-first-modifications}}
 
-The previous manipulation has automatically pushed (\emph{Push}) the validated modifications on GitHub.
+The previous manipulation has automatically pushed the validated modifications on GitHub.
 Afterwards, you will have to click on the \enquote{Push} button of the \emph{Git} window to do it.
 
 On GitHub, the files resulting from the modifications recorded by git are now visible.
 
-Each \emph{commit} done locally is counted by git and a message \enquote{Your branch is ahead of \enquote*{origin/master} by \emph{n} commits} displayed in the top of the \emph{Git} window indicates that it is time to update GitHub by pushing all these \emph{commits}.
+Each commit done locally is counted by git and a message \enquote{Your branch is ahead of \enquote*{origin/master} by \emph{n} commits} displayed in the top of the \emph{Git} window indicates that it is time to update GitHub by pushing all these commits.
 Click on the \enquote{Push} button to do so.
 
 At this point, the project should have a \texttt{README.md} file that presents its contents on GitHub.
@@ -4236,7 +4237,7 @@ The name of the directory to create for the project is automatically deduced fro
 Choose the directory in which the project will be created and click on \enquote{Create Project}.
 The created project is linked to the remote repository on GitHub.
 
-To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e.~other GitHub users in the repository settings (\emph{Settings}).
+To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e.~other GitHub users in the repository settings.
 
 
 
@@ -4263,7 +4264,7 @@ Collaborators are invited by a message sent by \emph{GitHub}.
 
 Any work session on a project starts by pulling (\enquote{Pull} button) from the \emph{Git} window to integrate to the local repository the updates made on GitHub by other collaborators.
 
-The changes made to the project files are then taken into account (check the \emph{Staged} boxes) and validated (\emph{Commit}) with an explanatory message.
+The changes made to the project files are then taken into account (check the \enquote{Staged} boxes) and committed with an explanatory message.
 A good practice is to validate changes each time an elementary task, which can be described in the explanatory message, is completed rather than making \emph{commits} that group many changes with a vague description.
 
 As soon as possible, \emph{Push} updates so that they are visible to collaborators.
@@ -4854,7 +4855,7 @@ Its \texttt{README.md} file exists in both locations: it is written by the devel
 \hypertarget{activation}{%
 \subsection{Activation}\label{activation}}
 
-To activate GitHub pages, you have to open the repository properties (\emph{Settings}) and modify the \enquote{GitHub Pages} item (in \enquote{Options}).
+To activate GitHub pages, you have to open the repository settings and modify the \enquote{GitHub Pages} item (in \enquote{Options}).
 Select the project branch and the folder containing the web pages, here: \texttt{master} and \texttt{/docs}.
 As an option, choosing a theme customizes the appearance of the pages.
 
@@ -4911,7 +4912,7 @@ The tools to do this are the subject of this chapter, completed by the productio
 In an `.R' file, the code should always be commented to make it easier to read.
 When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in text.
 
-The concept of literate programming (\emph{literate programming}) was developed by \textcite{Knuth1984}.
+The concept of literate programming was developed by \textcite{Knuth1984}.
 It consists in describing the objectives and methods by text, in which the code is integrated.
 
 The simplest tool is the Markdown notebook (Menu \enquote{File \textgreater{} New File \textgreater{} R Notebook}).
@@ -4935,7 +4936,7 @@ This language is the core of the pandoc\footnote{\url{https://fr.wikipedia.org/w
 
 The \textbf{rmarkdown} package \autocite{Xie2015} bridges the gap between R and Markdown, relying on the RStudio interface which is not essential but greatly simplifies its use.
 The Markdown dialect used by the package is called \emph{R Markdown}.
-Its syntax is summarized in a cheat sheet \footnote{\url{https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}}.
+Its syntax is summarized in a cheat sheet\footnote{\url{https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}}.
 Its complete documentation is online \autocite{Xie2018}.
 
 The equations are written in LaTeX format\footnote{\url{https://fr.wikibooks.org/wiki/LaTeX/\%C3\%89crire_des_math\%C3\%A9matiques}}.
@@ -4952,7 +4953,7 @@ output: html_notebook
 
 The first entry is the title, the second the output format: more precisely the name of the function that will process the document.
 
-The document contains Markdown formatted text and code chunks (\emph{code chunks}) surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here \texttt{r}.
+The document contains Markdown formatted text and code chunks surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here \texttt{r}.
 These code chunks are processed by \textbf{knitr} which transforms the result of the execution of the R code into Markdown and integrates it into the text of the document.
 
 Processing an R Markdown document is called \emph{knit}.
@@ -5070,14 +5071,6 @@ It must be installed.
 The main features of Markdown are summarized here.
 A quick and more complete training is offered by RStudio\footnote{\url{https://rmarkdown.rstudio.com/lesson-1.html}}.
 
-Le texte est écrit sans aucun autre formatage que les les retours à la ligne.
-Un simple retour à la ligne n'a aucun effet sur le document produit: il permet de séparer les phrases pour simplifier le suivi du code source par git.
-
-Un saut de ligne marque un changement de paragraphe.
-
-Les différents niveaux de plan sont désignés par le nombre de croisillons correspondant en début de ligne: \texttt{\#} pour un titre de niveau 1, \texttt{\#\#} pour un titre de niveau 2, etc.
-Un espace sépare les croisillons et le texte du titre.
-
 The text is written without any formatting other than line breaks.
 A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.
 
@@ -5096,7 +5089,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (\te
 \hypertarget{r-code}{%
 \subsubsection{R code}\label{r-code}}
 
-R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the \enquote{Insert a new code chunk} button above the source code window in RStudio.
+R code is included in code chunks that are easily created by clicking on the \enquote{Insert a new code chunk} button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
 
@@ -5141,7 +5134,7 @@ In a document such as a scientific article, which does not display its code, it 
 
 }
 
-\caption{Titre de la figure}\label{fig:pressure}
+\caption{Figure Title}\label{fig:pressure}
 \end{figure}
 
 \normalsize
@@ -5277,18 +5270,16 @@ The \textbf{flextable} package allows creating more elaborate arrays, as in the 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Rappel du jeu de données initial iris}
+\CommentTok{\# iris dataset}
 \NormalTok{iris }\SpecialCharTok{\%\textgreater{}\%}
-    \CommentTok{\# Premières lignes}
+    \CommentTok{\# First lines}
 \FunctionTok{head}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-    \CommentTok{\# Création d\textquotesingle{}un objet flextable}
+    \CommentTok{\# Create a flextable object}
 \FunctionTok{flextable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-    \CommentTok{\# Titre des colonnes}
-\FunctionTok{set\_header\_labels}\NormalTok{(}\AttributeTok{Sepal.Length =} \StringTok{"Longueur sépales"}\NormalTok{, }\AttributeTok{Sepal.Width =} \StringTok{"Largeur"}\NormalTok{,}
-    \AttributeTok{Petal.Length =} \StringTok{"Longueur pétales"}\NormalTok{, }\AttributeTok{Petal.Width =} \StringTok{"Largeur"}\NormalTok{,}
-    \AttributeTok{Species =} \StringTok{"Espèce"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-    \CommentTok{\# Sélection des longs sépales (\textgreater{}5) et affichage en}
-    \CommentTok{\# rouge}
+    \CommentTok{\# Column titles}
+\FunctionTok{set\_header\_labels}\NormalTok{(}\AttributeTok{Sepal.Length =} \StringTok{"Sepal Length"}\NormalTok{, }\AttributeTok{Sepal.Width =} \StringTok{"Width"}\NormalTok{,}
+    \AttributeTok{Petal.Length =} \StringTok{"Petal Length"}\NormalTok{, }\AttributeTok{Petal.Width =} \StringTok{"Width"}\NormalTok{, }\AttributeTok{Species =} \StringTok{"Species"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \CommentTok{\# Select long sepals (\textgreater{}5) and display them in red}
 \FunctionTok{color}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Sepal.Length }\SpecialCharTok{\textgreater{}} \DecValTok{5}\NormalTok{, }\SpecialCharTok{\textasciitilde{}}\NormalTok{Sepal.Length, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -5305,7 +5296,7 @@ The \textbf{flextable} package allows creating more elaborate arrays, as in the 
 
 \hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}
 
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Longueur\ sépales}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Largeur}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Longueur\ pétales}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Largeur}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Espèce}}}} \\
+\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Sepal\ Length}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Petal\ Length}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Species}}}} \\
 
 \hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}
 
@@ -5313,7 +5304,7 @@ The \textbf{flextable} package allows creating more elaborate arrays, as in the 
 
 \hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}
 
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Longueur\ sépales}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Largeur}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Longueur\ pétales}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Largeur}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Espèce}}}} \\
+\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Sepal\ Length}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Petal\ Length}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{\global\setmainfont{Helvetica}{Species}}}} \\
 
 \hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}\endhead
 
@@ -5359,7 +5350,7 @@ The \textbf{flextable} package allows creating more elaborate arrays, as in the 
 
 \normalsize
 
-The package documentation \footnote{\url{https://ardata-fr.github.io/flextable-book/}} is available online, as well as a gallery \footnote{\url{https://ardata-fr.github.io/flextable-gallery/gallery/}}.
+The package documentation\footnote{\url{https://ardata-fr.github.io/flextable-book/}} is available online, as well as a gallery\footnote{\url{https://ardata-fr.github.io/flextable-gallery/gallery/}}.
 
 \textbf{flextable} does not support caption numbering except in Word documents.
 This limitation is prohibitive.
@@ -5393,7 +5384,7 @@ Figures and tables have an automatically generated label, identical to the name 
 For equations, the label is added manually by the code \texttt{(\textbackslash{}\#eq:xxx)} before the end of the equation.
 
 Sections can be given a label by ending their title with \texttt{\{\#yyy\}}.
-Sections receive by default an implicit label \footnote{\url{https://pandoc.org/MANUAL.html\#extension-implicit_header_references}} corresponding to their text, in lower case, where special characters are replaced by dashes.
+Sections receive by default an implicit label\footnote{\url{https://pandoc.org/MANUAL.html\#extension-implicit_header_references}} corresponding to their text, in lower case, where special characters are replaced by dashes.
 Implicit labels are unstable (they change with the title of the section) and difficult to predict: this is why it is advisable to add an explicit label to each section being cross-referenced.
 This is the case for chapters, for which the name of the HMTL file produced is identical to the label.
 Chapter labels must follow file naming rules by not containing special characters.
@@ -5557,7 +5548,7 @@ It is not possible to directly exchange standard R Markdown content with documen
 \hypertarget{beamer-presentation}{%
 \section{Beamer Presentation}\label{beamer-presentation}}
 
-The \emph{Beamer Presentation} template of \textbf{memoiR} allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example \footnote{\url{https://EricMarcon.github.io/Chao1/}, choisir Lecture (HTML) ou Téléchargement (PDF).}.
+The \emph{Beamer Presentation} template of \textbf{memoiR} allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example\footnote{\url{https://EricMarcon.github.io/Chao1/}, choisir Lecture (HTML) ou Téléchargement (PDF).}.
 
 The approach is identical to that for articles in the same package.
 The title levels allow you to separate the parts of the presentation (\texttt{\#}) and the slides (\texttt{\#\#}).
@@ -5827,7 +5818,7 @@ A Hugo site can be hosted for example on the personal page of any GitHub user wh
 Hugo offers many themes, which are templates for site structure, so the \textbf{Academic} theme, intended for researchers.
 In RStudio, the \textbf{blogdown} package is provided to easily produce web pages with Hugo.
 These pages can contain R code: they are very similar to an article, seen above, whose content can be easily copied and pasted.
-So we will use this solution, for a site like the one proposed in example \footnote{\url{https://EricMarcon.github.io/}}.
+So we will use this solution, for a site like the one proposed in example\footnote{\url{https://EricMarcon.github.io/}}.
 
 The structure of the website is simple:
 
@@ -5866,10 +5857,10 @@ The first step is to install the \textbf{blogdown} package in R.
 
 \normalsize
 
-The full documentation for \textbf{blogdown} is available \footnote{\url{https://bookdown.org/yihui/blogdown/}}.
+The full documentation for \textbf{blogdown} is available\footnote{\url{https://bookdown.org/yihui/blogdown/}}.
 
 Recent versions of Hugo use \emph{Go} (the programming language) to install their modules on the fly: here the Academic theme is loaded from GitHub at the time of site creation.
-Go must therefore be installed \footnote{\url{https://golang.org/doc/install}}.
+Go must therefore be installed\footnote{\url{https://golang.org/doc/install}}.
 
 \hypertarget{create-2}{%
 \subsection{Create}\label{create-2}}
@@ -5998,9 +5989,9 @@ The optimal method is to use continuous integration (see section \ref{sec:blogdo
 \hypertarget{multilingual-site}{%
 \subsection{Multilingual site}\label{multilingual-site}}
 
-If the site is multilingual (French and English for example), its content (\texttt{content} folder) must be copied in a folder corresponding to each language.
-For example, the \texttt{content/authors/admin/\_index.md} file which contains information about the owner of the site is replaced by \texttt{content/en/authors/admin/\_index.md} and \texttt{content/fr/authors/admin/\_index.md} if the site supports English and French.
-In practice, create an \texttt{en} folder and a \texttt{fr} folder in \texttt{content}.
+If the site is multilingual (say English and French), its \texttt{content} folder must be copied in a folder corresponding to each language.
+The \texttt{content/authors/admin/\_index.md} file which contains information about the owner of the site is replaced by \texttt{content/en/authors/admin/\_index.md} (respectively \texttt{.../fr/...}).
+In practice, create an \texttt{en} folder and an \texttt{fr} folder in \texttt{content}.
 Copy all the content of content (except the two new folders) into \texttt{en} and then move the same content into \texttt{fr}.
 
 \hypertarget{set-up}{%
@@ -6063,10 +6054,9 @@ These lines are commented out in the template and must therefore be uncommented 
 
 The menus are described below.
 
-params.toml` describes the look of the site.
+\texttt{params.toml} describes the look of the site.
 The options are grouped by topic, for example \enquote{Theme} for the general appearance.
-In \enquote{Basic Info}, the linear sujet, par exemple \enquote{Theme} pour l'apparence générale.
-Dans \enquote{Basic Info}, la ligne
+In \enquote{Basic Info}, the line
 
 \begin{verbatim}
 site_type = "Person"
@@ -6132,7 +6122,7 @@ The working method is to progress step by step by testing and then validating ea
 \item
   If the result is not satisfactory, try again;
 \item
-  Validate the changes (\emph{commit}).
+  Commit the changes.
 \end{itemize}
 
 \hypertarget{home-page}{%
@@ -6250,7 +6240,7 @@ A collection of icons is available, and new icons can be added.
 
 The \texttt{accomplishments} component presents the professional trainings and allows to access their certificates.
 
-The \texttt{posts} component fetches its content from the \texttt{/contents/\textless{}language\textgreater{}/post} folder which contains the blog posts (see below).
+The \texttt{posts} component fetches its content from the folder which contains the blog posts, i.e.~\texttt{/contents/\textless{}language\textgreater{}/post} (see below).
 The \texttt{posts.md} file contains layout options in its header.
 
 The \texttt{projects} component works the same way.
@@ -6287,7 +6277,7 @@ To understand how it works, the easiest way is to activate it.
 \subsubsection{Home page menu}\label{home-page-menu}}
 
 The home page has a menu that allows you to navigate quickly to its components or to other pages.
-It is set up in \texttt{config/\_default}\break\texttt{/menus.toml}.
+It is set up in \texttt{config/\_default/menus.toml}.
 Menu items have a displayed name, a link (starting with \texttt{\#} to point to a component or a relative path in the site such as \texttt{publication/}), and a weight that defines their display order, similar to the order of the components on the home page.
 
 A two-element menu for pointing to the site's home page and blog posts is thus as follows:
@@ -6304,7 +6294,7 @@ A two-element menu for pointing to the site's home page and blog posts is thus a
   weight = 20
 \end{verbatim}
 
-The menu must be translated into each language in the file \texttt{config/\_default/languages.toml}:
+In the file \texttt{config/\_default/languages.toml}, the menu must be translated into each language :
 
 \begin{verbatim}
 [fr]
@@ -6397,7 +6387,7 @@ To do this, you must force the \texttt{build\_site()} command.
 \hypertarget{publications}{%
 \subsubsection{Publications}\label{publications}}
 
-Publications are organized like posts, but placed in the \texttt{/contents/\textless{}language\textgreater{}/publications} folder.
+Publications are organized like posts, but placed in the \texttt{/contents/\textless{}language\textgreater{}}\break\texttt{/publications} folder.
 
 The example used is a journal article\footnote{\url{https://EricMarcon.github.io/publication/marcon-2003-a/}} with its code\footnote{\url{https://github.com/EricMarcon/HomePage2020/tree/master/content/fr/publication/marcon-2003-a}}.
 
@@ -6477,7 +6467,7 @@ By having the code run regularly, for example through GitHub (see below), the di
 \hypertarget{communications}{%
 \subsubsection{Communications}\label{communications}}
 
-Communications are organized like publications, in the \texttt{/contents/\textless{}language\textgreater{}/talk} folder.
+Communications are organized like publications, in the \texttt{/contents/\textless{}language\textgreater{}}\break\texttt{/talk} folder.
 
 The example used is a communication in French, so in \texttt{/contents/en/talk}\footnote{\url{https://EricMarcon.github.io/talk/chao1/}} with its code\footnote{\url{https://github.com/EricMarcon/HomePage2020/tree/master/content/fr/talk/chao1}}.
 
@@ -6921,7 +6911,7 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.207 seconds
+## • end pipeline: 2.456 seconds
 \end{verbatim}
 
 \normalsize
@@ -7679,7 +7669,7 @@ This is a generic method, i.e.~a function template, without code, to be adapted 
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7fbd43fceb90>
+## <bytecode: 0x7fae5ef63770>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -7974,13 +7964,13 @@ The choice of function depends on the class of the object passed as argument.
 \begin{verbatim}
 ## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  327  342.5 23149.73  350.5  402.5
-##   triple.numeric(2)  326  341.5 20410.99  356.0  416.0
-##          triple(2L) 1341 1369.5  1531.48 1416.0 1497.0
+##  triple.integer(2L)  324  338.5 25118.35  348.5  401.5
+##   triple.numeric(2)  324  338.0 20427.28  351.0  397.5
+##          triple(2L) 1343 1403.0  1648.11 1443.0 1510.0
 ##      max neval
-##  2277833   100
-##  2002382   100
-##     6618   100
+##  2474545   100
+##  2005210   100
+##     9397   100
 \end{verbatim}
 
 \normalsize
@@ -8326,7 +8316,7 @@ Finally, the complete code is as follows:
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7fbd43fceb90>
+## <bytecode: 0x7fae5ef63770>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -8364,7 +8354,7 @@ Finally, the complete code is as follows:
 ## {
 ##     UseMethod("autoplot")
 ## }
-## <bytecode: 0x7fbd46a5bb00>
+## <bytecode: 0x7fae62328dc0>
 ## <environment: namespace:ggplot2>
 \end{verbatim}
 
@@ -8794,7 +8784,7 @@ The section \ref{sec:package-ci6} details how to do this.
 \section{CRAN}\label{sec:package-cran}}
 
 Packages with an audience beyond the author's circle can be uploaded to CRAN.
-The rules to respect on CRAN are numerous \footnote{\url{https://cran.r-project.org/web/packages/policies.html}}. They are checked by the \texttt{R\ CMD\ check} command with the \texttt{-\/-\ as.cran} option.
+The rules to respect on CRAN are numerous\footnote{\url{https://cran.r-project.org/web/packages/policies.html}}. They are checked by the \texttt{R\ CMD\ check} command with the \texttt{-\/-\ as.cran} option.
 The check must not return any errors, warnings, or notes before submitting the package.
 
 \hypertarget{testing-the-package}{%
@@ -8822,7 +8812,7 @@ In case of rejection, process the requests and resubmit by incrementing the vers
 \subsection{Maintenance}\label{maintenance}}
 
 Requests for corrections are sent by CRAN from time to time, especially when the version of R changes.
-The email address of the package maintainer (\emph{maintainer}) must remain valid and the requests must be processed quickly.
+The email address of the package maintainer must remain valid and the requests must be processed quickly.
 Otherwise, the package is archived.
 
 New versions of the package are submitted in the same way as the first one.
@@ -8910,7 +8900,7 @@ It is useless to use Codecov's token system.
 \hypertarget{scripting-github-actions}{%
 \subsection{Scripting GitHub actions}\label{scripting-github-actions}}
 
-A GitHub workflow (\emph{workflow}) is a succession of tasks (\emph{jobs}) with steps (\emph{steps}).
+A GitHub workflow is a succession of jobs with steps.
 A workflow is triggered by an event, usually every \emph{push} of the project, but also at regular intervals (\emph{cron}).
 
 Typically, the workflows created here contain two tasks: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.
@@ -9010,10 +9000,10 @@ An action is called by the statement \texttt{uses:}, the GitHub project that con
 In their respective GitHub project, actions exist in their development version (\texttt{@master}) and in step versions (\emph{release}) accessible by their number (\texttt{@v1}).
 These stage versions are preferable because they are stable.
 
-General actions are made available by GitHub in the GitHub Actions organization \footnote{\url{https://github.com/actions/}}.
+General actions are made available by GitHub in the GitHub Actions organization\footnote{\url{https://github.com/actions/}}.
 The \enquote{actions/checkout} action is used to get into the main branch of the project processed by the workflow: it is usually the first step of all workflows.
 
-The next action is the installation of R, provided by the \emph{R infrastructure} organization \footnote{\url{https://github.com/r-lib/}}.
+The next action is the installation of R, provided by the \emph{R infrastructure} organization\footnote{\url{https://github.com/r-lib/}}.
 
 The installation of pandoc (software external to R but necessary for R Markdown) can be done by a command executed by MacOS.
 It is called by \texttt{run:} and can contain several lines (hence the \texttt{\textbar{}}).
@@ -9711,7 +9701,7 @@ An application is created by choosing:
 \begin{itemize}
 \tightlist
 \item
-  a window layout (\emph{layout});
+  a window layout;
 \item
   the controls for entering parameters (\emph{intput});
 \item
@@ -10095,17 +10085,17 @@ If the organization is not visible on the GitHub Classrooms page, click on \enqu
 \hypertarget{new-classroom}{%
 \subsection{New Classroom}\label{new-classroom}}
 
-A classroom (\emph{classroom}) is populated with students who will receive tasks (\emph{assignments}) to perform.
+A classroom is populated with students who will receive tasks to perform.
 
 Click on \emph{New Classroom}.
 Select the organization in charge of administering the classroom.
 
-Enter the name of the classroom: a good practice is to prefix it with the name of the course and add the name of the session, for example \enquote{Course-R-2020-EdGuyane}.
+Enter the name of the classroom: a good practice is to prefix it with the name of the course and add the name of the session, for example \enquote{Course-R-2020}.
 
 Do not add collaborators (this will be possible later), and eventually enter the list of students (one name per line, also possible later).
 The class is created.
 
-All classrooms are visible from the GitHub Classrooms homepage \footnote{\url{https://classroom.github.com/classrooms}}.
+All classrooms are visible from the GitHub Classrooms homepage\footnote{\url{https://classroom.github.com/classrooms}}.
 Click on a name to open one.
 The \enquote{Settings} button allows to change its name or to delete it.
 The \enquote{TAs and Admins} button allows you to add collaborators, i.e.~other GitHub users who will be able to administer the classroom.
@@ -10120,7 +10110,7 @@ Each student must have an account on GitHub.
 \subsection{Prepare a repository template}\label{prepare-a-repository-template}}
 
 A task is a GitHub repository to modify.
-For example \footnote{\url{https://github.com/EricMarcon/Cours-R-Memo/settings}}, create a repository containing an R project with a Markdown file describing the work to be done and possibly some of the code needed to do it, the other files in the R Markdown template used and a data file.
+For example\footnote{\url{https://github.com/EricMarcon/Cours-R-Memo/settings}}, create a repository containing an R project with a Markdown file describing the work to be done and possibly some of the code needed to do it, the other files in the R Markdown template used and a data file.
 
 Open the repository properties on GitHub and check the \emph{Template Repository} box to make it a template.
 

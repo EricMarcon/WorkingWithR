@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-06-27" />
+<meta name="date" content="2022-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -515,7 +515,7 @@ Finally, other software of more occasional use may be necessary, such as Go.</p>
 <p>R is included in the Linux distributions: the package is named <code>r-base</code>.
 It does not contain development tools that are often needed, so it is better to install the <code>r-base-dev</code> package as well.
 The version of R is often a bit old.
-To get the latest version, you have to use a CRAN mirror as a source for the packages: see the full documentation for Ubuntu <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+To get the latest version, you have to use a CRAN mirror as a source for the packages: see the full documentation for Ubuntu<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <p>Under Windows or Mac, install R after downloading it from CRAN<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
 </div>
 <div id="rtools" class="section level3 hasAnchor" number="1.1.2">
@@ -549,7 +549,7 @@ In common use, it is preferable to uninstall old versions manually after install
 <h3><span class="header-section-number">1.1.4</span> Libraries<a href="chap-logiciels.html#sec:librairies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R packages are found in two folders:</p>
 <ul>
-<li>the system library (<em>System Library</em>) contains the packages that come with R: <strong>base</strong>, <strong>utils</strong>, <strong>graphics</strong> for example.
+<li>the <em>System Library</em> contains the packages that come with R: <strong>base</strong>, <strong>utils</strong>, <strong>graphics</strong> for example.
 It is located in a subdirectory of the installation program (<code>C:\Program Files\R-4.1.0\library</code> for R version 4.1.0 on Windows 10).</li>
 <li>The <em>User Library</em> contains those installed by the user.
 Until version 4.1, it is located in the user’s home folder, in a subfolder <code>R\win-library\4.1\</code>).
@@ -582,7 +582,7 @@ Figure 1.1: Enable the right to modify the system library under Windows.
 <p>RStudio is a graphical interface for R and much more: it is designed to simplify project management, make writing and producing documents easier and integrate source control for example.</p>
 <div id="installation-1" class="section level3 hasAnchor" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Installation<a href="chap-logiciels.html#installation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Install the latest version of <em>RStudio Desktop</em> from the RStudio website <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+<p>Install the latest version of <em>RStudio Desktop</em> from the RStudio website<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 <p>A command is available in the “Help” menu of RStudio to check for a more recent version to install.</p>
 </div>
 <div id="file-encoding" class="section level3 hasAnchor" number="1.2.2">
@@ -758,7 +758,7 @@ It contains a function that checks if each package is already installed so that 
 <h3><span class="header-section-number">1.4.1</span> git<a href="chap-logiciels.html#git" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>git is the source control software used here.
 Its use is detailed in the chapter <a href="chap-git.html#chap-git">3</a>.</p>
-<p>For Windows and Mac, the installation is done from the git website <a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
+<p>For Windows and Mac, the installation is done from the git website<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
 <p>git is integrated in Linux distributions.
 For Ubuntu, the apt package is <code>git-all</code>.</p>
 <p>git is installed without a graphical interface, provided by RStudio.</p>
@@ -796,7 +796,7 @@ SSH is the most robust but requires the creation of a private key.</p>
 <pre><code>ssh-keygen -t ed25519 -C &quot;user.email&quot;</code></pre>
 <p>The email address (which replaces “user.email”) must be the one registered in the git configuration and the GitHub account.
 The key is saved in the <code>.ssh</code> folder of the user’s home directory.
-It is possible to add a password (<em>passphrase</em>) to the key, which will have to be typed the first time each work session is used.
+It is possible to add a passphrase to the key, which will have to be typed the first time each work session is used.
 If the computer is properly secured (no physical access by third parties), leaving it empty allows to gain fluidity.</p>
 <p>Warning: the private key is strictly confidential and must not be copied anywhere where it could be read by a third party (beware of automatic backups in particular).
 It does not need to be well backed up: in case of loss, it will be easily replaced.</p>
@@ -809,7 +809,7 @@ It does not need to be well backed up: in case of loss, it will be easily replac
 <li>Duplicate the <code>.ssh</code> folder in the RStudio program folder (usually <code>C:\Program Files\RStudio</code>), in <code>resourcesterminalbash</code>.</li>
 </ul>
 <p>If successful, a message indicates that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
-Check with GitHub that the server’s fingerprint is correct <a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> and type <code>yes</code>.
+Check with GitHub that the server’s fingerprint is correct<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> and type <code>yes</code>.
 The server is automatically added to the list of known servers, in the <code>known_hosts</code> file.</p>
 <p>In the <code>.ssh</code> folder, two files are created: one contains the private key, the other, with the <code>.pub</code> extension, the corresponding public key.
 Open the second one with a text editor and copy the public key to the clipboard.
@@ -850,7 +850,7 @@ MiKTeX is a very good solution for Windows and Mac.</p>
 <h3><span class="header-section-number">1.5.2</span> MiKTeX<a href="chap-logiciels.html#miktex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="installation-2" class="section level4 hasAnchor" number="1.5.2.1">
 <h4><span class="header-section-number">1.5.2.1</span> Installation<a href="chap-logiciels.html#installation-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Download the installation file <a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> and run it.
+<p>Download the installation file<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> and run it.
 There are several choices to make during the installation:</p>
 <ul>
 <li>Install the program for all users (with administrator rights);</li>
@@ -866,8 +866,8 @@ If a document needs a missing package, it is loaded automatically.
 Package updates should be done periodically with the MiKTeX console, accessible from the Start menu.</p>
 <p>When launched without elevation of privileges, the console offers to switch to administrator mode.
 Click on “Switch to Administrator mode”.</p>
-<p>In the settings (<em>Settings</em>), check that the packages always install automatically and that the paper size is A4.</p>
-<p>In the updates menu (<em>Updates</em>), click on “Check for updates” then “Update now”.</p>
+<p>In the settings, check that the packages always install automatically and that the paper size is A4.</p>
+<p>In the “Updates” menu, click on “Check for updates” then “Update now”.</p>
 <p>If the automatic installation fails, it is possible to manually install a package in the “Packages” menu.</p>
 </div>
 </div>

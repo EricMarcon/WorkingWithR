@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-06-27" />
+<meta name="date" content="2022-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -913,7 +913,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="chap-package.html#cb373-1" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod(&quot;plot&quot;)
-## &lt;bytecode: 0x7ff4105af438&gt;
+## &lt;bytecode: 0x7ff5a84afc50&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -1059,14 +1059,14 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span id="cb401-2"><a href="chap-package.html#cb401-2" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(<span class="fu">triple.integer</span>(2L), <span class="fu">triple.numeric</span>(<span class="dv">2</span>),</span>
 <span id="cb401-3"><a href="chap-package.html#cb401-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triple</span>(2L))</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
-##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  327  332.5 23756.82  342.0  355.0
-##   triple.numeric(2)  325  336.5 20677.19  342.5  356.5
-##          triple(2L) 1331 1363.0  1623.87 1393.0 1471.5
+##                expr  min   lq     mean median     uq
+##  triple.integer(2L)  329  338 23351.40    344  357.5
+##   triple.numeric(2)  324  337 20170.68    346  358.5
+##          triple(2L) 1352 1368  1460.46   1385 1426.0
 ##      max neval
-##  2339615   100
-##  2031043   100
-##    13141   100</code></pre>
+##  2299586   100
+##  1980541   100
+##     6181   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -1279,7 +1279,7 @@ It must be imported:</li>
 <span id="cb421-65"><a href="chap-package.html#cb421-65" aria-hidden="true" tabindex="-1"></a>graphics<span class="sc">::</span>plot</span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod(&quot;plot&quot;)
-## &lt;bytecode: 0x7ff4105af438&gt;
+## &lt;bytecode: 0x7ff5a84afc50&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="chap-package.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; autoplot</span></span>
 <span id="cb423-2"><a href="chap-package.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
@@ -1309,7 +1309,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod(&quot;autoplot&quot;)
 ## }
-## &lt;bytecode: 0x7ff40feb94e8&gt;
+## &lt;bytecode: 0x7ff5a69c6010&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
@@ -1560,7 +1560,7 @@ The analysis of the code coverage by tests (which parts of the code are tested o
 <div id="sec:package-cran" class="section level2 hasAnchor" number="5.11">
 <h2><span class="header-section-number">5.11</span> CRAN<a href="chap-package.html#sec:package-cran" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Packages with an audience beyond the author’s circle can be uploaded to CRAN.
-The rules to respect on CRAN are numerous <a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>. They are checked by the <code>R CMD check</code> command with the <code>-- as.cran</code> option.
+The rules to respect on CRAN are numerous<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>. They are checked by the <code>R CMD check</code> command with the <code>-- as.cran</code> option.
 The check must not return any errors, warnings, or notes before submitting the package.</p>
 <div id="testing-the-package" class="section level3 hasAnchor" number="5.11.1">
 <h3><span class="header-section-number">5.11.1</span> Testing the package<a href="chap-package.html#testing-the-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1581,7 +1581,7 @@ Then, just call the <code>check_for_cran()</code> function to run a full verific
 <div id="maintenance" class="section level3 hasAnchor" number="5.11.3">
 <h3><span class="header-section-number">5.11.3</span> Maintenance<a href="chap-package.html#maintenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Requests for corrections are sent by CRAN from time to time, especially when the version of R changes.
-The email address of the package maintainer (<em>maintainer</em>) must remain valid and the requests must be processed quickly.
+The email address of the package maintainer must remain valid and the requests must be processed quickly.
 Otherwise, the package is archived.</p>
 <p>New versions of the package are submitted in the same way as the first one.</p>
 
