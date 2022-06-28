@@ -170,6 +170,7 @@ double(2)
 ?double
 ```
 
+
 It is possible to automate the update of the documentation at each build of the package by the menu "Build > Configure Build Tools...": click on "Configure" and check the box "Automatically reoxygenize when running Install and Restart".
 This is an efficient choice for a small package but penalizing when the time to update the documentation increases with the complexity of the package. The package rebuild is most often used to test code changes: its speed is essential.
 
@@ -1192,7 +1193,7 @@ The section \@ref(sec:package-ci6) details how to do this.
 ## CRAN {#sec:package-cran}
 
 Packages with an audience beyond the author's circle can be uploaded to CRAN.
-The rules to respect on CRAN are numerous [^509]. They are checked by the `R CMD check` command with the `-- as.cran` option.
+The rules to respect on CRAN are numerous[^509]. They are checked by the `R CMD check` command with the `-- as.cran` option.
 The check must not return any errors, warnings, or notes before submitting the package.
 
 ### Testing the package

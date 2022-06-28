@@ -18,7 +18,7 @@ Their installation and coherent organization are presented in this chapter.
 R is included in the Linux distributions: the package is named `r-base`.
 It does not contain development tools that are often needed, so it is better to install the `r-base-dev` package as well.
 The version of R is often a bit old.
-To get the latest version, you have to use a CRAN mirror as a source for the packages: see the full documentation for Ubuntu [^102].
+To get the latest version, you have to use a CRAN mirror as a source for the packages: see the full documentation for Ubuntu[^102].
 
 [^102]: https://doc.ubuntu-fr.org/r 
 
@@ -102,7 +102,7 @@ RStudio is a graphical interface for R and much more: it is designed to simplify
 
 ### Installation
 
-Install the latest version of *RStudio Desktop* from the RStudio website [^103].
+Install the latest version of *RStudio Desktop* from the RStudio website[^103].
 
 [^103]: https://rstudio.com/products/rstudio/download/
 
@@ -298,7 +298,7 @@ This script is to be executed each time R is updated, after having activated the
 git is the source control software used here.
 Its use is detailed in the chapter \@ref(chap-git).
 
-For Windows and Mac, the installation is done from the git website [^104].
+For Windows and Mac, the installation is done from the git website[^104].
 
 [^104]: https://git-scm.com/
 
@@ -381,7 +381,7 @@ If an error message indicates that no key is found, there are two possible solut
 - Duplicate the `.ssh` folder in the RStudio program folder (usually `C:\Program Files\RStudio`), in `resourcesterminalbash`.
 
 If successful, a message indicates that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
-Check with GitHub that the server's fingerprint is correct [^112] and type `yes`.
+Check with GitHub that the server's fingerprint is correct[^112] and type `yes`.
 The server is automatically added to the list of known servers, in the `known_hosts` file.
 
 [^112]: https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints
@@ -438,7 +438,7 @@ tinytex::tlmgr_update()
 
 #### Installation
 
-Download the installation file [^105] and run it.
+Download the installation file[^105] and run it.
 There are several choices to make during the installation:
 
 * Install the program for all users (with administrator rights);

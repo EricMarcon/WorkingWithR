@@ -276,7 +276,7 @@ Collaborators are invited by a message sent by *GitHub*.
 
 Any work session on a project starts by pulling ("Pull" button) from the *Git* window to integrate to the local repository the updates made on GitHub by other collaborators.
 
-The changes made to the project files are then taken into account (check the *Staged* boxes) and committed with an explanatory message.
+The changes made to the project files are then taken into account (check the "Staged" boxes) and committed with an explanatory message.
 A good practice is to validate changes each time an elementary task, which can be described in the explanatory message, is completed rather than making *commits* that group many changes with a vague description.
 
 As soon as possible, *Push* updates so that they are visible to collaborators.

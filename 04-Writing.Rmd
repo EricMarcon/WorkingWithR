@@ -31,7 +31,7 @@ This language is the core of the pandoc[^rediger-2] software, dedicated to conve
 
 The **rmarkdown** package [@Xie2015] bridges the gap between R and Markdown, relying on the RStudio interface which is not essential but greatly simplifies its use.
 The Markdown dialect used by the package is called *R Markdown*.
-Its syntax is summarized in a cheat sheet [^rediger-3].
+Its syntax is summarized in a cheat sheet[^rediger-3].
 Its complete documentation is online [@Xie2018].
 
 [^rediger-3]: <https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>
@@ -273,7 +273,7 @@ iris %>%
   color(~Sepal.Length > 5, ~Sepal.Length, color="red")
 ```
 
-The package documentation [^411] is available online, as well as a gallery [^412].
+The package documentation[^411] is available online, as well as a gallery[^412].
 
 [^411]: https://ardata-fr.github.io/flextable-book/
 
@@ -310,7 +310,7 @@ Figures and tables have an automatically generated label, identical to the name 
 For equations, the label is added manually by the code `(\#eq:xxx)` before the end of the equation.
 
 Sections can be given a label by ending their title with `{#yyy}`.
-Sections receive by default an implicit label [^405] corresponding to their text, in lower case, where special characters are replaced by dashes.
+Sections receive by default an implicit label[^405] corresponding to their text, in lower case, where special characters are replaced by dashes.
 Implicit labels are unstable (they change with the title of the section) and difficult to predict: this is why it is advisable to add an explicit label to each section being cross-referenced.
 This is the case for chapters, for which the name of the HMTL file produced is identical to the label.
 Chapter labels must follow file naming rules by not containing special characters.
@@ -470,7 +470,7 @@ It is not possible to directly exchange standard R Markdown content with documen
 
 ## Beamer Presentation
 
-The *Beamer Presentation* template of **memoiR** allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example [^rediger-13].
+The *Beamer Presentation* template of **memoiR** allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example[^rediger-13].
 
 [^rediger-13]: <https://EricMarcon.github.io/Chao1/>, choisir Lecture (HTML) ou Téléchargement (PDF).
 
@@ -734,7 +734,7 @@ A Hugo site can be hosted for example on the personal page of any GitHub user wh
 Hugo offers many themes, which are templates for site structure, so the **Academic** theme, intended for researchers.
 In RStudio, the **blogdown** package is provided to easily produce web pages with Hugo.
 These pages can contain R code: they are very similar to an article, seen above, whose content can be easily copied and pasted.
-So we will use this solution, for a site like the one proposed in example [^rediger-21].
+So we will use this solution, for a site like the one proposed in example[^rediger-21].
 
 [^rediger-21]: <https://EricMarcon.github.io/>
 
@@ -758,12 +758,12 @@ install.packages('blogdown')
 blogdown::install_hugo()
 ```
 
-The full documentation for **blogdown** is available [^rediger-22].
+The full documentation for **blogdown** is available[^rediger-22].
 
 [^rediger-22]: <https://bookdown.org/yihui/blogdown/>
 
 Recent versions of Hugo use *Go* (the programming language) to install their modules on the fly: here the Academic theme is loaded from GitHub at the time of site creation.
-Go must therefore be installed [^rediger-23].
+Go must therefore be installed[^rediger-23].
 
 [^rediger-23]: <https://golang.org/doc/install>
 

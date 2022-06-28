@@ -184,12 +184,12 @@ An action is called by the statement `uses:`, the GitHub project that contains i
 In their respective GitHub project, actions exist in their development version (`@master`) and in step versions (*release*) accessible by their number (`@v1`).
 These stage versions are preferable because they are stable.
 
-General actions are made available by GitHub in the GitHub Actions organization [^ci-12].
+General actions are made available by GitHub in the GitHub Actions organization[^ci-12].
 The "actions/checkout" action is used to get into the main branch of the project processed by the workflow: it is usually the first step of all workflows.
 
 [^ci-12]: https://github.com/actions/
 
-The next action is the installation of R, provided by the *R infrastructure* organization [^ci-13].
+The next action is the installation of R, provided by the *R infrastructure* organization[^ci-13].
 
 [^ci-13]: https://github.com/r-lib/
 

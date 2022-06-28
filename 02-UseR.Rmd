@@ -18,7 +18,7 @@ Finally, the optimization of code performance is discussed in detail (loops, C++
 ## The languages of R
 
 R includes several programming languages.
-The most common is S3, but it is not the only one [^206].
+The most common is S3, but it is not the only one[^206].
 
 [^206]: https://adv-r.had.co.nz/OO-essentials.html
 
@@ -231,11 +231,11 @@ The set of essential packages can be loaded by the **tidyverse** package which h
 library("tidyverse")
 ```
 
-This is not a new language per se but rather an extension of S3, with deep technical modifications, notably the unconventional evaluation of expressions [^220], which it is not essential to master in detail.
+This is not a new language per se but rather an extension of S3, with deep technical modifications, notably the unconventional evaluation of expressions[^220], which it is not essential to master in detail.
 
 [^220]: https://dplyr.tidyverse.org/articles/programming.html
 
-Its principles are written in a manifesto [^221].
+Its principles are written in a manifesto[^221].
 Its most visible contribution for the user is the sequence of commands in a flow (code pipeline).
 
 [^221]: https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html
@@ -526,12 +526,12 @@ p <- profvis({
 htmlwidgets::saveWidget(p, "docs/profile.html")
 ```
 
-The result is an HTML file containing the profiling report [^201].
+The result is an HTML file containing the profiling report[^201].
 It can be observed that the time to draw the random numbers is similar to that of the cosine calculation.
 
 [^201]: https://EricMarcon.github.io/WorkingWithR/profile.html
 
-Read the complete documentation [^202] on the RStudio website.
+Read the complete documentation[^202] on the RStudio website.
 
 [^202]: https://rstudio.github.io/profvis/
 
@@ -994,7 +994,7 @@ The fixed cost of parallelization is low.
 This case study tests the different techniques seen above to solve a concrete problem.
 The objective is to compute the average distance between two points of a random seed of 1000 points in a square window of side 1.
 
-Its expectation is computable [^230].
+Its expectation is computable[^230].
 It is equal to $\frac{2+\sqrt{2}+5\ln{(1+\sqrt{2})}}{15} \approx 0.5214$.
 
 [^230]: https://mindyourdecisions.com/blog/2016/07/03/distance-between-two-random-points-in-a-square-sunday-puzzle/
@@ -1216,7 +1216,7 @@ d
 ### RcppParallel
 
 **RcppParallel** allows to interface parallelized C++ code, at the cost of a more complex syntax than **RCpp**.
-Documentation is available [^204].
+Documentation is available[^204].
 
 [^204]: <http://rcppcore.github.io/RcppParallel/>
 

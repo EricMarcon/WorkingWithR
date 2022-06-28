@@ -111,7 +111,7 @@ Each student must have an account on GitHub.
 ### Prepare a repository template
 
 A task is a GitHub repository to modify.
-For example [^810], create a repository containing an R project with a Markdown file describing the work to be done and possibly some of the code needed to do it, the other files in the R Markdown template used and a data file.
+For example[^810], create a repository containing an R project with a Markdown file describing the work to be done and possibly some of the code needed to do it, the other files in the R Markdown template used and a data file.
 
 [^810]: https://github.com/EricMarcon/Cours-R-Memo/settings
 
