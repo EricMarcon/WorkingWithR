@@ -913,7 +913,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="chap-package.html#cb373-1" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod(&quot;plot&quot;)
-## &lt;bytecode: 0x7fef15e15250&gt;
+## &lt;bytecode: 0x7fd01299f3f0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -1060,13 +1060,13 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span id="cb401-3"><a href="chap-package.html#cb401-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triple</span>(2L))</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  326  337.5 23243.63  343.5  351.0
-##   triple.numeric(2)  325  337.0 20445.71  343.0  352.5
-##          triple(2L) 1311 1328.0  1433.99 1341.5 1404.0
+##  triple.integer(2L)  322  334.0 23840.42  344.0  357.5
+##   triple.numeric(2)  323  335.0 20096.18  345.5  362.5
+##          triple(2L) 1349 1367.5  1460.92 1384.5 1441.0
 ##      max neval
-##  2288878   100
-##  2008420   100
-##     6137   100</code></pre>
+##  2348559   100
+##  1973248   100
+##     5885   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -1279,7 +1279,7 @@ It must be imported:</li>
 <span id="cb421-65"><a href="chap-package.html#cb421-65" aria-hidden="true" tabindex="-1"></a>graphics<span class="sc">::</span>plot</span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod(&quot;plot&quot;)
-## &lt;bytecode: 0x7fef15e15250&gt;
+## &lt;bytecode: 0x7fd01299f3f0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="chap-package.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; autoplot</span></span>
 <span id="cb423-2"><a href="chap-package.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
@@ -1309,7 +1309,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod(&quot;autoplot&quot;)
 ## }
-## &lt;bytecode: 0x7fef13ed4280&gt;
+## &lt;bytecode: 0x7fd00ebce2e0&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
