@@ -574,7 +574,8 @@ If the knitting step needs to change the language used by R, for example to corr
       - name: Render Rmarkdown files
         run: |
           Sys.setlocale("LC_TIME", "fr_FR")
-          lapply(list.files(pattern="*.Rmd"), function(file) rmarkdown::render(file, "all"))
+          lapply(list.files(pattern="*.Rmd"), 
+                            function(file) rmarkdown::render(file, "all"))
           memoiR::build_githubpages()
         shell: Rscript {0}
 ```

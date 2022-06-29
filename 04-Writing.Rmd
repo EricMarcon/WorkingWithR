@@ -860,9 +860,9 @@ The optimal method is to use continuous integration (see section \@ref(sec:blogd
 ### Multilingual site
 
 If the site is multilingual (say English and French), its `content` folder must be copied in a folder corresponding to each language.
-The `content/authors/admin/_index.md` file which contains information about the owner of the site is replaced by `content/en/authors/admin/_index.md` (respectively `.../fr/...`).
+The files in `content/authors/admin/` must be duplicated into `content/en/authors/admin/` and `content/fr/...`.
 In practice, create an `en` folder and an `fr` folder in `content`.
-Copy all the content of content (except the two new folders) into `en` and then move the same content into `fr`.
+Move all the original `content` folder `en` and then copy it into `fr`.
 
 
 ### Set up
