@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-06-28" />
+<meta name="date" content="2022-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -937,7 +937,8 @@ The <code>build_githubpages()</code> function (see section <a href="chap-rediger
 <pre><code>      - name: Render Rmarkdown files
         run: |
           Sys.setlocale(&quot;LC_TIME&quot;, &quot;fr_FR&quot;)
-          lapply(list.files(pattern=&quot;*.Rmd&quot;), function(file) rmarkdown::render(file, &quot;all&quot;))
+          lapply(list.files(pattern=&quot;*.Rmd&quot;), 
+                            function(file) rmarkdown::render(file, &quot;all&quot;))
           memoiR::build_githubpages()
         shell: Rscript {0}</code></pre>
 <p>The selection of files is done here by an R script, which includes a localization command, here in French.</p>
