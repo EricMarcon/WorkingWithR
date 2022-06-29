@@ -1,6 +1,7 @@
 # Working with R
 
 ![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
+[![DOI](https://zenodo.org/badge/507862871.svg)](https://zenodo.org/badge/latestdoi/507862871)
 ![BuildStatus](https://github.com/EricMarcon/WorkingWithR/workflows/bookdown/badge.svg)
 
 
@@ -12,4 +13,4 @@ It is continuously updated [for online reading](https://EricMarcon.github.io/Wor
 
 Citation:
 
-Marcon, Eric. Working with R. Montpellier, France: UMR Amap, 2022. https://ericmarcon.github.io/WorkingWithR/.
+Marcon, Eric. Working with R. Montpellier, France: UMR Amap, 2022. https://ericmarcon.github.io/WorkingWithR/. DOI:10.5281/zenodo.5778903 

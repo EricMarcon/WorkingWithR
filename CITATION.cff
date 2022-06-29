@@ -6,7 +6,7 @@ authors:
   orcid: "https://orcid.org/0000-0002-5249-321X"
 title: "Working with R"
 version: 5.dev
-date-released: 2022-06-27
+date-released: 2022-06-29
 url: "https://ericmarcon.github.io/WorkingWithR/"
 preferred-citation:
   type: book
@@ -14,8 +14,9 @@ preferred-citation:
   - family-names: "Marcon"
     given-names: "Eric"
     orcid: "https://orcid.org/0000-0002-5249-321X"
-  title: "Travailler avec R"
+  title: "Working with R"
+  doi: "10.5281/zenodo.5778903"
+  date-released: 2022-06-29
   publisher: "UMR Amap"
   location: "Montpellier, France"
   url: "https://ericmarcon.github.io/WorkingWithR/"
-  date-released: 2022-06-27
