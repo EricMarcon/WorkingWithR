@@ -175,7 +175,7 @@ This document is the support of the course *Working with R*.
 It proposes an organization of the work around R and RStudio in order to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create a web site and online R applications (Shiny), produce packages and use R for teaching.
 It complements *Reproducible Research with R and R Studio* [@Gandrud2013] with a more hands-on approach, with ready-to-use solutions.  
 
-Optimizing the use of the many tools available is covered in detail: **rmarkdown**, **bookdown** and **blogdown** for drafting, **roxygen2**, **testthat** and **pkgdown** for packages, source control with git and GitHub, continuous integration with GitHub Actions and Codecov.
+Optimizing the use of the many tools available is covered in detail: **rmarkdown**, **bookdown** and **blogdown** for writing, **roxygen2**, **testthat** and **pkgdown** for packages, source control with git and GitHub, continuous integration with GitHub Actions and Codecov.
 Examples are presented at each step, and the necessary code is provided.
 
 Chapter \@ref(chap-logiciels) is dedicated to the installation of the necessary tools: R, git and LaTeX.
@@ -186,7 +186,7 @@ Chapter \@ref(chap-git) presents source control with git and GitHub.
 Chapter \@ref(chap-rediger) shows how to write simple (articles) or complex (books) documents with R Markdown, integrating the data, the code to process them and the text to present them. 
 Chapter \@ref(chap-package) presents a step-by-step method to efficiently create a package. 
 Chapter \@ref(chap-ci) introduces the use of continuous integration to automatically produce documents, verify package code and produce package thumbnails. 
-Chapter \@ref(chap-shiny) introduces Shiny, the tool for putting R applications online.
+Chapter \@ref(chap-shiny) introduces Shiny to develop R interactive applications.
 Finally, chapter \@ref(chap-enseigner) introduces the tools for teaching R.
 
 
@@ -198,8 +198,8 @@ The identifier used on GitHub is noted *GitHubID*.
 Project names are the same as their GitHub repository, noted *RepoID*.
 
 The sign `|>` in the code of the examples indicates that the rest of the code should be on the same line, but is cut for the formatting of this document.
-Its use is limited to YAML configuration files, mostly used in chapter \@ref(chap-ci).
-In all other cases, the code can be used directly.
+Its use is limited to YAML configuration files, mostly in chapter \@ref(chap-ci).
+In all other cases, the code can be copied directly.
 
 <!-- The \mainmatter command marks the beginning of the body of the LaTeX document--> 
 <!-- It should not be deleted-->
