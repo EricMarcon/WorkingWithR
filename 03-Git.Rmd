@@ -27,7 +27,7 @@ RStudio integrates a graphical interface for git that is sufficient to do withou
 
 *git* is the software installed on the workstation.
 
-*GitHub* is a platform, accessible via the web[^314], which allows to share the content of git repositories (to work with several people) and to share documentation in the form of a web site (*GitHub Pages*).
+*GitHub* is a web platform[^314], which allows to share the content of git repositories (to work with several people) and to share documentation in the form of a web site (*GitHub Pages*).
 
 [^314]: https://github.com/
 
@@ -48,7 +48,7 @@ In an existing R project, enable source control in the project options (figure \
 The command executed is `git init`.
 Restart RStudio on demand.
 
-(ref:git-Project) Activation du contrôle de source dans le menu "Tools > Project Options...".
+(ref:git-Project) Activation of source control in the menu "Tools > Project Options...".
 ```{r git-Project, fig.cap="(ref:git-Project)", echo=FALSE}
 knitr::include_graphics('images/git-Project.png')
 ```
@@ -89,15 +89,15 @@ knitr::include_graphics('images/git-Commit.png')
 The staged files can be validated (*Committed*) by clicking on the "Commit" button in the *Git* window.
 A new window opens (figure \@ref(fig:git-Commit)), which allows to visualize all the modifications by file (additions in green, deletions in red).
 The modification grain treated by git is the text line, ended by a line break.
-Binary files like images are processed in block.
+Binary files such as images are processed as a whole.
 
-Each commit is accompanied by a description text.
+Each commit comes with a description text.
 The first line is the short description.
 A detailed description can be added after a line break.
 For the readability of the project history, each commit corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
 The command executed is `git commit -m "Commit message"`.
 
-(ref:git-id) Login window.
+(ref:git-id) Identification window.
 ```{r git-id, fig.cap="(ref:git-id)", echo=FALSE}
 knitr::include_graphics('images/git-id.png')
 ```
@@ -118,21 +118,21 @@ A branch is a version of the repository, with its own history and therefore its 
 Branches allow:
 
 * to develop new features in a project, without disturbing the main branch which may contain a stable version. If the development is accepted, its branch can be merged with the *master* branch to create a new stable version.
-The *master* branch can contain files totally different from those of the main branch, for other purposes. On GitHub, the project presentation web pages can be placed in a branch called "gh-pages" which will never be merged.
+The *master* branch can also contain files totally different from those of the main branch, for other purposes. On GitHub, a project's web pages can be placed in a branch called "gh-pages" which will never be merged.
 
 The git repository is fully constituted.
 In git vocabulary, it consists of three *trees* (figure \@ref(fig:git-Trees)):
 
-* the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed ("Staged" box unchecked);
+* the working directory, or sandbox, which contains files that are not staged: unknown, modified, deleted or renamed ("Staged" box unchecked);
 * the index, which contains the files taken into account ("Staged" box checked);
 * the head, which contains the validated files.
 
-(ref:git-Trees) Les trois arbres de git. Source: https://rogerdudler.github.io/git-guide/index.fr.html
+(ref:git-Trees) git's trees. Source: https://rogerdudler.github.io/git-guide/index.fr.html
 ```{r git-Trees, fig.cap="(ref:git-Trees)", echo=FALSE}
 knitr::include_graphics('images/git-Trees.png')
 ```
 
-The status of the files is represented by two icons in the RStudio *Git* window: two question marks when they have not been taken into account by git. 
+The status of the files is represented by two icons in the RStudio *Git* window: two question marks when they are not in git's index. 
 Then, the icon on the right describes the difference between the working directory and the index.
 The one on the left describes the difference between the index and the head.
 So a modified file will have the `M` icon displayed on the right before it is taken into account, then on the left after it is taken into account.
@@ -153,13 +153,13 @@ An empty repository on GitHub must be created (figure \@ref(fig:CreateRepo)):
 * Add a description, which will appear only on the GitHub page of the repository.
 * Choose the status of the repository:
     * Public: visible to everyone,
-    * Private: visible only to project collaborators, which excludes adding presentation web pages.
+    * Private: visible only to project collaborators, which excludes adding web pages.
 * Do not add any `README`, `.gitignore` or license: the project must be empty.
 * Click on "create Repository".
 * Copy the address of the repository (https://github.com/... or git@github.com:...).
 
 The choice of the address is linked to the authentication method.
-SSH authentication (see section \@ref(sec:SSH)) is to be preferred.
+SSH authentication (see section \@ref(sec:SSH)) is preferred.
 
 ### Linking git and GitHub
 
@@ -253,14 +253,14 @@ stability-work_in_progress-lightgrey.svg)
 knitr::include_graphics('images/git-Clone.png')
 ```
 
-Any repository on GitHub can be installed (we say *cloned*) on the workstation by copying its address which appears by clicking on the green button (figure \@ref(fig:git-Clone)).
+Any repository on GitHub can be installed (*cloned*) on the workstation by copying its address which appears by clicking on the green button (figure \@ref(fig:git-Clone)).
 
 In RStudio, create a new project and, in the wizard, choose "Version Control", "Git" and paste the address in the "Repository URL" field.
 The name of the directory to create for the project is automatically deduced from the address.
 Choose the directory in which the project will be created and click on "Create Project".
 The created project is linked to the remote repository on GitHub.
 
-To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e. other GitHub users in the repository settings.
+To work with several people on the same project, the project owner must give access to the project to collaborators (figure \@ref(fig:git-Access)), i.e. other GitHub users in the repository settings.
 
 (ref:git-Access) Assigning access rights on GitHub.
 ```{r git-Access, fig.cap="(ref:git-Access)", echo=FALSE}
@@ -277,7 +277,7 @@ Collaborators are invited by a message sent by *GitHub*.
 Any work session on a project starts by pulling ("Pull" button) from the *Git* window to integrate to the local repository the updates made on GitHub by other collaborators.
 
 The changes made to the project files are then taken into account (check the "Staged" boxes) and committed with an explanatory message.
-A good practice is to validate changes each time an elementary task, which can be described in the explanatory message, is completed rather than making *commits* that group many changes with a vague description.
+A good practice is to validate changes each time an elementary task which can be described in the explanatory message is completed rather than making *commits* that group many changes with a vague description.
 
 As soon as possible, *Push* updates so that they are visible to collaborators.
 
@@ -303,7 +303,7 @@ Lines in conflict, local version
 The formatting lines containing the `<<<<`, the `====` and the `>>>>` must be deleted and only one version of the problematic lines kept, which can be different from the two original versions.
 The conflict resolution must be taken into account and validated.
 
-To limit conflicts in a document containing text (typically, an R Markdown document), a good practice is to treat each sentence as a line, terminated by a line break that will not be visible in the formatted document: a line break is required to separate paragraphs.
+To limit conflicts in a document containing text (typically, an R Markdown document), a good practice is to treat each sentence as a line, terminated by a line break that will not be visible in the formatted document: two line breaks are required to separate paragraphs.
 
 
 ### See the differences
@@ -373,11 +373,11 @@ Select the branch to activate from the list of local branches in the *git* windo
 The *commits* apply to the active branch.
 Each branch behaves as a different version of the project.
 
-Warning: to avoid confusion, save the changes, take them into account and validate them before changing branch.
+Warning: to avoid confusion, save the changes, stage them and commit them before changing branch.
 
 ### Pushing the new branch
 
-The first modifications of the new branch must be pushed in command line because the "Push" and "Pull" buttons of the *Git* window do not work as long as the branch does not exist on the remote repository.
+The first modifications of the new branch must be pushed with the command line because the "Push" and "Pull" buttons of the *Git* window do not work as long as the branch does not exist on the remote repository.
 
 Run, in the terminal:
 
@@ -399,7 +399,7 @@ It is best not to attempt to display these branches in RStudio: their content is
 If it is necessary, it will be necessary to copy the `.gitignore` file of the main branch and keep in mind that the ignored files actually belong to another branch than the one displayed.
 
 
-### Merge with `merge
+### Merge with `merge`
 
 Merging a development branch with the main branch marks the achievement of its goal: its code will be integrated into the project.
 RStudio's GUI does not allow for merging, so you have to use the terminal: first, go to the target branch (possible with the GUI):
@@ -427,7 +427,7 @@ git branch -d new_branch
 The other way of merging is more formal but also more general: it allows you to merge a branch into another user's repository to contribute to it, or to have your branch validated by another team member in a collaborative project.
 
 To contribute to another GitHub user's project[^312], you have to start by creating a *fork* of it, i.e. a copy in the form of a repository linked to the original.
-It will be possible to pull changes from the original to stay up to date[^313] (as opposed to a simple snapshot copy possible by downloading a Zip of the project) and, at the end of the development, to merge the *fork* to the original repository (as opposed to a clone that would not allow to contribute afterwards).
+It will be possible to pull changes from the original to stay up to date[^313] (as opposed to a simple snapshot copy made by downloading a zip of the project) and, at the end of the development, to merge the *fork* to the original repository (as opposed to a clone that would not allow to contribute afterwards).
 
 Next, create a development branch as before, modify it and finally ask the repository owner to merge it.
 This process is described in detail in the git documentation.
@@ -491,7 +491,7 @@ The *prune-packable* line gives the size of objects stored both individually and
 If their size is large, run `git prune-packed` to reduce it to zero.
 
 The *size-garbage* line gives the size of objects that can be deleted.
-git gc` removes them, but not only that: it optimizes storage.
+`git gc` removes them, but not only that: it optimizes storage.
 
 ```
 git gc
@@ -529,13 +529,13 @@ The size of all repositories of an authenticated user can be displayed in his ac
 All changes made to a repository are stored in its history.
 It can be useful to delete them in some particular cases
 
-- if a file containing confidential information was inadvertently validated. 
-Validating its deletion does not remove it from the history, and the confidential information remains visible when consulting the history.
-- if large files are no longer needed, e.g. PDF files produced by R Markdown (chapter ``ref(chap-rediger)''), binary (thus unsuitable for git) and reproducible from code.
+- if a file containing confidential information was inadvertently committed. 
+Committing its deletion does not remove it from the history, and the confidential information remains visible when consulting the history.
+- if large files are no longer needed, e.g. PDF files produced by R Markdown (chapter \@ref(chap-rediger)) which are binary (thus unsuitable for git) and reproducible from the code.
 
 Typically, the `docs` folder is used to store documents produced from R Markdown code.
 The HTML and PDF files must be in this folder to constitute the GitHub pages of the project.
-Each modification of the repository generates a new version of these files whose history volume quickly becomes considerable.
+Each modification of the repository generates a new version of these files whose history volume quickly becomes huge.
 An efficient solution is to delegate the creation of these files to a continuous integration system (chapter \@ref(chap-ci)) and to remove the `docs` folder from the main branch (*master*) of the repository.
 You then have to delete all its history to recover the space it occupies, which can be most of the size of the repository.
 
@@ -553,7 +553,7 @@ git for-each-ref --format="%(refname)" refs/original/ |>
     | xargs -n 1 git update-ref -d
 ```
 
-The file is not removed from the working directory.
+The `docs` folder is not removed from the working directory.
 It must therefore be added to the `.gitignore` file so that it is no longer tracked.
 The modification of `.gitignore` must be validated.
 These operations can be done with the RStudio interface or on the command line:
@@ -561,7 +561,7 @@ These operations can be done with the RStudio interface or on the command line:
 ```
 echo docs/ >> .gitignore
 git add .gitignore
-git commit -m 'Removing docs folder from git history
+git commit -m 'Removing docs folder from git history'
 ```
 
 The repository cleanup is necessary to physically remove the removed data:
@@ -571,7 +571,7 @@ git gc
 ```
 
 Finally, the repository must be pushed.
-The `--force` option involves replacing the contents of the remote repository with those of the local repository: all changes made by collaborators are erased, so this cleanup operation involves shutting down the project while it takes place.
+The `--force` option involves replacing the contents of the remote repository with those of the local repository: all changes made by collaborators are erased, so this cleanup operation involves suspending the development of the project while it takes place.
 
 ```
 git push origin master --force
@@ -616,7 +616,7 @@ Using `HEAD` simply avoids searching for the corresponding ID.
 
 ## Confidential data in a public repository {#sec:confidential}
 
-A public repository on GitHub causes problems when data used in the project is not.
+A public repository on GitHub causes problems when the data used in the project is not.
 
 An unsatisfactory solution is to not include the data in the project, which makes it non-reproducible.
 A better solution is to encrypt them, allowing some users to decrypt them.
@@ -645,7 +645,7 @@ ssh-keygen -t rsa -b 4096 -C "user.email"
 ```
 
 Store the public key on GitHub in "Settings > SSH and GPG Keys".
-Locate the position of the key: if an authentication key has already been stored for two workstations for example, the RSA key will be the third one.
+Note the position of the key: if an authentication key has already been stored for two workstations for example, the RSA key will be the third one.
 
 
 ### Generating a key pair for the project
@@ -663,9 +663,9 @@ The private key `<RepoID>.rsa` should only be distributed to the rightful owners
 You must therefore add the line `*.rsa` to the `.gitignore` file of the project to avoid pushing the key on GitHub.
 
 To allow the continuous integration of the project (chapter \@ref(chap-ci)), the private key must be stored as a secret of the GitHub repository containing the project.
-Apply the procedure in the section \@ref(sec:secrets-ci) to create a secret named "RSA" and paste the content of the file `<RepoID><RepoID>.rsa` in the "Value" field of the form.
+Apply the procedure in section \@ref(sec:secrets-ci) to create a secret named "RSA" and paste the content of the file `<RepoID>.rsa` in the "Value" field of the form.
 
-The use of the secret is described in the section \@ref(secrets-ci).
+The use of the secret is described in section \@ref(sec:secrets-ci).
 
 
 ### Creating a safe
@@ -709,7 +709,7 @@ add_user(project_id, public_key = rsa_project, vault = vault)
 ### Storing the data
 
 The data, stored in R variables, are stored one by one by the `add_secret()` function.
-In the following example, the variable is called `X` and is 1.
+In the following example, the variable is called `X` and equals 1.
 
 ```{r add_secret, tidy=FALSE}
 X <- 1
@@ -761,7 +761,7 @@ A repository containing an article written in R Markdown (see section \@ref(sec:
 
 [^306]: https://github.com/EricMarcon/Krigeage
 
-Its `README.md` file exists in both locations: it is written by the developer at the root of the project and duplicated by `GitHubPages.R`.
+Its `README.md` file exists in both locations: it is written by the developer at the root of the project and duplicated in `docs`.
 
 ### Activation
 
@@ -769,13 +769,13 @@ To activate GitHub pages, you have to open the repository settings and modify th
 Select the project branch and the folder containing the web pages, here: `master` and `/docs`.
 As an option, choosing a theme customizes the appearance of the pages.
 
-The web site is accessible at an addres[^307] of the domain *github.io*.
+The web site is accessible at an address[^307] of the domain *github.io*.
 
 [^307]: https://EricMarcon.github.io/Krigeage/
 
 The `README.md` file displayed on the home page has a very different look but the same content as the one displayed with the code on the repository page in GitHub.
 
-The interest of the GitHub pages is to allow an easy access to the formatted documents when the repository contains a written production and or to the documentation of R packages.
+The interest of the GitHub pages is to allow an easy access to the formatted documents when the repository contains a written production or to the documentation of R packages.
 These contents will be presented in the next chapter.
 
 A main website is proposed with each GitHub account, at https://GitHubID.github.io[^308].
