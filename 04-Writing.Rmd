@@ -7,8 +7,8 @@ The tools to do this are the subject of this chapter, completed by the productio
 
 ## Markdown notebook (R Notebook)
 
-In an `.R' file, the code should always be commented to make it easier to read.
-When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in text.
+In an `.R` file, the code should always be commented to make it easier to read.
+When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in the text.
 
 The concept of literate programming was developed by @Knuth1984.
 It consists in describing the objectives and methods by text, in which the code is integrated.
@@ -16,7 +16,7 @@ It consists in describing the objectives and methods by text, in which the code 
 The simplest tool is the Markdown notebook (Menu "File > New File > R Notebook").
 The document template contains its instructions for use.
 
-The language for formatting the text is Markdown[^rediger-1], a simple to use markup language:
+The language for formatting the text is Markdown[^rediger-1], an easy to use markup language:
 
 [^rediger-1]: <https://fr.wikipedia.org/wiki/Markdown>
 
@@ -36,7 +36,7 @@ Its complete documentation is online [@Xie2018].
 
 [^rediger-3]: <https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>
 
-The equations are written in LaTeX format[^rediger-4].
+Equations are written in the LaTeX format[^rediger-4].
 
 [^rediger-4]: <https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques>
 
@@ -52,33 +52,33 @@ output: html_notebook
 ---
 ```
 
-The first entry is the title, the second the output format: more precisely the name of the function that will process the document.
+The first entry is the title, the second is the output format: more precisely the name of the function that will process the document.
 
-The document contains Markdown formatted text and code chunks surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here `r`.
+The document contains Markdown formatted text and code chunks surrounded by three backquotes (the Markdown syntax of a code block) and a language description, here `r`.
 These code chunks are processed by **knitr** which transforms the result of the execution of the R code into Markdown and integrates it into the text of the document.
 
-Processing an R Markdown document is called *knit*.
+Processing an R Markdown document is called *knitting*.
 The production chain is as follows:
 
 - **knitr** processes the code snippets: calculations, figure production;
-- rmarkdown** integrates the production of code and text snippets to produce a standard Markdown file;
+- **rmarkdown** integrates the production of code and text snippets to produce a standard Markdown file;
 - pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format;
 - LaTeX produces a PDF file when that format is requested.
 
 RStudio allows knitting to be started by buttons rather than commands: in the source window (the top left one), a "Knit" button accompanies R Markdown documents.
 For R Markdown notebooks, it is replaced by a "Preview" button with the same functions.
-It can be scrolled to choose the output format: HTML, Word, PDF (via LaTeX) and, for notepads, a "Preview" command that displays the document in HTML without executing the code snippets to save time.
+It can be scrolled down to choose the output format: HTML, Word, PDF (via LaTeX) and, for notepads, a "Preview" command that displays the document in HTML without executing the code snippets to save time.
 As soon as the first knitting is done in Word or HTML format, you will notice that the "Preview" button disappears.
 
 In the end, using R Markdown combines several advantages:
 
 - Simplicity of writing: the raw text is easier to read and format than in LaTeX for example;
-- Automation of production: formatting and layout are fully automatic;
+- Automation of the production: formatting and layout are fully automatic;
 - Reproducibility: each document can be self-sufficient with its data. Re-knitting regenerates the whole document, including the necessary calculations and the production of figures.
 
 It also has some disadvantages:
 
-- Formatting depends on patterns, and developing new patterns is not easy;
+- Formatting depends on templates, and developing new templates is not easy;
 - Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage;
 - Reproducibility consumes computing time. To limit this problem, a cache system allows not to re-evaluate all the R code bits at each modification of the text. The production of large documents can also be delegated to a continuous integration system (see chapter \@ref(chap-ci)).
 
@@ -103,13 +103,13 @@ In the header, an extra entry is used for the date, which can be calculated by R
 date: "|r format(Sys.Date(), '%d/%m/%Y')|"
 ```
 
-Replace the vertical bars `|` in the above example with quotation marks: since this document is written with R Markdown, the date would be calculated and displayed instead of the code if the quotation marks were used directly.
+Replace the vertical bars `|` in the above example with backquotes: since this document is written with R Markdown, the date would be calculated and displayed instead of the code if the backquotes were used directly.
 
 Inline R code (as opposed to code snippets) can be used anywhere in an R Markdown document, including in the header for the date display.
-It starts with a quotation mark followed by `r' and ends with another quotation mark.
+It starts with a backquote followed by `r' and ends with another backquote.
 
 Documents can be knitted in HTML, PDF (via LaTeX) or Word format.
-The header of the R Markdown file is rewritten when the knitting is started by the RStudio button which places the output format used first and adds it if necessary.
+The header of the R Markdown file is rewritten when the knitting is started by the RStudio button which places the current output format on top of the list.
 
 Presentations can be knitted in two HTML formats, ioslide[^rediger-6] or Slidy[^rediger-7], in Beamer (PDF) format[^rediger-8] or in Powerpoint[^rediger-9].
 
@@ -138,7 +138,6 @@ Finally, figure and table captions only support plain text, without any formatti
 
 **bookdown** fills these gaps.
 The package has been designed for writing books with several chapters but can be used for articles.
-The package does not provide templates directly.
 
 The **memoiR** package provides the templates shown here.
 It must be installed.
@@ -168,7 +167,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (`*i
 #### R code
 
 R code is included in code chunks that are easily created by clicking on the "Insert a new code chunk" button above the source code window in RStudio.
-They start and end with three quotation marks on a new line.
+They start and end with three backquotes on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example: 
 
 ````
@@ -218,7 +217,7 @@ The figure \@ref(fig:pressure2) benefits from an improved caption.
 plot(pressure)
 ```
 
-The text in `fig.cap`, "Title of figure" previously, is replaced by `(ref:pressure)` _within the quotation marks_ which are retained and the caption is entered in a paragraph starting with `(ref:pressure)` followed by a space.
+The text in `fig.cap`, "Title of figure" previously, is replaced by `(ref:pressure)` _within the backquotes_ which are retained and the caption is entered in a paragraph starting with `(ref:pressure)` followed by a space.
 Captions are limited to a single paragraph.
 
 If a table of figures is used (option `lof: true` in the header), a short caption is required in addition to the full caption.
