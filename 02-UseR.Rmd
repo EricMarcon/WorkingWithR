@@ -751,7 +751,7 @@ Read Josh Errickson's excellent introduction[^203] which details the issues and 
 Two mechanisms are available for parallel code execution:
 
 - _fork_: the running process is duplicated on multiple cores of the computing computer's processor.
-This is the simplest method but it does not work under Windows (it is a limitation of the operating system).
+This is the simplest method but it does not work on Windows (it is a limitation of the operating system).
 - _Socket_: a cluster is constituted, either physically (a set of computers running R is necessary) or logically (an instance of R on each core of the computer used). 
 The members of the cluster communicate through the network (the internal network of the computer is used in a logical cluster).
 
@@ -919,7 +919,7 @@ The best practice is to adapt the number of tasks to the number of cores, otherw
 `parLapply` requires to create a cluster, export the useful variables on each node, load the necessary packages on each node, execute the code and finally stop the cluster. 
 The code for each step can be found in the `mclapply.hack` function above.
 
-For everyday use, `mclapply` is faster, except under Windows, and simpler (including on Windows thanks to the above workaround).
+For everyday use, `mclapply` is faster, except on Windows, and simpler (including on Windows thanks to the above workaround).
 
 
 ### foreach

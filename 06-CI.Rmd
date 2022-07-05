@@ -206,7 +206,7 @@ To avoid system specifics, it is better to use an action:
 
 #### Caches
 
-Installing R packages takes time, a lot if they are installed from source (the standard procedure under Ubuntu, but not under MacOS and Windows where binary packages are used by default).
+Installing R packages takes time, a lot if they are installed from source (the standard procedure under Ubuntu, but not on MacOS and Windows where binary packages are used by default).
 Computing the code snippets is usually the longest step in the workflow.
 The `cache` action caches the results of both operations.
 
