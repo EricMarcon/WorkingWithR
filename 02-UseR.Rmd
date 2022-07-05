@@ -1439,7 +1439,7 @@ The targets are then listed.
 Each one is declared by the `tar_target()` function whose first argument is the name of the target, which will be the name of the variable that will receive the result.
 The second argument is the code that produces the result.
 Targets are very simple here and can be written in a single command.
-When this is not the case, each target can be written as a function, stored in a separate code file loaded by the `source()` function at the beginning of the stream file.
+When this is not the case, each target can be written as a function, stored in a separate code file loaded by the `source()` function at the beginning of the workflow file.
 
 The `tar_visnetwork` command displays the sequence of targets and their possibly obsolete status.
 

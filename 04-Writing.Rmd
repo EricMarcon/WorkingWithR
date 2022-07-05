@@ -1481,7 +1481,7 @@ library("targets")
 
 ### Declaration of the workflow
 
-The stream is managed by code snippets of type `targets`.
+The workflow is managed by code snippets of type `targets`.
 Their minimal header is `{targets}` instead of `{r}`, and they must be named.
 These code snippets are used to create the `_targets.R` file when they are run in non-interactive mode, namely while the document is being knitted.
 If they are run in interactive mode, for example in R Studio, their code is executed.
@@ -1497,8 +1497,8 @@ Any old workflow must be removed before writing the new one:
 tar_unscript()
 ```
 
-The first code chunk, with the `tar_globals=TRUE` option, writes the global options for the stream. 
-To create the stream shown in section `@ref(sec:targets), the code is simply:
+The first code chunk, with the `tar_globals=TRUE` option, writes the global options for the workflow 
+To create the workflow shown in section `@ref(sec:targets), the code is simply:
 
 ````
 ```{targets targets_global, tar_globals=TRUE}`r ''`
@@ -1566,7 +1566,7 @@ tar_visnetwork()
 tar_make()
 ```
 
-`tar_visnetwork()` is used to check that the stream is correct before running it.
+`tar_visnetwork()` is used to check that the workflow is correct before running it.
 When the document is finally produced, the `include=FALSE` option can be added to the header of this piece of code so that it does not produce any output.
 
 ### Using the results
