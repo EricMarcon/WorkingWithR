@@ -1,4 +1,3 @@
-fig:R-library
 fig:R-ProjetsR
 fig:R-BinaryPkg
 fig:diamonds
@@ -68,7 +67,7 @@ tidyverse
 sec:environnements
 organization
 search
-espaces-de-nom-des-packages
+package-namespaces
 measuring-execution-time
 system.time
 microbenchmark
@@ -91,8 +90,8 @@ sec:cas
 creation-of-the-data
 spatstat
 apply
-boucle-for
-boucle-foreach
+for-loop
+foreach-loop
 rcpp
 rcppparallel
 conclusions-on-code-speed-optimization

@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-06-29" />
+<meta name="date" content="2022-07-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,7 +233,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#organization"><i class="fa fa-check"></i><b>2.2.1</b> Organization</a></li>
 <li class="chapter" data-level="2.2.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#search"><i class="fa fa-check"></i><b>2.2.2</b> Search</a></li>
-<li class="chapter" data-level="2.2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#espaces-de-nom-des-packages"><i class="fa fa-check"></i><b>2.2.3</b> Espaces de nom des packages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#package-namespaces"><i class="fa fa-check"></i><b>2.2.3</b> Package namespaces</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#measuring-execution-time"><i class="fa fa-check"></i><b>2.3</b> Measuring execution time</a>
 <ul>
@@ -262,8 +262,8 @@ div.csl-indent {
 <li class="chapter" data-level="2.7.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#creation-of-the-data"><i class="fa fa-check"></i><b>2.7.1</b> Creation of the data</a></li>
 <li class="chapter" data-level="2.7.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#spatstat"><i class="fa fa-check"></i><b>2.7.2</b> Spatstat</a></li>
 <li class="chapter" data-level="2.7.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#apply"><i class="fa fa-check"></i><b>2.7.3</b> apply</a></li>
-<li class="chapter" data-level="2.7.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-for"><i class="fa fa-check"></i><b>2.7.4</b> boucle for</a></li>
-<li class="chapter" data-level="2.7.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-foreach"><i class="fa fa-check"></i><b>2.7.5</b> boucle foreach</a></li>
+<li class="chapter" data-level="2.7.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#for-loop"><i class="fa fa-check"></i><b>2.7.4</b> for loop</a></li>
+<li class="chapter" data-level="2.7.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#foreach-loop"><i class="fa fa-check"></i><b>2.7.5</b> foreach loop</a></li>
 <li class="chapter" data-level="2.7.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcpp"><i class="fa fa-check"></i><b>2.7.6</b> RCpp</a></li>
 <li class="chapter" data-level="2.7.7" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcppparallel"><i class="fa fa-check"></i><b>2.7.7</b> RcppParallel</a></li>
 <li class="chapter" data-level="2.7.8" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#conclusions-on-code-speed-optimization"><i class="fa fa-check"></i><b>2.7.8</b> Conclusions on code speed optimization</a></li>
@@ -306,7 +306,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4.2" data-path="chap-git.html"><a href="chap-git.html#change-branch"><i class="fa fa-check"></i><b>3.4.2</b> Change branch</a></li>
 <li class="chapter" data-level="3.4.3" data-path="chap-git.html"><a href="chap-git.html#pushing-the-new-branch"><i class="fa fa-check"></i><b>3.4.3</b> Pushing the new branch</a></li>
 <li class="chapter" data-level="3.4.4" data-path="chap-git.html"><a href="chap-git.html#filesystem-behavior"><i class="fa fa-check"></i><b>3.4.4</b> Filesystem behavior</a></li>
-<li class="chapter" data-level="3.4.5" data-path="chap-git.html"><a href="chap-git.html#merge-with-merge"><i class="fa fa-check"></i><b>3.4.5</b> Merge with `merge</a></li>
+<li class="chapter" data-level="3.4.5" data-path="chap-git.html"><a href="chap-git.html#merge-with-merge"><i class="fa fa-check"></i><b>3.4.5</b> Merge with <code>merge</code></a></li>
 <li class="chapter" data-level="3.4.6" data-path="chap-git.html"><a href="chap-git.html#merging-with-a-pull-request"><i class="fa fa-check"></i><b>3.4.6</b> Merging with a pull request</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="chap-git.html"><a href="chap-git.html#advanced-usage"><i class="fa fa-check"></i><b>3.5</b> Advanced usage</a>
@@ -506,13 +506,13 @@ div.csl-indent {
 The tools to do this are the subject of this chapter, completed by the production of web sites (including a personal site).</p>
 <div id="markdown-notebook-r-notebook" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Markdown notebook (R Notebook)<a href="chap-rediger.html#markdown-notebook-r-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In an `.R’ file, the code should always be commented to make it easier to read.
-When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in text.</p>
+<p>In an <code>.R</code> file, the code should always be commented to make it easier to read.
+When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in the text.</p>
 <p>The concept of literate programming was developed by <span class="citation">Knuth (<a href="#ref-Knuth1984" role="doc-biblioref">1984</a>)</span>.
 It consists in describing the objectives and methods by text, in which the code is integrated.</p>
 <p>The simplest tool is the Markdown notebook (Menu “File &gt; New File &gt; R Notebook”).
 The document template contains its instructions for use.</p>
-<p>The language for formatting the text is Markdown<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>, a simple to use markup language:</p>
+<p>The language for formatting the text is Markdown<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>, an easy to use markup language:</p>
 <ul>
 <li>Paragraphs are separated by line breaks;</li>
 <li>The document is structured by headings: their line starts with a number of <code>#</code> corresponding to their level;</li>
@@ -524,37 +524,37 @@ The document template contains its instructions for use.</p>
 The Markdown dialect used by the package is called <em>R Markdown</em>.
 Its syntax is summarized in a cheat sheet<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a>.
 Its complete documentation is online <span class="citation">(<a href="#ref-Xie2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span>.</p>
-<p>The equations are written in LaTeX format<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>.</p>
+<p>Equations are written in the LaTeX format<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>.</p>
 <p>The simplest organization of a <em>R Markdown</em> document can be seen in the notepad template.
 It starts with a header in YAML format<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>:</p>
 <pre><code>---
 title: &quot;R Notebook&quot;
 output: html_notebook
 ---</code></pre>
-<p>The first entry is the title, the second the output format: more precisely the name of the function that will process the document.</p>
-<p>The document contains Markdown formatted text and code chunks surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here <code>r</code>.
+<p>The first entry is the title, the second is the output format: more precisely the name of the function that will process the document.</p>
+<p>The document contains Markdown formatted text and code chunks surrounded by three backquotes (the Markdown syntax of a code block) and a language description, here <code>r</code>.
 These code chunks are processed by <strong>knitr</strong> which transforms the result of the execution of the R code into Markdown and integrates it into the text of the document.</p>
-<p>Processing an R Markdown document is called <em>knit</em>.
+<p>Processing an R Markdown document is called <em>knitting</em>.
 The production chain is as follows:</p>
 <ul>
 <li><strong>knitr</strong> processes the code snippets: calculations, figure production;</li>
-<li>rmarkdown** integrates the production of code and text snippets to produce a standard Markdown file;</li>
+<li><strong>rmarkdown</strong> integrates the production of code and text snippets to produce a standard Markdown file;</li>
 <li>pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format;</li>
 <li>LaTeX produces a PDF file when that format is requested.</li>
 </ul>
 <p>RStudio allows knitting to be started by buttons rather than commands: in the source window (the top left one), a “Knit” button accompanies R Markdown documents.
 For R Markdown notebooks, it is replaced by a “Preview” button with the same functions.
-It can be scrolled to choose the output format: HTML, Word, PDF (via LaTeX) and, for notepads, a “Preview” command that displays the document in HTML without executing the code snippets to save time.
+It can be scrolled down to choose the output format: HTML, Word, PDF (via LaTeX) and, for notepads, a “Preview” command that displays the document in HTML without executing the code snippets to save time.
 As soon as the first knitting is done in Word or HTML format, you will notice that the “Preview” button disappears.</p>
 <p>In the end, using R Markdown combines several advantages:</p>
 <ul>
 <li>Simplicity of writing: the raw text is easier to read and format than in LaTeX for example;</li>
-<li>Automation of production: formatting and layout are fully automatic;</li>
+<li>Automation of the production: formatting and layout are fully automatic;</li>
 <li>Reproducibility: each document can be self-sufficient with its data. Re-knitting regenerates the whole document, including the necessary calculations and the production of figures.</li>
 </ul>
 <p>It also has some disadvantages:</p>
 <ul>
-<li>Formatting depends on patterns, and developing new patterns is not easy;</li>
+<li>Formatting depends on templates, and developing new templates is not easy;</li>
 <li>Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage;</li>
 <li>Reproducibility consumes computing time. To limit this problem, a cache system allows not to re-evaluate all the R code bits at each modification of the text. The production of large documents can also be delegated to a continuous integration system (see chapter <a href="chap-ci.html#chap-ci">6</a>).</li>
 </ul>
@@ -578,11 +578,11 @@ These templates create a single file which will only need to be saved when knitt
 <p>The syntax is the same as for the notepad.
 In the header, an extra entry is used for the date, which can be calculated by R at each knitting:</p>
 <pre><code>date: &quot;|r format(Sys.Date(), &#39;%d/%m/%Y&#39;)|&quot;</code></pre>
-<p>Replace the vertical bars <code>|</code> in the above example with quotation marks: since this document is written with R Markdown, the date would be calculated and displayed instead of the code if the quotation marks were used directly.</p>
+<p>Replace the vertical bars <code>|</code> in the above example with backquotes: since this document is written with R Markdown, the date would be calculated and displayed instead of the code if the backquotes were used directly.</p>
 <p>Inline R code (as opposed to code snippets) can be used anywhere in an R Markdown document, including in the header for the date display.
-It starts with a quotation mark followed by `r’ and ends with another quotation mark.</p>
+It starts with a backquote followed by `r’ and ends with another backquote.</p>
 <p>Documents can be knitted in HTML, PDF (via LaTeX) or Word format.
-The header of the R Markdown file is rewritten when the knitting is started by the RStudio button which places the output format used first and adds it if necessary.</p>
+The header of the R Markdown file is rewritten when the knitting is started by the RStudio button which places the current output format on top of the list.</p>
 <p>Presentations can be knitted in two HTML formats, ioslide<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a> or Slidy<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>, in Beamer (PDF) format<a href="#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a> or in Powerpoint<a href="#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a>.</p>
 <p>The level 2 outline (<code>##</code>) marks the change of slide.</p>
 <p>Additional code, presented in the HTML format documentations, allows for specific functionality.</p>
@@ -597,8 +597,7 @@ Equations, figures and tables are numbered by LaTeX but not in HTML.
 Cross-references (references to a figure number for example) are not supported.
 Finally, figure and table captions only support plain text, without any formatting.</p>
 <p><strong>bookdown</strong> fills these gaps.
-The package has been designed for writing books with several chapters but can be used for articles.
-The package does not provide templates directly.</p>
+The package has been designed for writing books with several chapters but can be used for articles.</p>
 <p>The <strong>memoiR</strong> package provides the templates shown here.
 It must be installed.</p>
 <div id="writing" class="section level3 hasAnchor" number="4.3.1">
@@ -618,7 +617,7 @@ Finally, numbered lists are created in the same way by replacing the hyphens by 
 <div id="r-code" class="section level4 hasAnchor" number="4.3.1.1">
 <h4><span class="header-section-number">4.3.1.1</span> R code<a href="chap-rediger.html#r-code" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>R code is included in code chunks that are easily created by clicking on the “Insert a new code chunk” button above the source code window in RStudio.
-They start and end with three quotation marks on a new line.
+They start and end with three backquotes on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:</p>
 <pre><code>```{r cars, echo=TRUE}
 ```</code></pre>
@@ -636,7 +635,7 @@ In a document such as a scientific article, which does not display its code, it 
 <div id="figures" class="section level4 hasAnchor" number="4.3.1.2">
 <h4><span class="header-section-number">4.3.1.2</span> Figures<a href="chap-rediger.html#figures" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p></p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="chap-rediger.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="chap-rediger.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:pressure"></span>
 <img src="WwR_files/figure-html/pressure-1.png" alt="Figure Title" width="80%" />
 <p class="caption">
@@ -664,7 +663,7 @@ Figure 4.3: Title with <em>italic</em>, math (<span class="math inline">\(\sqrt\
 </p>
 </div>
 <p></p>
-<p>The text in <code>fig.cap</code>, “Title of figure” previously, is replaced by <code>(ref:pressure)</code> <em>within the quotation marks</em> which are retained and the caption is entered in a paragraph starting with <code>(ref:pressure)</code> followed by a space.
+<p>The text in <code>fig.cap</code>, “Title of figure” previously, is replaced by <code>(ref:pressure)</code> <em>within the backquotes</em> which are retained and the caption is entered in a paragraph starting with <code>(ref:pressure)</code> followed by a space.
 Captions are limited to a single paragraph.</p>
 <p>If a table of figures is used (option <code>lof: true</code> in the header), a short caption is required in addition to the full caption.
 It is declared in <code>fig.scap</code>.</p>
@@ -678,14 +677,14 @@ Always place these files in the <code>images</code> folder for good organization
 The content of the table is in a dataframe.
 The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
 <p></p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="chap-rediger.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb274-2"><a href="chap-rediger.html#cb274-2" aria-hidden="true" tabindex="-1"></a>my_iris <span class="ot">&lt;-</span> <span class="fu">head</span>(iris)</span>
-<span id="cb274-3"><a href="chap-rediger.html#cb274-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my_iris) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>,</span>
-<span id="cb274-4"><a href="chap-rediger.html#cb274-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb274-5"><a href="chap-rediger.html#cb274-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(my_iris, <span class="at">caption =</span> <span class="st">&quot;Table created by kable&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb274-6"><a href="chap-rediger.html#cb274-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb274-7"><a href="chap-rediger.html#cb274-7" aria-hidden="true" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
-<span id="cb274-8"><a href="chap-rediger.html#cb274-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="chap-rediger.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb273-2"><a href="chap-rediger.html#cb273-2" aria-hidden="true" tabindex="-1"></a>my_iris <span class="ot">&lt;-</span> <span class="fu">head</span>(iris)</span>
+<span id="cb273-3"><a href="chap-rediger.html#cb273-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(my_iris) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>,</span>
+<span id="cb273-4"><a href="chap-rediger.html#cb273-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb273-5"><a href="chap-rediger.html#cb273-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(my_iris, <span class="at">caption =</span> <span class="st">&quot;Table created by kable&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb273-6"><a href="chap-rediger.html#cb273-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb273-7"><a href="chap-rediger.html#cb273-7" aria-hidden="true" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
+<span id="cb273-8"><a href="chap-rediger.html#cb273-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:kable">Table 4.1: </span>Table created by kable
@@ -824,7 +823,7 @@ Since the table contains mathematics (in the name of the first column), the <cod
 Finally, the <code>full_width = FALSE</code> option allows to adjust the width of the table to its content instead of occupying the whole available width.</p>
 <p>The <strong>flextable</strong> package allows creating more elaborate arrays, as in the following example which displays the long sepals in color.</p>
 <p></p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="chap-rediger.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;flextable&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="chap-rediger.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;flextable&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;flextable&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:spatstat.geom&#39;:
@@ -836,18 +835,18 @@ Finally, the <code>full_width = FALSE</code> option allows to adjust the width o
 <pre><code>## The following objects are masked from &#39;package:kableExtra&#39;:
 ## 
 ##     as_image, footnote</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="chap-rediger.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iris dataset</span></span>
-<span id="cb280-2"><a href="chap-rediger.html#cb280-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb280-3"><a href="chap-rediger.html#cb280-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First lines</span></span>
-<span id="cb280-4"><a href="chap-rediger.html#cb280-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb280-5"><a href="chap-rediger.html#cb280-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a flextable object</span></span>
-<span id="cb280-6"><a href="chap-rediger.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb280-7"><a href="chap-rediger.html#cb280-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Column titles</span></span>
-<span id="cb280-8"><a href="chap-rediger.html#cb280-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set_header_labels</span>(<span class="at">Sepal.Length =</span> <span class="st">&quot;Sepal Length&quot;</span>, <span class="at">Sepal.Width =</span> <span class="st">&quot;Width&quot;</span>,</span>
-<span id="cb280-9"><a href="chap-rediger.html#cb280-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Petal.Length =</span> <span class="st">&quot;Petal Length&quot;</span>, <span class="at">Petal.Width =</span> <span class="st">&quot;Width&quot;</span>, <span class="at">Species =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb280-10"><a href="chap-rediger.html#cb280-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select long sepals (&gt;5) and display them in red</span></span>
-<span id="cb280-11"><a href="chap-rediger.html#cb280-11" aria-hidden="true" tabindex="-1"></a><span class="fu">color</span>(<span class="sc">~</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="sc">~</span>Sepal.Length, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<template id="5c827712-f831-493c-8c48-9b91b58510fb"><style>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="chap-rediger.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iris dataset</span></span>
+<span id="cb279-2"><a href="chap-rediger.html#cb279-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb279-3"><a href="chap-rediger.html#cb279-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First lines</span></span>
+<span id="cb279-4"><a href="chap-rediger.html#cb279-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb279-5"><a href="chap-rediger.html#cb279-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a flextable object</span></span>
+<span id="cb279-6"><a href="chap-rediger.html#cb279-6" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb279-7"><a href="chap-rediger.html#cb279-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Column titles</span></span>
+<span id="cb279-8"><a href="chap-rediger.html#cb279-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set_header_labels</span>(<span class="at">Sepal.Length =</span> <span class="st">&quot;Sepal Length&quot;</span>, <span class="at">Sepal.Width =</span> <span class="st">&quot;Width&quot;</span>,</span>
+<span id="cb279-9"><a href="chap-rediger.html#cb279-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Petal.Length =</span> <span class="st">&quot;Petal Length&quot;</span>, <span class="at">Petal.Width =</span> <span class="st">&quot;Width&quot;</span>, <span class="at">Species =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb279-10"><a href="chap-rediger.html#cb279-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select long sepals (&gt;5) and display them in red</span></span>
+<span id="cb279-11"><a href="chap-rediger.html#cb279-11" aria-hidden="true" tabindex="-1"></a><span class="fu">color</span>(<span class="sc">~</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="sc">~</span>Sepal.Length, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<template id="6cd3bbb7-8992-46ad-83a8-1057634f5f2b"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -881,12 +880,12 @@ Finally, the <code>full_width = FALSE</code> option allows to adjust the width o
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-85f74e8e{}.cl-85edbf9a{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-85edbfb8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-85eddf7a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-85eddf84{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-85ee3b78{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-85ee3b82{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-85ee3b8c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-85ee3b8d{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-85ee3bc8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-85ee3bc9{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-85f74e8e'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-85ee3bc8"><p class="cl-85eddf7a"><span class="cl-85edbf9a">Sepal Length</span></p></td><td class="cl-85ee3bc8"><p class="cl-85eddf7a"><span class="cl-85edbf9a">Width</span></p></td><td class="cl-85ee3bc8"><p class="cl-85eddf7a"><span class="cl-85edbf9a">Petal Length</span></p></td><td class="cl-85ee3bc8"><p class="cl-85eddf7a"><span class="cl-85edbf9a">Width</span></p></td><td class="cl-85ee3bc9"><p class="cl-85eddf84"><span class="cl-85edbf9a">Species</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbfb8">5.1</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">3.5</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">1.4</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">0.2</span></p></td><td class="cl-85ee3b82"><p class="cl-85eddf84"><span class="cl-85edbf9a">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">4.9</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">3.0</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">1.4</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">0.2</span></p></td><td class="cl-85ee3b82"><p class="cl-85eddf84"><span class="cl-85edbf9a">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">4.7</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">3.2</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">1.3</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">0.2</span></p></td><td class="cl-85ee3b82"><p class="cl-85eddf84"><span class="cl-85edbf9a">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">4.6</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">3.1</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">1.5</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">0.2</span></p></td><td class="cl-85ee3b82"><p class="cl-85eddf84"><span class="cl-85edbf9a">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">5.0</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">3.6</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">1.4</span></p></td><td class="cl-85ee3b78"><p class="cl-85eddf7a"><span class="cl-85edbf9a">0.2</span></p></td><td class="cl-85ee3b82"><p class="cl-85eddf84"><span class="cl-85edbf9a">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-85ee3b8c"><p class="cl-85eddf7a"><span class="cl-85edbfb8">5.4</span></p></td><td class="cl-85ee3b8c"><p class="cl-85eddf7a"><span class="cl-85edbf9a">3.9</span></p></td><td class="cl-85ee3b8c"><p class="cl-85eddf7a"><span class="cl-85edbf9a">1.7</span></p></td><td class="cl-85ee3b8c"><p class="cl-85eddf7a"><span class="cl-85edbf9a">0.4</span></p></td><td class="cl-85ee3b8d"><p class="cl-85eddf84"><span class="cl-85edbf9a">setosa</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="93aa5fe5-7955-41e2-ab71-1dedc281761a"></div>
+</style><div class="tabwid"><style>.cl-c1d61c54{}.cl-c1cb40ea{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c1cb40fe{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-c1cb6084{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c1cb608e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c1cbb610{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb61a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb624{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb62e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb62f{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb638{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-c1d61c54'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb62f"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">Sepal Length</span></p></td><td class="cl-c1cbb62f"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">Width</span></p></td><td class="cl-c1cbb62f"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">Petal Length</span></p></td><td class="cl-c1cbb62f"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">Width</span></p></td><td class="cl-c1cbb638"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">Species</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40fe">5.1</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.5</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.4</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">4.9</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.0</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.4</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">4.7</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.2</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.3</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">4.6</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.1</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.5</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">5.0</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.6</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.4</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb624"><p class="cl-c1cb6084"><span class="cl-c1cb40fe">5.4</span></p></td><td class="cl-c1cbb624"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.9</span></p></td><td class="cl-c1cbb624"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.7</span></p></td><td class="cl-c1cbb624"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.4</span></p></td><td class="cl-c1cbb62e"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="3857705b-67f0-4d2f-bb4f-8857b676fb62"></div>
 <script>
-var dest = document.getElementById("93aa5fe5-7955-41e2-ab71-1dedc281761a");
-var template = document.getElementById("5c827712-f831-493c-8c48-9b91b58510fb");
+var dest = document.getElementById("3857705b-67f0-4d2f-bb4f-8857b676fb62");
+var template = document.getElementById("6cd3bbb7-8992-46ad-83a8-1057634f5f2b");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -1080,15 +1079,15 @@ For example, to force a line break before <code>file.Rmd</code>:</p>
 <p>R code snippets are automatically formatted by <strong>knitr</strong> when the <code>tidy=TRUE</code> option is applied to them.
 The default behavior is specified in the <strong>knitr</strong> options, in a code snippet at the beginning of the <code>index.Rmd</code> file:</p>
 <p></p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="chap-rediger.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr options</span></span>
-<span id="cb287-2"><a href="chap-rediger.html#cb287-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb287-3"><a href="chap-rediger.html#cb287-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache=</span><span class="cn">TRUE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb287-4"><a href="chap-rediger.html#cb287-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.env=</span><span class="st">&#39;SCfigure&#39;</span>, <span class="at">fig.asp=</span>.<span class="dv">75</span>, </span>
-<span id="cb287-5"><a href="chap-rediger.html#cb287-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align=</span><span class="st">&#39;center&#39;</span>, <span class="at">out.width=</span><span class="st">&#39;80%&#39;</span>, </span>
-<span id="cb287-6"><a href="chap-rediger.html#cb287-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">tidy=</span><span class="cn">TRUE</span>, </span>
-<span id="cb287-7"><a href="chap-rediger.html#cb287-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">blank=</span><span class="cn">FALSE</span>, <span class="at">width.cutoff=</span><span class="dv">55</span>), </span>
-<span id="cb287-8"><a href="chap-rediger.html#cb287-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="st">&quot;scriptsize&quot;</span>,</span>
-<span id="cb287-9"><a href="chap-rediger.html#cb287-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">knitr.graphics.auto_pdf =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="chap-rediger.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr options</span></span>
+<span id="cb286-2"><a href="chap-rediger.html#cb286-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb286-3"><a href="chap-rediger.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache=</span><span class="cn">TRUE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb286-4"><a href="chap-rediger.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.env=</span><span class="st">&#39;SCfigure&#39;</span>, <span class="at">fig.asp=</span>.<span class="dv">75</span>, </span>
+<span id="cb286-5"><a href="chap-rediger.html#cb286-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align=</span><span class="st">&#39;center&#39;</span>, <span class="at">out.width=</span><span class="st">&#39;80%&#39;</span>, </span>
+<span id="cb286-6"><a href="chap-rediger.html#cb286-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">tidy=</span><span class="cn">TRUE</span>, </span>
+<span id="cb286-7"><a href="chap-rediger.html#cb286-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">blank=</span><span class="cn">FALSE</span>, <span class="at">width.cutoff=</span><span class="dv">55</span>), </span>
+<span id="cb286-8"><a href="chap-rediger.html#cb286-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="st">&quot;scriptsize&quot;</span>,</span>
+<span id="cb286-9"><a href="chap-rediger.html#cb286-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">knitr.graphics.auto_pdf =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p></p>
 <p>The maximum width of a line of formatted code here is 55 characters, optimal for the template.
 Sometimes automatic formatting does not work because <strong>knitr</strong> cannot find a line break that meets all the constraints, causing the code to overflow.
@@ -1231,11 +1230,11 @@ So we will use this solution, for a site like the one proposed in example<a href
 <h3><span class="header-section-number">4.7.1</span> Installing the tools<a href="chap-rediger.html#installing-the-tools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first step is to install the <strong>blogdown</strong> package in R.</p>
 <p></p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="chap-rediger.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;blogdown&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="chap-rediger.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;blogdown&quot;</span>)</span></code></pre></div>
 <p></p>
 <p><strong>blogdown</strong> is able to install Hugo on Windows, macOS or Linux.</p>
 <p></p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="chap-rediger.html#cb295-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">install_hugo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="chap-rediger.html#cb294-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">install_hugo</span>()</span></code></pre></div>
 <p></p>
 <p>The full documentation for <strong>blogdown</strong> is available<a href="#fn75" class="footnote-ref" id="fnref75"><sup>75</sup></a>.</p>
 <p>Recent versions of Hugo use <em>Go</em> (the programming language) to install their modules on the fly: here the Academic theme is loaded from GitHub at the time of site creation.
@@ -1298,17 +1297,17 @@ index.html
 <h3><span class="header-section-number">4.7.3</span> Building the site<a href="chap-rediger.html#building-the-site" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Run</p>
 <p></p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="chap-rediger.html#cb297-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">build_site</span>(<span class="at">build_rmd =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="chap-rediger.html#cb296-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">build_site</span>(<span class="at">build_rmd =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p></p>
 <p>to build the website, including its future R Markdown pages.</p>
 <p>To display the site, run :</p>
 <p></p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="chap-rediger.html#cb298-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">:::</span><span class="fu">serve_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="chap-rediger.html#cb297-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">:::</span><span class="fu">serve_site</span>()</span></code></pre></div>
 <p></p>
 <p>It appears in the RStudio <em>Viewer</em> window, which can be viewed in the system’s default web browser by clicking the enlarge button.</p>
 <p>To modify the content of the site, it is best to stop the web server with the command:</p>
 <p></p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="chap-rediger.html#cb299-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">:::</span><span class="fu">stop_server</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="chap-rediger.html#cb298-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">:::</span><span class="fu">stop_server</span>()</span></code></pre></div>
 <p></p>
 <p>The site produced by <strong>blogdown</strong> is located in the <code>public</code> folder which can be copied directly to a web server that will host it.
 A simple solution is to declare this folder as the root of the GitHub pages of the project
@@ -1572,8 +1571,8 @@ The <code>blogdown::new_post()</code> command can also be used, but it does not 
 <p>Rebuilding the site does not by default update pages based on a <code>.Rmd</code> file.
 To do this, you must force the <code>build_site()</code> command.</p>
 <p></p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="chap-rediger.html#cb315-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">build_site</span>(<span class="at">build_rmd =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb315-2"><a href="chap-rediger.html#cb315-2" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">serve_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="chap-rediger.html#cb314-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">build_site</span>(<span class="at">build_rmd =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb314-2"><a href="chap-rediger.html#cb314-2" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">serve_site</span>()</span></code></pre></div>
 <p></p>
 </div>
 <div id="publications" class="section level4 hasAnchor" number="4.7.6.4">
@@ -1711,13 +1710,13 @@ The <code>icon.png</code> file can be replaced.</p>
 The version used is indicated in the <code>go.mod</code> file.
 To use the latest official version, run the following command in the R console:</p>
 <p></p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="chap-rediger.html#cb319-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">hugo_cmd</span>(<span class="st">&quot;mod get -u&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="chap-rediger.html#cb318-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">hugo_cmd</span>(<span class="st">&quot;mod get -u&quot;</span>)</span></code></pre></div>
 <p></p>
 <p>The <code>go.mod</code> and <code>go.sum</code> files, which contain the hash codes of the module files, are updated.</p>
 <p>Each version change may require adaptations to the site content, referenced in the online documentation of the theme<a href="#fn89" class="footnote-ref" id="fnref89"><sup>89</sup></a>.</p>
 <p>Update Hugo at the same time:</p>
 <p></p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="chap-rediger.html#cb320-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">update_hugo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="chap-rediger.html#cb319-1" aria-hidden="true" tabindex="-1"></a>blogdown<span class="sc">::</span><span class="fu">update_hugo</span>()</span></code></pre></div>
 <p></p>
 </div>
 </div>
@@ -1738,14 +1737,14 @@ The <code>image()</code> function used to display maps uses polygons rather than
 Figure <a href="chap-rediger.html#fig:volcano">4.10</a> shows the result of the following code:</p>
 
 <p></p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="chap-rediger.html#cb321-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(volcano))</span>
-<span id="cb321-2"><a href="chap-rediger.html#cb321-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(volcano))</span>
-<span id="cb321-3"><a href="chap-rediger.html#cb321-3" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(x, y, volcano, <span class="at">col =</span> <span class="fu">hcl.colors</span>(<span class="dv">100</span>, <span class="st">&quot;terrain&quot;</span>), <span class="at">axes =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb321-4"><a href="chap-rediger.html#cb321-4" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(x, y, volcano, <span class="at">levels =</span> <span class="fu">seq</span>(<span class="dv">90</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb321-5"><a href="chap-rediger.html#cb321-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;brown&quot;</span>)</span>
-<span id="cb321-6"><a href="chap-rediger.html#cb321-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">800</span>, <span class="at">by =</span> <span class="dv">100</span>))</span>
-<span id="cb321-7"><a href="chap-rediger.html#cb321-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">600</span>, <span class="at">by =</span> <span class="dv">100</span>))</span>
-<span id="cb321-8"><a href="chap-rediger.html#cb321-8" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="chap-rediger.html#cb320-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(volcano))</span>
+<span id="cb320-2"><a href="chap-rediger.html#cb320-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(volcano))</span>
+<span id="cb320-3"><a href="chap-rediger.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(x, y, volcano, <span class="at">col =</span> <span class="fu">hcl.colors</span>(<span class="dv">100</span>, <span class="st">&quot;terrain&quot;</span>), <span class="at">axes =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb320-4"><a href="chap-rediger.html#cb320-4" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(x, y, volcano, <span class="at">levels =</span> <span class="fu">seq</span>(<span class="dv">90</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb320-5"><a href="chap-rediger.html#cb320-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;brown&quot;</span>)</span>
+<span id="cb320-6"><a href="chap-rediger.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">800</span>, <span class="at">by =</span> <span class="dv">100</span>))</span>
+<span id="cb320-7"><a href="chap-rediger.html#cb320-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">600</span>, <span class="at">by =</span> <span class="dv">100</span>))</span>
+<span id="cb320-8"><a href="chap-rediger.html#cb320-8" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:volcano"></span>
 <img src="WwR_files/figure-html/volcano-1.png" alt="Maunga Whau volcano contours, code provided as an example of the image() function help." width="80%" />
 <p class="caption">
@@ -1761,12 +1760,12 @@ Figure 4.10: Maunga Whau volcano contours, code provided as an example of the <c
 <p>The <code>postscript()</code> function produces an EPS file.
 The R code must call the function to create the file, produce the figure, and then close the file, for example:</p>
 <p></p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="chap-rediger.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the file</span></span>
-<span id="cb322-2"><a href="chap-rediger.html#cb322-2" aria-hidden="true" tabindex="-1"></a><span class="fu">postscript</span>(<span class="st">&quot;Fig1.eps&quot;</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">horizontal =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb322-3"><a href="chap-rediger.html#cb322-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure</span></span>
-<span id="cb322-4"><a href="chap-rediger.html#cb322-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars)</span>
-<span id="cb322-5"><a href="chap-rediger.html#cb322-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the file</span></span>
-<span id="cb322-6"><a href="chap-rediger.html#cb322-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="chap-rediger.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the file</span></span>
+<span id="cb321-2"><a href="chap-rediger.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">postscript</span>(<span class="st">&quot;Fig1.eps&quot;</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">horizontal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb321-3"><a href="chap-rediger.html#cb321-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure</span></span>
+<span id="cb321-4"><a href="chap-rediger.html#cb321-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars)</span>
+<span id="cb321-5"><a href="chap-rediger.html#cb321-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the file</span></span>
+<span id="cb321-6"><a href="chap-rediger.html#cb321-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## pdf 
 ##   2</code></pre>
 <p></p>
@@ -1787,19 +1786,19 @@ The optimized functions are <code>agg_png()</code>, <code>agg_jpeg()</code> and 
 <strong>ragg</strong> improves their quality: the package must be installed and <code>dev = "ragg_png"</code> must be added to the <strong>knitr</strong> options.
 For this document, the options declared in <code>index.Rmd</code> are the following:</p>
 <p></p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="chap-rediger.html#cb324-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb324-2"><a href="chap-rediger.html#cb324-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache=</span><span class="cn">FALSE</span>, <span class="co"># Cache chunk results</span></span>
-<span id="cb324-3"><a href="chap-rediger.html#cb324-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="co"># Show/Hide R chunks</span></span>
-<span id="cb324-4"><a href="chap-rediger.html#cb324-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="co"># Show/Hide warnings</span></span>
-<span id="cb324-5"><a href="chap-rediger.html#cb324-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Figure alignment and size</span></span>
-<span id="cb324-6"><a href="chap-rediger.html#cb324-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align=</span><span class="st">&#39;center&#39;</span>, <span class="at">out.width=</span><span class="st">&#39;80%&#39;</span>, <span class="at">fig.asp=</span>.<span class="dv">75</span>,</span>
-<span id="cb324-7"><a href="chap-rediger.html#cb324-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Graphic devices (ragg_png is better than standard png)</span></span>
-<span id="cb324-8"><a href="chap-rediger.html#cb324-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">dev =</span> <span class="fu">c</span>(<span class="st">&quot;ragg_png&quot;</span>, <span class="st">&quot;pdf&quot;</span>),</span>
-<span id="cb324-9"><a href="chap-rediger.html#cb324-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code chunk format</span></span>
-<span id="cb324-10"><a href="chap-rediger.html#cb324-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">tidy=</span><span class="cn">TRUE</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">blank=</span><span class="cn">FALSE</span>, <span class="at">width.cutoff=</span><span class="dv">60</span>),</span>
-<span id="cb324-11"><a href="chap-rediger.html#cb324-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">size=</span><span class="st">&quot;scriptsize&quot;</span>, <span class="at">knitr.graphics.auto_pdf =</span> <span class="cn">TRUE</span></span>
-<span id="cb324-12"><a href="chap-rediger.html#cb324-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb324-13"><a href="chap-rediger.html#cb324-13" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width=</span><span class="dv">60</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="chap-rediger.html#cb323-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb323-2"><a href="chap-rediger.html#cb323-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache=</span><span class="cn">FALSE</span>, <span class="co"># Cache chunk results</span></span>
+<span id="cb323-3"><a href="chap-rediger.html#cb323-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="co"># Show/Hide R chunks</span></span>
+<span id="cb323-4"><a href="chap-rediger.html#cb323-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="co"># Show/Hide warnings</span></span>
+<span id="cb323-5"><a href="chap-rediger.html#cb323-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Figure alignment and size</span></span>
+<span id="cb323-6"><a href="chap-rediger.html#cb323-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align=</span><span class="st">&#39;center&#39;</span>, <span class="at">out.width=</span><span class="st">&#39;80%&#39;</span>, <span class="at">fig.asp=</span>.<span class="dv">75</span>,</span>
+<span id="cb323-7"><a href="chap-rediger.html#cb323-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Graphic devices (ragg_png is better than standard png)</span></span>
+<span id="cb323-8"><a href="chap-rediger.html#cb323-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">dev =</span> <span class="fu">c</span>(<span class="st">&quot;ragg_png&quot;</span>, <span class="st">&quot;pdf&quot;</span>),</span>
+<span id="cb323-9"><a href="chap-rediger.html#cb323-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code chunk format</span></span>
+<span id="cb323-10"><a href="chap-rediger.html#cb323-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">tidy=</span><span class="cn">TRUE</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">blank=</span><span class="cn">FALSE</span>, <span class="at">width.cutoff=</span><span class="dv">60</span>),</span>
+<span id="cb323-11"><a href="chap-rediger.html#cb323-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">size=</span><span class="st">&quot;scriptsize&quot;</span>, <span class="at">knitr.graphics.auto_pdf =</span> <span class="cn">TRUE</span></span>
+<span id="cb323-12"><a href="chap-rediger.html#cb323-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb323-13"><a href="chap-rediger.html#cb323-13" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width=</span><span class="dv">60</span>)</span></code></pre></div>
 <p></p>
 <p>Finally, <strong>ragg</strong> can be used as the default graphics renderer in RStudio starting with version 1.4 (Menu “Tools &gt; Global Options &gt; General &gt; Graphics &gt; Backend”).</p>
 </div>
@@ -1808,21 +1807,21 @@ For this document, the options declared in <code>index.Rmd</code> are the follow
 <h2><span class="header-section-number">4.9</span> Workflow<a href="chap-rediger.html#sec:targetsmd" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A workflow (see section <a href="chap-utiliseR.html#sec:targets">2.8</a>) can be embedded in an R Markdown document starting with version 0.5 of the <strong>targets</strong> package.</p>
 <p></p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="chap-rediger.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;targets&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="chap-rediger.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;targets&quot;</span>)</span></code></pre></div>
 <p></p>
 <div id="declaration-of-the-workflow" class="section level3 hasAnchor" number="4.9.1">
 <h3><span class="header-section-number">4.9.1</span> Declaration of the workflow<a href="chap-rediger.html#declaration-of-the-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The stream is managed by code snippets of type <code>targets</code>.
+<p>The workflow is managed by code snippets of type <code>targets</code>.
 Their minimal header is <code>{targets}</code> instead of <code>{r}</code>, and they must be named.
 These code snippets are used to create the <code>_targets.R</code> file when they are run in non-interactive mode, namely while the document is being knitted.
 If they are run in interactive mode, for example in R Studio, their code is executed.
 The <code>tar_interactive = FALSE</code> option in their header allows them to be tested without knitting the whole document.</p>
 <p>Any old workflow must be removed before writing the new one:</p>
 <p></p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="chap-rediger.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_unscript</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="chap-rediger.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_unscript</span>()</span></code></pre></div>
 <p></p>
-<p>The first code chunk, with the <code>tar_globals=TRUE</code> option, writes the global options for the stream.
-To create the stream shown in section `<span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(sec:targets), the code is simply:</p>
+<p>The first code chunk, with the <code>tar_globals=TRUE</code> option, writes the global options for the workflow
+To create the workflow shown in section `<span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(sec:targets), the code is simply:</p>
 <pre><code>```{targets targets_global, tar_globals=TRUE}
 # Packages
 tar_option_set(packages = c(&quot;spatstat&quot;, &quot;dbmss&quot;))
@@ -1839,9 +1838,9 @@ runifpoint(NbPoints)
 The value of the target is the last value returned, just like a function that would not use <code>return()</code>.</p>
 <p>During knitting, this simplified code (<code>tar_simple=TRUE</code>) is automatically transformed into a target write:</p>
 <p></p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="chap-rediger.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(X, {</span>
-<span id="cb329-2"><a href="chap-rediger.html#cb329-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runifpoint</span>(NbPoints)</span>
-<span id="cb329-3"><a href="chap-rediger.html#cb329-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="chap-rediger.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(X, {</span>
+<span id="cb328-2"><a href="chap-rediger.html#cb328-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runifpoint</span>(NbPoints)</span>
+<span id="cb328-3"><a href="chap-rediger.html#cb328-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## Define target X from chunk code.
 ## Establish _targets.R and _targets_r/targets/X.R.</code></pre>
 <p></p>
@@ -1852,9 +1851,9 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 <li><code>NbPoints</code>:</li>
 </ul>
 <p></p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="chap-rediger.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(NbPoints, {</span>
-<span id="cb331-2"><a href="chap-rediger.html#cb331-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1000</span></span>
-<span id="cb331-3"><a href="chap-rediger.html#cb331-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="chap-rediger.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(NbPoints, {</span>
+<span id="cb330-2"><a href="chap-rediger.html#cb330-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1000</span></span>
+<span id="cb330-3"><a href="chap-rediger.html#cb330-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## Define target NbPoints from chunk code.
 ## Establish _targets.R and _targets_r/targets/NbPoints.R.</code></pre>
 <p></p>
@@ -1862,9 +1861,9 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 <li><code>d</code>:</li>
 </ul>
 <p></p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="chap-rediger.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(d, {</span>
-<span id="cb333-2"><a href="chap-rediger.html#cb333-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">pairdist</span>(X))<span class="sc">/</span>NbPoints<span class="sc">/</span>(NbPoints<span class="dv">-1</span>)</span>
-<span id="cb333-3"><a href="chap-rediger.html#cb333-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="chap-rediger.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(d, {</span>
+<span id="cb332-2"><a href="chap-rediger.html#cb332-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">pairdist</span>(X))<span class="sc">/</span>NbPoints<span class="sc">/</span>(NbPoints<span class="dv">-1</span>)</span>
+<span id="cb332-3"><a href="chap-rediger.html#cb332-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## Define target d from chunk code.
 ## Establish _targets.R and _targets_r/targets/d.R.</code></pre>
 <p></p>
@@ -1872,9 +1871,9 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 <li><code>map</code>:</li>
 </ul>
 <p></p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="chap-rediger.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(map, {</span>
-<span id="cb335-2"><a href="chap-rediger.html#cb335-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">autoplot</span>(<span class="fu">as.wmppp</span>(X))</span>
-<span id="cb335-3"><a href="chap-rediger.html#cb335-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="chap-rediger.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(map, {</span>
+<span id="cb334-2"><a href="chap-rediger.html#cb334-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">autoplot</span>(<span class="fu">as.wmppp</span>(X))</span>
+<span id="cb334-3"><a href="chap-rediger.html#cb334-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## Define target map from chunk code.
 ## Establish _targets.R and _targets_r/targets/map.R.</code></pre>
 <p></p>
@@ -1883,10 +1882,10 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 <h3><span class="header-section-number">4.9.3</span> Running the flow<a href="chap-rediger.html#running-the-flow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To start the target calculation, a standard piece of code (<code>{r}</code>) must call <code>tar_make()</code>:</p>
 <p></p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="chap-rediger.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_visnetwork</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="chap-rediger.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_visnetwork</span>()</span></code></pre></div>
 <div id="htmlwidget-f86449deb0c1fad89ea7" style="width:80%;height:504px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-f86449deb0c1fad89ea7">{"x":{"nodes":{"name":["d","map","NbPoints","X"],"type":["stem","stem","stem","stem"],"status":["outdated","outdated","outdated","outdated"],"seconds":[null,null,null,null],"bytes":[null,null,null,null],"branches":[null,null,null,null],"label":["d","map","NbPoints","X"],"color":["#78B7C5","#78B7C5","#78B7C5","#78B7C5"],"id":["d","map","NbPoints","X"],"level":[3,3,1,2],"shape":["dot","dot","dot","dot"]},"edges":{"from":["NbPoints","NbPoints","X","X"],"to":["X","d","d","map"],"arrows":["to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"physics":{"stabilization":false},"interaction":{"zoomSpeed":1},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":1,"to":1},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"right","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Outdated","Stem"],"color":["#78B7C5","#899DA4"],"shape":["dot","dot"]},"nodesToDataframe":true},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="chap-rediger.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_make</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="chap-rediger.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_make</span>()</span></code></pre></div>
 <pre><code>## • start target NbPoints
 ## • built target NbPoints
 ## • start target X
@@ -1895,16 +1894,16 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.011 seconds</code></pre>
+## • end pipeline: 2.508 seconds</code></pre>
 <p></p>
-<p><code>tar_visnetwork()</code> is used to check that the stream is correct before running it.
+<p><code>tar_visnetwork()</code> is used to check that the workflow is correct before running it.
 When the document is finally produced, the <code>include=FALSE</code> option can be added to the header of this piece of code so that it does not produce any output.</p>
 </div>
 <div id="using-the-results" class="section level3 hasAnchor" number="4.9.4">
 <h3><span class="header-section-number">4.9.4</span> Using the results<a href="chap-rediger.html#using-the-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Code snippets that use target values must read them with <code>tar_read()</code>:</p>
 <p></p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="chap-rediger.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_read</span>(map)</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="chap-rediger.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_read</span>(map)</span></code></pre></div>
 <p><img src="WwR_files/figure-html/tar_read_4-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p></p>
 </div>

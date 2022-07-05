@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-06-29" />
+<meta name="date" content="2022-07-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,7 +233,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#organization"><i class="fa fa-check"></i><b>2.2.1</b> Organization</a></li>
 <li class="chapter" data-level="2.2.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#search"><i class="fa fa-check"></i><b>2.2.2</b> Search</a></li>
-<li class="chapter" data-level="2.2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#espaces-de-nom-des-packages"><i class="fa fa-check"></i><b>2.2.3</b> Espaces de nom des packages</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#package-namespaces"><i class="fa fa-check"></i><b>2.2.3</b> Package namespaces</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#measuring-execution-time"><i class="fa fa-check"></i><b>2.3</b> Measuring execution time</a>
 <ul>
@@ -262,8 +262,8 @@ div.csl-indent {
 <li class="chapter" data-level="2.7.1" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#creation-of-the-data"><i class="fa fa-check"></i><b>2.7.1</b> Creation of the data</a></li>
 <li class="chapter" data-level="2.7.2" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#spatstat"><i class="fa fa-check"></i><b>2.7.2</b> Spatstat</a></li>
 <li class="chapter" data-level="2.7.3" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#apply"><i class="fa fa-check"></i><b>2.7.3</b> apply</a></li>
-<li class="chapter" data-level="2.7.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-for"><i class="fa fa-check"></i><b>2.7.4</b> boucle for</a></li>
-<li class="chapter" data-level="2.7.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#boucle-foreach"><i class="fa fa-check"></i><b>2.7.5</b> boucle foreach</a></li>
+<li class="chapter" data-level="2.7.4" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#for-loop"><i class="fa fa-check"></i><b>2.7.4</b> for loop</a></li>
+<li class="chapter" data-level="2.7.5" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#foreach-loop"><i class="fa fa-check"></i><b>2.7.5</b> foreach loop</a></li>
 <li class="chapter" data-level="2.7.6" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcpp"><i class="fa fa-check"></i><b>2.7.6</b> RCpp</a></li>
 <li class="chapter" data-level="2.7.7" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#rcppparallel"><i class="fa fa-check"></i><b>2.7.7</b> RcppParallel</a></li>
 <li class="chapter" data-level="2.7.8" data-path="chap-utiliseR.html"><a href="chap-utiliseR.html#conclusions-on-code-speed-optimization"><i class="fa fa-check"></i><b>2.7.8</b> Conclusions on code speed optimization</a></li>
@@ -306,7 +306,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.4.2" data-path="chap-git.html"><a href="chap-git.html#change-branch"><i class="fa fa-check"></i><b>3.4.2</b> Change branch</a></li>
 <li class="chapter" data-level="3.4.3" data-path="chap-git.html"><a href="chap-git.html#pushing-the-new-branch"><i class="fa fa-check"></i><b>3.4.3</b> Pushing the new branch</a></li>
 <li class="chapter" data-level="3.4.4" data-path="chap-git.html"><a href="chap-git.html#filesystem-behavior"><i class="fa fa-check"></i><b>3.4.4</b> Filesystem behavior</a></li>
-<li class="chapter" data-level="3.4.5" data-path="chap-git.html"><a href="chap-git.html#merge-with-merge"><i class="fa fa-check"></i><b>3.4.5</b> Merge with `merge</a></li>
+<li class="chapter" data-level="3.4.5" data-path="chap-git.html"><a href="chap-git.html#merge-with-merge"><i class="fa fa-check"></i><b>3.4.5</b> Merge with <code>merge</code></a></li>
 <li class="chapter" data-level="3.4.6" data-path="chap-git.html"><a href="chap-git.html#merging-with-a-pull-request"><i class="fa fa-check"></i><b>3.4.6</b> Merging with a pull request</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="chap-git.html"><a href="chap-git.html#advanced-usage"><i class="fa fa-check"></i><b>3.5</b> Advanced usage</a>
@@ -503,7 +503,7 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Working with R</h1>
 <p class="author"><em>Eric Marcon</em></p>
-<p class="date"><em>06/29/2022</em></p>
+<p class="date"><em>07/05/2022</em></p>
 </div>
 <div id="présentation" class="section level1 unnumbered hasAnchor">
 <h1>Présentation<a href="index.html#présentation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -512,7 +512,7 @@ div.csl-indent {
 <p>This document is the support of the course <em>Working with R</em>.</p>
 <p>It proposes an organization of the work around R and RStudio in order to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create a web site and online R applications (Shiny), produce packages and use R for teaching.
 It complements <em>Reproducible Research with R and R Studio</em> <span class="citation">(<a href="#ref-Gandrud2013" role="doc-biblioref">Gandrud 2015</a>)</span> with a more hands-on approach, with ready-to-use solutions.</p>
-<p>Optimizing the use of the many tools available is covered in detail: <strong>rmarkdown</strong>, <strong>bookdown</strong> and <strong>blogdown</strong> for drafting, <strong>roxygen2</strong>, <strong>testthat</strong> and <strong>pkgdown</strong> for packages, source control with git and GitHub, continuous integration with GitHub Actions and Codecov.
+<p>Optimizing the use of the many tools available is covered in detail: <strong>rmarkdown</strong>, <strong>bookdown</strong> and <strong>blogdown</strong> for writing, <strong>roxygen2</strong>, <strong>testthat</strong> and <strong>pkgdown</strong> for packages, source control with git and GitHub, continuous integration with GitHub Actions and Codecov.
 Examples are presented at each step, and the necessary code is provided.</p>
 <p>Chapter <a href="chap-logiciels.html#chap-logiciels">1</a> is dedicated to the installation of the necessary tools: R, git and LaTeX.
 Chapter <a href="chap-utiliseR.html#chap-utiliseR">2</a> details some advanced aspects of using R: the different languages, the environments, the performance of the code.
@@ -521,7 +521,7 @@ Chapter <a href="chap-git.html#chap-git">3</a> presents source control with git 
 <p>Chapter <a href="chap-rediger.html#chap-rediger">4</a> shows how to write simple (articles) or complex (books) documents with R Markdown, integrating the data, the code to process them and the text to present them.
 Chapter <a href="chap-package.html#chap-package">5</a> presents a step-by-step method to efficiently create a package.
 Chapter <a href="chap-ci.html#chap-ci">6</a> introduces the use of continuous integration to automatically produce documents, verify package code and produce package thumbnails.
-Chapter <a href="chap-shiny.html#chap-shiny">7</a> introduces Shiny, the tool for putting R applications online.
+Chapter <a href="chap-shiny.html#chap-shiny">7</a> introduces Shiny to develop R interactive applications.
 Finally, chapter <a href="chap-enseigner.html#chap-enseigner">8</a> introduces the tools for teaching R.</p>
 </div>
 <div id="conventions" class="section level2 unnumbered hasAnchor">
@@ -530,8 +530,8 @@ Finally, chapter <a href="chap-enseigner.html#chap-enseigner">8</a> introduces t
 <p>The identifier used on GitHub is noted <em>GitHubID</em>.
 Project names are the same as their GitHub repository, noted <em>RepoID</em>.</p>
 <p>The sign <code>|&gt;</code> in the code of the examples indicates that the rest of the code should be on the same line, but is cut for the formatting of this document.
-Its use is limited to YAML configuration files, mostly used in chapter <a href="chap-ci.html#chap-ci">6</a>.
-In all other cases, the code can be used directly.</p>
+Its use is limited to YAML configuration files, mostly in chapter <a href="chap-ci.html#chap-ci">6</a>.
+In all other cases, the code can be copied directly.</p>
 <!-- The \mainmatter command marks the beginning of the body of the LaTeX document-->
 <!-- It should not be deleted-->
 

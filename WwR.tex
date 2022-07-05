@@ -373,7 +373,7 @@
 
 \author{Eric Marcon}
 
-\date{06/29/2022}
+\date{07/05/2022}
 
 
 % Include headers (preamble.tex) here
@@ -458,7 +458,7 @@ This document is the support of the course \emph{Working with R}.
 It proposes an organization of the work around R and RStudio in order to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create a web site and online R applications (Shiny), produce packages and use R for teaching.
 It complements \emph{Reproducible Research with R and R Studio} \autocite{Gandrud2013} with a more hands-on approach, with ready-to-use solutions.
 
-Optimizing the use of the many tools available is covered in detail: \textbf{rmarkdown}, \textbf{bookdown} and \textbf{blogdown} for drafting, \textbf{roxygen2}, \textbf{testthat} and \textbf{pkgdown} for packages, source control with git and GitHub, continuous integration with GitHub Actions and Codecov.
+Optimizing the use of the many tools available is covered in detail: \textbf{rmarkdown}, \textbf{bookdown} and \textbf{blogdown} for writing, \textbf{roxygen2}, \textbf{testthat} and \textbf{pkgdown} for packages, source control with git and GitHub, continuous integration with GitHub Actions and Codecov.
 Examples are presented at each step, and the necessary code is provided.
 
 Chapter \ref{chap-logiciels} is dedicated to the installation of the necessary tools: R, git and LaTeX.
@@ -469,7 +469,7 @@ Chapter \ref{chap-git} presents source control with git and GitHub.
 Chapter \ref{chap-rediger} shows how to write simple (articles) or complex (books) documents with R Markdown, integrating the data, the code to process them and the text to present them.
 Chapter \ref{chap-package} presents a step-by-step method to efficiently create a package.
 Chapter \ref{chap-ci} introduces the use of continuous integration to automatically produce documents, verify package code and produce package thumbnails.
-Chapter \ref{chap-shiny} introduces Shiny, the tool for putting R applications online.
+Chapter \ref{chap-shiny} introduces Shiny to develop R interactive applications.
 Finally, chapter \ref{chap-enseigner} introduces the tools for teaching R.
 
 \hypertarget{conventions}{%
@@ -482,8 +482,8 @@ The identifier used on GitHub is noted \emph{GitHubID}.
 Project names are the same as their GitHub repository, noted \emph{RepoID}.
 
 The sign \texttt{\textbar{}\textgreater{}} in the code of the examples indicates that the rest of the code should be on the same line, but is cut for the formatting of this document.
-Its use is limited to YAML configuration files, mostly used in chapter \ref{chap-ci}.
-In all other cases, the code can be used directly.
+Its use is limited to YAML configuration files, mostly in chapter \ref{chap-ci}.
+In all other cases, the code can be copied directly.
 
 \mainmatter
 
@@ -506,12 +506,12 @@ Their installation and coherent organization are presented in this chapter.
 \hypertarget{installation}{%
 \subsection{Installation}\label{installation}}
 
-R is included in the Linux distributions: the package is named \texttt{r-base}.
+R is included in Linux distributions: the package is named \texttt{r-base}.
 It does not contain development tools that are often needed, so it is better to install the \texttt{r-base-dev} package as well.
 The version of R is often a bit old.
 To get the latest version, you have to use a CRAN mirror as a source for the packages: see the full documentation for Ubuntu\footnote{\url{https://doc.ubuntu-fr.org/r}}.
 
-Under Windows or Mac, install R after downloading it from CRAN\footnote{\url{https://cran.r-project.org/}}.
+On Windows or Mac, install R after downloading it from CRAN\footnote{\url{https://cran.r-project.org/}}.
 
 \hypertarget{rtools}{%
 \subsection{Rtools}\label{rtools}}
@@ -539,10 +539,11 @@ Since version 4.2, this action is unnecessary.
 
 The Rtools must be completed by some missing utilities, to be installed when the need appears (usually a warning from R that the software is not installed).
 
-The package check returns a warning if \emph{qpdf}\footnote{\url{https://sourceforge.net/projects/qpdf/}} is not installed.
+Package checking returns a warning if \emph{qpdf}\footnote{\url{https://sourceforge.net/projects/qpdf/}} is not installed.
 Download the zip file and paste the entire contents of the \texttt{bin} folder into the \texttt{usr/bin} folder of \texttt{Rtools} (\texttt{C:\textbackslash{}Rtools42\textbackslash{}r\textbackslash{}bin} for version 4.2).
 
-Another warning is returned if there is no \emph{Ghostscript}\footnote{\url{https://www.ghostscript.com/}} to download and install.
+Another warning is returned if \emph{Ghostscript} is not available.
+Download and install it\footnote{\url{https://www.ghostscript.com/}}.
 Then copy the contents of the \texttt{bin\textquotesingle{}\ folder\ to\ the}usr/bin' folder of `Rtools'.
 
 \hypertarget{update}{%
@@ -575,23 +576,8 @@ R packages are found in two folders:
 
 Until version 4.1, if the user's home folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), it is not optimal to place the packages there: the traffic generated by backing them up would be heavy and unnecessary.
 In order for packages to be installed automatically in the system library, the user must have the right to write to it.
-Under Windows, give the computer's user group the \enquote{Modify} right to the library folder, in addition to the default read right (fig:R-library).
+On Windows, give the computer's user group the \enquote{Modify} permission to the library folder, in addition to the default read permissions.
 From version 4.2 onwards, there is no reason to change the default operation: local settings are not saved.
-
-
-
-\scriptsize
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{images/R-library} 
-
-}
-
-\caption{Enable the right to modify the system library under Windows.}\label{fig:R-library}
-\end{figure}
-
-\normalsize
 
 If the user library is selected, you must remember to empty the folder corresponding to the old version of R in case of minor version change.
 
@@ -615,7 +601,7 @@ The location of the libraries is given by the function \texttt{.libPaths()}:
 \hypertarget{rstudio}{%
 \section{RStudio}\label{rstudio}}
 
-RStudio is a graphical interface for R and much more: it is designed to simplify project management, make writing and producing documents easier and integrate source control for example.
+RStudio is a graphical interface for R and much more: it is designed to simplify project management, make writing and publishing documents easier and integrate source control for example.
 
 \hypertarget{installation-1}{%
 \subsection{Installation}\label{installation-1}}
@@ -662,10 +648,10 @@ The default working folder is the user's home folder, called \texttt{\textasciit
 \item
   \texttt{My\ Documents} under Windows;
 \item
-  \texttt{Home} under Mac or Linux.
+  \texttt{Home} on Mac or Linux.
 \end{itemize}
 
-You should always work in subfolders of \texttt{\textasciitilde{}}, for example: \texttt{\textasciitilde{}Training}.
+You should always work in subfolders of \texttt{\textasciitilde{}}, for example: \texttt{\textasciitilde{}/Training}.
 
 For \emph{RTools} to work properly, the full name of the working directory must not contain spaces (use underscores \texttt{\_}) or special characters.
 The current working directory is obtained by the command \texttt{getwd()}.
@@ -678,10 +664,6 @@ The current working directory is obtained by the command \texttt{getwd()}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] "/Users/runner/work/WorkingWithR/WorkingWithR"
-\end{verbatim}
-
 \normalsize
 
 Using source control (see chapter \ref{chap-git}) creates many working files.
@@ -693,18 +675,19 @@ Source-controlled projects should not be located in a folder that is already bac
 The organization of the work environment is a personal matter, depending on the preferences of each individual.
 The organization proposed here is only a possibility, to be adapted to one's own choices, but respecting the constraints mentioned.
 
-Under Windows, an optimal organization is as follows:
+On Windows, an optimal organization is as follows:
 
 \begin{itemize}
 \tightlist
 \item
-  In one's personal folder (\texttt{My\ Documents}, \texttt{\textasciitilde{}} for R), a \texttt{R} folder is used for simple projects, without source control.
+  In one's personal folder (\texttt{My\ Documents}, \texttt{\textasciitilde{}} for R), an \texttt{R} folder is used for simple projects, without source control.
   The backup of this folder is managed elsewhere.
 \item
   A folder outside the home folder is used for source-controlled projects.
   The user must have the right to write to it.
   In the Windows organization, the folder corresponding to these criteria is \texttt{\%LOCALAPPDATA\%}, typically \texttt{C:\textbackslash{}Users\textbackslash{}Name\textbackslash{}AppData}.
-  The folder will therefore be \texttt{\%LOCALAPPDATA\%\textbackslash{}ProjectsR} to create: run \texttt{md\ \%LOCALAPPDATA\%\textbackslash{}ProjectsR} in a command prompt.
+  The folder will therefore be \texttt{\%LOCALAPPDATA\%\textbackslash{}ProjectsR}.
+  To create it, run \texttt{md\ \%LOCALAPPDATA\%\textbackslash{}ProjectsR} in a command prompt.
   Pin this folder to the quick access of the file explorer (figure \ref{fig:R-ProjetsR}): paste \texttt{\%LOCALAPPDATA\%\textbackslash{}ProjetsR} in the address bar of the file explorer, validate, then right click on \enquote{Quick Access} and pin the folder.
 \end{itemize}
 
@@ -718,7 +701,7 @@ Under Windows, an optimal organization is as follows:
 
 }
 
-\caption{Folder for projects under source control, under Windows.}\label{fig:R-ProjetsR}
+\caption{Folder for projects under source control, on Windows.}\label{fig:R-ProjetsR}
 \end{figure}
 
 \normalsize
@@ -736,7 +719,7 @@ Packages are uploaded to CRAN by their authors as source code, compressed in a \
 They are available for download as soon as they are validated.
 They must then be put in binary format for Windows (in a `.zip' file), which takes some time.
 
-When asked to install a package under Windows, CRAN proposes the source version rather than the binary version if it is more recent (fig:R-BinaryPkg)).
+When asked to install a package on Windows, CRAN proposes the source version rather than the binary version if it is more recent (figure \ref{fig:R-BinaryPkg}).
 
 
 
@@ -748,7 +731,7 @@ When asked to install a package under Windows, CRAN proposes the source version 
 
 }
 
-\caption{Enable the right to modify the system library under Windows.}\label{fig:R-BinaryPkg}
+\caption{Choice of the version of the packages to install.}\label{fig:R-BinaryPkg}
 \end{figure}
 
 \normalsize
@@ -793,7 +776,7 @@ The \texttt{build\_thumbnails} argument is needed to create the thumbnails of th
 \normalsize
 
 The package name is entered as \enquote{GitHubID/PackageName}.
-The installation is done from the source code and therefore requires the \emph{Rtools} if a build is needed.
+The installation is done from the source code and therefore requires the Rtools if a build is needed.
 \texttt{install\_github()} checks that the version on GitHub is more recent than the version installed on the workstation and does nothing if they are identical.
 
 \hypertarget{installation-from-bioconductor}{%
@@ -877,7 +860,7 @@ It contains a function that checks if each package is already installed so that 
 
 The last part of the script is to be completed with the packages used regularly.
 
-This script is to be executed each time R is updated, after having activated the right to write in the system library (see section \ref{sec:librairies}).
+This script is to be executed each time R is updated, after having activated the right to write in the system library if needed (see section \ref{sec:librairies}).
 
 \hypertarget{git-and-github}{%
 \section{git and GitHub}\label{git-and-github}}
@@ -898,7 +881,7 @@ git is installed without a graphical interface, provided by RStudio.
 In RStudio, modify the global options (menu \enquote{Tools \textgreater{} Global Options\ldots{}}).
 Select \emph{Terminal} and the option \emph{New Terminals open with}: GitBash.
 
-Check that git is installed correctly by typing the command \texttt{git\ -h} in the RStudio terminal: the help should be displayed.
+Check that git is installed correctly by typing the command \texttt{git\ -h} in the RStudio terminal: help should be displayed.
 
 After installing git, the RStudio terminal may not work properly and return an error message containing the following:
 
@@ -929,8 +912,8 @@ The user name is free, preferably \enquote{FirstName LastName}.
 To use it, you just have to open an account with the same email address as the one registered in git.
 
 The name of the GitHub account is noted here \emph{GitHubID}.
-Each GitHub account allows to host repositories (a repository contains the files of a project) at the address \url{https://github.com/GitHubID/NomDuDepot}\footnote{Example: \url{https://github.com/EricMarcon/travailleR}}.
-Each repository can have a website at \url{https://GitHubID.github.io/NomDuDepot/}\footnote{Example: \url{https://EricMarcon.github.io/travailleR/}}.
+Each GitHub account allows to host repositories (a repository contains the files of a project) at the address \url{https://github.com/GitHubID/RepoID}\footnote{Example: \url{https://github.com/EricMarcon/travailleR}}.
+Each repository can have a website at \url{https://GitHubID.github.io/RepoID/}\footnote{Example: \url{https://EricMarcon.github.io/travailleR/}}.
 Finally, a global web site is provided for each user at \url{https://GitHubID.github.io/}\footnote{Example: \url{https://EricMarcon.github.io/}}.
 
 \hypertarget{sec:SSH}{%
@@ -955,7 +938,7 @@ If the computer is properly secured (no physical access by third parties), leavi
 Warning: the private key is strictly confidential and must not be copied anywhere where it could be read by a third party (beware of automatic backups in particular).
 It does not need to be well backed up: in case of loss, it will be easily replaced.
 
-Keys are normally stored in the \texttt{\textasciitilde{}/.ssh} folder, regardless of the operating system, but the location of the \texttt{\textasciitilde{}} home folder is ambiguous under Windows: for R, it is the \texttt{Documents} folder, but for other software, it is the user's root folder, parent of \texttt{Documents}.
+Keys are normally stored in the \texttt{\textasciitilde{}/.ssh} folder, regardless of the operating system, but the location of the \texttt{\textasciitilde{}} home folder is ambiguous on Windows: for R, it is the \texttt{Documents} folder, but for other software, it is the user's root folder, parent of \texttt{Documents}.
 
 In the RStudio terminal, check that the key is working correctly:
 
@@ -1081,7 +1064,7 @@ Better BibTeX allows you to export and maintain a selection of bibliographic ref
 
 Download the installation file and run it.
 Create a user account on the Zotero website.
-Link the local installation to the account: in the \enquote{Edit \textgreater{} Preferences} menu, select \enquote{Synchronization \textgreater{} Settings} and authenticate yourself in the \enquote{Data synchronization} area.
+Link the local installation to the account: in the \enquote{Edit \textgreater{} Preferences} menu, select \enquote{Synchronization \textgreater{} Settings} and authenticate in the \enquote{Data synchronization} area.
 Then check the box \enquote{Synchronize automatically} but not \enquote{Synchronize full text of indexed attachments} because the total size of full text synchronized in this way between the online Zotero account and the workstation is limited to 300 MB.
 
 Download the Better BibTeX extension\footnote{\url{https://retorque.re/zotero-better-bibtex/installation/}} and install it with the \enquote{Tools \textgreater{} Extensions} menu: click on the settings button at the top right of the window, then \enquote{Install Add-on From File\ldots{}} and select the file just downloaded.
@@ -1096,7 +1079,7 @@ The options to modify are the following:
 \item
   \enquote{Citation Keys \textgreater{} Keep unique citation keys in}: \enquote{All collections} so that citation identifiers are not ambiguous.
 \item
-  \enquote{Export \textgreater{} Field management \textgreater{} Fields to exclude from export}: \enquote{abstract, file} to avoid generating bibliographic files overloaded with useless information in R projects.
+  \enquote{Export \textgreater{} Field management \textgreater{} Fields to exclude from export}: \enquote{abstract, file} to avoid generating bibliographic files overweighted by useless information in R projects.
 \end{itemize}
 
 It is recommended to use the ZotFile\footnote{\url{http://zotfile.com/}} extension to better control the location of the full text (the PDF files linked to the bibliographic references).
@@ -1120,7 +1103,7 @@ Upgrades are done by installing the new version over the previous one.
 \toc{1}
 
 The literature devoted to learning R is flourishing.
-The following books are an arbitrary selection but useful for progress:
+The following books are an arbitrary but useful selection:
 
 \begin{itemize}
 \tightlist
@@ -1135,7 +1118,7 @@ The following books are an arbitrary selection but useful for progress:
 Some advanced aspects of coding are seen here.
 Details on the different languages of R are useful for creating packages.
 The environments are presented next, for the proper understanding of the search for objects called by the code.
-Finally, the optimization of code performance is discussed in detail (loops, C++ code and parallelization) and illustrated by a case study.
+Finally, the optimization of code performance is discussed in depth (loops, C++ code and parallelization) and illustrated by a case study.
 
 \hypertarget{the-languages-of-r}{%
 \section{The languages of R}\label{the-languages-of-r}}
@@ -1198,7 +1181,7 @@ The \texttt{typeof()} function displays the internal storage type of the objects
 \begin{itemize}
 \tightlist
 \item
-  \texttt{sum()} function belongs to the basic language of R and is a builtin function;
+  the \texttt{sum()} function belongs to the basic language of R and is a builtin function;
 \item
   the elements of the numerical matrix containing a single 1 are double precision reals, and the matrix itself is defined in the basic language.
 \end{itemize}
@@ -1264,7 +1247,7 @@ In this example, the \texttt{print()} method applied to the \enquote{Firstname} 
 In a classical object-oriented language, the method would be defined in the class \texttt{Firstname}.
 In R, methods are defined from generic methods.
 
-print` is a generic method (\enquote{a generic}) declared in \textbf{base}.
+\texttt{print} is a generic method (\enquote{a generic}) declared in \textbf{base}.
 
 \scriptsize
 
@@ -1293,7 +1276,7 @@ Its code is just a \texttt{UseMethod("print")} declaration:
 \begin{verbatim}
 ## function (x, ...) 
 ## UseMethod("print")
-## <bytecode: 0x7fa46f8de858>
+## <bytecode: 0x7ff585a040b8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1343,7 +1326,7 @@ Each applies to a class. \texttt{print.default} is used as a last resort and rel
 \normalsize
 
 An object can belong to several classes, which allows a form of inheritance of methods.
-In a classical object oriented language, inheritance allows to define more precise classes (\enquote{FrenchFirstName}) which inherit from more general classes (\enquote{Prenom}) and thus benefit from their methods without having to redefine them.
+In a classical object oriented language, inheritance allows to define more precise classes (\enquote{FrenchFirstName}) which inherit from more general classes (\enquote{FirstName}) and thus benefit from their methods without having to redefine them.
 In R, inheritance is simply declaring a vector of increasingly broad classes for an object:
 
 \scriptsize
@@ -1660,14 +1643,14 @@ ggplot(data = <DATA>) +
 \item
   the aesthetics (function \texttt{aes()}) designates what is represented: it is the correspondence between the columns of the dataframe and the elements necessary for the geometry;
 \item
-  statistics is the treatment applied to the data before passing it to the geometry (often \enquote{identity}, i.e.~no transformation but \enquote{boxplot} for a moustache box).
+  statistics is the treatment applied to the data before passing it to the geometry (often \enquote{identity}, i.e.~no transformation but \enquote{boxplot} for a boxplot).
   The data can be transformed by a scale function, such as \texttt{scale\_y\_log10()};
 \item
   the position is the location of the objects on the graph (often \enquote{identity}; \enquote{stack} for a stacked histogram, \enquote{jitter} to move the overlapping points slightly in a \texttt{geom\_point});
 \item
   the coordinates define the display of the graph (\texttt{coord\_fixed()} to avoid distorting a map for example);
 \item
-  finally, the facets offer the possibility to display several aspects of the same data by producing one graph per modality of a variable.
+  finally, facets offer the possibility to display several aspects of the same data by producing one graph per modality of a variable.
 \end{itemize}
 
 The set formed by the pipeline and \textbf{ggplot2} allows complex processing in a readable code.
@@ -1706,7 +1689,7 @@ Figure \ref{fig:diamonds} shows the result of the following code:
 
 \normalsize
 
-In this figure, two geometries (scatterplot and linear regression) share the same aesthetics (price vs.~carat weight) which is therefore declared upstream, in the \texttt{ggplot()} function.
+In this figure, two geometries (scatterplot and linear regression) share the same aesthetics (price vs.~weight in carats) which is therefore declared upstream, in the \texttt{ggplot()} function.
 
 The tidyverse is documented in detail in \textcite{Wickham2016} and \textbf{ggplot2} in \textcite{Wickham2017}.
 
@@ -1774,7 +1757,7 @@ The code of a function called from the console runs in a child environment of th
 \end{Shaded}
 
 \begin{verbatim}
-## <environment: 0x7fa47c1ca5c0>
+## <environment: 0x7ff575c430a8>
 \end{verbatim}
 
 \begin{Shaded}
@@ -1793,8 +1776,8 @@ The code of a function called from the console runs in a child environment of th
 \hypertarget{search}{%
 \subsection{Search}\label{search}}
 
-The search for objects starts in the local environment.
-If it is not found, it is searched in the parent environment, then in the parent of the parent, until the environments are exhausted which generates an error indicating that the object was not found.
+The search for ab object starts in the local environment.
+If it is not found, it is searched in the parent environment, then in the parent of the parent, until the environments are exhausted, which generates an error indicating that the object was not found.
 
 Example:
 
@@ -1820,7 +1803,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Function (poorly written) using a variable it does not}
+\CommentTok{\# Poorly written function using a variable it does not}
 \CommentTok{\# define}
 \NormalTok{qGlobalEnv }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
     \FunctionTok{return}\NormalTok{(q)}
@@ -1846,7 +1829,7 @@ Example:
 \begin{verbatim}
 ## function (save = "default", status = 0, runLast = TRUE) 
 ## .Internal(quit(save, status, runLast))
-## <bytecode: 0x7fa45ec1d0b0>
+## <bytecode: 0x7ff5766015f0>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1854,7 +1837,7 @@ Example:
 
 The variable \texttt{q} is defined in the global environment.
 The function \texttt{qLocalFunction} defines its own variable \texttt{q}.
-The function call returns the function's local value because it is in the function's environment.
+Calling the function returns the its local value because it is in the function's environment.
 
 The \texttt{qGlobalEnv} function returns the \texttt{q} variable that it does not define locally.
 So it looks for it in its parent environment and finds the variable defined in the global environment.
@@ -1863,10 +1846,8 @@ It could have found another object if a package containing a \texttt{q} object h
 
 To avoid this erratic behavior, a function should \emph{never} call an object not defined in its own environment.
 
-\hypertarget{espaces-de-nom-des-packages}{%
-\subsection{Espaces de nom des packages}\label{espaces-de-nom-des-packages}}
-
-Package namespaces
+\hypertarget{package-namespaces}{%
+\subsection{Package namespaces}\label{package-namespaces}}
 
 It is time to define precisely what packages make visible.
 Packages contain objects (functions and data) which they \emph{export} or not.
@@ -1994,7 +1975,7 @@ Calling \texttt{entropart::Diversity()} loads the package (i.e., implicitly exec
 In practice, one should limit the number of attached packages to limit the risk of calling an unwanted function, homonymous to the desired function.
 In critical cases, the full name of the function should be used: \texttt{package::function()}.
 
-A common problem is the \texttt{filter()} function of \textbf{dplyr}, which is the namesake of the \textbf{stats} function.
+A common issue occurs with the \texttt{filter()} function of \textbf{dplyr}, which is the namesake of the \textbf{stats} function.
 The \textbf{stats} package is usually loaded before \textbf{dplyr}, a package in the tidyverse.
 Thus, \texttt{stats::filter()} must be called explicitly.
 
@@ -2035,7 +2016,7 @@ The function returns the execution time of the code.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.020   0.000   0.021
+##   0.024   0.001   0.124
 \end{verbatim}
 
 \normalsize
@@ -2067,15 +2048,15 @@ The goal is to compare the speed of computing the square of a vector (or a numbe
 \begin{verbatim}
 ## Unit: microseconds
 ##   expr     min       lq      mean   median       uq
-##  f1(X)  42.060  44.5370  60.07555  46.0215  48.6905
-##  f2(X)  49.789  51.6920  66.50137  53.2325  55.4085
-##  f3(X) 277.065 285.1565 303.13320 286.9435 293.6190
-##  f4(X) 404.063 416.7340 435.36476 418.6035 423.9330
+##  f1(X)  43.497  46.3015  64.74435  48.2975  52.8785
+##  f2(X)  51.880  54.4910  73.95323  55.9725  59.4115
+##  f3(X) 285.635 288.9140 312.06387 290.4525 301.2260
+##  f4(X) 416.628 420.0535 444.41160 422.9570 432.3195
 ##       max neval
-##  1280.016   100
-##  1258.865   100
-##  1494.735   100
-##  1890.526   100
+##  1404.406   100
+##  1504.520   100
+##  1871.913   100
+##  1947.479   100
 \end{verbatim}
 
 \normalsize
@@ -2098,10 +2079,10 @@ To choose the columns to display, use the following syntax:
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)  46.0215
-## 2 f2(X)  53.2325
-## 3 f3(X) 286.9435
-## 4 f4(X) 418.6035
+## 1 f1(X)  48.2975
+## 2 f2(X)  55.9725
+## 3 f3(X) 290.4525
+## 4 f4(X) 422.9570
 \end{verbatim}
 
 \normalsize
@@ -2131,10 +2112,10 @@ The previous test is displayed again.
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)  46.0215
-## 2 f2(X)  53.2325
-## 3 f3(X) 286.9435
-## 4 f4(X) 418.6035
+## 1 f1(X)  48.2975
+## 2 f2(X)  55.9725
+## 3 f3(X) 290.4525
+## 4 f4(X) 422.9570
 \end{verbatim}
 
 \normalsize
@@ -2237,7 +2218,7 @@ Therefore, you should think in terms of vectors rather than scalars.
 \normalsize
 
 We also have to write vector functions on their first argument.
-The function \texttt{lnq} of the package \textbf{entropart} returns the distorted logarithm of order \(q\) of a number \(x\).
+The function \texttt{lnq} of the package \textbf{entropart} returns the deformed logarithm of order \(q\) of a number \(x\).
 
 \scriptsize
 
@@ -2260,7 +2241,7 @@ The function \texttt{lnq} of the package \textbf{entropart} returns the distorte
 ##         return(Log)
 ##     }
 ## }
-## <bytecode: 0x7fa45f43fc48>
+## <bytecode: 0x7ff577247cf0>
 ## <environment: namespace:entropart>
 \end{verbatim}
 
@@ -2274,13 +2255,13 @@ Here: \texttt{log(x)} and \texttt{x\^{}} are a vector function and operator and 
 
 Code that cannot be written as a vector function requires loops.
 
-lapply()` applies a function to each element of a list.
+\texttt{lapply()} applies a function to each element of a list.
 There are several versions of this function:
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{lapply()} returns a list (saves the time of rearranging them in an array);
+  \texttt{lapply()} returns a list (and saves the time of rearranging them in an array);
 \item
   \texttt{sapply()} returns a dataframe by collapsing the lists (this is done by the \texttt{simplify2array()} function);
 \item
@@ -2312,11 +2293,11 @@ There are several versions of this function:
 \end{Shaded}
 
 \begin{verbatim}
-##                                    expr  median
-## 1                              sqrt(x1)   4.716
-## 2                lapply(x1, FUN = sqrt) 305.342
-## 3                sapply(x1, FUN = sqrt) 363.609
-## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 298.068
+##                                    expr   median
+## 1                              sqrt(x1)   4.6500
+## 2                lapply(x1, FUN = sqrt) 302.2960
+## 3                sapply(x1, FUN = sqrt) 359.9225
+## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 295.7905
 \end{verbatim}
 
 \normalsize
@@ -2370,8 +2351,8 @@ To evaluate the performance gain, the following code removes all automatic compi
 
 \begin{verbatim}
 ##        expr   median
-## 1  Loop(x1) 873.0880
-## 2 Loop2(x1)  79.4305
+## 1  Loop(x1) 805.3335
+## 2 Loop2(x1)  79.2990
 \end{verbatim}
 
 \begin{Shaded}
@@ -2387,7 +2368,7 @@ To evaluate the performance gain, the following code removes all automatic compi
 
 \normalsize
 
-The gain is considerable: from 1 to \texttt{11}.
+The gain is considerable: from 1 to \texttt{10}.
 
 For loops are now much faster than \texttt{vapply}.
 
@@ -2403,8 +2384,8 @@ For loops are now much faster than \texttt{vapply}.
 
 \begin{verbatim}
 ##                        expr   median
-## 1 vapply(x1, FUN = sqrt, 0) 295.4780
-## 2                  Loop(x1)  77.5785
+## 1 vapply(x1, FUN = sqrt, 0) 293.4275
+## 2                  Loop(x1)  77.6800
 \end{verbatim}
 
 \normalsize
@@ -2427,8 +2408,8 @@ Be careful, the performance test can be misleading:
 
 \begin{verbatim}
 ##                                             expr    median
-## 1                      vapply(x1, FUN = sqrt, 0)  296.4725
-## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3327.1320
+## 1                      vapply(x1, FUN = sqrt, 0)  298.6285
+## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3422.6190
 \end{verbatim}
 
 \normalsize
@@ -2495,8 +2476,8 @@ This code is equivalent to \texttt{runif(3)}, with performance similar to \textt
 
 \begin{verbatim}
 ##                        expr    median
-## 1 replicate(1000, runif(1)) 3094.0965
-## 2               runif(1000)   33.0005
+## 1 replicate(1000, runif(1)) 3755.8875
+## 2               runif(1000)   36.2145
 \end{verbatim}
 
 \normalsize
@@ -2534,9 +2515,9 @@ Write the loops instead.
 
 \begin{verbatim}
 ##                              expr    median
-## 1       SumLoop(diamonds[-(2:4)])  4.527635
-## 2 apply(diamonds[-(2:4)], 2, sum) 19.267824
-## 3       colSums(diamonds[-(2:4)])  2.773020
+## 1       SumLoop(diamonds[-(2:4)])  4.100018
+## 2 apply(diamonds[-(2:4)], 2, sum) 11.116013
+## 3       colSums(diamonds[-(2:4)])  2.901244
 \end{verbatim}
 
 \normalsize
@@ -2546,10 +2527,10 @@ Write the loops instead.
 \hypertarget{sec:cpp}{%
 \section{C++ code}\label{sec:cpp}}
 
-Integrating C++ code into R is greatly simplified by the \textbf{Rcpp} package but is still difficult to debug and therefore should be reserved for very simple code (to avoid errors) and repeated a large number of times (to be worth the effort).
-The preparation of the data and their verification must be done in R, as well as the processing and presentation of the results.
+Integrating C++ code into R is greatly simplified by the \textbf{Rcpp} package but is still difficult to debug and therefore should be reserved for very simple code (to avoid errors) repeated a large number of times (to be worth the effort).
+The preparation and verification of the data must be done in R, as well as the processing and presentation of the results.
 
-The usual use is to include C++ code in a package, but use outside the package is possible:
+The common practise is to include C++ code in a package, but running it outside a package is possible:
 
 \begin{itemize}
 \tightlist
@@ -2608,19 +2589,19 @@ Two mechanisms are available for parallel code execution:
 \tightlist
 \item
   \emph{fork}: the running process is duplicated on multiple cores of the computing computer's processor.
-  This is the simplest method but it does not work under Windows (operating system limitation).
+  This is the simplest method but it does not work on Windows (it is a limitation of the operating system).
 \item
   \emph{Socket}: a cluster is constituted, either physically (a set of computers running R is necessary) or logically (an instance of R on each core of the computer used).
-  The members of the cluster communicate through the network (the internal network of the computer used for a logical cluster).
+  The members of the cluster communicate through the network (the internal network of the computer is used in a logical cluster).
 \end{itemize}
 
-Different packages of R allow to implement these mechanisms.
+Different R packages allow to implement these mechanisms.
 
 \hypertarget{mclapply-fork}{%
 \subsection{mclapply (fork)}\label{mclapply-fork}}
 
 The \texttt{mclapply} function of the \textbf{parallel} package has the same syntax as \texttt{lapply} but parallelizes the execution of loops.
-Under Windows, it has no effect since the system does not allow \emph{fork}: it simply calls \texttt{lapply}.
+On Windows, it has no effect since the system does not allow \emph{fork}: it simply calls \texttt{lapply}.
 However, a workaround exists to emulate \texttt{mclapply} on Windows by calling \texttt{parLapply}, which uses a cluster.
 
 \scriptsize
@@ -2744,7 +2725,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.000   0.527
+##   0.002   0.000   0.630
 \end{verbatim}
 
 \begin{Shaded}
@@ -2756,13 +2737,13 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.006   0.020   0.294
+##   0.006   0.013   0.377
 \end{verbatim}
 
 \normalsize
 
-Setting up parallelization has a cost of about \texttt{0.044} seconds here.
-The execution time is much longer in parallel under Windows because setting up the cluster takes much more time than parallelization saves.
+Setting up parallelization has a cost of about \texttt{0.13} seconds here.
+The execution time is much longer in parallel on Windows because setting up the cluster takes much more time than parallelization saves.
 Parallelization is interesting for longer tasks, such as a one second break.
 
 \scriptsize
@@ -2776,7 +2757,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.000   0.001   2.207
+##   0.000   0.000   2.074
 \end{verbatim}
 
 \begin{Shaded}
@@ -2788,7 +2769,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.003   1.092
+##   0.003   0.008   1.056
 \end{verbatim}
 
 \normalsize
@@ -2807,7 +2788,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.004   1.085
+##   0.001   0.004   1.061
 \end{verbatim}
 
 \begin{Shaded}
@@ -2818,13 +2799,13 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.006   2.012
+##   0.003   0.007   2.237
 \end{verbatim}
 
 \normalsize
 
 The time then remains stable until the number of cores is doubled.
-The figure \ref{fig:r-parallele} shows the evolution of the computation time according to the number of tasks.
+Figure \ref{fig:r-parallele} shows the evolution of the computation time according to the number of tasks.
 
 
 
@@ -2877,7 +2858,7 @@ The best practice is to adapt the number of tasks to the number of cores, otherw
 \texttt{parLapply} requires to create a cluster, export the useful variables on each node, load the necessary packages on each node, execute the code and finally stop the cluster.
 The code for each step can be found in the \texttt{mclapply.hack} function above.
 
-For everyday use, \texttt{mclapply} is faster, except under Windows, and simpler (including under Windows thanks to the above workaround).
+For everyday use, \texttt{mclapply} is faster, except on Windows, and simpler (including on Windows thanks to the above workaround).
 
 \hypertarget{foreach}{%
 \subsection{foreach}\label{foreach}}
@@ -3010,7 +2991,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.000   0.774
+##   0.003   0.000   0.716
 \end{verbatim}
 
 \begin{Shaded}
@@ -3025,7 +3006,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.007   0.017   0.352
+##   0.008   0.018   0.414
 \end{verbatim}
 
 \normalsize
@@ -3070,7 +3051,7 @@ The average distance is calculated by dividing the sum by the number of pairs of
 \begin{Highlighting}[]
 \NormalTok{mb }\OtherTok{\textless{}{-}} \FunctionTok{microbenchmark}\NormalTok{(d }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{pairdist}\NormalTok{(X))}\SpecialCharTok{/}\NormalTok{NbPoints}\SpecialCharTok{/}\NormalTok{(NbPoints }\SpecialCharTok{{-}}
     \DecValTok{1}\NormalTok{))}
-\CommentTok{\# suppressmessages pour éliminer les messages superflus}
+\CommentTok{\# suppressMessages to eliminate useless messages}
 \FunctionTok{suppressMessages}\NormalTok{(}\FunctionTok{autoplot}\NormalTok{(mb))}
 \end{Highlighting}
 \end{Shaded}
@@ -3111,7 +3092,7 @@ The distance can be calculated by two nested \texttt{sapply()}.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.556   0.026   6.931
+##   5.833   0.035   8.526
 \end{verbatim}
 
 \begin{Shaded}
@@ -3145,7 +3126,7 @@ The gain is negligible on a long computation like this one but important for sho
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.331   0.028   7.909
+##   5.518   0.033   8.815
 \end{verbatim}
 
 \begin{Shaded}
@@ -3167,7 +3148,7 @@ The output format is not always obvious to write:
 \item
   it must respect the size of the data: a vector of size 1000 for the outer loop, a scalar for the inner loop.
 \item
-  it must respect the type: \texttt{0} for an integer, \texttt{0.0} for a real. In the outer loop, adding \texttt{0.0} to the vector of integers turns it into a vector of reals.
+  it must respect the type: \texttt{0} for an integer, \texttt{0.0} for a real number. In the outer loop, adding \texttt{0.0} to the vector of integers turns it into a vector of real numbers.
 \end{itemize}
 
 A more significant improvement is to compute the square roots only at the end of the loop, to take advantage of the vectorization of the function.
@@ -3188,7 +3169,7 @@ A more significant improvement is to compute the square roots only at the end of
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.199   0.021   6.438
+##   5.407   0.029   8.191
 \end{verbatim}
 
 \begin{Shaded}
@@ -3227,7 +3208,7 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.061   0.017   5.451
+##   3.127   0.014   4.627
 \end{verbatim}
 
 \begin{Shaded}
@@ -3242,8 +3223,8 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \normalsize
 
-In parallel, the computation time is not improved under Windows because the individual tasks are too short.
-Under MacOS or Linux, the computation is accelerated.
+In parallel, the computation time is not improved on Windows because the individual tasks are too short.
+On MacOS or Linux, the computation is accelerated.
 
 \scriptsize
 
@@ -3268,7 +3249,7 @@ Under MacOS or Linux, the computation is accelerated.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.302   0.361   3.913
+##   3.343   0.375   3.285
 \end{verbatim}
 
 \begin{Shaded}
@@ -3283,8 +3264,8 @@ Under MacOS or Linux, the computation is accelerated.
 
 \normalsize
 
-\hypertarget{boucle-for}{%
-\subsection{boucle for}\label{boucle-for}}
+\hypertarget{for-loop}{%
+\subsection{for loop}\label{for-loop}}
 
 A for loop is faster and consumes less memory because it does not store the distance matrix.
 
@@ -3309,7 +3290,7 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.994   0.009   2.199
+##   2.080   0.009   3.109
 \end{verbatim}
 
 \begin{Shaded}
@@ -3324,10 +3305,10 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \normalsize
 
-This is the simplest and most efficient way to write this code without parallelization and by limiting ourselves to core R.
+This is the simplest and most efficient way to write this code with core R and no parallelization.
 
-\hypertarget{boucle-foreach}{%
-\subsection{boucle foreach}\label{boucle-foreach}}
+\hypertarget{foreach-loop}{%
+\subsection{foreach loop}\label{foreach-loop}}
 
 Two nested foreach loops are needed here: they are extremely slow compared to a simple loop.
 The test is run here with 10 times fewer points, so 100 times fewer distances to calculate.
@@ -3356,7 +3337,7 @@ The test is run here with 10 times fewer points, so 100 times fewer distances to
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.783   0.026   3.561
+##   2.959   0.032   3.899
 \end{verbatim}
 
 \begin{Shaded}
@@ -3401,7 +3382,7 @@ The performance is still much lower than a simple for loop (remember: 100 times 
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.126   0.059   0.352
+##   0.128   0.065   0.120
 \end{verbatim}
 
 \begin{Shaded}
@@ -3451,7 +3432,7 @@ The C++ function to calculate distances is the following.
 \normalsize
 
 It is called in R very simply.
-The execution time is very short.
+The computation time is very short.
 
 \scriptsize
 
@@ -3490,12 +3471,12 @@ Two (C++) parallelization functions are available for two types of tasks:
 \begin{itemize}
 \tightlist
 \item
-  \texttt{parallelReduce} for accumulating a value, used here to sum distances.
+  \texttt{parallelReduce} to accumulate a value, used here to sum distances.
 \item
-  \texttt{parallelFor} for filling a result matrix.
+  \texttt{parallelFor} to fill a result matrix.
 \end{itemize}
 
-The syntax of the \texttt{Worker} is a bit laborious but simple enough to adapt: the constructors initialize the C variables from the values passed by R and declare the parallelization.
+The syntax of the \texttt{Worker} is a bit tricky but simple enough to adapt: the constructors initialize the C variables from the values passed by R and declare the parallelization.
 
 \scriptsize
 
@@ -3578,10 +3559,8 @@ The usage in R is identical to the usage of C++ functions interfaced by \textbf{
 ## Unit: milliseconds
 ##                                                      expr
 ##  d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints - 1) * 2
-##       min       lq     mean   median       uq      max
-##  2.051554 2.100243 2.464222 2.129571 2.183781 10.38892
-##  neval
-##    100
+##       min       lq     mean  median       uq      max neval
+##  2.159869 2.265267 4.012652 2.41905 4.518602 33.83954   100
 \end{verbatim}
 
 \begin{Shaded}
@@ -3621,13 +3600,13 @@ Multiplying the number of points by 50, the serial computation time must be mult
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   6.879   0.039   8.579
+##   7.085   0.055  10.179
 \end{verbatim}
 
 \normalsize
 
 In parallel, the time increases little: parallelization becomes really efficient.
-This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{5497} seconds.
+This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{7772} seconds.
 
 \scriptsize
 
@@ -3640,7 +3619,7 @@ This time is to be compared to that of the reference for loop, multiplied by 250
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   4.967   0.021   4.163
+##   5.117   0.020   3.152
 \end{verbatim}
 
 \normalsize
@@ -3657,7 +3636,7 @@ From this case study, several lessons can be learned:
 \item
   optimized functions may exist in R packages for common tasks (here, the \texttt{pairdist()} function of \textbf{spatstat} is two orders of magnitude faster than the for loop);
 \item
-  the use of C++ code allows to speed up significantly the calculations, by three orders of magnitude here;
+  the use of C++ code allows to speed up the calculations significantly, by three orders of magnitude here;
 \item
   parallelization of the C++ code further divides the computation time by about half the number of cores for long computations.
 \end{itemize}
@@ -3671,7 +3650,8 @@ Writing vector code, using \texttt{sapply()} is still justified for its readabil
 
 The choice of parallelizing the code must be evaluated according to the execution time of each parallelizable task.
 If it exceeds a few seconds, parallelization is justified.
-mclapply()\texttt{replaces}lapply()\texttt{without\ any\ effort,\ but\ requires\ a\ hack\ (provided\ here)\ under\ Windows.}foreach()\texttt{does\ not\ replace}for()` as easily and is only justified for very memory and computationally heavy tasks, especially on computing clusters.
+\texttt{mclapply()} replaces \texttt{lapply()} without any effort, but requires a hack (provided here) on Windows.
+\texttt{foreach()} does not replace \texttt{for()} as easily and is only justified for very memory and computationally heavy tasks, especially on computing clusters.
 
 \hypertarget{sec:targets}{%
 \section{Workflow}\label{sec:targets}}
@@ -3680,7 +3660,7 @@ The \textbf{targets} package allows you to manage a \emph{workflow}, i.e.~to bre
 In case of a change in the code or in the data used, only the targets concerned are reevaluated.
 
 The operation of the flow is similar to that of a cache, but does not depend on the computer on which it runs.
-**It is also possible to integrate the flow into a document project (see section \ref{sec:targetsmd}), and even to use a computing cluster to process the tasks in parallel.
+It is also possible to integrate the flow into a document project (see section \ref{sec:targetsmd}), and even to use a computing cluster to process the tasks in parallel.
 
 \hypertarget{how-it-works-1}{%
 \subsection{How it works}\label{how-it-works-1}}
@@ -3700,13 +3680,13 @@ It contains:
   a list of targets, which describe the code to be executed and the variable that stores their result.
 \end{itemize}
 
-The stream is executed by the \texttt{tar\_make()} function, which updates the targets that need it.
+The workflow is run by the \texttt{tar\_make()} function, which updates the targets that need it.
 Its content is placed in the \texttt{\_targets} folder.
 Stored variables are read by \texttt{tar\_read()}.
 
 If the project requires long computations, \textbf{targets} can be used to run only those that are necessary.
-If the project is shared or placed under source control (chapter `\textcite{ref}(chap-git)), the result of the computations is also integrated.
-Finally, if the project is a document (chapter \ref{chap-rediger}), its formatting is completely independent of the calculation of its content, for a saving of time which can be considerable.
+If the project is shared or placed under source control (chapter \ref{chap-git}), the result of the computations is also integrated.
+Finally, if the project is a document (chapter \ref{chap-rediger}), its formatting is completely independent of the calculation of its content, for possibly considerable time saving.
 
 \hypertarget{minimal-example}{%
 \subsection{Minimal example}\label{minimal-example}}
@@ -3749,13 +3729,13 @@ The workflow file is therefore the following:
 \normalsize
 
 The global commands consist in loading the \textbf{targets} package itself and then listing the packages needed for the code.
-The execution of the stream takes place in a new instance of R.
+The execution of the workflow takes place in a new instance of R.
 
 The targets are then listed.
 Each one is declared by the \texttt{tar\_target()} function whose first argument is the name of the target, which will be the name of the variable that will receive the result.
 The second argument is the code that produces the result.
 Targets are very simple here and can be written in a single command.
-When this is not the case, each target can be written as a function, stored in a separate code file loaded by the \texttt{source()} function at the beginning of the stream file.
+When this is not the case, each target can be written as a function, stored in a separate code file loaded by the \texttt{source()} function at the beginning of the workflow file.
 
 The \texttt{tar\_visnetwork} command displays the sequence of targets and their possibly obsolete status.
 
@@ -3793,7 +3773,7 @@ The workflow is run by \texttt{tar\_make()}.
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 3.428 seconds
+## • end pipeline: 3.284 seconds
 \end{verbatim}
 
 \normalsize
@@ -3821,7 +3801,7 @@ The workflow is now up to date and \texttt{tar\_make()} does not recompute anyth
 ## ✔ skip target X
 ## ✔ skip target d
 ## ✔ skip target map
-## ✔ skip pipeline: 0.15 seconds
+## ✔ skip pipeline: 0.097 seconds
 \end{verbatim}
 
 \normalsize
@@ -3855,7 +3835,7 @@ The results are read by \texttt{tar\_read()}.
 
 In this example, \textbf{targets} complicates writing the code and \texttt{tar\_make()} is much slower than simply executing the code it processes because it has to check if the targets are up to date.
 In a real project that requires long computations, processing the status of the targets is negligible and the time saved by just evaluating the necessary targets is considerable.
-The definition of targets remains a constraint, but forces the user to structure their project well.
+The definition of targets remains a constraint, but forces the user to structure their project rigorously.
 
 \hypertarget{chap-git}{%
 \chapter{Git and GitHub}\label{chap-git}}
@@ -3899,7 +3879,7 @@ RStudio integrates a graphical interface for git that is sufficient to do withou
 
 \emph{git} is the software installed on the workstation.
 
-\emph{GitHub} is a platform, accessible via the web\footnote{\url{https://github.com/}}, which allows to share the content of git repositories (to work with several people) and to share documentation in the form of a web site (\emph{GitHub Pages}).
+\emph{GitHub} is a web platform\footnote{\url{https://github.com/}}, which allows to share the content of git repositories (to work with several people) and to share documentation in the form of a web site (\emph{GitHub Pages}).
 
 As GitHub allows at least the backup of git repositories, the two are always used together.
 GitHub is not the only platform that can be used but the main one.
@@ -3925,7 +3905,7 @@ Restart RStudio on demand.
 
 }
 
-\caption{Activation du contrôle de source dans le menu \enquote{Tools \textgreater{} Project Options\ldots{}}.}\label{fig:git-Project}
+\caption{Activation of source control in the menu \enquote{Tools \textgreater{} Project Options\ldots{}}.}\label{fig:git-Project}
 \end{figure}
 
 \normalsize
@@ -3985,9 +3965,9 @@ The files taken into account are part of the git \emph{index}.
 The staged files can be validated (\emph{Committed}) by clicking on the \enquote{Commit} button in the \emph{Git} window.
 A new window opens (figure \ref{fig:git-Commit}), which allows to visualize all the modifications by file (additions in green, deletions in red).
 The modification grain treated by git is the text line, ended by a line break.
-Binary files like images are processed in block.
+Binary files such as images are processed as a whole.
 
-Each commit is accompanied by a description text.
+Each commit comes with a description text.
 The first line is the short description.
 A detailed description can be added after a line break.
 For the readability of the project history, each commit corresponds to an action, corresponding to the short description: not all modified files are necessarily taken into account and validated at once.
@@ -4003,7 +3983,7 @@ The command executed is \texttt{git\ commit\ -m\ "Commit\ message"}.
 
 }
 
-\caption{Login window.}\label{fig:git-id}
+\caption{Identification window.}\label{fig:git-id}
 \end{figure}
 
 \normalsize
@@ -4027,7 +4007,7 @@ Branches allow:
 \tightlist
 \item
   to develop new features in a project, without disturbing the main branch which may contain a stable version. If the development is accepted, its branch can be merged with the \emph{master} branch to create a new stable version.
-  The \emph{master} branch can contain files totally different from those of the main branch, for other purposes. On GitHub, the project presentation web pages can be placed in a branch called \enquote{gh-pages} which will never be merged.
+  The \emph{master} branch can also contain files totally different from those of the main branch, for other purposes. On GitHub, a project's web pages can be placed in a branch called \enquote{gh-pages} which will never be merged.
 \end{itemize}
 
 The git repository is fully constituted.
@@ -4036,7 +4016,7 @@ In git vocabulary, it consists of three \emph{trees} (figure \ref{fig:git-Trees}
 \begin{itemize}
 \tightlist
 \item
-  the working directory, or sandbox, which contains files that are not considered: unknown, modified, deleted or renamed (\enquote{Staged} box unchecked);
+  the working directory, or sandbox, which contains files that are not staged: unknown, modified, deleted or renamed (\enquote{Staged} box unchecked);
 \item
   the index, which contains the files taken into account (\enquote{Staged} box checked);
 \item
@@ -4053,12 +4033,12 @@ In git vocabulary, it consists of three \emph{trees} (figure \ref{fig:git-Trees}
 
 }
 
-\caption{Les trois arbres de git. Source: \url{https://rogerdudler.github.io/git-guide/index.fr.html}}\label{fig:git-Trees}
+\caption{git's trees. Source: \url{https://rogerdudler.github.io/git-guide/index.fr.html}}\label{fig:git-Trees}
 \end{figure}
 
 \normalsize
 
-The status of the files is represented by two icons in the RStudio \emph{Git} window: two question marks when they have not been taken into account by git.
+The status of the files is represented by two icons in the RStudio \emph{Git} window: two question marks when they are not in git's index.
 Then, the icon on the right describes the difference between the working directory and the index.
 The one on the left describes the difference between the index and the head.
 So a modified file will have the \texttt{M} icon displayed on the right before it is taken into account, then on the left after it is taken into account.
@@ -4100,7 +4080,7 @@ An empty repository on GitHub must be created (figure \ref{fig:CreateRepo}):
   \item
     Public: visible to everyone,
   \item
-    Private: visible only to project collaborators, which excludes adding presentation web pages.
+    Private: visible only to project collaborators, which excludes adding web pages.
   \end{itemize}
 \item
   Do not add any \texttt{README}, \texttt{.gitignore} or license: the project must be empty.
@@ -4111,7 +4091,7 @@ An empty repository on GitHub must be created (figure \ref{fig:CreateRepo}):
 \end{itemize}
 
 The choice of the address is linked to the authentication method.
-SSH authentication (see section \ref{sec:SSH}) is to be preferred.
+SSH authentication (see section \ref{sec:SSH}) is preferred.
 
 \hypertarget{linking-git-and-github}{%
 \subsection{Linking git and GitHub}\label{linking-git-and-github}}
@@ -4232,14 +4212,14 @@ stability-work_in_progress-lightgrey.svg)
 
 \normalsize
 
-Any repository on GitHub can be installed (we say \emph{cloned}) on the workstation by copying its address which appears by clicking on the green button (figure \ref{fig:git-Clone}).
+Any repository on GitHub can be installed (\emph{cloned}) on the workstation by copying its address which appears by clicking on the green button (figure \ref{fig:git-Clone}).
 
 In RStudio, create a new project and, in the wizard, choose \enquote{Version Control}, \enquote{Git} and paste the address in the \enquote{Repository URL} field.
 The name of the directory to create for the project is automatically deduced from the address.
 Choose the directory in which the project will be created and click on \enquote{Create Project}.
 The created project is linked to the remote repository on GitHub.
 
-To work with several people on the same project, the project owner must give access to the project to collaborators (fig:git-Access), i.e.~other GitHub users in the repository settings.
+To work with several people on the same project, the project owner must give access to the project to collaborators (figure \ref{fig:git-Access}), i.e.~other GitHub users in the repository settings.
 
 
 
@@ -4267,7 +4247,7 @@ Collaborators are invited by a message sent by \emph{GitHub}.
 Any work session on a project starts by pulling (\enquote{Pull} button) from the \emph{Git} window to integrate to the local repository the updates made on GitHub by other collaborators.
 
 The changes made to the project files are then taken into account (check the \enquote{Staged} boxes) and committed with an explanatory message.
-A good practice is to validate changes each time an elementary task, which can be described in the explanatory message, is completed rather than making \emph{commits} that group many changes with a vague description.
+A good practice is to validate changes each time an elementary task which can be described in the explanatory message is completed rather than making \emph{commits} that group many changes with a vague description.
 
 As soon as possible, \emph{Push} updates so that they are visible to collaborators.
 
@@ -4293,7 +4273,7 @@ Lines in conflict, local version
 The formatting lines containing the \texttt{\textless{}\textless{}\textless{}\textless{}}, the \texttt{====} and the \texttt{\textgreater{}\textgreater{}\textgreater{}\textgreater{}} must be deleted and only one version of the problematic lines kept, which can be different from the two original versions.
 The conflict resolution must be taken into account and validated.
 
-To limit conflicts in a document containing text (typically, an R Markdown document), a good practice is to treat each sentence as a line, terminated by a line break that will not be visible in the formatted document: a line break is required to separate paragraphs.
+To limit conflicts in a document containing text (typically, an R Markdown document), a good practice is to treat each sentence as a line, terminated by a line break that will not be visible in the formatted document: two line breaks are required to separate paragraphs.
 
 \hypertarget{see-the-differences}{%
 \subsection{See the differences}\label{see-the-differences}}
@@ -4382,12 +4362,12 @@ Select the branch to activate from the list of local branches in the \emph{git} 
 The \emph{commits} apply to the active branch.
 Each branch behaves as a different version of the project.
 
-Warning: to avoid confusion, save the changes, take them into account and validate them before changing branch.
+Warning: to avoid confusion, save the changes, stage them and commit them before changing branch.
 
 \hypertarget{pushing-the-new-branch}{%
 \subsection{Pushing the new branch}\label{pushing-the-new-branch}}
 
-The first modifications of the new branch must be pushed in command line because the \enquote{Push} and \enquote{Pull} buttons of the \emph{Git} window do not work as long as the branch does not exist on the remote repository.
+The first modifications of the new branch must be pushed with the command line because the \enquote{Push} and \enquote{Pull} buttons of the \emph{Git} window do not work as long as the branch does not exist on the remote repository.
 
 Run, in the terminal:
 
@@ -4410,7 +4390,7 @@ It is best not to attempt to display these branches in RStudio: their content is
 If it is necessary, it will be necessary to copy the \texttt{.gitignore} file of the main branch and keep in mind that the ignored files actually belong to another branch than the one displayed.
 
 \hypertarget{merge-with-merge}{%
-\subsection{Merge with `merge}\label{merge-with-merge}}
+\subsection{\texorpdfstring{Merge with \texttt{merge}}{Merge with merge}}\label{merge-with-merge}}
 
 Merging a development branch with the main branch marks the achievement of its goal: its code will be integrated into the project.
 RStudio's GUI does not allow for merging, so you have to use the terminal: first, go to the target branch (possible with the GUI):
@@ -4440,7 +4420,7 @@ git branch -d new_branch
 The other way of merging is more formal but also more general: it allows you to merge a branch into another user's repository to contribute to it, or to have your branch validated by another team member in a collaborative project.
 
 To contribute to another GitHub user's project\footnote{\url{https://git-scm.com/book/fr/v2/GitHub-Contribution-\%C3\%A0-un-projet}}, you have to start by creating a \emph{fork} of it, i.e.~a copy in the form of a repository linked to the original.
-It will be possible to pull changes from the original to stay up to date\footnote{\url{https://ardalis.com/syncing-a-fork-of-a-github-repository-with-upstream/}} (as opposed to a simple snapshot copy possible by downloading a Zip of the project) and, at the end of the development, to merge the \emph{fork} to the original repository (as opposed to a clone that would not allow to contribute afterwards).
+It will be possible to pull changes from the original to stay up to date\footnote{\url{https://ardalis.com/syncing-a-fork-of-a-github-repository-with-upstream/}} (as opposed to a simple snapshot copy made by downloading a zip of the project) and, at the end of the development, to merge the \emph{fork} to the original repository (as opposed to a clone that would not allow to contribute afterwards).
 
 Next, create a development branch as before, modify it and finally ask the repository owner to merge it.
 This process is described in detail in the git documentation.
@@ -4497,7 +4477,7 @@ The \emph{prune-packable} line gives the size of objects stored both individuall
 If their size is large, run \texttt{git\ prune-packed} to reduce it to zero.
 
 The \emph{size-garbage} line gives the size of objects that can be deleted.
-git gc` removes them, but not only that: it optimizes storage.
+\texttt{git\ gc} removes them, but not only that: it optimizes storage.
 
 \begin{verbatim}
 git gc
@@ -4536,15 +4516,15 @@ It can be useful to delete them in some particular cases
 \begin{itemize}
 \tightlist
 \item
-  if a file containing confidential information was inadvertently validated.
-  Validating its deletion does not remove it from the history, and the confidential information remains visible when consulting the history.
+  if a file containing confidential information was inadvertently committed.
+  Committing its deletion does not remove it from the history, and the confidential information remains visible when consulting the history.
 \item
-  if large files are no longer needed, e.g.~PDF files produced by R Markdown (chapter ``ref(chap-rediger)'\,'), binary (thus unsuitable for git) and reproducible from code.
+  if large files are no longer needed, e.g.~PDF files produced by R Markdown (chapter \ref{chap-rediger}) which are binary (thus unsuitable for git) and reproducible from the code.
 \end{itemize}
 
 Typically, the \texttt{docs} folder is used to store documents produced from R Markdown code.
 The HTML and PDF files must be in this folder to constitute the GitHub pages of the project.
-Each modification of the repository generates a new version of these files whose history volume quickly becomes considerable.
+Each modification of the repository generates a new version of these files whose history volume quickly becomes huge.
 An efficient solution is to delegate the creation of these files to a continuous integration system (chapter \ref{chap-ci}) and to remove the \texttt{docs} folder from the main branch (\emph{master}) of the repository.
 You then have to delete all its history to recover the space it occupies, which can be most of the size of the repository.
 
@@ -4560,7 +4540,7 @@ git for-each-ref --format="%(refname)" refs/original/ |>
     | xargs -n 1 git update-ref -d
 \end{verbatim}
 
-The file is not removed from the working directory.
+The \texttt{docs} folder is not removed from the working directory.
 It must therefore be added to the \texttt{.gitignore} file so that it is no longer tracked.
 The modification of \texttt{.gitignore} must be validated.
 These operations can be done with the RStudio interface or on the command line:
@@ -4568,7 +4548,7 @@ These operations can be done with the RStudio interface or on the command line:
 \begin{verbatim}
 echo docs/ >> .gitignore
 git add .gitignore
-git commit -m 'Removing docs folder from git history
+git commit -m 'Removing docs folder from git history'
 \end{verbatim}
 
 The repository cleanup is necessary to physically remove the removed data:
@@ -4578,7 +4558,7 @@ git gc
 \end{verbatim}
 
 Finally, the repository must be pushed.
-The \texttt{-\/-force} option involves replacing the contents of the remote repository with those of the local repository: all changes made by collaborators are erased, so this cleanup operation involves shutting down the project while it takes place.
+The \texttt{-\/-force} option involves replacing the contents of the remote repository with those of the local repository: all changes made by collaborators are erased, so this cleanup operation involves suspending the development of the project while it takes place.
 
 \begin{verbatim}
 git push origin master --force
@@ -4623,7 +4603,7 @@ Using \texttt{HEAD} simply avoids searching for the corresponding ID.
 \hypertarget{sec:confidential}{%
 \section{Confidential data in a public repository}\label{sec:confidential}}
 
-A public repository on GitHub causes problems when data used in the project is not.
+A public repository on GitHub causes problems when the data used in the project is not.
 
 An unsatisfactory solution is to not include the data in the project, which makes it non-reproducible.
 A better solution is to encrypt them, allowing some users to decrypt them.
@@ -4641,7 +4621,7 @@ If the generic user's private key is compromised, it will be sufficient to remov
 \hypertarget{generating-a-key-pair-for-the-project-owner}{%
 \subsection{Generating a key pair for the project owner}\label{generating-a-key-pair-for-the-project-owner}}
 
-The keys are generated by the \emph{ssh} software, installed with \emph{git} or by default under Linux.
+The keys are generated by the \emph{ssh} software, installed with \emph{git} or by default on Linux.
 
 The procedure is the same as in the section \ref{sec:SSH}, but the key used must be in RSA format (supported by the \textbf{secret} package, as opposed to the more secure ed25519 format used for authentication on GitHub).
 
@@ -4652,7 +4632,7 @@ ssh-keygen -t rsa -b 4096 -C "user.email"
 \end{verbatim}
 
 Store the public key on GitHub in \enquote{Settings \textgreater{} SSH and GPG Keys}.
-Locate the position of the key: if an authentication key has already been stored for two workstations for example, the RSA key will be the third one.
+Note the position of the key: if an authentication key has already been stored for two workstations for example, the RSA key will be the third one.
 
 \hypertarget{generating-a-key-pair-for-the-project}{%
 \subsection{Generating a key pair for the project}\label{generating-a-key-pair-for-the-project}}
@@ -4675,9 +4655,9 @@ The private key \texttt{\textless{}RepoID\textgreater{}.rsa} should only be dist
 You must therefore add the line \texttt{*.rsa} to the \texttt{.gitignore} file of the project to avoid pushing the key on GitHub.
 
 To allow the continuous integration of the project (chapter \ref{chap-ci}), the private key must be stored as a secret of the GitHub repository containing the project.
-Apply the procedure in the section \ref{sec:secrets-ci} to create a secret named \enquote{RSA} and paste the content of the file \texttt{\textless{}RepoID\textgreater{}\textless{}RepoID\textgreater{}.rsa} in the \enquote{Value} field of the form.
+Apply the procedure in section \ref{sec:secrets-ci} to create a secret named \enquote{RSA} and paste the content of the file \texttt{\textless{}RepoID\textgreater{}.rsa} in the \enquote{Value} field of the form.
 
-The use of the secret is described in the section \ref{secrets-ci}.
+The use of the secret is described in section \ref{sec:secrets-ci}.
 
 \hypertarget{creating-a-safe}{%
 \subsection{Creating a safe}\label{creating-a-safe}}
@@ -4744,7 +4724,7 @@ The generic project user's key is added by:
 \subsection{Storing the data}\label{storing-the-data}}
 
 The data, stored in R variables, are stored one by one by the \texttt{add\_secret()} function.
-In the following example, the variable is called \texttt{X} and is 1.
+In the following example, the variable is called \texttt{X} and equals 1.
 
 \scriptsize
 
@@ -4852,7 +4832,7 @@ The file can be placed in the \texttt{docs} folder to provide both the repositor
 The \textbf{memoiR} package provides commands to automate these tasks in document projects.
 A repository containing an article written in R Markdown (see section \ref{sec:memo}) is used as an example\footnote{\url{https://github.com/EricMarcon/Krigeage}}.
 
-Its \texttt{README.md} file exists in both locations: it is written by the developer at the root of the project and duplicated by \texttt{GitHubPages.R}.
+Its \texttt{README.md} file exists in both locations: it is written by the developer at the root of the project and duplicated in \texttt{docs}.
 
 \hypertarget{activation}{%
 \subsection{Activation}\label{activation}}
@@ -4861,11 +4841,11 @@ To activate GitHub pages, you have to open the repository settings and modify th
 Select the project branch and the folder containing the web pages, here: \texttt{master} and \texttt{/docs}.
 As an option, choosing a theme customizes the appearance of the pages.
 
-The web site is accessible at an addres\footnote{\url{https://EricMarcon.github.io/Krigeage/}} of the domain \emph{github.io}.
+The web site is accessible at an address\footnote{\url{https://EricMarcon.github.io/Krigeage/}} of the domain \emph{github.io}.
 
 The \texttt{README.md} file displayed on the home page has a very different look but the same content as the one displayed with the code on the repository page in GitHub.
 
-The interest of the GitHub pages is to allow an easy access to the formatted documents when the repository contains a written production and or to the documentation of R packages.
+The interest of the GitHub pages is to allow an easy access to the formatted documents when the repository contains a written production or to the documentation of R packages.
 These contents will be presented in the next chapter.
 
 A main website is proposed with each GitHub account, at \url{https://GitHubID.github.io}\footnote{Example: \url{https://EricMarcon.github.io/Krigeage/}}.
@@ -4911,8 +4891,8 @@ The tools to do this are the subject of this chapter, completed by the productio
 \hypertarget{markdown-notebook-r-notebook}{%
 \section{Markdown notebook (R Notebook)}\label{markdown-notebook-r-notebook}}
 
-In an `.R' file, the code should always be commented to make it easier to read.
-When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in text.
+In an \texttt{.R} file, the code should always be commented to make it easier to read.
+When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in the text.
 
 The concept of literate programming was developed by \textcite{Knuth1984}.
 It consists in describing the objectives and methods by text, in which the code is integrated.
@@ -4920,7 +4900,7 @@ It consists in describing the objectives and methods by text, in which the code 
 The simplest tool is the Markdown notebook (Menu \enquote{File \textgreater{} New File \textgreater{} R Notebook}).
 The document template contains its instructions for use.
 
-The language for formatting the text is Markdown\footnote{\url{https://fr.wikipedia.org/wiki/Markdown}}, a simple to use markup language:
+The language for formatting the text is Markdown\footnote{\url{https://fr.wikipedia.org/wiki/Markdown}}, an easy to use markup language:
 
 \begin{itemize}
 \tightlist
@@ -4941,7 +4921,7 @@ The Markdown dialect used by the package is called \emph{R Markdown}.
 Its syntax is summarized in a cheat sheet\footnote{\url{https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}}.
 Its complete documentation is online \autocite{Xie2018}.
 
-The equations are written in LaTeX format\footnote{\url{https://fr.wikibooks.org/wiki/LaTeX/\%C3\%89crire_des_math\%C3\%A9matiques}}.
+Equations are written in the LaTeX format\footnote{\url{https://fr.wikibooks.org/wiki/LaTeX/\%C3\%89crire_des_math\%C3\%A9matiques}}.
 
 The simplest organization of a \emph{R Markdown} document can be seen in the notepad template.
 It starts with a header in YAML format\footnote{\url{https://fr.wikipedia.org/wiki/YAML}}:
@@ -4953,12 +4933,12 @@ output: html_notebook
 ---
 \end{verbatim}
 
-The first entry is the title, the second the output format: more precisely the name of the function that will process the document.
+The first entry is the title, the second is the output format: more precisely the name of the function that will process the document.
 
-The document contains Markdown formatted text and code chunks surrounded by three grave accents (the Markdown syntax of a code block) and a language description, here \texttt{r}.
+The document contains Markdown formatted text and code chunks surrounded by three backquotes (the Markdown syntax of a code block) and a language description, here \texttt{r}.
 These code chunks are processed by \textbf{knitr} which transforms the result of the execution of the R code into Markdown and integrates it into the text of the document.
 
-Processing an R Markdown document is called \emph{knit}.
+Processing an R Markdown document is called \emph{knitting}.
 The production chain is as follows:
 
 \begin{itemize}
@@ -4966,7 +4946,7 @@ The production chain is as follows:
 \item
   \textbf{knitr} processes the code snippets: calculations, figure production;
 \item
-  rmarkdown** integrates the production of code and text snippets to produce a standard Markdown file;
+  \textbf{rmarkdown} integrates the production of code and text snippets to produce a standard Markdown file;
 \item
   pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format;
 \item
@@ -4975,7 +4955,7 @@ The production chain is as follows:
 
 RStudio allows knitting to be started by buttons rather than commands: in the source window (the top left one), a \enquote{Knit} button accompanies R Markdown documents.
 For R Markdown notebooks, it is replaced by a \enquote{Preview} button with the same functions.
-It can be scrolled to choose the output format: HTML, Word, PDF (via LaTeX) and, for notepads, a \enquote{Preview} command that displays the document in HTML without executing the code snippets to save time.
+It can be scrolled down to choose the output format: HTML, Word, PDF (via LaTeX) and, for notepads, a \enquote{Preview} command that displays the document in HTML without executing the code snippets to save time.
 As soon as the first knitting is done in Word or HTML format, you will notice that the \enquote{Preview} button disappears.
 
 In the end, using R Markdown combines several advantages:
@@ -4985,7 +4965,7 @@ In the end, using R Markdown combines several advantages:
 \item
   Simplicity of writing: the raw text is easier to read and format than in LaTeX for example;
 \item
-  Automation of production: formatting and layout are fully automatic;
+  Automation of the production: formatting and layout are fully automatic;
 \item
   Reproducibility: each document can be self-sufficient with its data. Re-knitting regenerates the whole document, including the necessary calculations and the production of figures.
 \end{itemize}
@@ -4995,7 +4975,7 @@ It also has some disadvantages:
 \begin{itemize}
 \tightlist
 \item
-  Formatting depends on patterns, and developing new patterns is not easy;
+  Formatting depends on templates, and developing new templates is not easy;
 \item
   Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage;
 \item
@@ -5034,13 +5014,13 @@ In the header, an extra entry is used for the date, which can be calculated by R
 date: "|r format(Sys.Date(), '%d/%m/%Y')|"
 \end{verbatim}
 
-Replace the vertical bars \texttt{\textbar{}} in the above example with quotation marks: since this document is written with R Markdown, the date would be calculated and displayed instead of the code if the quotation marks were used directly.
+Replace the vertical bars \texttt{\textbar{}} in the above example with backquotes: since this document is written with R Markdown, the date would be calculated and displayed instead of the code if the backquotes were used directly.
 
 Inline R code (as opposed to code snippets) can be used anywhere in an R Markdown document, including in the header for the date display.
-It starts with a quotation mark followed by `r' and ends with another quotation mark.
+It starts with a backquote followed by `r' and ends with another backquote.
 
 Documents can be knitted in HTML, PDF (via LaTeX) or Word format.
-The header of the R Markdown file is rewritten when the knitting is started by the RStudio button which places the output format used first and adds it if necessary.
+The header of the R Markdown file is rewritten when the knitting is started by the RStudio button which places the current output format on top of the list.
 
 Presentations can be knitted in two HTML formats, ioslide\footnote{\url{https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html}} or Slidy\footnote{\url{https://bookdown.org/yihui/rmarkdown/slidy-presentation.html}}, in Beamer (PDF) format\footnote{\url{https://bookdown.org/yihui/rmarkdown/beamer-presentation.html}} or in Powerpoint\footnote{\url{https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html}}.
 
@@ -5062,7 +5042,6 @@ Finally, figure and table captions only support plain text, without any formatti
 
 \textbf{bookdown} fills these gaps.
 The package has been designed for writing books with several chapters but can be used for articles.
-The package does not provide templates directly.
 
 The \textbf{memoiR} package provides the templates shown here.
 It must be installed.
@@ -5092,7 +5071,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (\te
 \subsubsection{R code}\label{r-code}}
 
 R code is included in code chunks that are easily created by clicking on the \enquote{Insert a new code chunk} button above the source code window in RStudio.
-They start and end with three quotation marks on a new line.
+They start and end with three backquotes on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
 
 \begin{verbatim}
@@ -5173,7 +5152,7 @@ The figure \ref{fig:pressure2} benefits from an improved caption.
 
 \normalsize
 
-The text in \texttt{fig.cap}, \enquote{Title of figure} previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} which are retained and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
+The text in \texttt{fig.cap}, \enquote{Title of figure} previously, is replaced by \texttt{(ref:pressure)} \emph{within the backquotes} which are retained and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
 Captions are limited to a single paragraph.
 
 If a table of figures is used (option \texttt{lof:\ true} in the header), a short caption is required in addition to the full caption.
@@ -6746,7 +6725,7 @@ A workflow (see section \ref{sec:targets}) can be embedded in an R Markdown docu
 \hypertarget{declaration-of-the-workflow}{%
 \subsection{Declaration of the workflow}\label{declaration-of-the-workflow}}
 
-The stream is managed by code snippets of type \texttt{targets}.
+The workflow is managed by code snippets of type \texttt{targets}.
 Their minimal header is \texttt{\{targets\}} instead of \texttt{\{r\}}, and they must be named.
 These code snippets are used to create the \texttt{\_targets.R} file when they are run in non-interactive mode, namely while the document is being knitted.
 If they are run in interactive mode, for example in R Studio, their code is executed.
@@ -6764,8 +6743,8 @@ Any old workflow must be removed before writing the new one:
 
 \normalsize
 
-The first code chunk, with the \texttt{tar\_globals=TRUE} option, writes the global options for the stream.
-To create the stream shown in section `\textcite{ref}(sec:targets), the code is simply:
+The first code chunk, with the \texttt{tar\_globals=TRUE} option, writes the global options for the workflow
+To create the workflow shown in section `\textcite{ref}(sec:targets), the code is simply:
 
 \begin{verbatim}
 ```{targets targets_global, tar_globals=TRUE}
@@ -6913,12 +6892,12 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.524 seconds
+## • end pipeline: 3.119 seconds
 \end{verbatim}
 
 \normalsize
 
-\texttt{tar\_visnetwork()} is used to check that the stream is correct before running it.
+\texttt{tar\_visnetwork()} is used to check that the workflow is correct before running it.
 When the document is finally produced, the \texttt{include=FALSE} option can be added to the header of this piece of code so that it does not produce any output.
 
 \hypertarget{using-the-results}{%
@@ -7671,7 +7650,7 @@ This is a generic method, i.e.~a function template, without code, to be adapted 
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7fa4710cb310>
+## <bytecode: 0x7ff588915c50>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -7965,14 +7944,14 @@ The choice of function depends on the class of the object passed as argument.
 
 \begin{verbatim}
 ## Unit: nanoseconds
-##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  317  330.0 24617.70    339  387.5
-##   triple.numeric(2)  316  331.0 40527.22    345  389.0
-##          triple(2L) 1274 1311.5  1480.08   1351 1410.5
-##      max neval
-##  2426187   100
-##  4015728   100
-##     6752   100
+##                expr  min   lq     mean median   uq     max
+##  triple.integer(2L)  315  326 24471.85    335  353 2411945
+##   triple.numeric(2)  312  324 21746.06    333  348 2139598
+##          triple(2L) 1276 1310  1450.42   1336 1399    6431
+##  neval
+##    100
+##    100
+##    100
 \end{verbatim}
 
 \normalsize
@@ -8318,7 +8297,7 @@ Finally, the complete code is as follows:
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7fa4710cb310>
+## <bytecode: 0x7ff588915c50>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -8356,7 +8335,7 @@ Finally, the complete code is as follows:
 ## {
 ##     UseMethod("autoplot")
 ## }
-## <bytecode: 0x7fa472304518>
+## <bytecode: 0x7ff58aa15ac0>
 ## <environment: namespace:ggplot2>
 \end{verbatim}
 
@@ -9020,7 +8999,7 @@ To avoid system specifics, it is better to use an action:
 \hypertarget{caches}{%
 \subsubsection{Caches}\label{caches}}
 
-Installing R packages takes time, a lot if they are installed from source (the standard procedure under Ubuntu, but not under MacOS and Windows where binary packages are used by default).
+Installing R packages takes time, a lot if they are installed from source (the standard procedure under Ubuntu, but not on MacOS and Windows where binary packages are used by default).
 Computing the code snippets is usually the longest step in the workflow.
 The \texttt{cache} action caches the results of both operations.
 
