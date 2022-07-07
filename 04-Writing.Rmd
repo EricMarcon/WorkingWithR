@@ -154,13 +154,13 @@ A simple line break has no effect on the document produced: it allows to separat
 
 A line break marks a paragraph change.
 
-The different levels of the plan are designated by the number of braces at the beginning of the line: `#` for a level 1 title, `##` for a level 2 title, etc.
-A space separates the braces and the title text.
+The different levels of the plan are designated by the number of hashes at the beginning of the line: `#` for a level-1 title, `##` for a level-2 title, etc.
+A space separates the hashes and the title text.
 
-Bulleted lists are marked by a dash (followed by a space) at the beginning of the line.
-A line break is required before the beginning of the list, but the elements of the list are separated by a simple line break.
+Bullet lists are marked by a dash (followed by a space) at the beginning of the line.
+A double line break is required before the beginning of the list, but the elements of the list are separated by a simple line break.
 Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
-Finally, numbered lists are created in the same way by replacing the hyphens by numbers, whose value is not important.
+Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value is not important.
 
 In the text, the italicized parts are surrounded by a star or an underscore (`*italic*`), while two stars mark the bold.
 
@@ -168,7 +168,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (`*i
 
 R code is included in code chunks that are easily created by clicking on the "Insert a new code chunk" button above the source code window in RStudio.
 They start and end with three backquotes on a new line.
-These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example: 
+These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma-separated list of options, for example: 
 
 ````
 ```{r cars, echo=TRUE}`r ''`
@@ -210,9 +210,9 @@ It contains at least the name of the figure and its caption.
 If the caption is long, the header is not very readable.
 Furthermore, the caption is limited to simple text.
 For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text `(ref:FigureName)`. 
-The figure \@ref(fig:pressure2) benefits from an improved caption.
+Figure \@ref(fig:pressure2) benefits from an improved caption.
 
-(ref:pressure2) Title with _italic_, math ($\sqrt\pi$) and link to figure \@ref(fig:pressure)
+(ref:pressure2) Title with _italic_, math ($\sqrt\pi$) and a reference to figure \@ref(fig:pressure)
 ```{r pressure2, fig.cap="(ref:pressure2)", echo=FALSE}
 plot(pressure)
 ```
@@ -228,7 +228,7 @@ Always place these files in the `images` folder for good organization.
 
 #### Tables
 
-The horizontal - and vertical separators | allow to draw an array according to the Markdown syntax, but it is not the best method.
+The horizontal `-` and vertical `|` separators allow to draw a table according to the Markdown syntax, but it is not the best method.
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
@@ -242,7 +242,7 @@ knitr::kable(my_iris, caption="Table created by kable", booktabs = TRUE, escape 
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-The caption is specified by the `caption` argument and referencing is possible because the array is given a label whose name is `tab:` followed by the name of the code snippet (array \@ref(tab:kable)).
+The caption is specified by the `caption` argument and referencing is possible because the table is given a label whose name is `tab:` followed by the name of the code snippet (table \@ref(tab:kable)).
 As with the figures, an enhanced caption can be written in a separate paragraph.
 A short caption for a possible list of tables (option `lot: true` in the header) is declared in the `caption.short` argument of `kable()`.
 
@@ -250,9 +250,9 @@ Always use the `booktabs = TRUE` argument so that the thickness of the separator
 Since the table contains mathematics (in the name of the first column), the `escape = FALSE` option is necessary.
 
 The `bootstrap_options = "striped"` style option provides more readable tables in HTML.
-Finally, the `full_width = FALSE` option allows to adjust the width of the table to its content instead of occupying the whole available width.
+Last, the `full_width = FALSE` option allows to adjust the width of the table to its content instead of occupying the whole available width.
 
-The **flextable** package allows creating more elaborate arrays, as in the following example which displays the long sepals in color.
+The **flextable** package allows creating more elaborate tables, as in the following example which displays the long sepals in color.
 
 ```{r flextable}
 library("flextable")
@@ -284,13 +284,13 @@ This limitation is prohibitive.
 
 #### Maths
 
-Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ (code: `$A=\pi r^2$`) or isolated (the $ are doubled) like $$e^{i \pi} = -1.$$
+Equations in LaTeX format can be inserted inline, like $A=\pi r^2$ (code: `$A=\pi r^2$`) or in a new line (the $ are doubled) like $$e^{i \pi} = -1.$$
 
-They can be numbered: see equation \@ref(eq:disque), using the `\equation` environment.
+They can be numbered: see equation \@ref(eq:disc), using the `\equation` environment.
 
 \begin{equation}
   A = \pi r^2.
-  (\#eq:disque)
+  (\#eq:disc)
 \end{equation}
 
 The numbered equation is created by the following code:
@@ -298,7 +298,7 @@ The numbered equation is created by the following code:
 ```
 \begin{equation}
   A = \pi r^2.
-  (\#eq:disque)
+  (\#eq:disc)
 \end{equation}
 ```
 
@@ -308,7 +308,7 @@ Figures and tables have an automatically generated label, identical to the name 
 
 For equations, the label is added manually by the code `(\#eq:xxx)` before the end of the equation.
 
-Sections can be given a label by ending their title with `{#yyy}`.
+Sections can be given a label by completing their title with `{#yyy}`.
 Sections receive by default an implicit label[^405] corresponding to their text, in lower case, where special characters are replaced by dashes.
 Implicit labels are unstable (they change with the title of the section) and difficult to predict: this is why it is advisable to add an explicit label to each section being cross-referenced.
 This is the case for chapters, for which the name of the HMTL file produced is identical to the label.
@@ -333,13 +333,13 @@ This file can be created and maintained by Zotero installed with the Better BibT
 To do this, you just have to create a Zotero collection corresponding to the project and drag the relevant references into it.
 Then use the contextual menu "Export collection..." and select:
 
-- Format: "Better BibTeX" for articles and presentations or "Better BibLaTeX" for dissertations, depending on whether the bibliography is managed by bibtex and natbib or biber and biblatex for PDF production.
+- Format: "Better BibTeX" for articles and presentations or "Better BibLaTeX" for memoirs, depending on whether the bibliography is managed by bibtex and natbib or biber and biblatex for PDF production.
 - Check the "Keep up to date" box so that any changes in Zotero are exported automatically.
 - Click on "OK" then choose the name of the file (`references.bib`) and its location (the R project folder).
 
-The references can be called in the text, between brackets by the code `[@Reference]`, or in the text, by removing the brackets.
+The references can be called in the text, between square brackets by the code `[@Reference]`, or in the text, by removing the brackets.
 
-Bibliography is handled by pandoc when producing Word or HTML documents.
+The bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line 
 
 ```
@@ -369,7 +369,7 @@ lang: fr-FR
 otherlangs: [en-US, it]
 ```
 
-The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:
+The change of language in the document is managed in LaTeX, but not in HTML, by inserting on a new line the following command:
 
 ```
 \selectlanguage{english}
@@ -404,7 +404,7 @@ Use the menu "File > New File > R Markdown..." then select "From template" (figu
 The list of available templates and the package that offers them is then displayed.
 
 Select the *Simple Article* template from the **memoiR** package, choose the name of the project ("Name:", which will be the name of the folder in which it will be created, and its parent folder ("Location:").
-In the organization proposed in section \@ref(sec:solution-folders), the parent folder is `%LOCALAPPDATA%\ProjectsR`.
+In the organization proposed in section \@ref(sec:solution-dossiers), the parent folder is `%LOCALAPPDATA%\ProjectsR`.
 The project name must not contain any special characters (accent, space...) to ensure its portability on all operating systems (Windows, Linux, MacOS).
 
 Advanced templates create a folder with many files (bibliography, styles, LaTeX template...), unlike simple templates which create only one file.
@@ -426,9 +426,9 @@ The document can be knitted in several formats:
 - *word_document2* creates a Word file.
 
 
-#### Put online {#sec:article-en-ligne}
+#### Publish {#sec:article-en-ligne}
 
-The **memoiR** package simplifies the uploading of produced documents.
+The **memoiR** package simplifies the uploading of produced documents to a web server.
 
 The `build_gitignore()` function creates a `.gitignore` file for source control which must be enabled (see section \@ref(sec:git-cds)).
 
@@ -439,7 +439,7 @@ The project must be linked to a GitHub repository (section \@ref(sec:creerdepot)
 
 Two publication strategies are possible. 
 In the first one, the documents are knitted locally and placed in the `docs` folder, which will be the support of the GitHub pages.
-In the second one, the documents are knitted by GitHub Actions each time modifications are pushed on the repository: we talk about continuous integration (section \@ref(chap-ci)).
+In the second one, the documents are knitted by GitHub Actions each time modifications are pushed on the repository: this is called continuous integration (section \@ref(chap-ci)).
 
 The local production strategy is covered here; continuous integration will be covered in section \@ref(sec:memoiR-ci).
 
@@ -473,8 +473,8 @@ The *Beamer Presentation* template of **memoiR** allows to create HTML and PDF (
 
 [^rediger-13]: <https://EricMarcon.github.io/Chao1/>, choisir Lecture (HTML) ou Téléchargement (PDF).
 
-The approach is identical to that for articles in the same package.
-The title levels allow you to separate the parts of the presentation (`#`) and the slides (`##`).
+The approach is identical to that of articles in the same package.
+The title levels allow separating the parts of the presentation (`#`) and the slides (`##`).
 Two formats are available in HTML: ioslides[^rediger-14] and Slidy[^rediger-15]. 
 Some specificities in the code allow to refine the presentation of the slides, for a two-column display for example: they are documented in the template.
 
@@ -501,7 +501,7 @@ This document was written with this template.
 Creating a work project is identical to the one presented above: the template is: *Memoir*. 
 The created folder must be turned into a project.
 
-Run `build_git()` and `build_readme()`, enable source control and push the project to GitHub, in the same way as for an article (section \@ref(sec:article-in-line)).
+Run `build_git()` and `build_readme()`, enable source control and push the project to GitHub, in the same way as for an article (section \@ref(sec:article-en-ligne)).
 
 Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g.: `01-intro.Rmd`).
 All Rmd files in the project folder are actually treated as chapters, sorted by filename, including those provided by the template (startup and syntax) which should be deleted except for `99-references.Rmd` which contains the bibliography, placed at the end.
@@ -509,7 +509,7 @@ The `index.Rmd` file is special: it contains the document header and the first c
 
 ### Write
 
-The first chapter is placed in the foreword of the printed book: it should not be numbered (hence the `{-}` code next to the title) in the HTML version.
+The first chapter is placed in the front matter of the printed book: it should not be numbered (hence the `{-}` code next to the title) in the HTML version.
 It must end with the LaTeX command `\mainmatter` which marks the beginning of the body of the book.
 
 The outline levels start with `#` for chapters (only one per file), `##` for sections, etc.
@@ -531,11 +531,11 @@ The home page of the website is created by bookdown from the `index.Rmd` file: t
 
 The layout is done fully automatically by pandoc (in HTML) and LaTeX (in PDF).
 
-It is often useful to help LaTeX to solve some margin overruns due to too large layout constraints: for optimal readability, columns are narrow, but the code (formatted text between two inverted apostrophes) does not allow hyphenation.
+It is often useful to help LaTeX to solve some margin overruns due to too large layout constraints: for optimal readability, columns are narrow, but code (formatted text between backquotes) does not allow hyphenation.
 
 If a line of text protrudes into the right margin in the PDF document, the solution is to manually add the `\break` code to the desired location for the line break in the R Markdown document.
 The command has no effect on the HTML document but forces the hyphenation in LaTeX.
-To break formatted text (between asterisks for italics or more frequently between inverted apostrophes for code), you must finish formatting before `\break` and start again afterwards.
+To break formatted text (between asterisks for italics or more frequently between backquotes for code), you must finish formatting before `\break` and start again afterwards.
 For example, to force a line break before `file.Rmd`:
 
 ```
@@ -563,7 +563,7 @@ The maximum width of a line of formatted code here is 55 characters, optimal for
 Sometimes automatic formatting does not work because **knitr** cannot find a line break that meets all the constraints, causing the code to overflow.
 In this case, manually format the code snippet by adding the `tidy=FALSE` option.
 
-The literal code blocks, delimited by three inverted apostrophes, must be formatted manually, avoiding any line longer than 55 characters.
+The literal code blocks, delimited by three backquotes, must be formatted manually, avoiding any line longer than 55 characters.
 
 
 ### Gitbook site
@@ -573,7 +573,7 @@ The website containing the gitbook document must be set up in `_output.yml` so t
 - The title of the document appears at the top of the table of contents;
 - An indication of the use of GitHub and bookdown is displayed at the bottom of the table of contents;
 - A GitHub button in the title bar allows to open the project repository;
-- Another button to download the PDF document.
+- Another button allows to download the PDF document.
 
 The `_output.yml` file of this document is the following:
 
@@ -612,7 +612,7 @@ Finally, the `download:` section lists the downloadable document formats and dis
 
 ### Continuous integration {#sec:rediger-ouvrage-ci}
 
-Building a work takes time, especially if it contains calculations.
+Building a book takes time, especially if it contains calculations.
 It must be launched in gitbook format and in PDF format.
 In production, it can be outsourced to GitHub (chapter \@ref(sec:bookdown-ci)).
 
@@ -652,11 +652,11 @@ Other pages will be added by creating new `.Rmd` files and adding them to the `_
 
 ### Improvements
 
-The site template can easily be enhanced by adding `_site.yml`:
+The site template can easily be enhanced by adding lines to `_site.yml`:
 
-- by adding a GitHub icon in the navigation bar to link to the site source code:
-- by choosing the method of knitting the pages, to use **bookdown** instead of **rmarkdown**;
-- by placing the site files in the `docs` folder and thus separating code and production.
+- to addi a GitHub icon in the navigation bar to link to the site source code:
+- to choose the method of knitting, to use **bookdown** instead of **rmarkdown**;
+- to place the site files in the `docs` folder and thus separate code and production.
 
 The completed `_site.yml` file is as follows:
 
@@ -694,11 +694,11 @@ The available themes are those of rmarkdown[^rediger-20].
 [^rediger-20]: <https://bookdown.org/yihui/rmarkdown/html-document.html#appearance-and-style>
 
 The `highlight` option specifies how any R code displayed will be formatted.
-Finally, the table of contents is floating, which means that its position adjusts as the window scrolls.
+Last, the table of contents is floating, which means that its position adjusts as the window scrolls.
 
 ### Source control
 
-The project must be placed under source control and pushed to GitHub (chapter \@ref(chap-git)).
+The project must be put under source control and pushed to GitHub (chapter \@ref(chap-git)).
 The `.gitignore` file is the following:
 
 ```
@@ -728,7 +728,8 @@ touch docs/.nojekyll
 
 To create a personal web page, *Hugo* is a static site generator capable of producing HTML pages from Markdown code.
 Static sites have the advantage, compared to dynamic sites managed by a content management system (CMS, for example: Wordpress, Joomla, SPIP), to be portable on any web server without database support or code to run on the server side (such as PHP) and to be very fast since the pages are created once and not at each consultation.
-A Hugo site can be hosted for example on the personal page of any GitHub user whose address is of the form "GitHubID.github.io".
+A Hugo site can be hosted for example on the personal page of any GitHub user.
+Its address is of the form "GitHubID.github.io".
 
 Hugo offers many themes, which are templates for site structure, so the **Academic** theme, intended for researchers.
 In RStudio, the **blogdown** package is provided to easily produce web pages with Hugo.
@@ -776,12 +777,12 @@ The name to enter is simply "GitHubID.github.io" (*GitHubID* is the name of the 
 
 [^rediger-40]: Exemple: https://EricMarcon.github.io/Krigeage/
 
-Créer le dépôt.
-Copier l'adresse du dépôt en cliquant sur le bouton "Code" puis sur le bouton à droite de l'adresse (figure \@ref(fig:rediger-GitHub-Clone)).
+Create the repository.
+Copy the repository address by clicking on the "Code" button and then on the button to the right of the address (figure \@ref(fig:rediger-GitHub-Clone)).
 
 [^rediger-24]: <https://github.com/wowchemy/starter-academic>
 
-(ref:rediger-GitHub-Clone) Copie de l'adresse d'un dépôt à cloner sur GitHub.
+(ref:rediger-GitHub-Clone) Copy of the address of a repository to clone on GitHub.
 
 ```{r rediger-GitHub-Clone, fig.cap="(ref:rediger-GitHub-Clone)", echo=FALSE}
 knitr::include_graphics('images/rediger-GitHub-Clone.png')
@@ -933,7 +934,7 @@ site_type = "Person"
 
 selects a personal site.
 It is possible to use Academic for a scientific project site or a unit site, not documented in detail here.
-The main differences are, for a collective site
+The main differences are, for a collective site:
 
 - the management of authors: in the `/contents/<language>/outside` folder, only one `admin` folder is used for a personal site, whereas one folder per person is needed for a collective site;
 - a component described below, which allows to present the persons, must be activated.
@@ -954,13 +955,13 @@ math = true
 privacy_pack = true
 ```
 
-The `edit_page` line needs to be updated: replace the default repository "<https://github.com/gcushen/hugo-academic>" with the one for the site.
+The `edit_page` line needs to be updated: replace the default repository "<https://github.com/gcushen/hugo-academic>" with that of the site.
 
 "Contact details" contains the contact information for the site owner.
 They must be entered.
 
 "Regional Settings" contains the date display settings for the default language (those for other languages are in `languages.toml`).
-They normally do not need to be changed.
+They usually do not need to be changed.
 
 "Comments" allows you to enable visitor comments at the bottom of pages, with Disqus or Comment.io (an account is required with the provider).
 "Marketing" allows you to activate the tracking of site traffic by simply entering your Google Analytics ID (to be created with a Google account).
@@ -976,9 +977,9 @@ The example used here is the author's personal site[^rediger-26].
 
 [^rediger-26]: <https://EricMarcon.github.io/>
 
-The working method is to progress step by step by testing and then validating each step:
+The working method is to progress step by step by testing and then to validate each step:
 
-- Make the modifications;
+- Make the changes;
 - Build the site and check the result: `blogdown:::serve_site()`;
 - Stop the site: `blogdown::stop_server()`;
 - If the result is not satisfactory, try again;
@@ -989,15 +990,14 @@ The working method is to progress step by step by testing and then validating ea
 The home page of the site is made up of a series of elements (*widgets*) that are located in `/contents/<language>/home`.
 Each element is described by a markdown file.
 The first one is `index.md`.
-It is normally never modified.
+It is usually not modified.
 Its contents are as follows:
 
 ```
 +++
 # Homepage
 type = "widget_page"
-headless = true  # Homepage is headless, other widget 
-pages are not.
+headless = true  # Homepage is headless, other widget pages are not.
 +++
 ```
 
@@ -1071,10 +1071,10 @@ The `publications` and `featured` components are of type `pages` and `portfolio`
 The `tags` component presents a word cloud from the keywords declared in all content files (blog posts, publications...) in the following form in their header:
 
 ```
-tags = ["Mot Clé 1", "Autre Mot Clé"]
+tags = ["Keyword 1", "Other Keyword"]
 ```
 
-Finally, the `contact` component allows to display a contact form.
+Last, the `contact` component allows to display a contact form.
 It uses the information from the `config/_default/params.toml` file in its part starting with:
 
 ```
@@ -1143,7 +1143,7 @@ The contribution of **blogdown** relative to a native Hugo site is the support o
 
 The main file of a post is `index.Rmd`.
 **blogdown** creates an `index.html` file during the construction of the site: it can be ignored (in `.gitgnore`) and deleted at any time.
-If a `featured.png` (optimal for a schematic) or `featured.jpg` (optimal for a photo) image is placed in the folder, it will be used as the thumbnail of the post.
+If a `featured.png` (optimal for a graphic) or `featured.jpg` (optimal for a photo) image is placed in the folder, it will be used as the thumbnail of the post.
 
 The `index.Rmd` includes a header in yaml (surrounded by `---`) or toml (surrounded by `+++`) format that describes its display:
 
@@ -1285,13 +1285,12 @@ The header contains special lines suitable for communications:
 
 ```
 ---
-title: "Construction of the biodiversity estimator |>
-Chao1"
+title: "Construction of the Chao1 biodiversity estimator"
 event: "Mathematics Week 2020"
 event_url: https://eduscol.education.fr/cid59178/|>
 semaine-des-mathematiques.html
 
-location: University of French Guyana
+location: University of French Guiana
 
 summary: []
 abstract: |
@@ -1331,7 +1330,7 @@ math: true
 ---
 ```
 
-The links (e.g. `url_code`) bring up buttons that display the source code of the presentation, a pdf file and the online slides respectively.
+The links (e.g. `url_code`) bring up buttons that display the source code of the presentation, a PDF file and the online slides respectively.
 
 #### Other elements
 
@@ -1391,7 +1390,7 @@ It is best to create scripts to create the figures in a reproducible way and in 
 Figures should generally be produced in a vector format:
 
 - SVG for poster publication or posters;
-- EMF (Extended Meta-File) for Word or Microsoft Office suite that does not support other formats;
+- EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats;
 - EPS (Encapsulated PostScript) or PDF (Portable Document Format) for LaTeX.
 
 Raster figures (composed of a set of points, like photographs) are rare in R.
@@ -1443,7 +1442,8 @@ If necessary, the `embedFonts()` function can be used to remedy this, provided t
 ### ragg package
 
 The **ragg**[^rediger-36] package improves the quality of PNG, JPEG and TIFF files.
-The optimized functions are `agg_png()`, `agg_jpeg()` and `agg_tiff()`. Their usage is the same as that of the **grDevices** functions.
+The optimized functions are `agg_png()`, `agg_jpeg()` and `agg_tiff()`. 
+Their usage is the same as that of the **grDevices** functions.
 
 [^rediger-36]: <https://ragg.r-lib.org/>
 
@@ -1497,7 +1497,7 @@ tar_unscript()
 ```
 
 The first code chunk, with the `tar_globals=TRUE` option, writes the global options for the workflow 
-To create the workflow shown in section `@ref(sec:targets), the code is simply:
+To create the workflow shown in section \@ref(sec:targets), the code is simply:
 
 ````
 ```{targets targets_global, tar_globals=TRUE}`r ''`
@@ -1525,7 +1525,7 @@ runifpoint(NbPoints)
 Each target requires a piece of code built in this way.
 The value of the target is the last value returned, just like a function that would not use `return()`.
 
-During knitting, this simplified code (`tar_simple=TRUE`) is automatically transformed into a target write:
+During knitting, this simplified code (`tar_simple=TRUE`) is automatically transformed into a target code:
 
 ```{targets X, tar_simple=TRUE, tar_interactive = FALSE}
 runifpoint(NbPoints)
@@ -1551,7 +1551,7 @@ The other bits of code needed to complete the flow are the following:
   autoplot(as.wmppp(X))
 ```
 
-### Running the flow
+### Running the workflow
 
 To start the target calculation, a standard piece of code (`{r}`) must call `tar_make()`:
 
@@ -1579,4 +1579,4 @@ tar_read(map)
 ### Source control
 
 The **targets** files must be included in the source control.
-This way, calculations done locally will not be repeated by GitHub Actions (chapter \@ref(chap-ci)) and the document build will be fast.
+This way, calculations done locally will not be repeated by GitHub Actions (chapter \@ref(chap-ci)) and building the document will be fast.
