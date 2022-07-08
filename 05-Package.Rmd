@@ -2,8 +2,8 @@
 
 \toc{1}
 
-R packages allow the software's functionality to be extended by code provided by the developer community.
-They are the key to the success of R because they allow to quickly spread new methods resulting from research or to add new tools that can become standards, like the **tidyverse**.
+R packages extend its functionality with code provided by the developer community.
+They are the key to the success of R because they allow to quickly spread new methods resulting from research or to add new tools that can become standards, such as the **tidyverse**.
 
 It is useful to produce a package when you have written new functions that form a coherent whole.
 A package for personal use or limited to a work team is simple to set up and the time saved by easily using the updated version of each function very quickly amortizes the time spent on making the package.
@@ -11,7 +11,7 @@ This type of package is intended to be hosted on GitHub.
 
 Packages with a wider use, which provide for example the code corresponding to a published method, are placed in the CRAN repository, from where they can be installed by the standard command `install.packages()`.
 CRAN performs extensive code checks and only accepts packages that pass its test suite without any warning.
-They must respect the[^501] policy of the repository.
+They must respect the policies[^501] of the repository.
 
 [^501]: https://cran.r-project.org/web/packages/policies.html
 
@@ -46,7 +46,7 @@ install.packages(c("usethis", "roxygen2", "devtools"))
 
 The package to create will be an RStudio project.
 In the project menu, select "New Project > New Directory > R package using devtools...", choose the name of the project and its parent folder.
-The package will be called **multiple**, in the `%LOCALAPPDATA%\ProjectsR` folder, following the recommendations in the section \@ref(sec:solution-folders).
+The package will be called **multiple**, in the `%LOCALAPPDATA%\ProjectsR` folder, following the recommendations in the section \@ref(sec:solution-dossiers).
 
 The name of the package must respect the constraints of project names: no special characters, no spaces...
 It must also be evocative of the purpose of the package.
@@ -121,11 +121,11 @@ double <- function(number) {
 }
 ```
 
-Comments to **roxygen2** begin with `#`:
+Comments to **roxygen2** begin with `#'`:
 
 * the first line contains the title of the function, i.e. a very short description: its name in general;
 * the next line (separated by a line break) may contain its description (see *Description* in the help);
-* the next line (after another line break) can contain more information (*Details* in the help);
+* the next line (after another line break) might contain more information (*Details* in the help);
 * the arguments of the function are described by the `@param` lines;
 * `@return` describes the result of the function;
 * `@export` declares that the function is exported: it will be usable in the working environment;
@@ -165,7 +165,7 @@ Taking into account the changes in the documentation requires calling the `roxyg
 In the *Build* window, the "More > Document" menu allows you to do this.
 Then build the package (*Install and Restart*) and check the result by running the function and displaying its help:
 
-```{r double_help, eval=FALSE}
+```{r double_help, eval=FALSE, tidy=FALSE}
 double(2)
 ?double
 ```
@@ -287,7 +287,7 @@ The title is displayed in the *Packages* window next to the package names.
 
 The version must respect the conventions:
 
-* The first number is the major version, 0 as long as the package is not stable then 1.
+* The first number is the major version, 0 as long as the package is not stable, then 1.
 The major version only changes if the package is no longer compatible with its previous versions, which forces users to modify their code.
 * The second is the minor version, incremented when new features are added.
 * The third is the correction version: 0 at the origin, incremented at each code correction without new functionality.
@@ -300,12 +300,12 @@ The version number must be updated each time the package is pushed on GitHub.
 When the development is stabilized, the new version, intended to be used in production, is 1.3.2 if it does not bring any new functionality or 1.4.0 in the opposite case.
 
 The description of the authors is rather heavy but simple to understand.
-The Orcid identifiers of the academic authors can be used.
+The Orcid identifiers of academic authors can be used.
 If the package has several authors, they are placed in a `c()` function: `c(person(...), person())` for two authors.
 In this case, the role of each must be specified:
 
-* "cre" for the creator of the package
-* "aut" for one of the other authors
+* "cre" for the creator of the package.
+* "aut" for one of the other authors.
 * "ctb" for a contributor, who may have reported a bug or provided some code.
 
 The description of the package in one paragraph allows to give more information.
@@ -349,7 +349,7 @@ A vignette is essential to document the package correctly:
 usethis::use_vignette("multiple")
 ```
 
-The file `multiple.Rmd` is created in the `thumbnail` folder.
+The file `multiple.Rmd` is created in the `vignette` folder.
 Add a subtitle in its header: the short description of the package:
 
 ```
@@ -357,12 +357,12 @@ title: "multiple"
 subtitle: "Multiples of numbers"
 ```
 
-The rest of the header allows R to build the thumbnail from R Markdown code.
+The rest of the header allows R to build the vignette from R Markdown code.
 
-The body of the thumbnail contains by default R code to declare the options for presenting the code snippets and loading the package.
+The body of the vignette contains by default R code to declare the options for presenting the code snippets and loading the package.
 An introduction to the use of the package should be written in this document, in R Markdown.
 
-During the development of the package, the thumbnail can be built manually by running:
+During the development of the package, the vignette can be built manually by running:
 
 ```{r build_vignettes, eval=FALSE}
 devtools::build_vignettes("multiple") 
@@ -370,7 +370,7 @@ devtools::build_vignettes("multiple")
 
 The resulting files are placed in `doc/`: open the `.html` file to check the result.
 
-RStudio does not create the package thumbnail when the "Install and Restart" command in the Build window is called.
+RStudio does not create the package vignette when the "Install and Restart" command in the Build window is called.
 For a complete installation, two solutions are possible:
 
 - Build the package source file ("Build > More > Build Source Package") and then install it ("Packages > Install > Install from > Package Archive file").
@@ -389,7 +389,7 @@ vignette("multiple")
 
 ## pkgdown
 
-The **pkgdown** package creates a companion site to the package[^505], which includes the `README.md` file as the home page, the thumbnail in a "Get Started" section, all of the help files with their executed examples (the "Reference" section), the `NEWS.md` file for a history of the package (the "Changelog" section), and information from the `DESCRIPTION` file.
+The **pkgdown** package creates a companion site to the package[^505], which includes the `README.md` file as the home page, the vignette in a "Get Started" section, all of the help files with their executed examples (the "Reference" section), the `NEWS.md` file for a history of the package (the "Changelog" section), and information from the `DESCRIPTION` file.
 
 
 [^505]: Example: https://EricMarcon.github.io/entropart/
@@ -432,16 +432,16 @@ This way, users of a production version of the package have access to the site w
 
 The site can be enriched in several ways:
 
-* By adding articles in R Markdown format to the `thumbnails/articles` folder.
-The thumbnail does not require significant computational resources to present examples because it is built at the same time as the package.
+* By adding articles in R Markdown format to the `vignettes/articles` folder.
+The vignette should not require significant computational resources to present examples because it is built at the same time as the package.
 The articles are generated by **pkgdown**, independently, and can therefore be more ambitious;
-* By improving its presentation (grouping functions by themes, adding badges, a sticker[^512]...): refer to the thumbnail of **pkgdown**.
+* By improving its presentation (grouping functions by themes, adding badges, a sticker[^512]...): refer to the help of **pkgdown**.
 
-[^512]: L'application Shiny **hexmake** permet de créer facilement un sticker: https://connect.thinkr.fr/hexmake/
+[^512]: The Shiny application **hexmake** allows easy creation of a sticker: https://connect.thinkr.fr/hexmake/
 
 To enrich the documentation of the package, it is possible to use a `README.Rmd` file in R Markdown format, to be knitted to create the standard `README.md` of GitHub, used as the home page of the **pkgdown** site, which can in this way present examples of use of the code.
 The approach is detailed in *R Packages*[^513].
-The added complexity is to be compared to the gain: a simple homepage (without code) with links to the thumbnail and articles is easier to implement. 
+The added complexity is to be compared to the gain: a simple homepage (without code) with links to the vignette and articles is easier to implement. 
 
 [^513]: https://r-pkgs.org/release.html?q=readme#readme-rmd
 
@@ -460,7 +460,7 @@ fuzzydouble <- function(number, sd=1) {
 The noise is drawn in a centered normal distribution of standard deviation `sd` and added to the calculated value.
 
 `rnorm()` is a function of the **stats** package. 
-Even if the package is systematically loaded by R, the package to which the function belongs must be declared: the only exceptions are functions from the **base** package.
+Even though the package is systematically loaded by R, the package to which the function belongs must be declared: the only exceptions are functions from the **base** package.
 
 The **stats** package must first be declared in `DESCRIPTION` which contains an `Imports:` statement.
 All packages used by the **multiple** code will be listed, separated by commas.
@@ -469,7 +469,7 @@ All packages used by the **multiple** code will be listed, separated by commas.
 Imports: stats
 ```
 
-This "import" simply means that the **stats** package must be loaded, but not necessarily attached (see section `@ref(sec:environnements)), for **multiple** to work.
+This "import" simply means that the **stats** package must be loaded, but not necessarily attached (see section \@ref(sec:environnements)), for **multiple** to work.
 
 Then, the `rnorm()` function must be found in the **multiple** package environment.
 There are several ways to fulfill this requirement.
@@ -480,7 +480,7 @@ First, the following comment could be provided for **roxygen2**:
 ```
 
 The entire namespace of the **stats** package would be attached to and accessible by the **multiple** package. 
-This is not a good practice because it multiplies the risks of name conflicts (see section \@ref(sec:environnements)).
+This is not a good practice because it inreases the risk of name conflicts (see section \@ref(sec:environnements)).
 Note that the notion of import used here is different from that of `DESCRIPTION`, although they have the same name.
  
 It is best to import only the `rnorm()` function by declaring it in the function documentation:
@@ -548,7 +548,7 @@ plot
 ```
 
 There are many variations of `plot` in R, which are functions with names of the form `plot.class()`.
-**Stats** provides a function `plot.lm()` to create a figure from a linear model.
+**stats** provides a function `plot.lm()` to create a figure from a linear model.
 Many packages create classes tailored to their objects and provide a `plot` method for each class.
 The functions can be listed:
 
@@ -569,7 +569,7 @@ The `print` method is used to display any object (it is implicit when only the n
 
 ```{r print}
 my_lm <- lm(dist~speed, data=cars)
-# Equivalent de "> my_lm"
+# Equivalent to "> my_lm"
 print(my_lm)
 ```
 
@@ -615,11 +615,11 @@ tryCatch(print(y), error= function(e) print(e))
 
 New generic methods can be created and declined according to the classes.
 
-As an example, let's create a generic method `triple` which will calculate the triple of the values in the package **multiple**, declined in two distinct functions: one for integers and one for reals.
-Calculations on integers are faster than those on reals, which justifies the effort of writing two versions of the code.
+As an example, let's create a generic method `triple` which will calculate the triple of numbers in the package **multiple**, declined in two distinct functions: one for integers and one for reals.
+Calculations on integers are faster than those on reals, which justifies (at least in theory) the effort of writing two versions of the code.
 
 ```{r UseMethod}
-# Méthode générique
+# Generic Method
 triple <- function (x, ...) {
   UseMethod("triple")
 }
@@ -669,8 +669,8 @@ This search takes a lot of time and justifies the use of generic methods for the
 
 #### Creating a class
 
-In a package, classes are created if the results of the functions justify it: list structure and identification of the class with an object ("lm" is the class of linear models).
-For each class created, the `print`, `summary` and `plot` methods (if a graphical representation is possible) must be written.
+In a package, classes are created if the results of the functions justify it: a list structure and the identification of the class with an object ("lm" is the class of linear models).
+For each class created, the `print`, `summary` and `plot` methods (if a graphical representation is possible) should be written.
 
 Let's write a function `multiple()` whose result will be an object of a new class, `multiple`, which will be a list storing the values to multiply, the multiplier and the result.
 
@@ -684,12 +684,12 @@ multiple <- function(number, times=1) {
   class(result) <- c("multiple", class(result))
   return(result)
 }
-# Classe du résultat
+# Class of the result
 my_multiple <- multiple(1:3, 2)
 class(my_multiple)
 ```
 
-The call to the `multiple()` function returns an object of class `multiple`, which is also of class `list'.
+The call to the `multiple()` function returns an object of class `multiple`, which is also of class `list`.
 In the absence of a `print.multiple()` function, R looks for the `print.list()` function, which does not exist, and falls back on the `print.default()` function:
 
 ```{r my_multiple}
@@ -703,7 +703,7 @@ print.multiple <- function(x, ...) {
   print.default(x$y)
 }
 
-# Nouvel affichage
+# New presentation
 my_multiple
 ```
 
@@ -741,7 +741,7 @@ autoplot(my_multiple)
 ```
 
 For technical reasons related to unconventional evaluation in the tidyverse, variable names used by `aes()` must be prefixed with `.data$` in packages and `rlang::.data` must be imported.
-Otherwise, the package check returns a note that the variables `x` and `y`, used by the arguments to `aes()` have not been declared and may not exist in the local environment (see section \@ref(sec:environnements)).
+Otherwise, the package check returns a note that the variables `x` and `y`, used by the arguments of `aes()` have not been declared and may not exist in the local environment (see section \@ref(sec:environnements)).
 
 #### Documentation
 
@@ -780,7 +780,7 @@ graphics::plot
 ggplot2::autoplot
 ```
 
-- roxygen2** automatically creates a help file `reexports.Rd` in which there is a link to the original documentation of the re-exported generics.
+- **roxygen2** automatically creates a help file `reexports.Rd` in which there is a link to the original documentation of the re-exported generics.
 
 
 In `DESCRIPTION`, the original package for each generic must be listed in the `Imports:` directive:
@@ -788,7 +788,7 @@ In `DESCRIPTION`, the original package for each generic must be listed in the `I
 Imports: ggplot2, graphics
 ```
 
-Finally, importing functions from the tidyverse also requires some precautions:
+Last, importing functions from the tidyverse also requires some precautions:
 
 - the **tidyverse** package is reserved for interactive use in R: there is no way to import it into `DESCRIPTION` because its dependencies may change and lead to unpredictable results.
 The **magrittr** package provides the pipes, mainly `%>%`.
@@ -804,7 +804,7 @@ Imports: magrittr, rlang, stats
 ```
 
 - Functions in the tidyverse that use column names from tibbles or dataframes generate warnings at package check time because these names are confused with undefined variable names.
-To avoid this confusion, the `.data` object of the **rlang** package is used (for example in `aes()` seen above).
+To avoid this confusion, the `.data` object of the **rlang** package is helpful (for example in `aes()` seen above).
 It must be imported:
 ```{r importFrom2}
 #' @importFrom rlang .data
@@ -961,18 +961,18 @@ Building the package will lead to compiling the code: Rtools are therefore essen
 
 ### Tidy package
 
-Any modern package must be tidyverse compatible, which requires little effort:
+Any modern package should be tidyverse compatible, which requires little effort:
 
-* to allow pipelines, the main argument of functions must be the first one;
-* functions that transform data must accept a dataframe or tibble as the first argument and return an object of the same format;
-* methods `plot()` must be doubled with methods `autoplot()` with the same arguments that produce the same graph with **ggplot2**.
+* to allow pipelines, the main argument of functions should be the first one;
+* functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format;
+* methods `plot()` should be doubled with methods `autoplot()` with the same arguments that produce the same graph with **ggplot2**.
 
 
 ## Bibliography
 
 The documentation of a package uses bibliographic references. 
 They can be managed automatically with **Rdpack** and **roxygen2**.
-References used in R Markdown files (thumbnail, site produced by **pkgdown**) are not concerned.
+References used in R Markdown files (vignette, site produced by **pkgdown**) are not concerned.
 
 ### Preparation
 
@@ -1000,9 +1000,9 @@ Finally, import the `reprompt()` function from **Rdpack** by adding the followin
 ### Citations
 
 References are cited by the command `\insertCite{key}{package}` in the documentation for **roxygen2**.
-package` is the name of the package in which the `REFERENCES.bib` file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use **Rdpack**.
+`package` is the name of the package in which the `REFERENCES.bib` file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use **Rdpack**.
 
-key` is the identifier of the reference in the file.
+`key` is the identifier of the reference in the file.
 The following example[^507] is from the documentation of the **SpatDiv** package hosted on GitHub, in its `.R` file:
 
 ```{r Citations}
@@ -1039,9 +1039,9 @@ To place the author's name outside the parenthesis, add the statement `;textual`
 ```
 \insertCite{Marcon2014c;textual}{SpatDiv}
 ```
-To quote several references (necessarily from the same package), separate them with commas.
+To cite several references (necessarily from the same package), separate them with commas.
 
-At the end of the documentation of an object using quotes, systematically add a list of references:
+At the end of the documentation of an object using citations, systematically add a list of references:
 
 ```{r insertAllCited}
 #' @references
@@ -1102,7 +1102,7 @@ usethis::use_testthat()
 library("testthat")
 ```
 
-The tests must be added as `.R' files whose names must begin with `test' in the `tests/testthat' folder.
+The tests must be added as `.R` files whose names must begin with `test' in the `tests/testthat` folder.
 
 Each test (so the content of each file) starts with its context, i.e. a set of tests. For example, in a file `test_double.R`:
 
@@ -1111,7 +1111,7 @@ context("function double")
 ```
 
 The tests are contained in files that group them by topic, for example `test_double.R`.
-The name of each test is passed as an argument to the function `test_that())`:
+The name of each test is passed as an argument to the function `test_that()`:
 
 ```{r test_that2}
 test_that("Double values are correct", {
@@ -1187,7 +1187,7 @@ The analysis of the code coverage by tests (which parts of the code are tested o
 
 GitHub is also able to rebuild the package documentation with **pkgdown**, another resource-consuming operation, after the tests have passed.
 
-The section \@ref(sec:package-ci6) details how to do this.
+Section \@ref(sec:package-ci6) details how to do this.
 
 
 ## CRAN {#sec:package-cran}
@@ -1219,7 +1219,7 @@ When the package is ready, submission to CRAN is done through the dedicated web 
 
 [^511]: https://xmpalantir.wu.ac.at/cransubmit/
 
-In case of rejection, process the requests and resubmit by incrementing the version number.
+In case of rejection, process the requests and resubmit after incrementing the version number.
 
 
 ### Maintenance
