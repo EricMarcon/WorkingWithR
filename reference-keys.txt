@@ -18,7 +18,7 @@ fig:e-rmd1
 fig:pressure
 fig:pressure2
 tab:kable
-eq:disque
+eq:disc
 fig:rediger-GitHub-Clone
 fig:rediger-Projet-GitHub
 fig:rediger-demo
@@ -195,7 +195,7 @@ ragg-package
 sec:targetsmd
 declaration-of-the-workflow
 declaration-of-targets
-running-the-flow
+running-the-workflow
 using-the-results
 source-control-1
 chap-package
@@ -246,7 +246,7 @@ activation-of-the-repository-on-codecov
 scripting-github-actions
 sec:declenchement
 workflow-name
-first-task
+first-job
 first-steps
 caches
 sec:packages-ci
@@ -272,7 +272,7 @@ sec:hebergement-shiny
 chap-enseigner
 learnr
 first-tutorial
-broadcasting
+sharing
 github-classrooms
 registration
 organizations

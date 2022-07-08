@@ -373,7 +373,7 @@
 
 \author{Eric Marcon}
 
-\date{07/05/2022}
+\date{07/08/2022}
 
 
 % Include headers (preamble.tex) here
@@ -468,7 +468,7 @@ Chapter \ref{chap-git} presents source control with git and GitHub.
 
 Chapter \ref{chap-rediger} shows how to write simple (articles) or complex (books) documents with R Markdown, integrating the data, the code to process them and the text to present them.
 Chapter \ref{chap-package} presents a step-by-step method to efficiently create a package.
-Chapter \ref{chap-ci} introduces the use of continuous integration to automatically produce documents, verify package code and produce package thumbnails.
+Chapter \ref{chap-ci} introduces the use of continuous integration to automatically produce documents, verify package code and produce package vignettes.
 Chapter \ref{chap-shiny} introduces Shiny to develop R interactive applications.
 Finally, chapter \ref{chap-enseigner} introduces the tools for teaching R.
 
@@ -763,7 +763,7 @@ Some packages are not available on CRAN but only on GitHub because they are stil
 It can also be useful to install a development version of a package published on CRAN for a specific use like testing new features.
 
 The installation is handled by the \textbf{remotes} package.
-The \texttt{build\_thumbnails} argument is needed to create the thumbnails of the package.
+The \texttt{build\_vignettes} argument is needed to create the vignettes of the package.
 
 \scriptsize
 
@@ -1276,7 +1276,7 @@ Its code is just a \texttt{UseMethod("print")} declaration:
 \begin{verbatim}
 ## function (x, ...) 
 ## UseMethod("print")
-## <bytecode: 0x7ff585a040b8>
+## <bytecode: 0x7ffbd5a040b8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1757,7 +1757,7 @@ The code of a function called from the console runs in a child environment of th
 \end{Shaded}
 
 \begin{verbatim}
-## <environment: 0x7ff575c430a8>
+## <environment: 0x7ffbe4fd3ca0>
 \end{verbatim}
 
 \begin{Shaded}
@@ -1829,7 +1829,7 @@ Example:
 \begin{verbatim}
 ## function (save = "default", status = 0, runLast = TRUE) 
 ## .Internal(quit(save, status, runLast))
-## <bytecode: 0x7ff5766015f0>
+## <bytecode: 0x7ffbc699d7e8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -2016,7 +2016,7 @@ The function returns the execution time of the code.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.024   0.001   0.124
+##    0.02    0.00    0.02
 \end{verbatim}
 
 \normalsize
@@ -2048,15 +2048,15 @@ The goal is to compare the speed of computing the square of a vector (or a numbe
 \begin{verbatim}
 ## Unit: microseconds
 ##   expr     min       lq      mean   median       uq
-##  f1(X)  43.497  46.3015  64.74435  48.2975  52.8785
-##  f2(X)  51.880  54.4910  73.95323  55.9725  59.4115
-##  f3(X) 285.635 288.9140 312.06387 290.4525 301.2260
-##  f4(X) 416.628 420.0535 444.41160 422.9570 432.3195
+##  f1(X)  38.687  41.3195  76.56392  43.4775  50.7400
+##  f2(X)  47.387  49.3310  91.50374  51.4725  68.9485
+##  f3(X) 280.380 283.1450 327.69357 286.1050 302.2140
+##  f4(X) 402.410 414.5925 460.42282 418.8160 433.7085
 ##       max neval
-##  1404.406   100
-##  1504.520   100
-##  1871.913   100
-##  1947.479   100
+##  1304.066   100
+##  1513.934   100
+##  1853.768   100
+##  2151.650   100
 \end{verbatim}
 
 \normalsize
@@ -2079,10 +2079,10 @@ To choose the columns to display, use the following syntax:
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)  48.2975
-## 2 f2(X)  55.9725
-## 3 f3(X) 290.4525
-## 4 f4(X) 422.9570
+## 1 f1(X)  43.4775
+## 2 f2(X)  51.4725
+## 3 f3(X) 286.1050
+## 4 f4(X) 418.8160
 \end{verbatim}
 
 \normalsize
@@ -2112,10 +2112,10 @@ The previous test is displayed again.
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)  48.2975
-## 2 f2(X)  55.9725
-## 3 f3(X) 290.4525
-## 4 f4(X) 422.9570
+## 1 f1(X)  43.4775
+## 2 f2(X)  51.4725
+## 3 f3(X) 286.1050
+## 4 f4(X) 418.8160
 \end{verbatim}
 
 \normalsize
@@ -2241,7 +2241,7 @@ The function \texttt{lnq} of the package \textbf{entropart} returns the deformed
 ##         return(Log)
 ##     }
 ## }
-## <bytecode: 0x7ff577247cf0>
+## <bytecode: 0x7ffbc7a89ee8>
 ## <environment: namespace:entropart>
 \end{verbatim}
 
@@ -2294,10 +2294,10 @@ There are several versions of this function:
 
 \begin{verbatim}
 ##                                    expr   median
-## 1                              sqrt(x1)   4.6500
-## 2                lapply(x1, FUN = sqrt) 302.2960
-## 3                sapply(x1, FUN = sqrt) 359.9225
-## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 295.7905
+## 1                              sqrt(x1)   4.7285
+## 2                lapply(x1, FUN = sqrt) 324.2335
+## 3                sapply(x1, FUN = sqrt) 386.2690
+## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 307.2165
 \end{verbatim}
 
 \normalsize
@@ -2351,8 +2351,8 @@ To evaluate the performance gain, the following code removes all automatic compi
 
 \begin{verbatim}
 ##        expr   median
-## 1  Loop(x1) 805.3335
-## 2 Loop2(x1)  79.2990
+## 1  Loop(x1) 801.9045
+## 2 Loop2(x1)  78.2410
 \end{verbatim}
 
 \begin{Shaded}
@@ -2384,8 +2384,8 @@ For loops are now much faster than \texttt{vapply}.
 
 \begin{verbatim}
 ##                        expr   median
-## 1 vapply(x1, FUN = sqrt, 0) 293.4275
-## 2                  Loop(x1)  77.6800
+## 1 vapply(x1, FUN = sqrt, 0) 290.8495
+## 2                  Loop(x1)  75.7675
 \end{verbatim}
 
 \normalsize
@@ -2407,9 +2407,9 @@ Be careful, the performance test can be misleading:
 \end{Shaded}
 
 \begin{verbatim}
-##                                             expr    median
-## 1                      vapply(x1, FUN = sqrt, 0)  298.6285
-## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3422.6190
+##                                             expr   median
+## 1                      vapply(x1, FUN = sqrt, 0)  296.587
+## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3267.618
 \end{verbatim}
 
 \normalsize
@@ -2476,8 +2476,8 @@ This code is equivalent to \texttt{runif(3)}, with performance similar to \textt
 
 \begin{verbatim}
 ##                        expr    median
-## 1 replicate(1000, runif(1)) 3755.8875
-## 2               runif(1000)   36.2145
+## 1 replicate(1000, runif(1)) 3011.6480
+## 2               runif(1000)   33.0025
 \end{verbatim}
 
 \normalsize
@@ -2514,10 +2514,10 @@ Write the loops instead.
 \end{Shaded}
 
 \begin{verbatim}
-##                              expr    median
-## 1       SumLoop(diamonds[-(2:4)])  4.100018
-## 2 apply(diamonds[-(2:4)], 2, sum) 11.116013
-## 3       colSums(diamonds[-(2:4)])  2.901244
+##                              expr   median
+## 1       SumLoop(diamonds[-(2:4)]) 3.735465
+## 2 apply(diamonds[-(2:4)], 2, sum) 9.581427
+## 3       colSums(diamonds[-(2:4)]) 2.518930
 \end{verbatim}
 
 \normalsize
@@ -2725,7 +2725,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.000   0.630
+##   0.003   0.001   0.512
 \end{verbatim}
 
 \begin{Shaded}
@@ -2737,7 +2737,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.006   0.013   0.377
+##   0.007   0.013   0.381
 \end{verbatim}
 
 \normalsize
@@ -2757,7 +2757,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.000   0.000   2.074
+##   0.000   0.000   2.146
 \end{verbatim}
 
 \begin{Shaded}
@@ -2769,7 +2769,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.008   1.056
+##   0.001   0.003   1.114
 \end{verbatim}
 
 \normalsize
@@ -2788,7 +2788,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.004   1.061
+##   0.001   0.003   1.094
 \end{verbatim}
 
 \begin{Shaded}
@@ -2799,7 +2799,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.007   2.237
+##   0.002   0.007   2.044
 \end{verbatim}
 
 \normalsize
@@ -2867,7 +2867,7 @@ For everyday use, \texttt{mclapply} is faster, except on Windows, and simpler (i
 \subsubsection{How it works}\label{how-it-works}}
 
 The \textbf{foreach} package allows advanced use of parallelization.
-Read its thumbnails.
+Read its vignettes.
 
 \scriptsize
 
@@ -2991,7 +2991,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.000   0.716
+##   0.003   0.000   0.524
 \end{verbatim}
 
 \begin{Shaded}
@@ -3006,7 +3006,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.008   0.018   0.414
+##   0.007   0.017   0.405
 \end{verbatim}
 
 \normalsize
@@ -3092,7 +3092,7 @@ The distance can be calculated by two nested \texttt{sapply()}.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.833   0.035   8.526
+##   5.620   0.032   5.682
 \end{verbatim}
 
 \begin{Shaded}
@@ -3126,7 +3126,7 @@ The gain is negligible on a long computation like this one but important for sho
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.518   0.033   8.815
+##   5.432   0.029   5.522
 \end{verbatim}
 
 \begin{Shaded}
@@ -3169,7 +3169,7 @@ A more significant improvement is to compute the square roots only at the end of
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.407   0.029   8.191
+##   5.328   0.027   5.414
 \end{verbatim}
 
 \begin{Shaded}
@@ -3208,7 +3208,7 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.127   0.014   4.627
+##   3.117   0.021   3.180
 \end{verbatim}
 
 \begin{Shaded}
@@ -3249,7 +3249,7 @@ On MacOS or Linux, the computation is accelerated.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.343   0.375   3.285
+##   3.405   0.386   1.948
 \end{verbatim}
 
 \begin{Shaded}
@@ -3290,7 +3290,7 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.080   0.009   3.109
+##   2.021   0.011   2.038
 \end{verbatim}
 
 \begin{Shaded}
@@ -3337,7 +3337,7 @@ The test is run here with 10 times fewer points, so 100 times fewer distances to
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.959   0.032   3.899
+##   2.774   0.027   2.810
 \end{verbatim}
 
 \begin{Shaded}
@@ -3382,7 +3382,7 @@ The performance is still much lower than a simple for loop (remember: 100 times 
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.128   0.065   0.120
+##   0.129   0.062   0.119
 \end{verbatim}
 
 \begin{Shaded}
@@ -3556,11 +3556,11 @@ The usage in R is identical to the usage of C++ functions interfaced by \textbf{
 \end{Shaded}
 
 \begin{verbatim}
-## Unit: milliseconds
+## Unit: microseconds
 ##                                                      expr
 ##  d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints - 1) * 2
-##       min       lq     mean  median       uq      max neval
-##  2.159869 2.265267 4.012652 2.41905 4.518602 33.83954   100
+##      min       lq     mean   median       uq      max neval
+##  842.494 893.0585 1024.536 916.8835 998.3495 2580.236   100
 \end{verbatim}
 
 \begin{Shaded}
@@ -3600,13 +3600,13 @@ Multiplying the number of points by 50, the serial computation time must be mult
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   7.085   0.055  10.179
+##   7.024   0.031   7.096
 \end{verbatim}
 
 \normalsize
 
 In parallel, the time increases little: parallelization becomes really efficient.
-This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{7772} seconds.
+This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{5094} seconds.
 
 \scriptsize
 
@@ -3619,7 +3619,7 @@ This time is to be compared to that of the reference for loop, multiplied by 250
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.117   0.020   3.152
+##   5.062   0.046   1.999
 \end{verbatim}
 
 \normalsize
@@ -3773,7 +3773,7 @@ The workflow is run by \texttt{tar\_make()}.
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 3.284 seconds
+## • end pipeline: 3.668 seconds
 \end{verbatim}
 
 \normalsize
@@ -3801,7 +3801,7 @@ The workflow is now up to date and \texttt{tar\_make()} does not recompute anyth
 ## ✔ skip target X
 ## ✔ skip target d
 ## ✔ skip target map
-## ✔ skip pipeline: 0.097 seconds
+## ✔ skip pipeline: 0.325 seconds
 \end{verbatim}
 
 \normalsize
@@ -5057,13 +5057,13 @@ A simple line break has no effect on the document produced: it allows to separat
 
 A line break marks a paragraph change.
 
-The different levels of the plan are designated by the number of braces at the beginning of the line: \texttt{\#} for a level 1 title, \texttt{\#\#} for a level 2 title, etc.
-A space separates the braces and the title text.
+The different levels of the plan are designated by the number of hashes at the beginning of the line: \texttt{\#} for a level-1 title, \texttt{\#\#} for a level-2 title, etc.
+A space separates the hashes and the title text.
 
-Bulleted lists are marked by a dash (followed by a space) at the beginning of the line.
-A line break is required before the beginning of the list, but the elements of the list are separated by a simple line break.
+Bullet lists are marked by a dash (followed by a space) at the beginning of the line.
+A double line break is required before the beginning of the list, but the elements of the list are separated by a simple line break.
 Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
-Finally, numbered lists are created in the same way by replacing the hyphens by numbers, whose value is not important.
+Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value is not important.
 
 In the text, the italicized parts are surrounded by a star or an underscore (\texttt{*italic*}), while two stars mark the bold.
 
@@ -5072,7 +5072,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (\te
 
 R code is included in code chunks that are easily created by clicking on the \enquote{Insert a new code chunk} button above the source code window in RStudio.
 They start and end with three backquotes on a new line.
-These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
+These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma-separated list of options, for example:
 
 \begin{verbatim}
 ```{r cars, echo=TRUE}
@@ -5135,7 +5135,7 @@ It contains at least the name of the figure and its caption.
 If the caption is long, the header is not very readable.
 Furthermore, the caption is limited to simple text.
 For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text \texttt{(ref:FigureName)}.
-The figure \ref{fig:pressure2} benefits from an improved caption.
+Figure \ref{fig:pressure2} benefits from an improved caption.
 
 
 
@@ -5147,7 +5147,7 @@ The figure \ref{fig:pressure2} benefits from an improved caption.
 
 }
 
-\caption{Title with \emph{italic}, math (\(\sqrt\pi\)) and link to figure \ref{fig:pressure}}\label{fig:pressure2}
+\caption{Title with \emph{italic}, math (\(\sqrt\pi\)) and a reference to figure \ref{fig:pressure}}\label{fig:pressure2}
 \end{figure}
 
 \normalsize
@@ -5164,7 +5164,7 @@ Always place these files in the \texttt{images} folder for good organization.
 \hypertarget{tables}{%
 \subsubsection{Tables}\label{tables}}
 
-The horizontal - and vertical separators \textbar{} allow to draw an array according to the Markdown syntax, but it is not the best method.
+The horizontal \texttt{-} and vertical \texttt{\textbar{}} separators allow to draw a table according to the Markdown syntax, but it is not the best method.
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
@@ -5206,7 +5206,7 @@ Sepal length ($l_s$) & Width & Petal length & Width & Species\\
 
 \normalsize
 
-The caption is specified by the \texttt{caption} argument and referencing is possible because the array is given a label whose name is \texttt{tab:} followed by the name of the code snippet (array \ref{tab:kable}).
+The caption is specified by the \texttt{caption} argument and referencing is possible because the table is given a label whose name is \texttt{tab:} followed by the name of the code snippet (table \ref{tab:kable}).
 As with the figures, an enhanced caption can be written in a separate paragraph.
 A short caption for a possible list of tables (option \texttt{lot:\ true} in the header) is declared in the \texttt{caption.short} argument of \texttt{kable()}.
 
@@ -5214,9 +5214,9 @@ Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the 
 Since the table contains mathematics (in the name of the first column), the \texttt{escape\ =\ FALSE} option is necessary.
 
 The \texttt{bootstrap\_options\ =\ "striped"} style option provides more readable tables in HTML.
-Finally, the \texttt{full\_width\ =\ FALSE} option allows to adjust the width of the table to its content instead of occupying the whole available width.
+Last, the \texttt{full\_width\ =\ FALSE} option allows to adjust the width of the table to its content instead of occupying the whole available width.
 
-The \textbf{flextable} package allows creating more elaborate arrays, as in the following example which displays the long sepals in color.
+The \textbf{flextable} package allows creating more elaborate tables, as in the following example which displays the long sepals in color.
 
 \scriptsize
 
@@ -5339,13 +5339,13 @@ This limitation is prohibitive.
 \hypertarget{maths}{%
 \subsubsection{Maths}\label{maths}}
 
-Equations in LaTeX format can be inserted in line, like \(A=\pi r^2\) (code: \texttt{\$A=\textbackslash{}pi\ r\^{}2\$}) or isolated (the \$ are doubled) like \[e^{i \pi} = -1.\]
+Equations in LaTeX format can be inserted inline, like \(A=\pi r^2\) (code: \texttt{\$A=\textbackslash{}pi\ r\^{}2\$}) or in a new line (the \$ are doubled) like \[e^{i \pi} = -1.\]
 
-They can be numbered: see equation \eqref{eq:disque}, using the \texttt{\textbackslash{}equation} environment.
+They can be numbered: see equation \eqref{eq:disc}, using the \texttt{\textbackslash{}equation} environment.
 
 \begin{equation}
   A = \pi r^2.
-  \label{eq:disque}
+  \label{eq:disc}
 \end{equation}
 
 The numbered equation is created by the following code:
@@ -5353,7 +5353,7 @@ The numbered equation is created by the following code:
 \begin{verbatim}
 \begin{equation}
   A = \pi r^2.
-  \label{eq:disque}
+  \label{eq:disc}
 \end{equation}
 \end{verbatim}
 
@@ -5364,7 +5364,7 @@ Figures and tables have an automatically generated label, identical to the name 
 
 For equations, the label is added manually by the code \texttt{(\textbackslash{}\#eq:xxx)} before the end of the equation.
 
-Sections can be given a label by ending their title with \texttt{\{\#yyy\}}.
+Sections can be given a label by completing their title with \texttt{\{\#yyy\}}.
 Sections receive by default an implicit label\footnote{\url{https://pandoc.org/MANUAL.html\#extension-implicit_header_references}} corresponding to their text, in lower case, where special characters are replaced by dashes.
 Implicit labels are unstable (they change with the title of the section) and difficult to predict: this is why it is advisable to add an explicit label to each section being cross-referenced.
 This is the case for chapters, for which the name of the HMTL file produced is identical to the label.
@@ -5390,16 +5390,16 @@ Then use the contextual menu \enquote{Export collection\ldots{}} and select:
 \begin{itemize}
 \tightlist
 \item
-  Format: \enquote{Better BibTeX} for articles and presentations or \enquote{Better BibLaTeX} for dissertations, depending on whether the bibliography is managed by bibtex and natbib or biber and biblatex for PDF production.
+  Format: \enquote{Better BibTeX} for articles and presentations or \enquote{Better BibLaTeX} for memoirs, depending on whether the bibliography is managed by bibtex and natbib or biber and biblatex for PDF production.
 \item
   Check the \enquote{Keep up to date} box so that any changes in Zotero are exported automatically.
 \item
   Click on \enquote{OK} then choose the name of the file (\texttt{references.bib}) and its location (the R project folder).
 \end{itemize}
 
-The references can be called in the text, between brackets by the code \texttt{{[}@Reference{]}}, or in the text, by removing the brackets.
+The references can be called in the text, between square brackets by the code \texttt{{[}@Reference{]}}, or in the text, by removing the brackets.
 
-Bibliography is handled by pandoc when producing Word or HTML documents.
+The bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line
 
 \begin{verbatim}
@@ -5428,7 +5428,7 @@ lang: fr-FR
 otherlangs: [en-US, it]
 \end{verbatim}
 
-The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:
+The change of language in the document is managed in LaTeX, but not in HTML, by inserting on a new line the following command:
 
 \begin{verbatim}
 \selectlanguage{english}
@@ -5456,7 +5456,7 @@ Use the menu \enquote{File \textgreater{} New File \textgreater{} R Markdown\ldo
 The list of available templates and the package that offers them is then displayed.
 
 Select the \emph{Simple Article} template from the \textbf{memoiR} package, choose the name of the project (\enquote{Name:}, which will be the name of the folder in which it will be created, and its parent folder (\enquote{Location:}).
-In the organization proposed in section \ref{sec:solution-folders}, the parent folder is \texttt{\%LOCALAPPDATA\%\textbackslash{}ProjectsR}.
+In the organization proposed in section \ref{sec:solution-dossiers}, the parent folder is \texttt{\%LOCALAPPDATA\%\textbackslash{}ProjectsR}.
 The project name must not contain any special characters (accent, space\ldots) to ensure its portability on all operating systems (Windows, Linux, MacOS).
 
 Advanced templates create a folder with many files (bibliography, styles, LaTeX template\ldots), unlike simple templates which create only one file.
@@ -5488,9 +5488,9 @@ The document can be knitted in several formats:
 \end{itemize}
 
 \hypertarget{sec:article-en-ligne}{%
-\subsubsection{Put online}\label{sec:article-en-ligne}}
+\subsubsection{Publish}\label{sec:article-en-ligne}}
 
-The \textbf{memoiR} package simplifies the uploading of produced documents.
+The \textbf{memoiR} package simplifies the uploading of produced documents to a web server.
 
 The \texttt{build\_gitignore()} function creates a \texttt{.gitignore} file for source control which must be enabled (see section \ref{sec:git-cds}).
 
@@ -5501,7 +5501,7 @@ The project must be linked to a GitHub repository (section \ref{sec:creerdepot})
 
 Two publication strategies are possible.
 In the first one, the documents are knitted locally and placed in the \texttt{docs} folder, which will be the support of the GitHub pages.
-In the second one, the documents are knitted by GitHub Actions each time modifications are pushed on the repository: we talk about continuous integration (section \ref{chap-ci}).
+In the second one, the documents are knitted by GitHub Actions each time modifications are pushed on the repository: this is called continuous integration (section \ref{chap-ci}).
 
 The local production strategy is covered here; continuous integration will be covered in section \ref{sec:memoiR-ci}.
 
@@ -5531,8 +5531,8 @@ It is not possible to directly exchange standard R Markdown content with documen
 
 The \emph{Beamer Presentation} template of \textbf{memoiR} allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example\footnote{\url{https://EricMarcon.github.io/Chao1/}, choisir Lecture (HTML) ou Téléchargement (PDF).}.
 
-The approach is identical to that for articles in the same package.
-The title levels allow you to separate the parts of the presentation (\texttt{\#}) and the slides (\texttt{\#\#}).
+The approach is identical to that of articles in the same package.
+The title levels allow separating the parts of the presentation (\texttt{\#}) and the slides (\texttt{\#\#}).
 Two formats are available in HTML: ioslides\footnote{\url{https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html}} and Slidy\footnote{\url{https://bookdown.org/yihui/rmarkdown/slidy-presentation.html}}.
 Some specificities in the code allow to refine the presentation of the slides, for a two-column display for example: they are documented in the template.
 
@@ -5552,7 +5552,7 @@ This document was written with this template.
 Creating a work project is identical to the one presented above: the template is: \emph{Memoir}.
 The created folder must be turned into a project.
 
-Run \texttt{build\_git()} and \texttt{build\_readme()}, enable source control and push the project to GitHub, in the same way as for an article (section \ref{sec:article-in-line}).
+Run \texttt{build\_git()} and \texttt{build\_readme()}, enable source control and push the project to GitHub, in the same way as for an article (section \ref{sec:article-en-ligne}).
 
 Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g.: \texttt{01-intro.Rmd}).
 All Rmd files in the project folder are actually treated as chapters, sorted by filename, including those provided by the template (startup and syntax) which should be deleted except for \texttt{99-references.Rmd} which contains the bibliography, placed at the end.
@@ -5561,7 +5561,7 @@ The \texttt{index.Rmd} file is special: it contains the document header and the 
 \hypertarget{write-1}{%
 \subsection{Write}\label{write-1}}
 
-The first chapter is placed in the foreword of the printed book: it should not be numbered (hence the \texttt{\{-\}} code next to the title) in the HTML version.
+The first chapter is placed in the front matter of the printed book: it should not be numbered (hence the \texttt{\{-\}} code next to the title) in the HTML version.
 It must end with the LaTeX command \texttt{\textbackslash{}mainmatter} which marks the beginning of the body of the book.
 
 The outline levels start with \texttt{\#} for chapters (only one per file), \texttt{\#\#} for sections, etc.
@@ -5584,11 +5584,11 @@ The home page of the website is created by bookdown from the \texttt{index.Rmd} 
 
 The layout is done fully automatically by pandoc (in HTML) and LaTeX (in PDF).
 
-It is often useful to help LaTeX to solve some margin overruns due to too large layout constraints: for optimal readability, columns are narrow, but the code (formatted text between two inverted apostrophes) does not allow hyphenation.
+It is often useful to help LaTeX to solve some margin overruns due to too large layout constraints: for optimal readability, columns are narrow, but code (formatted text between backquotes) does not allow hyphenation.
 
 If a line of text protrudes into the right margin in the PDF document, the solution is to manually add the \texttt{\textbackslash{}break} code to the desired location for the line break in the R Markdown document.
 The command has no effect on the HTML document but forces the hyphenation in LaTeX.
-To break formatted text (between asterisks for italics or more frequently between inverted apostrophes for code), you must finish formatting before \texttt{\textbackslash{}break} and start again afterwards.
+To break formatted text (between asterisks for italics or more frequently between backquotes for code), you must finish formatting before \texttt{\textbackslash{}break} and start again afterwards.
 For example, to force a line break before \texttt{file.Rmd}:
 
 \begin{verbatim}
@@ -5622,7 +5622,7 @@ The maximum width of a line of formatted code here is 55 characters, optimal for
 Sometimes automatic formatting does not work because \textbf{knitr} cannot find a line break that meets all the constraints, causing the code to overflow.
 In this case, manually format the code snippet by adding the \texttt{tidy=FALSE} option.
 
-The literal code blocks, delimited by three inverted apostrophes, must be formatted manually, avoiding any line longer than 55 characters.
+The literal code blocks, delimited by three backquotes, must be formatted manually, avoiding any line longer than 55 characters.
 
 \hypertarget{gitbook-site}{%
 \subsection{Gitbook site}\label{gitbook-site}}
@@ -5638,7 +5638,7 @@ The website containing the gitbook document must be set up in \texttt{\_output.y
 \item
   A GitHub button in the title bar allows to open the project repository;
 \item
-  Another button to download the PDF document.
+  Another button allows to download the PDF document.
 \end{itemize}
 
 The \texttt{\_output.yml} file of this document is the following:
@@ -5678,7 +5678,7 @@ Finally, the \texttt{download:} section lists the downloadable document formats 
 \hypertarget{sec:rediger-ouvrage-ci}{%
 \subsection{Continuous integration}\label{sec:rediger-ouvrage-ci}}
 
-Building a work takes time, especially if it contains calculations.
+Building a book takes time, especially if it contains calculations.
 It must be launched in gitbook format and in PDF format.
 In production, it can be outsourced to GitHub (chapter \ref{sec:bookdown-ci}).
 
@@ -5715,16 +5715,16 @@ Other pages will be added by creating new \texttt{.Rmd} files and adding them to
 \hypertarget{improvements}{%
 \subsection{Improvements}\label{improvements}}
 
-The site template can easily be enhanced by adding \texttt{\_site.yml}:
+The site template can easily be enhanced by adding lines to \texttt{\_site.yml}:
 
 \begin{itemize}
 \tightlist
 \item
-  by adding a GitHub icon in the navigation bar to link to the site source code:
+  to addi a GitHub icon in the navigation bar to link to the site source code:
 \item
-  by choosing the method of knitting the pages, to use \textbf{bookdown} instead of \textbf{rmarkdown};
+  to choose the method of knitting, to use \textbf{bookdown} instead of \textbf{rmarkdown};
 \item
-  by placing the site files in the \texttt{docs} folder and thus separating code and production.
+  to place the site files in the \texttt{docs} folder and thus separate code and production.
 \end{itemize}
 
 The completed \texttt{\_site.yml} file is as follows:
@@ -5759,12 +5759,12 @@ It applies to all pages (with the YAML header reduced to the minimum).
 The available themes are those of rmarkdown\footnote{\url{https://bookdown.org/yihui/rmarkdown/html-document.html\#appearance-and-style}}.
 
 The \texttt{highlight} option specifies how any R code displayed will be formatted.
-Finally, the table of contents is floating, which means that its position adjusts as the window scrolls.
+Last, the table of contents is floating, which means that its position adjusts as the window scrolls.
 
 \hypertarget{source-control}{%
 \subsection{Source control}\label{source-control}}
 
-The project must be placed under source control and pushed to GitHub (chapter \ref{chap-git}).
+The project must be put under source control and pushed to GitHub (chapter \ref{chap-git}).
 The \texttt{.gitignore} file is the following:
 
 \begin{verbatim}
@@ -5794,7 +5794,8 @@ touch docs/.nojekyll
 
 To create a personal web page, \emph{Hugo} is a static site generator capable of producing HTML pages from Markdown code.
 Static sites have the advantage, compared to dynamic sites managed by a content management system (CMS, for example: Wordpress, Joomla, SPIP), to be portable on any web server without database support or code to run on the server side (such as PHP) and to be very fast since the pages are created once and not at each consultation.
-A Hugo site can be hosted for example on the personal page of any GitHub user whose address is of the form \enquote{GitHubID.github.io}.
+A Hugo site can be hosted for example on the personal page of any GitHub user.
+Its address is of the form \enquote{GitHubID.github.io}.
 
 Hugo offers many themes, which are templates for site structure, so the \textbf{Academic} theme, intended for researchers.
 In RStudio, the \textbf{blogdown} package is provided to easily produce web pages with Hugo.
@@ -5852,8 +5853,8 @@ On the \emph{starter-academic}\footnote{\url{https://github.com/wowchemy/starter
 The repository can be the one of the main site of your GitHub account (see section \ref{sec:github-pages}), at the address \url{https://GitHubID.github.io}\footnote{Exemple: \url{https://EricMarcon.github.io/Krigeage/}}.
 The name to enter is simply \enquote{GitHubID.github.io} (\emph{GitHubID} is the name of the GitHub account).
 
-Créer le dépôt.
-Copier l'adresse du dépôt en cliquant sur le bouton \enquote{Code} puis sur le bouton à droite de l'adresse (figure \ref{fig:rediger-GitHub-Clone}).
+Create the repository.
+Copy the repository address by clicking on the \enquote{Code} button and then on the button to the right of the address (figure \ref{fig:rediger-GitHub-Clone}).
 
 
 
@@ -5865,7 +5866,7 @@ Copier l'adresse du dépôt en cliquant sur le bouton \enquote{Code} puis sur le
 
 }
 
-\caption{Copie de l'adresse d'un dépôt à cloner sur GitHub.}\label{fig:rediger-GitHub-Clone}
+\caption{Copy of the address of a repository to clone on GitHub.}\label{fig:rediger-GitHub-Clone}
 \end{figure}
 
 \normalsize
@@ -6045,7 +6046,7 @@ site_type = "Person"
 
 selects a personal site.
 It is possible to use Academic for a scientific project site or a unit site, not documented in detail here.
-The main differences are, for a collective site
+The main differences are, for a collective site:
 
 \begin{itemize}
 \tightlist
@@ -6071,13 +6072,13 @@ math = true
 privacy_pack = true
 \end{verbatim}
 
-The \texttt{edit\_page} line needs to be updated: replace the default repository \enquote{\url{https://github.com/gcushen/hugo-academic}} with the one for the site.
+The \texttt{edit\_page} line needs to be updated: replace the default repository \enquote{\url{https://github.com/gcushen/hugo-academic}} with that of the site.
 
 \enquote{Contact details} contains the contact information for the site owner.
 They must be entered.
 
 \enquote{Regional Settings} contains the date display settings for the default language (those for other languages are in \texttt{languages.toml}).
-They normally do not need to be changed.
+They usually do not need to be changed.
 
 \enquote{Comments} allows you to enable visitor comments at the bottom of pages, with Disqus or Comment.io (an account is required with the provider).
 \enquote{Marketing} allows you to activate the tracking of site traffic by simply entering your Google Analytics ID (to be created with a Google account).
@@ -6090,12 +6091,12 @@ Finally \enquote{Icon Pack Extensions} allows you to activate Academicons icons 
 Use the online documentation\footnote{\url{https://wowchemy.com/docs/page-builder/}} to complement the main information detailed here.
 The example used here is the author's personal site\footnote{\url{https://EricMarcon.github.io/}}.
 
-The working method is to progress step by step by testing and then validating each step:
+The working method is to progress step by step by testing and then to validate each step:
 
 \begin{itemize}
 \tightlist
 \item
-  Make the modifications;
+  Make the changes;
 \item
   Build the site and check the result: \texttt{blogdown:::serve\_site()};
 \item
@@ -6112,15 +6113,14 @@ The working method is to progress step by step by testing and then validating ea
 The home page of the site is made up of a series of elements (\emph{widgets}) that are located in \texttt{/contents/\textless{}language\textgreater{}/home}.
 Each element is described by a markdown file.
 The first one is \texttt{index.md}.
-It is normally never modified.
+It is usually not modified.
 Its contents are as follows:
 
 \begin{verbatim}
 +++
 # Homepage
 type = "widget_page"
-headless = true  # Homepage is headless, other widget 
-pages are not.
+headless = true  # Homepage is headless, other widget pages are not.
 +++
 \end{verbatim}
 
@@ -6234,10 +6234,10 @@ The \texttt{publications} and \texttt{featured} components are of type \texttt{p
 The \texttt{tags} component presents a word cloud from the keywords declared in all content files (blog posts, publications\ldots) in the following form in their header:
 
 \begin{verbatim}
-tags = ["Mot Clé 1", "Autre Mot Clé"]
+tags = ["Keyword 1", "Other Keyword"]
 \end{verbatim}
 
-Finally, the \texttt{contact} component allows to display a contact form.
+Last, the \texttt{contact} component allows to display a contact form.
 It uses the information from the \texttt{config/\_default/params.toml} file in its part starting with:
 
 \begin{verbatim}
@@ -6304,7 +6304,7 @@ The contribution of \textbf{blogdown} relative to a native Hugo site is the supp
 
 The main file of a post is \texttt{index.Rmd}.
 \textbf{blogdown} creates an \texttt{index.html} file during the construction of the site: it can be ignored (in \texttt{.gitgnore}) and deleted at any time.
-If a \texttt{featured.png} (optimal for a schematic) or \texttt{featured.jpg} (optimal for a photo) image is placed in the folder, it will be used as the thumbnail of the post.
+If a \texttt{featured.png} (optimal for a graphic) or \texttt{featured.jpg} (optimal for a photo) image is placed in the folder, it will be used as the thumbnail of the post.
 
 The \texttt{index.Rmd} includes a header in yaml (surrounded by \texttt{-\/-\/-}) or toml (surrounded by \texttt{+++}) format that describes its display:
 
@@ -6458,13 +6458,12 @@ The header contains special lines suitable for communications:
 
 \begin{verbatim}
 ---
-title: "Construction of the biodiversity estimator |>
-Chao1"
+title: "Construction of the Chao1 biodiversity estimator"
 event: "Mathematics Week 2020"
 event_url: https://eduscol.education.fr/cid59178/|>
 semaine-des-mathematiques.html
 
-location: University of French Guyana
+location: University of French Guiana
 
 summary: []
 abstract: |
@@ -6504,7 +6503,7 @@ math: true
 ---
 \end{verbatim}
 
-The links (e.g.~\texttt{url\_code}) bring up buttons that display the source code of the presentation, a pdf file and the online slides respectively.
+The links (e.g.~\texttt{url\_code}) bring up buttons that display the source code of the presentation, a PDF file and the online slides respectively.
 
 \hypertarget{other-elements}{%
 \subsubsection{Other elements}\label{other-elements}}
@@ -6594,7 +6593,7 @@ Figures should generally be produced in a vector format:
 \item
   SVG for poster publication or posters;
 \item
-  EMF (Extended Meta-File) for Word or Microsoft Office suite that does not support other formats;
+  EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats;
 \item
   EPS (Encapsulated PostScript) or PDF (Portable Document Format) for LaTeX.
 \end{itemize}
@@ -6677,7 +6676,8 @@ If necessary, the \texttt{embedFonts()} function can be used to remedy this, pro
 \subsection{ragg package}\label{ragg-package}}
 
 The \textbf{ragg}\footnote{\url{https://ragg.r-lib.org/}} package improves the quality of PNG, JPEG and TIFF files.
-The optimized functions are \texttt{agg\_png()}, \texttt{agg\_jpeg()} and \texttt{agg\_tiff()}. Their usage is the same as that of the \textbf{grDevices} functions.
+The optimized functions are \texttt{agg\_png()}, \texttt{agg\_jpeg()} and \texttt{agg\_tiff()}.
+Their usage is the same as that of the \textbf{grDevices} functions.
 
 Markdown R documents produce PNG images for their HTML version.
 \textbf{ragg} improves their quality: the package must be installed and \texttt{dev\ =\ "ragg\_png"} must be added to the \textbf{knitr} options.
@@ -6744,7 +6744,7 @@ Any old workflow must be removed before writing the new one:
 \normalsize
 
 The first code chunk, with the \texttt{tar\_globals=TRUE} option, writes the global options for the workflow
-To create the workflow shown in section `\textcite{ref}(sec:targets), the code is simply:
+To create the workflow shown in section \ref{sec:targets}, the code is simply:
 
 \begin{verbatim}
 ```{targets targets_global, tar_globals=TRUE}
@@ -6769,7 +6769,7 @@ runifpoint(NbPoints)
 Each target requires a piece of code built in this way.
 The value of the target is the last value returned, just like a function that would not use \texttt{return()}.
 
-During knitting, this simplified code (\texttt{tar\_simple=TRUE}) is automatically transformed into a target write:
+During knitting, this simplified code (\texttt{tar\_simple=TRUE}) is automatically transformed into a target code:
 
 \scriptsize
 
@@ -6862,8 +6862,8 @@ The other bits of code needed to complete the flow are the following:
 
 \normalsize
 
-\hypertarget{running-the-flow}{%
-\subsection{Running the flow}\label{running-the-flow}}
+\hypertarget{running-the-workflow}{%
+\subsection{Running the workflow}\label{running-the-workflow}}
 
 To start the target calculation, a standard piece of code (\texttt{\{r\}}) must call \texttt{tar\_make()}:
 
@@ -6892,7 +6892,7 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 3.119 seconds
+## • end pipeline: 2.864 seconds
 \end{verbatim}
 
 \normalsize
@@ -6921,15 +6921,15 @@ Code snippets that use target values must read them with \texttt{tar\_read()}:
 \subsection{Source control}\label{source-control-1}}
 
 The \textbf{targets} files must be included in the source control.
-This way, calculations done locally will not be repeated by GitHub Actions (chapter \ref{chap-ci}) and the document build will be fast.
+This way, calculations done locally will not be repeated by GitHub Actions (chapter \ref{chap-ci}) and building the document will be fast.
 
 \hypertarget{chap-package}{%
 \chapter{Package}\label{chap-package}}
 
 \toc{1}
 
-R packages allow the software's functionality to be extended by code provided by the developer community.
-They are the key to the success of R because they allow to quickly spread new methods resulting from research or to add new tools that can become standards, like the \textbf{tidyverse}.
+R packages extend its functionality with code provided by the developer community.
+They are the key to the success of R because they allow to quickly spread new methods resulting from research or to add new tools that can become standards, such as the \textbf{tidyverse}.
 
 It is useful to produce a package when you have written new functions that form a coherent whole.
 A package for personal use or limited to a work team is simple to set up and the time saved by easily using the updated version of each function very quickly amortizes the time spent on making the package.
@@ -6937,7 +6937,7 @@ This type of package is intended to be hosted on GitHub.
 
 Packages with a wider use, which provide for example the code corresponding to a published method, are placed in the CRAN repository, from where they can be installed by the standard command \texttt{install.packages()}.
 CRAN performs extensive code checks and only accepts packages that pass its test suite without any warning.
-They must respect the\footnote{\url{https://cran.r-project.org/web/packages/policies.html}} policy of the repository.
+They must respect the policies\footnote{\url{https://cran.r-project.org/web/packages/policies.html}} of the repository.
 
 The documentation for package creation is abundant.
 The reference book is \textcite{Wickham2015}, which should be consulted as a reference.
@@ -6974,7 +6974,7 @@ All three are to be installed first:
 
 The package to create will be an RStudio project.
 In the project menu, select \enquote{New Project \textgreater{} New Directory \textgreater{} R package using devtools\ldots{}}, choose the name of the project and its parent folder.
-The package will be called \textbf{multiple}, in the \texttt{\%LOCALAPPDATA\%\textbackslash{}ProjectsR} folder, following the recommendations in the section \ref{sec:solution-folders}.
+The package will be called \textbf{multiple}, in the \texttt{\%LOCALAPPDATA\%\textbackslash{}ProjectsR} folder, following the recommendations in the section \ref{sec:solution-dossiers}.
 
 The name of the package must respect the constraints of project names: no special characters, no spaces\ldots{}
 It must also be evocative of the purpose of the package.
@@ -7089,7 +7089,7 @@ Comments are added before the function:
 
 \normalsize
 
-Comments to \textbf{roxygen2} begin with \texttt{\#}:
+Comments to \textbf{roxygen2} begin with \texttt{\#\textquotesingle{}}:
 
 \begin{itemize}
 \tightlist
@@ -7098,7 +7098,7 @@ Comments to \textbf{roxygen2} begin with \texttt{\#}:
 \item
   the next line (separated by a line break) may contain its description (see \emph{Description} in the help);
 \item
-  the next line (after another line break) can contain more information (\emph{Details} in the help);
+  the next line (after another line break) might contain more information (\emph{Details} in the help);
 \item
   the arguments of the function are described by the \texttt{@param} lines;
 \item
@@ -7161,7 +7161,7 @@ Then build the package (\emph{Install and Restart}) and check the result by runn
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{double}\NormalTok{(}\DecValTok{2}\NormalTok{)}
-\StringTok{\textasciigrave{}}\AttributeTok{?}\StringTok{\textasciigrave{}}\NormalTok{(double)}
+\NormalTok{?double}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7289,7 +7289,7 @@ The version must respect the conventions:
 \begin{itemize}
 \tightlist
 \item
-  The first number is the major version, 0 as long as the package is not stable then 1.
+  The first number is the major version, 0 as long as the package is not stable, then 1.
   The major version only changes if the package is no longer compatible with its previous versions, which forces users to modify their code.
 \item
   The second is the minor version, incremented when new features are added.
@@ -7306,16 +7306,16 @@ The version number must be updated each time the package is pushed on GitHub.
 When the development is stabilized, the new version, intended to be used in production, is 1.3.2 if it does not bring any new functionality or 1.4.0 in the opposite case.
 
 The description of the authors is rather heavy but simple to understand.
-The Orcid identifiers of the academic authors can be used.
+The Orcid identifiers of academic authors can be used.
 If the package has several authors, they are placed in a \texttt{c()} function: \texttt{c(person(...),\ person())} for two authors.
 In this case, the role of each must be specified:
 
 \begin{itemize}
 \tightlist
 \item
-  \enquote{cre} for the creator of the package
+  \enquote{cre} for the creator of the package.
 \item
-  \enquote{aut} for one of the other authors
+  \enquote{aut} for one of the other authors.
 \item
   \enquote{ctb} for a contributor, who may have reported a bug or provided some code.
 \end{itemize}
@@ -7366,7 +7366,7 @@ A vignette is essential to document the package correctly:
 
 \normalsize
 
-The file \texttt{multiple.Rmd} is created in the \texttt{thumbnail} folder.
+The file \texttt{multiple.Rmd} is created in the \texttt{vignette} folder.
 Add a subtitle in its header: the short description of the package:
 
 \begin{verbatim}
@@ -7374,12 +7374,12 @@ title: "multiple"
 subtitle: "Multiples of numbers"
 \end{verbatim}
 
-The rest of the header allows R to build the thumbnail from R Markdown code.
+The rest of the header allows R to build the vignette from R Markdown code.
 
-The body of the thumbnail contains by default R code to declare the options for presenting the code snippets and loading the package.
+The body of the vignette contains by default R code to declare the options for presenting the code snippets and loading the package.
 An introduction to the use of the package should be written in this document, in R Markdown.
 
-During the development of the package, the thumbnail can be built manually by running:
+During the development of the package, the vignette can be built manually by running:
 
 \scriptsize
 
@@ -7393,7 +7393,7 @@ During the development of the package, the thumbnail can be built manually by ru
 
 The resulting files are placed in \texttt{doc/}: open the \texttt{.html} file to check the result.
 
-RStudio does not create the package thumbnail when the \enquote{Install and Restart} command in the Build window is called.
+RStudio does not create the package vignette when the \enquote{Install and Restart} command in the Build window is called.
 For a complete installation, two solutions are possible:
 
 \begin{itemize}
@@ -7430,7 +7430,7 @@ The vignette can then be displayed by the command:
 \hypertarget{pkgdown}{%
 \section{pkgdown}\label{pkgdown}}
 
-The \textbf{pkgdown} package creates a companion site to the package\footnote{Example: \url{https://EricMarcon.github.io/entropart/}}, which includes the \texttt{README.md} file as the home page, the thumbnail in a \enquote{Get Started} section, all of the help files with their executed examples (the \enquote{Reference} section), the \texttt{NEWS.md} file for a history of the package (the \enquote{Changelog} section), and information from the \texttt{DESCRIPTION} file.
+The \textbf{pkgdown} package creates a companion site to the package\footnote{Example: \url{https://EricMarcon.github.io/entropart/}}, which includes the \texttt{README.md} file as the home page, the vignette in a \enquote{Get Started} section, all of the help files with their executed examples (the \enquote{Reference} section), the \texttt{NEWS.md} file for a history of the package (the \enquote{Changelog} section), and information from the \texttt{DESCRIPTION} file.
 
 Create the site with \textbf{usethis}:
 
@@ -7486,16 +7486,16 @@ The site can be enriched in several ways:
 \begin{itemize}
 \tightlist
 \item
-  By adding articles in R Markdown format to the \texttt{thumbnails/articles} folder.
-  The thumbnail does not require significant computational resources to present examples because it is built at the same time as the package.
+  By adding articles in R Markdown format to the \texttt{vignettes/articles} folder.
+  The vignette should not require significant computational resources to present examples because it is built at the same time as the package.
   The articles are generated by \textbf{pkgdown}, independently, and can therefore be more ambitious;
 \item
-  By improving its presentation (grouping functions by themes, adding badges, a sticker\footnote{L'application Shiny \textbf{hexmake} permet de créer facilement un sticker: \url{https://connect.thinkr.fr/hexmake/}}\ldots): refer to the thumbnail of \textbf{pkgdown}.
+  By improving its presentation (grouping functions by themes, adding badges, a sticker\footnote{The Shiny application \textbf{hexmake} allows easy creation of a sticker: \url{https://connect.thinkr.fr/hexmake/}}\ldots): refer to the help of \textbf{pkgdown}.
 \end{itemize}
 
 To enrich the documentation of the package, it is possible to use a \texttt{README.Rmd} file in R Markdown format, to be knitted to create the standard \texttt{README.md} of GitHub, used as the home page of the \textbf{pkgdown} site, which can in this way present examples of use of the code.
 The approach is detailed in \emph{R Packages}\footnote{\url{https://r-pkgs.org/release.html?q=readme\#readme-rmd}}.
-The added complexity is to be compared to the gain: a simple homepage (without code) with links to the thumbnail and articles is easier to implement.
+The added complexity is to be compared to the gain: a simple homepage (without code) with links to the vignette and articles is easier to implement.
 
 \hypertarget{package-specific-code}{%
 \section{Package specific code}\label{package-specific-code}}
@@ -7519,7 +7519,7 @@ Let's create a new function in \texttt{functions.R} that adds random noise to th
 The noise is drawn in a centered normal distribution of standard deviation \texttt{sd} and added to the calculated value.
 
 \texttt{rnorm()} is a function of the \textbf{stats} package.
-Even if the package is systematically loaded by R, the package to which the function belongs must be declared: the only exceptions are functions from the \textbf{base} package.
+Even though the package is systematically loaded by R, the package to which the function belongs must be declared: the only exceptions are functions from the \textbf{base} package.
 
 The \textbf{stats} package must first be declared in \texttt{DESCRIPTION} which contains an \texttt{Imports:} statement.
 All packages used by the \textbf{multiple} code will be listed, separated by commas.
@@ -7528,7 +7528,7 @@ All packages used by the \textbf{multiple} code will be listed, separated by com
 Imports: stats
 \end{verbatim}
 
-This \enquote{import} simply means that the \textbf{stats} package must be loaded, but not necessarily attached (see section `\textcite{ref}(sec:environnements)), for \textbf{multiple} to work.
+This \enquote{import} simply means that the \textbf{stats} package must be loaded, but not necessarily attached (see section \ref{sec:environnements}), for \textbf{multiple} to work.
 
 Then, the \texttt{rnorm()} function must be found in the \textbf{multiple} package environment.
 There are several ways to fulfill this requirement.
@@ -7545,7 +7545,7 @@ First, the following comment could be provided for \textbf{roxygen2}:
 \normalsize
 
 The entire namespace of the \textbf{stats} package would be attached to and accessible by the \textbf{multiple} package.
-This is not a good practice because it multiplies the risks of name conflicts (see section \ref{sec:environnements}).
+This is not a good practice because it inreases the risk of name conflicts (see section \ref{sec:environnements}).
 Note that the notion of import used here is different from that of \texttt{DESCRIPTION}, although they have the same name.
 
 It is best to import only the \texttt{rnorm()} function by declaring it in the function documentation:
@@ -7650,14 +7650,14 @@ This is a generic method, i.e.~a function template, without code, to be adapted 
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7ff588915c50>
+## <bytecode: 0x7ffbd889adf0>
 ## <environment: namespace:base>
 \end{verbatim}
 
 \normalsize
 
 There are many variations of \texttt{plot} in R, which are functions with names of the form \texttt{plot.class()}.
-\textbf{Stats} provides a function \texttt{plot.lm()} to create a figure from a linear model.
+\textbf{stats} provides a function \texttt{plot.lm()} to create a figure from a linear model.
 Many packages create classes tailored to their objects and provide a \texttt{plot} method for each class.
 The functions can be listed:
 
@@ -7727,7 +7727,7 @@ The \texttt{print} method is used to display any object (it is implicit when onl
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{my\_lm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(dist }\SpecialCharTok{\textasciitilde{}}\NormalTok{ speed, }\AttributeTok{data =}\NormalTok{ cars)}
-\CommentTok{\# Equivalent de \textquotesingle{}\textgreater{} my\_lm\textquotesingle{}}
+\CommentTok{\# Equivalent to \textquotesingle{}\textgreater{} my\_lm\textquotesingle{}}
 \FunctionTok{print}\NormalTok{(my\_lm)}
 \end{Highlighting}
 \end{Shaded}
@@ -7845,14 +7845,14 @@ If not, errors will occur:
 
 New generic methods can be created and declined according to the classes.
 
-As an example, let's create a generic method \texttt{triple} which will calculate the triple of the values in the package \textbf{multiple}, declined in two distinct functions: one for integers and one for reals.
-Calculations on integers are faster than those on reals, which justifies the effort of writing two versions of the code.
+As an example, let's create a generic method \texttt{triple} which will calculate the triple of numbers in the package \textbf{multiple}, declined in two distinct functions: one for integers and one for reals.
+Calculations on integers are faster than those on reals, which justifies (at least in theory) the effort of writing two versions of the code.
 
 \scriptsize
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Méthode générique}
+\CommentTok{\# Generic Method}
 \NormalTok{triple }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, ...) \{}
     \FunctionTok{UseMethod}\NormalTok{(}\StringTok{"triple"}\NormalTok{)}
 \NormalTok{\}}
@@ -7944,14 +7944,14 @@ The choice of function depends on the class of the object passed as argument.
 
 \begin{verbatim}
 ## Unit: nanoseconds
-##                expr  min   lq     mean median   uq     max
-##  triple.integer(2L)  315  326 24471.85    335  353 2411945
-##   triple.numeric(2)  312  324 21746.06    333  348 2139598
-##          triple(2L) 1276 1310  1450.42   1336 1399    6431
-##  neval
-##    100
-##    100
-##    100
+##                expr  min     lq     mean median     uq
+##  triple.integer(2L)  327  336.0 24767.51    346  371.0
+##   triple.numeric(2)  325  337.0 20128.93    350  384.5
+##          triple(2L) 1321 1344.5  1474.22   1365 1422.5
+##      max neval
+##  2441065   100
+##  1975576   100
+##     6156   100
 \end{verbatim}
 
 \normalsize
@@ -7965,8 +7965,8 @@ This search takes a lot of time and justifies the use of generic methods for the
 \hypertarget{creating-a-class}{%
 \subsubsection{Creating a class}\label{creating-a-class}}
 
-In a package, classes are created if the results of the functions justify it: list structure and identification of the class with an object (\enquote{lm} is the class of linear models).
-For each class created, the \texttt{print}, \texttt{summary} and \texttt{plot} methods (if a graphical representation is possible) must be written.
+In a package, classes are created if the results of the functions justify it: a list structure and the identification of the class with an object (\enquote{lm} is the class of linear models).
+For each class created, the \texttt{print}, \texttt{summary} and \texttt{plot} methods (if a graphical representation is possible) should be written.
 
 Let's write a function \texttt{multiple()} whose result will be an object of a new class, \texttt{multiple}, which will be a list storing the values to multiply, the multiplier and the result.
 
@@ -7983,7 +7983,7 @@ Let's write a function \texttt{multiple()} whose result will be an object of a n
     \FunctionTok{class}\NormalTok{(result) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"multiple"}\NormalTok{, }\FunctionTok{class}\NormalTok{(result))}
     \FunctionTok{return}\NormalTok{(result)}
 \NormalTok{\}}
-\CommentTok{\# Classe du résultat}
+\CommentTok{\# Class of the result}
 \NormalTok{my\_multiple }\OtherTok{\textless{}{-}} \FunctionTok{multiple}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
 \FunctionTok{class}\NormalTok{(my\_multiple)}
 \end{Highlighting}
@@ -7995,7 +7995,8 @@ Let's write a function \texttt{multiple()} whose result will be an object of a n
 
 \normalsize
 
-The call to the \texttt{multiple()} function returns an object of class \texttt{multiple}, which is also of class \texttt{list\textquotesingle{}.\ In\ the\ absence\ of\ a}print.multiple()\texttt{function,\ R\ looks\ for\ the}print.list()\texttt{function,\ which\ does\ not\ exist,\ and\ falls\ back\ on\ the}print.default()` function:
+The call to the \texttt{multiple()} function returns an object of class \texttt{multiple}, which is also of class \texttt{list}.
+In the absence of a \texttt{print.multiple()} function, R looks for the \texttt{print.list()} function, which does not exist, and falls back on the \texttt{print.default()} function:
 
 \scriptsize
 
@@ -8030,7 +8031,7 @@ The \texttt{print.multiple} function must therefore be written for a readable di
 \NormalTok{print.multiple }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, ...) \{}
     \FunctionTok{print.default}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{y)}
 \NormalTok{\}}
-\CommentTok{\# Nouvel affichage}
+\CommentTok{\# New presentation}
 \NormalTok{my\_multiple}
 \end{Highlighting}
 \end{Shaded}
@@ -8101,7 +8102,7 @@ Finally, a \texttt{plot} function and an \texttt{autoplot} function complete the
 \normalsize
 
 For technical reasons related to unconventional evaluation in the tidyverse, variable names used by \texttt{aes()} must be prefixed with \texttt{.data\$} in packages and \texttt{rlang::.data} must be imported.
-Otherwise, the package check returns a note that the variables \texttt{x} and \texttt{y}, used by the arguments to \texttt{aes()} have not been declared and may not exist in the local environment (see section \ref{sec:environnements}).
+Otherwise, the package check returns a note that the variables \texttt{x} and \texttt{y}, used by the arguments of \texttt{aes()} have not been declared and may not exist in the local environment (see section \ref{sec:environnements}).
 
 \hypertarget{documentation}{%
 \subsubsection{Documentation}\label{documentation}}
@@ -8162,7 +8163,7 @@ ggplot2::autoplot
 \begin{itemize}
 \tightlist
 \item
-  roxygen2** automatically creates a help file \texttt{reexports.Rd} in which there is a link to the original documentation of the re-exported generics.
+  \textbf{roxygen2} automatically creates a help file \texttt{reexports.Rd} in which there is a link to the original documentation of the re-exported generics.
 \end{itemize}
 
 In \texttt{DESCRIPTION}, the original package for each generic must be listed in the \texttt{Imports:} directive:
@@ -8171,7 +8172,7 @@ In \texttt{DESCRIPTION}, the original package for each generic must be listed in
 Imports: ggplot2, graphics
 \end{verbatim}
 
-Finally, importing functions from the tidyverse also requires some precautions:
+Last, importing functions from the tidyverse also requires some precautions:
 
 \begin{itemize}
 \tightlist
@@ -8206,7 +8207,7 @@ Imports: magrittr, rlang, stats
 \tightlist
 \item
   Functions in the tidyverse that use column names from tibbles or dataframes generate warnings at package check time because these names are confused with undefined variable names.
-  To avoid this confusion, the \texttt{.data} object of the \textbf{rlang} package is used (for example in \texttt{aes()} seen above).
+  To avoid this confusion, the \texttt{.data} object of the \textbf{rlang} package is helpful (for example in \texttt{aes()} seen above).
   It must be imported:
 \end{itemize}
 
@@ -8297,7 +8298,7 @@ Finally, the complete code is as follows:
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7ff588915c50>
+## <bytecode: 0x7ffbd889adf0>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -8335,7 +8336,7 @@ Finally, the complete code is as follows:
 ## {
 ##     UseMethod("autoplot")
 ## }
-## <bytecode: 0x7ff58aa15ac0>
+## <bytecode: 0x7ffbdabc6968>
 ## <environment: namespace:ggplot2>
 \end{verbatim}
 
@@ -8437,16 +8438,16 @@ Building the package will lead to compiling the code: Rtools are therefore essen
 \hypertarget{tidy-package}{%
 \subsection{Tidy package}\label{tidy-package}}
 
-Any modern package must be tidyverse compatible, which requires little effort:
+Any modern package should be tidyverse compatible, which requires little effort:
 
 \begin{itemize}
 \tightlist
 \item
-  to allow pipelines, the main argument of functions must be the first one;
+  to allow pipelines, the main argument of functions should be the first one;
 \item
-  functions that transform data must accept a dataframe or tibble as the first argument and return an object of the same format;
+  functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format;
 \item
-  methods \texttt{plot()} must be doubled with methods \texttt{autoplot()} with the same arguments that produce the same graph with \textbf{ggplot2}.
+  methods \texttt{plot()} should be doubled with methods \texttt{autoplot()} with the same arguments that produce the same graph with \textbf{ggplot2}.
 \end{itemize}
 
 \hypertarget{bibliography-1}{%
@@ -8454,7 +8455,7 @@ Any modern package must be tidyverse compatible, which requires little effort:
 
 The documentation of a package uses bibliographic references.
 They can be managed automatically with \textbf{Rdpack} and \textbf{roxygen2}.
-References used in R Markdown files (thumbnail, site produced by \textbf{pkgdown}) are not concerned.
+References used in R Markdown files (vignette, site produced by \textbf{pkgdown}) are not concerned.
 
 \hypertarget{preparation}{%
 \subsection{Preparation}\label{preparation}}
@@ -8490,9 +8491,10 @@ Finally, import the \texttt{reprompt()} function from \textbf{Rdpack} by adding 
 \subsection{Citations}\label{citations}}
 
 References are cited by the command \texttt{\textbackslash{}insertCite\{key\}\{package\}} in the documentation for \textbf{roxygen2}.
-package\texttt{is\ the\ name\ of\ the\ package\ in\ which\ the}REFERENCES.bib` file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use \textbf{Rdpack}.
+\texttt{package} is the name of the package in which the \texttt{REFERENCES.bib} file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use \textbf{Rdpack}.
 
-key\texttt{is\ the\ identifier\ of\ the\ reference\ in\ the\ file.\ The\ following\ example{[}\^{}507{]}\ is\ from\ the\ documentation\ of\ the\ **SpatDiv**\ package\ hosted\ on\ GitHub,\ in\ its}.R` file:
+\texttt{key} is the identifier of the reference in the file.
+The following example\footnote{\textbf{SpatDiv} package on GitHub: \url{https://github.com/EricMarcon/SpatDiv/blob/master/R/package.R}} is from the documentation of the \textbf{SpatDiv} package hosted on GitHub, in its \texttt{.R} file:
 
 \scriptsize
 
@@ -8533,9 +8535,9 @@ To place the author's name outside the parenthesis, add the statement \texttt{;t
 \insertCite{Marcon2014c;textual}{SpatDiv}
 \end{verbatim}
 
-To quote several references (necessarily from the same package), separate them with commas.
+To cite several references (necessarily from the same package), separate them with commas.
 
-At the end of the documentation of an object using quotes, systematically add a list of references:
+At the end of the documentation of an object using citations, systematically add a list of references:
 
 \scriptsize
 
@@ -8660,7 +8662,7 @@ They are based on \textbf{testthat} to be integrated in the package:
 
 \normalsize
 
-The tests must be added as \texttt{.R\textquotesingle{}\ files\ whose\ names\ must\ begin\ with}test' in the `tests/testthat' folder.
+The tests must be added as \texttt{.R} files whose names must begin with \texttt{test\textquotesingle{}\ in\ the}tests/testthat` folder.
 
 Each test (so the content of each file) starts with its context, i.e.~a set of tests. For example, in a file \texttt{test\_double.R}:
 
@@ -8675,7 +8677,7 @@ Each test (so the content of each file) starts with its context, i.e.~a set of t
 \normalsize
 
 The tests are contained in files that group them by topic, for example \texttt{test\_double.R}.
-The name of each test is passed as an argument to the function \texttt{test\_that())}:
+The name of each test is passed as an argument to the function \texttt{test\_that()}:
 
 \scriptsize
 
@@ -8759,7 +8761,7 @@ The analysis of the code coverage by tests (which parts of the code are tested o
 
 GitHub is also able to rebuild the package documentation with \textbf{pkgdown}, another resource-consuming operation, after the tests have passed.
 
-The section \ref{sec:package-ci6} details how to do this.
+Section \ref{sec:package-ci6} details how to do this.
 
 \hypertarget{sec:package-cran}{%
 \section{CRAN}\label{sec:package-cran}}
@@ -8787,7 +8789,7 @@ Then, just call the \texttt{check\_for\_cran()} function to run a full verificat
 
 When the package is ready, submission to CRAN is done through the dedicated web site\footnote{\url{https://xmpalantir.wu.ac.at/cransubmit/}}.
 
-In case of rejection, process the requests and resubmit by incrementing the version number.
+In case of rejection, process the requests and resubmit after incrementing the version number.
 
 \hypertarget{maintenance}{%
 \subsection{Maintenance}\label{maintenance}}
@@ -8826,7 +8828,7 @@ This service is integrated with GitHub.
 \hypertarget{codecov}{%
 \subsection{Codecov}\label{codecov}}
 
-To evaluate the code coverage rate of R packages, i.e.~the proportion of code tested in some way (examples, unit tests, thumbnail), the \emph{Codecov}\footnote{\url{https://codecov.io/}} service integrates perfectly with GitHub.
+To evaluate the code coverage rate of R packages, i.e.~the proportion of code tested in some way (examples, unit tests, vignette), the \emph{Codecov}\footnote{\url{https://codecov.io/}} service integrates perfectly with GitHub.
 
 You need to open an account, preferably by authenticating through GitHub.
 
@@ -8840,10 +8842,10 @@ If they are produced by continuous integration, they will be hosted in a dedicat
 \hypertarget{principles}{%
 \section{Principles}\label{principles}}
 
-A draft document is treated as an example.
+The production of a document is treated as an example.
 The objective is to have GitHub knit a Markdown project.
 This practice is appropriate for book projects, which require a lot of resources for their construction.
-In this type of project, the code is knit by knitr to produce several documents, typically in HTML and PDF formats, accessible on GitHub pages.
+In this type of project, the code is knit by \textbf{knitr} to produce several documents, typically in HTML and PDF formats, accessible on GitHub pages.
 When documents are produced locally, they are placed in the \texttt{docs} folder and pushed to GitHub.
 
 In order for GitHub to do this, a few settings are required.
@@ -8851,7 +8853,7 @@ In order for GitHub to do this, a few settings are required.
 \hypertarget{getting-a-personal-access-token}{%
 \subsection{Getting a personal access token}\label{getting-a-personal-access-token}}
 
-To write to GitHub, the continuous integration service will have to authenticate itself with a Personal Access Token (PAT) whose creation is described in section \ref{sec:pat}.
+To write to GitHub, the continuous integration service will have to authenticate with a Personal Access Token (PAT) whose creation is described in section \ref{sec:pat}.
 
 Generate a new token, describe it as \enquote{GitHub Actions} and give it \enquote{repo} authorization, i.e.~modify \emph{all} repositories (it is not possible to limit access to a particular repository).
 
@@ -8859,12 +8861,12 @@ Generate a new token, describe it as \enquote{GitHub Actions} and give it \enquo
 \subsection{Project secrets}\label{sec:secrets-ci}}
 
 On GitHub, display the project settings and select \enquote{Secrets}.
-The \enquote{New Repository Secret} button allows you to store variables used in GitHub Actions scripts (publicly visible) without broadcasting their value.
+The \enquote{New Repository Secret} button allows you to store variables used in GitHub Actions scripts (publicly visible) without exposing their value.
 The personal access token is essential for GitHub Actions to write their production in the project.
 Create a secret named \enquote{GH\_PAT} and enter the previously saved token value.
 After clicking on \enquote{Add Secret}, the token cannot be read anymore.
 
-To allow sending success or failure messages without broadcasting your email address, create a secret named \enquote{EMAIL} which contains it.
+To allow sending success or failure messages without exposing your email address, create a secret named \enquote{EMAIL} which contains it.
 
 \hypertarget{activation-of-the-repository-on-codecov}{%
 \subsection{Activation of the repository on CodeCov}\label{activation-of-the-repository-on-codecov}}
@@ -8874,9 +8876,9 @@ On the other hand, the analysis of the coverage of document projects is not usef
 
 To activate a repository, you need to authenticate on the CodeCov website with your GitHub account.
 The list of repositories is displayed and can be updated.
-If the repositories to be processed are hosted by an organization, for example the repositories of a GitHub classroom, you have to update the list of organizations by following the instructions (a link allows you to quickly modify the GitHub options to authorize the reading of an organization by Codecov) and update the list of repositories again.
+If the repositories to be processed are hosted by an organization, for example the repositories of a GitHub classroom, you have to update the list of organizations by following the instructions (a link allows you to quickly modify the GitHub options to authorize Codecov to read the data of an organization) and update the list of repositories again.
 Finally, when the repository you are looking for is visible, you have to activate it.
-It is useless to use Codecov's token system.
+Ignore Codecov's token system.
 
 \hypertarget{scripting-github-actions}{%
 \subsection{Scripting GitHub actions}\label{scripting-github-actions}}
@@ -8884,11 +8886,11 @@ It is useless to use Codecov's token system.
 A GitHub workflow is a succession of jobs with steps.
 A workflow is triggered by an event, usually every \emph{push} of the project, but also at regular intervals (\emph{cron}).
 
-Typically, the workflows created here contain two tasks: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.
+Typically, the workflows created here contain two jobs: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.
 
-The workflows are configured in a file in YAML format placed in the \texttt{.github/workflows/} folder of the project.
+The workflows are configured in a YAML file placed in the \texttt{.github/workflows/} folder of the project.
 The different parts of the script are presented below.
-The full script is the one in this document, accessible on GitHub\footnote{\url{https://github.com/EricMarcon/travailleR/blob/master/.github/workflows/bookdown.yml}}.
+The full script is that of this document, accessible on GitHub\footnote{\url{https://github.com/EricMarcon/WorkingWithR/blob/master/.github/workflows/bookdown.yml}}.
 
 \hypertarget{sec:declenchement}{%
 \subsubsection{Trigger}\label{sec:declenchement}}
@@ -8904,7 +8906,7 @@ on:
 
 The branch taken into account is \emph{master} (to be replaced by \emph{main} if necessary).
 
-To trigger the action periodically, use the syntax of \emph{cron} (the Unix job scheduling system):
+To trigger the action periodically, use the syntax of cron (the Unix job scheduling system):
 
 \begin{verbatim}
 on:
@@ -8938,11 +8940,11 @@ It will be displayed by the badge that will be added to the project's \texttt{RE
 name: bookdown
 \end{verbatim}
 
-\hypertarget{first-task}{%
-\subsubsection{First task}\label{first-task}}
+\hypertarget{first-job}{%
+\subsubsection{First job}\label{first-job}}
 
-The tasks are described in the \texttt{jobs} section.
-\texttt{renderbook} is the name of the first task: it is free.
+The jobs are described in the \texttt{jobs} section.
+\texttt{renderbook} is the name of the first job: it is free.
 Here, the main action will be to produce a bookdown with the \texttt{render\_book()} function, hence the name.
 
 \begin{verbatim}
@@ -8973,7 +8975,7 @@ The steps are described in the \texttt{steps} section.
 
 Each step is described by its name (free) and what it does.
 
-The strength of GitHub Actions is to allow the use of \emph{actions} written by others and stored in a public GitHub project.
+The strength of GitHub Actions is to allow the use of \emph{actions} written by other people and stored in a public GitHub project.
 An action is a script with metadata describing its use.
 Its development is accompanied by successive version numbers.
 An action is called by the statement \texttt{uses:}, the GitHub project that contains it and its version.
@@ -8999,8 +9001,8 @@ To avoid system specifics, it is better to use an action:
 \hypertarget{caches}{%
 \subsubsection{Caches}\label{caches}}
 
-Installing R packages takes time, a lot if they are installed from source (the standard procedure under Ubuntu, but not on MacOS and Windows where binary packages are used by default).
-Computing the code snippets is usually the longest step in the workflow.
+Installing R packages takes time, a lot of it if they are installed from source (the standard procedure on Ubuntu, but not on MacOS and Windows where binary packages are used by default).
+Computing the code chunks is usually the longest step of the workflow.
 The \texttt{cache} action caches the results of both operations.
 
 \begin{verbatim}
@@ -9019,7 +9021,7 @@ The \texttt{cache} action caches the results of both operations.
 \end{verbatim}
 
 The cache is updated when a package or a piece of code is modified, which requires a quick way to check the modifications: a control value (\emph{hashtag}) is computed by the \texttt{hashFiles()} function from the \texttt{renv.lock} file (see below) for packages and the set of \texttt{.Rmd} files for pieces of code.
-Any change leads to the reinstallation of the packages or the recalculation of the whole code: the cache management is less fine-grained than that of R on a workstation, which only recalculates the modified code snippets.
+Any change leads to the reinstallation of the packages or the recalculation of the whole code: the cache management is less fine-grained than that of R on a workstation, which only recalculates the modified code chunks.
 
 \hypertarget{sec:packages-ci}{%
 \subsubsection{Packages}\label{sec:packages-ci}}
@@ -9140,9 +9142,9 @@ The two steps should not be combined into one.
 \hypertarget{backup}{%
 \subsubsection{Backup}\label{backup}}
 
-The result of the knitting, placed in the \texttt{docs} folder of the virtual machine in charge of continuous integration, must be preserved so that the next task can use it.
+The result of the knitting, placed in the \texttt{docs} folder of the virtual machine in charge of continuous integration, must be preserved so that the next job can use it.
 
-The last step of the production task uses the \texttt{upload-artifact} action for this.
+The last step of the production job uses the \texttt{upload-artifact} action for this.
 
 \begin{verbatim}
       - name: Upload artifact
@@ -9155,12 +9157,12 @@ The last step of the production task uses the \texttt{upload-artifact} action fo
 The content of \texttt{docs} is saved as an \emph{artifact} named ``\_book''.
 Artifacts are publicly visible on the GitHub Project Actions page.
 
-After its last step, the virtual machine used for this step is destroyed.
+After its last step, the virtual machine is destroyed.
 
 \hypertarget{publication}{%
 \subsubsection{Publication}\label{publication}}
 
-Publishing the artifact to the \texttt{gh-pages} branch of the project requires another task.
+Publishing the artifact to the \texttt{gh-pages} branch of the project requires another job.
 
 \begin{verbatim}
   deploy:
@@ -9184,9 +9186,9 @@ Publishing the artifact to the \texttt{gh-pages} branch of the project requires 
           jekyll: no
 \end{verbatim}
 
-The task is named \enquote{deploy} (the name is free).
-It runs on a virtual machine under Ubuntu.
-It can only be launched if the \enquote{renderbook} task has succeeded.
+The job is named \enquote{deploy} (the name is free).
+It runs on a virtual machine on Ubuntu.
+It can only be launched if the \enquote{renderbook} job has succeeded.
 Its steps are the following:
 
 \begin{itemize}
@@ -9244,7 +9246,7 @@ All of them require the same preparation:
 
 The \texttt{gh-pages} branch is created automatically by the scripts.
 Check after the first execution that GitHub pages are enabled on this branch (section \ref{sec:github-pages}).
-Then delete the \texttt{docs} folder if it existed, push the modification on GitHub and finally add the following line to the \texttt{.gitignore} file to be able to knit locally the projects without disturbing GitHub:
+Then delete the \texttt{docs} folder if it existed, push the modification on GitHub and finally add the following line to the \texttt{.gitignore} file to be able to knit the projects locally without disturbing GitHub:
 
 \begin{verbatim}
 docs/
@@ -9253,7 +9255,7 @@ docs/
 \hypertarget{sec:memoiR-ci}{%
 \subsection{memoiR}\label{sec:memoiR-ci}}
 
-The \texttt{build\_ghworkflow()} function of the \textbf{memoiR} package automatically creates the scripts needed to produce the package's models.
+The \texttt{build\_ghworkflow()} function of the \textbf{memoiR} package automatically creates the scripts needed to produce the package's templates.
 The script is always named \texttt{memoir.yml}.
 
 These scripts do not use \textbf{renv} or cache.
@@ -9262,7 +9264,7 @@ They do not need a \texttt{DESCRIPTION} file for the installation of the depende
 \hypertarget{sec:bookdown-ci}{%
 \subsection{Book or thesis}\label{sec:bookdown-ci}}
 
-The workflow is called \texttt{rmarkdown}; its production task \texttt{render}.
+The workflow is called \texttt{rmarkdown}; its production job is \texttt{render}.
 
 \begin{verbatim}
 on:
@@ -9324,7 +9326,7 @@ jobs:
 \hypertarget{articles-or-slideshows}{%
 \subsection{Articles or slideshows}\label{articles-or-slideshows}}
 
-The workflow is called \texttt{rmarkdown}; its production task \texttt{render}.
+The workflow is called \texttt{rmarkdown}; its production job is \texttt{render}.
 
 \begin{verbatim}
 on:
@@ -9384,7 +9386,7 @@ jobs:
 The knitting stage uses a script to list all the \texttt{.Rmd} files, process them (all the output formats listed in their yaml header are produced).
 The \texttt{build\_githubpages()} function (see section \ref{sec:memo}) places the results in \texttt{docs}.
 
-The deployment task tells GitHub pages to use Jekyll, i.e.~to use the \texttt{README.md} file as the home page.
+The deployment job tells GitHub pages to use Jekyll, i.e.~to use the \texttt{README.md} file as the home page.
 
 \hypertarget{localization}{%
 \subsubsection{Localization}\label{localization}}
@@ -9401,7 +9403,7 @@ If the knitting step needs to change the language used by R, for example to corr
         shell: Rscript {0}
 \end{verbatim}
 
-The selection of files is done here by an R script, which includes a localization command, here in French.
+The selection of files is done by an R script, which includes a localization command, here in French.
 
 This step can be completed by selecting a GitHub Pages theme so that the home page contains a link to the code:
 
@@ -9432,7 +9434,7 @@ The LaTeX packages must be updated to be the same as those used by the GitHub ac
 \normalsize
 
 If the compilation works locally but not on Github, you have to inspect the \texttt{.log} file which records all the events generated by the compiler, but this file is not kept after the failure of GitHub Actions.
-So you have to modify the script to copy the file in \texttt{docs} and then create a save result despite the error.
+So you have to modify the script to copy the file in \texttt{docs} and then save the result despite the error.
 
 The \enquote{Upload artifact} step is modified to run despite the failure of the previous step by adding the line \texttt{if:}:
 
@@ -9462,7 +9464,7 @@ It is a compressed file that contains the whole \texttt{docs} folder.
 \subsection{Blogdown website}\label{sec:blogdown-ci}}
 
 The file called \texttt{blogdown.yml} is very similar.
-The name of the workflow is \texttt{blogdown} and the name of the production task is \texttt{buildsite}.
+The name of the workflow is \texttt{blogdown} and the name of the production job is \texttt{buildsite}.
 
 \begin{verbatim}
 on:
@@ -9522,14 +9524,12 @@ jobs:
           jekyll: no
 \end{verbatim}
 
-The \texttt{checkout} action is placed in the \texttt{source} branch with its \texttt{ref} variable.
+The \texttt{Build\ website} step uses the \textbf{blogdown} package to install Hugo (the website generator) and then build the website.
 
-The \texttt{Build\ website} task uses the \textbf{blogdown} package to install Hugo (the website generator) and then build the website.
-
-If the website uses online data that warrants periodic updating, GitHub Actions can be run daily, weekly or monthly in addition to the rebuilds triggered by a repository change (see section `ref(sec:declenchement)).
+If the website uses online data that warrants periodic updating, GitHub Actions can be run daily, weekly or monthly in addition to the rebuilds triggered by a repository change (see section \ref{sec:declenchement}).
 Here, the site is rebuilt every Sunday at 10pm.
 
-Example: the page that displays the bibliometry of the author's website\footnote{\url{https://EricMarcon.github.io/fr/publication/}} queries Google Scholar to display the citations of the publications.
+Example: the page that displays the bibliometrics of the author's website\footnote{\url{https://EricMarcon.github.io/fr/publication/}} queries Google Scholar to display the citations of the publications.
 The site is updated weekly to keep the statistics current.
 
 \hypertarget{sec:package-ci6}{%
@@ -9578,7 +9578,7 @@ jobs:
 \end{verbatim}
 
 The file is named \texttt{check.yml}.
-It contains only one task, named \texttt{R-CMD-check} like the flow.
+It contains only one job, named \texttt{R-CMD-check}, as the workflow.
 
 The script does not use \textbf{Renv} to handle packages because package checking must work with the current versions on CRAN.
 \textbf{Remotes} installs the necessary packages from the \texttt{DESCRIPTION} file.
@@ -9590,7 +9590,7 @@ The \texttt{Test\ coverage} step uses the \textbf{covr} package to measure the c
 
 Finally, the last two steps install the package and then use \textbf{pkgdown} to create the documentation site for the package and push it into the \texttt{gh-pages} branch of the project.
 
-This script contains only one task: the deployment of the documentation site is directly executed by \textbf{pkgdown}.
+This script contains only one job: the deployment of the documentation site is directly executed by \textbf{pkgdown}.
 Its success is displayed by a badge in the \texttt{README.md} file (see section \ref{sec:ci-badges})
 
 More complex scripts are proposed by R-lib\footnote{\url{https://github.com/r-lib/actions/tree/master/examples\#standard-ci-workflow}}, in particular to run the tests on several operating systems and several versions of R.
@@ -9624,17 +9624,17 @@ The coverage rate measured by Codecov can also be displayed by a badge:
 
 \toc{1}
 
-Shiny allows you to publish an interactive application using R code as a web site.
+Shiny allows to publish an interactive application using R code as a web site.
 The site can run locally, on a user's workstation that launches it from RStudio, or online, on a dedicated server running Shiny Server\footnote{\url{https://rstudio.com/products/shiny/download-server/}}.
 
 Basically, a form allows to enter the arguments of a function and a visualization window to display the results of the calculation.
 
-The use of a Shiny application makes the execution of the code very simple, even for users not familiar with R, but obviously limits the possibilities.
+A Shiny application makes the execution of the code very simple, even for users not familiar with R, but obviously limits the possibilities.
 
 \hypertarget{first-application}{%
 \section{First application}\label{first-application}}
 
-In RStudio, create an application with the menu \enquote{File \textgreater{} New File \textgreater{} Shiny Web App\ldots{}}, enter the name of the application \enquote{MyAppShiny} and select the folder where to put it.
+In RStudio, create an application with the menu \enquote{File \textgreater{} New File \textgreater{} Shiny Web App\ldots{}}, enter the name of the application \enquote{MyShinyApp} and select the folder where to put it.
 
 The name of the application has been used to create a folder that we now need to transform into a project (project menu in the top right of RStudio, \enquote{New Project \textgreater{} Existing Directory}, select the application folder).
 
@@ -9830,9 +9830,9 @@ The simplest code to do this would be as follows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Run the get\_profile function only once \#\#\#\# Store the}
-\CommentTok{\# author profile}
-\NormalTok{AuthorProfile }\OtherTok{\textless{}{-}} \FunctionTok{get\_profile}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{AuthorID)}
+  \CommentTok{\# Run the get\_profile function only once \#\#\#\#}
+  \CommentTok{\# Store the author profile}
+\NormalTok{  AuthorProfile }\OtherTok{\textless{}{-}} \FunctionTok{get\_profile}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{AuthorID)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9843,7 +9843,7 @@ If the latter code were executed, the following error message would appear:
 \enquote{Operation not allowed without an active reactive context. (You tried to do something that can only be done from inside a reactive expression or observer.)}
 
 In practice, the execution of the code is started by modifying an input control (here: \texttt{intput\$AuthorID}).
-The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like \texttt{renderPlot} in the \emph{Old Faithful Geyser Data} application or \texttt{renderUI()} here.
+The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like \texttt{renderPlot()} in the \emph{Old Faithful Geyser Data} application or \texttt{renderUI()} here.
 The following code would run without error:
 
 \scriptsize
@@ -9989,7 +9989,7 @@ Click on it and validate the publication (figure \ref{fig:shiny-publish}).
 
 \normalsize
 
-The application is now available at \url{https://prenom-nom.shinyapps.io/MonAppShiny/}
+The application is now available at \url{https://firstname-lastname.shinyapps.io/MyShinyApp/}
 
 The \enquote{Bibliometrics} application does not work on Shinyapps.io because the way the \textbf{Scholar} package queries Google Scholar is not supported.
 Most Shiny applications work without difficulty, as long as they don't require complex networking features.
@@ -10003,7 +10003,7 @@ R, RStudio and GitHub provide tools for teaching.
 
 The \textbf{learnr} package allows you to make interactive tutorials.
 
-We will also see how to use GitHub Classrooms* which allow to distribute to a class (a list of students with a GitHub account) a repository model (a beginning of an R project) that each student will have to develop and publish.
+We will also see how to use \emph{GitHub Classrooms} which allow to distribute to a class (a list of students with a GitHub account) a repository model (a draft of an R project) that each student will have to develop and publish.
 The classroom tools allow to evaluate the work done quite easily.
 
 \hypertarget{learnr}{%
@@ -10015,7 +10015,7 @@ The documentation on the RStudio website\footnote{\url{https://rstudio.github.io
 \hypertarget{first-tutorial}{%
 \subsection{First tutorial}\label{first-tutorial}}
 
-Use as for all documents the menu \enquote{File \textgreater{} New File \textgreater{} RMarkdown\ldots{}} and create a new document from a template \enquote{Interactive Tutorial}.
+With the menu \enquote{File \textgreater{} New File \textgreater{} RMarkdown\ldots{}} create a new document from an \enquote{Interactive Tutorial} template.
 The wizard creates a folder with the chosen name, to be transformed into an R project and put under source control, as for all documents seen previously (see section \ref{sec:memo}).
 
 To run the tutorial, click on the \enquote{Run Document} button, which is in the usual place of the \enquote{Knit} button.
@@ -10030,14 +10030,14 @@ The user's progress in the tutorial (code entered, answers to questions\ldots) i
 A tutorial can be stopped and resumed without loss of data.
 On the other hand, there is no easy way to recover this data for an evaluation by the trainer for example.
 
-\hypertarget{broadcasting}{%
-\subsection{Broadcasting}\label{broadcasting}}
+\hypertarget{sharing}{%
+\subsection{Sharing}\label{sharing}}
 
 Tutorials can be distributed by copying the files or by telling users to clone the GitHub projects that contain them.
 
 They can also be hosted on Shinyapps.io (see section \ref{sec:hebergement-shiny}).
 
-Finally, they can be included in a package\footnote{\url{https://rstudio.github.io/learnr/publishing.html\#R_Package}}.
+Last, they can be included in a package\footnote{\url{https://rstudio.github.io/learnr/publishing.html\#R_Package}}.
 
 \hypertarget{github-classrooms}{%
 \section{GitHub Classrooms}\label{github-classrooms}}
@@ -10055,12 +10055,12 @@ On the GitHub Classrooms website\footnote{\url{https://classroom.github.com/}}, 
 \subsection{Organizations}\label{organizations}}
 
 The next step is to create a GitHub organization.
-A GitHub organization basically contains members (GitHub account holders) and repositories that can be accessed at \url{https://github.com/Organisation/Depot}.
+A GitHub organization basically contains members (GitHub account holders) and repositories that can be accessed at \url{https://github.com/}/.
 
 The simplest way to work is to create an organization per course, but other approaches are possible in structures that use the tool extensively.
-The organization created for the example here is \enquote{Courses-R}\footnote{\url{https://github.com/Cours-R}}.
+The organization created for the example here is \enquote{Cours-R}\footnote{\url{https://github.com/Cours-R}}.
 
-An email address is required (use the same as the one of your GitHub account) and the organization must be declared as belonging to your personal account.
+An email address is required (use the same as that of your GitHub account) and the organization must be declared as belonging to your personal account.
 
 If the organization is not visible on the GitHub Classrooms page, click on \enquote{Grant us access}.
 
@@ -10072,7 +10072,7 @@ A classroom is populated with students who will receive tasks to perform.
 Click on \emph{New Classroom}.
 Select the organization in charge of administering the classroom.
 
-Enter the name of the classroom: a good practice is to prefix it with the name of the course and add the name of the session, for example \enquote{Course-R-2020}.
+Enter the name of the classroom: a good practice is to prefix it with the name of the course and add the name of the session, for example \enquote{Cours-R-2020}.
 
 Do not add collaborators (this will be possible later), and eventually enter the list of students (one name per line, also possible later).
 The class is created.
@@ -10155,7 +10155,7 @@ For breaks, R even provides some games in the \textbf{fun} package, including th
 \normalsize
 
 This document does not aim to be exhaustive on the possibilities of R but rather to present a working method and simple ways to apply it quickly.
-You can refer to the more detailed works cited in the text to go deeper into a particular point.
+You can refer to the more detailed books and documentations cited in the text to go deeper into a particular point.
 
 It is updated regularly as the available tools evolve.
 

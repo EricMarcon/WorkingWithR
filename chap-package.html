@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-07-05" />
+<meta name="date" content="2022-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -378,7 +378,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.9.1" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-the-workflow"><i class="fa fa-check"></i><b>4.9.1</b> Declaration of the workflow</a></li>
 <li class="chapter" data-level="4.9.2" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-targets"><i class="fa fa-check"></i><b>4.9.2</b> Declaration of targets</a></li>
-<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-flow"><i class="fa fa-check"></i><b>4.9.3</b> Running the flow</a></li>
+<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-workflow"><i class="fa fa-check"></i><b>4.9.3</b> Running the workflow</a></li>
 <li class="chapter" data-level="4.9.4" data-path="chap-rediger.html"><a href="chap-rediger.html#using-the-results"><i class="fa fa-check"></i><b>4.9.4</b> Using the results</a></li>
 <li class="chapter" data-level="4.9.5" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control-1"><i class="fa fa-check"></i><b>4.9.5</b> Source control</a></li>
 </ul></li>
@@ -464,7 +464,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#learnr"><i class="fa fa-check"></i><b>8.1</b> learnr</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#first-tutorial"><i class="fa fa-check"></i><b>8.1.1</b> First tutorial</a></li>
-<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#broadcasting"><i class="fa fa-check"></i><b>8.1.2</b> Broadcasting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#sharing"><i class="fa fa-check"></i><b>8.1.2</b> Sharing</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#github-classrooms"><i class="fa fa-check"></i><b>8.2</b> GitHub Classrooms</a>
 <ul>
@@ -502,14 +502,14 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="chap-package" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> Package<a href="chap-package.html#chap-package" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>R packages allow the software’s functionality to be extended by code provided by the developer community.
-They are the key to the success of R because they allow to quickly spread new methods resulting from research or to add new tools that can become standards, like the <strong>tidyverse</strong>.</p>
+<p>R packages extend its functionality with code provided by the developer community.
+They are the key to the success of R because they allow to quickly spread new methods resulting from research or to add new tools that can become standards, such as the <strong>tidyverse</strong>.</p>
 <p>It is useful to produce a package when you have written new functions that form a coherent whole.
 A package for personal use or limited to a work team is simple to set up and the time saved by easily using the updated version of each function very quickly amortizes the time spent on making the package.
 This type of package is intended to be hosted on GitHub.</p>
 <p>Packages with a wider use, which provide for example the code corresponding to a published method, are placed in the CRAN repository, from where they can be installed by the standard command <code>install.packages()</code>.
 CRAN performs extensive code checks and only accepts packages that pass its test suite without any warning.
-They must respect the<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a> policy of the repository.</p>
+They must respect the policies<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a> of the repository.</p>
 <p>The documentation for package creation is abundant.
 The reference book is <span class="citation">Wickham (<a href="#ref-Wickham2015" role="doc-biblioref">2015</a>)</span>, which should be consulted as a reference.</p>
 <p>The approach used here is to create a first package very quickly to understand that the process is quite simple.
@@ -530,7 +530,7 @@ It is possible to create this structure manually but specialized packages can do
 <p></p>
 <p>The package to create will be an RStudio project.
 In the project menu, select “New Project &gt; New Directory &gt; R package using devtools…”, choose the name of the project and its parent folder.
-The package will be called <strong>multiple</strong>, in the <code>%LOCALAPPDATA%\ProjectsR</code> folder, following the recommendations in the section <a href="#sec:solution-folders"><strong>??</strong></a>.</p>
+The package will be called <strong>multiple</strong>, in the <code>%LOCALAPPDATA%\ProjectsR</code> folder, following the recommendations in the section <a href="chap-logiciels.html#sec:solution-dossiers">1.2.4</a>.</p>
 <p>The name of the package must respect the constraints of project names: no special characters, no spaces…
 It must also be evocative of the purpose of the package.
 If the package is to be distributed, all its documentation will be written in English, including its name.</p>
@@ -593,11 +593,11 @@ Comments are added before the function:</p>
 <span id="cb345-10"><a href="chap-package.html#cb345-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">2</span> <span class="sc">*</span> number)</span>
 <span id="cb345-11"><a href="chap-package.html#cb345-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p></p>
-<p>Comments to <strong>roxygen2</strong> begin with <code>#</code>:</p>
+<p>Comments to <strong>roxygen2</strong> begin with <code>#'</code>:</p>
 <ul>
 <li>the first line contains the title of the function, i.e. a very short description: its name in general;</li>
 <li>the next line (separated by a line break) may contain its description (see <em>Description</em> in the help);</li>
-<li>the next line (after another line break) can contain more information (<em>Details</em> in the help);</li>
+<li>the next line (after another line break) might contain more information (<em>Details</em> in the help);</li>
 <li>the arguments of the function are described by the <code>@param</code> lines;</li>
 <li><code>@return</code> describes the result of the function;</li>
 <li><code>@export</code> declares that the function is exported: it will be usable in the working environment;</li>
@@ -636,7 +636,7 @@ In the <em>Build</em> window, the “More &gt; Document” menu allows you to do
 Then build the package (<em>Install and Restart</em>) and check the result by running the function and displaying its help:</p>
 <p></p>
 <div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="chap-package.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">double</span>(<span class="dv">2</span>)</span>
-<span id="cb347-2"><a href="chap-package.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(double)</span></code></pre></div>
+<span id="cb347-2"><a href="chap-package.html#cb347-2" aria-hidden="true" tabindex="-1"></a>?double</span></code></pre></div>
 <p></p>
 <p>It is possible to automate the update of the documentation at each build of the package by the menu “Build &gt; Configure Build Tools…”: click on “Configure” and check the box “Automatically reoxygenize when running Install and Restart”.
 This is an efficient choice for a small package but penalizing when the time to update the documentation increases with the complexity of the package. The package rebuild is most often used to test code changes: its speed is essential.</p>
@@ -721,7 +721,7 @@ RoxygenNote: 7.1.1</code></pre>
 The title is displayed in the <em>Packages</em> window next to the package names.</p>
 <p>The version must respect the conventions:</p>
 <ul>
-<li>The first number is the major version, 0 as long as the package is not stable then 1.
+<li>The first number is the major version, 0 as long as the package is not stable, then 1.
 The major version only changes if the package is no longer compatible with its previous versions, which forces users to modify their code.</li>
 <li>The second is the minor version, incremented when new features are added.</li>
 <li>The third is the correction version: 0 at the origin, incremented at each code correction without new functionality.</li>
@@ -733,12 +733,12 @@ The following development versions (unstable, not intended for production use) a
 The version number must be updated each time the package is pushed on GitHub.
 When the development is stabilized, the new version, intended to be used in production, is 1.3.2 if it does not bring any new functionality or 1.4.0 in the opposite case.</p>
 <p>The description of the authors is rather heavy but simple to understand.
-The Orcid identifiers of the academic authors can be used.
+The Orcid identifiers of academic authors can be used.
 If the package has several authors, they are placed in a <code>c()</code> function: <code>c(person(...), person())</code> for two authors.
 In this case, the role of each must be specified:</p>
 <ul>
-<li>“cre” for the creator of the package</li>
-<li>“aut” for one of the other authors</li>
+<li>“cre” for the creator of the package.</li>
+<li>“aut” for one of the other authors.</li>
 <li>“ctb” for a contributor, who may have reported a bug or provided some code.</li>
 </ul>
 <p>The description of the package in one paragraph allows to give more information.</p>
@@ -769,19 +769,19 @@ Then, the entry corresponding to this version remains frozen and a new entry is 
 <p></p>
 <div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="chap-package.html#cb354-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_vignette</span>(<span class="st">&quot;multiple&quot;</span>)</span></code></pre></div>
 <p></p>
-<p>The file <code>multiple.Rmd</code> is created in the <code>thumbnail</code> folder.
+<p>The file <code>multiple.Rmd</code> is created in the <code>vignette</code> folder.
 Add a subtitle in its header: the short description of the package:</p>
 <pre><code>title: &quot;multiple&quot;
 subtitle: &quot;Multiples of numbers&quot;</code></pre>
-<p>The rest of the header allows R to build the thumbnail from R Markdown code.</p>
-<p>The body of the thumbnail contains by default R code to declare the options for presenting the code snippets and loading the package.
+<p>The rest of the header allows R to build the vignette from R Markdown code.</p>
+<p>The body of the vignette contains by default R code to declare the options for presenting the code snippets and loading the package.
 An introduction to the use of the package should be written in this document, in R Markdown.</p>
-<p>During the development of the package, the thumbnail can be built manually by running:</p>
+<p>During the development of the package, the vignette can be built manually by running:</p>
 <p></p>
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="chap-package.html#cb356-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">build_vignettes</span>(<span class="st">&quot;multiple&quot;</span>)</span></code></pre></div>
 <p></p>
 <p>The resulting files are placed in <code>doc/</code>: open the <code>.html</code> file to check the result.</p>
-<p>RStudio does not create the package thumbnail when the “Install and Restart” command in the Build window is called.
+<p>RStudio does not create the package vignette when the “Install and Restart” command in the Build window is called.
 For a complete installation, two solutions are possible:</p>
 <ul>
 <li>Build the package source file (“Build &gt; More &gt; Build Source Package”) and then install it (“Packages &gt; Install &gt; Install from &gt; Package Archive file”).
@@ -798,7 +798,7 @@ The source file is next to the project file.</li>
 </div>
 <div id="pkgdown" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> pkgdown<a href="chap-package.html#pkgdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>pkgdown</strong> package creates a companion site to the package<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>, which includes the <code>README.md</code> file as the home page, the thumbnail in a “Get Started” section, all of the help files with their executed examples (the “Reference” section), the <code>NEWS.md</code> file for a history of the package (the “Changelog” section), and information from the <code>DESCRIPTION</code> file.</p>
+<p>The <strong>pkgdown</strong> package creates a companion site to the package<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>, which includes the <code>README.md</code> file as the home page, the vignette in a “Get Started” section, all of the help files with their executed examples (the “Reference” section), the <code>NEWS.md</code> file for a history of the package (the “Changelog” section), and information from the <code>DESCRIPTION</code> file.</p>
 <p>Create the site with <strong>usethis</strong>:</p>
 <p></p>
 <div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="chap-package.html#cb359-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown</span>()</span></code></pre></div>
@@ -823,14 +823,14 @@ development:
 This way, users of a production version of the package have access to the site without it being disturbed by the development versions.</p>
 <p>The site can be enriched in several ways:</p>
 <ul>
-<li>By adding articles in R Markdown format to the <code>thumbnails/articles</code> folder.
-The thumbnail does not require significant computational resources to present examples because it is built at the same time as the package.
+<li>By adding articles in R Markdown format to the <code>vignettes/articles</code> folder.
+The vignette should not require significant computational resources to present examples because it is built at the same time as the package.
 The articles are generated by <strong>pkgdown</strong>, independently, and can therefore be more ambitious;</li>
-<li>By improving its presentation (grouping functions by themes, adding badges, a sticker<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>…): refer to the thumbnail of <strong>pkgdown</strong>.</li>
+<li>By improving its presentation (grouping functions by themes, adding badges, a sticker<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>…): refer to the help of <strong>pkgdown</strong>.</li>
 </ul>
 <p>To enrich the documentation of the package, it is possible to use a <code>README.Rmd</code> file in R Markdown format, to be knitted to create the standard <code>README.md</code> of GitHub, used as the home page of the <strong>pkgdown</strong> site, which can in this way present examples of use of the code.
 The approach is detailed in <em>R Packages</em><a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a>.
-The added complexity is to be compared to the gain: a simple homepage (without code) with links to the thumbnail and articles is easier to implement.</p>
+The added complexity is to be compared to the gain: a simple homepage (without code) with links to the vignette and articles is easier to implement.</p>
 </div>
 <div id="package-specific-code" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Package specific code<a href="chap-package.html#package-specific-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -844,11 +844,11 @@ The added complexity is to be compared to the gain: a simple homepage (without c
 <p>
 The noise is drawn in a centered normal distribution of standard deviation <code>sd</code> and added to the calculated value.</p>
 <p><code>rnorm()</code> is a function of the <strong>stats</strong> package.
-Even if the package is systematically loaded by R, the package to which the function belongs must be declared: the only exceptions are functions from the <strong>base</strong> package.</p>
+Even though the package is systematically loaded by R, the package to which the function belongs must be declared: the only exceptions are functions from the <strong>base</strong> package.</p>
 <p>The <strong>stats</strong> package must first be declared in <code>DESCRIPTION</code> which contains an <code>Imports:</code> statement.
 All packages used by the <strong>multiple</strong> code will be listed, separated by commas.</p>
 <pre><code>Imports: stats</code></pre>
-<p>This “import” simply means that the <strong>stats</strong> package must be loaded, but not necessarily attached (see section `<span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(sec:environnements)), for <strong>multiple</strong> to work.</p>
+<p>This “import” simply means that the <strong>stats</strong> package must be loaded, but not necessarily attached (see section <a href="chap-utiliseR.html#sec:environnements">2.2</a>), for <strong>multiple</strong> to work.</p>
 <p>Then, the <code>rnorm()</code> function must be found in the <strong>multiple</strong> package environment.
 There are several ways to fulfill this requirement.
 First, the following comment could be provided for <strong>roxygen2</strong>:</p>
@@ -856,7 +856,7 @@ First, the following comment could be provided for <strong>roxygen2</strong>:</p
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="chap-package.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @import stats</span></span></code></pre></div>
 <p></p>
 <p>The entire namespace of the <strong>stats</strong> package would be attached to and accessible by the <strong>multiple</strong> package.
-This is not a good practice because it multiplies the risks of name conflicts (see section <a href="chap-utiliseR.html#sec:environnements">2.2</a>).
+This is not a good practice because it inreases the risk of name conflicts (see section <a href="chap-utiliseR.html#sec:environnements">2.2</a>).
 Note that the notion of import used here is different from that of <code>DESCRIPTION</code>, although they have the same name.</p>
 <p>It is best to import only the <code>rnorm()</code> function by declaring it in the function documentation:</p>
 <p></p>
@@ -913,11 +913,11 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="chap-package.html#cb372-1" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod(&quot;plot&quot;)
-## &lt;bytecode: 0x7fae83782070&gt;
+## &lt;bytecode: 0x7f9e45acf268&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
-<strong>Stats</strong> provides a function <code>plot.lm()</code> to create a figure from a linear model.
+<strong>stats</strong> provides a function <code>plot.lm()</code> to create a figure from a linear model.
 Many packages create classes tailored to their objects and provide a <code>plot</code> method for each class.
 The functions can be listed:</p>
 <p></p>
@@ -953,7 +953,7 @@ The functions can be listed:</p>
 <p>The <code>print</code> method is used to display any object (it is implicit when only the name of an object is entered):</p>
 <p></p>
 <div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="chap-package.html#cb380-1" aria-hidden="true" tabindex="-1"></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb380-2"><a href="chap-package.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent de &#39;&gt; my_lm&#39;</span></span>
+<span id="cb380-2"><a href="chap-package.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent to &#39;&gt; my_lm&#39;</span></span>
 <span id="cb380-3"><a href="chap-package.html#cb380-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
@@ -1018,10 +1018,10 @@ If not, errors will occur:</p>
 <div id="creating-a-generic-method" class="section level4 hasAnchor" number="5.5.3.1">
 <h4><span class="header-section-number">5.5.3.1</span> Creating a generic method<a href="chap-package.html#creating-a-generic-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>New generic methods can be created and declined according to the classes.</p>
-<p>As an example, let’s create a generic method <code>triple</code> which will calculate the triple of the values in the package <strong>multiple</strong>, declined in two distinct functions: one for integers and one for reals.
-Calculations on integers are faster than those on reals, which justifies the effort of writing two versions of the code.</p>
+<p>As an example, let’s create a generic method <code>triple</code> which will calculate the triple of numbers in the package <strong>multiple</strong>, declined in two distinct functions: one for integers and one for reals.
+Calculations on integers are faster than those on reals, which justifies (at least in theory) the effort of writing two versions of the code.</p>
 <p></p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="chap-package.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Méthode générique</span></span>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="chap-package.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generic Method</span></span>
 <span id="cb390-2"><a href="chap-package.html#cb390-2" aria-hidden="true" tabindex="-1"></a>triple <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
 <span id="cb390-3"><a href="chap-package.html#cb390-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">UseMethod</span>(<span class="st">&quot;triple&quot;</span>)</span>
 <span id="cb390-4"><a href="chap-package.html#cb390-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
@@ -1059,14 +1059,14 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span id="cb400-2"><a href="chap-package.html#cb400-2" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(<span class="fu">triple.integer</span>(2L), <span class="fu">triple.numeric</span>(<span class="dv">2</span>),</span>
 <span id="cb400-3"><a href="chap-package.html#cb400-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triple</span>(2L))</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
-##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  325  333.5 27500.56  342.0  360.5
-##   triple.numeric(2)  323  336.5 22603.49  345.5  368.5
-##          triple(2L) 1353 1382.5  1512.20 1395.5 1478.5
+##                expr  min     lq     mean median   uq
+##  triple.integer(2L)  326  335.5 46512.58  343.0  354
+##   triple.numeric(2)  324  334.5 24156.14  343.5  361
+##          triple(2L) 1334 1352.5  1460.38 1368.5 1425
 ##      max neval
-##  2714403   100
-##  2218462   100
-##     7261   100</code></pre>
+##  4615476   100
+##  2378908   100
+##     6406   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -1076,8 +1076,8 @@ This search takes a lot of time and justifies the use of generic methods for the
 </div>
 <div id="creating-a-class" class="section level4 hasAnchor" number="5.5.3.2">
 <h4><span class="header-section-number">5.5.3.2</span> Creating a class<a href="chap-package.html#creating-a-class" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In a package, classes are created if the results of the functions justify it: list structure and identification of the class with an object (“lm” is the class of linear models).
-For each class created, the <code>print</code>, <code>summary</code> and <code>plot</code> methods (if a graphical representation is possible) must be written.</p>
+<p>In a package, classes are created if the results of the functions justify it: a list structure and the identification of the class with an object (“lm” is the class of linear models).
+For each class created, the <code>print</code>, <code>summary</code> and <code>plot</code> methods (if a graphical representation is possible) should be written.</p>
 <p>Let’s write a function <code>multiple()</code> whose result will be an object of a new class, <code>multiple</code>, which will be a list storing the values to multiply, the multiplier and the result.</p>
 <p></p>
 <div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="chap-package.html#cb402-1" aria-hidden="true" tabindex="-1"></a>multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(number, <span class="at">times =</span> <span class="dv">1</span>) {</span>
@@ -1089,12 +1089,13 @@ For each class created, the <code>print</code>, <code>summary</code> and <code>p
 <span id="cb402-7"><a href="chap-package.html#cb402-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">class</span>(result) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;multiple&quot;</span>, <span class="fu">class</span>(result))</span>
 <span id="cb402-8"><a href="chap-package.html#cb402-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(result)</span>
 <span id="cb402-9"><a href="chap-package.html#cb402-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb402-10"><a href="chap-package.html#cb402-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Classe du résultat</span></span>
+<span id="cb402-10"><a href="chap-package.html#cb402-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Class of the result</span></span>
 <span id="cb402-11"><a href="chap-package.html#cb402-11" aria-hidden="true" tabindex="-1"></a>my_multiple <span class="ot">&lt;-</span> <span class="fu">multiple</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>)</span>
 <span id="cb402-12"><a href="chap-package.html#cb402-12" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_multiple)</span></code></pre></div>
 <pre><code>## [1] &quot;multiple&quot; &quot;list&quot;</code></pre>
 <p></p>
-<p>The call to the <code>multiple()</code> function returns an object of class <code>multiple</code>, which is also of class <code>list'. In the absence of a</code>print.multiple()<code>function, R looks for the</code>print.list()<code>function, which does not exist, and falls back on the</code>print.default()` function:</p>
+<p>The call to the <code>multiple()</code> function returns an object of class <code>multiple</code>, which is also of class <code>list</code>.
+In the absence of a <code>print.multiple()</code> function, R looks for the <code>print.list()</code> function, which does not exist, and falls back on the <code>print.default()</code> function:</p>
 <p></p>
 <div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="chap-package.html#cb404-1" aria-hidden="true" tabindex="-1"></a>my_multiple</span></code></pre></div>
 <pre><code>## $x
@@ -1114,7 +1115,7 @@ For each class created, the <code>print</code>, <code>summary</code> and <code>p
 <div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="chap-package.html#cb406-1" aria-hidden="true" tabindex="-1"></a>print.multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
 <span id="cb406-2"><a href="chap-package.html#cb406-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print.default</span>(x<span class="sc">$</span>y)</span>
 <span id="cb406-3"><a href="chap-package.html#cb406-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb406-4"><a href="chap-package.html#cb406-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Nouvel affichage</span></span>
+<span id="cb406-4"><a href="chap-package.html#cb406-4" aria-hidden="true" tabindex="-1"></a><span class="co"># New presentation</span></span>
 <span id="cb406-5"><a href="chap-package.html#cb406-5" aria-hidden="true" tabindex="-1"></a>my_multiple</span></code></pre></div>
 <pre><code>## [1] 2 4 6</code></pre>
 <p></p>
@@ -1152,7 +1153,7 @@ For each class created, the <code>print</code>, <code>summary</code> and <code>p
 <p><img src="WwR_files/figure-html/plot.multiple-2.png" width="80%" style="display: block; margin: auto;" /></p>
 <p></p>
 <p>For technical reasons related to unconventional evaluation in the tidyverse, variable names used by <code>aes()</code> must be prefixed with <code>.data$</code> in packages and <code>rlang::.data</code> must be imported.
-Otherwise, the package check returns a note that the variables <code>x</code> and <code>y</code>, used by the arguments to <code>aes()</code> have not been declared and may not exist in the local environment (see section <a href="chap-utiliseR.html#sec:environnements">2.2</a>).</p>
+Otherwise, the package check returns a note that the variables <code>x</code> and <code>y</code>, used by the arguments of <code>aes()</code> have not been declared and may not exist in the local environment (see section <a href="chap-utiliseR.html#sec:environnements">2.2</a>).</p>
 </div>
 <div id="documentation" class="section level4 hasAnchor" number="5.5.3.3">
 <h4><span class="header-section-number">5.5.3.3</span> Documentation<a href="chap-package.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1184,11 +1185,11 @@ graphics::plot
 #&#39; @export
 ggplot2::autoplot</code></pre>
 <ul>
-<li>roxygen2** automatically creates a help file <code>reexports.Rd</code> in which there is a link to the original documentation of the re-exported generics.</li>
+<li><strong>roxygen2</strong> automatically creates a help file <code>reexports.Rd</code> in which there is a link to the original documentation of the re-exported generics.</li>
 </ul>
 <p>In <code>DESCRIPTION</code>, the original package for each generic must be listed in the <code>Imports:</code> directive:</p>
 <pre><code>Imports: ggplot2, graphics</code></pre>
-<p>Finally, importing functions from the tidyverse also requires some precautions:</p>
+<p>Last, importing functions from the tidyverse also requires some precautions:</p>
 <ul>
 <li>the <strong>tidyverse</strong> package is reserved for interactive use in R: there is no way to import it into <code>DESCRIPTION</code> because its dependencies may change and lead to unpredictable results.
 The <strong>magrittr</strong> package provides the pipes, mainly <code>%&gt;%</code>.
@@ -1204,7 +1205,7 @@ They must be imported into <code>DESCRIPTION</code>.</li>
 <p></p>
 <ul>
 <li>Functions in the tidyverse that use column names from tibbles or dataframes generate warnings at package check time because these names are confused with undefined variable names.
-To avoid this confusion, the <code>.data</code> object of the <strong>rlang</strong> package is used (for example in <code>aes()</code> seen above).
+To avoid this confusion, the <code>.data</code> object of the <strong>rlang</strong> package is helpful (for example in <code>aes()</code> seen above).
 It must be imported:</li>
 </ul>
 <p></p>
@@ -1279,7 +1280,7 @@ It must be imported:</li>
 <span id="cb420-65"><a href="chap-package.html#cb420-65" aria-hidden="true" tabindex="-1"></a>graphics<span class="sc">::</span>plot</span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod(&quot;plot&quot;)
-## &lt;bytecode: 0x7fae83782070&gt;
+## &lt;bytecode: 0x7f9e45acf268&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="chap-package.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; autoplot</span></span>
 <span id="cb422-2"><a href="chap-package.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
@@ -1309,7 +1310,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod(&quot;autoplot&quot;)
 ## }
-## &lt;bytecode: 0x7fae7f2e12d0&gt;
+## &lt;bytecode: 0x7f9e43665730&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
@@ -1366,11 +1367,11 @@ src/*.dll</code></pre>
 </div>
 <div id="tidy-package" class="section level3 hasAnchor" number="5.5.5">
 <h3><span class="header-section-number">5.5.5</span> Tidy package<a href="chap-package.html#tidy-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Any modern package must be tidyverse compatible, which requires little effort:</p>
+<p>Any modern package should be tidyverse compatible, which requires little effort:</p>
 <ul>
-<li>to allow pipelines, the main argument of functions must be the first one;</li>
-<li>functions that transform data must accept a dataframe or tibble as the first argument and return an object of the same format;</li>
-<li>methods <code>plot()</code> must be doubled with methods <code>autoplot()</code> with the same arguments that produce the same graph with <strong>ggplot2</strong>.</li>
+<li>to allow pipelines, the main argument of functions should be the first one;</li>
+<li>functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format;</li>
+<li>methods <code>plot()</code> should be doubled with methods <code>autoplot()</code> with the same arguments that produce the same graph with <strong>ggplot2</strong>.</li>
 </ul>
 </div>
 </div>
@@ -1378,7 +1379,7 @@ src/*.dll</code></pre>
 <h2><span class="header-section-number">5.6</span> Bibliography<a href="chap-package.html#bibliography-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The documentation of a package uses bibliographic references.
 They can be managed automatically with <strong>Rdpack</strong> and <strong>roxygen2</strong>.
-References used in R Markdown files (thumbnail, site produced by <strong>pkgdown</strong>) are not concerned.</p>
+References used in R Markdown files (vignette, site produced by <strong>pkgdown</strong>) are not concerned.</p>
 <div id="preparation" class="section level3 hasAnchor" number="5.6.1">
 <h3><span class="header-section-number">5.6.1</span> Preparation<a href="chap-package.html#preparation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Bibliographic references must be placed in a bibtex file <code>REFERENCES.bib</code> placed in the <code>inst</code> folder.
@@ -1395,8 +1396,9 @@ This folder contains files that will be placed in the root of the package folder
 <div id="citations" class="section level3 hasAnchor" number="5.6.2">
 <h3><span class="header-section-number">5.6.2</span> Citations<a href="chap-package.html#citations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>References are cited by the command <code>\insertCite{key}{package}</code> in the documentation for <strong>roxygen2</strong>.
-package<code>is the name of the package in which the</code>REFERENCES.bib` file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use <strong>Rdpack</strong>.</p>
-<p>key<code>is the identifier of the reference in the file. The following example[^507] is from the documentation of the **SpatDiv** package hosted on GitHub, in its</code>.R` file:</p>
+<code>package</code> is the name of the package in which the <code>REFERENCES.bib</code> file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use <strong>Rdpack</strong>.</p>
+<p><code>key</code> is the identifier of the reference in the file.
+The following example<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a> is from the documentation of the <strong>SpatDiv</strong> package hosted on GitHub, in its <code>.R</code> file:</p>
 <p></p>
 <div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="chap-package.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; SpatDiv</span></span>
 <span id="cb432-2"><a href="chap-package.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
@@ -1421,8 +1423,8 @@ package<code>is the name of the package in which the</code>REFERENCES.bib` file 
 <p>Citations are enclosed in parentheses.
 To place the author’s name outside the parenthesis, add the statement <code>;textual</code>:</p>
 <pre><code>\insertCite{Marcon2014c;textual}{SpatDiv}</code></pre>
-<p>To quote several references (necessarily from the same package), separate them with commas.</p>
-<p>At the end of the documentation of an object using quotes, systematically add a list of references:</p>
+<p>To cite several references (necessarily from the same package), separate them with commas.</p>
+<p>At the end of the documentation of an object using citations, systematically add a list of references:</p>
 <p></p>
 <div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="chap-package.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @references</span></span>
 <span id="cb435-2"><a href="chap-package.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; \insertAllCited{}</span></span></code></pre></div>
@@ -1487,13 +1489,13 @@ They are based on <strong>testthat</strong> to be integrated in the package:</p>
 ## 
 ##     matches</code></pre>
 <p></p>
-<p>The tests must be added as <code>.R' files whose names must begin with</code>test’ in the `tests/testthat’ folder.</p>
+<p>The tests must be added as <code>.R</code> files whose names must begin with <code>test' in the</code>tests/testthat` folder.</p>
 <p>Each test (so the content of each file) starts with its context, i.e. a set of tests. For example, in a file <code>test_double.R</code>:</p>
 <p></p>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="chap-package.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;function double&quot;</span>)</span></code></pre></div>
 <p></p>
 <p>The tests are contained in files that group them by topic, for example <code>test_double.R</code>.
-The name of each test is passed as an argument to the function <code>test_that())</code>:</p>
+The name of each test is passed as an argument to the function <code>test_that()</code>:</p>
 <p></p>
 <div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="chap-package.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;Double values are correct&quot;</span>, {</span>
 <span id="cb446-2"><a href="chap-package.html#cb446-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">skip_on_cran</span>()</span>
@@ -1555,18 +1557,18 @@ It is commented out as long as the production of the site is done locally, but u
 It can be automated very easily with the GitHub Actions service, triggered at each modification of the repository on GitHub.
 The analysis of the code coverage by tests (which parts of the code are tested or not) will be added.</p>
 <p>GitHub is also able to rebuild the package documentation with <strong>pkgdown</strong>, another resource-consuming operation, after the tests have passed.</p>
-<p>The section <a href="chap-ci.html#sec:package-ci6">6.3.5</a> details how to do this.</p>
+<p>Section <a href="chap-ci.html#sec:package-ci6">6.3.5</a> details how to do this.</p>
 </div>
 <div id="sec:package-cran" class="section level2 hasAnchor" number="5.11">
 <h2><span class="header-section-number">5.11</span> CRAN<a href="chap-package.html#sec:package-cran" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Packages with an audience beyond the author’s circle can be uploaded to CRAN.
-The rules to respect on CRAN are numerous<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>. They are checked by the <code>R CMD check</code> command with the <code>-- as.cran</code> option.
+The rules to respect on CRAN are numerous<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a>. They are checked by the <code>R CMD check</code> command with the <code>-- as.cran</code> option.
 The check must not return any errors, warnings, or notes before submitting the package.</p>
 <div id="testing-the-package" class="section level3 hasAnchor" number="5.11.1">
 <h3><span class="header-section-number">5.11.1</span> Testing the package<a href="chap-package.html#testing-the-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Verification of the package by GitHub as part of continuous integration is not sufficient.
 The package must be tested on the development version of R.
-The <em>R-hub builder</em><a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a> site allows to do it easily.</p>
+The <em>R-hub builder</em><a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a> site allows to do it easily.</p>
 <p>The package, which must not be a development version (limited to three numbers, see section <a href="chap-package.html#sec:package-description">5.2.1</a>), must be built in source format: in the <em>Build</em> window of RStudio, click on “More &gt; Build Source Package”.
 On the <em>R-hub builder</em> site, click on “Advanced”, select the package source file and the test platform: <em>Debian Linux, R-devel, GCC</em>.</p>
 <p>The <strong>rhub</strong> package allows you to use the same verification platform as the <em>R-hub builder</em> site from RStudio.
@@ -1575,8 +1577,8 @@ Then, just call the <code>check_for_cran()</code> function to run a full verific
 </div>
 <div id="submission" class="section level3 hasAnchor" number="5.11.2">
 <h3><span class="header-section-number">5.11.2</span> Submission<a href="chap-package.html#submission" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When the package is ready, submission to CRAN is done through the dedicated web site<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a>.</p>
-<p>In case of rejection, process the requests and resubmit by incrementing the version number.</p>
+<p>When the package is ready, submission to CRAN is done through the dedicated web site<a href="#fn102" class="footnote-ref" id="fnref102"><sup>102</sup></a>.</p>
+<p>In case of rejection, process the requests and resubmit after incrementing the version number.</p>
 </div>
 <div id="maintenance" class="section level3 hasAnchor" number="5.11.3">
 <h3><span class="header-section-number">5.11.3</span> Maintenance<a href="chap-package.html#maintenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1603,11 +1605,12 @@ Otherwise, the package is archived.</p>
 <li id="fn94"><p><a href="https://svn.r-project.org/R/trunk/share/licenses/license.db" class="uri">https://svn.r-project.org/R/trunk/share/licenses/license.db</a><a href="chap-package.html#fnref94" class="footnote-back">↩︎</a></p></li>
 <li id="fn95"><p><a href="https://r-pkgs.org/description.html#description-license" class="uri">https://r-pkgs.org/description.html#description-license</a><a href="chap-package.html#fnref95" class="footnote-back">↩︎</a></p></li>
 <li id="fn96"><p>Example: <a href="https://EricMarcon.github.io/entropart/" class="uri">https://EricMarcon.github.io/entropart/</a><a href="chap-package.html#fnref96" class="footnote-back">↩︎</a></p></li>
-<li id="fn97"><p>L’application Shiny <strong>hexmake</strong> permet de créer facilement un sticker: <a href="https://connect.thinkr.fr/hexmake/" class="uri">https://connect.thinkr.fr/hexmake/</a><a href="chap-package.html#fnref97" class="footnote-back">↩︎</a></p></li>
+<li id="fn97"><p>The Shiny application <strong>hexmake</strong> allows easy creation of a sticker: <a href="https://connect.thinkr.fr/hexmake/" class="uri">https://connect.thinkr.fr/hexmake/</a><a href="chap-package.html#fnref97" class="footnote-back">↩︎</a></p></li>
 <li id="fn98"><p><a href="https://r-pkgs.org/release.html?q=readme#readme-rmd" class="uri">https://r-pkgs.org/release.html?q=readme#readme-rmd</a><a href="chap-package.html#fnref98" class="footnote-back">↩︎</a></p></li>
-<li id="fn99"><p><a href="https://cran.r-project.org/web/packages/policies.html" class="uri">https://cran.r-project.org/web/packages/policies.html</a><a href="chap-package.html#fnref99" class="footnote-back">↩︎</a></p></li>
-<li id="fn100"><p><a href="https://builder.r-hub.io/" class="uri">https://builder.r-hub.io/</a><a href="chap-package.html#fnref100" class="footnote-back">↩︎</a></p></li>
-<li id="fn101"><p><a href="https://xmpalantir.wu.ac.at/cransubmit/" class="uri">https://xmpalantir.wu.ac.at/cransubmit/</a><a href="chap-package.html#fnref101" class="footnote-back">↩︎</a></p></li>
+<li id="fn99"><p><strong>SpatDiv</strong> package on GitHub: <a href="https://github.com/EricMarcon/SpatDiv/blob/master/R/package.R" class="uri">https://github.com/EricMarcon/SpatDiv/blob/master/R/package.R</a><a href="chap-package.html#fnref99" class="footnote-back">↩︎</a></p></li>
+<li id="fn100"><p><a href="https://cran.r-project.org/web/packages/policies.html" class="uri">https://cran.r-project.org/web/packages/policies.html</a><a href="chap-package.html#fnref100" class="footnote-back">↩︎</a></p></li>
+<li id="fn101"><p><a href="https://builder.r-hub.io/" class="uri">https://builder.r-hub.io/</a><a href="chap-package.html#fnref101" class="footnote-back">↩︎</a></p></li>
+<li id="fn102"><p><a href="https://xmpalantir.wu.ac.at/cransubmit/" class="uri">https://xmpalantir.wu.ac.at/cransubmit/</a><a href="chap-package.html#fnref102" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

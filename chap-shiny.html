@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-07-05" />
+<meta name="date" content="2022-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -378,7 +378,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.9.1" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-the-workflow"><i class="fa fa-check"></i><b>4.9.1</b> Declaration of the workflow</a></li>
 <li class="chapter" data-level="4.9.2" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-targets"><i class="fa fa-check"></i><b>4.9.2</b> Declaration of targets</a></li>
-<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-flow"><i class="fa fa-check"></i><b>4.9.3</b> Running the flow</a></li>
+<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-workflow"><i class="fa fa-check"></i><b>4.9.3</b> Running the workflow</a></li>
 <li class="chapter" data-level="4.9.4" data-path="chap-rediger.html"><a href="chap-rediger.html#using-the-results"><i class="fa fa-check"></i><b>4.9.4</b> Using the results</a></li>
 <li class="chapter" data-level="4.9.5" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control-1"><i class="fa fa-check"></i><b>4.9.5</b> Source control</a></li>
 </ul></li>
@@ -464,7 +464,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#learnr"><i class="fa fa-check"></i><b>8.1</b> learnr</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#first-tutorial"><i class="fa fa-check"></i><b>8.1.1</b> First tutorial</a></li>
-<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#broadcasting"><i class="fa fa-check"></i><b>8.1.2</b> Broadcasting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#sharing"><i class="fa fa-check"></i><b>8.1.2</b> Sharing</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#github-classrooms"><i class="fa fa-check"></i><b>8.2</b> GitHub Classrooms</a>
 <ul>
@@ -502,13 +502,13 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="chap-shiny" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">7</span> Shiny<a href="chap-shiny.html#chap-shiny" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Shiny allows you to publish an interactive application using R code as a web site.
-The site can run locally, on a user’s workstation that launches it from RStudio, or online, on a dedicated server running Shiny Server<a href="#fn111" class="footnote-ref" id="fnref111"><sup>111</sup></a>.</p>
+<p>Shiny allows to publish an interactive application using R code as a web site.
+The site can run locally, on a user’s workstation that launches it from RStudio, or online, on a dedicated server running Shiny Server<a href="#fn112" class="footnote-ref" id="fnref112"><sup>112</sup></a>.</p>
 <p>Basically, a form allows to enter the arguments of a function and a visualization window to display the results of the calculation.</p>
-<p>The use of a Shiny application makes the execution of the code very simple, even for users not familiar with R, but obviously limits the possibilities.</p>
+<p>A Shiny application makes the execution of the code very simple, even for users not familiar with R, but obviously limits the possibilities.</p>
 <div id="first-application" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> First application<a href="chap-shiny.html#first-application" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In RStudio, create an application with the menu “File &gt; New File &gt; Shiny Web App…”, enter the name of the application “MyAppShiny” and select the folder where to put it.</p>
+<p>In RStudio, create an application with the menu “File &gt; New File &gt; Shiny Web App…”, enter the name of the application “MyShinyApp” and select the folder where to put it.</p>
 <p>The name of the application has been used to create a folder that we now need to transform into a project (project menu in the top right of RStudio, “New Project &gt; Existing Directory”, select the application folder).</p>
 <p>The application file named <code>app.R</code> contains two functions: <code>ui()</code> which defines the GUI and <code>server()</code> which contains the R code to be executed.
 The application can be launched by clicking on <code>Run App</code> in the code window.</p>
@@ -541,13 +541,13 @@ Figure 7.1: Shiny Application <em>Old Faithful Geyser Data</em>.
 <li>the controls for displaying the results (<em>output</em>).</li>
 </ul>
 <p>The code to process the inputs and produce the outputs is then written to <code>server()</code>.</p>
-<p>The RStudio tutorial<a href="#fn112" class="footnote-ref" id="fnref112"><sup>112</sup></a> is very detailed and should be used to go further.</p>
+<p>The RStudio tutorial<a href="#fn113" class="footnote-ref" id="fnref113"><sup>113</sup></a> is very detailed and should be used to go further.</p>
 </div>
 <div id="example" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> Example<a href="chap-shiny.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This simple application uses the <strong>scholar</strong> package to query Google Scholar and get the bibliometric data of an author from his or her identifier.</p>
 <p>The <code>app.R</code> file contains all the code and is built incrementally here.
-The full application, with graphical output in addition to its simplified version presented here is available on GitHub<a href="#fn113" class="footnote-ref" id="fnref113"><sup>113</sup></a>.</p>
+The full application, with graphical output in addition to its simplified version presented here is available on GitHub<a href="#fn114" class="footnote-ref" id="fnref114"><sup>114</sup></a>.</p>
 <p>The beginning of the code consists of preparing the application to run by loading the necessary packages:</p>
 <p></p>
 <div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="chap-shiny.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the application ####</span></span>
@@ -637,15 +637,15 @@ The full application, with graphical output in addition to its simplified versio
 This function queries the author’s Google Scholar web page and extracts the values from the result: this is a heavy processing, which is better executed only once rather than twice, in the <code>renderUI()</code> functions in charge of computing the values of <code>output$h</code> and <code>output$name</code>.</p>
 <p>The simplest code to do this would be as follows:</p>
 <p></p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="chap-shiny.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the get_profile function only once #### Store the</span></span>
-<span id="cb480-2"><a href="chap-shiny.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="co"># author profile</span></span>
-<span id="cb480-3"><a href="chap-shiny.html#cb480-3" aria-hidden="true" tabindex="-1"></a>AuthorProfile <span class="ot">&lt;-</span> <span class="fu">get_profile</span>(input<span class="sc">$</span>AuthorID)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="chap-shiny.html#cb480-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Run the get_profile function only once ####</span></span>
+<span id="cb480-2"><a href="chap-shiny.html#cb480-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the author profile</span></span>
+<span id="cb480-3"><a href="chap-shiny.html#cb480-3" aria-hidden="true" tabindex="-1"></a>  AuthorProfile <span class="ot">&lt;-</span> <span class="fu">get_profile</span>(input<span class="sc">$</span>AuthorID)</span></code></pre></div>
 <p></p>
 <p>The difficulty with programming a Shiny application is that any computation referring to an input interface element must be <em>reactive</em>.
 If the latter code were executed, the following error message would appear:
 “Operation not allowed without an active reactive context. (You tried to do something that can only be done from inside a reactive expression or observer.)”</p>
 <p>In practice, the execution of the code is started by modifying an input control (here: <code>intput$AuthorID</code>).
-The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like <code>renderPlot</code> in the <em>Old Faithful Geyser Data</em> application or <code>renderUI()</code> here.
+The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like <code>renderPlot()</code> in the <em>Old Faithful Geyser Data</em> application or <code>renderUI()</code> here.
 The following code would run without error:</p>
 <p></p>
 <div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="chap-shiny.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output ####</span></span>
@@ -704,7 +704,7 @@ The data provided by the <code>get_citation_history()</code> function of <strong
 <h2><span class="header-section-number">7.3</span> Hosting<a href="chap-shiny.html#sec:hebergement-shiny" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A Shiny application is not necessarily hosted by a web server: it can be run on users’ workstations if they have R.</p>
 <p>For a wider use, a dedicated server is necessary.
-Shinyapps.io<a href="#fn114" class="footnote-ref" id="fnref114"><sup>114</sup></a> is a service from RStudio that allows to host 5 Shiny applications for free with a maximum uptime of 5 hours per month.</p>
+Shinyapps.io<a href="#fn115" class="footnote-ref" id="fnref115"><sup>115</sup></a> is a service from RStudio that allows to host 5 Shiny applications for free with a maximum uptime of 5 hours per month.</p>
 <p>First of all, you have to open an account on the site, preferably with your GitHub identifiers.
 To allow the management of online applications directly from RStudio, you must then install the <strong>rsconnect</strong> package and set it up:</p>
 <p></p>
@@ -723,7 +723,7 @@ Figure 7.2: Publication of the Shiny application on Shinyapps.io.
 </p>
 </div>
 <p></p>
-<p>The application is now available at <a href="https://prenom-nom.shinyapps.io/MonAppShiny/" class="uri">https://prenom-nom.shinyapps.io/MonAppShiny/</a></p>
+<p>The application is now available at <a href="https://firstname-lastname.shinyapps.io/MyShinyApp/" class="uri">https://firstname-lastname.shinyapps.io/MyShinyApp/</a></p>
 <p>The “Bibliometrics” application does not work on Shinyapps.io because the way the <strong>Scholar</strong> package queries Google Scholar is not supported.
 Most Shiny applications work without difficulty, as long as they don’t require complex networking features.</p>
 
@@ -731,11 +731,11 @@ Most Shiny applications work without difficulty, as long as they don’t require
 </div>
 <div class="footnotes">
 <hr />
-<ol start="111">
-<li id="fn111"><p><a href="https://rstudio.com/products/shiny/download-server/" class="uri">https://rstudio.com/products/shiny/download-server/</a><a href="chap-shiny.html#fnref111" class="footnote-back">↩︎</a></p></li>
-<li id="fn112"><p><a href="https://shiny.rstudio.com/tutorial/" class="uri">https://shiny.rstudio.com/tutorial/</a><a href="chap-shiny.html#fnref112" class="footnote-back">↩︎</a></p></li>
-<li id="fn113"><p><a href="https://github.com/EricMarcon/bibliometrics" class="uri">https://github.com/EricMarcon/bibliometrics</a><a href="chap-shiny.html#fnref113" class="footnote-back">↩︎</a></p></li>
-<li id="fn114"><p><a href="https://www.shinyapps.io/" class="uri">https://www.shinyapps.io/</a><a href="chap-shiny.html#fnref114" class="footnote-back">↩︎</a></p></li>
+<ol start="112">
+<li id="fn112"><p><a href="https://rstudio.com/products/shiny/download-server/" class="uri">https://rstudio.com/products/shiny/download-server/</a><a href="chap-shiny.html#fnref112" class="footnote-back">↩︎</a></p></li>
+<li id="fn113"><p><a href="https://shiny.rstudio.com/tutorial/" class="uri">https://shiny.rstudio.com/tutorial/</a><a href="chap-shiny.html#fnref113" class="footnote-back">↩︎</a></p></li>
+<li id="fn114"><p><a href="https://github.com/EricMarcon/bibliometrics" class="uri">https://github.com/EricMarcon/bibliometrics</a><a href="chap-shiny.html#fnref114" class="footnote-back">↩︎</a></p></li>
+<li id="fn115"><p><a href="https://www.shinyapps.io/" class="uri">https://www.shinyapps.io/</a><a href="chap-shiny.html#fnref115" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

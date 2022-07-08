@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-07-05" />
+<meta name="date" content="2022-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -378,7 +378,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.9.1" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-the-workflow"><i class="fa fa-check"></i><b>4.9.1</b> Declaration of the workflow</a></li>
 <li class="chapter" data-level="4.9.2" data-path="chap-rediger.html"><a href="chap-rediger.html#declaration-of-targets"><i class="fa fa-check"></i><b>4.9.2</b> Declaration of targets</a></li>
-<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-flow"><i class="fa fa-check"></i><b>4.9.3</b> Running the flow</a></li>
+<li class="chapter" data-level="4.9.3" data-path="chap-rediger.html"><a href="chap-rediger.html#running-the-workflow"><i class="fa fa-check"></i><b>4.9.3</b> Running the workflow</a></li>
 <li class="chapter" data-level="4.9.4" data-path="chap-rediger.html"><a href="chap-rediger.html#using-the-results"><i class="fa fa-check"></i><b>4.9.4</b> Using the results</a></li>
 <li class="chapter" data-level="4.9.5" data-path="chap-rediger.html"><a href="chap-rediger.html#source-control-1"><i class="fa fa-check"></i><b>4.9.5</b> Source control</a></li>
 </ul></li>
@@ -464,7 +464,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#learnr"><i class="fa fa-check"></i><b>8.1</b> learnr</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="chap-enseigner.html"><a href="chap-enseigner.html#first-tutorial"><i class="fa fa-check"></i><b>8.1.1</b> First tutorial</a></li>
-<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#broadcasting"><i class="fa fa-check"></i><b>8.1.2</b> Broadcasting</a></li>
+<li class="chapter" data-level="8.1.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#sharing"><i class="fa fa-check"></i><b>8.1.2</b> Sharing</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="chap-enseigner.html"><a href="chap-enseigner.html#github-classrooms"><i class="fa fa-check"></i><b>8.2</b> GitHub Classrooms</a>
 <ul>
@@ -607,18 +607,18 @@ A quick and more complete training is offered by RStudio<a href="#fn55" class="f
 <p>The text is written without any formatting other than line breaks.
 A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.</p>
 <p>A line break marks a paragraph change.</p>
-<p>The different levels of the plan are designated by the number of braces at the beginning of the line: <code>#</code> for a level 1 title, <code>##</code> for a level 2 title, etc.
-A space separates the braces and the title text.</p>
-<p>Bulleted lists are marked by a dash (followed by a space) at the beginning of the line.
-A line break is required before the beginning of the list, but the elements of the list are separated by a simple line break.
+<p>The different levels of the plan are designated by the number of hashes at the beginning of the line: <code>#</code> for a level-1 title, <code>##</code> for a level-2 title, etc.
+A space separates the hashes and the title text.</p>
+<p>Bullet lists are marked by a dash (followed by a space) at the beginning of the line.
+A double line break is required before the beginning of the list, but the elements of the list are separated by a simple line break.
 Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
-Finally, numbered lists are created in the same way by replacing the hyphens by numbers, whose value is not important.</p>
+Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value is not important.</p>
 <p>In the text, the italicized parts are surrounded by a star or an underscore (<code>*italic*</code>), while two stars mark the bold.</p>
 <div id="r-code" class="section level4 hasAnchor" number="4.3.1.1">
 <h4><span class="header-section-number">4.3.1.1</span> R code<a href="chap-rediger.html#r-code" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>R code is included in code chunks that are easily created by clicking on the “Insert a new code chunk” button above the source code window in RStudio.
 They start and end with three backquotes on a new line.
-These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:</p>
+These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma-separated list of options, for example:</p>
 <pre><code>```{r cars, echo=TRUE}
 ```</code></pre>
 <p>The name and options are optional: the minimum header is <code>{r}</code>.</p>
@@ -653,13 +653,13 @@ References are made with the command <code>\@ref(fig:xxx)</code>.</p>
 If the caption is long, the header is not very readable.
 Furthermore, the caption is limited to simple text.
 For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text <code>(ref:FigureName)</code>.
-The figure <a href="chap-rediger.html#fig:pressure2">4.3</a> benefits from an improved caption.</p>
+Figure <a href="chap-rediger.html#fig:pressure2">4.3</a> benefits from an improved caption.</p>
 
 <p></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:pressure2"></span>
-<img src="WwR_files/figure-html/pressure2-1.png" alt="Title with italic, math (\(\sqrt\pi\)) and link to figure 4.2" width="80%" />
+<img src="WwR_files/figure-html/pressure2-1.png" alt="Title with italic, math (\(\sqrt\pi\)) and a reference to figure 4.2" width="80%" />
 <p class="caption">
-Figure 4.3: Title with <em>italic</em>, math (<span class="math inline">\(\sqrt\pi\)</span>) and link to figure <a href="chap-rediger.html#fig:pressure">4.2</a>
+Figure 4.3: Title with <em>italic</em>, math (<span class="math inline">\(\sqrt\pi\)</span>) and a reference to figure <a href="chap-rediger.html#fig:pressure">4.2</a>
 </p>
 </div>
 <p></p>
@@ -672,7 +672,7 @@ Always place these files in the <code>images</code> folder for good organization
 </div>
 <div id="tables" class="section level4 hasAnchor" number="4.3.1.3">
 <h4><span class="header-section-number">4.3.1.3</span> Tables<a href="chap-rediger.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The horizontal - and vertical separators | allow to draw an array according to the Markdown syntax, but it is not the best method.</p>
+<p>The horizontal <code>-</code> and vertical <code>|</code> separators allow to draw a table according to the Markdown syntax, but it is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
 The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
@@ -814,14 +814,14 @@ setosa
 </tbody>
 </table>
 <p></p>
-<p>The caption is specified by the <code>caption</code> argument and referencing is possible because the array is given a label whose name is <code>tab:</code> followed by the name of the code snippet (array <a href="chap-rediger.html#tab:kable">4.1</a>).
+<p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table is given a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="chap-rediger.html#tab:kable">4.1</a>).
 As with the figures, an enhanced caption can be written in a separate paragraph.
 A short caption for a possible list of tables (option <code>lot: true</code> in the header) is declared in the <code>caption.short</code> argument of <code>kable()</code>.</p>
 <p>Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
 Since the table contains mathematics (in the name of the first column), the <code>escape = FALSE</code> option is necessary.</p>
 <p>The <code>bootstrap_options = "striped"</code> style option provides more readable tables in HTML.
-Finally, the <code>full_width = FALSE</code> option allows to adjust the width of the table to its content instead of occupying the whole available width.</p>
-<p>The <strong>flextable</strong> package allows creating more elaborate arrays, as in the following example which displays the long sepals in color.</p>
+Last, the <code>full_width = FALSE</code> option allows to adjust the width of the table to its content instead of occupying the whole available width.</p>
+<p>The <strong>flextable</strong> package allows creating more elaborate tables, as in the following example which displays the long sepals in color.</p>
 <p></p>
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="chap-rediger.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;flextable&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -846,7 +846,7 @@ Finally, the <code>full_width = FALSE</code> option allows to adjust the width o
 <span id="cb279-9"><a href="chap-rediger.html#cb279-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Petal.Length =</span> <span class="st">&quot;Petal Length&quot;</span>, <span class="at">Petal.Width =</span> <span class="st">&quot;Width&quot;</span>, <span class="at">Species =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb279-10"><a href="chap-rediger.html#cb279-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select long sepals (&gt;5) and display them in red</span></span>
 <span id="cb279-11"><a href="chap-rediger.html#cb279-11" aria-hidden="true" tabindex="-1"></a><span class="fu">color</span>(<span class="sc">~</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="sc">~</span>Sepal.Length, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<template id="6cd3bbb7-8992-46ad-83a8-1057634f5f2b"><style>
+<template id="2ff4e7d0-e4fa-4de9-9bf1-8632453f1b8e"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -880,12 +880,12 @@ Finally, the <code>full_width = FALSE</code> option allows to adjust the width o
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-c1d61c54{}.cl-c1cb40ea{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c1cb40fe{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-c1cb6084{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c1cb608e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c1cbb610{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb61a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb624{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb62e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb62f{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c1cbb638{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-c1d61c54'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb62f"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">Sepal Length</span></p></td><td class="cl-c1cbb62f"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">Width</span></p></td><td class="cl-c1cbb62f"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">Petal Length</span></p></td><td class="cl-c1cbb62f"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">Width</span></p></td><td class="cl-c1cbb638"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">Species</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40fe">5.1</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.5</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.4</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">4.9</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.0</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.4</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">4.7</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.2</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.3</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">4.6</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.1</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.5</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">5.0</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.6</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.4</span></p></td><td class="cl-c1cbb610"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.2</span></p></td><td class="cl-c1cbb61a"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c1cbb624"><p class="cl-c1cb6084"><span class="cl-c1cb40fe">5.4</span></p></td><td class="cl-c1cbb624"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">3.9</span></p></td><td class="cl-c1cbb624"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">1.7</span></p></td><td class="cl-c1cbb624"><p class="cl-c1cb6084"><span class="cl-c1cb40ea">0.4</span></p></td><td class="cl-c1cbb62e"><p class="cl-c1cb608e"><span class="cl-c1cb40ea">setosa</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="3857705b-67f0-4d2f-bb4f-8857b676fb62"></div>
+</style><div class="tabwid"><style>.cl-eeaef774{}.cl-ee99d6be{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ee99d6d2{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-ee99f4b4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ee99f4be{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ee9a48ba{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee9a48c4{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee9a48f6{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee9a4900{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee9a4901{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee9a490a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-eeaef774'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-ee9a4901"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">Sepal Length</span></p></td><td class="cl-ee9a4901"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">Width</span></p></td><td class="cl-ee9a4901"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">Petal Length</span></p></td><td class="cl-ee9a4901"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">Width</span></p></td><td class="cl-ee9a490a"><p class="cl-ee99f4be"><span class="cl-ee99d6be">Species</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6d2">5.1</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">3.5</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">1.4</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">0.2</span></p></td><td class="cl-ee9a48c4"><p class="cl-ee99f4be"><span class="cl-ee99d6be">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">4.9</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">3.0</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">1.4</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">0.2</span></p></td><td class="cl-ee9a48c4"><p class="cl-ee99f4be"><span class="cl-ee99d6be">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">4.7</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">3.2</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">1.3</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">0.2</span></p></td><td class="cl-ee9a48c4"><p class="cl-ee99f4be"><span class="cl-ee99d6be">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">4.6</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">3.1</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">1.5</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">0.2</span></p></td><td class="cl-ee9a48c4"><p class="cl-ee99f4be"><span class="cl-ee99d6be">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">5.0</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">3.6</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">1.4</span></p></td><td class="cl-ee9a48ba"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">0.2</span></p></td><td class="cl-ee9a48c4"><p class="cl-ee99f4be"><span class="cl-ee99d6be">setosa</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee9a48f6"><p class="cl-ee99f4b4"><span class="cl-ee99d6d2">5.4</span></p></td><td class="cl-ee9a48f6"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">3.9</span></p></td><td class="cl-ee9a48f6"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">1.7</span></p></td><td class="cl-ee9a48f6"><p class="cl-ee99f4b4"><span class="cl-ee99d6be">0.4</span></p></td><td class="cl-ee9a4900"><p class="cl-ee99f4be"><span class="cl-ee99d6be">setosa</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="00a68574-75d1-4c25-8ce3-07a75266101d"></div>
 <script>
-var dest = document.getElementById("3857705b-67f0-4d2f-bb4f-8857b676fb62");
-var template = document.getElementById("6cd3bbb7-8992-46ad-83a8-1057634f5f2b");
+var dest = document.getElementById("00a68574-75d1-4c25-8ce3-07a75266101d");
+var template = document.getElementById("2ff4e7d0-e4fa-4de9-9bf1-8632453f1b8e");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -905,23 +905,23 @@ This limitation is prohibitive.</p>
 </div>
 <div id="maths" class="section level4 hasAnchor" number="4.3.1.4">
 <h4><span class="header-section-number">4.3.1.4</span> Maths<a href="chap-rediger.html#maths" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Equations in LaTeX format can be inserted in line, like <span class="math inline">\(A=\pi r^2\)</span> (code: <code>$A=\pi r^2$</code>) or isolated (the $ are doubled) like <span class="math display">\[e^{i \pi} = -1.\]</span></p>
-<p>They can be numbered: see equation <a href="chap-rediger.html#eq:disque">(4.1)</a>, using the <code>\equation</code> environment.</p>
-<p><span class="math display" id="eq:disque">\[\begin{equation}
+<p>Equations in LaTeX format can be inserted inline, like <span class="math inline">\(A=\pi r^2\)</span> (code: <code>$A=\pi r^2$</code>) or in a new line (the $ are doubled) like <span class="math display">\[e^{i \pi} = -1.\]</span></p>
+<p>They can be numbered: see equation <a href="chap-rediger.html#eq:disc">(4.1)</a>, using the <code>\equation</code> environment.</p>
+<p><span class="math display" id="eq:disc">\[\begin{equation}
   A = \pi r^2.
   \tag{4.1}
 \end{equation}\]</span></p>
 <p>The numbered equation is created by the following code:</p>
 <pre><code>\begin{equation}
   A = \pi r^2.
-  (\#eq:disque)
+  (\#eq:disc)
 \end{equation}</code></pre>
 </div>
 <div id="cross-references" class="section level4 hasAnchor" number="4.3.1.5">
 <h4><span class="header-section-number">4.3.1.5</span> Cross-references<a href="chap-rediger.html#cross-references" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with <code>fig:</code> and <code>tab:</code>.</p>
 <p>For equations, the label is added manually by the code <code>(\#eq:xxx)</code> before the end of the equation.</p>
-<p>Sections can be given a label by ending their title with <code>{#yyy}</code>.
+<p>Sections can be given a label by completing their title with <code>{#yyy}</code>.
 Sections receive by default an implicit label<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a> corresponding to their text, in lower case, where special characters are replaced by dashes.
 Implicit labels are unstable (they change with the title of the section) and difficult to predict: this is why it is advisable to add an explicit label to each section being cross-referenced.
 This is the case for chapters, for which the name of the HMTL file produced is identical to the label.
@@ -937,12 +937,12 @@ Chapter labels must follow file naming rules by not containing special character
 To do this, you just have to create a Zotero collection corresponding to the project and drag the relevant references into it.
 Then use the contextual menu “Export collection…” and select:</p>
 <ul>
-<li>Format: “Better BibTeX” for articles and presentations or “Better BibLaTeX” for dissertations, depending on whether the bibliography is managed by bibtex and natbib or biber and biblatex for PDF production.</li>
+<li>Format: “Better BibTeX” for articles and presentations or “Better BibLaTeX” for memoirs, depending on whether the bibliography is managed by bibtex and natbib or biber and biblatex for PDF production.</li>
 <li>Check the “Keep up to date” box so that any changes in Zotero are exported automatically.</li>
 <li>Click on “OK” then choose the name of the file (<code>references.bib</code>) and its location (the R project folder).</li>
 </ul>
-<p>The references can be called in the text, between brackets by the code <code>[@Reference]</code>, or in the text, by removing the brackets.</p>
-<p>Bibliography is handled by pandoc when producing Word or HTML documents.
+<p>The references can be called in the text, between square brackets by the code <code>[@Reference]</code>, or in the text, by removing the brackets.</p>
+<p>The bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line</p>
 <pre><code>csl:nom_du_fichier.csl</code></pre>
 <p>in the document header and copying the <em>.csl</em> style file to the project folder.
@@ -958,7 +958,7 @@ The additional languages allow the creation of multilingual documents.</p>
 <p>The header fields are:</p>
 <pre><code>lang: fr-FR
 otherlangs: [en-US, it]</code></pre>
-<p>The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:</p>
+<p>The change of language in the document is managed in LaTeX, but not in HTML, by inserting on a new line the following command:</p>
 <pre><code>\selectlanguage{english}</code></pre>
 <p>The current language only has an effect in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
@@ -977,7 +977,7 @@ The PDF format is close to the <em>article</em> model of LaTeX (example<a href="
 <p>Use the menu “File &gt; New File &gt; R Markdown…” then select “From template” (figure <a href="chap-rediger.html#fig:e-rmd1">4.1</a>).
 The list of available templates and the package that offers them is then displayed.</p>
 <p>Select the <em>Simple Article</em> template from the <strong>memoiR</strong> package, choose the name of the project (“Name:”, which will be the name of the folder in which it will be created, and its parent folder (“Location:”).
-In the organization proposed in section <a href="#sec:solution-folders"><strong>??</strong></a>, the parent folder is <code>%LOCALAPPDATA%\ProjectsR</code>.
+In the organization proposed in section <a href="chap-logiciels.html#sec:solution-dossiers">1.2.4</a>, the parent folder is <code>%LOCALAPPDATA%\ProjectsR</code>.
 The project name must not contain any special characters (accent, space…) to ensure its portability on all operating systems (Windows, Linux, MacOS).</p>
 <p>Advanced templates create a folder with many files (bibliography, styles, LaTeX template…), unlike simple templates which create only one file.</p>
 <p>When a folder is created, for example by the <em>Simple Article</em> template, you have to make it an RStudio project: in the projects menu (top right of the RStudio window), use the “New Project…” menu, then “Existing Directory” and select the folder that has just been created.</p>
@@ -998,15 +998,15 @@ The project name must not contain any special characters (accent, space…) to e
 </ul>
 </div>
 <div id="sec:article-en-ligne" class="section level4 hasAnchor" number="4.3.2.4">
-<h4><span class="header-section-number">4.3.2.4</span> Put online<a href="chap-rediger.html#sec:article-en-ligne" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The <strong>memoiR</strong> package simplifies the uploading of produced documents.</p>
+<h4><span class="header-section-number">4.3.2.4</span> Publish<a href="chap-rediger.html#sec:article-en-ligne" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>memoiR</strong> package simplifies the uploading of produced documents to a web server.</p>
 <p>The <code>build_gitignore()</code> function creates a <code>.gitignore</code> file for source control which must be enabled (see section <a href="chap-git.html#sec:git-cds">3.1.1</a>).</p>
 <p>The <code>build_readme()</code> function creates a <code>README.md</code> file that is needed by GitHub.
 It contains the title of the project, its summary and links to the HTML and PDF versions of the documents produced.</p>
 <p>The project must be linked to a GitHub repository (section <a href="chap-git.html#sec:creerdepot">3.2</a>).</p>
 <p>Two publication strategies are possible.
 In the first one, the documents are knitted locally and placed in the <code>docs</code> folder, which will be the support of the GitHub pages.
-In the second one, the documents are knitted by GitHub Actions each time modifications are pushed on the repository: we talk about continuous integration (section <a href="chap-ci.html#chap-ci">6</a>).</p>
+In the second one, the documents are knitted by GitHub Actions each time modifications are pushed on the repository: this is called continuous integration (section <a href="chap-ci.html#chap-ci">6</a>).</p>
 <p>The local production strategy is covered here; continuous integration will be covered in section <a href="chap-ci.html#sec:memoiR-ci">6.3.1</a>.</p>
 <p>The <code>build_githubpages()</code> function places all the knitted documents (HTML and PDF) in the <code>docs</code> folder, along with a copy of the <code>README.md</code> file.
 This way, it is possible to activate the project’s GitHub pages (on the <code>docs</code> folder of the <code>master</code> branch).
@@ -1030,8 +1030,8 @@ It is not possible to directly exchange standard R Markdown content with documen
 <div id="beamer-presentation" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Beamer Presentation<a href="chap-rediger.html#beamer-presentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <em>Beamer Presentation</em> template of <strong>memoiR</strong> allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example<a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a>.</p>
-<p>The approach is identical to that for articles in the same package.
-The title levels allow you to separate the parts of the presentation (<code>#</code>) and the slides (<code>##</code>).
+<p>The approach is identical to that of articles in the same package.
+The title levels allow separating the parts of the presentation (<code>#</code>) and the slides (<code>##</code>).
 Two formats are available in HTML: ioslides<a href="#fn66" class="footnote-ref" id="fnref66"><sup>66</sup></a> and Slidy<a href="#fn67" class="footnote-ref" id="fnref67"><sup>67</sup></a>.
 Some specificities in the code allow to refine the presentation of the slides, for a two-column display for example: they are documented in the template.</p>
 </div>
@@ -1045,14 +1045,14 @@ The PDF format is derived from the LaTeX <em>memoir</em><a href="#fn69" class="f
 <h3><span class="header-section-number">4.5.1</span> Create<a href="chap-rediger.html#create-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Creating a work project is identical to the one presented above: the template is: <em>Memoir</em>.
 The created folder must be turned into a project.</p>
-<p>Run <code>build_git()</code> and <code>build_readme()</code>, enable source control and push the project to GitHub, in the same way as for an article (section <a href="#sec:article-in-line"><strong>??</strong></a>).</p>
+<p>Run <code>build_git()</code> and <code>build_readme()</code>, enable source control and push the project to GitHub, in the same way as for an article (section <a href="chap-rediger.html#sec:article-en-ligne">4.3.2.4</a>).</p>
 <p>Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g.: <code>01-intro.Rmd</code>).
 All Rmd files in the project folder are actually treated as chapters, sorted by filename, including those provided by the template (startup and syntax) which should be deleted except for <code>99-references.Rmd</code> which contains the bibliography, placed at the end.
 The <code>index.Rmd</code> file is special: it contains the document header and the first chapter.</p>
 </div>
 <div id="write-1" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Write<a href="chap-rediger.html#write-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The first chapter is placed in the foreword of the printed book: it should not be numbered (hence the <code>{-}</code> code next to the title) in the HTML version.
+<p>The first chapter is placed in the front matter of the printed book: it should not be numbered (hence the <code>{-}</code> code next to the title) in the HTML version.
 It must end with the LaTeX command <code>\mainmatter</code> which marks the beginning of the body of the book.</p>
 <p>The outline levels start with <code>#</code> for chapters (only one per file), <code>##</code> for sections, etc.</p>
 </div>
@@ -1069,10 +1069,10 @@ The home page of the website is created by bookdown from the <code>index.Rmd</co
 <div id="finishing" class="section level3 hasAnchor" number="4.5.4">
 <h3><span class="header-section-number">4.5.4</span> Finishing<a href="chap-rediger.html#finishing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The layout is done fully automatically by pandoc (in HTML) and LaTeX (in PDF).</p>
-<p>It is often useful to help LaTeX to solve some margin overruns due to too large layout constraints: for optimal readability, columns are narrow, but the code (formatted text between two inverted apostrophes) does not allow hyphenation.</p>
+<p>It is often useful to help LaTeX to solve some margin overruns due to too large layout constraints: for optimal readability, columns are narrow, but code (formatted text between backquotes) does not allow hyphenation.</p>
 <p>If a line of text protrudes into the right margin in the PDF document, the solution is to manually add the <code>\break</code> code to the desired location for the line break in the R Markdown document.
 The command has no effect on the HTML document but forces the hyphenation in LaTeX.
-To break formatted text (between asterisks for italics or more frequently between inverted apostrophes for code), you must finish formatting before <code>\break</code> and start again afterwards.
+To break formatted text (between asterisks for italics or more frequently between backquotes for code), you must finish formatting before <code>\break</code> and start again afterwards.
 For example, to force a line break before <code>file.Rmd</code>:</p>
 <pre><code>The file `/path/`\break`file.Rmd`</code></pre>
 <p>In HTML, a space will be added between the two pieces of code.</p>
@@ -1092,7 +1092,7 @@ The default behavior is specified in the <strong>knitr</strong> options, in a co
 <p>The maximum width of a line of formatted code here is 55 characters, optimal for the template.
 Sometimes automatic formatting does not work because <strong>knitr</strong> cannot find a line break that meets all the constraints, causing the code to overflow.
 In this case, manually format the code snippet by adding the <code>tidy=FALSE</code> option.</p>
-<p>The literal code blocks, delimited by three inverted apostrophes, must be formatted manually, avoiding any line longer than 55 characters.</p>
+<p>The literal code blocks, delimited by three backquotes, must be formatted manually, avoiding any line longer than 55 characters.</p>
 </div>
 <div id="gitbook-site" class="section level3 hasAnchor" number="4.5.5">
 <h3><span class="header-section-number">4.5.5</span> Gitbook site<a href="chap-rediger.html#gitbook-site" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1101,7 +1101,7 @@ In this case, manually format the code snippet by adding the <code>tidy=FALSE</c
 <li>The title of the document appears at the top of the table of contents;</li>
 <li>An indication of the use of GitHub and bookdown is displayed at the bottom of the table of contents;</li>
 <li>A GitHub button in the title bar allows to open the project repository;</li>
-<li>Another button to download the PDF document.</li>
+<li>Another button allows to download the PDF document.</li>
 </ul>
 <p>The <code>_output.yml</code> file of this document is the following:</p>
 <pre><code>bookdown::gitbook:
@@ -1130,7 +1130,7 @@ For it to work, the GitHub repository must be declared in the header of the <cod
 </div>
 <div id="sec:rediger-ouvrage-ci" class="section level3 hasAnchor" number="4.5.6">
 <h3><span class="header-section-number">4.5.6</span> Continuous integration<a href="chap-rediger.html#sec:rediger-ouvrage-ci" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Building a work takes time, especially if it contains calculations.
+<p>Building a book takes time, especially if it contains calculations.
 It must be launched in gitbook format and in PDF format.
 In production, it can be outsourced to GitHub (chapter <a href="chap-ci.html#sec:bookdown-ci">6.3.2</a>).</p>
 </div>
@@ -1158,11 +1158,11 @@ Other pages will be added by creating new <code>.Rmd</code> files and adding the
 </div>
 <div id="improvements" class="section level3 hasAnchor" number="4.6.2">
 <h3><span class="header-section-number">4.6.2</span> Improvements<a href="chap-rediger.html#improvements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The site template can easily be enhanced by adding <code>_site.yml</code>:</p>
+<p>The site template can easily be enhanced by adding lines to <code>_site.yml</code>:</p>
 <ul>
-<li>by adding a GitHub icon in the navigation bar to link to the site source code:</li>
-<li>by choosing the method of knitting the pages, to use <strong>bookdown</strong> instead of <strong>rmarkdown</strong>;</li>
-<li>by placing the site files in the <code>docs</code> folder and thus separating code and production.</li>
+<li>to addi a GitHub icon in the navigation bar to link to the site source code:</li>
+<li>to choose the method of knitting, to use <strong>bookdown</strong> instead of <strong>rmarkdown</strong>;</li>
+<li>to place the site files in the <code>docs</code> folder and thus separate code and production.</li>
 </ul>
 <p>The completed <code>_site.yml</code> file is as follows:</p>
 <pre><code>name: &quot;my-website&quot;
@@ -1189,11 +1189,11 @@ output:
 It applies to all pages (with the YAML header reduced to the minimum).
 The available themes are those of rmarkdown<a href="#fn73" class="footnote-ref" id="fnref73"><sup>73</sup></a>.</p>
 <p>The <code>highlight</code> option specifies how any R code displayed will be formatted.
-Finally, the table of contents is floating, which means that its position adjusts as the window scrolls.</p>
+Last, the table of contents is floating, which means that its position adjusts as the window scrolls.</p>
 </div>
 <div id="source-control" class="section level3 hasAnchor" number="4.6.3">
 <h3><span class="header-section-number">4.6.3</span> Source control<a href="chap-rediger.html#source-control" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The project must be placed under source control and pushed to GitHub (chapter <a href="chap-git.html#chap-git">3</a>).
+<p>The project must be put under source control and pushed to GitHub (chapter <a href="chap-git.html#chap-git">3</a>).
 The <code>.gitignore</code> file is the following:</p>
 <pre><code># R
 .Rbuildignore
@@ -1216,7 +1216,8 @@ You can use the RStudio terminal to run:</p>
 <h2><span class="header-section-number">4.7</span> Personal web site: blogdown<a href="chap-rediger.html#sec:blogdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To create a personal web page, <em>Hugo</em> is a static site generator capable of producing HTML pages from Markdown code.
 Static sites have the advantage, compared to dynamic sites managed by a content management system (CMS, for example: Wordpress, Joomla, SPIP), to be portable on any web server without database support or code to run on the server side (such as PHP) and to be very fast since the pages are created once and not at each consultation.
-A Hugo site can be hosted for example on the personal page of any GitHub user whose address is of the form “GitHubID.github.io”.</p>
+A Hugo site can be hosted for example on the personal page of any GitHub user.
+Its address is of the form “GitHubID.github.io”.</p>
 <p>Hugo offers many themes, which are templates for site structure, so the <strong>Academic</strong> theme, intended for researchers.
 In RStudio, the <strong>blogdown</strong> package is provided to easily produce web pages with Hugo.
 These pages can contain R code: they are very similar to an article, seen above, whose content can be easily copied and pasted.
@@ -1246,14 +1247,14 @@ Go must therefore be installed<a href="#fn76" class="footnote-ref" id="fnref76">
 On the <em>starter-academic</em><a href="#fn77" class="footnote-ref" id="fnref77"><sup>77</sup></a> repository page, click on the “Use this template” button, optionally authenticate to GitHub, and then enter the name of the repository that will contain the project, for example “MySite”.</p>
 <p>The repository can be the one of the main site of your GitHub account (see section <a href="chap-git.html#sec:github-pages">3.7</a>), at the address <a href="https://GitHubID.github.io" class="uri">https://GitHubID.github.io</a><a href="#fn78" class="footnote-ref" id="fnref78"><sup>78</sup></a>.
 The name to enter is simply “GitHubID.github.io” (<em>GitHubID</em> is the name of the GitHub account).</p>
-<p>Créer le dépôt.
-Copier l’adresse du dépôt en cliquant sur le bouton “Code” puis sur le bouton à droite de l’adresse (figure <a href="chap-rediger.html#fig:rediger-GitHub-Clone">4.4</a>).</p>
+<p>Create the repository.
+Copy the repository address by clicking on the “Code” button and then on the button to the right of the address (figure <a href="chap-rediger.html#fig:rediger-GitHub-Clone">4.4</a>).</p>
 
 <p></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:rediger-GitHub-Clone"></span>
-<img src="images/rediger-GitHub-Clone.png" alt="Copie de l’adresse d’un dépôt à cloner sur GitHub." width="80%" />
+<img src="images/rediger-GitHub-Clone.png" alt="Copy of the address of a repository to clone on GitHub." width="80%" />
 <p class="caption">
-Figure 4.4: Copie de l’adresse d’un dépôt à cloner sur GitHub.
+Figure 4.4: Copy of the address of a repository to clone on GitHub.
 </p>
 </div>
 <p></p>
@@ -1366,7 +1367,7 @@ In “Basic Info”, the line</p>
 <pre><code>site_type = &quot;Person&quot;</code></pre>
 <p>selects a personal site.
 It is possible to use Academic for a scientific project site or a unit site, not documented in detail here.
-The main differences are, for a collective site</p>
+The main differences are, for a collective site:</p>
 <ul>
 <li>the management of authors: in the <code>/contents/&lt;language&gt;/outside</code> folder, only one <code>admin</code> folder is used for a personal site, whereas one folder per person is needed for a collective site;</li>
 <li>a component described below, which allows to present the persons, must be activated.</li>
@@ -1378,11 +1379,11 @@ The main differences are, for a collective site</p>
 <pre><code>highlight_languages = [&quot;r&quot;] 
 math = true
 privacy_pack = true</code></pre>
-<p>The <code>edit_page</code> line needs to be updated: replace the default repository “<a href="https://github.com/gcushen/hugo-academic" class="uri">https://github.com/gcushen/hugo-academic</a>” with the one for the site.</p>
+<p>The <code>edit_page</code> line needs to be updated: replace the default repository “<a href="https://github.com/gcushen/hugo-academic" class="uri">https://github.com/gcushen/hugo-academic</a>” with that of the site.</p>
 <p>“Contact details” contains the contact information for the site owner.
 They must be entered.</p>
 <p>“Regional Settings” contains the date display settings for the default language (those for other languages are in <code>languages.toml</code>).
-They normally do not need to be changed.</p>
+They usually do not need to be changed.</p>
 <p>“Comments” allows you to enable visitor comments at the bottom of pages, with Disqus or Comment.io (an account is required with the provider).
 “Marketing” allows you to activate the tracking of site traffic by simply entering your Google Analytics ID (to be created with a Google account).
 “Content Management System” contains the line <code>netlify_cms</code> whose value must be <code>false</code> if the site is not hosted by Netlify.
@@ -1392,9 +1393,9 @@ Finally “Icon Pack Extensions” allows you to activate Academicons icons if n
 <h3><span class="header-section-number">4.7.6</span> Write<a href="chap-rediger.html#write-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use the online documentation<a href="#fn79" class="footnote-ref" id="fnref79"><sup>79</sup></a> to complement the main information detailed here.
 The example used here is the author’s personal site<a href="#fn80" class="footnote-ref" id="fnref80"><sup>80</sup></a>.</p>
-<p>The working method is to progress step by step by testing and then validating each step:</p>
+<p>The working method is to progress step by step by testing and then to validate each step:</p>
 <ul>
-<li>Make the modifications;</li>
+<li>Make the changes;</li>
 <li>Build the site and check the result: <code>blogdown:::serve_site()</code>;</li>
 <li>Stop the site: <code>blogdown::stop_server()</code>;</li>
 <li>If the result is not satisfactory, try again;</li>
@@ -1405,13 +1406,12 @@ The example used here is the author’s personal site<a href="#fn80" class="foot
 <p>The home page of the site is made up of a series of elements (<em>widgets</em>) that are located in <code>/contents/&lt;language&gt;/home</code>.
 Each element is described by a markdown file.
 The first one is <code>index.md</code>.
-It is normally never modified.
+It is usually not modified.
 Its contents are as follows:</p>
 <pre><code>+++
 # Homepage
 type = &quot;widget_page&quot;
-headless = true  # Homepage is headless, other widget 
-pages are not.
+headless = true  # Homepage is headless, other widget pages are not.
 +++</code></pre>
 <p>The file contains only a TOML header, surrounded by a line of <code>+++</code>.
 The component type indicates that this is a component page, in which the other components in the file will fit.
@@ -1481,8 +1481,8 @@ It is possible to create components of these types freely, by specifying the fol
 Example: create a component named <code>software.md</code> by renaming <code>projects.md</code>, change its <code>page_type = "software"</code> line and create a <code>/contents/&lt;language&gt;/software</code> folder to place content in.</p>
 <p>The <code>publications</code> and <code>featured</code> components are of type <code>pages</code> and <code>portfolio</code> respectively and take their content from the <code>publication</code> folder.</p>
 <p>The <code>tags</code> component presents a word cloud from the keywords declared in all content files (blog posts, publications…) in the following form in their header:</p>
-<pre><code>tags = [&quot;Mot Clé 1&quot;, &quot;Autre Mot Clé&quot;]</code></pre>
-<p>Finally, the <code>contact</code> component allows to display a contact form.
+<pre><code>tags = [&quot;Keyword 1&quot;, &quot;Other Keyword&quot;]</code></pre>
+<p>Last, the <code>contact</code> component allows to display a contact form.
 It uses the information from the <code>config/_default/params.toml</code> file in its part starting with:</p>
 <pre><code>############################
 ## Contact details
@@ -1531,7 +1531,7 @@ Hugo supports native markdown files.
 The contribution of <strong>blogdown</strong> relative to a native Hugo site is the support of R Markdown, thus the possibility of executing any R code as in a notepad (whose content can be reused without modification).</p>
 <p>The main file of a post is <code>index.Rmd</code>.
 <strong>blogdown</strong> creates an <code>index.html</code> file during the construction of the site: it can be ignored (in <code>.gitgnore</code>) and deleted at any time.
-If a <code>featured.png</code> (optimal for a schematic) or <code>featured.jpg</code> (optimal for a photo) image is placed in the folder, it will be used as the thumbnail of the post.</p>
+If a <code>featured.png</code> (optimal for a graphic) or <code>featured.jpg</code> (optimal for a photo) image is placed in the folder, it will be used as the thumbnail of the post.</p>
 <p>The <code>index.Rmd</code> includes a header in yaml (surrounded by <code>---</code>) or toml (surrounded by <code>+++</code>) format that describes its display:</p>
 <pre><code>---
 title: &quot;Title of the post&quot;
@@ -1631,13 +1631,12 @@ It can be reused by simply changing the Google Scholar ID on line 30.</p>
 <p>An image can be used more easily than for a publication.</p>
 <p>The header contains special lines suitable for communications:</p>
 <pre><code>---
-title: &quot;Construction of the biodiversity estimator |&gt;
-Chao1&quot;
+title: &quot;Construction of the Chao1 biodiversity estimator&quot;
 event: &quot;Mathematics Week 2020&quot;
 event_url: https://eduscol.education.fr/cid59178/|&gt;
 semaine-des-mathematiques.html
 
-location: University of French Guyana
+location: University of French Guiana
 
 summary: []
 abstract: |
@@ -1675,7 +1674,7 @@ Chao1.html&quot;
 # Enable math on this page?
 math: true
 ---</code></pre>
-<p>The links (e.g. <code>url_code</code>) bring up buttons that display the source code of the presentation, a pdf file and the online slides respectively.</p>
+<p>The links (e.g. <code>url_code</code>) bring up buttons that display the source code of the presentation, a PDF file and the online slides respectively.</p>
 </div>
 <div id="other-elements" class="section level4 hasAnchor" number="4.7.6.6">
 <h4><span class="header-section-number">4.7.6.6</span> Other elements<a href="chap-rediger.html#other-elements" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1729,7 +1728,7 @@ It is best to create scripts to create the figures in a reproducible way and in 
 <p>Figures should generally be produced in a vector format:</p>
 <ul>
 <li>SVG for poster publication or posters;</li>
-<li>EMF (Extended Meta-File) for Word or Microsoft Office suite that does not support other formats;</li>
+<li>EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats;</li>
 <li>EPS (Encapsulated PostScript) or PDF (Portable Document Format) for LaTeX.</li>
 </ul>
 <p>Raster figures (composed of a set of points, like photographs) are rare in R.
@@ -1781,7 +1780,8 @@ If necessary, the <code>embedFonts()</code> function can be used to remedy this,
 <div id="ragg-package" class="section level3 hasAnchor" number="4.8.3">
 <h3><span class="header-section-number">4.8.3</span> ragg package<a href="chap-rediger.html#ragg-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <strong>ragg</strong><a href="#fn90" class="footnote-ref" id="fnref90"><sup>90</sup></a> package improves the quality of PNG, JPEG and TIFF files.
-The optimized functions are <code>agg_png()</code>, <code>agg_jpeg()</code> and <code>agg_tiff()</code>. Their usage is the same as that of the <strong>grDevices</strong> functions.</p>
+The optimized functions are <code>agg_png()</code>, <code>agg_jpeg()</code> and <code>agg_tiff()</code>.
+Their usage is the same as that of the <strong>grDevices</strong> functions.</p>
 <p>Markdown R documents produce PNG images for their HTML version.
 <strong>ragg</strong> improves their quality: the package must be installed and <code>dev = "ragg_png"</code> must be added to the <strong>knitr</strong> options.
 For this document, the options declared in <code>index.Rmd</code> are the following:</p>
@@ -1821,7 +1821,7 @@ The <code>tar_interactive = FALSE</code> option in their header allows them to b
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="chap-rediger.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_unscript</span>()</span></code></pre></div>
 <p></p>
 <p>The first code chunk, with the <code>tar_globals=TRUE</code> option, writes the global options for the workflow
-To create the workflow shown in section `<span class="citation">(<a href="#ref-ref" role="doc-biblioref"><strong>ref?</strong></a>)</span>(sec:targets), the code is simply:</p>
+To create the workflow shown in section <a href="chap-utiliseR.html#sec:targets">2.8</a>, the code is simply:</p>
 <pre><code>```{targets targets_global, tar_globals=TRUE}
 # Packages
 tar_option_set(packages = c(&quot;spatstat&quot;, &quot;dbmss&quot;))
@@ -1836,7 +1836,7 @@ runifpoint(NbPoints)
 ```</code></pre>
 <p>Each target requires a piece of code built in this way.
 The value of the target is the last value returned, just like a function that would not use <code>return()</code>.</p>
-<p>During knitting, this simplified code (<code>tar_simple=TRUE</code>) is automatically transformed into a target write:</p>
+<p>During knitting, this simplified code (<code>tar_simple=TRUE</code>) is automatically transformed into a target code:</p>
 <p></p>
 <div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="chap-rediger.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(X, {</span>
 <span id="cb328-2"><a href="chap-rediger.html#cb328-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runifpoint</span>(NbPoints)</span>
@@ -1878,8 +1878,8 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 ## Establish _targets.R and _targets_r/targets/map.R.</code></pre>
 <p></p>
 </div>
-<div id="running-the-flow" class="section level3 hasAnchor" number="4.9.3">
-<h3><span class="header-section-number">4.9.3</span> Running the flow<a href="chap-rediger.html#running-the-flow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="running-the-workflow" class="section level3 hasAnchor" number="4.9.3">
+<h3><span class="header-section-number">4.9.3</span> Running the workflow<a href="chap-rediger.html#running-the-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To start the target calculation, a standard piece of code (<code>{r}</code>) must call <code>tar_make()</code>:</p>
 <p></p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="chap-rediger.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_visnetwork</span>()</span></code></pre></div>
@@ -1894,7 +1894,7 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.508 seconds</code></pre>
+## • end pipeline: 2.18 seconds</code></pre>
 <p></p>
 <p><code>tar_visnetwork()</code> is used to check that the workflow is correct before running it.
 When the document is finally produced, the <code>include=FALSE</code> option can be added to the header of this piece of code so that it does not produce any output.</p>
@@ -1910,7 +1910,7 @@ When the document is finally produced, the <code>include=FALSE</code> option can
 <div id="source-control-1" class="section level3 hasAnchor" number="4.9.5">
 <h3><span class="header-section-number">4.9.5</span> Source control<a href="chap-rediger.html#source-control-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <strong>targets</strong> files must be included in the source control.
-This way, calculations done locally will not be repeated by GitHub Actions (chapter <a href="chap-ci.html#chap-ci">6</a>) and the document build will be fast.</p>
+This way, calculations done locally will not be repeated by GitHub Actions (chapter <a href="chap-ci.html#chap-ci">6</a>) and building the document will be fast.</p>
 
 </div>
 </div>
