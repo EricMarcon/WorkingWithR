@@ -2,19 +2,19 @@
 
 \toc{1}
 
-Shiny allows you to publish an interactive application using R code as a web site.
+Shiny allows to publish an interactive application using R code as a web site.
 The site can run locally, on a user's workstation that launches it from RStudio, or online, on a dedicated server running Shiny Server[^701].
 
 [^701]: https://rstudio.com/products/shiny/download-server/
 
 Basically, a form allows to enter the arguments of a function and a visualization window to display the results of the calculation.
 
-The use of a Shiny application makes the execution of the code very simple, even for users not familiar with R, but obviously limits the possibilities.
+A Shiny application makes the execution of the code very simple, even for users not familiar with R, but obviously limits the possibilities.
 
 
 ## First application
 
-In RStudio, create an application with the menu "File > New File > Shiny Web App...", enter the name of the application "MyAppShiny" and select the folder where to put it.
+In RStudio, create an application with the menu "File > New File > Shiny Web App...", enter the name of the application "MyShinyApp" and select the folder where to put it.
 
 The name of the application has been used to create a folder that we now need to transform into a project (project menu in the top right of RStudio, "New Project > Existing Directory", select the application folder).
 
@@ -164,7 +164,7 @@ This function queries the author's Google Scholar web page and extracts the valu
 
 The simplest code to do this would be as follows:
 
-```{r AuthorProfile1, eval=FALSE}
+```{r AuthorProfile1, eval=FALSE, tidy=FALSE}
   # Run the get_profile function only once ####
   # Store the author profile
   AuthorProfile <- get_profile(input$AuthorID)
@@ -175,7 +175,7 @@ If the latter code were executed, the following error message would appear:
 "Operation not allowed without an active reactive context. (You tried to do something that can only be done from inside a reactive expression or observer.)"
 
 In practice, the execution of the code is started by modifying an input control (here: `intput$AuthorID`).
-The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like `renderPlot` in the *Old Faithful Geyser Data* application or `renderUI()` here.
+The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like `renderPlot()` in the *Old Faithful Geyser Data* application or `renderUI()` here.
 The following code would run without error:
 
 ```{r AuthorProfile2, eval=FALSE}
@@ -274,7 +274,7 @@ Click on it and validate the publication (figure \@ref(fig:shiny-publish)).
 knitr::include_graphics('images/shiny-publish.png')
 ```
 
-The application is now available at https://prenom-nom.shinyapps.io/MonAppShiny/
+The application is now available at https://firstname-lastname.shinyapps.io/MyShinyApp/
 
 The "Bibliometrics" application does not work on Shinyapps.io because the way the **Scholar** package queries Google Scholar is not supported.
 Most Shiny applications work without difficulty, as long as they don't require complex networking features.
