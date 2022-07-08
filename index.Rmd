@@ -185,7 +185,7 @@ Chapter \@ref(chap-git) presents source control with git and GitHub.
 
 Chapter \@ref(chap-rediger) shows how to write simple (articles) or complex (books) documents with R Markdown, integrating the data, the code to process them and the text to present them. 
 Chapter \@ref(chap-package) presents a step-by-step method to efficiently create a package. 
-Chapter \@ref(chap-ci) introduces the use of continuous integration to automatically produce documents, verify package code and produce package thumbnails. 
+Chapter \@ref(chap-ci) introduces the use of continuous integration to automatically produce documents, verify package code and produce package vignettes. 
 Chapter \@ref(chap-shiny) introduces Shiny to develop R interactive applications.
 Finally, chapter \@ref(chap-enseigner) introduces the tools for teaching R.
 

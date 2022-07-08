@@ -927,7 +927,7 @@ For everyday use, `mclapply` is faster, except on Windows, and simpler (includin
 #### How it works
 
 The **foreach** package allows advanced use of parallelization.
-Read its thumbnails.
+Read its vignettes.
 ```{r foreach_v, eval=FALSE}
 # Manual
 vignette("foreach", "foreach")

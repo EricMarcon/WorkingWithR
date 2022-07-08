@@ -206,7 +206,7 @@ Some packages are not available on CRAN but only on GitHub because they are stil
 It can also be useful to install a development version of a package published on CRAN for a specific use like testing new features.
 
 The installation is handled by the **remotes** package.
-The `build_thumbnails` argument is needed to create the thumbnails of the package.
+The `build_vignettes` argument is needed to create the vignettes of the package.
 
 ```{r install_github, eval=FALSE}
 remotes::install_github("EricMarcon/memoiR", build_vignettes = TRUE)

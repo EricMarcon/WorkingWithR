@@ -25,7 +25,7 @@ This service is integrated with GitHub.
 
 ### Codecov
 
-To evaluate the code coverage rate of R packages, i.e. the proportion of code tested in some way (examples, unit tests, thumbnail), the *Codecov*[^ci-2] service integrates perfectly with GitHub.
+To evaluate the code coverage rate of R packages, i.e. the proportion of code tested in some way (examples, unit tests, vignette), the *Codecov*[^ci-2] service integrates perfectly with GitHub.
 
 [^ci-2]: <https://codecov.io/>
 
