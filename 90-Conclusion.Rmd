@@ -20,6 +20,6 @@ if (interactive()) {
 ```
 
 This document does not aim to be exhaustive on the possibilities of R but rather to present a working method and simple ways to apply it quickly.
-You can refer to the more detailed works cited in the text to go deeper into a particular point.
+You can refer to the more detailed books and documentations cited in the text to go deeper into a particular point.
 
 It is updated regularly as the available tools evolve.
