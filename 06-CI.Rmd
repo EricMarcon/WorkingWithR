@@ -40,10 +40,10 @@ If they are produced by continuous integration, they will be hosted in a dedicat
 
 ## Principles
 
-A draft document is treated as an example.
+The production of a document is treated as an example.
 The objective is to have GitHub knit a Markdown project.
 This practice is appropriate for book projects, which require a lot of resources for their construction.
-In this type of project, the code is knit by knitr to produce several documents, typically in HTML and PDF formats, accessible on GitHub pages.
+In this type of project, the code is knit by **knitr** to produce several documents, typically in HTML and PDF formats, accessible on GitHub pages.
 When documents are produced locally, they are placed in the `docs` folder and pushed to GitHub.
 
 In order for GitHub to do this, a few settings are required.
@@ -51,7 +51,7 @@ In order for GitHub to do this, a few settings are required.
 
 ### Getting a personal access token
 
-To write to GitHub, the continuous integration service will have to authenticate itself with a Personal Access Token (PAT) whose creation is described in section \@ref(sec:pat).
+To write to GitHub, the continuous integration service will have to authenticate with a Personal Access Token (PAT) whose creation is described in section \@ref(sec:pat).
 
 Generate a new token, describe it as "GitHub Actions" and give it "repo" authorization, i.e. modify *all* repositories (it is not possible to limit access to a particular repository).
 
@@ -59,12 +59,12 @@ Generate a new token, describe it as "GitHub Actions" and give it "repo" authori
 ### Project secrets {#sec:secrets-ci}
 
 On GitHub, display the project settings and select "Secrets".
-The "New Repository Secret" button allows you to store variables used in GitHub Actions scripts (publicly visible) without broadcasting their value.
+The "New Repository Secret" button allows you to store variables used in GitHub Actions scripts (publicly visible) without exposing their value.
 The personal access token is essential for GitHub Actions to write their production in the project.
 Create a secret named "GH_PAT" and enter the previously saved token value.
 After clicking on "Add Secret", the token cannot be read anymore.
 
-To allow sending success or failure messages without broadcasting your email address, create a secret named "EMAIL" which contains it.
+To allow sending success or failure messages without exposing your email address, create a secret named "EMAIL" which contains it.
 
 
 ### Activation of the repository on CodeCov
@@ -74,9 +74,9 @@ On the other hand, the analysis of the coverage of document projects is not usef
 
 To activate a repository, you need to authenticate on the CodeCov website with your GitHub account.
 The list of repositories is displayed and can be updated.
-If the repositories to be processed are hosted by an organization, for example the repositories of a GitHub classroom, you have to update the list of organizations by following the instructions (a link allows you to quickly modify the GitHub options to authorize the reading of an organization by Codecov) and update the list of repositories again.
+If the repositories to be processed are hosted by an organization, for example the repositories of a GitHub classroom, you have to update the list of organizations by following the instructions (a link allows you to quickly modify the GitHub options to authorize Codecov to read the data of an organization) and update the list of repositories again.
 Finally, when the repository you are looking for is visible, you have to activate it.
-It is useless to use Codecov's token system.
+Ignore Codecov's token system.
 
 
 ### Scripting GitHub actions
@@ -84,13 +84,13 @@ It is useless to use Codecov's token system.
 A GitHub workflow is a succession of jobs with steps.
 A workflow is triggered by an event, usually every *push* of the project, but also at regular intervals (*cron*).
 
-Typically, the workflows created here contain two tasks: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.
+Typically, the workflows created here contain two jobs: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.
 
-The workflows are configured in a file in YAML format placed in the `.github/workflows/` folder of the project.
+The workflows are configured in a YAML file placed in the `.github/workflows/` folder of the project.
 The different parts of the script are presented below.
-The full script is the one in this document, accessible on GitHub[^ci-10].
+The full script is that of this document, accessible on GitHub[^ci-10].
 
-[^ci-10]: <https://github.com/EricMarcon/travailleR/blob/master/.github/workflows/bookdown.yml>
+[^ci-10]: <https://github.com/EricMarcon/WorkingWithR/blob/master/.github/workflows/bookdown.yml>
 
 
 #### Trigger {#sec:declenchement}
@@ -106,7 +106,7 @@ on:
 
 The branch taken into account is *master* (to be replaced by *main* if necessary).
 
-To trigger the action periodically, use the syntax of *cron* (the Unix job scheduling system):
+To trigger the action periodically, use the syntax of cron (the Unix job scheduling system):
 
 ```
 on:
@@ -140,10 +140,10 @@ It will be displayed by the badge that will be added to the project's `README.md
 name: bookdown
 ```
 
-#### First task
+#### First job
 
-The tasks are described in the `jobs` section.
-`renderbook` is the name of the first task: it is free.
+The jobs are described in the `jobs` section.
+`renderbook` is the name of the first job: it is free.
 Here, the main action will be to produce a bookdown with the `render_book()` function, hence the name. 
 
 ```
@@ -176,7 +176,7 @@ The steps are described in the `steps` section.
 
 Each step is described by its name (free) and what it does. 
 
-The strength of GitHub Actions is to allow the use of *actions* written by others and stored in a public GitHub project.
+The strength of GitHub Actions is to allow the use of *actions* written by other people and stored in a public GitHub project.
 An action is a script with metadata describing its use.
 Its development is accompanied by successive version numbers.
 An action is called by the statement `uses:`, the GitHub project that contains it and its version.
@@ -206,8 +206,8 @@ To avoid system specifics, it is better to use an action:
 
 #### Caches
 
-Installing R packages takes time, a lot if they are installed from source (the standard procedure under Ubuntu, but not on MacOS and Windows where binary packages are used by default).
-Computing the code snippets is usually the longest step in the workflow.
+Installing R packages takes time, a lot of it if they are installed from source (the standard procedure on Ubuntu, but not on MacOS and Windows where binary packages are used by default).
+Computing the code chunks is usually the longest step of the workflow.
 The `cache` action caches the results of both operations.
 
 ```
@@ -226,7 +226,7 @@ The `cache` action caches the results of both operations.
 ```
 
 The cache is updated when a package or a piece of code is modified, which requires a quick way to check the modifications: a control value (*hashtag*) is computed by the `hashFiles()` function from the `renv.lock` file (see below) for packages and the set of `.Rmd` files for pieces of code.
-Any change leads to the reinstallation of the packages or the recalculation of the whole code: the cache management is less fine-grained than that of R on a workstation, which only recalculates the modified code snippets.
+Any change leads to the reinstallation of the packages or the recalculation of the whole code: the cache management is less fine-grained than that of R on a workstation, which only recalculates the modified code chunks.
 
 
 #### Packages {#sec:packages-ci}
@@ -336,9 +336,9 @@ The two steps should not be combined into one.
 
 #### Backup
 
-The result of the knitting, placed in the `docs` folder of the virtual machine in charge of continuous integration, must be preserved so that the next task can use it.
+The result of the knitting, placed in the `docs` folder of the virtual machine in charge of continuous integration, must be preserved so that the next job can use it.
 
-The last step of the production task uses the `upload-artifact` action for this.
+The last step of the production job uses the `upload-artifact` action for this.
 
 ```
       - name: Upload artifact
@@ -351,12 +351,12 @@ The last step of the production task uses the `upload-artifact` action for this.
 The content of `docs` is saved as an *artifact* named "_book".
 Artifacts are publicly visible on the GitHub Project Actions page.
 
-After its last step, the virtual machine used for this step is destroyed.
+After its last step, the virtual machine is destroyed.
 
 
 #### Publication
 
-Publishing the artifact to the `gh-pages` branch of the project requires another task.
+Publishing the artifact to the `gh-pages` branch of the project requires another job.
 
 ```
   deploy:
@@ -380,9 +380,9 @@ Publishing the artifact to the `gh-pages` branch of the project requires another
           jekyll: no
 ```
 
-The task is named "deploy" (the name is free).
-It runs on a virtual machine under Ubuntu.
-It can only be launched if the "renderbook" task has succeeded.
+The job is named "deploy" (the name is free).
+It runs on a virtual machine on Ubuntu.
+It can only be launched if the "renderbook" job has succeeded.
 Its steps are the following:
 
 - *Download artifact*: Restore the `docs` folder;
@@ -424,7 +424,7 @@ All of them require the same preparation:
 
 The `gh-pages` branch is created automatically by the scripts.
 Check after the first execution that GitHub pages are enabled on this branch (section \@ref(sec:github-pages)).
-Then delete the `docs` folder if it existed, push the modification on GitHub and finally add the following line to the `.gitignore` file to be able to knit locally the projects without disturbing GitHub:
+Then delete the `docs` folder if it existed, push the modification on GitHub and finally add the following line to the `.gitignore` file to be able to knit the projects locally without disturbing GitHub:
 
 ```
 docs/
@@ -432,7 +432,7 @@ docs/
 
 ### memoiR {#sec:memoiR-ci}
 
-The `build_ghworkflow()` function of the **memoiR** package automatically creates the scripts needed to produce the package's models.
+The `build_ghworkflow()` function of the **memoiR** package automatically creates the scripts needed to produce the package's templates.
 The script is always named `memoir.yml`.
 
 These scripts do not use **renv** or cache.
@@ -441,7 +441,7 @@ They do not need a `DESCRIPTION` file for the installation of the dependencies b
 
 ### Book or thesis {#sec:bookdown-ci}
 
-The workflow is called `rmarkdown`; its production task `render`.
+The workflow is called `rmarkdown`; its production job is `render`.
 
 ```
 on:
@@ -503,7 +503,7 @@ jobs:
 
 ### Articles or slideshows
 
-The workflow is called `rmarkdown`; its production task `render`.
+The workflow is called `rmarkdown`; its production job is `render`.
 
 ```
 on:
@@ -563,7 +563,7 @@ jobs:
 The knitting stage uses a script to list all the `.Rmd` files, process them (all the output formats listed in their yaml header are produced).
 The `build_githubpages()` function (see section \@ref(sec:memo)) places the results in `docs`.
 
-The deployment task tells GitHub pages to use Jekyll, i.e. to use the `README.md` file as the home page.
+The deployment job tells GitHub pages to use Jekyll, i.e. to use the `README.md` file as the home page.
 
 
 #### Localization
@@ -580,7 +580,7 @@ If the knitting step needs to change the language used by R, for example to corr
         shell: Rscript {0}
 ```
 
-The selection of files is done here by an R script, which includes a localization command, here in French.
+The selection of files is done by an R script, which includes a localization command, here in French.
 
 This step can be completed by selecting a GitHub Pages theme so that the home page contains a link to the code:
 
@@ -604,7 +604,7 @@ tinytex::tlmgr_update()
 ```
 
 If the compilation works locally but not on Github, you have to inspect the `.log` file which records all the events generated by the compiler, but this file is not kept after the failure of GitHub Actions. 
-So you have to modify the script to copy the file in `docs` and then create a save result despite the error.
+So you have to modify the script to copy the file in `docs` and then save the result despite the error.
 
 The "Upload artifact" step is modified to run despite the failure of the previous step by adding the line `if:`:
 
@@ -634,7 +634,7 @@ It is a compressed file that contains the whole `docs` folder.
 ### Blogdown website {#sec:blogdown-ci}
 
 The file called `blogdown.yml` is very similar.
-The name of the workflow is `blogdown` and the name of the production task is `buildsite`.
+The name of the workflow is `blogdown` and the name of the production job is `buildsite`.
 
 ```
 on:
@@ -694,14 +694,12 @@ jobs:
           jekyll: no
 ```
 
-The `checkout` action is placed in the `source` branch with its `ref` variable.
+The `Build website` step uses the **blogdown** package to install Hugo (the website generator) and then build the website.
 
-The `Build website` task uses the **blogdown** package to install Hugo (the website generator) and then build the website.
-
-If the website uses online data that warrants periodic updating, GitHub Actions can be run daily, weekly or monthly in addition to the rebuilds triggered by a repository change (see section `ref(sec:declenchement)).
+If the website uses online data that warrants periodic updating, GitHub Actions can be run daily, weekly or monthly in addition to the rebuilds triggered by a repository change (see section \@ref(sec:declenchement)).
 Here, the site is rebuilt every Sunday at 10pm.
 
-Example: the page that displays the bibliometry of the author's website[^ci-4] queries Google Scholar to display the citations of the publications.
+Example: the page that displays the bibliometrics of the author's website[^ci-4] queries Google Scholar to display the citations of the publications.
 The site is updated weekly to keep the statistics current.
 
 [^ci-4]: <https://EricMarcon.github.io/fr/publication/>
@@ -752,7 +750,7 @@ jobs:
 ```
 
 The file is named `check.yml`.
-It contains only one task, named `R-CMD-check` like the flow.
+It contains only one job, named `R-CMD-check`, as the workflow.
 
 The script does not use **Renv** to handle packages because package checking must work with the current versions on CRAN.
 **Remotes** installs the necessary packages from the `DESCRIPTION` file.
@@ -764,7 +762,7 @@ The `Test coverage` step uses the **covr** package to measure the coverage rate 
 
 Finally, the last two steps install the package and then use **pkgdown** to create the documentation site for the package and push it into the `gh-pages` branch of the project.
 
-This script contains only one task: the deployment of the documentation site is directly executed by **pkgdown**.
+This script contains only one job: the deployment of the documentation site is directly executed by **pkgdown**.
 Its success is displayed by a badge in the `README.md` file (see section \@ref(sec:ci-badges))
 
 More complex scripts are proposed by R-lib[^ci-5], in particular to run the tests on several operating systems and several versions of R.
