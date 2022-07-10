@@ -23,7 +23,7 @@
 <meta name="author" content="Eric Marcon" />
 
 
-<meta name="date" content="2022-07-08" />
+<meta name="date" content="2022-07-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -913,7 +913,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="chap-package.html#cb372-1" aria-hidden="true" tabindex="-1"></a>plot</span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod(&quot;plot&quot;)
-## &lt;bytecode: 0x7f9e45acf268&gt;
+## &lt;bytecode: 0x7ffae4d1d320&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -1059,14 +1059,14 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span id="cb400-2"><a href="chap-package.html#cb400-2" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(<span class="fu">triple.integer</span>(2L), <span class="fu">triple.numeric</span>(<span class="dv">2</span>),</span>
 <span id="cb400-3"><a href="chap-package.html#cb400-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">triple</span>(2L))</span></code></pre></div>
 <pre><code>## Unit: nanoseconds
-##                expr  min     lq     mean median   uq
-##  triple.integer(2L)  326  335.5 46512.58  343.0  354
-##   triple.numeric(2)  324  334.5 24156.14  343.5  361
-##          triple(2L) 1334 1352.5  1460.38 1368.5 1425
+##                expr  min     lq     mean median     uq
+##  triple.integer(2L)  328  334.5 25215.11  344.0  357.0
+##   triple.numeric(2)  325  342.5 21625.04  347.5  358.5
+##          triple(2L) 1310 1329.0  1444.09 1339.5 1402.5
 ##      max neval
-##  4615476   100
-##  2378908   100
-##     6406   100</code></pre>
+##  2485614   100
+##  2123520   100
+##     7534   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -1280,7 +1280,7 @@ It must be imported:</li>
 <span id="cb420-65"><a href="chap-package.html#cb420-65" aria-hidden="true" tabindex="-1"></a>graphics<span class="sc">::</span>plot</span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod(&quot;plot&quot;)
-## &lt;bytecode: 0x7f9e45acf268&gt;
+## &lt;bytecode: 0x7ffae4d1d320&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="chap-package.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; autoplot</span></span>
 <span id="cb422-2"><a href="chap-package.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
@@ -1310,7 +1310,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod(&quot;autoplot&quot;)
 ## }
-## &lt;bytecode: 0x7f9e43665730&gt;
+## &lt;bytecode: 0x7ffae18d2ef0&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
