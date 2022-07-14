@@ -172,6 +172,8 @@ knitr::write_bib(Packages, file="packages.bib")
 
 This document is the support of the course *Working with R*.
 
+`r if (knitr:::is_html_output()) 'It can be <a href="https://ericmarcon.github.io/WorkingWithR/WwR.pdf" target="_blank">downloaded as a PDF file</a>.'`
+
 It proposes an organization of the work around R and RStudio in order to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create a web site and online R applications (Shiny), produce packages and use R for teaching.
 It complements *Reproducible Research with R and R Studio* [@Gandrud2013] with a more hands-on approach, with ready-to-use solutions.  
 
