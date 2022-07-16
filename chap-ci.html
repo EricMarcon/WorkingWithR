@@ -326,11 +326,11 @@ It can be updated at any time to take into account their update.</p>
 <p>The packages used to produce the document are listed:</p>
 <ul>
 <li>
-<strong>remotes</strong> for its <code>install_deps()</code> function;</li>
+<strong>remotes</strong> for its <code>install_deps()</code> function.</li>
 <li>
-<strong>bookdown</strong> for knitting;</li>
+<strong>bookdown</strong> for knitting.</li>
 <li>
-<strong>formatR</strong> for formatting code snippets (<code>tidy=TRUE</code>);</li>
+<strong>formatR</strong> for formatting code snippets (<code>tidy=TRUE</code>).</li>
 <li>
 <strong>tinytex</strong> to have a LaTeX distribution.</li>
 </ul>
@@ -417,9 +417,9 @@ It uses an environment variable, <code>GITHUB_TOKEN</code>, to authenticate and 
 <ul>
 <li>
 <em>email</em>: the email address to which the run report is sent.
-To avoid exposing the address publicly, it has been stored in a project secret;</li>
+To avoid exposing the address publicly, it has been stored in a project secret.</li>
 <li>
-<em>buid_dir</em>: the directory to publish,</li>
+<em>buid_dir</em>: the directory to publish.</li>
 <li>
 <em>jekyll:no</em> to create an empty file named <code>.nojekyll</code> that tells GitHub pages not to try to treat their content as a Jekyll website.</li>
 </ul>
@@ -446,9 +446,9 @@ The next step, to be inserted before the knitting step, writes the key to a file
 All of them require the same preparation:</p>
 <ul>
 <li>
-<code>GH_PAT</code> and <code>EMAIL</code> secrets must be registered in the GitHub project (section <a href="chap-ci.html#sec:secrets-ci">6.2.2</a>);</li>
-<li>a <code>DESCRIPTION</code> file must be used to list the required packages (section <a href="chap-package.html#sec:package-description">5.2.1</a>), regardless of the project type;</li>
-<li>a snapshot of the installed packages (<code>renv.lock</code>) must be made if <strong>renv</strong> (section <a href="chap-ci.html#sec:packages-ci">6.2.4.6</a>) is used.</li>
+<code>GH_PAT</code> and <code>EMAIL</code> secrets must be registered in the GitHub project (section <a href="chap-ci.html#sec:secrets-ci">6.2.2</a>).</li>
+<li>A <code>DESCRIPTION</code> file must be used to list the required packages (section <a href="chap-package.html#sec:package-description">5.2.1</a>), regardless of the project type.</li>
+<li>A snapshot of the installed packages (<code>renv.lock</code>) must be made if <strong>renv</strong> (section <a href="chap-ci.html#sec:packages-ci">6.2.4.6</a>) is used.</li>
 </ul>
 <p>The <code>gh-pages</code> branch is created automatically by the scripts.
 Check after the first execution that GitHub pages are enabled on this branch (section <a href="chap-git.html#sec:github-pages">3.7</a>).

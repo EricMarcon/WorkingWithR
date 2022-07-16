@@ -646,7 +646,7 @@ The default working folder is the user's home folder, called \texttt{\textasciit
 \begin{itemize}
 \tightlist
 \item
-  \texttt{My\ Documents} under Windows;
+  \texttt{My\ Documents} on Windows.
 \item
   \texttt{Home} on Mac or Linux.
 \end{itemize}
@@ -951,7 +951,7 @@ If an error message indicates that no key is found, there are two possible solut
 \begin{itemize}
 \tightlist
 \item
-  Duplicate the \texttt{.ssh} folder (with File Explorer) in \texttt{Documents};
+  Duplicate the \texttt{.ssh} folder (with File Explorer) in \texttt{Documents}.
 \item
   Duplicate the \texttt{.ssh} folder in the RStudio program folder (usually \texttt{C:\textbackslash{}Program\ Files\textbackslash{}RStudio}), in \texttt{resourcesterminalbash}.
 \end{itemize}
@@ -1030,9 +1030,9 @@ There are several choices to make during the installation:
 \begin{itemize}
 \tightlist
 \item
-  Install the program for all users (with administrator rights);
+  Install the program for all users (with administrator rights).
 \item
-  The default paper size: choose A4;
+  The default paper size: choose A4.
 \item
   The installation mode of the missing packages: choose \enquote{Always Install} so that they are downloaded automatically if needed.
 \end{itemize}
@@ -1075,7 +1075,7 @@ The options to modify are the following:
 \begin{itemize}
 \tightlist
 \item
-  \enquote{Citation Keys \textgreater{} Key Format}: \texttt{{[}auth:capitalize{]}{[}year{]}} so that citations have a unique identifier of the form \enquote{Name2021};
+  \enquote{Citation Keys \textgreater{} Key Format}: \texttt{{[}auth:capitalize{]}{[}year{]}} so that citations have a unique identifier of the form \enquote{Name2021}.
 \item
   \enquote{Citation Keys \textgreater{} Keep unique citation keys in}: \enquote{All collections} so that citation identifiers are not ambiguous.
 \item
@@ -1181,7 +1181,7 @@ The \texttt{typeof()} function displays the internal storage type of the objects
 \begin{itemize}
 \tightlist
 \item
-  the \texttt{sum()} function belongs to the basic language of R and is a builtin function;
+  the \texttt{sum()} function belongs to the basic language of R and is a builtin function.
 \item
   the elements of the numerical matrix containing a single 1 are double precision reals, and the matrix itself is defined in the basic language.
 \end{itemize}
@@ -1276,7 +1276,7 @@ Its code is just a \texttt{UseMethod("print")} declaration:
 \begin{verbatim}
 ## function (x, ...) 
 ## UseMethod("print")
-## <bytecode: 0x7fd6f2103000>
+## <bytecode: 0x7fb138204e70>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1407,11 +1407,11 @@ S4 is an evolution of S3 that structures classes to get closer to a classical ob
 \begin{itemize}
 \tightlist
 \item
-  classes must be explicitly defined, not simply declared;
+  Classes must be explicitly defined, not simply declared.
 \item
-  attributes (i.e.~variables describing objects), called \emph{slots}, are explicitly declared;
+  1ttributes (i.e.~variables describing objects), called \emph{slots}, are explicitly declared.
 \item
-  the constructor, i.e.~the method that creates a new instance of a class (i.e.~a variable containing an object of the class), is explicit.
+  The constructor, i.e.~the method that creates a new instance of a class (i.e.~a variable containing an object of the class), is explicit.
 \end{itemize}
 
 Using the previous example, the S4 syntax is as follows:
@@ -1637,20 +1637,20 @@ ggplot(data = <DATA>) +
 \begin{itemize}
 \tightlist
 \item
-  the data is necessarily a dataframe;
+  The data is necessarily a dataframe.
 \item
-  the geometry is the type of graph chosen (points, lines, histograms or other);
+  The geometry is the type of graph chosen (points, lines, histograms or other).
 \item
-  the aesthetics (function \texttt{aes()}) designates what is represented: it is the correspondence between the columns of the dataframe and the elements necessary for the geometry;
+  The aesthetics (function \texttt{aes()}) designates what is represented: it is the correspondence between the columns of the dataframe and the elements necessary for the geometry.
 \item
-  statistics is the treatment applied to the data before passing it to the geometry (often \enquote{identity}, i.e.~no transformation but \enquote{boxplot} for a boxplot).
-  The data can be transformed by a scale function, such as \texttt{scale\_y\_log10()};
+  Statistics is the treatment applied to the data before passing it to the geometry (often \enquote{identity}, i.e.~no transformation but \enquote{boxplot} for a boxplot).
+  The data can be transformed by a scale function, such as \texttt{scale\_y\_log10()}.
 \item
-  the position is the location of the objects on the graph (often \enquote{identity}; \enquote{stack} for a stacked histogram, \enquote{jitter} to move the overlapping points slightly in a \texttt{geom\_point});
+  The position is the location of the objects on the graph (often \enquote{identity}; \enquote{stack} for a stacked histogram, \enquote{jitter} to move the overlapping points slightly in a \texttt{geom\_point}).
 \item
-  the coordinates define the display of the graph (\texttt{coord\_fixed()} to avoid distorting a map for example);
+  The coordinates define the display of the graph (\texttt{coord\_fixed()} to avoid distorting a map for example).
 \item
-  finally, facets offer the possibility to display several aspects of the same data by producing one graph per modality of a variable.
+  Finally, facets offer the possibility to display several aspects of the same data by producing one graph per modality of a variable.
 \end{itemize}
 
 The set formed by the pipeline and \textbf{ggplot2} allows complex processing in a readable code.
@@ -1757,7 +1757,7 @@ The code of a function called from the console runs in a child environment of th
 \end{Shaded}
 
 \begin{verbatim}
-## <environment: 0x7fd6fd1d4cb8>
+## <environment: 0x7fb147410b90>
 \end{verbatim}
 
 \begin{Shaded}
@@ -1829,7 +1829,7 @@ Example:
 \begin{verbatim}
 ## function (save = "default", status = 0, runLast = TRUE) 
 ## .Internal(quit(save, status, runLast))
-## <bytecode: 0x7fd6e200d190>
+## <bytecode: 0x7fb12851f270>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1856,9 +1856,9 @@ They are usually called by the \texttt{library()} function, which does two thing
 \begin{itemize}
 \tightlist
 \item
-  it \emph{loads} the package into memory, allowing access to all its objects with the syntax \texttt{package::object} for exported objects and \texttt{package:::object} for non-exported ones;
+  It \emph{loads} the package into memory, allowing access to all its objects with the syntax \texttt{package::object} for exported objects and \texttt{package:::object} for non-exported ones.
 \item
-  it then \emph{attaches} the package, which places its environment on top of the stack.
+  It then \emph{attaches} the package, which places its environment on top of the stack.
 \end{itemize}
 
 It is possible to detach a package with the \texttt{unloadNamespace()} function to remove it from the environment stack.
@@ -2016,7 +2016,7 @@ The function returns the execution time of the code.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.02    0.00    0.02
+##   0.019   0.000   0.019
 \end{verbatim}
 
 \normalsize
@@ -2047,16 +2047,16 @@ The goal is to compare the speed of computing the square of a vector (or a numbe
 
 \begin{verbatim}
 ## Unit: microseconds
-##   expr     min       lq       mean   median       uq
-##  f1(X)  42.783  44.3385   86.99268  45.9645  50.1310
-##  f2(X)  50.141  51.8190   89.03741  53.1670  58.9775
-##  f3(X) 281.503 284.6805  941.92540 290.3180 308.3890
-##  f4(X) 413.406 415.8140 1169.44067 421.3990 432.3870
-##        max neval
-##   1892.257   100
-##   1378.285   100
-##  54412.118   100
-##  67603.762   100
+##   expr     min       lq      mean  median       uq      max
+##  f1(X)  40.741  44.3965  59.59169  45.445  47.3975 1256.260
+##  f2(X)  48.380  51.7270  67.22906  52.818  56.0690 1236.388
+##  f3(X) 280.862 283.1850 302.56155 284.081 288.6860 1476.801
+##  f4(X) 410.912 414.2285 435.95716 416.358 420.9210 1818.861
+##  neval
+##    100
+##    100
+##    100
+##    100
 \end{verbatim}
 
 \normalsize
@@ -2078,11 +2078,11 @@ To choose the columns to display, use the following syntax:
 \end{Shaded}
 
 \begin{verbatim}
-##    expr   median
-## 1 f1(X)  45.9645
-## 2 f2(X)  53.1670
-## 3 f3(X) 290.3180
-## 4 f4(X) 421.3990
+##    expr  median
+## 1 f1(X)  45.445
+## 2 f2(X)  52.818
+## 3 f3(X) 284.081
+## 4 f4(X) 416.358
 \end{verbatim}
 
 \normalsize
@@ -2111,11 +2111,11 @@ The previous test is displayed again.
 \end{Shaded}
 
 \begin{verbatim}
-##    expr   median
-## 1 f1(X)  45.9645
-## 2 f2(X)  53.1670
-## 3 f3(X) 290.3180
-## 4 f4(X) 421.3990
+##    expr  median
+## 1 f1(X)  45.445
+## 2 f2(X)  52.818
+## 3 f3(X) 284.081
+## 4 f4(X) 416.358
 \end{verbatim}
 
 \normalsize
@@ -2241,7 +2241,7 @@ The function \texttt{lnq} of the package \textbf{entropart} returns the deformed
 ##         return(Log)
 ##     }
 ## }
-## <bytecode: 0x7fd6e1f59c58>
+## <bytecode: 0x7fb1290f5938>
 ## <environment: namespace:entropart>
 \end{verbatim}
 
@@ -2261,9 +2261,9 @@ There are several versions of this function:
 \begin{itemize}
 \tightlist
 \item
-  \texttt{lapply()} returns a list (and saves the time of rearranging them in an array);
+  \texttt{lapply()} returns a list (and saves the time of rearranging them in an array).
 \item
-  \texttt{sapply()} returns a dataframe by collapsing the lists (this is done by the \texttt{simplify2array()} function);
+  \texttt{sapply()} returns a dataframe by collapsing the lists (this is done by the \texttt{simplify2array()} function).
 \item
   \texttt{vapply()} is almost identical but requires that the data type of the result be provided.
 \end{itemize}
@@ -2293,11 +2293,11 @@ There are several versions of this function:
 \end{Shaded}
 
 \begin{verbatim}
-##                                    expr   median
-## 1                              sqrt(x1)   4.7730
-## 2                lapply(x1, FUN = sqrt) 308.7585
-## 3                sapply(x1, FUN = sqrt) 367.1150
-## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 301.1835
+##                                    expr  median
+## 1                              sqrt(x1)   4.758
+## 2                lapply(x1, FUN = sqrt) 303.791
+## 3                sapply(x1, FUN = sqrt) 360.358
+## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 296.061
 \end{verbatim}
 
 \normalsize
@@ -2351,8 +2351,8 @@ To evaluate the performance gain, the following code removes all automatic compi
 
 \begin{verbatim}
 ##        expr   median
-## 1  Loop(x1) 913.7420
-## 2 Loop2(x1)  80.7615
+## 1  Loop(x1) 816.5095
+## 2 Loop2(x1)  77.7495
 \end{verbatim}
 
 \begin{Shaded}
@@ -2384,8 +2384,8 @@ For loops are now much faster than \texttt{vapply}.
 
 \begin{verbatim}
 ##                        expr   median
-## 1 vapply(x1, FUN = sqrt, 0) 291.7115
-## 2                  Loop(x1)  77.4435
+## 1 vapply(x1, FUN = sqrt, 0) 291.7625
+## 2                  Loop(x1)  77.4440
 \end{verbatim}
 
 \normalsize
@@ -2407,9 +2407,9 @@ Be careful, the performance test can be misleading:
 \end{Shaded}
 
 \begin{verbatim}
-##                                             expr    median
-## 1                      vapply(x1, FUN = sqrt, 0)  302.2045
-## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3386.9045
+##                                             expr   median
+## 1                      vapply(x1, FUN = sqrt, 0)  299.281
+## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3310.518
 \end{verbatim}
 
 \normalsize
@@ -2476,8 +2476,8 @@ This code is equivalent to \texttt{runif(3)}, with performance similar to \textt
 
 \begin{verbatim}
 ##                        expr   median
-## 1 replicate(1000, runif(1)) 2913.025
-## 2               runif(1000)   33.377
+## 1 replicate(1000, runif(1)) 2890.864
+## 2               runif(1000)   33.145
 \end{verbatim}
 
 \normalsize
@@ -2514,10 +2514,10 @@ Write the loops instead.
 \end{Shaded}
 
 \begin{verbatim}
-##                              expr    median
-## 1       SumLoop(diamonds[-(2:4)])  3.893414
-## 2 apply(diamonds[-(2:4)], 2, sum) 10.011225
-## 3       colSums(diamonds[-(2:4)])  2.670033
+##                              expr   median
+## 1       SumLoop(diamonds[-(2:4)]) 3.706346
+## 2 apply(diamonds[-(2:4)], 2, sum) 9.687710
+## 3       colSums(diamonds[-(2:4)]) 2.569917
 \end{verbatim}
 
 \normalsize
@@ -2725,7 +2725,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.000   0.531
+##   0.002   0.000   0.644
 \end{verbatim}
 
 \begin{Shaded}
@@ -2737,12 +2737,12 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.013   0.272
+##   0.006   0.017   0.310
 \end{verbatim}
 
 \normalsize
 
-Setting up parallelization has a cost of about \texttt{0.022} seconds here.
+Setting up parallelization has a cost of about \texttt{0.06} seconds here.
 The execution time is much longer in parallel on Windows because setting up the cluster takes much more time than parallelization saves.
 Parallelization is interesting for longer tasks, such as a one second break.
 
@@ -2757,7 +2757,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.000   0.000   2.252
+##   0.001   0.000   2.057
 \end{verbatim}
 
 \begin{Shaded}
@@ -2769,7 +2769,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.008   1.009
+##   0.001   0.004   1.075
 \end{verbatim}
 
 \normalsize
@@ -2788,7 +2788,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.004   1.144
+##   0.003   0.006   1.010
 \end{verbatim}
 
 \begin{Shaded}
@@ -2799,7 +2799,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.006   2.149
+##   0.003   0.007   2.136
 \end{verbatim}
 
 \normalsize
@@ -2842,11 +2842,11 @@ The theoretical shape of this curve is as follows:
 \begin{itemize}
 \tightlist
 \item
-  for a task, the time is equal to one second plus the parallelization setup time;
+  For a task, the time is equal to one second plus the parallelization setup time.
 \item
-  the time should remain stable until the number of cores used;
+  The time should remain stable until the number of cores used.
 \item
-  when all the cores are used (red dotted line), the time should increase by one second and then remain stable until the next limit.
+  When all the cores are used (red dotted line), the time should increase by one second and then remain stable until the next limit.
 \end{itemize}
 
 In practice, the computation time is determined by other factors that are difficult to predict.
@@ -2991,7 +2991,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.000   0.543
+##   0.003   0.000   0.762
 \end{verbatim}
 
 \begin{Shaded}
@@ -3006,7 +3006,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.009   0.019   0.376
+##   0.006   0.017   0.344
 \end{verbatim}
 
 \normalsize
@@ -3092,7 +3092,7 @@ The distance can be calculated by two nested \texttt{sapply()}.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.643   0.053   6.259
+##   5.553   0.027   5.951
 \end{verbatim}
 
 \begin{Shaded}
@@ -3126,7 +3126,7 @@ The gain is negligible on a long computation like this one but important for sho
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.372   0.036   5.863
+##   5.276   0.014   5.618
 \end{verbatim}
 
 \begin{Shaded}
@@ -3169,7 +3169,7 @@ A more significant improvement is to compute the square roots only at the end of
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.263   0.037   5.847
+##   5.191   0.024   5.604
 \end{verbatim}
 
 \begin{Shaded}
@@ -3208,7 +3208,7 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.072   0.025   3.812
+##   3.000   0.010   3.162
 \end{verbatim}
 
 \begin{Shaded}
@@ -3249,7 +3249,7 @@ On MacOS or Linux, the computation is accelerated.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.350   0.392   3.601
+##   3.242   0.332   2.069
 \end{verbatim}
 
 \begin{Shaded}
@@ -3290,7 +3290,7 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.002   0.014   2.058
+##   1.980   0.009   2.133
 \end{verbatim}
 
 \begin{Shaded}
@@ -3337,7 +3337,7 @@ The test is run here with 10 times fewer points, so 100 times fewer distances to
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.841   0.031   3.021
+##   2.740   0.020   3.064
 \end{verbatim}
 
 \begin{Shaded}
@@ -3382,7 +3382,7 @@ The performance is still much lower than a simple for loop (remember: 100 times 
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.129   0.066   0.124
+##   0.125   0.062   0.121
 \end{verbatim}
 
 \begin{Shaded}
@@ -3559,10 +3559,8 @@ The usage in R is identical to the usage of C++ functions interfaced by \textbf{
 ## Unit: milliseconds
 ##                                                      expr
 ##  d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints - 1) * 2
-##       min       lq     mean   median       uq      max
-##  2.072108 2.223408 4.010418 2.674975 3.696415 61.37174
-##  neval
-##    100
+##       min       lq     mean  median       uq      max neval
+##  2.059655 2.073449 2.147265 2.08594 2.174043 3.717664   100
 \end{verbatim}
 
 \begin{Shaded}
@@ -3602,13 +3600,13 @@ Multiplying the number of points by 50, the serial computation time must be mult
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   6.889   0.042   7.731
+##   6.856   0.035   7.360
 \end{verbatim}
 
 \normalsize
 
 In parallel, the time increases little: parallelization becomes really efficient.
-This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{5145} seconds.
+This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{5332} seconds.
 
 \scriptsize
 
@@ -3621,7 +3619,7 @@ This time is to be compared to that of the reference for loop, multiplied by 250
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   4.971   0.079   3.816
+##   4.933   0.007   1.689
 \end{verbatim}
 
 \normalsize
@@ -3634,13 +3632,13 @@ From this case study, several lessons can be learned:
 \begin{itemize}
 \tightlist
 \item
-  a for loop is a good basis for repetitive calculations, faster than \texttt{vapply()}, simple to read and write;
+  A for loop is a good basis for repetitive calculations, faster than \texttt{vapply()}, simple to read and write.
 \item
-  optimized functions may exist in R packages for common tasks (here, the \texttt{pairdist()} function of \textbf{spatstat} is two orders of magnitude faster than the for loop);
+  Optimized functions may exist in R packages for common tasks (here, the \texttt{pairdist()} function of \textbf{spatstat} is two orders of magnitude faster than the for loop).
 \item
-  the use of C++ code allows to speed up the calculations significantly, by three orders of magnitude here;
+  The use of C++ code allows to speed up the calculations significantly, by three orders of magnitude here.
 \item
-  parallelization of the C++ code further divides the computation time by about half the number of cores for long computations.
+  Parallelization of the C++ code further divides the computation time by about half the number of cores for long computations.
 \end{itemize}
 
 Beyond this example, optimizing computation time in R can be complicated if it involves parallelization and writing C++ code.
@@ -3677,9 +3675,9 @@ It contains:
 \begin{itemize}
 \tightlist
 \item
-  global commands, such as loading packages;
+  Global commands, such as loading packages.
 \item
-  a list of targets, which describe the code to be executed and the variable that stores their result.
+  A list of targets, which describe the code to be executed and the variable that stores their result.
 \end{itemize}
 
 The workflow is run by the \texttt{tar\_make()} function, which updates the targets that need it.
@@ -3775,7 +3773,7 @@ The workflow is run by \texttt{tar\_make()}.
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.36 seconds
+## • end pipeline: 2.056 seconds
 \end{verbatim}
 
 \normalsize
@@ -3803,7 +3801,7 @@ The workflow is now up to date and \texttt{tar\_make()} does not recompute anyth
 ## ✔ skip target X
 ## ✔ skip target d
 ## ✔ skip target map
-## ✔ skip pipeline: 0.077 seconds
+## ✔ skip pipeline: 0.073 seconds
 \end{verbatim}
 
 \normalsize
@@ -4008,8 +4006,11 @@ Branches allow:
 \begin{itemize}
 \tightlist
 \item
-  to develop new features in a project, without disturbing the main branch which may contain a stable version. If the development is accepted, its branch can be merged with the \emph{master} branch to create a new stable version.
-  The \emph{master} branch can also contain files totally different from those of the main branch, for other purposes. On GitHub, a project's web pages can be placed in a branch called \enquote{gh-pages} which will never be merged.
+  To develop new features in a project, without disturbing the main branch which may contain a stable version.
+  If the development is accepted, its branch can be merged with the \emph{master} branch to create a new stable version.
+\item
+  To host files totally different from those of the main branch, for other purposes.
+  On GitHub, a project's web pages can be placed in a branch called \enquote{gh-pages} which will never be merged.
 \end{itemize}
 
 The git repository is fully constituted.
@@ -4018,11 +4019,11 @@ In git vocabulary, it consists of three \emph{trees} (figure \ref{fig:git-Trees}
 \begin{itemize}
 \tightlist
 \item
-  the working directory, or sandbox, which contains files that are not staged: unknown, modified, deleted or renamed (\enquote{Staged} box unchecked);
+  The working directory, or sandbox, which contains files that are not staged: unknown, modified, deleted or renamed (\enquote{Staged} box unchecked).
 \item
-  the index, which contains the files taken into account (\enquote{Staged} box checked);
+  The index, which contains the files taken into account (\enquote{Staged} box checked).
 \item
-  the head, which contains the validated files.
+  The head, which contains the validated files.
 \end{itemize}
 
 
@@ -4080,7 +4081,7 @@ An empty repository on GitHub must be created (figure \ref{fig:CreateRepo}):
   \begin{itemize}
   \tightlist
   \item
-    Public: visible to everyone,
+    Public: visible to everyone.
   \item
     Private: visible only to project collaborators, which excludes adding web pages.
   \end{itemize}
@@ -4112,9 +4113,9 @@ Enter the name of the \enquote{master} branch, click on \enquote{Add Remotes} an
 \begin{itemize}
 \tightlist
 \item
-  Remote Name: \texttt{origin};
+  Remote Name: \texttt{origin}.
 \item
-  Remote URL: paste the address of the GitHub repository;
+  Remote URL: paste the address of the GitHub repository.
 \item
   Click on \enquote{Add}.
 \end{itemize}
@@ -4907,11 +4908,11 @@ The language for formatting the text is Markdown\footnote{\url{https://fr.wikipe
 \begin{itemize}
 \tightlist
 \item
-  Paragraphs are separated by line breaks;
+  Paragraphs are separated by line breaks.
 \item
-  The document is structured by headings: their line starts with a number of \texttt{\#} corresponding to their level;
+  The document is structured by headings: their line starts with a number of \texttt{\#} corresponding to their level.
 \item
-  Character formats are limited to the essentials: italic or bold (text surrounded by one or two \texttt{*});
+  Character formats are limited to the essentials: italic or bold (text surrounded by one or two \texttt{*}).
 \item
   Other simple codes allow all useful formatting.
 \end{itemize}
@@ -4946,11 +4947,11 @@ The production chain is as follows:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{knitr} processes the code snippets: calculations, figure production;
+  \textbf{knitr} processes the code snippets: calculations, figure production.
 \item
-  \textbf{rmarkdown} integrates the production of code and text snippets to produce a standard Markdown file;
+  \textbf{rmarkdown} integrates the production of code and text snippets to produce a standard Markdown file.
 \item
-  pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format;
+  pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format.
 \item
   LaTeX produces a PDF file when that format is requested.
 \end{itemize}
@@ -4965,9 +4966,9 @@ In the end, using R Markdown combines several advantages:
 \begin{itemize}
 \tightlist
 \item
-  Simplicity of writing: the raw text is easier to read and format than in LaTeX for example;
+  Simplicity of writing: the raw text is easier to read and format than in LaTeX for example.
 \item
-  Automation of the production: formatting and layout are fully automatic;
+  Automation of the production: formatting and layout are fully automatic.
 \item
   Reproducibility: each document can be self-sufficient with its data. Re-knitting regenerates the whole document, including the necessary calculations and the production of figures.
 \end{itemize}
@@ -4977,11 +4978,13 @@ It also has some disadvantages:
 \begin{itemize}
 \tightlist
 \item
-  Formatting depends on templates, and developing new templates is not easy;
+  Formatting depends on templates, and developing new templates is not easy.
 \item
-  Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage;
+  Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage.
 \item
-  Reproducibility consumes computing time. To limit this problem, a cache system allows not to re-evaluate all the R code bits at each modification of the text. The production of large documents can also be delegated to a continuous integration system (see chapter \ref{chap-ci}).
+  Reproducibility consumes computing time.
+  To limit this problem, a cache system allows not to re-evaluate all the R code bits at each modification of the text.
+  The production of large documents can also be delegated to a continuous integration system (see chapter \ref{chap-ci}).
 \end{itemize}
 
 \hypertarget{r-markdown-templates}{%
@@ -5088,9 +5091,9 @@ The most useful options are :
 \begin{itemize}
 \tightlist
 \item
-  \texttt{echo} to show (\texttt{=TRUE}) or hide (\texttt{=FALSE}) the code;
+  \texttt{echo} to show (\texttt{=TRUE}) or hide (\texttt{=FALSE}) the code.
 \item
-  \texttt{message=FALSE} to hide the opening messages of some packages;
+  \texttt{message=FALSE} to hide the opening messages of some packages.
 \item
   \texttt{warning=FALSE} to hide warnings.
 \end{itemize}
@@ -5478,13 +5481,13 @@ The document can be knitted in several formats:
 \begin{itemize}
 \tightlist
 \item
-  \emph{html\_document2} is the HTML format the template was designed for: a notepad with a floating table of contents;
+  \emph{html\_document2} is the HTML format the template was designed for: a notepad with a floating table of contents.
 \item
-  \emph{gitbook} is an alternative HTML format, normally used for books;
+  \emph{gitbook} is an alternative HTML format, normally used for books.
 \item
-  \emph{downcute} is an HTML format provided by the \textbf{rmdformats} package;
+  \emph{downcute} is an HTML format provided by the \textbf{rmdformats} package.
 \item
-  \emph{pdf\_book} produces a PDF document following the LaTeX \emph{article} template, commonly used directly in LaTeX;
+  \emph{pdf\_book} produces a PDF document following the LaTeX \emph{article} template, commonly used directly in LaTeX.
 \item
   \emph{word\_document2} creates a Word file.
 \end{itemize}
@@ -5634,11 +5637,11 @@ The website containing the gitbook document must be set up in \texttt{\_output.y
 \begin{itemize}
 \tightlist
 \item
-  The title of the document appears at the top of the table of contents;
+  The title of the document appears at the top of the table of contents.
 \item
-  An indication of the use of GitHub and bookdown is displayed at the bottom of the table of contents;
+  An indication of the use of GitHub and bookdown is displayed at the bottom of the table of contents.
 \item
-  A GitHub button in the title bar allows to open the project repository;
+  A GitHub button in the title bar allows to open the project repository.
 \item
   Another button allows to download the PDF document.
 \end{itemize}
@@ -5722,11 +5725,11 @@ The site template can easily be enhanced by adding lines to \texttt{\_site.yml}:
 \begin{itemize}
 \tightlist
 \item
-  to addi a GitHub icon in the navigation bar to link to the site source code:
+  To add a GitHub icon in the navigation bar to link to the site source code.
 \item
-  to choose the method of knitting, to use \textbf{bookdown} instead of \textbf{rmarkdown};
+  To choose the method of knitting, to use \textbf{bookdown} instead of \textbf{rmarkdown}.
 \item
-  to place the site files in the \texttt{docs} folder and thus separate code and production.
+  To place the site files in the \texttt{docs} folder and thus separate code and production.
 \end{itemize}
 
 The completed \texttt{\_site.yml} file is as follows:
@@ -5809,9 +5812,9 @@ The structure of the website is simple:
 \begin{itemize}
 \tightlist
 \item
-  a home page, containing various customizable components such as the author's biography, a selection of publications, blog posts or other elements and a contact form;
+  A home page, containing various customizable components such as the author's biography, a selection of publications, blog posts or other elements and a contact form.
 \item
-  pages detailing the various elements (publications, posts, etc.) written in R Markdown.
+  Pages detailing the various elements (publications, posts, etc.) written in R Markdown.
 \end{itemize}
 
 \hypertarget{installing-the-tools}{%
@@ -6053,9 +6056,9 @@ The main differences are, for a collective site:
 \begin{itemize}
 \tightlist
 \item
-  the management of authors: in the \texttt{/contents/\textless{}language\textgreater{}/outside} folder, only one \texttt{admin} folder is used for a personal site, whereas one folder per person is needed for a collective site;
+  The management of authors: in the \texttt{/contents/\textless{}language\textgreater{}/outside} folder, only one \texttt{admin} folder is used for a personal site, whereas one folder per person is needed for a collective site.
 \item
-  a component described below, which allows to present the persons, must be activated.
+  A component described below, which allows to present the persons, must be activated.
 \end{itemize}
 
 The description of the site in the default language is entered, for search engines:
@@ -6098,13 +6101,13 @@ The working method is to progress step by step by testing and then to validate e
 \begin{itemize}
 \tightlist
 \item
-  Make the changes;
+  Make the changes.
 \item
-  Build the site and check the result: \texttt{blogdown:::serve\_site()};
+  Build the site and check the result: \texttt{blogdown:::serve\_site()}.
 \item
-  Stop the site: \texttt{blogdown::stop\_server()};
+  Stop the site: \texttt{blogdown::stop\_server()}.
 \item
-  If the result is not satisfactory, try again;
+  If the result is not satisfactory, try again.
 \item
   Commit the changes.
 \end{itemize}
@@ -6398,21 +6401,21 @@ The publication types are:
 \begin{itemize}
 \tightlist
 \item
-  0 = Uncategorized;
+  0 = Uncategorized.
 \item
-  1 = Conference paper;
+  1 = Conference paper.
 \item
-  2 = Journal article;
+  2 = Journal article.
 \item
-  3 = Preprint / Working Paper;
+  3 = Preprint / Working Paper.
 \item
-  4 = Report;
+  4 = Report.
 \item
-  5 = Book;
+  5 = Book.
 \item
-  6 = Book section;
+  6 = Book section.
 \item
-  7 = Thesis;
+  7 = Thesis.
 \item
   8 = Patent.
 \end{itemize}
@@ -6422,9 +6425,9 @@ Buttons are displayed at the top of the publication page depending on the inform
 \begin{itemize}
 \tightlist
 \item
-  PDF: if the \texttt{url} line is present in the header;
+  PDF: if the \texttt{url} line is present in the header.
 \item
-  Citation: if the file \texttt{cite.bib} is present in the folder;
+  Citation: if the file \texttt{cite.bib} is present in the folder.
 \item
   DOI: if the line \texttt{doi} is present in the header.
 \end{itemize}
@@ -6515,19 +6518,19 @@ It is possible to freely add additional elements to the site:
 \begin{itemize}
 \tightlist
 \item
-  in \texttt{/contents/\textless{}language\textgreater{}/}, create a folder whose name is the type of elements (example: \texttt{recipe});
+  In \texttt{/contents/\textless{}language\textgreater{}/}, create a folder whose name is the type of elements (example: \texttt{recipe}).
 \item
-  add items to this folder, each in its own folder;
+  Add items to this folder, each in its own folder.
 \item
-  the mandatory file is \texttt{index.md} or \texttt{index.Rmd} with a header possibly containing all the fields found in \texttt{post}, \texttt{publication} and \texttt{talk} items;
+  The mandatory file is \texttt{index.md} or \texttt{index.Rmd} with a header possibly containing all the fields found in \texttt{post}, \texttt{publication} and \texttt{talk} items.
 \item
-  the thumbnail file, \texttt{featured.png} or \texttt{featured.jpg}, is optional;
+  The thumbnail file, \texttt{featured.png} or \texttt{featured.jpg}, is optional.
 \item
-  all files needed for knitting (images, data) can be added in the same folder;
+  All files needed for knitting (images, data) can be added in the same folder.
 \item
-  in \texttt{/contents/\textless{}language\textgreater{}/home}, add a home page component by copying and pasting an existing \enquote{pages} (like \texttt{publications}) or \enquote{portfolio} (like \texttt{featured}) element and set it to point to the right folder (in the example: \texttt{page-type=recipe}) and adjust its appearance (number of elements for example) and its position (weight)
+  In \texttt{/contents/\textless{}language\textgreater{}/home}, add a home page component by copying and pasting an existing \enquote{pages} (like \texttt{publications}) or \enquote{portfolio} (like \texttt{featured}) element and set it to point to the right folder (in the example: \texttt{page-type=recipe}) and adjust its appearance (number of elements for example) and its position (weight).
 \item
-  optionally add a menu entry to point to the component, with the same weight as the component.
+  Optionally add a menu entry to point to the component, with the same weight as the component.
 \end{itemize}
 
 The index files can have the extension \texttt{.Rmd} or \texttt{.md}.
@@ -6593,9 +6596,9 @@ Figures should generally be produced in a vector format:
 \begin{itemize}
 \tightlist
 \item
-  SVG for poster publication or posters;
+  SVG for poster publication or posters.
 \item
-  EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats;
+  EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats.
 \item
   EPS (Encapsulated PostScript) or PDF (Portable Document Format) for LaTeX.
 \end{itemize}
@@ -6894,7 +6897,7 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.249 seconds
+## • end pipeline: 1.992 seconds
 \end{verbatim}
 
 \normalsize
@@ -6958,9 +6961,15 @@ This introduction follows the recommendations of the blog \emph{Creating a packa
 Packages have a strict organization in a fixed file and directory structure.
 It is possible to create this structure manually but specialized packages can do it:
 
-\textbf{usethis} automates the creation of folders;
-\textbf{roxygen2} automates the mandatory documentation of packages;
-\textbf{devtools} is the developer's toolbox, allowing to build and test packages;
+\begin{itemize}
+\tightlist
+\item
+  \textbf{usethis} automates the creation of folders.
+\item
+  \textbf{roxygen2} automates the mandatory documentation of packages.
+\item
+  \textbf{devtools} is the developer's toolbox, allowing to build and test packages.
+\end{itemize}
 
 All three are to be installed first:
 
@@ -6987,11 +6996,11 @@ The minimal structure is created:
 \begin{itemize}
 \tightlist
 \item
-  a \texttt{DESCRIPTION} file which indicates that the folder contains a package and specifies at least its name;
+  A \texttt{DESCRIPTION} file which indicates that the folder contains a package and specifies at least its name.
 \item
-  a \texttt{NAMESPACE} file which declares how the package intervenes in the management of the names of R objects (its content will be updated by \textbf{roxygen2});
+  A \texttt{NAMESPACE} file which declares how the package intervenes in the management of the names of R objects (its content will be updated by \textbf{roxygen2}).
 \item
-  an \texttt{R} file which contains the code of the functions offered by the package (empty at this stage).
+  An \texttt{R} file which contains the code of the functions offered by the package (empty at this stage).
 \end{itemize}
 
 The package can be tested right away: in the RStudio \emph{Build} window, clicking on \enquote{Install and Restart} builds the package and loads it into R, after restarting the program to avoid any conflicts.
@@ -7015,9 +7024,9 @@ The choice made here is the following:
 \begin{itemize}
 \tightlist
 \item
-  a file that will contain the code common to the whole package: \texttt{package.R};
+  A file that will contain the code common to the whole package: \texttt{package.R}.
 \item
-  one file common to all functions: \texttt{functions.R}.
+  One file common to all functions: \texttt{functions.R}.
 \end{itemize}
 
 \hypertarget{creation-1}{%
@@ -7096,19 +7105,19 @@ Comments to \textbf{roxygen2} begin with \texttt{\#\textquotesingle{}}:
 \begin{itemize}
 \tightlist
 \item
-  the first line contains the title of the function, i.e.~a very short description: its name in general;
+  The first line contains the title of the function, i.e.~a very short description: its name in general.
 \item
-  the next line (separated by a line break) may contain its description (see \emph{Description} in the help);
+  The next line (separated by a line break) may contain its description (see \emph{Description} in the help).
 \item
-  the next line (after another line break) might contain more information (\emph{Details} in the help);
+  The next line (after another line break) might contain more information (\emph{Details} in the help).
 \item
-  the arguments of the function are described by the \texttt{@param} lines;
+  The arguments of the function are described by the \texttt{@param} lines.
 \item
-  \texttt{@return} describes the result of the function;
+  \texttt{@return} describes the result of the function.
 \item
-  \texttt{@export} declares that the function is exported: it will be usable in the working environment;
+  \texttt{@export} declares that the function is exported: it will be usable in the working environment.
 \item
-  examples can be added.
+  Examples can be added.
 \end{itemize}
 
 The documentation must be completed:
@@ -7145,13 +7154,13 @@ Don't hesitate to use the help of existing functions to respect R standards (her
 \begin{itemize}
 \tightlist
 \item
-  think that functions are normally vector: \texttt{number} is by default a vector, not a scalar;
+  Keep in mind that functions are normally vector: \texttt{number} is by default a vector, not a scalar.
 \item
-  some elements start with a capital letter and end with a dot because they are paragraphs in the help file;
+  Some elements start with a capital letter and end with a dot because they are paragraphs in the help file.
 \item
-  the title does not have a period;
+  The title does not have a period.
 \item
-  the description of the parameters does not start with a capital letter.
+  The description of the parameters does not start with a capital letter.
 \end{itemize}
 
 Taking into account the changes in the documentation requires calling the \texttt{roxygenize()} function.
@@ -7652,7 +7661,7 @@ This is a generic method, i.e.~a function template, without code, to be adapted 
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7fd6f252ac08>
+## <bytecode: 0x7fb139bacf20>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -7947,13 +7956,13 @@ The choice of function depends on the class of the object passed as argument.
 \begin{verbatim}
 ## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  328  331.5 25215.19  341.0  354.5
-##   triple.numeric(2)  325  340.0 20396.21  345.0  360.5
-##          triple(2L) 1320 1347.0  1487.70 1365.5 1424.5
+##  triple.integer(2L)  320  332.0 24792.14  341.0  374.0
+##   triple.numeric(2)  315  328.0 21869.43  341.5  371.5
+##          triple(2L) 1286 1313.5  1804.22 1341.5 1449.0
 ##      max neval
-##  2486584   100
-##  2003337   100
-##     6507   100
+##  2442491   100
+##  2150504   100
+##    24982   100
 \end{verbatim}
 
 \normalsize
@@ -8300,7 +8309,7 @@ Finally, the complete code is as follows:
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7fd6f252ac08>
+## <bytecode: 0x7fb139bacf20>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -8338,7 +8347,7 @@ Finally, the complete code is as follows:
 ## {
 ##     UseMethod("autoplot")
 ## }
-## <bytecode: 0x7fd6f7276808>
+## <bytecode: 0x7fb1381a6cd0>
 ## <environment: namespace:ggplot2>
 \end{verbatim}
 
@@ -8353,9 +8362,9 @@ To integrate these functions in a package, the following rules must be respected
 \begin{itemize}
 \tightlist
 \item
-  the \texttt{.cpp} files containing the code are placed in the \texttt{/src} folder of the project;
+  The \texttt{.cpp} files containing the code are placed in the \texttt{/src} folder of the project.
 \item
-  the code is commented for \textbf{roxygen2} in the same way as for R functions, but with the C language comment marker:
+  The code is commented for \textbf{roxygen2} in the same way as for R functions, but with the C language comment marker:
 \end{itemize}
 
 \scriptsize
@@ -8383,7 +8392,7 @@ To integrate these functions in a package, the following rules must be respected
 \begin{itemize}
 \tightlist
 \item
-  in \texttt{DESCRIPTION}, import the packages.
+  In \texttt{DESCRIPTION}, import the packages.
   \textbf{Rcpp}, and \textbf{RcppParallel} if parallelized code is used (delete its references otherwise), must be declared in \texttt{LinkingTo}:
 \end{itemize}
 
@@ -8395,7 +8404,7 @@ LinkingTo: Rcpp, RcppParallel
 \begin{itemize}
 \tightlist
 \item
-  comments for \textbf{roxygen2} should be added to \texttt{package.R} (\enquote{multiple} is the package name):
+  Comments for \textbf{roxygen2} should be added to \texttt{package.R} (\enquote{multiple} is the package name):
 \end{itemize}
 
 \scriptsize
@@ -8445,11 +8454,11 @@ Any modern package should be tidyverse compatible, which requires little effort:
 \begin{itemize}
 \tightlist
 \item
-  to allow pipelines, the main argument of functions should be the first one;
+  To allow pipelines, the main argument of functions should be the first one.
 \item
-  functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format;
+  Functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format.
 \item
-  methods \texttt{plot()} should be doubled with methods \texttt{autoplot()} with the same arguments that produce the same graph with \textbf{ggplot2}.
+  Methods \texttt{plot()} should be doubled with methods \texttt{autoplot()} with the same arguments that produce the same graph with \textbf{ggplot2}.
 \end{itemize}
 
 \hypertarget{bibliography-1}{%
@@ -8605,11 +8614,11 @@ Ideally, all code included in a package should be tested in multiple ways:
 \begin{itemize}
 \tightlist
 \item
-  against syntax errors: R's checking procedures handle this quite well;
+  Against syntax errors: R's checking procedures handle this quite well.
 \item
-  to check the conformity of the computation results to the expected values;
+  To check the conformity of the computation results to the expected values.
 \item
-  against the occurrence of errors if users do not use the code as the developer intended (incorrect arguments passed to functions, inadequate data\ldots).
+  Against the occurrence of errors if users do not use the code as the developer intended (incorrect arguments passed to functions, inadequate data\ldots).
 \end{itemize}
 
 Unit tests are used for the last two objectives.
@@ -9096,11 +9105,11 @@ The packages used to produce the document are listed:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{remotes} for its \texttt{install\_deps()} function;
+  \textbf{remotes} for its \texttt{install\_deps()} function.
 \item
-  \textbf{bookdown} for knitting;
+  \textbf{bookdown} for knitting.
 \item
-  \textbf{formatR} for formatting code snippets (\texttt{tidy=TRUE});
+  \textbf{formatR} for formatting code snippets (\texttt{tidy=TRUE}).
 \item
   \textbf{tinytex} to have a LaTeX distribution.
 \end{itemize}
@@ -9208,9 +9217,9 @@ It uses an environment variable, \texttt{GITHUB\_TOKEN}, to authenticate and par
 \tightlist
 \item
   \emph{email}: the email address to which the run report is sent.
-  To avoid exposing the address publicly, it has been stored in a project secret;
+  To avoid exposing the address publicly, it has been stored in a project secret.
 \item
-  \emph{buid\_dir}: the directory to publish,
+  \emph{buid\_dir}: the directory to publish.
 \item
   \emph{jekyll:no} to create an empty file named \texttt{.nojekyll} that tells GitHub pages not to try to treat their content as a Jekyll website.
 \end{itemize}
@@ -9239,11 +9248,11 @@ All of them require the same preparation:
 \begin{itemize}
 \tightlist
 \item
-  \texttt{GH\_PAT} and \texttt{EMAIL} secrets must be registered in the GitHub project (section \ref{sec:secrets-ci});
+  \texttt{GH\_PAT} and \texttt{EMAIL} secrets must be registered in the GitHub project (section \ref{sec:secrets-ci}).
 \item
-  a \texttt{DESCRIPTION} file must be used to list the required packages (section \ref{sec:package-description}), regardless of the project type;
+  A \texttt{DESCRIPTION} file must be used to list the required packages (section \ref{sec:package-description}), regardless of the project type.
 \item
-  a snapshot of the installed packages (\texttt{renv.lock}) must be made if \textbf{renv} (section \ref{sec:packages-ci}) is used.
+  A snapshot of the installed packages (\texttt{renv.lock}) must be made if \textbf{renv} (section \ref{sec:packages-ci}) is used.
 \end{itemize}
 
 The \texttt{gh-pages} branch is created automatically by the scripts.
@@ -9663,11 +9672,11 @@ The correspondence between the displayed window (figure \ref{fig:shiny-geiser}) 
 \begin{itemize}
 \tightlist
 \item
-  the title of the application is displayed by the \texttt{titlePanel()} function;
+  The title of the application is displayed by the \texttt{titlePanel()} function.
 \item
-  the slider that sets the number of bars in the histogram is created by \texttt{sliderInput()};
+  The slider that sets the number of bars in the histogram is created by \texttt{sliderInput()}.
 \item
-  the \texttt{sidebarLayout()} function sets the layout of the page elements, \texttt{sidebarPanel} for the input controls and \texttt{mainPanel()} for the result display.
+  The \texttt{sidebarLayout()} function sets the layout of the page elements, \texttt{sidebarPanel} for the input controls and \texttt{mainPanel()} for the result display.
 \end{itemize}
 
 The result is displayed by the \texttt{plotOutput()} function whose argument is the name of an element of \texttt{output}, the variable filled by the \texttt{server()} function.
@@ -9685,11 +9694,11 @@ An application is created by choosing:
 \begin{itemize}
 \tightlist
 \item
-  a window layout;
+  A window layout.
 \item
-  the controls for entering parameters (\emph{intput});
+  The controls for entering parameters (\emph{intput}).
 \item
-  the controls for displaying the results (\emph{output}).
+  The controls for displaying the results (\emph{output}).
 \end{itemize}
 
 The code to process the inputs and produce the outputs is then written to \texttt{server()}.
@@ -9761,11 +9770,11 @@ The elements of the side panel are:
 \begin{itemize}
 \tightlist
 \item
-  a help text: \texttt{helpText()};
+  A help text: \texttt{helpText()}.
 \item
-  a text input field, \texttt{textInput()}, whose arguments are the name, the displayed text, and the default value (an author ID);
+  A text input field, \texttt{textInput()}, whose arguments are the name, the displayed text, and the default value (an author ID).
 \item
-  a line break: \texttt{br()};
+  A line break: \texttt{br()}.
 \item
   HTML output controls: \texttt{uiOutput()}, whose single argument is the name.
 \end{itemize}
@@ -9873,7 +9882,7 @@ Two functions are very useful:
 \begin{itemize}
 \tightlist
 \item
-  \texttt{observeEvent()} watches for changes in an input control and executes code when they occur;
+  \texttt{observeEvent()} watches for changes in an input control and executes code when they occur.
 \item
   \texttt{reactiveVal()} allows you to define a reactive variable, which will be modified by the \texttt{observeEvent()} code and will in turn cause other reactive functions that use its value to execute.
 \end{itemize}

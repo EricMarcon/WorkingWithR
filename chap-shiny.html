@@ -120,9 +120,9 @@ Figure 7.1: Shiny Application <em>Old Faithful Geyser Data</em>.
 <p></p>
 <p>The correspondence between the displayed window (figure <a href="chap-shiny.html#fig:shiny-geiser">7.1</a>) and the <code>ui()</code> function code is easy to see:</p>
 <ul>
-<li>the title of the application is displayed by the <code>titlePanel()</code> function;</li>
-<li>the slider that sets the number of bars in the histogram is created by <code>sliderInput()</code>;</li>
-<li>the <code>sidebarLayout()</code> function sets the layout of the page elements, <code>sidebarPanel</code> for the input controls and <code>mainPanel()</code> for the result display.</li>
+<li>The title of the application is displayed by the <code>titlePanel()</code> function.</li>
+<li>The slider that sets the number of bars in the histogram is created by <code>sliderInput()</code>.</li>
+<li>The <code>sidebarLayout()</code> function sets the layout of the page elements, <code>sidebarPanel</code> for the input controls and <code>mainPanel()</code> for the result display.</li>
 </ul>
 <p>The result is displayed by the <code>plotOutput()</code> function whose argument is the name of an element of <code>output</code>, the variable filled by the <code>server()</code> function.</p>
 <p>Any modification of an element of the interface, precisely of an element displayed by a function whose name ends with <code>Input()</code> (there are some for all types of inputs, for example <code>textInput()</code>) of <strong>Shiny</strong> causes <code>server()</code> to be executed and the elements of <code>output</code> to be updated.</p>
@@ -137,9 +137,9 @@ Figure 7.1: Shiny Application <em>Old Faithful Geyser Data</em>.
 </h3>
 <p>An application is created by choosing:</p>
 <ul>
-<li>a window layout;</li>
-<li>the controls for entering parameters (<em>intput</em>);</li>
-<li>the controls for displaying the results (<em>output</em>).</li>
+<li>A window layout.</li>
+<li>The controls for entering parameters (<em>intput</em>).</li>
+<li>The controls for displaying the results (<em>output</em>).</li>
 </ul>
 <p>The code to process the inputs and produce the outputs is then written to <code>server()</code>.</p>
 <p>The RStudio tutorial<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://shiny.rstudio.com/tutorial/" class="uri"&gt;https://shiny.rstudio.com/tutorial/&lt;/a&gt;&lt;/p&gt;'><sup>113</sup></a> is very detailed and should be used to go further.</p>
@@ -189,9 +189,9 @@ The full application, with graphical output in addition to its simplified versio
 <p>The application window is fluid, i.e. it reorganizes itself when its size changes, and is composed of a side panel (for text input and display) and a main panel, for displaying graphics.</p>
 <p>The elements of the side panel are:</p>
 <ul>
-<li>a help text: <code>helpText()</code>;</li>
-<li>a text input field, <code>textInput()</code>, whose arguments are the name, the displayed text, and the default value (an author ID);</li>
-<li>a line break: <code>br()</code>;</li>
+<li>A help text: <code>helpText()</code>.</li>
+<li>A text input field, <code>textInput()</code>, whose arguments are the name, the displayed text, and the default value (an author ID).</li>
+<li>A line break: <code>br()</code>.</li>
 <li>HTML output controls: <code>uiOutput()</code>, whose single argument is the name.</li>
 </ul>
 <p>The main panel contains two graphical output controls, <code>plotOutput()</code> whose argument is also the name.</p>
@@ -269,7 +269,7 @@ The function <code>h2(AuthorProfile$name)</code> produces HTML code, a level 2 t
 Two functions are very useful:</p>
 <ul>
 <li>
-<code>observeEvent()</code> watches for changes in an input control and executes code when they occur;</li>
+<code>observeEvent()</code> watches for changes in an input control and executes code when they occur.</li>
 <li>
 <code>reactiveVal()</code> allows you to define a reactive variable, which will be modified by the <code>observeEvent()</code> code and will in turn cause other reactive functions that use its value to execute.</li>
 </ul>

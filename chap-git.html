@@ -220,15 +220,17 @@ git config user.email</code></pre>
 A branch is a version of the repository, with its own history and therefore its own files.
 Branches allow:</p>
 <ul>
-<li>to develop new features in a project, without disturbing the main branch which may contain a stable version. If the development is accepted, its branch can be merged with the <em>master</em> branch to create a new stable version.
-The <em>master</em> branch can also contain files totally different from those of the main branch, for other purposes. On GitHub, a project’s web pages can be placed in a branch called “gh-pages” which will never be merged.</li>
+<li>To develop new features in a project, without disturbing the main branch which may contain a stable version.
+If the development is accepted, its branch can be merged with the <em>master</em> branch to create a new stable version.</li>
+<li>To host files totally different from those of the main branch, for other purposes.
+On GitHub, a project’s web pages can be placed in a branch called “gh-pages” which will never be merged.</li>
 </ul>
 <p>The git repository is fully constituted.
 In git vocabulary, it consists of three <em>trees</em> (figure <a href="chap-git.html#fig:git-Trees">3.6</a>):</p>
 <ul>
-<li>the working directory, or sandbox, which contains files that are not staged: unknown, modified, deleted or renamed (“Staged” box unchecked);</li>
-<li>the index, which contains the files taken into account (“Staged” box checked);</li>
-<li>the head, which contains the validated files.</li>
+<li>The working directory, or sandbox, which contains files that are not staged: unknown, modified, deleted or renamed (“Staged” box unchecked).</li>
+<li>The index, which contains the files taken into account (“Staged” box checked).</li>
+<li>The head, which contains the validated files.</li>
 </ul>
 <p></p>
 <div class="figure" style="text-align: center">
@@ -264,7 +266,7 @@ Figure 3.7: Create a repository on GitHub.
 <li>Add a description, which will appear only on the GitHub page of the repository.</li>
 <li>Choose the status of the repository:
 <ul>
-<li>Public: visible to everyone,</li>
+<li>Public: visible to everyone.</li>
 <li>Private: visible only to project collaborators, which excludes adding web pages.</li>
 </ul>
 </li>
@@ -290,8 +292,8 @@ The project can then be linked to the GitHub repository.</p>
 <p>Click on the purple button next to “master”: a window appears (usually used for creating a new branch, see section <a href="chap-git.html#sec:branches">3.4</a>).
 Enter the name of the “master” branch, click on “Add Remotes” and complete:</p>
 <ul>
-<li>Remote Name: <code>origin</code>;</li>
-<li>Remote URL: paste the address of the GitHub repository;</li>
+<li>Remote Name: <code>origin</code>.</li>
+<li>Remote URL: paste the address of the GitHub repository.</li>
 <li>Click on “Add”.</li>
 </ul>
 <p>Check the “Sync with Remote” box.</p>

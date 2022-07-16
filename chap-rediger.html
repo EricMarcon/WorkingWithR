@@ -111,9 +111,9 @@ It consists in describing the objectives and methods by text, in which the code 
 The document template contains its instructions for use.</p>
 <p>The language for formatting the text is Markdown<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://fr.wikipedia.org/wiki/Markdown" class="uri"&gt;https://fr.wikipedia.org/wiki/Markdown&lt;/a&gt;&lt;/p&gt;'><sup>46</sup></a>, an easy to use markup language:</p>
 <ul>
-<li>Paragraphs are separated by line breaks;</li>
-<li>The document is structured by headings: their line starts with a number of <code>#</code> corresponding to their level;</li>
-<li>Character formats are limited to the essentials: italic or bold (text surrounded by one or two <code>*</code>);</li>
+<li>Paragraphs are separated by line breaks.</li>
+<li>The document is structured by headings: their line starts with a number of <code>#</code> corresponding to their level.</li>
+<li>Character formats are limited to the essentials: italic or bold (text surrounded by one or two <code>*</code>).</li>
 <li>Other simple codes allow all useful formatting.</li>
 </ul>
 <p>This language is the core of the pandoc<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://fr.wikipedia.org/wiki/Pandoc" class="uri"&gt;https://fr.wikipedia.org/wiki/Pandoc&lt;/a&gt;&lt;/p&gt;'><sup>47</sup></a> software, dedicated to converting documents of different formats.</p>
@@ -135,10 +135,10 @@ These code chunks are processed by <strong>knitr</strong> which transforms the r
 The production chain is as follows:</p>
 <ul>
 <li>
-<strong>knitr</strong> processes the code snippets: calculations, figure production;</li>
+<strong>knitr</strong> processes the code snippets: calculations, figure production.</li>
 <li>
-<strong>rmarkdown</strong> integrates the production of code and text snippets to produce a standard Markdown file;</li>
-<li>pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format;</li>
+<strong>rmarkdown</strong> integrates the production of code and text snippets to produce a standard Markdown file.</li>
+<li>pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format.</li>
 <li>LaTeX produces a PDF file when that format is requested.</li>
 </ul>
 <p>RStudio allows knitting to be started by buttons rather than commands: in the source window (the top left one), a “Knit” button accompanies R Markdown documents.
@@ -147,15 +147,17 @@ It can be scrolled down to choose the output format: HTML, Word, PDF (via LaTeX)
 As soon as the first knitting is done in Word or HTML format, you will notice that the “Preview” button disappears.</p>
 <p>In the end, using R Markdown combines several advantages:</p>
 <ul>
-<li>Simplicity of writing: the raw text is easier to read and format than in LaTeX for example;</li>
-<li>Automation of the production: formatting and layout are fully automatic;</li>
+<li>Simplicity of writing: the raw text is easier to read and format than in LaTeX for example.</li>
+<li>Automation of the production: formatting and layout are fully automatic.</li>
 <li>Reproducibility: each document can be self-sufficient with its data. Re-knitting regenerates the whole document, including the necessary calculations and the production of figures.</li>
 </ul>
 <p>It also has some disadvantages:</p>
 <ul>
-<li>Formatting depends on templates, and developing new templates is not easy;</li>
-<li>Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage;</li>
-<li>Reproducibility consumes computing time. To limit this problem, a cache system allows not to re-evaluate all the R code bits at each modification of the text. The production of large documents can also be delegated to a continuous integration system (see chapter <a href="chap-ci.html#chap-ci">6</a>).</li>
+<li>Formatting depends on templates, and developing new templates is not easy.</li>
+<li>Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage.</li>
+<li>Reproducibility consumes computing time.
+To limit this problem, a cache system allows not to re-evaluate all the R code bits at each modification of the text.
+The production of large documents can also be delegated to a continuous integration system (see chapter <a href="chap-ci.html#chap-ci">6</a>).</li>
 </ul>
 </div>
 <div id="r-markdown-templates" class="section level2" number="4.2">
@@ -232,9 +234,9 @@ These code chunks can contain R code but also Python code for example: the type 
 <p>The most useful options are :</p>
 <ul>
 <li>
-<code>echo</code> to show (<code>=TRUE</code>) or hide (<code>=FALSE</code>) the code;</li>
+<code>echo</code> to show (<code>=TRUE</code>) or hide (<code>=FALSE</code>) the code.</li>
 <li>
-<code>message=FALSE</code> to hide the opening messages of some packages;</li>
+<code>message=FALSE</code> to hide the opening messages of some packages.</li>
 <li>
 <code>warning=FALSE</code> to hide warnings.</li>
 </ul>
@@ -462,7 +464,7 @@ Last, the <code>full_width = FALSE</code> option allows to adjust the width of t
 <span>    Petal.Length <span class="op">=</span> <span class="st">"Petal Length"</span>, Petal.Width <span class="op">=</span> <span class="st">"Width"</span>, Species <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="co"># Select long sepals (&gt;5) and display them in red</span></span>
 <span><span class="fu"><a href="https://davidgohel.github.io/flextable/reference/color.html">color</a></span><span class="op">(</span><span class="op">~</span><span class="va">Sepal.Length</span> <span class="op">&gt;</span> <span class="fl">5</span>, <span class="op">~</span><span class="va">Sepal.Length</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<template id="3c0d515a-2d8e-4397-b916-448686242990"><style>
+<template id="69d46413-f9cf-4f46-b06e-eba6d5d5c23f"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -498,64 +500,64 @@ background-color: transparent;
 }
 </style>
 <div class="tabwid">
-<style>.cl-c0b754c8{}.cl-c0ae5ed6{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c0ae5eea{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-c0ae8082{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c0ae808c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c0aed5aa{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c0aed5b4{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c0aed5b5{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c0aed5be{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c0aed5bf{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c0aed5c0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<div class="inline-table"><table class="cl-c0b754c8">
+<style>.cl-cb03336e{}.cl-cafaa0dc{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cafaa0f0{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-cafabda6{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-cafabdb0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-cafb14b8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cafb14c2{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cafb14cc{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cafb14cd{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cafb14ce{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cafb14d6{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<div class="inline-table"><table class="cl-cb03336e">
 <thead><tr style="overflow-wrap:break-word;">
-<td class="cl-c0aed5bf"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">Sepal Length</span></p></td>
-<td class="cl-c0aed5bf"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">Width</span></p></td>
-<td class="cl-c0aed5bf"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">Petal Length</span></p></td>
-<td class="cl-c0aed5bf"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">Width</span></p></td>
-<td class="cl-c0aed5c0"><p class="cl-c0ae808c"><span class="cl-c0ae5ed6">Species</span></p></td>
+<td class="cl-cafb14ce"><p class="cl-cafabda6"><span class="cl-cafaa0dc">Sepal Length</span></p></td>
+<td class="cl-cafb14ce"><p class="cl-cafabda6"><span class="cl-cafaa0dc">Width</span></p></td>
+<td class="cl-cafb14ce"><p class="cl-cafabda6"><span class="cl-cafaa0dc">Petal Length</span></p></td>
+<td class="cl-cafb14ce"><p class="cl-cafabda6"><span class="cl-cafaa0dc">Width</span></p></td>
+<td class="cl-cafb14d6"><p class="cl-cafabdb0"><span class="cl-cafaa0dc">Species</span></p></td>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5eea">5.1</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">3.5</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">1.4</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">0.2</span></p></td>
-<td class="cl-c0aed5b4"><p class="cl-c0ae808c"><span class="cl-c0ae5ed6">setosa</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0f0">5.1</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">3.5</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">1.4</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">0.2</span></p></td>
+<td class="cl-cafb14c2"><p class="cl-cafabdb0"><span class="cl-cafaa0dc">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">4.9</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">3.0</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">1.4</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">0.2</span></p></td>
-<td class="cl-c0aed5b4"><p class="cl-c0ae808c"><span class="cl-c0ae5ed6">setosa</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">4.9</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">3.0</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">1.4</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">0.2</span></p></td>
+<td class="cl-cafb14c2"><p class="cl-cafabdb0"><span class="cl-cafaa0dc">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">4.7</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">3.2</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">1.3</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">0.2</span></p></td>
-<td class="cl-c0aed5b4"><p class="cl-c0ae808c"><span class="cl-c0ae5ed6">setosa</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">4.7</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">3.2</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">1.3</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">0.2</span></p></td>
+<td class="cl-cafb14c2"><p class="cl-cafabdb0"><span class="cl-cafaa0dc">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">4.6</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">3.1</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">1.5</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">0.2</span></p></td>
-<td class="cl-c0aed5b4"><p class="cl-c0ae808c"><span class="cl-c0ae5ed6">setosa</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">4.6</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">3.1</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">1.5</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">0.2</span></p></td>
+<td class="cl-cafb14c2"><p class="cl-cafabdb0"><span class="cl-cafaa0dc">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">5.0</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">3.6</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">1.4</span></p></td>
-<td class="cl-c0aed5aa"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">0.2</span></p></td>
-<td class="cl-c0aed5b4"><p class="cl-c0ae808c"><span class="cl-c0ae5ed6">setosa</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">5.0</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">3.6</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">1.4</span></p></td>
+<td class="cl-cafb14b8"><p class="cl-cafabda6"><span class="cl-cafaa0dc">0.2</span></p></td>
+<td class="cl-cafb14c2"><p class="cl-cafabdb0"><span class="cl-cafaa0dc">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-c0aed5b5"><p class="cl-c0ae8082"><span class="cl-c0ae5eea">5.4</span></p></td>
-<td class="cl-c0aed5b5"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">3.9</span></p></td>
-<td class="cl-c0aed5b5"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">1.7</span></p></td>
-<td class="cl-c0aed5b5"><p class="cl-c0ae8082"><span class="cl-c0ae5ed6">0.4</span></p></td>
-<td class="cl-c0aed5be"><p class="cl-c0ae808c"><span class="cl-c0ae5ed6">setosa</span></p></td>
+<td class="cl-cafb14cc"><p class="cl-cafabda6"><span class="cl-cafaa0f0">5.4</span></p></td>
+<td class="cl-cafb14cc"><p class="cl-cafabda6"><span class="cl-cafaa0dc">3.9</span></p></td>
+<td class="cl-cafb14cc"><p class="cl-cafabda6"><span class="cl-cafaa0dc">1.7</span></p></td>
+<td class="cl-cafb14cc"><p class="cl-cafabda6"><span class="cl-cafaa0dc">0.4</span></p></td>
+<td class="cl-cafb14cd"><p class="cl-cafabdb0"><span class="cl-cafaa0dc">setosa</span></p></td>
 </tr>
 </tbody>
 </table></div>
-</div></template><div class="flextable-shadow-host" id="9b4b7880-037a-4771-93cb-a5dbe15698b7"></div>
+</div></template><div class="flextable-shadow-host" id="63410e95-e5f2-47a0-a16f-52c29ca082ca"></div>
 <script>
-var dest = document.getElementById("9b4b7880-037a-4771-93cb-a5dbe15698b7");
-var template = document.getElementById("3c0d515a-2d8e-4397-b916-448686242990");
+var dest = document.getElementById("63410e95-e5f2-47a0-a16f-52c29ca082ca");
+var template = document.getElementById("69d46413-f9cf-4f46-b06e-eba6d5d5c23f");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -675,13 +677,13 @@ The project name must not contain any special characters (accent, space…) to e
 <p>The document can be knitted in several formats:</p>
 <ul>
 <li>
-<em>html_document2</em> is the HTML format the template was designed for: a notepad with a floating table of contents;</li>
+<em>html_document2</em> is the HTML format the template was designed for: a notepad with a floating table of contents.</li>
 <li>
-<em>gitbook</em> is an alternative HTML format, normally used for books;</li>
+<em>gitbook</em> is an alternative HTML format, normally used for books.</li>
 <li>
-<em>downcute</em> is an HTML format provided by the <strong>rmdformats</strong> package;</li>
+<em>downcute</em> is an HTML format provided by the <strong>rmdformats</strong> package.</li>
 <li>
-<em>pdf_book</em> produces a PDF document following the LaTeX <em>article</em> template, commonly used directly in LaTeX;</li>
+<em>pdf_book</em> produces a PDF document following the LaTeX <em>article</em> template, commonly used directly in LaTeX.</li>
 <li>
 <em>word_document2</em> creates a Word file.</li>
 </ul>
@@ -806,9 +808,9 @@ In this case, manually format the code snippet by adding the <code>tidy=FALSE</c
 </h3>
 <p>The website containing the gitbook document must be set up in <code>_output.yml</code> so that :</p>
 <ul>
-<li>The title of the document appears at the top of the table of contents;</li>
-<li>An indication of the use of GitHub and bookdown is displayed at the bottom of the table of contents;</li>
-<li>A GitHub button in the title bar allows to open the project repository;</li>
+<li>The title of the document appears at the top of the table of contents.</li>
+<li>An indication of the use of GitHub and bookdown is displayed at the bottom of the table of contents.</li>
+<li>A GitHub button in the title bar allows to open the project repository.</li>
 <li>Another button allows to download the PDF document.</li>
 </ul>
 <p>The <code>_output.yml</code> file of this document is the following:</p>
@@ -878,9 +880,9 @@ Other pages will be added by creating new <code>.Rmd</code> files and adding the
 </h3>
 <p>The site template can easily be enhanced by adding lines to <code>_site.yml</code>:</p>
 <ul>
-<li>to addi a GitHub icon in the navigation bar to link to the site source code:</li>
-<li>to choose the method of knitting, to use <strong>bookdown</strong> instead of <strong>rmarkdown</strong>;</li>
-<li>to place the site files in the <code>docs</code> folder and thus separate code and production.</li>
+<li>To add a GitHub icon in the navigation bar to link to the site source code.</li>
+<li>To choose the method of knitting, to use <strong>bookdown</strong> instead of <strong>rmarkdown</strong>.</li>
+<li>To place the site files in the <code>docs</code> folder and thus separate code and production.</li>
 </ul>
 <p>The completed <code>_site.yml</code> file is as follows:</p>
 <pre><code>name: "my-website"
@@ -946,8 +948,8 @@ These pages can contain R code: they are very similar to an article, seen above,
 So we will use this solution, for a site like the one proposed in example<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://EricMarcon.github.io/" class="uri"&gt;https://EricMarcon.github.io/&lt;/a&gt;&lt;/p&gt;'><sup>74</sup></a>.</p>
 <p>The structure of the website is simple:</p>
 <ul>
-<li>a home page, containing various customizable components such as the author’s biography, a selection of publications, blog posts or other elements and a contact form;</li>
-<li>pages detailing the various elements (publications, posts, etc.) written in R Markdown.</li>
+<li>A home page, containing various customizable components such as the author’s biography, a selection of publications, blog posts or other elements and a contact form.</li>
+<li>Pages detailing the various elements (publications, posts, etc.) written in R Markdown.</li>
 </ul>
 <div id="installing-the-tools" class="section level3" number="4.7.1">
 <h3>
@@ -1106,8 +1108,8 @@ In “Basic Info”, the line</p>
 It is possible to use Academic for a scientific project site or a unit site, not documented in detail here.
 The main differences are, for a collective site:</p>
 <ul>
-<li>the management of authors: in the <code>/contents/&lt;language&gt;/outside</code> folder, only one <code>admin</code> folder is used for a personal site, whereas one folder per person is needed for a collective site;</li>
-<li>a component described below, which allows to present the persons, must be activated.</li>
+<li>The management of authors: in the <code>/contents/&lt;language&gt;/outside</code> folder, only one <code>admin</code> folder is used for a personal site, whereas one folder per person is needed for a collective site.</li>
+<li>A component described below, which allows to present the persons, must be activated.</li>
 </ul>
 <p>The description of the site in the default language is entered, for search engines:</p>
 <pre><code>description = "Eric Marcon's Homepage"</code></pre>
@@ -1134,10 +1136,10 @@ Finally “Icon Pack Extensions” allows you to activate Academicons icons if n
 The example used here is the author’s personal site<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://EricMarcon.github.io/" class="uri"&gt;https://EricMarcon.github.io/&lt;/a&gt;&lt;/p&gt;'><sup>80</sup></a>.</p>
 <p>The working method is to progress step by step by testing and then to validate each step:</p>
 <ul>
-<li>Make the changes;</li>
-<li>Build the site and check the result: <code>blogdown:::serve_site()</code>;</li>
-<li>Stop the site: <code>blogdown::stop_server()</code>;</li>
-<li>If the result is not satisfactory, try again;</li>
+<li>Make the changes.</li>
+<li>Build the site and check the result: <code>blogdown:::serve_site()</code>.</li>
+<li>Stop the site: <code>blogdown::stop_server()</code>.</li>
+<li>If the result is not satisfactory, try again.</li>
 <li>Commit the changes.</li>
 </ul>
 <div id="home-page" class="section level4" number="4.7.6.1">
@@ -1344,20 +1346,20 @@ featured: false
 ---</code></pre>
 <p>The publication types are:</p>
 <ul>
-<li>0 = Uncategorized;</li>
-<li>1 = Conference paper;</li>
-<li>2 = Journal article;</li>
-<li>3 = Preprint / Working Paper;</li>
-<li>4 = Report;</li>
-<li>5 = Book;</li>
-<li>6 = Book section;</li>
-<li>7 = Thesis;</li>
+<li>0 = Uncategorized.</li>
+<li>1 = Conference paper.</li>
+<li>2 = Journal article.</li>
+<li>3 = Preprint / Working Paper.</li>
+<li>4 = Report.</li>
+<li>5 = Book.</li>
+<li>6 = Book section.</li>
+<li>7 = Thesis.</li>
 <li>8 = Patent.</li>
 </ul>
 <p>Buttons are displayed at the top of the publication page depending on the information found:</p>
 <ul>
-<li>PDF: if the <code>url</code> line is present in the header;</li>
-<li>Citation: if the file <code>cite.bib</code> is present in the folder;</li>
+<li>PDF: if the <code>url</code> line is present in the header.</li>
+<li>Citation: if the file <code>cite.bib</code> is present in the folder.</li>
 <li>DOI: if the line <code>doi</code> is present in the header.</li>
 </ul>
 <p>The body of the publication contains a link (in HTML format) to the Dimension site which provides bibliometric information.
@@ -1432,13 +1434,13 @@ math: true
 </h4>
 <p>It is possible to freely add additional elements to the site:</p>
 <ul>
-<li>in <code>/contents/&lt;language&gt;/</code>, create a folder whose name is the type of elements (example: <code>recipe</code>);</li>
-<li>add items to this folder, each in its own folder;</li>
-<li>the mandatory file is <code>index.md</code> or <code>index.Rmd</code> with a header possibly containing all the fields found in <code>post</code>, <code>publication</code> and <code>talk</code> items;</li>
-<li>the thumbnail file, <code>featured.png</code> or <code>featured.jpg</code>, is optional;</li>
-<li>all files needed for knitting (images, data) can be added in the same folder;</li>
-<li>in <code>/contents/&lt;language&gt;/home</code>, add a home page component by copying and pasting an existing “pages” (like <code>publications</code>) or “portfolio” (like <code>featured</code>) element and set it to point to the right folder (in the example: <code>page-type=recipe</code>) and adjust its appearance (number of elements for example) and its position (weight)</li>
-<li>optionally add a menu entry to point to the component, with the same weight as the component.</li>
+<li>In <code>/contents/&lt;language&gt;/</code>, create a folder whose name is the type of elements (example: <code>recipe</code>).</li>
+<li>Add items to this folder, each in its own folder.</li>
+<li>The mandatory file is <code>index.md</code> or <code>index.Rmd</code> with a header possibly containing all the fields found in <code>post</code>, <code>publication</code> and <code>talk</code> items.</li>
+<li>The thumbnail file, <code>featured.png</code> or <code>featured.jpg</code>, is optional.</li>
+<li>All files needed for knitting (images, data) can be added in the same folder.</li>
+<li>In <code>/contents/&lt;language&gt;/home</code>, add a home page component by copying and pasting an existing “pages” (like <code>publications</code>) or “portfolio” (like <code>featured</code>) element and set it to point to the right folder (in the example: <code>page-type=recipe</code>) and adjust its appearance (number of elements for example) and its position (weight).</li>
+<li>Optionally add a menu entry to point to the component, with the same weight as the component.</li>
 </ul>
 <p>The index files can have the extension <code>.Rmd</code> or <code>.md</code>.
 In the first case, they will be processed by <strong>blogdown</strong>, which supports R code integration.
@@ -1491,8 +1493,8 @@ It is best to create scripts to create the figures in a reproducible way and in 
 </h3>
 <p>Figures should generally be produced in a vector format:</p>
 <ul>
-<li>SVG for poster publication or posters;</li>
-<li>EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats;</li>
+<li>SVG for poster publication or posters.</li>
+<li>EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats.</li>
 <li>EPS (Encapsulated PostScript) or PDF (Portable Document Format) for LaTeX.</li>
 </ul>
 <p>Raster figures (composed of a set of points, like photographs) are rare in R.
@@ -1683,7 +1685,7 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 ## • built target d
 ## • start target map
 ## • built target map
-## • end pipeline: 2.102 seconds</code></pre>
+## • end pipeline: 1.939 seconds</code></pre>
 <p></p>
 <p><code><a href="https://docs.ropensci.org/targets/reference/tar_visnetwork.html">tar_visnetwork()</a></code> is used to check that the workflow is correct before running it.
 When the document is finally produced, the <code>include=FALSE</code> option can be added to the header of this piece of code so that it does not produce any output.</p>

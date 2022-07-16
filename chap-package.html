@@ -120,9 +120,14 @@ It will then be enriched with the elements necessary for a package distributed t
 </h3>
 <p>Packages have a strict organization in a fixed file and directory structure.
 It is possible to create this structure manually but specialized packages can do it:</p>
-<p><strong>usethis</strong> automates the creation of folders;
-<strong>roxygen2</strong> automates the mandatory documentation of packages;
-<strong>devtools</strong> is the developer’s toolbox, allowing to build and test packages;</p>
+<ul>
+<li>
+<strong>usethis</strong> automates the creation of folders.</li>
+<li>
+<strong>roxygen2</strong> automates the mandatory documentation of packages.</li>
+<li>
+<strong>devtools</strong> is the developer’s toolbox, allowing to build and test packages.</li>
+</ul>
 <p>All three are to be installed first:</p>
 <p></p>
 <div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
@@ -136,9 +141,9 @@ It must also be evocative of the purpose of the package.
 If the package is to be distributed, all its documentation will be written in English, including its name.</p>
 <p>The minimal structure is created:</p>
 <ul>
-<li>a <code>DESCRIPTION</code> file which indicates that the folder contains a package and specifies at least its name;</li>
-<li>a <code>NAMESPACE</code> file which declares how the package intervenes in the management of the names of R objects (its content will be updated by <strong>roxygen2</strong>);</li>
-<li>an <code>R</code> file which contains the code of the functions offered by the package (empty at this stage).</li>
+<li>A <code>DESCRIPTION</code> file which indicates that the folder contains a package and specifies at least its name.</li>
+<li>A <code>NAMESPACE</code> file which declares how the package intervenes in the management of the names of R objects (its content will be updated by <strong>roxygen2</strong>).</li>
+<li>An <code>R</code> file which contains the code of the functions offered by the package (empty at this stage).</li>
 </ul>
 <p>The package can be tested right away: in the RStudio <em>Build</em> window, clicking on “Install and Restart” builds the package and loads it into R, after restarting the program to avoid any conflicts.</p>
 <p>In the <em>Packages</em> window, <strong>multiple</strong> is now visible.
@@ -158,8 +163,8 @@ For this example, a file with the name of each function will be created.
 Files grouping similar functions or a single file containing all the code are possible choices.</p>
 <p>The choice made here is the following:</p>
 <ul>
-<li>a file that will contain the code common to the whole package: <code>package.R</code>;</li>
-<li>one file common to all functions: <code>functions.R</code>.</li>
+<li>A file that will contain the code common to the whole package: <code>package.R</code>.</li>
+<li>One file common to all functions: <code>functions.R</code>.</li>
 </ul>
 </div>
 <div id="creation-1" class="section level4" number="5.1.2.2">
@@ -205,15 +210,15 @@ Comments are added before the function:</p>
 <p></p>
 <p>Comments to <strong>roxygen2</strong> begin with <code>#'</code>:</p>
 <ul>
-<li>the first line contains the title of the function, i.e. a very short description: its name in general;</li>
-<li>the next line (separated by a line break) may contain its description (see <em>Description</em> in the help);</li>
-<li>the next line (after another line break) might contain more information (<em>Details</em> in the help);</li>
-<li>the arguments of the function are described by the <code>@param</code> lines;</li>
+<li>The first line contains the title of the function, i.e. a very short description: its name in general.</li>
+<li>The next line (separated by a line break) may contain its description (see <em>Description</em> in the help).</li>
+<li>The next line (after another line break) might contain more information (<em>Details</em> in the help).</li>
+<li>The arguments of the function are described by the <code>@param</code> lines.</li>
 <li>
-<code>@return</code> describes the result of the function;</li>
+<code>@return</code> describes the result of the function.</li>
 <li>
-<code>@export</code> declares that the function is exported: it will be usable in the working environment;</li>
-<li>examples can be added.</li>
+<code>@export</code> declares that the function is exported: it will be usable in the working environment.</li>
+<li>Examples can be added.</li>
 </ul>
 <p>The documentation must be completed:</p>
 <p></p>
@@ -239,10 +244,10 @@ Comments are added before the function:</p>
 <p></p>
 <p>Don’t hesitate to use the help of existing functions to respect R standards (here: <code><a href="https://rdrr.io/r/base/Log.html">?log</a></code>):</p>
 <ul>
-<li>think that functions are normally vector: <code>number</code> is by default a vector, not a scalar;</li>
-<li>some elements start with a capital letter and end with a dot because they are paragraphs in the help file;</li>
-<li>the title does not have a period;</li>
-<li>the description of the parameters does not start with a capital letter.</li>
+<li>Keep in mind that functions are normally vector: <code>number</code> is by default a vector, not a scalar.</li>
+<li>Some elements start with a capital letter and end with a dot because they are paragraphs in the help file.</li>
+<li>The title does not have a period.</li>
+<li>The description of the parameters does not start with a capital letter.</li>
 </ul>
 <p>Taking into account the changes in the documentation requires calling the <code>roxygenize()</code> function.
 In the <em>Build</em> window, the “More &gt; Document” menu allows you to do this.
@@ -565,7 +570,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <code class="sourceCode R"><span><span class="va">plot</span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x7f8ade016550&gt;
+## &lt;bytecode: 0x7f9cc39507b8&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -733,13 +738,13 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span>    <span class="fu">triple</span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  325  333.5 22786.27  344.0  364.0
-##   triple.numeric(2)  325  339.5 20180.28  345.0  363.5
-##          triple(2L) 1344 1373.0  1529.96 1410.5 1558.5
+##  triple.integer(2L)  298  309.5 21972.64    316  323.0
+##   triple.numeric(2)  301  310.0 18964.74    317  325.0
+##          triple(2L) 1271 1285.0  1390.06   1306 1367.5
 ##      max neval
-##  2242044   100
-##  1981262   100
-##     6100   100</code></pre>
+##  2164922   100
+##  1863679   100
+##     5688   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -967,7 +972,7 @@ It must be imported:</li>
 <span><span class="fu">graphics</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x7f8ade016550&gt;
+## &lt;bytecode: 0x7f9cc39507b8&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' autoplot</span></span>
@@ -998,7 +1003,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod("autoplot")
 ## }
-## &lt;bytecode: 0x7f8adc133fc8&gt;
+## &lt;bytecode: 0x7f9cc21bd2b8&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
@@ -1010,8 +1015,8 @@ It must be imported:</li>
 <p>The use of C++ code has been seen in section <a href="chap-utiliseR.html#sec:cpp">2.5</a>.
 To integrate these functions in a package, the following rules must be respected:</p>
 <ul>
-<li>the <code>.cpp</code> files containing the code are placed in the <code>/src</code> folder of the project;</li>
-<li>the code is commented for <strong>roxygen2</strong> in the same way as for R functions, but with the C language comment marker:</li>
+<li>The <code>.cpp</code> files containing the code are placed in the <code>/src</code> folder of the project.</li>
+<li>The code is commented for <strong>roxygen2</strong> in the same way as for R functions, but with the C language comment marker:</li>
 </ul>
 <p></p>
 <div class="sourceCode" id="cb424"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb424-1"><a href="chap-package.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
@@ -1029,13 +1034,13 @@ To integrate these functions in a package, the following rules must be respected
 <span id="cb424-13"><a href="chap-package.html#cb424-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p></p>
 <ul>
-<li>in <code>DESCRIPTION</code>, import the packages.
+<li>In <code>DESCRIPTION</code>, import the packages.
 <strong>Rcpp</strong>, and <strong>RcppParallel</strong> if parallelized code is used (delete its references otherwise), must be declared in <code>LinkingTo</code>:</li>
 </ul>
 <pre><code>Imports: Rcpp, RcppParallel
 LinkingTo: Rcpp, RcppParallel</code></pre>
 <ul>
-<li>comments for <strong>roxygen2</strong> should be added to <code>package.R</code> (“multiple” is the package name):</li>
+<li>Comments for <strong>roxygen2</strong> should be added to <code>package.R</code> (“multiple” is the package name):</li>
 </ul>
 <p></p>
 <div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
@@ -1063,9 +1068,9 @@ src/*.dll</code></pre>
 </h3>
 <p>Any modern package should be tidyverse compatible, which requires little effort:</p>
 <ul>
-<li>to allow pipelines, the main argument of functions should be the first one;</li>
-<li>functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format;</li>
-<li>methods <code><a href="https://rdrr.io/r/base/plot.html">plot()</a></code> should be doubled with methods <code><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot()</a></code> with the same arguments that produce the same graph with <strong>ggplot2</strong>.</li>
+<li>To allow pipelines, the main argument of functions should be the first one.</li>
+<li>Functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format.</li>
+<li>Methods <code><a href="https://rdrr.io/r/base/plot.html">plot()</a></code> should be doubled with methods <code><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot()</a></code> with the same arguments that produce the same graph with <strong>ggplot2</strong>.</li>
 </ul>
 </div>
 </div>
@@ -1170,9 +1175,9 @@ With the <code>LazyData</code> option enabled in <code>DESCRIPTION</code>, varia
 </h2>
 <p>Ideally, all code included in a package should be tested in multiple ways:</p>
 <ul>
-<li>against syntax errors: R’s checking procedures handle this quite well;</li>
-<li>to check the conformity of the computation results to the expected values;</li>
-<li>against the occurrence of errors if users do not use the code as the developer intended (incorrect arguments passed to functions, inadequate data…).</li>
+<li>Against syntax errors: R’s checking procedures handle this quite well.</li>
+<li>To check the conformity of the computation results to the expected values.</li>
+<li>Against the occurrence of errors if users do not use the code as the developer intended (incorrect arguments passed to functions, inadequate data…).</li>
 </ul>
 <p>Unit tests are used for the last two objectives.
 They are based on <strong>testthat</strong> to be integrated in the package:</p>
