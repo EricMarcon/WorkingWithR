@@ -37,7 +37,7 @@ typeof(matrix(1))
 The **pryr** package allows to display the language in which objects are defined.
 The `typeof()` function displays the internal storage type of the objects: 
 
-- the `sum()` function belongs to the basic language of R and is a builtin function; 
+- the `sum()` function belongs to the basic language of R and is a builtin function.
 - the elements of the numerical matrix containing a single 1 are double precision reals, and the matrix itself is defined in the basic language. 
 
 Primitive functions are coded in C and are very fast.
@@ -135,9 +135,9 @@ To find out about them, use the `help(InternalMethods)` helper.
 
 S4 is an evolution of S3 that structures classes to get closer to a classical object oriented language:
 
-- classes must be explicitly defined, not simply declared;
-- attributes (i.e. variables describing objects), called *slots*, are explicitly declared; 
-- the constructor, i.e. the method that creates a new instance of a class (i.e. a variable containing an object of the class), is explicit.
+- Classes must be explicitly defined, not simply declared.
+- 1ttributes (i.e. variables describing objects), called *slots*, are explicitly declared.
+- The constructor, i.e. the method that creates a new instance of a class (i.e. a variable containing an object of the class), is explicit.
 
 Using the previous example, the S4 syntax is as follows:
 
@@ -277,14 +277,14 @@ ggplot(data = <DATA>) +
   <FACET_FUNCTION>
 ```
 
-- the data is necessarily a dataframe;
-- the geometry is the type of graph chosen (points, lines, histograms or other);
-- the aesthetics (function `aes()`) designates what is represented: it is the correspondence between the columns of the dataframe and the elements necessary for the geometry;
-- statistics is the treatment applied to the data before passing it to the geometry (often "identity", i.e. no transformation but "boxplot" for a boxplot).
-The data can be transformed by a scale function, such as `scale_y_log10()`;
-- the position is the location of the objects on the graph (often "identity"; "stack" for a stacked histogram, "jitter" to move the overlapping points slightly in a `geom_point`);
-- the coordinates define the display of the graph (`coord_fixed()` to avoid distorting a map for example);
-- finally, facets offer the possibility to display several aspects of the same data by producing one graph per modality of a variable.
+- The data is necessarily a dataframe.
+- The geometry is the type of graph chosen (points, lines, histograms or other).
+- The aesthetics (function `aes()`) designates what is represented: it is the correspondence between the columns of the dataframe and the elements necessary for the geometry.
+- Statistics is the treatment applied to the data before passing it to the geometry (often "identity", i.e. no transformation but "boxplot" for a boxplot).
+The data can be transformed by a scale function, such as `scale_y_log10()`.
+- The position is the location of the objects on the graph (often "identity"; "stack" for a stacked histogram, "jitter" to move the overlapping points slightly in a `geom_point`).
+- The coordinates define the display of the graph (`coord_fixed()` to avoid distorting a map for example).
+- Finally, facets offer the possibility to display several aspects of the same data by producing one graph per modality of a variable.
 
 The set formed by the pipeline and **ggplot2** allows complex processing in a readable code.
 Figure \@ref(fig:diamonds) shows the result of the following code:
@@ -389,8 +389,8 @@ It is time to define precisely what packages make visible.
 Packages contain objects (functions and data) which they *export* or not.
 They are usually called by the `library()` function, which does two things: 
 
-- it *loads* the package into memory, allowing access to all its objects with the syntax `package::object` for exported objects and `package:::object` for non-exported ones;
-- it then *attaches* the package, which places its environment on top of the stack.
+- It *loads* the package into memory, allowing access to all its objects with the syntax `package::object` for exported objects and `package:::object` for non-exported ones.
+- It then *attaches* the package, which places its environment on top of the stack.
 
 It is possible to detach a package with the `unloadNamespace()` function to remove it from the environment stack.
 Example:
@@ -573,8 +573,8 @@ Code that cannot be written as a vector function requires loops.
 `lapply()` applies a function to each element of a list.
 There are several versions of this function:
 
-- `lapply()` returns a list (and saves the time of rearranging them in an array);
-- `sapply()` returns a dataframe by collapsing the lists (this is done by the `simplify2array()` function);
+- `lapply()` returns a list (and saves the time of rearranging them in an array).
+- `sapply()` returns a dataframe by collapsing the lists (this is done by the `simplify2array()` function).
 - `vapply()` is almost identical but requires that the data type of the result be provided.
 
 ```{r l_s_v_apply}
@@ -907,9 +907,9 @@ tibble(Tasks, Time=Time["elapsed", ]) %>%
 
 The theoretical shape of this curve is as follows:
 
-- for a task, the time is equal to one second plus the parallelization setup time;
-- the time should remain stable until the number of cores used;
-- when all the cores are used (red dotted line), the time should increase by one second and then remain stable until the next limit.
+- For a task, the time is equal to one second plus the parallelization setup time.
+- The time should remain stable until the number of cores used.
+- When all the cores are used (red dotted line), the time should increase by one second and then remain stable until the next limit.
 
 In practice, the computation time is determined by other factors that are difficult to predict.
 The best practice is to adapt the number of tasks to the number of cores, otherwise performance will be lost.
@@ -1318,10 +1318,10 @@ system.time(d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints-1)*2)
 
 From this case study, several lessons can be learned:
 
-- a for loop is a good basis for repetitive calculations, faster than `vapply()`, simple to read and write;
-- optimized functions may exist in R packages for common tasks (here, the `pairdist()` function of **spatstat** is two orders of magnitude faster than the for loop);
-- the use of C++ code allows to speed up the calculations significantly, by three orders of magnitude here;
-- parallelization of the C++ code further divides the computation time by about half the number of cores for long computations.
+- A for loop is a good basis for repetitive calculations, faster than `vapply()`, simple to read and write.
+- Optimized functions may exist in R packages for common tasks (here, the `pairdist()` function of **spatstat** is two orders of magnitude faster than the for loop).
+- The use of C++ code allows to speed up the calculations significantly, by three orders of magnitude here.
+- Parallelization of the C++ code further divides the computation time by about half the number of cores for long computations.
 
 Beyond this example, optimizing computation time in R can be complicated if it involves parallelization and writing C++ code.
 The effort must therefore be concentrated on the really long computations while the readability of the code must remain the priority for the current code.
@@ -1357,8 +1357,8 @@ The workflow is unique for a given project.
 It is coded in the `_targets.R` file at the root of the project.
 It contains:
 
-- global commands, such as loading packages;
-- a list of targets, which describe the code to be executed and the variable that stores their result.
+- Global commands, such as loading packages.
+- A list of targets, which describe the code to be executed and the variable that stores their result.
 
 The workflow is run by the `tar_make()` function, which updates the targets that need it.
 Its content is placed in the `_targets` folder.

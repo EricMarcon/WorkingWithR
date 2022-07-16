@@ -28,9 +28,9 @@ knitr::include_graphics('images/shiny-geiser.png')
 
 The correspondence between the displayed window (figure \@ref(fig:shiny-geiser)) and the `ui()` function code is easy to see:
 
-* the title of the application is displayed by the `titlePanel()` function;
-* the slider that sets the number of bars in the histogram is created by `sliderInput()`;
-* the `sidebarLayout()` function sets the layout of the page elements, `sidebarPanel` for the input controls and `mainPanel()` for the result display.
+* The title of the application is displayed by the `titlePanel()` function.
+* The slider that sets the number of bars in the histogram is created by `sliderInput()`.
+* The `sidebarLayout()` function sets the layout of the page elements, `sidebarPanel` for the input controls and `mainPanel()` for the result display.
 
 The result is displayed by the `plotOutput()` function whose argument is the name of an element of `output`, the variable filled by the `server()` function.
 
@@ -44,9 +44,9 @@ Any modification of an element of the interface, precisely of an element display
 
 An application is created by choosing:
 
-* a window layout;
-* the controls for entering parameters (*intput*);
-* the controls for displaying the results (*output*).
+* A window layout.
+* The controls for entering parameters (*intput*).
+* The controls for displaying the results (*output*).
 
 The code to process the inputs and produce the outputs is then written to `server()`.
 
@@ -107,9 +107,9 @@ The application window is fluid, i.e. it reorganizes itself when its size change
 
 The elements of the side panel are:
 
-* a help text: `helpText()`;
-* a text input field, `textInput()`, whose arguments are the name, the displayed text, and the default value (an author ID);
-* a line break: `br()`;
+* A help text: `helpText()`.
+* A text input field, `textInput()`, whose arguments are the name, the displayed text, and the default value (an author ID).
+* A line break: `br()`.
 * HTML output controls: `uiOutput()`, whose single argument is the name.
 
 The main panel contains two graphical output controls, `plotOutput()` whose argument is also the name.
@@ -194,7 +194,7 @@ All functions whose names begin with `render` in the **shiny** package are react
 If code is needed to compute variables common to several output controls (`output$name` and `output$h`), it must itself be responsive.
 Two functions are very useful: 
 
-* `observeEvent()` watches for changes in an input control and executes code when they occur;
+* `observeEvent()` watches for changes in an input control and executes code when they occur.
 * `reactiveVal()` allows you to define a reactive variable, which will be modified by the `observeEvent()` code and will in turn cause other reactive functions that use its value to execute.
 
 So the optimal code creates a reactive variable to store the result of the Google Scholar query in:

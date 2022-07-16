@@ -290,9 +290,9 @@ This step uses `Rscript` as a command environment, which allows it to execute R 
 
 The packages used to produce the document are listed:
 
-- **remotes** for its `install_deps()` function;
-- **bookdown** for knitting;
-- **formatR** for formatting code snippets (`tidy=TRUE`);
+- **remotes** for its `install_deps()` function.
+- **bookdown** for knitting.
+- **formatR** for formatting code snippets (`tidy=TRUE`).
 - **tinytex** to have a LaTeX distribution.
 
 The other packages, those used by the project, are read in the `DESCRIPTION` file by the `install_deps()` function.
@@ -392,8 +392,8 @@ This last step uses the `GitHub-Pages-deploy` action provided by the *Cecilapp* 
 It uses an environment variable, `GITHUB_TOKEN`, to authenticate and parameters:
 
 - *email*: the email address to which the run report is sent.
-To avoid exposing the address publicly, it has been stored in a project secret;
-- *buid_dir*: the directory to publish,
+To avoid exposing the address publicly, it has been stored in a project secret.
+- *buid_dir*: the directory to publish.
 - *jekyll:no* to create an empty file named `.nojekyll` that tells GitHub pages not to try to treat their content as a Jekyll website.
 
 
@@ -418,9 +418,9 @@ The next step, to be inserted before the knitting step, writes the key to a file
 Script templates for all types of projects are presented here.
 All of them require the same preparation:
 
-- `GH_PAT` and `EMAIL` secrets must be registered in the GitHub project (section \@ref(sec:secrets-ci));
-- a `DESCRIPTION` file must be used to list the required packages (section \@ref(sec:package-description)), regardless of the project type;
-- a snapshot of the installed packages (`renv.lock`) must be made if **renv** (section \@ref(sec:packages-ci)) is used.
+- `GH_PAT` and `EMAIL` secrets must be registered in the GitHub project (section \@ref(sec:secrets-ci)).
+- A `DESCRIPTION` file must be used to list the required packages (section \@ref(sec:package-description)), regardless of the project type.
+- A snapshot of the installed packages (`renv.lock`) must be made if **renv** (section \@ref(sec:packages-ci)) is used.
 
 The `gh-pages` branch is created automatically by the scripts.
 Check after the first execution that GitHub pages are enabled on this branch (section \@ref(sec:github-pages)).

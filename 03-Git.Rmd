@@ -117,15 +117,17 @@ After the first commit, the main branch of the repository, called "master", is c
 A branch is a version of the repository, with its own history and therefore its own files.
 Branches allow:
 
-* to develop new features in a project, without disturbing the main branch which may contain a stable version. If the development is accepted, its branch can be merged with the *master* branch to create a new stable version.
-The *master* branch can also contain files totally different from those of the main branch, for other purposes. On GitHub, a project's web pages can be placed in a branch called "gh-pages" which will never be merged.
+* To develop new features in a project, without disturbing the main branch which may contain a stable version. 
+If the development is accepted, its branch can be merged with the *master* branch to create a new stable version.
+* To host files totally different from those of the main branch, for other purposes. 
+On GitHub, a project's web pages can be placed in a branch called "gh-pages" which will never be merged.
 
 The git repository is fully constituted.
 In git vocabulary, it consists of three *trees* (figure \@ref(fig:git-Trees)):
 
-* the working directory, or sandbox, which contains files that are not staged: unknown, modified, deleted or renamed ("Staged" box unchecked);
-* the index, which contains the files taken into account ("Staged" box checked);
-* the head, which contains the validated files.
+* The working directory, or sandbox, which contains files that are not staged: unknown, modified, deleted or renamed ("Staged" box unchecked).
+* The index, which contains the files taken into account ("Staged" box checked).
+* The head, which contains the validated files.
 
 (ref:git-Trees) git's trees. Source: https://rogerdudler.github.io/git-guide/index.fr.html
 ```{r git-Trees, fig.cap="(ref:git-Trees)", echo=FALSE}
@@ -152,7 +154,7 @@ An empty repository on GitHub must be created (figure \@ref(fig:CreateRepo)):
 * Enter the name of the repository, identical to the local R project.
 * Add a description, which will appear only on the GitHub page of the repository.
 * Choose the status of the repository:
-    * Public: visible to everyone,
+    * Public: visible to everyone.
     * Private: visible only to project collaborators, which excludes adding web pages.
 * Do not add any `README`, `.gitignore` or license: the project must be empty.
 * Click on "create Repository".
@@ -173,8 +175,8 @@ The project can then be linked to the GitHub repository.
 Click on the purple button next to "master": a window appears (usually used for creating a new branch, see section \@ref(sec:branches)).
 Enter the name of the "master" branch, click on "Add Remotes" and complete:
 
-* Remote Name: `origin`;
-* Remote URL: paste the address of the GitHub repository;
+* Remote Name: `origin`.
+* Remote URL: paste the address of the GitHub repository.
 * Click on "Add".
 
 Check the "Sync with Remote" box.

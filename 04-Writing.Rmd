@@ -20,9 +20,9 @@ The language for formatting the text is Markdown[^rediger-1], an easy to use mar
 
 [^rediger-1]: <https://fr.wikipedia.org/wiki/Markdown>
 
-- Paragraphs are separated by line breaks;
-- The document is structured by headings: their line starts with a number of `#` corresponding to their level;
-- Character formats are limited to the essentials: italic or bold (text surrounded by one or two `*`);
+- Paragraphs are separated by line breaks.
+- The document is structured by headings: their line starts with a number of `#` corresponding to their level.
+- Character formats are limited to the essentials: italic or bold (text surrounded by one or two `*`).
 - Other simple codes allow all useful formatting.
 
 This language is the core of the pandoc[^rediger-2] software, dedicated to converting documents of different formats.
@@ -60,9 +60,9 @@ These code chunks are processed by **knitr** which transforms the result of the 
 Processing an R Markdown document is called *knitting*.
 The production chain is as follows:
 
-- **knitr** processes the code snippets: calculations, figure production;
-- **rmarkdown** integrates the production of code and text snippets to produce a standard Markdown file;
-- pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format;
+- **knitr** processes the code snippets: calculations, figure production.
+- **rmarkdown** integrates the production of code and text snippets to produce a standard Markdown file.
+- pandoc (installed with RStudio) converts this file to HTML, LaTeX or Word format.
 - LaTeX produces a PDF file when that format is requested.
 
 RStudio allows knitting to be started by buttons rather than commands: in the source window (the top left one), a "Knit" button accompanies R Markdown documents.
@@ -72,15 +72,17 @@ As soon as the first knitting is done in Word or HTML format, you will notice th
 
 In the end, using R Markdown combines several advantages:
 
-- Simplicity of writing: the raw text is easier to read and format than in LaTeX for example;
-- Automation of the production: formatting and layout are fully automatic;
+- Simplicity of writing: the raw text is easier to read and format than in LaTeX for example.
+- Automation of the production: formatting and layout are fully automatic.
 - Reproducibility: each document can be self-sufficient with its data. Re-knitting regenerates the whole document, including the necessary calculations and the production of figures.
 
 It also has some disadvantages:
 
-- Formatting depends on templates, and developing new templates is not easy;
-- Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage;
-- Reproducibility consumes computing time. To limit this problem, a cache system allows not to re-evaluate all the R code bits at each modification of the text. The production of large documents can also be delegated to a continuous integration system (see chapter \@ref(chap-ci)).
+- Formatting depends on templates, and developing new templates is not easy.
+- Knitting errors are sometimes difficult to correct, especially when they occur at the LaTeX compilation stage.
+- Reproducibility consumes computing time. 
+To limit this problem, a cache system allows not to re-evaluate all the R code bits at each modification of the text. 
+The production of large documents can also be delegated to a continuous integration system (see chapter \@ref(chap-ci)).
 
 ## R Markdown templates
 
@@ -179,8 +181,8 @@ The name and options are optional: the minimum header is `{r}`.
 
 The most useful options are :
 
-- `echo` to show (`=TRUE`) or hide (`=FALSE`) the code;
-- `message=FALSE` to hide the opening messages of some packages;
+- `echo` to show (`=TRUE`) or hide (`=FALSE`) the code.
+- `message=FALSE` to hide the opening messages of some packages.
 - `warning=FALSE` to hide warnings.
 
 The default options are declared in the code snippet named "Options" at the beginning of the Markdown document, in the `opts_chunk$set()` function.
@@ -419,10 +421,10 @@ The instructions for using the template are contained in the text provided by de
 
 The document can be knitted in several formats:
 
-- *html_document2* is the HTML format the template was designed for: a notepad with a floating table of contents;
-- *gitbook* is an alternative HTML format, normally used for books;
-- *downcute* is an HTML format provided by the **rmdformats** package;
-- *pdf_book* produces a PDF document following the LaTeX *article* template, commonly used directly in LaTeX;
+- *html_document2* is the HTML format the template was designed for: a notepad with a floating table of contents.
+- *gitbook* is an alternative HTML format, normally used for books.
+- *downcute* is an HTML format provided by the **rmdformats** package.
+- *pdf_book* produces a PDF document following the LaTeX *article* template, commonly used directly in LaTeX.
 - *word_document2* creates a Word file.
 
 
@@ -570,9 +572,9 @@ The literal code blocks, delimited by three backquotes, must be formatted manual
 
 The website containing the gitbook document must be set up in `_output.yml` so that :
 
-- The title of the document appears at the top of the table of contents;
-- An indication of the use of GitHub and bookdown is displayed at the bottom of the table of contents;
-- A GitHub button in the title bar allows to open the project repository;
+- The title of the document appears at the top of the table of contents.
+- An indication of the use of GitHub and bookdown is displayed at the bottom of the table of contents.
+- A GitHub button in the title bar allows to open the project repository.
 - Another button allows to download the PDF document.
 
 The `_output.yml` file of this document is the following:
@@ -654,9 +656,9 @@ Other pages will be added by creating new `.Rmd` files and adding them to the `_
 
 The site template can easily be enhanced by adding lines to `_site.yml`:
 
-- to addi a GitHub icon in the navigation bar to link to the site source code:
-- to choose the method of knitting, to use **bookdown** instead of **rmarkdown**;
-- to place the site files in the `docs` folder and thus separate code and production.
+- To add a GitHub icon in the navigation bar to link to the site source code.
+- To choose the method of knitting, to use **bookdown** instead of **rmarkdown**.
+- To place the site files in the `docs` folder and thus separate code and production.
 
 The completed `_site.yml` file is as follows:
 
@@ -740,8 +742,8 @@ So we will use this solution, for a site like the one proposed in example[^redig
 
 The structure of the website is simple:
 
-- a home page, containing various customizable components such as the author's biography, a selection of publications, blog posts or other elements and a contact form;
-- pages detailing the various elements (publications, posts, etc.) written in R Markdown.
+- A home page, containing various customizable components such as the author's biography, a selection of publications, blog posts or other elements and a contact form.
+- Pages detailing the various elements (publications, posts, etc.) written in R Markdown.
 
 
 ### Installing the tools
@@ -936,8 +938,8 @@ selects a personal site.
 It is possible to use Academic for a scientific project site or a unit site, not documented in detail here.
 The main differences are, for a collective site:
 
-- the management of authors: in the `/contents/<language>/outside` folder, only one `admin` folder is used for a personal site, whereas one folder per person is needed for a collective site;
-- a component described below, which allows to present the persons, must be activated.
+- The management of authors: in the `/contents/<language>/outside` folder, only one `admin` folder is used for a personal site, whereas one folder per person is needed for a collective site.
+- A component described below, which allows to present the persons, must be activated.
 
 The description of the site in the default language is entered, for search engines:
 
@@ -979,10 +981,10 @@ The example used here is the author's personal site[^rediger-26].
 
 The working method is to progress step by step by testing and then to validate each step:
 
-- Make the changes;
-- Build the site and check the result: `blogdown:::serve_site()`;
-- Stop the site: `blogdown::stop_server()`;
-- If the result is not satisfactory, try again;
+- Make the changes.
+- Build the site and check the result: `blogdown:::serve_site()`.
+- Stop the site: `blogdown::stop_server()`.
+- If the result is not satisfactory, try again.
 - Commit the changes.
 
 #### Home page
@@ -1231,20 +1233,20 @@ featured: false
 
 The publication types are:
 
-- 0 = Uncategorized;
-- 1 = Conference paper;
-- 2 = Journal article;
-- 3 = Preprint / Working Paper;
-- 4 = Report;
-- 5 = Book;
-- 6 = Book section;
-- 7 = Thesis;
+- 0 = Uncategorized.
+- 1 = Conference paper.
+- 2 = Journal article.
+- 3 = Preprint / Working Paper.
+- 4 = Report.
+- 5 = Book.
+- 6 = Book section.
+- 7 = Thesis.
 - 8 = Patent.
 
 Buttons are displayed at the top of the publication page depending on the information found:
 
-- PDF: if the `url` line is present in the header;
-- Citation: if the file `cite.bib` is present in the folder;
+- PDF: if the `url` line is present in the header.
+- Citation: if the file `cite.bib` is present in the folder.
 - DOI: if the line `doi` is present in the header.
 
 The body of the publication contains a link (in HTML format) to the Dimension site which provides bibliometric information.
@@ -1336,13 +1338,13 @@ The links (e.g. `url_code`) bring up buttons that display the source code of the
 
 It is possible to freely add additional elements to the site:
 
-- in `/contents/<language>/`, create a folder whose name is the type of elements (example: `recipe`);
-- add items to this folder, each in its own folder;
-- the mandatory file is `index.md` or `index.Rmd` with a header possibly containing all the fields found in `post`, `publication` and `talk` items;
-- the thumbnail file, `featured.png` or `featured.jpg`, is optional;
-- all files needed for knitting (images, data) can be added in the same folder;
-- in `/contents/<language>/home`, add a home page component by copying and pasting an existing "pages" (like `publications`) or "portfolio" (like `featured`) element and set it to point to the right folder (in the example: `page-type=recipe`) and adjust its appearance (number of elements for example) and its position (weight)
-- optionally add a menu entry to point to the component, with the same weight as the component.
+- In `/contents/<language>/`, create a folder whose name is the type of elements (example: `recipe`).
+- Add items to this folder, each in its own folder.
+- The mandatory file is `index.md` or `index.Rmd` with a header possibly containing all the fields found in `post`, `publication` and `talk` items.
+- The thumbnail file, `featured.png` or `featured.jpg`, is optional.
+- All files needed for knitting (images, data) can be added in the same folder.
+- In `/contents/<language>/home`, add a home page component by copying and pasting an existing "pages" (like `publications`) or "portfolio" (like `featured`) element and set it to point to the right folder (in the example: `page-type=recipe`) and adjust its appearance (number of elements for example) and its position (weight).
+- Optionally add a menu entry to point to the component, with the same weight as the component.
 
 The index files can have the extension `.Rmd` or `.md`.
 In the first case, they will be processed by **blogdown**, which supports R code integration.
@@ -1389,8 +1391,8 @@ It is best to create scripts to create the figures in a reproducible way and in 
 
 Figures should generally be produced in a vector format:
 
-- SVG for poster publication or posters;
-- EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats;
+- SVG for poster publication or posters.
+- EMF (Extended Meta-File) for Word or the Microsoft Office suite that does not support other formats.
 - EPS (Encapsulated PostScript) or PDF (Portable Document Format) for LaTeX.
 
 Raster figures (composed of a set of points, like photographs) are rare in R.

@@ -125,7 +125,7 @@ The default working folder is the user's home folder, called `~` by RStudio:
 Sys.getenv("R_USER")
 ```
 
-- `My Documents` under Windows;
+- `My Documents` on Windows.
 - `Home` on Mac or Linux.
 
 You should always work in subfolders of `~`, for example: `~/Training`. 
@@ -374,7 +374,7 @@ ssh -T git@github.com
 
 If an error message indicates that no key is found, there are two possible solutions:
 
-- Duplicate the `.ssh` folder (with File Explorer) in `Documents`;
+- Duplicate the `.ssh` folder (with File Explorer) in `Documents`.
 - Duplicate the `.ssh` folder in the RStudio program folder (usually `C:\Program Files\RStudio`), in `resourcesterminalbash`.
 
 If successful, a message indicates that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
@@ -438,8 +438,8 @@ tinytex::tlmgr_update()
 Download the installation file[^105] and run it.
 There are several choices to make during the installation:
 
-* Install the program for all users (with administrator rights);
-* The default paper size: choose A4;
+* Install the program for all users (with administrator rights).
+* The default paper size: choose A4.
 * The installation mode of the missing packages: choose "Always Install" so that they are downloaded automatically if needed.
 
 For Linux, follow the instructions on the MiKTeX website.
@@ -478,7 +478,7 @@ Download the Better BibTeX extension[^121] and install it with the "Tools > Exte
 Set up Better BibTeX from the menu "Edit > Preferences > Better BibTeX".
 The options to modify are the following:
 
-- "Citation Keys > Key Format": `[auth:capitalize][year]` so that citations have a unique identifier of the form "Name2021";
+- "Citation Keys > Key Format": `[auth:capitalize][year]` so that citations have a unique identifier of the form "Name2021".
 - "Citation Keys > Keep unique citation keys in": "All collections" so that citation identifiers are not ambiguous.
 - "Export > Field management > Fields to exclude from export": "abstract, file" to avoid generating bibliographic files overweighted by useless information in R projects.
 

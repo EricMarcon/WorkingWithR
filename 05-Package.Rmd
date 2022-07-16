@@ -34,9 +34,9 @@ This introduction follows the recommendations of the blog *Creating a package in
 Packages have a strict organization in a fixed file and directory structure.
 It is possible to create this structure manually but specialized packages can do it:
 
-**usethis** automates the creation of folders;
-**roxygen2** automates the mandatory documentation of packages;
-**devtools** is the developer's toolbox, allowing to build and test packages;
+- **usethis** automates the creation of folders.
+- **roxygen2** automates the mandatory documentation of packages.
+- **devtools** is the developer's toolbox, allowing to build and test packages.
 
 
 All three are to be installed first:
@@ -54,9 +54,9 @@ If the package is to be distributed, all its documentation will be written in En
 
 The minimal structure is created:
 
-* a `DESCRIPTION` file which indicates that the folder contains a package and specifies at least its name;
-* a `NAMESPACE` file which declares how the package intervenes in the management of the names of R objects (its content will be updated by **roxygen2**);
-* an `R` file which contains the code of the functions offered by the package (empty at this stage).
+* A `DESCRIPTION` file which indicates that the folder contains a package and specifies at least its name.
+* A `NAMESPACE` file which declares how the package intervenes in the management of the names of R objects (its content will be updated by **roxygen2**).
+* An `R` file which contains the code of the functions offered by the package (empty at this stage).
 
 The package can be tested right away: in the RStudio *Build* window, clicking on "Install and Restart" builds the package and loads it into R, after restarting the program to avoid any conflicts.
 
@@ -75,8 +75,8 @@ Files grouping similar functions or a single file containing all the code are po
 
 The choice made here is the following:
 
-* a file that will contain the code common to the whole package: `package.R`;
-* one file common to all functions: `functions.R`.
+* A file that will contain the code common to the whole package: `package.R`.
+* One file common to all functions: `functions.R`.
 
 
 #### Creation
@@ -123,13 +123,13 @@ double <- function(number) {
 
 Comments to **roxygen2** begin with `#'`:
 
-* the first line contains the title of the function, i.e. a very short description: its name in general;
-* the next line (separated by a line break) may contain its description (see *Description* in the help);
-* the next line (after another line break) might contain more information (*Details* in the help);
-* the arguments of the function are described by the `@param` lines;
-* `@return` describes the result of the function;
-* `@export` declares that the function is exported: it will be usable in the working environment;
-* examples can be added.
+* The first line contains the title of the function, i.e. a very short description: its name in general.
+* The next line (separated by a line break) may contain its description (see *Description* in the help).
+* The next line (after another line break) might contain more information (*Details* in the help).
+* The arguments of the function are described by the `@param` lines.
+* `@return` describes the result of the function.
+* `@export` declares that the function is exported: it will be usable in the working environment.
+* Examples can be added.
 
 The documentation must be completed:
 
@@ -156,10 +156,10 @@ double <- function(number) {
 
 Don't hesitate to use the help of existing functions to respect R standards (here: `?log`):
 
-* think that functions are normally vector: `number` is by default a vector, not a scalar;
-* some elements start with a capital letter and end with a dot because they are paragraphs in the help file;
-* the title does not have a period;
-* the description of the parameters does not start with a capital letter.
+* Keep in mind that functions are normally vector: `number` is by default a vector, not a scalar.
+* Some elements start with a capital letter and end with a dot because they are paragraphs in the help file.
+* The title does not have a period.
+* The description of the parameters does not start with a capital letter.
 
 Taking into account the changes in the documentation requires calling the `roxygenize()` function.
 In the *Build* window, the "More > Document" menu allows you to do this.
@@ -911,8 +911,8 @@ ggplot2::autoplot
 The use of C++ code has been seen in section \@ref(sec:cpp).
 To integrate these functions in a package, the following rules must be respected:
 
-- the `.cpp` files containing the code are placed in the `/src` folder of the project;
-- the code is commented for **roxygen2** in the same way as for R functions, but with the C language comment marker:
+- The `.cpp` files containing the code are placed in the `/src` folder of the project.
+- The code is commented for **roxygen2** in the same way as for R functions, but with the C language comment marker:
 ```{Rcpp Rcpp_timesTwo, eval=FALSE}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -929,13 +929,13 @@ NumericVector timesTwo(NumericVector x) {
 }
 ```
 
-- in `DESCRIPTION`, import the packages.
+- In `DESCRIPTION`, import the packages.
 **Rcpp**, and **RcppParallel** if parallelized code is used (delete its references otherwise), must be declared in `LinkingTo`:
 ```
 Imports: Rcpp, RcppParallel
 LinkingTo: Rcpp, RcppParallel
 ```
-- comments for **roxygen2** should be added to `package.R` ("multiple" is the package name):
+- Comments for **roxygen2** should be added to `package.R` ("multiple" is the package name):
 ```{r useDynLib}
 #' @importFrom Rcpp sourceCpp
 #' @importFrom RcppParallel RcppParallelLibs
@@ -963,9 +963,9 @@ Building the package will lead to compiling the code: Rtools are therefore essen
 
 Any modern package should be tidyverse compatible, which requires little effort:
 
-* to allow pipelines, the main argument of functions should be the first one;
-* functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format;
-* methods `plot()` should be doubled with methods `autoplot()` with the same arguments that produce the same graph with **ggplot2**.
+* To allow pipelines, the main argument of functions should be the first one.
+* Functions that transform data should accept a dataframe or tibble as the first argument and return an object of the same format.
+* Methods `plot()` should be doubled with methods `autoplot()` with the same arguments that produce the same graph with **ggplot2**.
 
 
 ## Bibliography
@@ -1086,9 +1086,9 @@ The name of the variable is given in quotes after the comment block (instead of 
 
 Ideally, all code included in a package should be tested in multiple ways:
 
-* against syntax errors: R's checking procedures handle this quite well;
-* to check the conformity of the computation results to the expected values;
-* against the occurrence of errors if users do not use the code as the developer intended (incorrect arguments passed to functions, inadequate data...).
+* Against syntax errors: R's checking procedures handle this quite well.
+* To check the conformity of the computation results to the expected values.
+* Against the occurrence of errors if users do not use the code as the developer intended (incorrect arguments passed to functions, inadequate data...).
 
 Unit tests are used for the last two objectives.
 They are based on **testthat** to be integrated in the package:
