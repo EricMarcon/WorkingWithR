@@ -166,7 +166,7 @@ set.seed(973)
 knitr::write_bib(Packages, file="packages.bib")
 ```
 
-# Présentation {-}
+# Presentation {-}
 
 ## Objectives {-}
 
