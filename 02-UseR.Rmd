@@ -892,7 +892,7 @@ The time then remains stable until the number of cores is doubled.
 Figure \@ref(fig:r-parallele) shows the evolution of the computation time according to the number of tasks.
 
 (ref:r-parallele) Parallel execution time of tasks requiring one second (each task is a one second pause). The number of tasks varies from 1 to twice the number of cores used (equal to ```r nbCores```) plus one. 
-```{r r-parallele, fig.cap="(ref:r-parallele)", fig.scap="Temps d'exécution en parallèle", tidy=FALSE}
+```{r r-parallele, fig.cap="(ref:r-parallele)", fig.scap="Execution time in parallel", tidy=FALSE}
 Tasks <- 1:(2 * nbCores+1)
 Time <- sapply(Tasks, function(nbTasks) {
       system.time(mclapply(1:nbTasks, f, time=1, mc.cores=nbCores))

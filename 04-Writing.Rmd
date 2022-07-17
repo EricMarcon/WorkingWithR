@@ -473,7 +473,7 @@ It is not possible to directly exchange standard R Markdown content with documen
 
 The *Beamer Presentation* template of **memoiR** allows to create HTML and PDF (beamer) presentations simultaneously, as shown in the example[^rediger-13].
 
-[^rediger-13]: <https://EricMarcon.github.io/Chao1/>, choisir Lecture (HTML) ou Téléchargement (PDF).
+[^rediger-13]: <https://EricMarcon.github.io/Chao1/>, Choose "Lecture" (Read in HTML) ou "Téléchargement" (Download PDF).
 
 The approach is identical to that of articles in the same package.
 The title levels allow separating the parts of the presentation (`#`) and the slides (`##`).
