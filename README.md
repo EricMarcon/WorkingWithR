@@ -13,4 +13,4 @@ It is continuously updated [for online reading](https://EricMarcon.github.io/Wor
 
 Citation:
 
-Marcon, Eric. Working with R. Montpellier, France: UMR Amap, 2022. https://ericmarcon.github.io/WorkingWithR/. DOI:10.5281/zenodo.5778903 
+Marcon, Eric. Working with R. Montpellier, France: UMR Amap, 2022. https://ericmarcon.github.io/WorkingWithR/. [DOI:10.5281/zenodo.6778902](https://doi.org/10.5281/zenodo.6778902)
