@@ -470,20 +470,20 @@ Better BibTeX allows you to export and maintain a selection of bibliographic ref
 
 Download the installation file and run it.
 Create a user account on the Zotero website.
-Link the local installation to the account: in the "Edit > Preferences" menu, select "Synchronization > Settings" and authenticate in the "Data synchronization" area.
-Then check the box "Synchronize automatically" but not "Synchronize full text of indexed attachments" because the total size of full text synchronized in this way between the online Zotero account and the workstation is limited to 300 MB.
+Link the local installation to the account: in the "Edit > Preferences" menu, select "Sync > Settings" and authenticate in the "Data Syncing" area.
+Then check the box "Sync automatically" but not "Sync full-text content" because the total size of full text synchronized in this way between the online Zotero account and the workstation is limited to 300 MB.
 
-Download the Better BibTeX extension[^121] and install it with the "Tools > Extensions" menu: click on the settings button at the top right of the window, then "Install Add-on From File..." and select the file just downloaded.
+Download the Better BibTeX extension[^121] and install it with the "Tools > Add-ons" menu: click on the settings button at the top right of the window, then "Install Add-on From File..." and select the file just downloaded.
 
 Set up Better BibTeX from the menu "Edit > Preferences > Better BibTeX".
 The options to modify are the following:
 
-- "Citation Keys > Key Format": `[auth:capitalize][year]` so that citations have a unique identifier of the form "Name2021".
-- "Citation Keys > Keep unique citation keys in": "All collections" so that citation identifiers are not ambiguous.
-- "Export > Field management > Fields to exclude from export": "abstract, file" to avoid generating bibliographic files overweighted by useless information in R projects.
+- "Citation Keys > Citation Key Format": `auth:capitalize+year` so that citations have a unique identifier of the form "Name2021".
+- "Citation Keys > Keep citation keys unique": "across all libraries" so that citation identifiers are not ambiguous.
+- "Export > Fields > Fields to omit from export": "abstract, file" to avoid generating bibliographic files overweighted by useless information in R projects.
 
 It is recommended to use the ZotFile[^122] extension to better control the location of the full text (the PDF files linked to the bibliographic references).
-Install it and then set it up in "Tools > ZotFile Preferences...> General settings > File location > Custom folder": choose the folder for storing full text.
+Install it and then set it up in "Tools > ZotFile Preferences...> General settings > Location of Files > Custom Location": choose the folder for storing full text.
 If the user's personal folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), placing this storage folder there allows both to save the full texts and to access them from multiple workstations or directly online.
 This solution is much more efficient than Zotero's default synchronization, which is limited in volume.
 
