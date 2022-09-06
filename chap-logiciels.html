@@ -7,7 +7,7 @@
 <title>1 Software | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="The central tool is obviously R, but its operation is today difficult to consider without its development environment RStudio. For source control, git and GitHub are the de facto standards. The...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta name="generator" content="bookdown 0.28 with bs4_book()">
 <meta property="og:title" content="1 Software | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-logiciels.html">
@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="The central tool is obviously R, but its operation is today difficult to consider without its development environment RStudio. For source control, git and GitHub are the de facto standards. The...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
@@ -528,18 +528,18 @@ Its extensions allow you to complete its functionalities according to your needs
 Better BibTeX allows you to export and maintain a selection of bibliographic references (a Zotero collection) as a BibTeX file in an R project, where it can be used in writing documents or documenting packages.</p>
 <p>Download the installation file and run it.
 Create a user account on the Zotero website.
-Link the local installation to the account: in the “Edit &gt; Preferences” menu, select “Synchronization &gt; Settings” and authenticate in the “Data synchronization” area.
-Then check the box “Synchronize automatically” but not “Synchronize full text of indexed attachments” because the total size of full text synchronized in this way between the online Zotero account and the workstation is limited to 300 MB.</p>
-<p>Download the Better BibTeX extension<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://retorque.re/zotero-better-bibtex/installation/" class="uri"&gt;https://retorque.re/zotero-better-bibtex/installation/&lt;/a&gt;&lt;/p&gt;'><sup>14</sup></a> and install it with the “Tools &gt; Extensions” menu: click on the settings button at the top right of the window, then “Install Add-on From File…” and select the file just downloaded.</p>
+Link the local installation to the account: in the “Edit &gt; Preferences” menu, select “Sync &gt; Settings” and authenticate in the “Data Syncing” area.
+Then check the box “Sync automatically” but not “Sync full-text content” because the total size of full text synchronized in this way between the online Zotero account and the workstation is limited to 300 MB.</p>
+<p>Download the Better BibTeX extension<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://retorque.re/zotero-better-bibtex/installation/" class="uri"&gt;https://retorque.re/zotero-better-bibtex/installation/&lt;/a&gt;&lt;/p&gt;'><sup>14</sup></a> and install it with the “Tools &gt; Add-ons” menu: click on the settings button at the top right of the window, then “Install Add-on From File…” and select the file just downloaded.</p>
 <p>Set up Better BibTeX from the menu “Edit &gt; Preferences &gt; Better BibTeX”.
 The options to modify are the following:</p>
 <ul>
-<li>“Citation Keys &gt; Key Format”: <code>[auth:capitalize][year]</code> so that citations have a unique identifier of the form “Name2021”.</li>
-<li>“Citation Keys &gt; Keep unique citation keys in”: “All collections” so that citation identifiers are not ambiguous.</li>
-<li>“Export &gt; Field management &gt; Fields to exclude from export”: “abstract, file” to avoid generating bibliographic files overweighted by useless information in R projects.</li>
+<li>“Citation Keys &gt; Citation Key Format”: <code>auth:capitalize+year</code> so that citations have a unique identifier of the form “Name2021”.</li>
+<li>“Citation Keys &gt; Keep citation keys unique”: “across all libraries” so that citation identifiers are not ambiguous.</li>
+<li>“Export &gt; Fields &gt; Fields to omit from export”: “abstract, file” to avoid generating bibliographic files overweighted by useless information in R projects.</li>
 </ul>
 <p>It is recommended to use the ZotFile<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="http://zotfile.com/" class="uri"&gt;http://zotfile.com/&lt;/a&gt;&lt;/p&gt;'><sup>15</sup></a> extension to better control the location of the full text (the PDF files linked to the bibliographic references).
-Install it and then set it up in “Tools &gt; ZotFile Preferences…&gt; General settings &gt; File location &gt; Custom folder”: choose the folder for storing full text.
+Install it and then set it up in “Tools &gt; ZotFile Preferences…&gt; General settings &gt; Location of Files &gt; Custom Location”: choose the folder for storing full text.
 If the user’s personal folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), placing this storage folder there allows both to save the full texts and to access them from multiple workstations or directly online.
 This solution is much more efficient than Zotero’s default synchronization, which is limited in volume.</p>
 </div>
@@ -619,7 +619,7 @@ At the end of the installation, run the command <code>go version</code> in a ter
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 07/17/2022.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 09/06/2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -632,7 +632,7 @@ At the end of the installation, run the command <code>go version</code> in a ter
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
