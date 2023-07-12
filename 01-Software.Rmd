@@ -52,7 +52,7 @@ Download the zip file and paste the entire contents of the `bin` folder into the
 
 Another warning is returned if *Ghostscript* is not available.
 Download and install it[^111].
-Then copy the contents of the `bin' folder to the `usr/bin' folder of `Rtools'.
+Then copy the contents of the `bin` folder to the `usr/bin` folder of `Rtools`.
 
 [^111]: https://www.ghostscript.com/
 
