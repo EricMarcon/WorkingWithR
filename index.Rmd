@@ -73,7 +73,7 @@ chaptersummary: "L'essentiel"
 backcover:
   - language: english
     abstract: |
-      This book proposes an organization of work around R and RStudio to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create its website and online R applications (Shiny), produce packages and use R for teaching.
+      This book proposes an organization of work around R and RStudio to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create websites and online R applications (Shiny), produce packages and use R for teaching.
     abstractlabel: Abstract
 backcoverfontsize: normalsize
 # Figure cropping may be set to no if ghostscript is not installed
