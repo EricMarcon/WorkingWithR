@@ -569,7 +569,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <code class="sourceCode R"><span><span class="va">plot</span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x7f781f946070&gt;
+## &lt;bytecode: 0x7fe2fb7bac70&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -737,13 +737,13 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span>    <span class="fu">triple</span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  336  344.0 25341.49  358.5  403.0
-##   triple.numeric(2)  332  345.0 22916.80  361.5  399.0
-##          triple(2L) 1411 1445.5  1593.81 1483.0 1534.5
+##  triple.integer(2L)  328  338.5 33529.70  353.5  396.5
+##   triple.numeric(2)  334  341.0 24353.01  354.5  407.0
+##          triple(2L) 1395 1419.5  1627.08 1450.0 1574.5
 ##      max neval
-##  2495631   100
-##  2223254   100
-##     6656   100</code></pre>
+##  3314808   100
+##  2395980   100
+##     8224   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -971,7 +971,7 @@ It must be imported:</li>
 <span><span class="fu">graphics</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x7f781f946070&gt;
+## &lt;bytecode: 0x7fe2fb7bac70&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' autoplot</span></span>
@@ -1002,7 +1002,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod("autoplot")
 ## }
-## &lt;bytecode: 0x7f781b975960&gt;
+## &lt;bytecode: 0x7fe2f8e3f960&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
