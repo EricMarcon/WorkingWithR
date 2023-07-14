@@ -373,7 +373,7 @@
 
 \author{Eric Marcon}
 
-\date{11/16/2022}
+\date{07/14/2023}
 
 
 % Include headers (preamble.tex) here
@@ -396,6 +396,8 @@
 \usepackage{fontspec}
 \usepackage{multicol}
 \usepackage{hhline}
+\newlength\Oldarrayrulewidth
+\newlength\Oldtabcolsep
 \usepackage{hyperref}
 
 
@@ -544,7 +546,7 @@ Download the zip file and paste the entire contents of the \texttt{bin} folder i
 
 Another warning is returned if \emph{Ghostscript} is not available.
 Download and install it\footnote{\url{https://www.ghostscript.com/}}.
-Then copy the contents of the \texttt{bin\textquotesingle{}\ folder\ to\ the}usr/bin' folder of `Rtools'.
+Then copy the contents of the \texttt{bin} folder to the \texttt{usr/bin} folder of \texttt{Rtools}.
 
 \hypertarget{update}{%
 \subsection{Update}\label{update}}
@@ -592,8 +594,8 @@ The location of the libraries is given by the function \texttt{.libPaths()}:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "/Users/runner/work/_temp/Library"                              
-## [2] "/Library/Frameworks/R.framework/Versions/4.2/Resources/library"
+## [1] "/Users/runner/work/_temp/Library"                                     
+## [2] "/Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/library"
 \end{verbatim}
 
 \normalsize
@@ -1276,7 +1278,7 @@ Its code is just a \texttt{UseMethod("print")} declaration:
 \begin{verbatim}
 ## function (x, ...) 
 ## UseMethod("print")
-## <bytecode: 0x7fc7373103d8>
+## <bytecode: 0x7fba85e19458>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1293,8 +1295,9 @@ There are many S3 methods for \texttt{print}:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "print.acf"      "print.AES"      "print.all_vars"
-## [4] "print.anova"    "print.any_vars" "print.aov"
+## [1] "print.acf"               "print.activeConcordance"
+## [3] "print.AES"               "print.all_vars"         
+## [5] "print.anova"             "print.any_vars"
 \end{verbatim}
 
 \normalsize
@@ -1718,16 +1721,16 @@ The console is in the global environment, the child of the last loaded package.
 
 \begin{verbatim}
 ##  [1] ".GlobalEnv"         "package:R6"        
-##  [3] "package:entropart"  "package:forcats"   
-##  [5] "package:stringr"    "package:dplyr"     
-##  [7] "package:purrr"      "package:readr"     
-##  [9] "package:tidyr"      "package:tibble"    
-## [11] "package:ggplot2"    "package:tidyverse" 
-## [13] "package:kableExtra" "package:stats"     
-## [15] "package:graphics"   "package:grDevices" 
-## [17] "package:utils"      "package:datasets"  
-## [19] "package:methods"    "Autoloads"         
-## [21] "package:base"
+##  [3] "package:entropart"  "package:lubridate" 
+##  [5] "package:forcats"    "package:stringr"   
+##  [7] "package:dplyr"      "package:purrr"     
+##  [9] "package:readr"      "package:tidyr"     
+## [11] "package:tibble"     "package:ggplot2"   
+## [13] "package:tidyverse"  "package:kableExtra"
+## [15] "package:stats"      "package:graphics"  
+## [17] "package:grDevices"  "package:utils"     
+## [19] "package:datasets"   "package:methods"   
+## [21] "Autoloads"          "package:base"
 \end{verbatim}
 
 \normalsize
@@ -1757,7 +1760,7 @@ The code of a function called from the console runs in a child environment of th
 \end{Shaded}
 
 \begin{verbatim}
-## <environment: 0x7fc725a20318>
+## <environment: 0x7fba92775a78>
 \end{verbatim}
 
 \begin{Shaded}
@@ -1829,7 +1832,7 @@ Example:
 \begin{verbatim}
 ## function (save = "default", status = 0, runLast = TRUE) 
 ## .Internal(quit(save, status, runLast))
-## <bytecode: 0x7fc7262bac88>
+## <bytecode: 0x7fba7589a400>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1888,16 +1891,16 @@ Example:
 
 \begin{verbatim}
 ##  [1] ".GlobalEnv"         "package:R6"        
-##  [3] "package:entropart"  "package:forcats"   
-##  [5] "package:stringr"    "package:dplyr"     
-##  [7] "package:purrr"      "package:readr"     
-##  [9] "package:tidyr"      "package:tibble"    
-## [11] "package:ggplot2"    "package:tidyverse" 
-## [13] "package:kableExtra" "package:stats"     
-## [15] "package:graphics"   "package:grDevices" 
-## [17] "package:utils"      "package:datasets"  
-## [19] "package:methods"    "Autoloads"         
-## [21] "package:base"
+##  [3] "package:entropart"  "package:lubridate" 
+##  [5] "package:forcats"    "package:stringr"   
+##  [7] "package:dplyr"      "package:purrr"     
+##  [9] "package:readr"      "package:tidyr"     
+## [11] "package:tibble"     "package:ggplot2"   
+## [13] "package:tidyverse"  "package:kableExtra"
+## [15] "package:stats"      "package:graphics"  
+## [17] "package:grDevices"  "package:utils"     
+## [19] "package:datasets"   "package:methods"   
+## [21] "Autoloads"          "package:base"
 \end{verbatim}
 
 \begin{Shaded}
@@ -1934,15 +1937,16 @@ Example:
 
 \begin{verbatim}
 ##  [1] ".GlobalEnv"         "package:R6"        
-##  [3] "package:forcats"    "package:stringr"   
-##  [5] "package:dplyr"      "package:purrr"     
-##  [7] "package:readr"      "package:tidyr"     
-##  [9] "package:tibble"     "package:ggplot2"   
-## [11] "package:tidyverse"  "package:kableExtra"
-## [13] "package:stats"      "package:graphics"  
-## [15] "package:grDevices"  "package:utils"     
-## [17] "package:datasets"   "package:methods"   
-## [19] "Autoloads"          "package:base"
+##  [3] "package:lubridate"  "package:forcats"   
+##  [5] "package:stringr"    "package:dplyr"     
+##  [7] "package:purrr"      "package:readr"     
+##  [9] "package:tidyr"      "package:tibble"    
+## [11] "package:ggplot2"    "package:tidyverse" 
+## [13] "package:kableExtra" "package:stats"     
+## [15] "package:graphics"   "package:grDevices" 
+## [17] "package:utils"      "package:datasets"  
+## [19] "package:methods"    "Autoloads"         
+## [21] "package:base"
 \end{verbatim}
 
 \begin{Shaded}
@@ -2016,7 +2020,7 @@ The function returns the execution time of the code.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.022   0.000   0.023
+##   0.021   0.000   0.021
 \end{verbatim}
 
 \normalsize
@@ -2048,15 +2052,15 @@ The goal is to compare the speed of computing the square of a vector (or a numbe
 \begin{verbatim}
 ## Unit: microseconds
 ##   expr     min       lq      mean   median       uq
-##  f1(X)  44.093  46.5270  67.79802  48.6150  55.9985
-##  f2(X)  50.484  53.7190  74.92542  55.2480  59.7660
-##  f3(X) 282.807 285.8895 320.21441 287.7625 300.8155
-##  f4(X) 414.836 417.2680 451.51262 420.5750 433.6605
+##  f1(X)  39.885  41.8590  62.82048  44.5600  48.4080
+##  f2(X)  47.756  49.7745  73.64126  54.0095  62.3590
+##  f3(X) 277.979 281.8335 316.45531 289.6875 308.4715
+##  f4(X) 410.369 417.8090 464.38448 439.3810 468.6680
 ##       max neval
-##  1475.660   100
-##  1494.232   100
-##  1610.843   100
-##  1972.071   100
+##  1600.947   100
+##  1518.761   100
+##  1736.349   100
+##  2054.699   100
 \end{verbatim}
 
 \normalsize
@@ -2079,10 +2083,10 @@ To choose the columns to display, use the following syntax:
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)  48.6150
-## 2 f2(X)  55.2480
-## 3 f3(X) 287.7625
-## 4 f4(X) 420.5750
+## 1 f1(X)  44.5600
+## 2 f2(X)  54.0095
+## 3 f3(X) 289.6875
+## 4 f4(X) 439.3810
 \end{verbatim}
 
 \normalsize
@@ -2112,10 +2116,10 @@ The previous test is displayed again.
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)  48.6150
-## 2 f2(X)  55.2480
-## 3 f3(X) 287.7625
-## 4 f4(X) 420.5750
+## 1 f1(X)  44.5600
+## 2 f2(X)  54.0095
+## 3 f3(X) 289.6875
+## 4 f4(X) 439.3810
 \end{verbatim}
 
 \normalsize
@@ -2241,7 +2245,7 @@ The function \texttt{lnq} of the package \textbf{entropart} returns the deformed
 ##         return(Log)
 ##     }
 ## }
-## <bytecode: 0x7fc72740ebe0>
+## <bytecode: 0x7fba768ec978>
 ## <environment: namespace:entropart>
 \end{verbatim}
 
@@ -2294,10 +2298,10 @@ There are several versions of this function:
 
 \begin{verbatim}
 ##                                    expr   median
-## 1                              sqrt(x1)   4.7925
-## 2                lapply(x1, FUN = sqrt) 308.3245
-## 3                sapply(x1, FUN = sqrt) 372.0525
-## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 301.1450
+## 1                              sqrt(x1)   4.6965
+## 2                lapply(x1, FUN = sqrt) 315.0505
+## 3                sapply(x1, FUN = sqrt) 373.5520
+## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 297.3395
 \end{verbatim}
 
 \normalsize
@@ -2350,9 +2354,9 @@ To evaluate the performance gain, the following code removes all automatic compi
 \end{Shaded}
 
 \begin{verbatim}
-##        expr   median
-## 1  Loop(x1) 873.6340
-## 2 Loop2(x1)  79.4145
+##        expr  median
+## 1  Loop(x1) 869.391
+## 2 Loop2(x1)  83.904
 \end{verbatim}
 
 \begin{Shaded}
@@ -2368,7 +2372,7 @@ To evaluate the performance gain, the following code removes all automatic compi
 
 \normalsize
 
-The gain is considerable: from 1 to \texttt{11}.
+The gain is considerable: from 1 to \texttt{10}.
 
 For loops are now much faster than \texttt{vapply}.
 
@@ -2384,8 +2388,8 @@ For loops are now much faster than \texttt{vapply}.
 
 \begin{verbatim}
 ##                        expr   median
-## 1 vapply(x1, FUN = sqrt, 0) 302.2485
-## 2                  Loop(x1)  78.4985
+## 1 vapply(x1, FUN = sqrt, 0) 305.3740
+## 2                  Loop(x1)  82.7195
 \end{verbatim}
 
 \normalsize
@@ -2407,9 +2411,9 @@ Be careful, the performance test can be misleading:
 \end{Shaded}
 
 \begin{verbatim}
-##                                             expr    median
-## 1                      vapply(x1, FUN = sqrt, 0)  304.0265
-## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3870.4955
+##                                             expr   median
+## 1                      vapply(x1, FUN = sqrt, 0)  294.623
+## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3431.556
 \end{verbatim}
 
 \normalsize
@@ -2475,9 +2479,9 @@ This code is equivalent to \texttt{runif(3)}, with performance similar to \textt
 \end{Shaded}
 
 \begin{verbatim}
-##                        expr   median
-## 1 replicate(1000, runif(1)) 5441.355
-## 2               runif(1000)   34.499
+##                        expr    median
+## 1 replicate(1000, runif(1)) 4186.6335
+## 2               runif(1000)   23.7365
 \end{verbatim}
 
 \normalsize
@@ -2514,10 +2518,10 @@ Write the loops instead.
 \end{Shaded}
 
 \begin{verbatim}
-##                              expr    median
-## 1       SumLoop(diamonds[-(2:4)])  5.191701
-## 2 apply(diamonds[-(2:4)], 2, sum) 21.898164
-## 3       colSums(diamonds[-(2:4)])  3.090511
+##                              expr   median
+## 1       SumLoop(diamonds[-(2:4)]) 3.839558
+## 2 apply(diamonds[-(2:4)], 2, sum) 8.724299
+## 3       colSums(diamonds[-(2:4)]) 2.585617
 \end{verbatim}
 
 \normalsize
@@ -2725,7 +2729,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.000   0.730
+##   0.002   0.000   0.512
 \end{verbatim}
 
 \begin{Shaded}
@@ -2737,12 +2741,12 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.005   0.012   0.412
+##   0.004   0.010   0.416
 \end{verbatim}
 
 \normalsize
 
-Setting up parallelization has a cost of about \texttt{0.16} seconds here.
+Setting up parallelization has a cost of about \texttt{0.17} seconds here.
 The execution time is much longer in parallel on Windows because setting up the cluster takes much more time than parallelization saves.
 Parallelization is interesting for longer tasks, such as a one second break.
 
@@ -2757,7 +2761,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.000   0.001   2.264
+##   0.000   0.000   2.269
 \end{verbatim}
 
 \begin{Shaded}
@@ -2769,7 +2773,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.008   1.184
+##   0.004   0.006   1.021
 \end{verbatim}
 
 \normalsize
@@ -2788,7 +2792,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.005   0.013   1.103
+##   0.004   0.010   1.127
 \end{verbatim}
 
 \begin{Shaded}
@@ -2799,7 +2803,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.004   0.008   2.176
+##   0.004   0.010   2.014
 \end{verbatim}
 
 \normalsize
@@ -2991,7 +2995,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.001   0.752
+##   0.003   0.000   0.648
 \end{verbatim}
 
 \begin{Shaded}
@@ -3006,7 +3010,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.009   0.022   0.426
+##   0.008   0.017   0.371
 \end{verbatim}
 
 \normalsize
@@ -3092,7 +3096,7 @@ The distance can be calculated by two nested \texttt{sapply()}.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.603   0.029   7.018
+##   5.420   0.075   8.451
 \end{verbatim}
 
 \begin{Shaded}
@@ -3126,7 +3130,7 @@ The gain is negligible on a long computation like this one but important for sho
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.309   0.025   7.902
+##   5.176   0.024   6.007
 \end{verbatim}
 
 \begin{Shaded}
@@ -3169,7 +3173,7 @@ A more significant improvement is to compute the square roots only at the end of
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.189   0.019   6.672
+##   4.968   0.033   7.345
 \end{verbatim}
 
 \begin{Shaded}
@@ -3208,7 +3212,7 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.142   0.015   4.611
+##   3.035   0.016   4.513
 \end{verbatim}
 
 \begin{Shaded}
@@ -3249,7 +3253,7 @@ On MacOS or Linux, the computation is accelerated.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.324   0.393   2.847
+##   3.353   0.467   3.095
 \end{verbatim}
 
 \begin{Shaded}
@@ -3290,7 +3294,7 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.858   0.022   3.200
+##   1.745   0.025   3.339
 \end{verbatim}
 
 \begin{Shaded}
@@ -3337,7 +3341,7 @@ The test is run here with 10 times fewer points, so 100 times fewer distances to
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.860   0.026   4.425
+##   2.947   0.050   4.704
 \end{verbatim}
 
 \begin{Shaded}
@@ -3382,7 +3386,7 @@ The performance is still much lower than a simple for loop (remember: 100 times 
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.131   0.067   0.195
+##   0.122   0.068   0.115
 \end{verbatim}
 
 \begin{Shaded}
@@ -3559,8 +3563,10 @@ The usage in R is identical to the usage of C++ functions interfaced by \textbf{
 ## Unit: milliseconds
 ##                                                      expr
 ##  d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints - 1) * 2
-##       min       lq     mean   median      uq      max neval
-##  2.115081 2.171298 3.786275 2.213222 2.39537 49.51125   100
+##       min       lq     mean   median       uq      max
+##  2.098634 2.183573 2.997544 2.233729 2.894297 20.42916
+##  neval
+##    100
 \end{verbatim}
 
 \begin{Shaded}
@@ -3600,13 +3606,13 @@ Multiplying the number of points by 50, the serial computation time must be mult
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   7.154   0.062  10.852
+##   6.999   0.030   8.638
 \end{verbatim}
 
 \normalsize
 
 In parallel, the time increases little: parallelization becomes really efficient.
-This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{7999} seconds.
+This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{8347} seconds.
 
 \scriptsize
 
@@ -3619,7 +3625,7 @@ This time is to be compared to that of the reference for loop, multiplied by 250
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.115   0.020   3.433
+##   4.986   0.035   3.967
 \end{verbatim}
 
 \normalsize
@@ -3765,15 +3771,15 @@ The workflow is run by \texttt{tar\_make()}.
 \end{Shaded}
 
 \begin{verbatim}
-## • start target NbPoints
-## • built target NbPoints [2.9 seconds]
-## • start target X
-## • built target X [0.004 seconds]
-## • start target d
-## • built target d [0.024 seconds]
-## • start target map
-## • built target map [0.021 seconds]
-## • end pipeline [3.142 seconds]
+## ▶ start target NbPoints
+## ● built target NbPoints [2.245 seconds]
+## ▶ start target X
+## ● built target X [0.003 seconds]
+## ▶ start target d
+## ● built target d [0.027 seconds]
+## ▶ start target map
+## ● built target map [0.172 seconds]
+## ▶ end pipeline [2.684 seconds]
 \end{verbatim}
 
 \normalsize
@@ -3801,7 +3807,7 @@ The workflow is now up to date and \texttt{tar\_make()} does not recompute anyth
 ## ✔ skip target X
 ## ✔ skip target d
 ## ✔ skip target map
-## ✔ skip pipeline [0.198 seconds]
+## ✔ skip pipeline [0.126 seconds]
 \end{verbatim}
 
 \normalsize
@@ -4708,7 +4714,7 @@ The generic project user's key is added by:
 \end{Shaded}
 
 \begin{verbatim}
-## Linking to: OpenSSL 1.1.1m  14 Dec 2021
+## Linking to: OpenSSL 1.1.1t  7 Feb 2023
 \end{verbatim}
 
 \begin{Shaded}
@@ -4790,8 +4796,8 @@ The private key of the generic project user, communicated by a secure means to t
 \end{Shaded}
 
 \begin{verbatim}
-## v Setting active project to '/Users/runner/work/
-## WorkingWithR/WorkingWithR'
+## v Setting active project to
+## '/Users/runner/work/WorkingWithR/WorkingWithR'
 \end{verbatim}
 
 \begin{Shaded}
@@ -5270,61 +5276,83 @@ The \textbf{flextable} package allows creating more elaborate tables, as in the 
 \end{Highlighting}
 \end{Shaded}
 
-\providecommand{\docline}[3]{\noalign{\global\setlength{\arrayrulewidth}{#1}}\arrayrulecolor[HTML]{#2}\cline{#3}}
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
 
 \setlength{\tabcolsep}{0pt}
 
 \renewcommand*{\arraystretch}{1.5}
 
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
 \begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
 
 
 
-\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}
+\ascline{1.5pt}{666666}{1-5}
 
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Sepal\ Length}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Petal\ Length}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Species}}}} \\
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Sepal\ Length}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Petal\ Length}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Species}}}} \\
 
-\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}\endhead
+\ascline{1.5pt}{666666}{1-5}\endfirsthead 
 
+\ascline{1.5pt}{666666}{1-5}
 
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Sepal\ Length}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Petal\ Length}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Width}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{Species}}}} \\
 
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{FF0000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{5.1}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.5}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.4}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
-
-
-
-
-
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{4.9}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.0}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.4}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
+\ascline{1.5pt}{666666}{1-5}\endhead
 
 
 
-
-
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{4.7}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.2}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.3}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{FF0000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{5.1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.5}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
 
 
 
 
 
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{4.6}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.1}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.5}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{4.9}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
 
 
 
 
 
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{5.0}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.6}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.4}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{4.7}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.3}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
 
 
 
 
 
-\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{FF0000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{5.4}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.9}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.7}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.4}}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{4.6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.5}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
 
-\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{5.0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.2}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{FF0000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{5.4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{3.9}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{1.7}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{0.4}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Helvetica}{setosa}}}} \\
+
+\ascline{1.5pt}{666666}{1-5}
 
 
 
 \end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
 
 \normalsize
 
@@ -6881,15 +6909,15 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 \end{Shaded}
 
 \begin{verbatim}
-## • start target NbPoints
-## • built target NbPoints [2.925 seconds]
-## • start target X
-## • built target X [0.004 seconds]
-## • start target d
-## • built target d [0.027 seconds]
-## • start target map
-## • built target map [0.022 seconds]
-## • end pipeline [3.231 seconds]
+## ▶ start target NbPoints
+## ● built target NbPoints [1.869 seconds]
+## ▶ start target X
+## ● built target X [0.003 seconds]
+## ▶ start target d
+## ● built target d [0.023 seconds]
+## ▶ start target map
+## ● built target map [0.094 seconds]
+## ▶ end pipeline [2.151 seconds]
 \end{verbatim}
 
 \normalsize
@@ -7653,7 +7681,7 @@ This is a generic method, i.e.~a function template, without code, to be adapted 
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7fc73c236978>
+## <bytecode: 0x7fba891d59e0>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -7687,7 +7715,7 @@ The functions can be listed:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 151
+## [1] 154
 \end{verbatim}
 
 \normalsize
@@ -7948,13 +7976,13 @@ The choice of function depends on the class of the object passed as argument.
 \begin{verbatim}
 ## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  325  332.5 24105.17  349.0  409.0
-##   triple.numeric(2)  321  334.5 23722.01  351.5  380.5
-##          triple(2L) 1354 1383.0  1567.04 1400.0 1506.5
+##  triple.integer(2L)  327  338.0 25316.52  347.0  409.5
+##   triple.numeric(2)  330  340.0 23155.65  346.5  409.0
+##          triple(2L) 1399 1429.5  1613.42 1459.0 1532.5
 ##      max neval
-##  2372261   100
-##  2334850   100
-##     6700   100
+##  2494207   100
+##  2276877   100
+##     7804   100
 \end{verbatim}
 
 \normalsize
@@ -8301,7 +8329,7 @@ Finally, the complete code is as follows:
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7fc73c236978>
+## <bytecode: 0x7fba891d59e0>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -8339,7 +8367,7 @@ Finally, the complete code is as follows:
 ## {
 ##     UseMethod("autoplot")
 ## }
-## <bytecode: 0x7fc73aa5f6c8>
+## <bytecode: 0x7fba85f45208>
 ## <environment: namespace:ggplot2>
 \end{verbatim}
 
@@ -10210,7 +10238,7 @@ It is updated regularly as the available tools evolve.
 
 \selectlanguage{english}
 \item[Abstract]
-This book proposes an organization of work around R and RStudio to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create its website and online R applications (Shiny), produce packages and use R for teaching.
+This book proposes an organization of work around R and RStudio to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slideshows), create websites and online R applications (Shiny), produce packages and use R for teaching.
 \item[]
 .
 ~\\
