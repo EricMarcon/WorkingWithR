@@ -231,12 +231,12 @@ The development of the package is punctuated by many commits at each modificatio
 
 The `package.R` file is intended to receive the R code and especially the comments for **roxygen2** which concern the whole package.
 This file can also be named `multiple-package.R`, prefixed with the package name, for compatibility with **usethis**.
-It can also be created under this name with the command:
+It can be created under this name with the command:
 ```{r use_package_doc, eval=FALSE}
 usethis::use_package_doc()
 ```
 
-The first comment block will produce the package help (`?multiple`).
+The first comment block will generate the package help (`?multiple`).
 
 ```
 #' @keywords internal 
@@ -266,9 +266,8 @@ Authors@R:
            role = c("aut", "cre"),
            email = "e.marcon@free.fr",
            comment = c(ORCID = "0000-0002-5249-321X"))
-Description: This package allows simple computation
-  of multiples of numbers, including fast algorithms
-  for integers.
+Description: Simple computation of multiples of numbers, 
+  including fast algorithms for integers.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
