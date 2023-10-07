@@ -561,7 +561,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <code class="sourceCode R"><span><span class="va">plot</span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x7f7c21109680&gt;
+## &lt;bytecode: 0x7f826336d3f8&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -729,13 +729,13 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span>    <span class="fu">triple</span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  333  343.0 44019.51  354.0  395.5
-##   triple.numeric(2)  326  343.0 23879.65  355.5  392.5
-##          triple(2L) 1383 1429.5  1649.27 1462.0 1549.5
+##  triple.integer(2L)  331  343.5 31972.23    357  400.5
+##   triple.numeric(2)  330  337.0 26552.74    351  379.0
+##          triple(2L) 1396 1421.0  1580.23   1438 1500.0
 ##      max neval
-##  4364575   100
-##  2350294   100
-##    10879   100</code></pre>
+##  3158546   100
+##  2618678   100
+##     6671   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -963,7 +963,7 @@ It must be imported:</li>
 <span><span class="fu">graphics</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x7f7c21109680&gt;
+## &lt;bytecode: 0x7f826336d3f8&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' autoplot</span></span>
@@ -994,7 +994,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod("autoplot")
 ## }
-## &lt;bytecode: 0x7f7c191f7e00&gt;
+## &lt;bytecode: 0x7f82606badc0&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
@@ -1219,7 +1219,7 @@ The name of each test is passed as an argument to the function <code>test_that()
 <span>    <span class="co"># Error management</span></span>
 <span>    <span class="fu">expect_error</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/double.html">double</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Test passed 🎊</code></pre>
+<pre><code>## Test passed 🎉</code></pre>
 <p></p>
 <p>All functions starting with <code>expect</code> allow to compare their first argument to a result: in the above example, the result of <code>double(1:2)</code> must be <code>2 4</code> and the type of this vector must be double precision real.
 The last test checks whether a string passed as an argument generates an error, which is not optimal: if the package handled the error, the returned message could be tested.</p>
@@ -1380,7 +1380,7 @@ Otherwise, the package is archived.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 08/22/2023.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 10/07/2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
