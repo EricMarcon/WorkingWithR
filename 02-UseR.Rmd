@@ -990,7 +990,7 @@ The fixed cost of parallelization is low.
 ## Case study {#sec:cas}
 
 This case study tests the different techniques seen above to solve a concrete problem.
-The objective is to compute the average distance between two points of a random seed of 1000 points in a square window of side 1.
+The objective is to compute the average distance between two points of a random set of 1000 points in a square window of side 1.
 
 Its expectation is computable[^230].
 It is equal to $\frac{2+\sqrt{2}+5\ln{(1+\sqrt{2})}}{15} \approx 0.5214$.
