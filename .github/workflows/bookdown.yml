@@ -24,7 +24,6 @@ jobs:
           install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))
           tinytex::install_tinytex(bundle = "TinyTeX")
           tinytex::tlmgr_install(c("tex-gyre", "tex-gyre-math"))
-          webshot::install_phantomjs()
         shell: Rscript {0}
       - name: Render pdf book
         env:
