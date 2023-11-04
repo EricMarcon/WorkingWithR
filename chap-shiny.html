@@ -152,7 +152,7 @@ Figure 7.1: Shiny Application <em>Old Faithful Geyser Data</em>.
 The full application, with graphical output in addition to its simplified version presented here is available on GitHub<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/EricMarcon/bibliometrics" class="uri"&gt;https://github.com/EricMarcon/bibliometrics&lt;/a&gt;&lt;/p&gt;'><sup>114</sup></a>.</p>
 <p>The beginning of the code consists of preparing the application to run by loading the necessary packages:</p>
 <p></p>
-<div class="sourceCode" id="cb475"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Prepare the application ####</span></span>
 <span><span class="co"># Load packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://shiny.posit.co/">"shiny"</a></span><span class="op">)</span></span>
@@ -161,7 +161,7 @@ The full application, with graphical output in addition to its simplified versio
 <p>The code of the complete application includes a function to install the missing packages, to be executed only when the application is executed on a workstation (on a server, the management of packages is not the responsibility of the application).</p>
 <p>The user interface is as follows:</p>
 <p></p>
-<div class="sourceCode" id="cb476"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb479"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># UI ####</span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="co"># Application title</span></span>
@@ -196,7 +196,7 @@ The full application, with graphical output in addition to its simplified versio
 <p>The main panel contains two graphical output controls, <code><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput()</a></code> whose argument is also the name.</p>
 <p>The code to execute to process the inputs and produce the outputs is in the <code>server()</code> function.</p>
 <p></p>
-<div class="sourceCode" id="cb477"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb480"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Server logic ####</span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Run the get_profile function only once ####</span></span>
@@ -242,7 +242,7 @@ The full application, with graphical output in addition to its simplified versio
 This function queries the author’s Google Scholar web page and extracts the values from the result: this is a heavy processing, which is better executed only once rather than twice, in the <code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code> functions in charge of computing the values of <code>output$h</code> and <code>output$name</code>.</p>
 <p>The simplest code to do this would be as follows:</p>
 <p></p>
-<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="co"># Run the get_profile function only once ####</span></span>
 <span>  <span class="co"># Store the author profile</span></span>
 <span>  <span class="va">AuthorProfile</span> <span class="op">&lt;-</span> <span class="fu">get_profile</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span></span></code></pre></div>
@@ -254,7 +254,7 @@ If the latter code were executed, the following error message would appear:
 The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like <code><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot()</a></code> in the <em>Old Faithful Geyser Data</em> application or <code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code> here.
 The following code would run without error:</p>
 <p></p>
-<div class="sourceCode" id="cb479"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb482"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Output ####</span></span>
 <span><span class="va">output</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="va">AuthorProfile</span> <span class="op">&lt;-</span> <span class="fu">get_profile</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span></span>
@@ -274,7 +274,7 @@ Two functions are very useful:</p>
 </ul>
 <p>So the optimal code creates a reactive variable to store the result of the Google Scholar query in:</p>
 <p></p>
-<div class="sourceCode" id="cb480"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Store the author profile</span></span>
 <span><span class="va">AuthorProfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactiveVal.html">reactiveVal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
@@ -282,13 +282,13 @@ Two functions are very useful:</p>
 Its use is then that of a function: <code>AuthorProfile(x)</code> assigns it the value <code>x</code> and <code>AuthorProfile()</code>, without arguments, returns its value.
 The <code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent()</a></code> function is triggered when <code>input$AuthorID</code> is modified and executes the code passed as the second argument, in this case the update of <code>AuthorProfile</code>.</p>
 <p></p>
-<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb484"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Update it when input$AuthorID is changed</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span>, <span class="fu">AuthorProfile</span><span class="op">(</span><span class="fu">get_profile</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>Finally, the <code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code> functions that provide output control values use the value of <code>AuthorProfile</code>:</p>
 <p></p>
-<div class="sourceCode" id="cb482"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb485"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Output ####</span></span>
 <span><span class="va">output</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">h2</a></span><span class="op">(</span><span class="fu">AuthorProfile</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
@@ -297,7 +297,7 @@ The <code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent
 <p>Note the parentheses in <code>AuthorProfile()</code>, a reactive variable, as opposed to the <code>AuthorProfile$name</code> syntax for a classic variable.</p>
 <p>The value of <code>output$h</code> is an internet link, <code>&lt;a href=...</code> in HTML, written by the <code><a href="https://rstudio.github.io/htmltools/reference/builder.html">a()</a></code> function of the <strong>htmltools</strong> package used by <code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code>.</p>
 <p></p>
-<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb486"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">output</span><span class="op">$</span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">a</a></span><span class="op">(</span>href <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://scholar.google.com/citations?user="</span>,</span>
 <span>        <span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"h index:"</span>, <span class="fu">AuthorProfile</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">h_index</span><span class="op">)</span>,</span>
@@ -323,7 +323,7 @@ Shinyapps.io<a class="footnote-ref" tabindex="0" data-toggle="popover" data-cont
 <p>First of all, you have to open an account on the site, preferably with your GitHub identifiers.
 To allow the management of online applications directly from RStudio, you must then install the <strong>rsconnect</strong> package and set it up:</p>
 <p></p>
-<div class="sourceCode" id="cb484"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rsconnect</span><span class="fu">::</span><span class="fu">setAccountInfo</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"prenom.nom"</span>, token <span class="op">=</span> <span class="st">"xxx"</span>,</span>
 <span>    secret <span class="op">=</span> <span class="st">"&lt;SECRET&gt;"</span><span class="op">)</span></span></code></pre></div>
 <p></p>

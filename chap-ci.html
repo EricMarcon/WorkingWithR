@@ -710,6 +710,112 @@ Its success is displayed by a badge in the <code>README.md</code> file (see sect
 <p>More complex scripts are proposed by R-lib<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow" class="uri"&gt;https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow&lt;/a&gt;&lt;/p&gt;'><sup>111</sup></a>, in particular to run the tests on several operating systems and several versions of R.
 These advanced tests are to be performed before submitting to CRAN (section <a href="chap-package.html#sec:package-cran">5.11</a>) but consume too much resource for systematic use.</p>
 </div>
+<div id="sec:ci-pr" class="section level3" number="6.3.4">
+<h3>
+<span class="header-section-number">6.3.4</span> Pull requests<a class="anchor" aria-label="anchor" href="#sec:ci-pr"><i class="fas fa-link"></i></a>
+</h3>
+<p>Pull requests can be tested by very similar scripts to check that they do not generate errors before merging them.</p>
+<p>One effective method is to create a new script in the <code>.github/workflows/</code> folder, starting from a copy of the existing script.
+The new script will be named <code>pr.yml</code>.
+The trigger must be changed: <code>pull_request</code> replaces <code>push</code>:</p>
+<pre><code>on:
+  pull_request:
+     branches:
+       - master</code></pre>
+<div id="sec:memoiR-pr-ci" class="section level4" number="6.3.4.1">
+<h4>
+<span class="header-section-number">6.3.4.1</span> memoiR<a class="anchor" aria-label="anchor" href="#sec:memoiR-pr-ci"><i class="fas fa-link"></i></a>
+</h4>
+<p>The scripts for checking documents created by <strong>memoiR</strong> must be cut after the <code>Render gitbook</code> step: the artefact must not be saved and the deployment task must be deleted.
+The script is as follows:</p>
+<pre><code>on:
+  pull_request:
+    branches:
+      - master
+
+name: rmarkdown
+
+jobs:
+  render:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+      - name: Install dependencies
+        env:
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))
+          tinytex::install_tinytex(bundle = "TinyTeX")
+        shell: Rscript {0}
+      - name: Render pdf book
+        env:
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+        shell: Rscript {0}
+      - name: Render gitbook
+        env:
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          bookdown::render_book("index.Rmd", "bookdown::bs4_book")
+        shell: Rscript {0}
+      # Don't upload the artifact and don't deploy
+</code></pre>
+</div>
+<div id="sec:package-pr-ci6" class="section level4" number="6.3.4.2">
+<h4>
+<span class="header-section-number">6.3.4.2</span> R Packages<a class="anchor" aria-label="anchor" href="#sec:package-pr-ci6"><i class="fas fa-link"></i></a>
+</h4>
+<p>Scripts dedicated to checking packages should not push updates to their documentation through <strong>Roxygenize2</strong>, nor should they deploy their <strong>pkgdown</strong> updates to GitHub pages.
+The coverage rate does not need to be measured.
+The script is as follows:</p>
+<pre><code>on:
+  pull_request:
+    branches:
+      - master
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    runs-on: macOS-latest
+    steps:
+      - name: Pull the repository
+        uses: actions/checkout@v4
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+      - name: Install R packages
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("remotes", "roxygen2", "rcmdcheck", "covr", "pkgdown"))
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+      - name: Update the documentation
+        run: roxygen2::roxygenize()
+        shell: Rscript {0}
+        # Don't push
+      - name: Check the package
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning")
+        shell: Rscript {0}
+      # Don't test coverage
+      - name: Install the package
+        run: R CMD INSTALL .
+      - name: Pkgdown
+        # Build the package site locally
+        run: Rscript -e 'pkgdown::build_site()'</code></pre>
+<p>When pull requests are submitted, the corresponding test is run and its results included in the discussion.</p>
+</div>
+</div>
 </div>
 <div id="sec:ci-badges" class="section level2" number="6.4">
 <h2>
@@ -758,6 +864,7 @@ Paste the Markdown code:</p>
 <li><a class="nav-link" href="#sec:memoiR-ci"><span class="header-section-number">6.3.1</span> memoiR</a></li>
 <li><a class="nav-link" href="#sec:blogdown-ci"><span class="header-section-number">6.3.2</span> Blogdown website</a></li>
 <li><a class="nav-link" href="#sec:package-ci6"><span class="header-section-number">6.3.3</span> R Packages</a></li>
+<li><a class="nav-link" href="#sec:ci-pr"><span class="header-section-number">6.3.4</span> Pull requests</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#sec:ci-badges"><span class="header-section-number">6.4</span> Add badges</a></li>
