@@ -373,7 +373,7 @@
 
 \author{Eric Marcon}
 
-\date{10/08/2023}
+\date{11/04/2023}
 
 
 % Include headers (preamble.tex) here
@@ -1278,7 +1278,7 @@ Its code is just a \texttt{UseMethod("print")} declaration:
 \begin{verbatim}
 ## function (x, ...) 
 ## UseMethod("print")
-## <bytecode: 0x7f84e2b4b590>
+## <bytecode: 0x7f8ad5b746b8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1760,7 +1760,7 @@ The code of a function called from the console runs in a child environment of th
 \end{Shaded}
 
 \begin{verbatim}
-## <environment: 0x7f84eb3837c8>
+## <environment: 0x7f8ae16fe9b0>
 \end{verbatim}
 
 \begin{Shaded}
@@ -1832,7 +1832,7 @@ Example:
 \begin{verbatim}
 ## function (save = "default", status = 0, runLast = TRUE) 
 ## .Internal(quit(save, status, runLast))
-## <bytecode: 0x7f84edf584b0>
+## <bytecode: 0x7f8ac23e8ba8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -2020,7 +2020,7 @@ The function returns the execution time of the code.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.022   0.001   0.022
+##   0.022   0.001   0.047
 \end{verbatim}
 
 \normalsize
@@ -2051,16 +2051,16 @@ The goal is to compare the speed of computing the square of a vector (or a numbe
 
 \begin{verbatim}
 ## Unit: microseconds
-##   expr     min       lq      mean  median       uq      max
-##  f1(X)  44.175  46.9815  73.91042  49.366  58.9680 1740.904
-##  f2(X)  51.062  55.1250  80.66677  58.075  66.6595 1622.330
-##  f3(X) 283.064 292.8340 331.55791 305.078 333.4865 1905.150
-##  f4(X) 416.043 430.9090 477.06004 445.465 478.6415 2362.989
-##  neval
-##    100
-##    100
-##    100
-##    100
+##   expr     min       lq      mean   median       uq
+##  f1(X)  40.938  44.0805  61.79910  45.5315  49.3615
+##  f2(X)  49.216  51.6200  69.89576  53.0935  56.5750
+##  f3(X) 280.447 283.4430 308.91662 285.1070 294.9980
+##  f4(X) 411.452 415.3360 445.30284 417.9930 429.0200
+##       max neval
+##  1430.936   100
+##  1495.183   100
+##  1807.575   100
+##  2041.996   100
 \end{verbatim}
 
 \normalsize
@@ -2082,11 +2082,11 @@ To choose the columns to display, use the following syntax:
 \end{Shaded}
 
 \begin{verbatim}
-##    expr  median
-## 1 f1(X)  49.366
-## 2 f2(X)  58.075
-## 3 f3(X) 305.078
-## 4 f4(X) 445.465
+##    expr   median
+## 1 f1(X)  45.5315
+## 2 f2(X)  53.0935
+## 3 f3(X) 285.1070
+## 4 f4(X) 417.9930
 \end{verbatim}
 
 \normalsize
@@ -2115,11 +2115,11 @@ The previous test is displayed again.
 \end{Shaded}
 
 \begin{verbatim}
-##    expr  median
-## 1 f1(X)  49.366
-## 2 f2(X)  58.075
-## 3 f3(X) 305.078
-## 4 f4(X) 445.465
+##    expr   median
+## 1 f1(X)  45.5315
+## 2 f2(X)  53.0935
+## 3 f3(X) 285.1070
+## 4 f4(X) 417.9930
 \end{verbatim}
 
 \normalsize
@@ -2245,7 +2245,7 @@ The function \texttt{lnq} of the package \textbf{entropart} returns the deformed
 ##         return(Log)
 ##     }
 ## }
-## <bytecode: 0x7f84d1e51e40>
+## <bytecode: 0x7f8ac51bcf98>
 ## <environment: namespace:entropart>
 \end{verbatim}
 
@@ -2298,10 +2298,10 @@ There are several versions of this function:
 
 \begin{verbatim}
 ##                                    expr   median
-## 1                              sqrt(x1)   4.9120
-## 2                lapply(x1, FUN = sqrt) 322.0415
-## 3                sapply(x1, FUN = sqrt) 396.6490
-## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 313.6365
+## 1                              sqrt(x1)   4.7860
+## 2                lapply(x1, FUN = sqrt) 295.7650
+## 3                sapply(x1, FUN = sqrt) 365.7265
+## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 292.5600
 \end{verbatim}
 
 \normalsize
@@ -2354,9 +2354,9 @@ To evaluate the performance gain, the following code removes all automatic compi
 \end{Shaded}
 
 \begin{verbatim}
-##        expr  median
-## 1  Loop(x1) 857.932
-## 2 Loop2(x1)  85.850
+##        expr   median
+## 1  Loop(x1) 787.0220
+## 2 Loop2(x1)  81.0165
 \end{verbatim}
 
 \begin{Shaded}
@@ -2387,9 +2387,9 @@ For loops are now much faster than \texttt{vapply}.
 \end{Shaded}
 
 \begin{verbatim}
-##                        expr  median
-## 1 vapply(x1, FUN = sqrt, 0) 298.087
-## 2                  Loop(x1)  84.511
+##                        expr   median
+## 1 vapply(x1, FUN = sqrt, 0) 287.3980
+## 2                  Loop(x1)  79.6645
 \end{verbatim}
 
 \normalsize
@@ -2411,9 +2411,9 @@ Be careful, the performance test can be misleading:
 \end{Shaded}
 
 \begin{verbatim}
-##                                             expr   median
-## 1                      vapply(x1, FUN = sqrt, 0)  311.665
-## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3752.084
+##                                             expr    median
+## 1                      vapply(x1, FUN = sqrt, 0)  291.4575
+## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 3587.8100
 \end{verbatim}
 
 \normalsize
@@ -2479,9 +2479,9 @@ This code is equivalent to \texttt{runif(3)}, with performance similar to \textt
 \end{Shaded}
 
 \begin{verbatim}
-##                        expr   median
-## 1 replicate(1000, runif(1)) 5094.928
-## 2               runif(1000)   23.015
+##                        expr    median
+## 1 replicate(1000, runif(1)) 3757.9080
+## 2               runif(1000)   22.4995
 \end{verbatim}
 
 \normalsize
@@ -2518,10 +2518,10 @@ Write the loops instead.
 \end{Shaded}
 
 \begin{verbatim}
-##                              expr    median
-## 1       SumLoop(diamonds[-(2:4)])  5.098197
-## 2 apply(diamonds[-(2:4)], 2, sum) 12.926538
-## 3       colSums(diamonds[-(2:4)])  3.228102
+##                              expr   median
+## 1       SumLoop(diamonds[-(2:4)]) 3.737205
+## 2 apply(diamonds[-(2:4)], 2, sum) 8.729244
+## 3       colSums(diamonds[-(2:4)]) 2.580180
 \end{verbatim}
 
 \normalsize
@@ -2729,7 +2729,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.000   0.653
+##   0.003   0.000   0.675
 \end{verbatim}
 
 \begin{Shaded}
@@ -2741,12 +2741,12 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.005   0.010   0.351
+##   0.004   0.011   0.363
 \end{verbatim}
 
 \normalsize
 
-Setting up parallelization has a cost of about \texttt{0.1} seconds here.
+Setting up parallelization has a cost of about \texttt{0.11} seconds here.
 The execution time is much longer in parallel on Windows because setting up the cluster takes much more time than parallelization saves.
 Parallelization is interesting for longer tasks, such as a one second break.
 
@@ -2761,7 +2761,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.000   0.000   2.197
+##   0.000   0.000   2.124
 \end{verbatim}
 
 \begin{Shaded}
@@ -2773,7 +2773,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.004   0.008   1.014
+##   0.001   0.004   1.134
 \end{verbatim}
 
 \normalsize
@@ -2792,7 +2792,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.004   0.010   1.019
+##   0.001   0.003   1.071
 \end{verbatim}
 
 \begin{Shaded}
@@ -2803,7 +2803,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.004   0.009   2.070
+##   0.002   0.007   2.231
 \end{verbatim}
 
 \normalsize
@@ -2995,7 +2995,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.005   0.000   0.507
+##   0.002   0.000   0.504
 \end{verbatim}
 
 \begin{Shaded}
@@ -3010,7 +3010,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.011   0.023   0.410
+##   0.009   0.028   0.431
 \end{verbatim}
 
 \normalsize
@@ -3096,7 +3096,7 @@ The distance can be calculated by two nested \texttt{sapply()}.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.781   0.064   6.137
+##   5.433   0.036   6.081
 \end{verbatim}
 
 \begin{Shaded}
@@ -3130,7 +3130,7 @@ The gain is negligible on a long computation like this one but important for sho
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.467   0.063   8.218
+##   5.300   0.029   6.314
 \end{verbatim}
 
 \begin{Shaded}
@@ -3173,7 +3173,7 @@ A more significant improvement is to compute the square roots only at the end of
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.400   0.042   6.363
+##   5.196   0.022   5.699
 \end{verbatim}
 
 \begin{Shaded}
@@ -3212,7 +3212,7 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.130   0.038   4.248
+##   3.110   0.012   3.451
 \end{verbatim}
 
 \begin{Shaded}
@@ -3253,7 +3253,7 @@ On MacOS or Linux, the computation is accelerated.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.487   0.537   2.970
+##   1.945   0.454   3.143
 \end{verbatim}
 
 \begin{Shaded}
@@ -3294,7 +3294,7 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.820   0.022   2.420
+##   2.012   0.018   2.666
 \end{verbatim}
 
 \begin{Shaded}
@@ -3341,7 +3341,7 @@ The test is run here with 10 times fewer points, so 100 times fewer distances to
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.149   0.057   3.853
+##   2.708   0.023   2.819
 \end{verbatim}
 
 \begin{Shaded}
@@ -3386,7 +3386,7 @@ The performance is still much lower than a simple for loop (remember: 100 times 
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.127   0.073   0.127
+##   0.134   0.069   0.138
 \end{verbatim}
 
 \begin{Shaded}
@@ -3563,8 +3563,10 @@ The usage in R is identical to the usage of C++ functions interfaced by \textbf{
 ## Unit: milliseconds
 ##                                                      expr
 ##  d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints - 1) * 2
-##       min       lq    mean   median       uq      max neval
-##  2.078613 2.130388 2.73433 2.160607 2.214471 45.38716   100
+##       min       lq     mean   median       uq      max
+##  1.109717 1.282866 1.879559 2.107547 2.158861 2.949967
+##  neval
+##    100
 \end{verbatim}
 
 \begin{Shaded}
@@ -3604,13 +3606,13 @@ Multiplying the number of points by 50, the serial computation time must be mult
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   7.204   0.081   8.787
+##   7.043   0.041   8.511
 \end{verbatim}
 
 \normalsize
 
 In parallel, the time increases little: parallelization becomes really efficient.
-This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{6049} seconds.
+This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{6664} seconds.
 
 \scriptsize
 
@@ -3623,7 +3625,7 @@ This time is to be compared to that of the reference for loop, multiplied by 250
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   5.147   0.065   3.508
+##   5.014   0.019   2.823
 \end{verbatim}
 
 \normalsize
@@ -3752,7 +3754,9 @@ The \texttt{tar\_visnetwork} command displays the sequence of targets and their 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{WwR_files/figure-latex/tar_visnetwork-1} \end{center}
+\begin{verbatim}
+## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+\end{verbatim}
 
 \normalsize
 
@@ -3770,14 +3774,14 @@ The workflow is run by \texttt{tar\_make()}.
 
 \begin{verbatim}
 ## ▶ start target NbPoints
-## ● built target NbPoints [2.182 seconds]
+## ● built target NbPoints [2.397 seconds]
 ## ▶ start target X
-## ● built target X [0.004 seconds]
+## ● built target X [0.003 seconds]
 ## ▶ start target d
-## ● built target d [0.023 seconds]
+## ● built target d [0.022 seconds]
 ## ▶ start target map
-## ● built target map [0.031 seconds]
-## ▶ end pipeline [2.43 seconds]
+## ● built target map [0.028 seconds]
+## ▶ end pipeline [2.624 seconds]
 \end{verbatim}
 
 \normalsize
@@ -3792,8 +3796,6 @@ The workflow is now up to date and \texttt{tar\_make()} does not recompute anyth
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{WwR_files/figure-latex/tar_visnetwork2-1} \end{center}
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{tar\_make}\NormalTok{()}
@@ -3805,7 +3807,7 @@ The workflow is now up to date and \texttt{tar\_make()} does not recompute anyth
 ## ✔ skip target X
 ## ✔ skip target d
 ## ✔ skip target map
-## ✔ skip pipeline [0.141 seconds]
+## ✔ skip pipeline [0.115 seconds]
 \end{verbatim}
 
 \normalsize
@@ -6898,8 +6900,6 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{WwR_files/figure-latex/tar_visnetwork_4-1} \end{center}
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{tar\_make}\NormalTok{()}
@@ -6908,14 +6908,14 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 
 \begin{verbatim}
 ## ▶ start target NbPoints
-## ● built target NbPoints [1.994 seconds]
+## ● built target NbPoints [1.934 seconds]
 ## ▶ start target X
 ## ● built target X [0.004 seconds]
 ## ▶ start target d
 ## ● built target d [0.023 seconds]
 ## ▶ start target map
-## ● built target map [0.027 seconds]
-## ▶ end pipeline [2.226 seconds]
+## ● built target map [0.029 seconds]
+## ▶ end pipeline [2.166 seconds]
 \end{verbatim}
 
 \normalsize
@@ -7683,7 +7683,7 @@ This is a generic method, i.e.~a function template, without code, to be adapted 
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7f84e6dda1c0>
+## <bytecode: 0x7f8ad2363538>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -7978,13 +7978,13 @@ The choice of function depends on the class of the object passed as argument.
 \begin{verbatim}
 ## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  332  341.5 25272.69  350.0  380.5
-##   triple.numeric(2)  331  344.5 21511.09  362.5  397.5
-##          triple(2L) 1380 1420.5  1602.40 1445.0 1552.5
+##  triple.integer(2L)  350  357.0   384.80  365.5  395.5
+##   triple.numeric(2)  350  360.5 20837.52  376.0  413.0
+##          triple(2L) 1446 1469.0 25385.59 1488.5 1548.5
 ##      max neval
-##  2490066   100
-##  2113108   100
-##     7643   100
+##      921   100
+##  2044044   100
+##  2383940   100
 \end{verbatim}
 
 \normalsize
@@ -8331,7 +8331,7 @@ Finally, the complete code is as follows:
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x7f84e6dda1c0>
+## <bytecode: 0x7f8ad2363538>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -8369,7 +8369,7 @@ Finally, the complete code is as follows:
 ## {
 ##     UseMethod("autoplot")
 ## }
-## <bytecode: 0x7f84e55443c8>
+## <bytecode: 0x7f8ade0bc668>
 ## <environment: namespace:ggplot2>
 \end{verbatim}
 
@@ -9005,9 +9005,9 @@ The steps are described in the \texttt{steps} section.
 \begin{verbatim}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
         run: |
           brew install pandoc
@@ -9035,84 +9035,18 @@ To avoid system specifics, it is better to use an action:
 
 \begin{verbatim}
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
 \end{verbatim}
 
-\hypertarget{caches}{%
-\subsubsection{Caches}\label{caches}}
-
-Installing R packages takes time, a lot of it if they are installed from source (the standard procedure on Ubuntu, but not on MacOS and Windows where binary packages are used by default).
-Computing the code chunks is usually the longest step of the workflow.
-The \texttt{cache} action caches the results of both operations.
-
-\begin{verbatim}
-      - name: Cache Renv packages
-        uses: actions/cache@v2
-        with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
-      - name: Cache bookdown results
-        uses: actions/cache@v2
-        with:
-          path: _bookdown_files
-          key: bookdown-${{ hashFiles('**/*Rmd') }}
-          restore-keys: bookdown-
-\end{verbatim}
-
-The cache is updated when a package or a piece of code is modified, which requires a quick way to check the modifications: a control value (\emph{hashtag}) is computed by the \texttt{hashFiles()} function from the \texttt{renv.lock} file (see below) for packages and the set of \texttt{.Rmd} files for pieces of code.
-Any change leads to the reinstallation of the packages or the recalculation of the whole code: the cache management is less fine-grained than that of R on a workstation, which only recalculates the modified code chunks.
+It is often possible to choose between calling an action or writing the corresponding code.
+The choice made here is to favour actions for everything to do with the system, such as installing software, but to use scripts for R commands, such as checking packages.
+The aim is to control the R code precisely and limit dependencies on additional packages.
+The opposite strategy is developed in \textcite{Wickham2023} which relies entirely on actions to perform R tasks.
 
 \hypertarget{sec:packages-ci}{%
 \subsubsection{Packages}\label{sec:packages-ci}}
 
-The installation of packages is handled by the \texttt{install.packages()} function.
-Rather than listing the packages to be installed in the arguments to the function, which is a source of errors, it is better to use the \textbf{renv} package to register all the packages used by the project and install them at once for continuous integration.
-\textbf{renv} will install the packages in the registered version, which avoids unexpected effects due to different versions between the workstation and GitHub Actions.
-
-\begin{verbatim}
-      - name: Install packages
-        run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
-\end{verbatim}
-
-It is necessary to install \textbf{renv} on the workstation used for the development of the project.
-
-A \texttt{DESCRIPTION} file should be used to list the packages for any project, as if it were an R package.
-For this document:
-
-\begin{verbatim}
-Package: WorkingWithR
-Title: Working with R
-Version: 1.1.0
-Authors@R: c(
-  person("Eric", "Marcon", , "e.marcon@free.fr", c("aut", "cre"))
-  )
-URL: https://github.com/EricMarcon/WorkingWithR
-Imports:
-  bookdown,
-  (...)
-\end{verbatim}
-
-Before triggering the workflow, it is necessary to create the list of packages in their current version on the workstation:
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{renv}\SpecialCharTok{::}\FunctionTok{snapshot}\NormalTok{(}\AttributeTok{type =} \StringTok{"explicit"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\normalsize
-
-When first used, the \textbf{renv} package informs of some adaptations to the working environment, which must be accepted.
-
-This command creates the \texttt{renv.lock} file which is used by GitHub Actions to install packages during continuous integration.
-It can be updated at any time to take into account their update.
-
-Alternatively, the necessary packages can be installed without the help of \textbf{Renv}:
+This step uses \texttt{Rscript} as its command environment, which allows it to execute R commands directly.
 
 \begin{verbatim}
       - name: Install packages
@@ -9122,12 +9056,10 @@ Alternatively, the necessary packages can be installed without the help of \text
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
           install.packages(c("remotes", "bookdown", "formatR", "tinytex"))
-          tinytex::install_tinytex()
+          tinytex::install_tinytex(bundle = "TinyTeX")
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 \end{verbatim}
-
-This step uses \texttt{Rscript} as a command environment, which allows it to execute R commands directly (compare to the use of \texttt{R\ -e} in the previous examples).
 
 The packages used to produce the document are listed:
 
@@ -9155,8 +9087,6 @@ A better solution is to force the installation of binary packages even if the so
 Finally, the secret \texttt{GH\_PAT} is passed to R in an environment variable, \texttt{GITHUB\_PAT}, necessary to install packages from their source code on GitHub.
 GitHub limits the rate of anonymous access for all GitHub actions (all accounts) and may reject the request: in practice, using \texttt{install\_github()} in a GitHub action is only possible with this environment variable.
 
-In this approach, packages are not cached.
-
 \hypertarget{knitting}{%
 \subsubsection{Knitting}\label{knitting}}
 
@@ -9173,7 +9103,7 @@ The production of the document is started by an R command.
         shell: Rscript {0}
 \end{verbatim}
 
-The formats set in \texttt{\_output.yml} are ignored.
+The parameters declared in \texttt{\_output.yml} are used.
 
 The PDF file must be produced before the GitBook format in order for its download link to be added to the menu bar of the GitBook site.
 On the other hand, R must be closed and reopened between the two renderings otherwise the tables are not created correctly in GitBook\footnote{\url{https://stackoverflow.com/questions/46080853/why-does-rendering-a-pdf-from-rmarkdown-require-closing-rstudio-between-renders/46083308\#46083308}}.
@@ -9188,7 +9118,7 @@ The last step of the production job uses the \texttt{upload-artifact} action for
 
 \begin{verbatim}
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: _book
           path: docs/
@@ -9210,7 +9140,7 @@ Publishing the artifact to the \texttt{gh-pages} branch of the project requires 
     needs: renderbook
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           # Artifact name
           name: _book
@@ -9272,17 +9202,6 @@ The next step, to be inserted before the knitting step, writes the key to a file
 \section{Script templates}\label{script-templates}}
 
 Script templates for all types of projects are presented here.
-All of them require the same preparation:
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{GH\_PAT} and \texttt{EMAIL} secrets must be registered in the GitHub project (section \ref{sec:secrets-ci}).
-\item
-  A \texttt{DESCRIPTION} file must be used to list the required packages (section \ref{sec:package-description}), regardless of the project type.
-\item
-  A snapshot of the installed packages (\texttt{renv.lock}) must be made if \textbf{renv} (section \ref{sec:packages-ci}) is used.
-\end{itemize}
 
 The \texttt{gh-pages} branch is created automatically by the scripts.
 Check after the first execution that GitHub pages are enabled on this branch (section \ref{sec:github-pages}).
@@ -9298,11 +9217,12 @@ docs/
 The \texttt{build\_ghworkflow()} function of the \textbf{memoiR} package automatically creates the scripts needed to produce the package's templates.
 The script is always named \texttt{memoir.yml}.
 
-These scripts do not use \textbf{renv} or cache.
-They do not need a \texttt{DESCRIPTION} file for the installation of the dependencies but each document must contain in its parameter code (\texttt{Options}) the list of all packages needed for its knitting (stored in the \texttt{Packages} variable).
+These scripts do not need a \texttt{DESCRIPTION} file for the installation of the dependencies but each document must contain in its parameter code (\texttt{Options}) the list of all packages needed for its knitting (stored in the \texttt{Packages} variable).
+
+They all require the same preparation: the \texttt{GH\_PAT} and \texttt{EMAIL} secrets must be registered in the GitHub project (section \ref{sec:secrets-ci}).
 
 \hypertarget{sec:bookdown-ci}{%
-\subsection{Book or thesis}\label{sec:bookdown-ci}}
+\subsubsection{Book or thesis}\label{sec:bookdown-ci}}
 
 The workflow is called \texttt{rmarkdown}; its production job is \texttt{render}.
 
@@ -9319,17 +9239,17 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
-          install.packages(c("memoiR", "rmdformats", "tinytex"))
-          tinytex::install_tinytex()
+          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))
+          tinytex::install_tinytex(bundle = "TinyTeX")
         shell: Rscript {0}
       - name: Render pdf book
         run: |
@@ -9340,7 +9260,7 @@ jobs:
           bookdown::render_book("index.Rmd", "bookdown::gitbook")
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: ghpages
           path: docs
@@ -9349,7 +9269,7 @@ jobs:
     needs: render
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           name: ghpages
           path: docs
@@ -9364,7 +9284,7 @@ jobs:
 \end{verbatim}
 
 \hypertarget{articles-or-slideshows}{%
-\subsection{Articles or slideshows}\label{articles-or-slideshows}}
+\subsubsection{Articles or slideshows}\label{articles-or-slideshows}}
 
 The workflow is called \texttt{rmarkdown}; its production job is \texttt{render}.
 
@@ -9381,11 +9301,11 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
         run: |
           options(pkgType = "binary")
@@ -9398,9 +9318,9 @@ jobs:
           RMD_PATH=($(ls | grep "[.]Rmd$"))
           Rscript -e 'for (file in commandArgs(TRUE)) |>
               rmarkdown::render(file, "all")' ${RMD_PATH[*]}
-          Rscript -e 'memoiR::build_githubpages()'
+          Rscript -e 'memoiR::build_githubpages(bundle = "TinyTeX")'
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: ghpages
           path: docs
@@ -9409,7 +9329,7 @@ jobs:
     needs: render
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           name: ghpages
           path: docs
@@ -9481,7 +9401,7 @@ The \enquote{Upload artifact} step is modified to run despite the failure of the
 \begin{verbatim}
       - name: Upload artifact
         if: always()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: _book
           path: docs/
@@ -9521,11 +9441,11 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
       - name: Install packages
         run: |
           options(pkgType = "binary")
@@ -9548,7 +9468,7 @@ jobs:
     needs: buildsite
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           # Artifact name
           name: _website
@@ -9588,31 +9508,32 @@ name: R-CMD-check
 jobs:
   R-CMD-check:
     runs-on: macOS-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GH_PAT }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
+      - name: Pull the repository
+        uses: actions/checkout@v4
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
-      - name: Install dependencies
+        uses: r-lib/actions/setup-pandoc@v2
+      - name: Install R packages
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
-          install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown"))
+          install.packages(c("remotes", "roxygen2", "rcmdcheck", "covr", "pkgdown"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
-      - name: Roxygenize
+      - name: Update the documentation
         run: roxygen2::roxygenize()
         shell: Rscript {0}
-      - uses: EndBug/add-and-commit@v9
-      - name: Check
+      - name: Commit and push the repository
+        uses: EndBug/add-and-commit@v9
+      - name: Check the package
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning")
         shell: Rscript {0}
       - name: Test coverage
         run: covr::codecov(type="all")
         shell: Rscript {0}
-      - name: Install package
+      - name: Install the package
         run: R CMD INSTALL .
       - name: Pkgdown
         run: |
@@ -9630,6 +9551,10 @@ The script does not use \textbf{Renv} to handle packages because package checkin
 The \texttt{Roxygenize} step updates the package documentation.
 The updated files are pushed into the main project branch by the \texttt{add-and-commit} action.
 These two steps ensure that the package is in a consistent state, even if the author failed to execute the \texttt{roxygenize()} function before pushing his code to GitHub.
+To avoid triggering a loop to check code pushed in this way, the access token used must be that of the current script, created by GitHub each time it is run.
+By default, this token does not have the right to modify the repository.
+You therefore need to give it this right: on GitHub, display the project parameters and select \enquote*{Actions}, \enquote*{General}.
+In the \enquote{Workflow permissions} section, select \enquote{Read and write permissions}.
 
 The \texttt{Check} step checks the package.
 Warnings are treated as errors.

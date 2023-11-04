@@ -7,7 +7,7 @@
 <title>5 Package | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="R packages extend its functionality with code provided by the developer community. They are the key to the success of R because they allow to quickly spread new methods resulting from research or...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.36 with bs4_book()">
 <meta property="og:title" content="5 Package | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-package.html">
@@ -421,7 +421,7 @@ The source file is next to the project file.</li>
 </ul>
 <p></p>
 <div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"multiple"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"multiple"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The vignette can then be displayed by the command:</p>
 <p></p>
@@ -567,7 +567,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <code class="sourceCode R"><span><span class="va">plot</span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x7f788884dbc0&gt;
+## &lt;bytecode: 0x7fed11dc2908&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -735,13 +735,13 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span>    <span class="fu">triple</span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##                expr  min     lq     mean median     uq
-##  triple.integer(2L)  333  343.5 26193.60  362.5  399.5
-##   triple.numeric(2)  329  337.5 23577.70  352.5  395.0
-##          triple(2L) 1376 1415.0  1684.83 1442.0 1535.5
+##  triple.integer(2L)  325  339.5 24022.64  345.5  386.0
+##   triple.numeric(2)  325  332.0 21238.56  359.5  396.5
+##          triple(2L) 1439 1482.0  1592.39 1514.0 1574.0
 ##      max neval
-##  2579246   100
-##  2320244   100
-##    16526   100</code></pre>
+##  2364038   100
+##  2086807   100
+##     6931   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -969,7 +969,7 @@ It must be imported:</li>
 <span><span class="fu">graphics</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x7f788884dbc0&gt;
+## &lt;bytecode: 0x7fed11dc2908&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' autoplot</span></span>
@@ -1000,7 +1000,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod("autoplot")
 ## }
-## &lt;bytecode: 0x7f78856df8e0&gt;
+## &lt;bytecode: 0x7fed0e6a32f8&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
@@ -1279,7 +1279,7 @@ It is commented out as long as the production of the site is done locally, but u
 It can be automated very easily with the GitHub Actions service, triggered at each modification of the repository on GitHub.
 The analysis of the code coverage by tests (which parts of the code are tested or not) will be added.</p>
 <p>GitHub is also able to rebuild the package documentation with <strong>pkgdown</strong>, another resource-consuming operation, after the tests have passed.</p>
-<p>Section <a href="chap-ci.html#sec:package-ci6">6.3.5</a> details how to do this.</p>
+<p>Section <a href="chap-ci.html#sec:package-ci6">6.3.3</a> details how to do this.</p>
 </div>
 <div id="sec:package-cran" class="section level2" number="5.11">
 <h2>
@@ -1387,7 +1387,7 @@ Otherwise, the package is archived.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 10/08/2023.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 11/04/2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
