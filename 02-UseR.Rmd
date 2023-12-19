@@ -202,7 +202,7 @@ Attributes and methods can be public or private.
 An `initialize()` method is used as a constructor.
 
 ```{r S6-Class}
-library(R6)
+library("R6")
 PersonR6 <- R6Class("PersonR6", 
                       public = list(LastName="character", FirstName="character",
                                     initialize = function(LastName=NA, FirstName=NA) {
@@ -987,6 +987,48 @@ system.time(foreach (i=icount(nbCores), .combine="c") %dopar% {f(i)})
 The fixed cost of parallelization is low.
 
 
+### future
+
+The **future** package is used to abstract the code of the parallelization implementation.
+It is at the centre of an ecosystem of packages that facilitate its use[^250].
+
+[^250]: https://www.futureverse.org/
+
+The parallelization strategy used is declared by the `plan()` function.
+The default strategy is `sequential`, i.e. single-task.
+The `multicore` and `multisession` strategies are based respectively on the _fork_ and _socket_ techniques seen above.
+Other strategies are available for using physical clusters (several computers prepared to run R together): the **future** documentation details how to do this.
+
+Here we will use the `multisession` strategy, which works on the local computer, whatever its operating system.
+
+```{r future}
+library("future")
+# Socket strategy on all available cores except 1
+usedCores <- availableCores() - 1
+plan(multisession, workers = usedCores)
+```
+
+The **future.apply** package allows all `*apply()` and `replicate()` loops to be effortlessly parallelized by prefixing their names with `future_`.
+
+```{r future.apply}
+library("future.apply")
+system.time(future_replicate(usedCores - 1, f(usedCores)))
+```
+
+foreach loops can be parallelized with the **doFuture** package by simply replacing `%dopar%` with `%dofuture%`.
+
+```{r doFuture}
+library("doFuture")
+system.time(foreach (i = icount(nbCoeurs), .combine="c") %dofuture% {f(i)})
+```
+
+The strategy is reset to `sequential` at the end.
+
+```{r sequential}
+plan(sequential)
+```
+
+
 ## Case study {#sec:cas}
 
 This case study tests the different techniques seen above to solve a concrete problem.
@@ -1103,6 +1145,33 @@ d
 ```
 
 
+### future.apply
+
+The `fsapply4()` function optimised above can be parallelled directly by prefixing the `vapply` function with `future_`.
+Only the main loop is parallelized: nesting `future_vapply()` would collapse performance.
+
+```{r}
+library("future.apply")
+# Socket strategy on all available cores except 1
+plan(multisession, workers = availableCores() - 1)
+future_fsapply4_ <- function() {
+  distances <- future_vapply(1:NbPoints, function(i) {
+    vapply(1:NbPoints, function(j) {
+      if (j>i) {
+        (X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2
+      } else {
+        0
+      }
+    }, 0.0)
+  }, 1:1000+0.0)
+  return(sum(sqrt(distances)) / NbPoints / (NbPoints - 1) * 2)
+}
+system.time(d <- future_fsapply4_())
+d
+plan(sequential)
+```
+
+
 ### for loop
 
 A for loop is faster and consumes less memory because it does not store the distance matrix.
@@ -1126,7 +1195,29 @@ This is the simplest and most efficient way to write this code with core R and n
 
 ### foreach loop
 
-Two nested foreach loops are needed here: they are extremely slow compared to a simple loop.
+Parallelization executes for loops inside a foreach loop, which is quite efficient.
+However, distances are calculated twice.
+
+```{r registerDoParallel, tidy=FALSE}
+registerDoParallel(cores = detectCores())
+fforeach3 <- function(Y) {
+  distances <- foreach(
+    i = icount(Y$n), 
+    .combine = '+') %dopar% {
+      distance <- 0
+      for (j in 1:Y$n) {
+        distance <- distance + 
+          sqrt((Y$x[i] - Y$x[j])^2 + (Y$y[i] - Y$y[j])^2)
+      }
+      distance
+    }
+  return(distances / Y$n / (Y$n - 1))
+}
+system.time(d <- fforeach3(X))
+d
+```
+
+It is possible to nest two foreach loops, but they are extremely slow compared with a simple loop.
 The test is run here with 10 times fewer points, so 100 times fewer distances to calculate.
 
 ```{r}
@@ -1148,32 +1239,6 @@ d
 ```
 
 Nested foreach loops should be reserved for very long tasks (several seconds at least) to compensate the fixed costs of setting them up.
-
-Parallelization is efficient in the code below, especially because it avoids nested foreach loops.
-On the other hand, distances are calculated twice.
-The performance is still much lower than a simple for loop (remember: 100 times less distances are computed).
- 
-```{r registerDoParallel, tidy=FALSE}
-registerDoParallel(cores = detectCores())
-fforeach3 <- function(Y) {
-  distances <- 
-    foreach(i=icount(NbPointsReduit), 
-            .combine='+') %dopar% {
-      distance <- 0
-      for (j in 1:Y$n) {
-        distance <- distance + 
-          sqrt((Y$x[i]-Y$x[j])^2 + (Y$y[i]-Y$y[j])^2)
-      }
-      distance
-    }
-  return(distances/NbPointsReduit/(NbPointsReduit-1))
-}
-system.time(d <- fforeach3(Y))
-d
-```
-
-**foreach** has optimized adapters allowing to use physical clusters for example. 
-Its interest is limited with the **parallel** package.
 
 
 ### RCpp
@@ -1319,7 +1384,9 @@ system.time(d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints-1)*2)
 From this case study, several lessons can be learned:
 
 - A for loop is a good basis for repetitive calculations, faster than `vapply()`, simple to read and write.
+- **foreach** loops are extremely effective for parallelizing for loops;
 - Optimized functions may exist in R packages for common tasks (here, the `pairdist()` function of **spatstat** is two orders of magnitude faster than the for loop).
+- the **future.apply** package makes it very easy to parallelize code that has already been written with `*apply()` functions, regardless of the hardware used;
 - The use of C++ code allows to speed up the calculations significantly, by three orders of magnitude here.
 - Parallelization of the C++ code further divides the computation time by about half the number of cores for long computations.
 
@@ -1332,8 +1399,7 @@ Writing vector code, using `sapply()` is still justified for its readability.
 
 The choice of parallelizing the code must be evaluated according to the execution time of each parallelizable task.
 If it exceeds a few seconds, parallelization is justified.
-`mclapply()` replaces `lapply()` without any effort, but requires a hack (provided here) on Windows.
-`foreach()` does not replace `for()` as easily and is only justified for very memory and computationally heavy tasks, especially on computing clusters.
+
 
 ## Workflow {#sec:targets}
 
