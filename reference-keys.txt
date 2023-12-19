@@ -86,10 +86,12 @@ parlapply-socket
 foreach
 how-it-works
 parallelization
+future
 sec:cas
 creation-of-the-data
 spatstat
 apply
+future.apply
 for-loop
 foreach-loop
 rcpp

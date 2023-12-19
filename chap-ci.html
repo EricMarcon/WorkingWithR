@@ -7,7 +7,7 @@
 <title>6 Continuous integration | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="Continuous integration is the process of assigning an external service to verify a package, produce Markdown documents for web pages in a GitHub repository, or completely knit a website from code....">
-<meta name="generator" content="bookdown 0.36 with bs4_book()">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="6 Continuous integration | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-ci.html">
@@ -17,8 +17,8 @@
 <meta name="twitter:description" content="Continuous integration is the process of assigning an external service to verify a package, produce Markdown documents for web pages in a GitHub repository, or completely knit a website from code....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
 <script src="libs/tabwid-1.1.3/tabwid.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-7NVD1TWMCJ"></script><script>
@@ -110,7 +110,7 @@ rather than for projects containing a simple Markdown document that is rarely mo
 <h3>
 <span class="header-section-number">6.1.1</span> GitHub Actions<a class="anchor" aria-label="anchor" href="#github-actions"><i class="fas fa-link"></i></a>
 </h3>
-<p>The most frequently used tool for R projects filed on GitHub was <em>Travis CI</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://travis-ci.org/" class="uri"&gt;https://travis-ci.org/&lt;/a&gt;&lt;/p&gt;'><sup>103</sup></a> but the service became fee-based in 2021.</p>
+<p>The most frequently used tool for R projects filed on GitHub was <em>Travis CI</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://travis-ci.org/" class="uri"&gt;https://travis-ci.org/&lt;/a&gt;&lt;/p&gt;'><sup>104</sup></a> but the service became fee-based in 2021.</p>
 <p>GitHub Shares is a good replacement for Travis.
 This service is integrated with GitHub.</p>
 </div>
@@ -118,7 +118,7 @@ This service is integrated with GitHub.</p>
 <h3>
 <span class="header-section-number">6.1.2</span> Codecov<a class="anchor" aria-label="anchor" href="#codecov"><i class="fas fa-link"></i></a>
 </h3>
-<p>To evaluate the code coverage rate of R packages, i.e. the proportion of code tested in some way (examples, unit tests, vignette), the <em>Codecov</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://codecov.io/" class="uri"&gt;https://codecov.io/&lt;/a&gt;&lt;/p&gt;'><sup>104</sup></a> service integrates perfectly with GitHub.</p>
+<p>To evaluate the code coverage rate of R packages, i.e. the proportion of code tested in some way (examples, unit tests, vignette), the <em>Codecov</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://codecov.io/" class="uri"&gt;https://codecov.io/&lt;/a&gt;&lt;/p&gt;'><sup>105</sup></a> service integrates perfectly with GitHub.</p>
 <p>You need to open an account, preferably by authenticating through GitHub.</p>
 </div>
 <div id="github-pages" class="section level3" number="6.1.3">
@@ -178,7 +178,7 @@ A workflow is triggered by an event, usually every <em>push</em> of the project,
 <p>Typically, the workflows created here contain two jobs: the first one installs R and the necessary components and executes R scripts (which constitute its successive steps); the second one publishes the obtained files in GitHub pages.</p>
 <p>The workflows are configured in a YAML file placed in the <code>.github/workflows/</code> folder of the project.
 The different parts of the script are presented below.
-The full script is that of this document, accessible on GitHub<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/EricMarcon/WorkingWithR/blob/master/.github/workflows/bookdown.yml" class="uri"&gt;https://github.com/EricMarcon/WorkingWithR/blob/master/.github/workflows/bookdown.yml&lt;/a&gt;&lt;/p&gt;'><sup>105</sup></a>.</p>
+The full script is that of this document, accessible on GitHub<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/EricMarcon/WorkingWithR/blob/master/.github/workflows/bookdown.yml" class="uri"&gt;https://github.com/EricMarcon/WorkingWithR/blob/master/.github/workflows/bookdown.yml&lt;/a&gt;&lt;/p&gt;'><sup>106</sup></a>.</p>
 <div id="sec:declenchement" class="section level4" number="6.2.4.1">
 <h4>
 <span class="header-section-number">6.2.4.1</span> Trigger<a class="anchor" aria-label="anchor" href="#sec:declenchement"><i class="fas fa-link"></i></a>
@@ -223,7 +223,7 @@ Here, the main action will be to produce a bookdown with the <code>render_book()
   renderbook:
     runs-on: macOS-latest</code></pre>
 <p>The <code>runs-on</code> statement describes the operating system on which the job should run.
-The possible choices are Windows, Ubuntu or MacOS<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on" class="uri"&gt;https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on&lt;/a&gt;&lt;/p&gt;'><sup>106</sup></a>.
+The possible choices are Windows, Ubuntu or MacOS<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on" class="uri"&gt;https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on&lt;/a&gt;&lt;/p&gt;'><sup>107</sup></a>.
 Continuous integration of R on GitHub usually uses MacOS which has the advantage of using compiled R packages so much simpler (some packages require libraries outside of R for their compilation) and quicker to install, while allowing the use of scripts.</p>
 </div>
 <div id="first-steps" class="section level4" number="6.2.4.4">
@@ -246,9 +246,9 @@ Its development is accompanied by successive version numbers.
 An action is called by the statement <code>uses:</code>, the GitHub project that contains it and its version.</p>
 <p>In their respective GitHub project, actions exist in their development version (<code>@master</code>) and in step versions (<em>release</em>) accessible by their number (<code>@v1</code>).
 These stage versions are preferable because they are stable.</p>
-<p>General actions are made available by GitHub in the GitHub Actions organization<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/actions/" class="uri"&gt;https://github.com/actions/&lt;/a&gt;&lt;/p&gt;'><sup>107</sup></a>.
+<p>General actions are made available by GitHub in the GitHub Actions organization<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/actions/" class="uri"&gt;https://github.com/actions/&lt;/a&gt;&lt;/p&gt;'><sup>108</sup></a>.
 The “actions/checkout” action is used to get into the main branch of the project processed by the workflow: it is usually the first step of all workflows.</p>
-<p>The next action is the installation of R, provided by the <em>R infrastructure</em> organization<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/r-lib/" class="uri"&gt;https://github.com/r-lib/&lt;/a&gt;&lt;/p&gt;'><sup>108</sup></a>.</p>
+<p>The next action is the installation of R, provided by the <em>R infrastructure</em> organization<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/r-lib/" class="uri"&gt;https://github.com/r-lib/&lt;/a&gt;&lt;/p&gt;'><sup>109</sup></a>.</p>
 <p>The installation of pandoc (software external to R but necessary for R Markdown) can be done by a command executed by MacOS.
 It is called by <code>run:</code> and can contain several lines (hence the <code>|</code>).
 This script depends on the operating system: <code>brew</code> is the package manager of MacOS.
@@ -311,7 +311,7 @@ GitHub limits the rate of anonymous access for all GitHub actions (all accounts)
         shell: Rscript {0}</code></pre>
 <p>The parameters declared in <code>_output.yml</code> are used.</p>
 <p>The PDF file must be produced before the GitBook format in order for its download link to be added to the menu bar of the GitBook site.
-On the other hand, R must be closed and reopened between the two renderings otherwise the tables are not created correctly in GitBook<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/46080853/why-does-rendering-a-pdf-from-rmarkdown-require-closing-rstudio-between-renders/46083308#46083308" class="uri"&gt;https://stackoverflow.com/questions/46080853/why-does-rendering-a-pdf-from-rmarkdown-require-closing-rstudio-between-renders/46083308#46083308&lt;/a&gt;&lt;/p&gt;'><sup>109</sup></a>.
+On the other hand, R must be closed and reopened between the two renderings otherwise the tables are not created correctly in GitBook<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/46080853/why-does-rendering-a-pdf-from-rmarkdown-require-closing-rstudio-between-renders/46083308#46083308" class="uri"&gt;https://stackoverflow.com/questions/46080853/why-does-rendering-a-pdf-from-rmarkdown-require-closing-rstudio-between-renders/46083308#46083308&lt;/a&gt;&lt;/p&gt;'><sup>110</sup></a>.
 The two steps should not be combined into one.</p>
 </div>
 <div id="backup" class="section level4" number="6.2.4.7">
@@ -554,7 +554,7 @@ The LaTeX compiler is indeed more demanding than pandoc (which produces the HTML
 <p>The first check consists in knitting the problematic document into PDF locally, on your workstation, with <strong>tinytex</strong>.
 The LaTeX packages must be updated to be the same as those used by the GitHub actions: to do this, run:</p>
 <p></p>
-<div class="sourceCode" id="cb468"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb479"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tlmgr_update</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>If the compilation works locally but not on Github, you have to inspect the <code>.log</code> file which records all the events generated by the compiler, but this file is not kept after the failure of GitHub Actions.
@@ -640,7 +640,7 @@ jobs:
 <p>The <code>Build website</code> step uses the <strong>blogdown</strong> package to install Hugo (the website generator) and then build the website.</p>
 <p>If the website uses online data that warrants periodic updating, GitHub Actions can be run daily, weekly or monthly in addition to the rebuilds triggered by a repository change (see section <a href="chap-ci.html#sec:declenchement">6.2.4.1</a>).
 Here, the site is rebuilt every Sunday at 10pm.</p>
-<p>Example: the page that displays the bibliometrics of the author’s website<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://EricMarcon.github.io/fr/publication/" class="uri"&gt;https://EricMarcon.github.io/fr/publication/&lt;/a&gt;&lt;/p&gt;'><sup>110</sup></a> queries Google Scholar to display the citations of the publications.
+<p>Example: the page that displays the bibliometrics of the author’s website<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://EricMarcon.github.io/fr/publication/" class="uri"&gt;https://EricMarcon.github.io/fr/publication/&lt;/a&gt;&lt;/p&gt;'><sup>111</sup></a> queries Google Scholar to display the citations of the publications.
 The site is updated weekly to keep the statistics current.</p>
 </div>
 <div id="sec:package-ci6" class="section level3" number="6.3.3">
@@ -707,7 +707,7 @@ Warnings are treated as errors.</p>
 <p>Finally, the last two steps install the package and then use <strong>pkgdown</strong> to create the documentation site for the package and push it into the <code>gh-pages</code> branch of the project.</p>
 <p>This script contains only one job: the deployment of the documentation site is directly executed by <strong>pkgdown</strong>.
 Its success is displayed by a badge in the <code>README.md</code> file (see section <a href="chap-ci.html#sec:ci-badges">6.4</a>)</p>
-<p>More complex scripts are proposed by R-lib<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow" class="uri"&gt;https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow&lt;/a&gt;&lt;/p&gt;'><sup>111</sup></a>, in particular to run the tests on several operating systems and several versions of R.
+<p>More complex scripts are proposed by R-lib<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow" class="uri"&gt;https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow&lt;/a&gt;&lt;/p&gt;'><sup>112</sup></a>, in particular to run the tests on several operating systems and several versions of R.
 These advanced tests are to be performed before submitting to CRAN (section <a href="chap-package.html#sec:package-cran">5.11</a>) but consume too much resource for systematic use.</p>
 </div>
 <div id="sec:ci-pr" class="section level3" number="6.3.4">
@@ -746,8 +746,6 @@ jobs:
       - name: Install pandoc
         uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
-        env:
-          GITHUB_PAT: ${{ secrets.GH_PAT }}
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
@@ -885,7 +883,7 @@ Paste the Markdown code:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 11/04/2023.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 12/19/2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
