@@ -1019,7 +1019,7 @@ foreach loops can be parallelized with the **doFuture** package by simply replac
 
 ```{r doFuture}
 library("doFuture")
-system.time(foreach (i = icount(nbCoeurs), .combine="c") %dofuture% {f(i)})
+system.time(foreach (i = icount(nbCores), .combine="c") %dofuture% {f(i)})
 ```
 
 The strategy is reset to `sequential` at the end.
