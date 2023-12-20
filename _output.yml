@@ -8,25 +8,6 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: biblatex
   keep_tex: yes
-bookdown::gitbook:
-  css: style.css
-  config:
-    sharing:
-      github: yes
-      facebook: false
-      twitter: false
-    toc:
-      before: |
-        <li><a href="./">Working With R</a></li>
-      after: |
-        <li>
-          <a href="https://github.com/EricMarcon/WorkingWithR" target="blank">
-            Hosted on GitHub, published with bookdown
-          </a>
-        </li>
-    download: pdf
-  includes:
-    in_header: gtag.js
 bookdown::bs4_book:
   repo:
     base: https://github.com/EricMarcon/WorkingWithR
