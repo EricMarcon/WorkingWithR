@@ -1,8 +1,8 @@
 # Working with R
 
-![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
+![stability-wip](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)
 [![DOI](https://zenodo.org/badge/507862871.svg)](https://zenodo.org/badge/latestdoi/507862871)
-![BuildStatus](https://github.com/EricMarcon/WorkingWithR/workflows/bookdown/badge.svg)
+[![bookdown](https://github.com/EricMarcon/WorkingWithR/actions/workflows/bookdown.yml/badge.svg)](https://github.com/EricMarcon/WorkingWithR/actions/workflows/bookdown.yml)
 
 
 This book proposes an organization of work around R and RStudio to, beyond statistics, write documents efficiently with R Markdown, in various formats (memos, scientific articles, student theses, books, slide shows), create its website and online R applications (Shiny), produce packages and use R for teaching.
