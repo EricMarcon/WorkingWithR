@@ -39,6 +39,7 @@ installation-1
 file-encoding
 working-folder
 sec:solution-dossiers
+character-font
 packages
 installation-from-cran
 installation-from-github

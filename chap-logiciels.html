@@ -252,6 +252,13 @@ Figure 1.1: Folder for projects under source control, on Windows.
 </div>
 <p></p>
 </div>
+<div id="character-font" class="section level3" number="1.2.5">
+<h3>
+<span class="header-section-number">1.2.5</span> Character font<a class="anchor" aria-label="anchor" href="#character-font"><i class="fas fa-link"></i></a>
+</h3>
+<p>The Fira Code<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://github.com/tonsky/FiraCode" class="uri"&gt;https://github.com/tonsky/FiraCode&lt;/a&gt;&lt;/p&gt;'><sup>6</sup></a> font provides ligatures: the “&lt;-” characters used for assignment in R, for example, are displayed as an arrow.
+To use it in the RStudio editor, simply install it according to the instructions for your operating system and declare it in the global options (“Tools &gt; Global Options…” menu): select <em>Appearance</em> and the option <em>Editor Font</em>: Fira Code.</p>
+</div>
 </div>
 <div id="packages" class="section level2" number="1.3">
 <h2>
@@ -386,7 +393,7 @@ It contains a function that checks if each package is already installed so that 
 </h3>
 <p>git is the source control software used here.
 Its use is detailed in the chapter <a href="chap-git.html#chap-git">3</a>.</p>
-<p>For Windows and Mac, the installation is done from the git website<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://git-scm.com/" class="uri"&gt;https://git-scm.com/&lt;/a&gt;&lt;/p&gt;'><sup>6</sup></a>.</p>
+<p>For Windows and Mac, the installation is done from the git website<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://git-scm.com/" class="uri"&gt;https://git-scm.com/&lt;/a&gt;&lt;/p&gt;'><sup>7</sup></a>.</p>
 <p>git is integrated in Linux distributions.
 For Ubuntu, the apt package is <code>git-all</code>.</p>
 <p>git is installed without a graphical interface, provided by RStudio.</p>
@@ -413,9 +420,9 @@ git config user.email</code></pre>
 <p><em>GitHub</em> is the platform accessible through a <a href="https://github.com/">website</a> that allows to share the content of <em>git</em> repositories.
 To use it, you just have to open an account with the same email address as the one registered in git.</p>
 <p>The name of the GitHub account is noted here <em>GitHubID</em>.
-Each GitHub account allows to host repositories (a repository contains the files of a project) at the address <a href="https://github.com/GitHubID/RepoID" class="uri">https://github.com/GitHubID/RepoID</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Example: &lt;a href="https://github.com/EricMarcon/travailleR" class="uri"&gt;https://github.com/EricMarcon/travailleR&lt;/a&gt;&lt;/p&gt;'><sup>7</sup></a>.
-Each repository can have a website at <a href="https://GitHubID.github.io/RepoID/" class="uri">https://GitHubID.github.io/RepoID/</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Example: &lt;a href="https://EricMarcon.github.io/travailleR/" class="uri"&gt;https://EricMarcon.github.io/travailleR/&lt;/a&gt;&lt;/p&gt;'><sup>8</sup></a>.
-Finally, a global web site is provided for each user at <a href="https://GitHubID.github.io/" class="uri">https://GitHubID.github.io/</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Example: &lt;a href="https://EricMarcon.github.io/" class="uri"&gt;https://EricMarcon.github.io/&lt;/a&gt;&lt;/p&gt;'><sup>9</sup></a>.</p>
+Each GitHub account allows to host repositories (a repository contains the files of a project) at the address <a href="https://github.com/GitHubID/RepoID" class="uri">https://github.com/GitHubID/RepoID</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Example: &lt;a href="https://github.com/EricMarcon/travailleR" class="uri"&gt;https://github.com/EricMarcon/travailleR&lt;/a&gt;&lt;/p&gt;'><sup>8</sup></a>.
+Each repository can have a website at <a href="https://GitHubID.github.io/RepoID/" class="uri">https://GitHubID.github.io/RepoID/</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Example: &lt;a href="https://EricMarcon.github.io/travailleR/" class="uri"&gt;https://EricMarcon.github.io/travailleR/&lt;/a&gt;&lt;/p&gt;'><sup>9</sup></a>.
+Finally, a global web site is provided for each user at <a href="https://GitHubID.github.io/" class="uri">https://GitHubID.github.io/</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Example: &lt;a href="https://EricMarcon.github.io/" class="uri"&gt;https://EricMarcon.github.io/&lt;/a&gt;&lt;/p&gt;'><sup>10</sup></a>.</p>
 </div>
 <div id="sec:SSH" class="section level3" number="1.4.3">
 <h3>
@@ -441,7 +448,7 @@ It does not need to be well backed up: in case of loss, it will be easily replac
 <li>Duplicate the <code>.ssh</code> folder in the RStudio program folder (usually <code>C:\Program Files\RStudio</code>), in <code>resourcesterminalbash</code>.</li>
 </ul>
 <p>If successful, a message indicates that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
-Check with GitHub that the server’s fingerprint is correct<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints" class="uri"&gt;https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints&lt;/a&gt;&lt;/p&gt;'><sup>10</sup></a> and type <code>yes</code>.
+Check with GitHub that the server’s fingerprint is correct<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints" class="uri"&gt;https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints&lt;/a&gt;&lt;/p&gt;'><sup>11</sup></a> and type <code>yes</code>.
 The server is automatically added to the list of known servers, in the <code>known_hosts</code> file.</p>
 <p>In the <code>.ssh</code> folder, two files are created: one contains the private key, the other, with the <code>.pub</code> extension, the corresponding public key.
 Open the second one with a text editor and copy the public key to the clipboard.
@@ -457,7 +464,7 @@ The key must not be copied on several computers: if necessary, create a new key 
 </h3>
 <p>HTTPS authentication is the alternative to SSL authentication: choose a method and stick to it afterwards.
 To use HTTPS authentication, the creation of a personal access token is required.</p>
-<p>Tokens are created on GitHub, in the settings of one’s user account, in “Developer Settings &gt; Personal Access Tokens”<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line" class="uri"&gt;https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line&lt;/a&gt;&lt;/p&gt;'><sup>11</sup></a>.</p>
+<p>Tokens are created on GitHub, in the settings of one’s user account, in “Developer Settings &gt; Personal Access Tokens”<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line" class="uri"&gt;https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line&lt;/a&gt;&lt;/p&gt;'><sup>12</sup></a>.</p>
 <p>Generate a new token, describe it as “git-RStudio” and give it “repo” permission, i.e. modify <em>all</em> repositories (it is not possible to limit access to a particular repository).
 The token is a string that cannot be read later: it must be saved as a password.</p>
 </div>
@@ -494,7 +501,7 @@ MiKTeX is a very good solution for Windows and Mac.</p>
 <h4>
 <span class="header-section-number">1.5.2.1</span> Installation<a class="anchor" aria-label="anchor" href="#installation-2"><i class="fas fa-link"></i></a>
 </h4>
-<p>Download the installation file<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://miktex.org/download" class="uri"&gt;https://miktex.org/download&lt;/a&gt;&lt;/p&gt;'><sup>12</sup></a> and run it.
+<p>Download the installation file<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://miktex.org/download" class="uri"&gt;https://miktex.org/download&lt;/a&gt;&lt;/p&gt;'><sup>13</sup></a> and run it.
 There are several choices to make during the installation:</p>
 <ul>
 <li>Install the program for all users (with administrator rights).</li>
@@ -522,14 +529,14 @@ Click on “Switch to Administrator mode”.</p>
 <h2>
 <span class="header-section-number">1.6</span> Zotero<a class="anchor" aria-label="anchor" href="#sec:Zotero"><i class="fas fa-link"></i></a>
 </h2>
-<p>Zotero<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://www.zotero.org/" class="uri"&gt;https://www.zotero.org/&lt;/a&gt;&lt;/p&gt;'><sup>13</sup></a> is the most used bibliographic management software.
+<p>Zotero<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://www.zotero.org/" class="uri"&gt;https://www.zotero.org/&lt;/a&gt;&lt;/p&gt;'><sup>14</sup></a> is the most used bibliographic management software.
 Its extensions allow you to complete its functionalities according to your needs.
 Better BibTeX allows you to export and maintain a selection of bibliographic references (a Zotero collection) as a BibTeX file in an R project, where it can be used in writing documents or documenting packages.</p>
 <p>Download the installation file and run it.
 Create a user account on the Zotero website.
 Link the local installation to the account: in the “Edit &gt; Preferences” menu, select “Sync &gt; Settings” and authenticate in the “Data Syncing” area.
 Then check the box “Sync automatically” but not “Sync full-text content” because the total size of full text synchronized in this way between the online Zotero account and the workstation is limited to 300 MB.</p>
-<p>Download the Better BibTeX extension<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://retorque.re/zotero-better-bibtex/installation/" class="uri"&gt;https://retorque.re/zotero-better-bibtex/installation/&lt;/a&gt;&lt;/p&gt;'><sup>14</sup></a> and install it with the “Tools &gt; Add-ons” menu: click on the settings button at the top right of the window, then “Install Add-on From File…” and select the file just downloaded.</p>
+<p>Download the Better BibTeX extension<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://retorque.re/zotero-better-bibtex/installation/" class="uri"&gt;https://retorque.re/zotero-better-bibtex/installation/&lt;/a&gt;&lt;/p&gt;'><sup>15</sup></a> and install it with the “Tools &gt; Add-ons” menu: click on the settings button at the top right of the window, then “Install Add-on From File…” and select the file just downloaded.</p>
 <p>Set up Better BibTeX from the menu “Edit &gt; Preferences &gt; Better BibTeX”.
 The options to modify are the following:</p>
 <ul>
@@ -537,7 +544,7 @@ The options to modify are the following:</p>
 <li>“Citation Keys &gt; Keep citation keys unique”: “across all libraries” so that citation identifiers are not ambiguous.</li>
 <li>“Export &gt; Fields &gt; Fields to omit from export”: “abstract, file” to avoid generating bibliographic files overweighted by useless information in R projects.</li>
 </ul>
-<p>It is recommended to use the ZotFile<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="http://zotfile.com/" class="uri"&gt;http://zotfile.com/&lt;/a&gt;&lt;/p&gt;'><sup>15</sup></a> extension to better control the location of the full text (the PDF files linked to the bibliographic references).
+<p>It is recommended to use the ZotFile<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="http://zotfile.com/" class="uri"&gt;http://zotfile.com/&lt;/a&gt;&lt;/p&gt;'><sup>16</sup></a> extension to better control the location of the full text (the PDF files linked to the bibliographic references).
 Install it and then set it up in “Tools &gt; ZotFile Preferences…&gt; General settings &gt; Location of Files &gt; Custom Location”: choose the folder for storing full text.
 If the user’s personal folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), placing this storage folder there allows both to save the full texts and to access them from multiple workstations or directly online.
 This solution is much more efficient than Zotero’s default synchronization, which is limited in volume.</p>
@@ -546,7 +553,7 @@ This solution is much more efficient than Zotero’s default synchronization, wh
 <h2>
 <span class="header-section-number">1.7</span> Go<a class="anchor" aria-label="anchor" href="#go"><i class="fas fa-link"></i></a>
 </h2>
-<p>Go<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://golang.org/" class="uri"&gt;https://golang.org/&lt;/a&gt;&lt;/p&gt;'><sup>16</sup></a> is only used by the Hugo web site generator (see section <a href="chap-rediger.html#sec:blogdown">4.7</a>).</p>
+<p>Go<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://golang.org/" class="uri"&gt;https://golang.org/&lt;/a&gt;&lt;/p&gt;'><sup>17</sup></a> is only used by the Hugo web site generator (see section <a href="chap-rediger.html#sec:blogdown">4.7</a>).</p>
 <p>Download the installation file and run it.
 At the end of the installation, run the command <code>go version</code> in a terminal to check that it works.</p>
 <p>Upgrades are done by installing the new version over the previous one.</p>
@@ -575,6 +582,7 @@ At the end of the installation, run the command <code>go version</code> in a ter
 <li><a class="nav-link" href="#file-encoding"><span class="header-section-number">1.2.2</span> File encoding</a></li>
 <li><a class="nav-link" href="#working-folder"><span class="header-section-number">1.2.3</span> Working folder</a></li>
 <li><a class="nav-link" href="#sec:solution-dossiers"><span class="header-section-number">1.2.4</span> Solution chosen</a></li>
+<li><a class="nav-link" href="#character-font"><span class="header-section-number">1.2.5</span> Character font</a></li>
 </ul>
 </li>
 <li>
@@ -618,7 +626,7 @@ At the end of the installation, run the command <code>go version</code> in a ter
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 12/20/2023.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 01/03/2024.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
