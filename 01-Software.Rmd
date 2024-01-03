@@ -162,6 +162,13 @@ Pin this folder to the quick access of the file explorer (figure \@ref(fig:R-Pro
 knitr::include_graphics('images/R-ProjetsR.png')
 ```
 
+### Character font
+
+The Fira Code[^131] font provides ligatures: the "<-" characters used for assignment in R, for example, are displayed as an arrow.
+To use it in the RStudio editor, simply install it according to the instructions for your operating system and declare it in the global options ("Tools > Global Options..." menu): select *Appearance* and the option *Editor Font*: Fira Code.
+
+[^131]: https://github.com/tonsky/FiraCode
+
 
 ## Packages
 
