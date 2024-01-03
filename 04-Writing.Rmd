@@ -5,6 +5,20 @@
 R and RStudio make it possible to efficiently write documents of all formats, from simple notepads to theses to slide shows.
 The tools to do this are the subject of this chapter, completed by the production of web sites (including a personal site).
 
+Two document production processes are available:
+
+- *R Markdown* with the **knitR** and **bookdown** packages. 
+This is the classic method, presented here in detail.
+- *Quarto*, designed to be used with languages beyond R and in working environments beyond RStudio.
+Quarto is under active development but does not yet allow documents to be produced with the same quality as *R Markdown*: for example, punctuation in French documents is not handled correctly in PDF[^rediger-41], tables cannot include equations[^rediger-42] and the width of figures is inconsistent in PDF documents formatted with several columns[^rediger-43].
+The use of Quarto is well documented on its site[^rediger-40] and is not presented here.
+
+[^rediger-40]: <https://quarto.org/>
+[^rediger-41]: <https://github.com/jgm/pandoc/issues/8283/>
+[^rediger-42]: <https://github.com/quarto-dev/quarto-cli/issues/555>
+[^rediger-43]: <https://github.com/quarto-dev/quarto-cli/issues/855>
+
+
 ## Markdown notebook (R Notebook)
 
 In an `.R` file, the code should always be commented to make it easier to read.
@@ -385,6 +399,18 @@ The correspondence and the complete list of languages can be found in table 3 of
 
 [^403]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
 
+HTML formatting of punctuation in French documents is possible using a filter declared in pandoc [^450].
+The `fr-nbsp.lua` file must be copied into the project directory from its GitHub repository and declared into the header of the Markdown document.
+
+```
+output:
+    pandoc_args:
+      --lua-filter=en-nbsp.lua
+```
+
+The filter formats all the punctuation in the document, whatever the language: it should therefore only be used for documents written entirely in French.
+
+[^450]: https://github.com/InseeFrLab/pandoc-filter-fr-nbsp
 
 ### Simple Article template {#sec:memo}
 

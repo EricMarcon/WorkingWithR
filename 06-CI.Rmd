@@ -166,9 +166,9 @@ The steps are described in the `steps` section.
 ```
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
         run: |
           brew install pandoc
@@ -200,78 +200,18 @@ To avoid system specifics, it is better to use an action:
 
 ```
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
 ```
 
-
-#### Caches
-
-Installing R packages takes time, a lot of it if they are installed from source (the standard procedure on Ubuntu, but not on MacOS and Windows where binary packages are used by default).
-Computing the code chunks is usually the longest step of the workflow.
-The `cache` action caches the results of both operations.
-
-```
-      - name: Cache Renv packages
-        uses: actions/cache@v2
-        with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
-      - name: Cache bookdown results
-        uses: actions/cache@v2
-        with:
-          path: _bookdown_files
-          key: bookdown-${{ hashFiles('**/*Rmd') }}
-          restore-keys: bookdown-
-```
-
-The cache is updated when a package or a piece of code is modified, which requires a quick way to check the modifications: a control value (*hashtag*) is computed by the `hashFiles()` function from the `renv.lock` file (see below) for packages and the set of `.Rmd` files for pieces of code.
-Any change leads to the reinstallation of the packages or the recalculation of the whole code: the cache management is less fine-grained than that of R on a workstation, which only recalculates the modified code chunks.
+It is often possible to choose between calling an action or writing the corresponding code.
+The choice made here is to favour actions for everything to do with the system, such as installing software, but to use scripts for R commands, such as checking packages.
+The aim is to control the R code precisely and limit dependencies on additional packages.
+The opposite strategy is developed in @Wickham2023 which relies entirely on actions to perform R tasks.
 
 
 #### Packages {#sec:packages-ci}
 
-The installation of packages is handled by the `install.packages()` function.
-Rather than listing the packages to be installed in the arguments to the function, which is a source of errors, it is better to use the **renv** package to register all the packages used by the project and install them at once for continuous integration. 
-**renv** will install the packages in the registered version, which avoids unexpected effects due to different versions between the workstation and GitHub Actions.
-
-```
-      - name: Install packages
-        run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
-```
-
-It is necessary to install **renv** on the workstation used for the development of the project.
-
-A `DESCRIPTION` file should be used to list the packages for any project, as if it were an R package.
-For this document:
-
-```
-Package: WorkingWithR
-Title: Working with R
-Version: 1.1.0
-Authors@R: c(
-  person("Eric", "Marcon", , "e.marcon@free.fr", c("aut", "cre"))
-  )
-URL: https://github.com/EricMarcon/WorkingWithR
-Imports:
-  bookdown,
-  (...)
-```
-
-Before triggering the workflow, it is necessary to create the list of packages in their current version on the workstation:
-
-```{r snapshot, eval=FALSE}
-renv::snapshot(type="explicit")
-```
-
-When first used, the **renv** package informs of some adaptations to the working environment, which must be accepted.
-
-This command creates the `renv.lock` file which is used by GitHub Actions to install packages during continuous integration.
-It can be updated at any time to take into account their update.
-
-Alternatively, the necessary packages can be installed without the help of **Renv**:
+This step uses `Rscript` as its command environment, which allows it to execute R commands directly.
 
 ```
       - name: Install packages
@@ -281,12 +221,10 @@ Alternatively, the necessary packages can be installed without the help of **Ren
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
           install.packages(c("remotes", "bookdown", "formatR", "tinytex"))
-          tinytex::install_tinytex()
+          tinytex::install_tinytex(bundle = "TinyTeX")
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 ```
-
-This step uses `Rscript` as a command environment, which allows it to execute R commands directly (compare to the use of `R -e` in the previous examples).
 
 The packages used to produce the document are listed:
 
@@ -307,8 +245,6 @@ A better solution is to force the installation of binary packages even if the so
 Finally, the secret `GH_PAT` is passed to R in an environment variable, `GITHUB_PAT`, necessary to install packages from their source code on GitHub.
 GitHub limits the rate of anonymous access for all GitHub actions (all accounts) and may reject the request: in practice, using `install_github()` in a GitHub action is only possible with this environment variable.
 
-In this approach, packages are not cached.
-
 
 #### Knitting
 
@@ -325,7 +261,7 @@ The production of the document is started by an R command.
         shell: Rscript {0}
 ```
 
-The formats set in `_output.yml` are ignored.
+The parameters declared in `_output.yml` are used. 
 
 The PDF file must be produced before the GitBook format in order for its download link to be added to the menu bar of the GitBook site.
 On the other hand, R must be closed and reopened between the two renderings otherwise the tables are not created correctly in GitBook[^ci-6].
@@ -342,7 +278,7 @@ The last step of the production job uses the `upload-artifact` action for this.
 
 ```
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: _book
           path: docs/
@@ -364,7 +300,7 @@ Publishing the artifact to the `gh-pages` branch of the project requires another
     needs: renderbook
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           # Artifact name
           name: _book
@@ -416,11 +352,6 @@ The next step, to be inserted before the knitting step, writes the key to a file
 ## Script templates
 
 Script templates for all types of projects are presented here.
-All of them require the same preparation:
-
-- `GH_PAT` and `EMAIL` secrets must be registered in the GitHub project (section \@ref(sec:secrets-ci)).
-- A `DESCRIPTION` file must be used to list the required packages (section \@ref(sec:package-description)), regardless of the project type.
-- A snapshot of the installed packages (`renv.lock`) must be made if **renv** (section \@ref(sec:packages-ci)) is used.
 
 The `gh-pages` branch is created automatically by the scripts.
 Check after the first execution that GitHub pages are enabled on this branch (section \@ref(sec:github-pages)).
@@ -435,11 +366,12 @@ docs/
 The `build_ghworkflow()` function of the **memoiR** package automatically creates the scripts needed to produce the package's templates.
 The script is always named `memoir.yml`.
 
-These scripts do not use **renv** or cache.
-They do not need a `DESCRIPTION` file for the installation of the dependencies but each document must contain in its parameter code (`Options`) the list of all packages needed for its knitting (stored in the `Packages` variable).
+These scripts do not need a `DESCRIPTION` file for the installation of the dependencies but each document must contain in its parameter code (`Options`) the list of all packages needed for its knitting (stored in the `Packages` variable).
+
+They all require the same preparation: the `GH_PAT` and `EMAIL` secrets must be registered in the GitHub project (section \@ref(sec:secrets-ci)).
 
 
-### Book or thesis {#sec:bookdown-ci}
+#### Book or thesis {#sec:bookdown-ci}
 
 The workflow is called `rmarkdown`; its production job is `render`.
 
@@ -456,17 +388,17 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
-          install.packages(c("memoiR", "rmdformats", "tinytex"))
-          tinytex::install_tinytex()
+          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))
+          tinytex::install_tinytex(bundle = "TinyTeX")
         shell: Rscript {0}
       - name: Render pdf book
         run: |
@@ -477,7 +409,7 @@ jobs:
           bookdown::render_book("index.Rmd", "bookdown::gitbook")
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: ghpages
           path: docs
@@ -486,7 +418,7 @@ jobs:
     needs: render
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           name: ghpages
           path: docs
@@ -501,7 +433,7 @@ jobs:
 ```
 
 
-### Articles or slideshows
+#### Articles or slideshows
 
 The workflow is called `rmarkdown`; its production job is `render`.
 
@@ -518,11 +450,11 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
         run: |
           options(pkgType = "binary")
@@ -535,9 +467,9 @@ jobs:
           RMD_PATH=($(ls | grep "[.]Rmd$"))
           Rscript -e 'for (file in commandArgs(TRUE)) |>
               rmarkdown::render(file, "all")' ${RMD_PATH[*]}
-          Rscript -e 'memoiR::build_githubpages()'
+          Rscript -e 'memoiR::build_githubpages(bundle = "TinyTeX")'
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: ghpages
           path: docs
@@ -546,7 +478,7 @@ jobs:
     needs: render
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           name: ghpages
           path: docs
@@ -611,7 +543,7 @@ The "Upload artifact" step is modified to run despite the failure of the previou
 ```
       - name: Upload artifact
         if: always()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: _book
           path: docs/
@@ -651,11 +583,11 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
       - name: Install packages
         run: |
           options(pkgType = "binary")
@@ -678,7 +610,7 @@ jobs:
     needs: buildsite
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           # Artifact name
           name: _website
@@ -720,31 +652,32 @@ name: R-CMD-check
 jobs:
   R-CMD-check:
     runs-on: macOS-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GH_PAT }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
+      - name: Pull the repository
+        uses: actions/checkout@v4
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
       - name: Install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
-      - name: Install dependencies
+        uses: r-lib/actions/setup-pandoc@v2
+      - name: Install R packages
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
-          install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown"))
+          install.packages(c("remotes", "roxygen2", "rcmdcheck", "covr", "pkgdown"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
-      - name: Roxygenize
+      - name: Update the documentation
         run: roxygen2::roxygenize()
         shell: Rscript {0}
-      - uses: EndBug/add-and-commit@v9
-      - name: Check
+      - name: Commit and push the repository
+        uses: EndBug/add-and-commit@v9
+      - name: Check the package
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning")
         shell: Rscript {0}
       - name: Test coverage
         run: covr::codecov(type="all")
         shell: Rscript {0}
-      - name: Install package
+      - name: Install the package
         run: R CMD INSTALL .
       - name: Pkgdown
         run: |
@@ -762,6 +695,10 @@ The script does not use **Renv** to handle packages because package checking mus
 The `Roxygenize` step updates the package documentation.
 The updated files are pushed into the main project branch by the `add-and-commit` action.
 These two steps ensure that the package is in a consistent state, even if the author failed to execute the `roxygenize()` function before pushing his code to GitHub.
+To avoid triggering a loop to check code pushed in this way, the access token used must be that of the current script, created by GitHub each time it is run.
+By default, this token does not have the right to modify the repository.
+You therefore need to give it this right: on GitHub, display the project parameters and select 'Actions', 'General'.
+In the "Workflow permissions" section, select "Read and write permissions".
 
 The `Check` step checks the package.
 Warnings are treated as errors.
@@ -777,6 +714,116 @@ More complex scripts are proposed by R-lib[^ci-5], in particular to run the test
 These advanced tests are to be performed before submitting to CRAN (section \@ref(sec:package-cran)) but consume too much resource for systematic use.
 
 [^ci-5]: <https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow>
+
+
+### Pull requests {#sec:ci-pr}
+
+Pull requests can be tested by very similar scripts to check that they do not generate errors before merging them.
+
+One effective method is to create a new script in the `.github/workflows/` folder, starting from a copy of the existing script.
+The new script will be named `pr.yml`.
+The trigger must be changed: `pull_request` replaces `push`: 
+
+```
+on:
+  pull_request:
+     branches:
+       - master
+```
+
+#### memoiR {#sec:memoiR-pr-ci}
+
+The scripts for checking documents created by **memoiR** must be cut after the `Render gitbook` step: the artefact must not be saved and the deployment task must be deleted.
+The script is as follows:
+
+```
+on:
+  pull_request:
+    branches:
+      - master
+
+name: rmarkdown
+
+jobs:
+  render:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+      - name: Install dependencies
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))
+          tinytex::install_tinytex(bundle = "TinyTeX")
+        shell: Rscript {0}
+      - name: Render pdf book
+        env:
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+        shell: Rscript {0}
+      - name: Render gitbook
+        env:
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          bookdown::render_book("index.Rmd", "bookdown::bs4_book")
+        shell: Rscript {0}
+      # Don't upload the artifact and don't deploy
+
+```
+
+#### R Packages {#sec:package-pr-ci6}
+
+Scripts dedicated to checking packages should not push updates to their documentation through **Roxygenize2**, nor should they deploy their **pkgdown** updates to GitHub pages.
+The coverage rate does not need to be measured.
+The script is as follows:
+
+```
+on:
+  pull_request:
+    branches:
+      - master
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    runs-on: macOS-latest
+    steps:
+      - name: Pull the repository
+        uses: actions/checkout@v4
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+      - name: Install pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+      - name: Install R packages
+        run: |
+          options(pkgType = "binary")
+          options(install.packages.check.source = "no")
+          install.packages(c("remotes", "roxygen2", "rcmdcheck", "covr", "pkgdown"))
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+      - name: Update the documentation
+        run: roxygen2::roxygenize()
+        shell: Rscript {0}
+        # Don't push
+      - name: Check the package
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning")
+        shell: Rscript {0}
+      # Don't test coverage
+      - name: Install the package
+        run: R CMD INSTALL .
+      - name: Pkgdown
+        # Build the package site locally
+        run: Rscript -e 'pkgdown::build_site()'
+```
+
+When pull requests are submitted, the corresponding test is run and its results included in the discussion.
 
 
 ## Add badges {#sec:ci-badges}

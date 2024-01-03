@@ -1,24 +1,31 @@
-Package: travailleR
+Package: WorkingWithR
 Title: Working with R
 Version: 6.dev
-Authors@R: c(
-  person("Eric", "Marcon", , "e.marcon@free.fr", c("aut", "cre"))
-  )
+Authors@R: person(
+  given = "Eric",
+  family = "Marcon",
+  role = c("aut", "cre"),
+  email = "eric.marcon@agroparistech.fr",
+  comment = c(ORCID = "0000-0002-5249-321X"))
 URL: https://github.com/EricMarcon/WorkingWithR
 Depends:
   R (>= 4.0.0)
 Imports:
   compiler,
   dbmss,
+  doFuture,
   doParallel,
   entropart,
   flextable,
   foreach,
   formatR,
+  future,
+  future.apply,
   gridExtra,
   htmlwidgets, 
   kableExtra,
   magrittr,
+  methods,
   microbenchmark,
   parallel,
   profvis,
@@ -33,6 +40,4 @@ Imports:
   tidyverse,
   usethis,
   visNetwork
-Suggests: 
-  testthat
 License: CC BY 4.0

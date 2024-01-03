@@ -230,29 +230,25 @@ The development of the package is punctuated by many commits at each modificatio
 ### package.R
 
 The `package.R` file is intended to receive the R code and especially the comments for **roxygen2** which concern the whole package.
-
-The first comment block will produce the package help (`?multiple`).
-
-```
-#' multiple-package
-#'
-#' Multiples of numbers
-#' 
-#' This package allows simple computation of multiples 
-#' of numbers, including fast algorithms for integers.
-#'
-#' @name multiple
-#' @docType package
-NULL
+This file can also be named `multiple-package.R`, prefixed with the package name, for compatibility with **usethis**.
+It can be created under this name with the command:
+```{r use_package_doc, eval=FALSE}
+usethis::use_package_doc()
 ```
 
-Its organization is identical to that of the function documentations, with two particular declarations for the package name and the documentation type.
-The `NULL` code after the comments tells **roxygen2** that there is no related R code.
+The first comment block will generate the package help (`?multiple`).
+
+```
+#' @keywords internal 
+"_PACKAGE"
+```
+
+The "_PACKAGE" keyword indicates that package documentation must be produced. 
+It could be written in the block, with a syntax identical to that of functions, but its default content is that of the `Description` field in the `DESCRIPTION` file.
+The `internal` keyword hides the package documentation in the help summary.
 
 The documentation is updated by the `roxygen2::roxygenise()` command.
 After rebuilding the package, check that the help has appeared: `?multiple`.
-
-
 
 
 ## Package organization
@@ -270,9 +266,8 @@ Authors@R:
            role = c("aut", "cre"),
            email = "e.marcon@free.fr",
            comment = c(ORCID = "0000-0002-5249-321X"))
-Description: This package allows simple computation
-  of multiples of numbers, including fast algorithms
-  for integers.
+Description: Simple computation of multiples of numbers, 
+  including fast algorithms for integers.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -301,7 +296,7 @@ When the development is stabilized, the new version, intended to be used in prod
 
 The description of the authors is rather heavy but simple to understand.
 The Orcid identifiers of academic authors can be used.
-If the package has several authors, they are placed in a `c()` function: `c(person(...), person())` for two authors.
+If the package has several authors, they are placed in a `c()` function: `c(person(...), person(...))` for two authors.
 In this case, the role of each must be specified:
 
 * "cre" for the creator of the package.
@@ -1003,20 +998,23 @@ References are cited by the command `\insertCite{key}{package}` in the documenta
 `package` is the name of the package in which the `REFERENCES.bib` file is to be searched: this will normally be the current package, but references to other packages are accessible, provided only that they use **Rdpack**.
 
 `key` is the identifier of the reference in the file.
-The following example[^507] is from the documentation of the **SpatDiv** package hosted on GitHub, in its `.R` file:
+The following example[^507] is from the documentation of the **divent** package hosted on GitHub, in its `.R` file:
 
 ```{r Citations}
-#' SpatDiv
+#' divent
 #'
-#' Spatially Explicit Measures of Diversity
+#' Measures of Diversity and Entropy
 #' 
-#' This package extends the **entropart** package
-#' \insertCite{Marcon2014c}{SpatDiv}.
-#' It provides spatially explicit measures of 
-#' diversity such as the mixing index.
+#' This package is a reboot of the **entropart** package \insertCite{Marcon2014c}{divent}.
+#'
+#' @importFrom Rdpack reprompt
+#' 
+#' @references
+#' \insertAllCited{}
+"_PACKAGE"
 ```
 
-[^507]: **SpatDiv** package on GitHub: https://github.com/EricMarcon/SpatDiv/blob/master/R/package.R
+[^507]: **divent** package on GitHub: https://github.com/EricMarcon/divent/blob/master/R/package.R
 
 The cited reference is in `inst/REFERENCES.bib`:
 
@@ -1037,7 +1035,7 @@ Citations are enclosed in parentheses.
 To place the author's name outside the parenthesis, add the statement `;textual`:
 
 ```
-\insertCite{Marcon2014c;textual}{SpatDiv}
+\insertCite{Marcon2014c;textual}{divent}
 ```
 To cite several references (necessarily from the same package), separate them with commas.
 
