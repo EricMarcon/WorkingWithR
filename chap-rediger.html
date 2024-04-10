@@ -7,7 +7,7 @@
 <title>4 Writing | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="R and RStudio make it possible to efficiently write documents of all formats, from simple notepads to theses to slide shows. The tools to do this are the subject of this chapter, completed by the...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
 <meta property="og:title" content="4 Writing | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-rediger.html">
@@ -17,8 +17,9 @@
 <meta name="twitter:description" content="R and RStudio make it possible to efficiently write documents of all formats, from simple notepads to theses to slide shows. The tools to do this are the subject of this chapter, completed by the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
 <script src="libs/tabwid-1.1.3/tabwid.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-7NVD1TWMCJ"></script><script>
@@ -36,6 +37,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -114,7 +116,7 @@ The use of Quarto is well documented on its site<a class="footnote-ref" tabindex
 </h2>
 <p>In an <code>.R</code> file, the code should always be commented to make it easier to read.
 When the explanation of the code requires several lines of comment per line or block of code, it is time to reverse the logic and place the code in the text.</p>
-<p>The concept of literate programming was developed by <span class="citation">Knuth (<a href="references.html#ref-Knuth1984" role="doc-biblioref">1984</a>)</span>.
+<p>The concept of literate programming was developed by <span class="citation">Knuth (<a href="references.html#ref-Knuth1984">1984</a>)</span>.
 It consists in describing the objectives and methods by text, in which the code is integrated.</p>
 <p>The simplest tool is the Markdown notebook (Menu “File &gt; New File &gt; R Notebook”).
 The document template contains its instructions for use.</p>
@@ -126,10 +128,10 @@ The document template contains its instructions for use.</p>
 <li>Other simple codes allow all useful formatting.</li>
 </ul>
 <p>This language is the core of the pandoc<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://fr.wikipedia.org/wiki/Pandoc" class="uri"&gt;https://fr.wikipedia.org/wiki/Pandoc&lt;/a&gt;&lt;/p&gt;'><sup>53</sup></a> software, dedicated to converting documents of different formats.</p>
-<p>The <strong>rmarkdown</strong> package <span class="citation">(<a href="references.html#ref-Xie2015" role="doc-biblioref">Xie 2015</a>)</span> bridges the gap between R and Markdown, relying on the RStudio interface which is not essential but greatly simplifies its use.
+<p>The <strong>rmarkdown</strong> package <span class="citation">(<a href="references.html#ref-Xie2015">Xie 2015</a>)</span> bridges the gap between R and Markdown, relying on the RStudio interface which is not essential but greatly simplifies its use.
 The Markdown dialect used by the package is called <em>R Markdown</em>.
 Its syntax is summarized in a cheat sheet<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" class="uri"&gt;https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf&lt;/a&gt;&lt;/p&gt;'><sup>54</sup></a>.
-Its complete documentation is online <span class="citation">(<a href="references.html#ref-Xie2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span>.</p>
+Its complete documentation is online <span class="citation">(<a href="references.html#ref-Xie2018">Xie, Allaire, and Grolemund 2018</a>)</span>.</p>
 <p>Equations are written in the LaTeX format<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques" class="uri"&gt;https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques&lt;/a&gt;&lt;/p&gt;'><sup>55</sup></a>.</p>
 <p>The simplest organization of a <em>R Markdown</em> document can be seen in the notepad template.
 It starts with a header in YAML format<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://fr.wikipedia.org/wiki/YAML" class="uri"&gt;https://fr.wikipedia.org/wiki/YAML&lt;/a&gt;&lt;/p&gt;'><sup>56</sup></a>:</p>
@@ -301,15 +303,15 @@ Always place these files in the <code>images</code> folder for good organization
 <p>The horizontal <code>-</code> and vertical <code>|</code> separators allow to draw a table according to the Markdown syntax, but it is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
+The <code>kbl</code> function in the <em>kableExtra</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function for final formatting.</p>
 <p></p>
 <div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
 <span><span class="va">my_iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">my_iris</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal length ($l_s$)"</span>, <span class="st">"Width"</span>, <span class="st">"Petal length"</span>,</span>
 <span>    <span class="st">"Width"</span>, <span class="st">"Species"</span><span class="op">)</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">my_iris</span>, caption <span class="op">=</span> <span class="st">"Table created by kable"</span>, booktabs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    escape <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">my_iris</span>, caption <span class="op">=</span> <span class="st">"Table created by kable"</span>,</span>
+<span>    booktabs <span class="op">=</span> <span class="cn">TRUE</span>, escape <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="st">"striped"</span>,</span>
 <span>        full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -441,7 +443,7 @@ setosa
 <p></p>
 <p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table is given a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="chap-rediger.html#tab:kable">4.1</a>).
 As with the figures, an enhanced caption can be written in a separate paragraph.
-A short caption for a possible list of tables (option <code>lot: true</code> in the header) is declared in the <code>caption.short</code> argument of <code>kable()</code>.</p>
+A short caption for a possible list of tables (option <code>lot: true</code> in the header) is declared in the <code>caption.short</code> argument of <code>kbl()</code>.</p>
 <p>Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
 Since the table contains mathematics (in the name of the first column), the <code>escape = FALSE</code> option is necessary.</p>
 <p>The <code>bootstrap_options = "striped"</code> style option provides more readable tables in HTML.
@@ -458,10 +460,7 @@ Last, the <code>full_width = FALSE</code> option allows to adjust the width of t
 <pre><code>## The following object is masked from 'package:purrr':
 ## 
 ##     compose</code></pre>
-<pre><code>## The following objects are masked from 'package:kableExtra':
-## 
-##     as_image, footnote</code></pre>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># iris dataset</span></span>
 <span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="co"># First lines</span></span>
@@ -474,57 +473,57 @@ Last, the <code>full_width = FALSE</code> option allows to adjust the width of t
 <span>    <span class="co"># Select long sepals (&gt;5) and display them in red</span></span>
 <span><span class="fu"><a href="https://davidgohel.github.io/flextable/reference/color.html">color</a></span><span class="op">(</span><span class="op">~</span><span class="va">Sepal.Length</span> <span class="op">&gt;</span> <span class="fl">5</span>, <span class="op">~</span><span class="va">Sepal.Length</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <div class="tabwid">
-<style>.cl-e2286dba{}.cl-e21a0a18{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e21a0a36{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-e220540e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e2205422{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e2207ac4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2207ace{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2207ad8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2207ad9{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2207ae2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2207ae3{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<div class="inline-table"><table data-quarto-disable-processing="true" class="cl-e2286dba">
+<style>.cl-73dfcc36{}.cl-73d667b8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-73d667cc{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-73db6dc6{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-73db6dd0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-73db85c2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73db85c3{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73db85cc{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73db85cd{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73db85d6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73db85e0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<div class="inline-table"><table data-quarto-disable-processing="true" class="cl-73dfcc36">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-e2207ac4"><p class="cl-e220540e"><span class="cl-e21a0a18">Sepal Length</span></p></th>
-<th class="cl-e2207ac4"><p class="cl-e220540e"><span class="cl-e21a0a18">Width</span></p></th>
-<th class="cl-e2207ac4"><p class="cl-e220540e"><span class="cl-e21a0a18">Petal Length</span></p></th>
-<th class="cl-e2207ac4"><p class="cl-e220540e"><span class="cl-e21a0a18">Width</span></p></th>
-<th class="cl-e2207ace"><p class="cl-e2205422"><span class="cl-e21a0a18">Species</span></p></th>
+<th class="cl-73db85c2"><p class="cl-73db6dc6"><span class="cl-73d667b8">Sepal Length</span></p></th>
+<th class="cl-73db85c2"><p class="cl-73db6dc6"><span class="cl-73d667b8">Width</span></p></th>
+<th class="cl-73db85c2"><p class="cl-73db6dc6"><span class="cl-73d667b8">Petal Length</span></p></th>
+<th class="cl-73db85c2"><p class="cl-73db6dc6"><span class="cl-73d667b8">Width</span></p></th>
+<th class="cl-73db85c3"><p class="cl-73db6dd0"><span class="cl-73d667b8">Species</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a36">5.1</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">3.5</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">1.4</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">0.2</span></p></td>
-<td class="cl-e2207ad9"><p class="cl-e2205422"><span class="cl-e21a0a18">setosa</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667cc">5.1</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">3.5</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">1.4</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">0.2</span></p></td>
+<td class="cl-73db85cd"><p class="cl-73db6dd0"><span class="cl-73d667b8">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">4.9</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">3.0</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">1.4</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">0.2</span></p></td>
-<td class="cl-e2207ad9"><p class="cl-e2205422"><span class="cl-e21a0a18">setosa</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">4.9</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">3.0</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">1.4</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">0.2</span></p></td>
+<td class="cl-73db85cd"><p class="cl-73db6dd0"><span class="cl-73d667b8">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">4.7</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">3.2</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">1.3</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">0.2</span></p></td>
-<td class="cl-e2207ad9"><p class="cl-e2205422"><span class="cl-e21a0a18">setosa</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">4.7</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">3.2</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">1.3</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">0.2</span></p></td>
+<td class="cl-73db85cd"><p class="cl-73db6dd0"><span class="cl-73d667b8">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">4.6</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">3.1</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">1.5</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">0.2</span></p></td>
-<td class="cl-e2207ad9"><p class="cl-e2205422"><span class="cl-e21a0a18">setosa</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">4.6</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">3.1</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">1.5</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">0.2</span></p></td>
+<td class="cl-73db85cd"><p class="cl-73db6dd0"><span class="cl-73d667b8">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">5.0</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">3.6</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">1.4</span></p></td>
-<td class="cl-e2207ad8"><p class="cl-e220540e"><span class="cl-e21a0a18">0.2</span></p></td>
-<td class="cl-e2207ad9"><p class="cl-e2205422"><span class="cl-e21a0a18">setosa</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">5.0</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">3.6</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">1.4</span></p></td>
+<td class="cl-73db85cc"><p class="cl-73db6dc6"><span class="cl-73d667b8">0.2</span></p></td>
+<td class="cl-73db85cd"><p class="cl-73db6dd0"><span class="cl-73d667b8">setosa</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-e2207ae2"><p class="cl-e220540e"><span class="cl-e21a0a36">5.4</span></p></td>
-<td class="cl-e2207ae2"><p class="cl-e220540e"><span class="cl-e21a0a18">3.9</span></p></td>
-<td class="cl-e2207ae2"><p class="cl-e220540e"><span class="cl-e21a0a18">1.7</span></p></td>
-<td class="cl-e2207ae2"><p class="cl-e220540e"><span class="cl-e21a0a18">0.4</span></p></td>
-<td class="cl-e2207ae3"><p class="cl-e2205422"><span class="cl-e21a0a18">setosa</span></p></td>
+<td class="cl-73db85d6"><p class="cl-73db6dc6"><span class="cl-73d667cc">5.4</span></p></td>
+<td class="cl-73db85d6"><p class="cl-73db6dc6"><span class="cl-73d667b8">3.9</span></p></td>
+<td class="cl-73db85d6"><p class="cl-73db6dc6"><span class="cl-73d667b8">1.7</span></p></td>
+<td class="cl-73db85d6"><p class="cl-73db6dc6"><span class="cl-73d667b8">0.4</span></p></td>
+<td class="cl-73db85e0"><p class="cl-73db6dd0"><span class="cl-73d667b8">setosa</span></p></td>
 </tr>
 </tbody>
 </table></div>
@@ -753,7 +752,7 @@ For example, to force a line break before <code>file.Rmd</code>:</p>
 <p>R code snippets are automatically formatted by <strong>knitr</strong> when the <code>tidy=TRUE</code> option is applied to them.
 The default behavior is specified in the <strong>knitr</strong> options, in a code snippet at the beginning of the <code>index.Rmd</code> file:</p>
 <p></p>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># knitr options</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span></span>
 <span>  cache<span class="op">=</span><span class="cn">TRUE</span>, warning<span class="op">=</span><span class="cn">FALSE</span>, echo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -924,12 +923,12 @@ So we will use this solution, for a site like the one proposed in example<a clas
 </h3>
 <p>The first step is to install the <strong>blogdown</strong> package in R.</p>
 <p></p>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"blogdown"</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p><strong>blogdown</strong> is able to install Hugo on Windows, macOS or Linux.</p>
 <p></p>
-<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu">install_hugo</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The full documentation for <strong>blogdown</strong> is available<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://bookdown.org/yihui/blogdown/" class="uri"&gt;https://bookdown.org/yihui/blogdown/&lt;/a&gt;&lt;/p&gt;'><sup>82</sup></a>.</p>
@@ -997,19 +996,19 @@ index.html
 </h3>
 <p>Run</p>
 <p></p>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu">build_site</span><span class="op">(</span>build_rmd <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>to build the website, including its future R Markdown pages.</p>
 <p>To display the site, run :</p>
 <p></p>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">:::</span><span class="fu">serve_site</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>It appears in the RStudio <em>Viewer</em> window, which can be viewed in the system’s default web browser by clicking the enlarge button.</p>
 <p>To modify the content of the site, it is best to stop the web server with the command:</p>
 <p></p>
-<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">:::</span><span class="fu">stop_server</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The site produced by <strong>blogdown</strong> is located in the <code>public</code> folder which can be copied directly to a web server that will host it.
@@ -1285,7 +1284,7 @@ The <code>blogdown::new_post()</code> command can also be used, but it does not 
 <p>Rebuilding the site does not by default update pages based on a <code>.Rmd</code> file.
 To do this, you must force the <code>build_site()</code> command.</p>
 <p></p>
-<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu">build_site</span><span class="op">(</span>build_rmd <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu">serve_site</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
@@ -1436,14 +1435,14 @@ The <code>icon.png</code> file can be replaced.</p>
 The version used is indicated in the <code>go.mod</code> file.
 To use the latest official version, run the following command in the R console:</p>
 <p></p>
-<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu">hugo_cmd</span><span class="op">(</span><span class="st">"mod get -u"</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The <code>go.mod</code> and <code>go.sum</code> files, which contain the hash codes of the module files, are updated.</p>
 <p>Each version change may require adaptations to the site content, referenced in the online documentation of the theme<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://wowchemy.com/updates/" class="uri"&gt;https://wowchemy.com/updates/&lt;/a&gt;&lt;/p&gt;'><sup>96</sup></a>.</p>
 <p>Update Hugo at the same time:</p>
 <p></p>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu">update_hugo</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 </div>
@@ -1469,7 +1468,7 @@ The <code><a href="https://rdrr.io/r/graphics/image.html">image()</a></code> fun
 Figure <a href="chap-rediger.html#fig:volcano">4.10</a> shows the result of the following code:</p>
 
 <p></p>
-<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">volcano</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">volcano</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html">image</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">volcano</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">100</span>, <span class="st">"terrain"</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -1495,7 +1494,7 @@ Figure 4.10: Maunga Whau volcano contours, code provided as an example of the <c
 <p>The <code><a href="https://rdrr.io/r/grDevices/postscript.html">postscript()</a></code> function produces an EPS file.
 The R code must call the function to create the file, produce the figure, and then close the file, for example:</p>
 <p></p>
-<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Open the file</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/postscript.html">postscript</a></span><span class="op">(</span><span class="st">"Fig1.eps"</span>, width <span class="op">=</span> <span class="fl">6</span>, height <span class="op">=</span> <span class="fl">4</span>, horizontal <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co"># Create the figure</span></span>
@@ -1525,7 +1524,7 @@ Their usage is the same as that of the <strong>grDevices</strong> functions.</p>
 <strong>ragg</strong> improves their quality: the package must be installed and <code>dev = "ragg_png"</code> must be added to the <strong>knitr</strong> options.
 For this document, the options declared in <code>index.Rmd</code> are the following:</p>
 <p></p>
-<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span></span>
 <span>  cache<span class="op">=</span><span class="cn">FALSE</span>, <span class="co"># Cache chunk results</span></span>
 <span>  echo <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># Show/Hide R chunks</span></span>
@@ -1549,7 +1548,7 @@ For this document, the options declared in <code>index.Rmd</code> are the follow
 </h2>
 <p>A workflow (see section <a href="chap-utiliseR.html#sec:targets">2.8</a>) can be embedded in an R Markdown document starting with version 0.5 of the <strong>targets</strong> package.</p>
 <p></p>
-<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://docs.ropensci.org/targets/">"targets"</a></span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <div id="declaration-of-the-workflow" class="section level3" number="4.9.1">
@@ -1563,7 +1562,7 @@ If they are run in interactive mode, for example in R Studio, their code is exec
 The <code>tar_interactive = FALSE</code> option in their header allows them to be tested without knitting the whole document.</p>
 <p>Any old workflow must be removed before writing the new one:</p>
 <p></p>
-<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_unscript.html">tar_unscript</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The first code chunk, with the <code>tar_globals=TRUE</code> option, writes the global options for the workflow
@@ -1586,7 +1585,7 @@ runifpoint(NbPoints)
 The value of the target is the last value returned, just like a function that would not use <code><a href="https://rdrr.io/r/base/function.html">return()</a></code>.</p>
 <p>During knitting, this simplified code (<code>tar_simple=TRUE</code>) is automatically transformed into a target code:</p>
 <p></p>
-<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">X</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/spatstat.random/man/runifpoint.html">runifpoint</a></span><span class="op">(</span><span class="va">NbPoints</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
@@ -1601,7 +1600,7 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 <code>NbPoints</code>:</li>
 </ul>
 <p></p>
-<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">NbPoints</span>, <span class="op">{</span></span>
 <span>    <span class="fl">1000</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
@@ -1613,7 +1612,7 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 <code>d</code>:</li>
 </ul>
 <p></p>
-<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">d</span>, <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/pairdist.html">pairdist</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="va">NbPoints</span><span class="op">/</span><span class="op">(</span><span class="va">NbPoints</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
@@ -1625,7 +1624,7 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 <code>map</code>:</li>
 </ul>
 <p></p>
-<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">map</span>, <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="fu">as.wmppp</span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
@@ -1639,20 +1638,20 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 </h3>
 <p>To start the target calculation, a standard piece of code (<code>{r}</code>) must call <code><a href="https://docs.ropensci.org/targets/reference/tar_make.html">tar_make()</a></code>:</p>
 <p></p>
-<div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_visnetwork.html">tar_visnetwork</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="visNetwork html-widget html-fill-item" id="htmlwidget-f86449deb0c1fad89ea7" style="width:80%;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-f86449deb0c1fad89ea7">{"x":{"nodes":{"name":["d","map","NbPoints","X"],"type":["stem","stem","stem","stem"],"status":["outdated","outdated","outdated","outdated"],"seconds":[null,null,null,null],"bytes":[null,null,null,null],"branches":[null,null,null,null],"label":["d","map","NbPoints","X"],"color":["#78B7C5","#78B7C5","#78B7C5","#78B7C5"],"id":["d","map","NbPoints","X"],"level":[3,3,1,2],"shape":["dot","dot","dot","dot"]},"edges":{"from":["NbPoints","NbPoints","X","X"],"to":["X","d","d","map"],"arrows":["to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"physics":{"stabilization":false},"interaction":{"zoomSpeed":1},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":1,"to":1},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"right","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Outdated","Stem"],"color":["#78B7C5","#899DA4"],"shape":["dot","dot"]},"nodesToDataframe":true},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
+<script type="application/json" data-for="htmlwidget-f86449deb0c1fad89ea7">{"x":{"nodes":{"name":["d","map","NbPoints","X"],"type":["stem","stem","stem","stem"],"description":[null,null,null,null],"status":["outdated","outdated","outdated","outdated"],"seconds":[null,null,null,null],"bytes":[null,null,null,null],"branches":[null,null,null,null],"label":["d","map","NbPoints","X"],"color":["#78B7C5","#78B7C5","#78B7C5","#78B7C5"],"id":["d","map","NbPoints","X"],"level":[3,3,1,2],"shape":["dot","dot","dot","dot"]},"edges":{"from":["NbPoints","NbPoints","X","X"],"to":["X","d","d","map"],"arrows":["to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"physics":{"stabilization":false},"interaction":{"zoomSpeed":1},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":1,"to":1},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"right","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Outdated","Stem"],"color":["#78B7C5","#899DA4"],"shape":["dot","dot"]},"nodesToDataframe":true},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_make.html">tar_make</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## ▶ dispatched target NbPoints
-## ● completed target NbPoints [1.884 seconds]
+## ● completed target NbPoints [1.263 seconds]
 ## ▶ dispatched target X
-## ● completed target X [0.004 seconds]
+## ● completed target X [0.002 seconds]
 ## ▶ dispatched target d
-## ● completed target d [0.021 seconds]
+## ● completed target d [0.014 seconds]
 ## ▶ dispatched target map
-## ● completed target map [0.028 seconds]
-## ▶ completed pipeline [2.111 seconds]</code></pre>
+## ● completed target map [0.029 seconds]
+## ▶ ended pipeline [1.468 seconds]</code></pre>
 <p></p>
 <p><code><a href="https://docs.ropensci.org/targets/reference/tar_visnetwork.html">tar_visnetwork()</a></code> is used to check that the workflow is correct before running it.
 When the document is finally produced, the <code>include=FALSE</code> option can be added to the header of this piece of code so that it does not produce any output.</p>
@@ -1663,7 +1662,7 @@ When the document is finally produced, the <code>include=FALSE</code> option can
 </h3>
 <p>Code snippets that use target values must read them with <code><a href="https://docs.ropensci.org/targets/reference/tar_read.html">tar_read()</a></code>:</p>
 <p></p>
-<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_read.html">tar_read</a></span><span class="op">(</span><span class="va">map</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="WwR_files/figure-html/tar_read_4-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p></p>
@@ -1759,7 +1758,7 @@ This way, calculations done locally will not be repeated by GitHub Actions (chap
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 01/03/2024.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 04/10/2024.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
