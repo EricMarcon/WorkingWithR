@@ -1443,6 +1443,11 @@ If necessary, images can be produced in BMP (bitmap, without compression), JPEG 
 
 ### Functions
 
+ggplots can be saved to a file by the `ggsave()` function.
+The extension of the file name sets its format.
+See the help of the function for more details.
+
+Other graphics require another method.
 The `postscript()` function produces an EPS file.
 The R code must call the function to create the file, produce the figure, and then close the file, for example:
 
