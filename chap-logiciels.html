@@ -7,7 +7,7 @@
 <title>1 Software | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="The central tool is obviously R, but its operation is today difficult to consider without its development environment RStudio. For source control, git and GitHub are the de facto standards. The...">
-<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="1 Software | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-logiciels.html">
@@ -172,8 +172,8 @@ From version 4.2 onwards, there is no reason to change the default operation: lo
 <p></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "/Users/runner/work/_temp/Library"                                     
-## [2] "/Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/library"</code></pre>
+<pre><code>## [1] "/Users/runner/work/_temp/Library"                                    
+## [2] "/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library"</code></pre>
 <p></p>
 </div>
 </div>
@@ -241,9 +241,9 @@ The backup of this folder is managed elsewhere.</li>
 <li>A folder outside the home folder is used for source-controlled projects.
 The user must have the right to write to it.
 In the Windows organization, the folder corresponding to these criteria is <code>%LOCALAPPDATA%</code>, typically <code>C:\Users\Name\AppData</code>.
-The folder will therefore be <code>%LOCALAPPDATA%\ProjectsR</code>.
-To create it, run <code>md %LOCALAPPDATA%\ProjectsR</code> in a command prompt.
-Pin this folder to the quick access of the file explorer (figure <a href="chap-logiciels.html#fig:R-ProjetsR">1.1</a>): paste <code>%LOCALAPPDATA%\ProjetsR</code> in the address bar of the file explorer, validate, then right click on “Quick Access” and pin the folder.</li>
+The folder will therefore be <code>%LOCALAPPDATA%\RProjects</code>.
+To create it, run <code>md %LOCALAPPDATA%\RProjects</code> in a command prompt.
+Pin this folder to the quick access of the file explorer (figure <a href="chap-logiciels.html#fig:R-ProjetsR">1.1</a>): paste <code>%LOCALAPPDATA%\RProjects</code> in the address bar of the file explorer, validate, then right click on “Quick Access” and pin the folder.</li>
 </ul>
 <p></p>
 <div class="figure" style="text-align: center">
@@ -628,7 +628,7 @@ At the end of the installation, run the command <code>go version</code> in a ter
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 04/10/2024.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 05/01/2024.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
