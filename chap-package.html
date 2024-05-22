@@ -569,7 +569,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <code class="sourceCode R"><span><span class="va">plot</span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x1306c9f00&gt;
+## &lt;bytecode: 0x10727d180&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -737,9 +737,9 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span>    <span class="fu">triple</span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##                expr min  lq    mean median  uq    max neval
-##  triple.integer(2L) 123 123  172.20    123 164   2952   100
-##   triple.numeric(2) 123 123 6502.19    123 164 636279   100
-##          triple(2L) 492 533 9327.09    533 533 878220   100</code></pre>
+##  triple.integer(2L) 123 123  148.01    123 164    533   100
+##   triple.numeric(2) 123 123 6617.81    123 164 648005   100
+##          triple(2L) 492 533 8891.26    533 574 833120   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -967,7 +967,7 @@ It must be imported:</li>
 <span><span class="fu">graphics</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x1306c9f00&gt;
+## &lt;bytecode: 0x10727d180&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' autoplot</span></span>
@@ -998,7 +998,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod("autoplot")
 ## }
-## &lt;bytecode: 0x126e54010&gt;
+## &lt;bytecode: 0x1173e64a8&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
@@ -1080,7 +1080,7 @@ References used in R Markdown files (vignette, site produced by <strong>pkgdown<
 <h3>
 <span class="header-section-number">5.6.1</span> Preparation<a class="anchor" aria-label="anchor" href="#preparation"><i class="fas fa-link"></i></a>
 </h3>
-<p>Bibliographic references must be placed in a bibtex file <code>REFERENCES.bib</code> placed in the <code>inst</code> folder.
+<p>Bibliographic references must be placed in a BibTeX file <code>REFERENCES.bib</code> placed in the <code>inst</code> folder.
 This folder contains files that will be placed in the root of the package folder when it is installed.</p>
 <p>Add the following line to <code>DESCRIPTION</code>:</p>
 <pre><code>RdMacros: Rdpack</code></pre>
@@ -1385,7 +1385,7 @@ Otherwise, the package is archived.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 05/01/2024.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 05/22/2024.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
