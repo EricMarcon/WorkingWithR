@@ -800,15 +800,15 @@ Go must therefore be installed[^rediger-23].
 The easiest way is to create a repository on GitHub from the template.
 On the *starter-academic*[^rediger-24] repository page, click on the "Use this template" button, optionally authenticate to GitHub, and then enter the name of the repository that will contain the project, for example "MySite".
 
-The repository can be the one of the main site of your GitHub account (see section \@ref(sec:github-pages)), at the address https://GitHubID.github.io[^rediger-40].
+[^rediger-24]: <https://github.com/wowchemy/starter-academic>
+
+The repository can be the one of the main site of your GitHub account (see section \@ref(sec:github-pages)), at the address https://GitHubID.github.io[^rediger-45].
 The name to enter is simply "GitHubID.github.io" (*GitHubID* is the name of the GitHub account).
 
-[^rediger-40]: Exemple: https://EricMarcon.github.io/Krigeage/
+[^rediger-45]: Exemple: https://EricMarcon.github.io/Krigeage/
 
 Create the repository.
 Copy the repository address by clicking on the "Code" button and then on the button to the right of the address (figure \@ref(fig:rediger-GitHub-Clone)).
-
-[^rediger-24]: <https://github.com/wowchemy/starter-academic>
 
 (ref:rediger-GitHub-Clone) Copy of the address of a repository to clone on GitHub.
 
