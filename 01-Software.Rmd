@@ -153,9 +153,9 @@ The backup of this folder is managed elsewhere.
 * A folder outside the home folder is used for source-controlled projects. 
 The user must have the right to write to it.
 In the Windows organization, the folder corresponding to these criteria is `%LOCALAPPDATA%`, typically `C:\Users\Name\AppData`.
-The folder will therefore be `%LOCALAPPDATA%\ProjectsR`.
-To create it, run `md %LOCALAPPDATA%\ProjectsR` in a command prompt.
-Pin this folder to the quick access of the file explorer (figure \@ref(fig:R-ProjetsR)): paste `%LOCALAPPDATA%\ProjetsR` in the address bar of the file explorer, validate, then right click on "Quick Access" and pin the folder.
+The folder will therefore be `%LOCALAPPDATA%\RProjects`.
+To create it, run `md %LOCALAPPDATA%\RProjects` in a command prompt.
+Pin this folder to the quick access of the file explorer (figure \@ref(fig:R-ProjetsR)): paste `%LOCALAPPDATA%\RProjects` in the address bar of the file explorer, validate, then right click on "Quick Access" and pin the folder.
 
 (ref:R-ProjetsR) Folder for projects under source control, on Windows.
 ```{r R-ProjetsR, fig.cap="(ref:R-ProjetsR)", echo=FALSE, out.width='100%'}
