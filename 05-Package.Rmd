@@ -971,7 +971,7 @@ References used in R Markdown files (vignette, site produced by **pkgdown**) are
 
 ### Preparation
 
-Bibliographic references must be placed in a bibtex file `REFERENCES.bib` placed in the `inst` folder.
+Bibliographic references must be placed in a BibTeX file `REFERENCES.bib` placed in the `inst` folder.
 This folder contains files that will be placed in the root of the package folder when it is installed.
 
 Add the following line to `DESCRIPTION`:

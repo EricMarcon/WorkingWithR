@@ -417,7 +417,7 @@ The token is a string that cannot be read later: it must be saved as a password.
 To produce documents in PDF format, a LaTeX distribution is needed.
 The light solution is to install the **tinytex** package which in turn installs a LaTeX distribution optimized for R Markdown.
 
-A full distribution allows the use of Latex beyond RStudio but is useless if the use of LaTeX is limited to knitting R Markdown documents.
+A full distribution allows the use of LaTeX beyond RStudio but is useless if the use of LaTeX is limited to knitting R Markdown documents.
 MiKTeX is a very good solution for Windows and Mac.
 
 

@@ -339,7 +339,7 @@ In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
 
 #### Bibliography
 
-Bibliographic references in bibtex format must be included in the `.bib` file declared in the header of the Markdown document.
+Bibliographic references in BibTeX format must be included in the `.bib` file declared in the header of the Markdown document.
 
 ```
 bibliography: references.bib
@@ -349,7 +349,7 @@ This file can be created and maintained by Zotero installed with the Better BibT
 To do this, you just have to create a Zotero collection corresponding to the project and drag the relevant references into it.
 Then use the contextual menu "Export collection..." and select:
 
-- Format: "Better BibTeX" for articles and presentations or "Better BibLaTeX" for memoirs, depending on whether the bibliography is managed by bibtex and natbib or biber and biblatex for PDF production.
+- Format: "Better BibTeX" for articles and presentations or "Better BibLaTeX" for memoirs, depending on whether the bibliography is managed by BibTeX and natbib or biber and BibLaTeX for PDF production.
 - Check the "Keep up to date" box so that any changes in Zotero are exported automatically.
 - Click on "OK" then choose the name of the file (`references.bib`) and its location (the R project folder).
 
@@ -1238,7 +1238,7 @@ The example used is a journal article[^rediger-29] with its code[^rediger-30].
 
 [^rediger-30]: <https://github.com/EricMarcon/HomePage2020/tree/master/content/fr/publication/marcon-2003-a>
 
-A `cite.bib` file containing the reference in BibTex format is placed in the folder.
+A `cite.bib` file containing the reference in BibTeX format is placed in the folder.
 The name of the folder is preferably that of the publication identifier.
 The header of the `index.md` file (here in Markdown format, but `.Rmd` is possible if R code is needed) contains the same information as the BibTex file, but in the appropriate format (yaml), and the Academic-specific elements (`featured`):
 
