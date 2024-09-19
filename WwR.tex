@@ -373,7 +373,7 @@
 
 \author{Eric Marcon}
 
-\date{05/22/2024}
+\date{09/19/2024}
 
 
 % Include headers (preamble.tex) here
@@ -1059,10 +1059,16 @@ The options to modify are the following:
   \enquote{Export \textgreater{} Fields \textgreater{} Fields to omit from export}: \enquote{abstract, file} to avoid generating bibliographic files overweighted by useless information in R projects.
 \end{itemize}
 
-It is recommended to use the ZotFile\footnote{\url{http://zotfile.com/}} extension to better control the location of the full text (the PDF files linked to the bibliographic references).
-Install it and then set it up in \enquote{Tools \textgreater{} ZotFile Preferences\ldots\textgreater{} General settings \textgreater{} Location of Files \textgreater{} Custom Location}: choose the folder for storing full text.
-If the user's personal folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), placing this storage folder there allows both to save the full texts and to access them from multiple workstations or directly online.
-This solution is much more efficient than Zotero's default synchronization, which is limited in volume.
+It is recommended to use the ZotMoov\footnote{\url{http://https://github.com/wileyyugioh/zotmoov/}} extension to better control the location of the full text (PDF files linked to bibliographic references).
+Install it, then set its parameters in \enquote{Edit \textgreater{} Settings}, \enquote{ZotMoov}.
+Choose the folder for storing full-text files in \enquote{Directory to Move Files To}.
+If the user's personal folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), placing this storage folder there enables the full-text files to be backed up and accessed from several workstations or directly online.
+This solution is much more efficient than Zotero's default synchronisation, which is limited in volume.
+
+Then select the download folder in \enquote{Source Folder for Attaching New Files}.
+The \enquote{ZotMoov: Attach New File} context menu will then automatically link the last file downloaded to the chosen reference.
+
+Finally, in Zotero's advanced options (\enquote{Edit \textgreater{} Settings}, \enquote{Advanced}), choose the base folder for linked attachments: this must be the same as the one chosen for storing full-text files.
 
 \section{Go}\label{go}
 
@@ -1248,7 +1254,7 @@ Its code is just a \texttt{UseMethod("print")} declaration:
 \begin{verbatim}
 ## function (x, ...) 
 ## UseMethod("print")
-## <bytecode: 0x12326b2e8>
+## <bytecode: 0x15549db90>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1724,7 +1730,7 @@ The code of a function called from the console runs in a child environment of th
 \end{Shaded}
 
 \begin{verbatim}
-## <environment: 0x1239f7fc8>
+## <environment: 0x143b44518>
 \end{verbatim}
 
 \begin{Shaded}
@@ -1795,7 +1801,7 @@ Example:
 \begin{verbatim}
 ## function (save = "default", status = 0, runLast = TRUE) 
 ## .Internal(quit(save, status, runLast))
-## <bytecode: 0x124d30eb8>
+## <bytecode: 0x143d8c710>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1979,7 +1985,7 @@ The function returns the execution time of the code.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.008   0.001   0.011
+##   0.007   0.000   0.008
 \end{verbatim}
 
 \normalsize
@@ -2009,16 +2015,16 @@ The goal is to compare the speed of computing the square of a vector (or a numbe
 
 \begin{verbatim}
 ## Unit: microseconds
-##   expr     min       lq      mean   median       uq     max
-##  f1(X)   1.804   2.8700  10.87115   6.6625   8.5485 444.809
-##  f2(X)   4.141   5.0225  12.72271   8.7535  10.9060 437.388
-##  f3(X) 101.229 106.4360 119.30590 109.5520 115.4970 654.852
-##  f4(X) 134.316 141.5730 157.70896 145.6525 150.9415 834.063
-##  neval
-##    100
-##    100
-##    100
-##    100
+##   expr     min       lq      mean   median       uq
+##  f1(X)   1.886   7.0725  13.85308   8.2410  12.5255
+##  f2(X)   4.264   9.3890  17.77104  10.7830  14.4115
+##  f3(X) 102.172 107.6045 136.27621 110.0440 114.0005
+##  f4(X) 133.906 140.9785 182.57710 145.2425 151.1260
+##       max neval
+##   452.189   100
+##   625.619   100
+##  1840.695   100
+##  1262.595   100
 \end{verbatim}
 
 \normalsize
@@ -2041,10 +2047,10 @@ To choose the columns to display, use the following syntax:
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)   6.6625
-## 2 f2(X)   8.7535
-## 3 f3(X) 109.5520
-## 4 f4(X) 145.6525
+## 1 f1(X)   8.2410
+## 2 f2(X)  10.7830
+## 3 f3(X) 110.0440
+## 4 f4(X) 145.2425
 \end{verbatim}
 
 \normalsize
@@ -2074,10 +2080,10 @@ The previous test is displayed again.
 
 \begin{verbatim}
 ##    expr   median
-## 1 f1(X)   6.6625
-## 2 f2(X)   8.7535
-## 3 f3(X) 109.5520
-## 4 f4(X) 145.6525
+## 1 f1(X)   8.2410
+## 2 f2(X)  10.7830
+## 3 f3(X) 110.0440
+## 4 f4(X) 145.2425
 \end{verbatim}
 
 \normalsize
@@ -2200,7 +2206,7 @@ The function \texttt{lnq} of the package \textbf{entropart} returns the deformed
 ##         return(Log)
 ##     }
 ## }
-## <bytecode: 0x125b1e978>
+## <bytecode: 0x15009bfc8>
 ## <environment: namespace:entropart>
 \end{verbatim}
 
@@ -2251,11 +2257,11 @@ There are several versions of this function:
 \end{Shaded}
 
 \begin{verbatim}
-##                                    expr   median
-## 1                              sqrt(x1)   1.5580
-## 2                lapply(x1, FUN = sqrt) 139.8305
-## 3                sapply(x1, FUN = sqrt) 168.3050
-## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 138.8670
+##                                    expr  median
+## 1                              sqrt(x1)   1.763
+## 2                lapply(x1, FUN = sqrt) 149.773
+## 3                sapply(x1, FUN = sqrt) 182.327
+## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 145.673
 \end{verbatim}
 
 \normalsize
@@ -2308,8 +2314,8 @@ To evaluate the performance gain, the following code removes all automatic compi
 
 \begin{verbatim}
 ##        expr   median
-## 1  Loop(x1) 344.6255
-## 2 Loop2(x1)  43.3780
+## 1  Loop(x1) 361.4765
+## 2 Loop2(x1)  43.2140
 \end{verbatim}
 
 \begin{Shaded}
@@ -2340,9 +2346,9 @@ For loops are now much faster than \texttt{vapply}.
 \end{Shaded}
 
 \begin{verbatim}
-##                        expr  median
-## 1 vapply(x1, FUN = sqrt, 0) 132.266
-## 2                  Loop(x1)  43.173
+##                        expr   median
+## 1 vapply(x1, FUN = sqrt, 0) 130.7285
+## 2                  Loop(x1)  40.3850
 \end{verbatim}
 
 \normalsize
@@ -2365,8 +2371,8 @@ Be careful, the performance test can be misleading:
 
 \begin{verbatim}
 ##                                             expr    median
-## 1                      vapply(x1, FUN = sqrt, 0)  132.4915
-## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 1043.3065
+## 1                      vapply(x1, FUN = sqrt, 0)  146.2265
+## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 1255.4815
 \end{verbatim}
 
 \normalsize
@@ -2432,8 +2438,8 @@ This code is equivalent to \texttt{runif(3)}, with performance similar to \textt
 
 \begin{verbatim}
 ##                        expr   median
-## 1 replicate(1000, runif(1)) 659.5055
-## 2               runif(1000)   5.6990
+## 1 replicate(1000, runif(1)) 752.5755
+## 2               runif(1000)   6.1910
 \end{verbatim}
 
 \normalsize
@@ -2469,9 +2475,9 @@ Write the loops instead.
 
 \begin{verbatim}
 ##                              expr   median
-## 1       SumLoop(diamonds[-(2:4)]) 1545.700
-## 2 apply(diamonds[-(2:4)], 2, sum) 3364.501
-## 3       colSums(diamonds[-(2:4)]) 1177.582
+## 1       SumLoop(diamonds[-(2:4)]) 1.669807
+## 2 apply(diamonds[-(2:4)], 2, sum) 3.970522
+## 3       colSums(diamonds[-(2:4)]) 1.369257
 \end{verbatim}
 
 \normalsize
@@ -2676,7 +2682,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.000   0.701
+##   0.001   0.001   0.708
 \end{verbatim}
 
 \begin{Shaded}
@@ -2688,12 +2694,12 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.016   0.416
+##   0.002   0.029   0.392
 \end{verbatim}
 
 \normalsize
 
-Setting up parallelization has a cost of about \texttt{0.17} seconds here.
+Setting up parallelization has a cost of about \texttt{0.14} seconds here.
 The execution time is much longer in parallel on Windows because setting up the cluster takes much more time than parallelization saves.
 Parallelization is interesting for longer tasks, such as a one second break.
 
@@ -2708,7 +2714,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.000   2.150
+##   0.000   0.000   2.116
 \end{verbatim}
 
 \begin{Shaded}
@@ -2720,7 +2726,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.004   1.169
+##   0.002   0.018   1.161
 \end{verbatim}
 
 \normalsize
@@ -2739,7 +2745,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.017   1.153
+##   0.002   0.013   1.166
 \end{verbatim}
 
 \begin{Shaded}
@@ -2750,7 +2756,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.011   2.306
+##   0.002   0.021   2.199
 \end{verbatim}
 
 \normalsize
@@ -2938,7 +2944,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.000   0.677
+##   0.002   0.000   0.712
 \end{verbatim}
 
 \begin{Shaded}
@@ -2953,7 +2959,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.003   0.014   0.410
+##   0.005   0.017   0.419
 \end{verbatim}
 
 \normalsize
@@ -2998,7 +3004,7 @@ The \textbf{future.apply} package allows all \texttt{*apply()} and \texttt{repli
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.018   0.000   0.416
+##   0.022   0.001   0.425
 \end{verbatim}
 
 \normalsize
@@ -3019,7 +3025,7 @@ foreach loops can be parallelized with the \textbf{doFuture} package by simply r
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.026   0.001   0.479
+##   0.036   0.001   0.490
 \end{verbatim}
 
 \normalsize
@@ -3111,7 +3117,7 @@ The distance can be calculated by two nested \texttt{sapply()}.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.432   0.011   2.486
+##   2.572   0.009   2.586
 \end{verbatim}
 
 \begin{Shaded}
@@ -3145,7 +3151,7 @@ The gain is negligible on a long computation like this one but important for sho
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.363   0.007   2.407
+##   2.382   0.008   2.390
 \end{verbatim}
 
 \begin{Shaded}
@@ -3188,7 +3194,7 @@ A more significant improvement is to compute the square roots only at the end of
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.344   0.005   2.365
+##   2.378   0.008   2.386
 \end{verbatim}
 
 \begin{Shaded}
@@ -3227,7 +3233,7 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.356   0.006   1.438
+##   1.401   0.006   1.408
 \end{verbatim}
 
 \begin{Shaded}
@@ -3268,7 +3274,7 @@ On MacOS or Linux, the computation is accelerated.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.746   0.393   1.448
+##   1.646   0.288   1.116
 \end{verbatim}
 
 \begin{Shaded}
@@ -3313,7 +3319,7 @@ Only the main loop is parallelized: nesting \texttt{future\_vapply()} would coll
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.046   0.006   1.057
+##   0.066   0.013   1.111
 \end{verbatim}
 
 \begin{Shaded}
@@ -3359,7 +3365,7 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.964   0.004   0.975
+##   0.878   0.005   0.882
 \end{verbatim}
 
 \begin{Shaded}
@@ -3405,7 +3411,7 @@ However, distances are calculated twice.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.855   0.139   0.737
+##   2.297   0.184   0.986
 \end{verbatim}
 
 \begin{Shaded}
@@ -3447,7 +3453,7 @@ The test is run here with 10 times fewer points, so 100 times fewer distances to
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.811   0.004   0.815
+##   0.878   0.010   0.888
 \end{verbatim}
 
 \begin{Shaded}
@@ -3621,8 +3627,8 @@ The usage in R is identical to the usage of C++ functions interfaced by \textbf{
 ## Unit: microseconds
 ##                                                      expr
 ##  d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints - 1) * 2
-##      min       lq     mean  median      uq      max neval
-##  219.842 225.2335 290.7285 232.429 238.415 4431.362   100
+##      min      lq     mean  median      uq      max neval
+##  253.011 298.767 358.4056 304.179 312.256 4914.752   100
 \end{verbatim}
 
 \begin{Shaded}
@@ -3662,13 +3668,13 @@ Multiplying the number of points by 50, the serial computation time must be mult
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   3.770   0.003   3.789
+##   4.641   0.007   4.650
 \end{verbatim}
 
 \normalsize
 
 In parallel, the time increases little: parallelization becomes really efficient.
-This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{2437} seconds.
+This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{2204} seconds.
 
 \scriptsize
 
@@ -3681,7 +3687,7 @@ This time is to be compared to that of the reference for loop, multiplied by 250
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.267   0.001   0.426
+##   1.408   0.004   0.471
 \end{verbatim}
 
 \normalsize
@@ -3824,14 +3830,14 @@ The workflow is run by \texttt{tar\_make()}.
 
 \begin{verbatim}
 ## ▶ dispatched target NbPoints
-## ● completed target NbPoints [0.795 seconds]
+## ● completed target NbPoints [0.83 seconds]
 ## ▶ dispatched target X
 ## ● completed target X [0.002 seconds]
 ## ▶ dispatched target d
-## ● completed target d [0.005 seconds]
+## ● completed target d [0.011 seconds]
 ## ▶ dispatched target map
-## ● completed target map [0.012 seconds]
-## ▶ ended pipeline [0.91 seconds]
+## ● completed target map [0.029 seconds]
+## ▶ ended pipeline [0.99 seconds]
 \end{verbatim}
 
 \normalsize
@@ -3857,7 +3863,7 @@ The workflow is now up to date and \texttt{tar\_make()} does not recompute anyth
 ## ✔ skipped target X
 ## ✔ skipped target d
 ## ✔ skipped target map
-## ✔ skipped pipeline [0.044 seconds]
+## ✔ skipped pipeline [0.039 seconds]
 \end{verbatim}
 
 \normalsize
@@ -4725,7 +4731,7 @@ The generic project user's key is added by:
 \end{Shaded}
 
 \begin{verbatim}
-## Linking to: OpenSSL 3.3.0 9 Apr 2024
+## Linking to: OpenSSL 3.2.2 4 Jun 2024
 \end{verbatim}
 
 \begin{Shaded}
@@ -4807,7 +4813,7 @@ The private key of the generic project user, communicated by a secure means to t
 
 \begin{verbatim}
 ## v Setting active project to
-## '/Users/runner/work/WorkingWithR/WorkingWithR'
+##   "/Users/runner/work/WorkingWithR/WorkingWithR".
 \end{verbatim}
 
 \begin{Shaded}
@@ -6883,14 +6889,14 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 
 \begin{verbatim}
 ## ▶ dispatched target NbPoints
-## ● completed target NbPoints [0.635 seconds]
+## ● completed target NbPoints [0.685 seconds]
 ## ▶ dispatched target X
 ## ● completed target X [0.001 seconds]
 ## ▶ dispatched target d
-## ● completed target d [0.005 seconds]
+## ● completed target d [0.006 seconds]
 ## ▶ dispatched target map
 ## ● completed target map [0.012 seconds]
-## ▶ ended pipeline [0.772 seconds]
+## ▶ ended pipeline [0.798 seconds]
 \end{verbatim}
 
 \normalsize
@@ -7638,7 +7644,7 @@ This is a generic method, i.e.~a function template, without code, to be adapted 
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x113f9b718>
+## <bytecode: 0x13515b5b8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -7929,10 +7935,14 @@ The choice of function depends on the class of the object passed as argument.
 
 \begin{verbatim}
 ## Unit: nanoseconds
-##                expr min  lq    mean median  uq    max neval
-##  triple.integer(2L) 123 123 7452.16    123 164 729800   100
-##   triple.numeric(2) 123 123 9742.01    164 164 959154   100
-##          triple(2L) 533 574  745.79    574 615  10373   100
+##                expr min  lq     mean median  uq     max
+##  triple.integer(2L) 123 123  7789.59  164.0 164  728119
+##   triple.numeric(2) 123 123 10348.81  164.0 164 1018317
+##          triple(2L) 533 574   649.44  594.5 615    4797
+##  neval
+##    100
+##    100
+##    100
 \end{verbatim}
 
 \normalsize
@@ -8277,7 +8287,7 @@ Finally, the complete code is as follows:
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x113f9b718>
+## <bytecode: 0x13515b5b8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -8315,7 +8325,7 @@ Finally, the complete code is as follows:
 ## {
 ##     UseMethod("autoplot")
 ## }
-## <bytecode: 0x122f59ec0>
+## <bytecode: 0x1460270e8>
 ## <environment: namespace:ggplot2>
 \end{verbatim}
 

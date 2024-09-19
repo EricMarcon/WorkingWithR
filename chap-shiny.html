@@ -7,7 +7,7 @@
 <title>7 Shiny | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="Shiny allows to publish an interactive application using R code as a web site. The site can run locally, on a user’s workstation that launches it from RStudio, or online, on a dedicated server...">
-<meta name="generator" content="bookdown 0.39 with bs4_book()">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="7 Shiny | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-shiny.html">
@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="Shiny allows to publish an interactive application using R code as a web site. The site can run locally, on a user’s workstation that launches it from RStudio, or online, on a dedicated server...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -121,12 +121,12 @@ Figure 7.1: Shiny Application <em>Old Faithful Geyser Data</em>.
 <p></p>
 <p>The correspondence between the displayed window (figure <a href="chap-shiny.html#fig:shiny-geiser">7.1</a>) and the <code>ui()</code> function code is easy to see:</p>
 <ul>
-<li>The title of the application is displayed by the <code><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel()</a></code> function.</li>
-<li>The slider that sets the number of bars in the histogram is created by <code><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html">sliderInput()</a></code>.</li>
-<li>The <code><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout()</a></code> function sets the layout of the page elements, <code>sidebarPanel</code> for the input controls and <code><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel()</a></code> for the result display.</li>
+<li>The title of the application is displayed by the <code>titlePanel()</code> function.</li>
+<li>The slider that sets the number of bars in the histogram is created by <code>sliderInput()</code>.</li>
+<li>The <code>sidebarLayout()</code> function sets the layout of the page elements, <code>sidebarPanel</code> for the input controls and <code>mainPanel()</code> for the result display.</li>
 </ul>
-<p>The result is displayed by the <code><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput()</a></code> function whose argument is the name of an element of <code>output</code>, the variable filled by the <code>server()</code> function.</p>
-<p>Any modification of an element of the interface, precisely of an element displayed by a function whose name ends with <code>Input()</code> (there are some for all types of inputs, for example <code><a href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput()</a></code>) of <strong>Shiny</strong> causes <code>server()</code> to be executed and the elements of <code>output</code> to be updated.</p>
+<p>The result is displayed by the <code>plotOutput()</code> function whose argument is the name of an element of <code>output</code>, the variable filled by the <code>server()</code> function.</p>
+<p>Any modification of an element of the interface, precisely of an element displayed by a function whose name ends with <code>Input()</code> (there are some for all types of inputs, for example <code>textInput()</code>) of <strong>Shiny</strong> causes <code>server()</code> to be executed and the elements of <code>output</code> to be updated.</p>
 </div>
 <div id="more-elaborate-application" class="section level2" number="7.2">
 <h2>
@@ -165,24 +165,24 @@ The full application, with graphical output in addition to its simplified versio
 <p></p>
 <div class="sourceCode" id="cb490"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># UI ####</span></span>
-<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span></span>
+<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu">fluidPage</span><span class="op">(</span></span>
 <span>  <span class="co"># Application title</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Bibliometrics"</span><span class="op">)</span>,</span>
+<span>  <span class="fu">titlePanel</span><span class="op">(</span><span class="st">"Bibliometrics"</span><span class="op">)</span>,</span>
 <span>  </span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/helpText.html">helpText</a></span><span class="op">(</span><span class="st">"Enter the Google Scholar ID of an author."</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput</a></span><span class="op">(</span><span class="st">"AuthorID"</span>, <span class="st">"Google Scholar ID"</span>, <span class="st">"4iLBmbUAAAAJ"</span><span class="op">)</span>,</span>
+<span>  <span class="fu">sidebarLayout</span><span class="op">(</span></span>
+<span>    <span class="fu">sidebarPanel</span><span class="op">(</span></span>
+<span>      <span class="fu">helpText</span><span class="op">(</span><span class="st">"Enter the Google Scholar ID of an author."</span><span class="op">)</span>,</span>
+<span>      <span class="fu">textInput</span><span class="op">(</span><span class="st">"AuthorID"</span>, <span class="st">"Google Scholar ID"</span>, <span class="st">"4iLBmbUAAAAJ"</span><span class="op">)</span>,</span>
 <span>      <span class="co"># End of input</span></span>
-<span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">br</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>      <span class="fu">br</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>      <span class="co"># Display author's name and h</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/htmlOutput.html">uiOutput</a></span><span class="op">(</span><span class="st">"name"</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/htmlOutput.html">uiOutput</a></span><span class="op">(</span><span class="st">"h"</span><span class="op">)</span></span>
+<span>      <span class="fu">uiOutput</span><span class="op">(</span><span class="st">"name"</span><span class="op">)</span>,</span>
+<span>      <span class="fu">uiOutput</span><span class="op">(</span><span class="st">"h"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    <span class="co"># Show plots in the main panel</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"network"</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"citations"</span><span class="op">)</span></span>
+<span>    <span class="fu">mainPanel</span><span class="op">(</span></span>
+<span>      <span class="fu">plotOutput</span><span class="op">(</span><span class="st">"network"</span><span class="op">)</span>,</span>
+<span>      <span class="fu">plotOutput</span><span class="op">(</span><span class="st">"citations"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -190,12 +190,12 @@ The full application, with graphical output in addition to its simplified versio
 <p>The application window is fluid, i.e. it reorganizes itself when its size changes, and is composed of a side panel (for text input and display) and a main panel, for displaying graphics.</p>
 <p>The elements of the side panel are:</p>
 <ul>
-<li>A help text: <code><a href="https://rdrr.io/pkg/shiny/man/helpText.html">helpText()</a></code>.</li>
-<li>A text input field, <code><a href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput()</a></code>, whose arguments are the name, the displayed text, and the default value (an author ID).</li>
-<li>A line break: <code><a href="https://rstudio.github.io/htmltools/reference/builder.html">br()</a></code>.</li>
-<li>HTML output controls: <code><a href="https://rdrr.io/pkg/shiny/man/htmlOutput.html">uiOutput()</a></code>, whose single argument is the name.</li>
+<li>A help text: <code>helpText()</code>.</li>
+<li>A text input field, <code>textInput()</code>, whose arguments are the name, the displayed text, and the default value (an author ID).</li>
+<li>A line break: <code>br()</code>.</li>
+<li>HTML output controls: <code>uiOutput()</code>, whose single argument is the name.</li>
 </ul>
-<p>The main panel contains two graphical output controls, <code><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput()</a></code> whose argument is also the name.</p>
+<p>The main panel contains two graphical output controls, <code>plotOutput()</code> whose argument is also the name.</p>
 <p>The code to execute to process the inputs and produce the outputs is in the <code>server()</code> function.</p>
 <p></p>
 <div class="sourceCode" id="cb491"><pre class="downlit sourceCode r">
@@ -203,19 +203,19 @@ The full application, with graphical output in addition to its simplified versio
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Run the get_profile function only once ####</span></span>
 <span>  <span class="co"># Store the author profile</span></span>
-<span>  <span class="va">AuthorProfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactiveVal.html">reactiveVal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">AuthorProfile</span> <span class="op">&lt;-</span> <span class="fu">reactiveVal</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="co"># Update it when input$AuthorID is changed</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span>, </span>
+<span>  <span class="fu">observeEvent</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span>, </span>
 <span>               <span class="fu">AuthorProfile</span><span class="op">(</span><span class="fu">get_profile</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co"># Output ####</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">h2</a></span><span class="op">(</span><span class="fu">AuthorProfile</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu">renderUI</span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="fu">h2</span><span class="op">(</span><span class="fu">AuthorProfile</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="va">output</span><span class="op">$</span><span class="va">h</span> <span class="op">&lt;-</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">a</a></span><span class="op">(</span>href <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
+<span>    <span class="fu">renderUI</span><span class="op">(</span><span class="op">{</span></span>
+<span>      <span class="fu">a</span><span class="op">(</span>href <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
 <span>        <span class="st">"https://scholar.google.com/citations?user="</span>, </span>
 <span>        <span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span>,</span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"h index:"</span>, <span class="fu">AuthorProfile</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">h_index</span><span class="op">)</span>,</span>
@@ -223,7 +223,7 @@ The full application, with graphical output in addition to its simplified versio
 <span>      <span class="op">)</span></span>
 <span>    <span class="op">}</span><span class="op">)</span></span>
 <span>  </span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">citations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">citations</span> <span class="op">&lt;-</span> <span class="fu">renderPlot</span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="fu">get_citation_history</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">cites</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xend <span class="op">=</span> <span class="va">year</span>, yend <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,</span>
@@ -235,13 +235,13 @@ The full application, with graphical output in addition to its simplified versio
 <span>           caption <span class="op">=</span> <span class="st">"Source: Google Scholar"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span>  </span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">network</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">network</span> <span class="op">&lt;-</span> <span class="fu">renderPlot</span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_blank.html">geom_blank</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p></p>
 <p>The information needed for the output fields <code>$name</code> and <code>$h</code> (author’s name and h-index) is obtained by the <code>get_profile()</code> function of the <strong>scholar</strong> package.
-This function queries the author’s Google Scholar web page and extracts the values from the result: this is a heavy processing, which is better executed only once rather than twice, in the <code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code> functions in charge of computing the values of <code>output$h</code> and <code>output$name</code>.</p>
+This function queries the author’s Google Scholar web page and extracts the values from the result: this is a heavy processing, which is better executed only once rather than twice, in the <code>renderUI()</code> functions in charge of computing the values of <code>output$h</code> and <code>output$name</code>.</p>
 <p>The simplest code to do this would be as follows:</p>
 <p></p>
 <div class="sourceCode" id="cb492"><pre class="downlit sourceCode r">
@@ -253,55 +253,55 @@ This function queries the author’s Google Scholar web page and extracts the va
 If the latter code were executed, the following error message would appear:
 “Operation not allowed without an active reactive context. (You tried to do something that can only be done from inside a reactive expression or observer.)”</p>
 <p>In practice, the execution of the code is started by modifying an input control (here: <code>intput$AuthorID</code>).
-The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like <code><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot()</a></code> in the <em>Old Faithful Geyser Data</em> application or <code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code> here.
+The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like <code>renderPlot()</code> in the <em>Old Faithful Geyser Data</em> application or <code>renderUI()</code> here.
 The following code would run without error:</p>
 <p></p>
 <div class="sourceCode" id="cb493"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Output ####</span></span>
-<span><span class="va">output</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
+<span><span class="va">output</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu">renderUI</span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="va">AuthorProfile</span> <span class="op">&lt;-</span> <span class="fu">get_profile</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">h2</a></span><span class="op">(</span><span class="va">AuthorProfile</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
+<span>    <span class="fu">h2</span><span class="op">(</span><span class="va">AuthorProfile</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The call to the value of the <code>input$AuthorID</code> control does occur in a reactive function (but <code>get_profile()</code> would have to be used a second time in the calculation of <code>output$h</code>, which we want to avoid).
 The function <code>h2(AuthorProfile$name)</code> produces HTML code, a level 2 title paragraph whose value is passed as an argument.</p>
-<p>All functions whose names begin with <code>render</code> in the <strong>shiny</strong> package are reactive, and each is intended to produce a different type of output, for example text (<code><a href="https://rdrr.io/pkg/shiny/man/renderPrint.html">renderText()</a></code>) or HTML code (<code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code>).</p>
+<p>All functions whose names begin with <code>render</code> in the <strong>shiny</strong> package are reactive, and each is intended to produce a different type of output, for example text (<code>renderText()</code>) or HTML code (<code>renderUI()</code>).</p>
 <p>If code is needed to compute variables common to several output controls (<code>output$name</code> and <code>output$h</code>), it must itself be responsive.
 Two functions are very useful:</p>
 <ul>
 <li>
-<code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent()</a></code> watches for changes in an input control and executes code when they occur.</li>
+<code>observeEvent()</code> watches for changes in an input control and executes code when they occur.</li>
 <li>
-<code><a href="https://rdrr.io/pkg/shiny/man/reactiveVal.html">reactiveVal()</a></code> allows you to define a reactive variable, which will be modified by the <code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent()</a></code> code and will in turn cause other reactive functions that use its value to execute.</li>
+<code>reactiveVal()</code> allows you to define a reactive variable, which will be modified by the <code>observeEvent()</code> code and will in turn cause other reactive functions that use its value to execute.</li>
 </ul>
 <p>So the optimal code creates a reactive variable to store the result of the Google Scholar query in:</p>
 <p></p>
 <div class="sourceCode" id="cb494"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Store the author profile</span></span>
-<span><span class="va">AuthorProfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactiveVal.html">reactiveVal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">AuthorProfile</span> <span class="op">&lt;-</span> <span class="fu">reactiveVal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The reactive variable is empty at this point.
 Its use is then that of a function: <code>AuthorProfile(x)</code> assigns it the value <code>x</code> and <code>AuthorProfile()</code>, without arguments, returns its value.
-The <code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent()</a></code> function is triggered when <code>input$AuthorID</code> is modified and executes the code passed as the second argument, in this case the update of <code>AuthorProfile</code>.</p>
+The <code>observeEvent()</code> function is triggered when <code>input$AuthorID</code> is modified and executes the code passed as the second argument, in this case the update of <code>AuthorProfile</code>.</p>
 <p></p>
 <div class="sourceCode" id="cb495"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Update it when input$AuthorID is changed</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span>, <span class="fu">AuthorProfile</span><span class="op">(</span><span class="fu">get_profile</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">observeEvent</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span>, <span class="fu">AuthorProfile</span><span class="op">(</span><span class="fu">get_profile</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p></p>
-<p>Finally, the <code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code> functions that provide output control values use the value of <code>AuthorProfile</code>:</p>
+<p>Finally, the <code>renderUI()</code> functions that provide output control values use the value of <code>AuthorProfile</code>:</p>
 <p></p>
 <div class="sourceCode" id="cb496"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Output ####</span></span>
-<span><span class="va">output</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">h2</a></span><span class="op">(</span><span class="fu">AuthorProfile</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
+<span><span class="va">output</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu">renderUI</span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="fu">h2</span><span class="op">(</span><span class="fu">AuthorProfile</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>Note the parentheses in <code>AuthorProfile()</code>, a reactive variable, as opposed to the <code>AuthorProfile$name</code> syntax for a classic variable.</p>
-<p>The value of <code>output$h</code> is an internet link, <code>&lt;a href=...</code> in HTML, written by the <code><a href="https://rstudio.github.io/htmltools/reference/builder.html">a()</a></code> function of the <strong>htmltools</strong> package used by <code><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI()</a></code>.</p>
+<p>The value of <code>output$h</code> is an internet link, <code>&lt;a href=...</code> in HTML, written by the <code>a()</code> function of the <strong>htmltools</strong> package used by <code>renderUI()</code>.</p>
 <p></p>
 <div class="sourceCode" id="cb497"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">output</span><span class="op">$</span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">a</a></span><span class="op">(</span>href <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://scholar.google.com/citations?user="</span>,</span>
+<code class="sourceCode R"><span><span class="va">output</span><span class="op">$</span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu">renderUI</span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="fu">a</span><span class="op">(</span>href <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://scholar.google.com/citations?user="</span>,</span>
 <span>        <span class="va">input</span><span class="op">$</span><span class="va">AuthorID</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"h index:"</span>, <span class="fu">AuthorProfile</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">h_index</span><span class="op">)</span>,</span>
 <span>        target <span class="op">=</span> <span class="st">"_blank"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
@@ -309,7 +309,7 @@ The <code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent
 <p>The link is to the author’s Google Scholar page.
 The value displayed is its h index.
 The argument <code>target = "_blank"</code> indicates that the link should be opened in a new browser window.</p>
-<p>The <code>output$citations</code> graph is created by the <code><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot()</a></code> reactive function.
+<p>The <code>output$citations</code> graph is created by the <code>renderPlot()</code> reactive function.
 The data provided by the <code>get_citation_history()</code> function of <strong>scholar</strong> (which queries the Google Scholar API) is processed by <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p>
 <p>Finally, the <code>output$network</code> graph is an empty graph in this simplified version of the application.</p>
 <p>The full application takes this code and adds error handling in case the author code does not exist on Google Scholar and the co-author network graph.</p>
@@ -380,7 +380,7 @@ Most Shiny applications work without difficulty, as long as they don’t require
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 05/22/2024.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 09/19/2024.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
