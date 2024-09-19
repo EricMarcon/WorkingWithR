@@ -489,14 +489,20 @@ The options to modify are the following:
 - "Citation Keys > Keep citation keys unique": "across all libraries" so that citation identifiers are not ambiguous.
 - "Export > Fields > Fields to omit from export": "abstract, file" to avoid generating bibliographic files overweighted by useless information in R projects.
 
-It is recommended to use the ZotFile[^122] extension to better control the location of the full text (the PDF files linked to the bibliographic references).
-Install it and then set it up in "Tools > ZotFile Preferences...> General settings > Location of Files > Custom Location": choose the folder for storing full text.
-If the user's personal folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), placing this storage folder there allows both to save the full texts and to access them from multiple workstations or directly online.
-This solution is much more efficient than Zotero's default synchronization, which is limited in volume.
+It is recommended to use the ZotMoov[^122] extension to better control the location of the full text (PDF files linked to bibliographic references).
+Install it, then set its parameters in "Edit > Settings", "ZotMoov".
+Choose the folder for storing full-text files in "Directory to Move Files To".
+If the user's personal folder is backed up (for example, if it is replicated in the cloud by OneDrive on Windows), placing this storage folder there enables the full-text files to be backed up and accessed from several workstations or directly online.
+This solution is much more efficient than Zotero's default synchronisation, which is limited in volume.
+
+Then select the download folder in "Source Folder for Attaching New Files". 
+The "ZotMoov: Attach New File" context menu will then automatically link the last file downloaded to the chosen reference.
+
+Finally, in Zotero's advanced options ("Edit > Settings", "Advanced"), choose the base folder for linked attachments: this must be the same as the one chosen for storing full-text files.
 
 [^120]: https://www.zotero.org/
 [^121]: https://retorque.re/zotero-better-bibtex/installation/
-[^122]: http://zotfile.com/
+[^122]: http://https://github.com/wileyyugioh/zotmoov/
 
 
 ## Go
