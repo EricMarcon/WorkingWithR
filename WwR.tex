@@ -373,7 +373,7 @@
 
 \author{Eric Marcon}
 
-\date{09/19/2024}
+\date{10/14/2024}
 
 
 % Include headers (preamble.tex) here
@@ -1254,7 +1254,7 @@ Its code is just a \texttt{UseMethod("print")} declaration:
 \begin{verbatim}
 ## function (x, ...) 
 ## UseMethod("print")
-## <bytecode: 0x15549db90>
+## <bytecode: 0x14fbb55a8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1730,7 +1730,7 @@ The code of a function called from the console runs in a child environment of th
 \end{Shaded}
 
 \begin{verbatim}
-## <environment: 0x143b44518>
+## <environment: 0x139dadb50>
 \end{verbatim}
 
 \begin{Shaded}
@@ -1801,7 +1801,7 @@ Example:
 \begin{verbatim}
 ## function (save = "default", status = 0, runLast = TRUE) 
 ## .Internal(quit(save, status, runLast))
-## <bytecode: 0x143d8c710>
+## <bytecode: 0x13c306d68>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -1985,7 +1985,7 @@ The function returns the execution time of the code.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.007   0.000   0.008
+##   0.007   0.001   0.008
 \end{verbatim}
 
 \normalsize
@@ -2015,16 +2015,16 @@ The goal is to compare the speed of computing the square of a vector (or a numbe
 
 \begin{verbatim}
 ## Unit: microseconds
-##   expr     min       lq      mean   median       uq
-##  f1(X)   1.886   7.0725  13.85308   8.2410  12.5255
-##  f2(X)   4.264   9.3890  17.77104  10.7830  14.4115
-##  f3(X) 102.172 107.6045 136.27621 110.0440 114.0005
-##  f4(X) 133.906 140.9785 182.57710 145.2425 151.1260
-##       max neval
-##   452.189   100
-##   625.619   100
-##  1840.695   100
-##  1262.595   100
+##   expr     min       lq     mean  median       uq     max
+##  f1(X)   1.599   2.8905   8.8929   5.945   6.1910 349.894
+##  f2(X)   3.854   4.0180  10.4632   7.544   8.0155 342.596
+##  f3(X)  92.660  96.4320 104.7874  97.949 100.6345 445.998
+##  f4(X) 124.189 127.6125 139.0015 130.052 133.6190 577.198
+##  neval
+##    100
+##    100
+##    100
+##    100
 \end{verbatim}
 
 \normalsize
@@ -2046,11 +2046,11 @@ To choose the columns to display, use the following syntax:
 \end{Shaded}
 
 \begin{verbatim}
-##    expr   median
-## 1 f1(X)   8.2410
-## 2 f2(X)  10.7830
-## 3 f3(X) 110.0440
-## 4 f4(X) 145.2425
+##    expr  median
+## 1 f1(X)   5.945
+## 2 f2(X)   7.544
+## 3 f3(X)  97.949
+## 4 f4(X) 130.052
 \end{verbatim}
 
 \normalsize
@@ -2079,11 +2079,11 @@ The previous test is displayed again.
 \end{Shaded}
 
 \begin{verbatim}
-##    expr   median
-## 1 f1(X)   8.2410
-## 2 f2(X)  10.7830
-## 3 f3(X) 110.0440
-## 4 f4(X) 145.2425
+##    expr  median
+## 1 f1(X)   5.945
+## 2 f2(X)   7.544
+## 3 f3(X)  97.949
+## 4 f4(X) 130.052
 \end{verbatim}
 
 \normalsize
@@ -2206,7 +2206,7 @@ The function \texttt{lnq} of the package \textbf{entropart} returns the deformed
 ##         return(Log)
 ##     }
 ## }
-## <bytecode: 0x15009bfc8>
+## <bytecode: 0x13c0b4470>
 ## <environment: namespace:entropart>
 \end{verbatim}
 
@@ -2257,11 +2257,11 @@ There are several versions of this function:
 \end{Shaded}
 
 \begin{verbatim}
-##                                    expr  median
-## 1                              sqrt(x1)   1.763
-## 2                lapply(x1, FUN = sqrt) 149.773
-## 3                sapply(x1, FUN = sqrt) 182.327
-## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 145.673
+##                                    expr   median
+## 1                              sqrt(x1)   1.3940
+## 2                lapply(x1, FUN = sqrt) 128.9860
+## 3                sapply(x1, FUN = sqrt) 154.3445
+## 4 vapply(x1, FUN = sqrt, FUN.VALUE = 0) 128.0020
 \end{verbatim}
 
 \normalsize
@@ -2314,8 +2314,8 @@ To evaluate the performance gain, the following code removes all automatic compi
 
 \begin{verbatim}
 ##        expr   median
-## 1  Loop(x1) 361.4765
-## 2 Loop2(x1)  43.2140
+## 1  Loop(x1) 323.0185
+## 2 Loop2(x1)  38.7860
 \end{verbatim}
 
 \begin{Shaded}
@@ -2346,9 +2346,9 @@ For loops are now much faster than \texttt{vapply}.
 \end{Shaded}
 
 \begin{verbatim}
-##                        expr   median
-## 1 vapply(x1, FUN = sqrt, 0) 130.7285
-## 2                  Loop(x1)  40.3850
+##                        expr  median
+## 1 vapply(x1, FUN = sqrt, 0) 132.471
+## 2                  Loop(x1)  41.656
 \end{verbatim}
 
 \normalsize
@@ -2371,8 +2371,8 @@ Be careful, the performance test can be misleading:
 
 \begin{verbatim}
 ##                                             expr    median
-## 1                      vapply(x1, FUN = sqrt, 0)  146.2265
-## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 1255.4815
+## 1                      vapply(x1, FUN = sqrt, 0)  133.4345
+## 2 for (i in 1:length(x1)) Root[i] <- sqrt(x1[i]) 1074.6100
 \end{verbatim}
 
 \normalsize
@@ -2438,8 +2438,8 @@ This code is equivalent to \texttt{runif(3)}, with performance similar to \textt
 
 \begin{verbatim}
 ##                        expr   median
-## 1 replicate(1000, runif(1)) 752.5755
-## 2               runif(1000)   6.1910
+## 1 replicate(1000, runif(1)) 655.6925
+## 2               runif(1000)   5.8630
 \end{verbatim}
 
 \normalsize
@@ -2475,9 +2475,9 @@ Write the loops instead.
 
 \begin{verbatim}
 ##                              expr   median
-## 1       SumLoop(diamonds[-(2:4)]) 1.669807
-## 2 apply(diamonds[-(2:4)], 2, sum) 3.970522
-## 3       colSums(diamonds[-(2:4)]) 1.369257
+## 1       SumLoop(diamonds[-(2:4)]) 1494.040
+## 2 apply(diamonds[-(2:4)], 2, sum) 3334.038
+## 3       colSums(diamonds[-(2:4)]) 1166.225
 \end{verbatim}
 
 \normalsize
@@ -2682,7 +2682,7 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.001   0.001   0.708
+##   0.003   0.000   0.723
 \end{verbatim}
 
 \begin{Shaded}
@@ -2694,12 +2694,12 @@ This is knitted with \texttt{3} cores, all of which are used except for one so a
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.029   0.392
+##   0.002   0.016   0.366
 \end{verbatim}
 
 \normalsize
 
-Setting up parallelization has a cost of about \texttt{0.14} seconds here.
+Setting up parallelization has a cost of about \texttt{0.12} seconds here.
 The execution time is much longer in parallel on Windows because setting up the cluster takes much more time than parallelization saves.
 Parallelization is interesting for longer tasks, such as a one second break.
 
@@ -2714,7 +2714,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.000   0.000   2.116
+##   0.001   0.000   2.168
 \end{verbatim}
 
 \begin{Shaded}
@@ -2726,7 +2726,7 @@ Parallelization is interesting for longer tasks, such as a one second break.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.018   1.161
+##   0.002   0.010   1.092
 \end{verbatim}
 
 \normalsize
@@ -2745,7 +2745,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.013   1.166
+##   0.002   0.012   1.126
 \end{verbatim}
 
 \begin{Shaded}
@@ -2756,7 +2756,7 @@ If the number of parallel tasks exceeds the number of cores used, performance co
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.021   2.199
+##   0.002   0.012   2.109
 \end{verbatim}
 
 \normalsize
@@ -2944,7 +2944,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.002   0.000   0.712
+##   0.004   0.000   0.576
 \end{verbatim}
 
 \begin{Shaded}
@@ -2959,7 +2959,7 @@ Replacing the \texttt{\%do\%} operator with \texttt{\%dopar\%} parallelizes loop
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.005   0.017   0.419
+##   0.005   0.016   0.359
 \end{verbatim}
 
 \normalsize
@@ -3004,7 +3004,7 @@ The \textbf{future.apply} package allows all \texttt{*apply()} and \texttt{repli
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.022   0.001   0.425
+##   0.024   0.001   0.417
 \end{verbatim}
 
 \normalsize
@@ -3025,7 +3025,7 @@ foreach loops can be parallelized with the \textbf{doFuture} package by simply r
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.036   0.001   0.490
+##   0.034   0.000   0.462
 \end{verbatim}
 
 \normalsize
@@ -3117,7 +3117,7 @@ The distance can be calculated by two nested \texttt{sapply()}.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.572   0.009   2.586
+##   2.333   0.021   2.371
 \end{verbatim}
 
 \begin{Shaded}
@@ -3151,7 +3151,7 @@ The gain is negligible on a long computation like this one but important for sho
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.382   0.008   2.390
+##   2.185   0.004   2.191
 \end{verbatim}
 
 \begin{Shaded}
@@ -3194,7 +3194,7 @@ A more significant improvement is to compute the square roots only at the end of
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.378   0.008   2.386
+##   2.286   0.006   2.296
 \end{verbatim}
 
 \begin{Shaded}
@@ -3233,7 +3233,7 @@ The computations are performed twice (distance between points \(i\) and \(j\), b
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.401   0.006   1.408
+##   1.287   0.006   1.294
 \end{verbatim}
 
 \begin{Shaded}
@@ -3274,7 +3274,7 @@ On MacOS or Linux, the computation is accelerated.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.646   0.288   1.116
+##   1.475   0.267   1.120
 \end{verbatim}
 
 \begin{Shaded}
@@ -3319,7 +3319,7 @@ Only the main loop is parallelized: nesting \texttt{future\_vapply()} would coll
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.066   0.013   1.111
+##   0.047   0.008   0.945
 \end{verbatim}
 
 \begin{Shaded}
@@ -3365,7 +3365,7 @@ A for loop is faster and consumes less memory because it does not store the dist
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.878   0.005   0.882
+##   0.788   0.004   0.794
 \end{verbatim}
 
 \begin{Shaded}
@@ -3411,7 +3411,7 @@ However, distances are calculated twice.
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   2.297   0.184   0.986
+##   1.883   0.194   0.755
 \end{verbatim}
 
 \begin{Shaded}
@@ -3453,7 +3453,7 @@ The test is run here with 10 times fewer points, so 100 times fewer distances to
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   0.878   0.010   0.888
+##   0.755   0.004   0.760
 \end{verbatim}
 
 \begin{Shaded}
@@ -3627,8 +3627,8 @@ The usage in R is identical to the usage of C++ functions interfaced by \textbf{
 ## Unit: microseconds
 ##                                                      expr
 ##  d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints - 1) * 2
-##      min      lq     mean  median      uq      max neval
-##  253.011 298.767 358.4056 304.179 312.256 4914.752   100
+##      min      lq     mean  median       uq      max neval
+##  219.432 221.728 265.5279 230.051 237.2055 3217.024   100
 \end{verbatim}
 
 \begin{Shaded}
@@ -3668,13 +3668,13 @@ Multiplying the number of points by 50, the serial computation time must be mult
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   4.641   0.007   4.650
+##   4.314   0.004   4.322
 \end{verbatim}
 
 \normalsize
 
 In parallel, the time increases little: parallelization becomes really efficient.
-This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{2204} seconds.
+This time is to be compared to that of the reference for loop, multiplied by 2500, that is \texttt{1984} seconds.
 
 \scriptsize
 
@@ -3687,7 +3687,7 @@ This time is to be compared to that of the reference for loop, multiplied by 250
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.408   0.004   0.471
+##   1.268   0.002   0.424
 \end{verbatim}
 
 \normalsize
@@ -3830,14 +3830,14 @@ The workflow is run by \texttt{tar\_make()}.
 
 \begin{verbatim}
 ## ▶ dispatched target NbPoints
-## ● completed target NbPoints [0.83 seconds]
+## ● completed target NbPoints [0.66 seconds, 53 bytes]
 ## ▶ dispatched target X
-## ● completed target X [0.002 seconds]
+## ● completed target X [0.001 seconds, 11.058 kilobytes]
 ## ▶ dispatched target d
-## ● completed target d [0.011 seconds]
+## ● completed target d [0.007 seconds, 55 bytes]
 ## ▶ dispatched target map
-## ● completed target map [0.029 seconds]
-## ▶ ended pipeline [0.99 seconds]
+## ● completed target map [0.015 seconds, 187.39 kilobytes]
+## ▶ ended pipeline [0.772 seconds]
 \end{verbatim}
 
 \normalsize
@@ -6889,14 +6889,14 @@ To start the target calculation, a standard piece of code (\texttt{\{r\}}) must 
 
 \begin{verbatim}
 ## ▶ dispatched target NbPoints
-## ● completed target NbPoints [0.685 seconds]
+## ● completed target NbPoints [0.594 seconds, 53 bytes]
 ## ▶ dispatched target X
-## ● completed target X [0.001 seconds]
+## ● completed target X [0.001 seconds, 11.058 kilobytes]
 ## ▶ dispatched target d
-## ● completed target d [0.006 seconds]
+## ● completed target d [0.005 seconds, 55 bytes]
 ## ▶ dispatched target map
-## ● completed target map [0.012 seconds]
-## ▶ ended pipeline [0.798 seconds]
+## ● completed target map [0.011 seconds, 187.39 kilobytes]
+## ▶ ended pipeline [0.694 seconds]
 \end{verbatim}
 
 \normalsize
@@ -7644,7 +7644,7 @@ This is a generic method, i.e.~a function template, without code, to be adapted 
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x13515b5b8>
+## <bytecode: 0x1385f32e8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -7935,14 +7935,10 @@ The choice of function depends on the class of the object passed as argument.
 
 \begin{verbatim}
 ## Unit: nanoseconds
-##                expr min  lq     mean median  uq     max
-##  triple.integer(2L) 123 123  7789.59  164.0 164  728119
-##   triple.numeric(2) 123 123 10348.81  164.0 164 1018317
-##          triple(2L) 533 574   649.44  594.5 615    4797
-##  neval
-##    100
-##    100
-##    100
+##                expr min  lq    mean median  uq    max neval
+##  triple.integer(2L) 123 123 6558.36    123 123 642470   100
+##   triple.numeric(2)  82 123 8367.28    123 123 823854   100
+##          triple(2L) 492 492  563.34    533 533   2706   100
 \end{verbatim}
 
 \normalsize
@@ -8287,7 +8283,7 @@ Finally, the complete code is as follows:
 \begin{verbatim}
 ## function (x, y, ...) 
 ## UseMethod("plot")
-## <bytecode: 0x13515b5b8>
+## <bytecode: 0x1385f32e8>
 ## <environment: namespace:base>
 \end{verbatim}
 
@@ -8325,7 +8321,7 @@ Finally, the complete code is as follows:
 ## {
 ##     UseMethod("autoplot")
 ## }
-## <bytecode: 0x1460270e8>
+## <bytecode: 0x14d9bf210>
 ## <environment: namespace:ggplot2>
 \end{verbatim}
 
@@ -9044,7 +9040,7 @@ The last step of the production job uses the \texttt{upload-artifact} action for
 
 \begin{verbatim}
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: _book
           path: docs/
@@ -9063,9 +9059,11 @@ Publishing the artifact to the \texttt{gh-pages} branch of the project requires 
   deploy:
     runs-on: ubuntu-latest
     needs: renderbook
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           # Artifact name
           name: _book
@@ -9074,7 +9072,7 @@ Publishing the artifact to the \texttt{gh-pages} branch of the project requires 
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: ${{ secrets.EMAIL }}
           build_dir: docs
@@ -9107,6 +9105,8 @@ It uses an environment variable, \texttt{GITHUB\_TOKEN}, to authenticate and par
 \item
   \emph{jekyll:no} to create an empty file named \texttt{.nojekyll} that tells GitHub pages not to try to treat their content as a Jekyll website.
 \end{itemize}
+
+GITHUB\_TOKEN\texttt{is\ an\ authentication\ token\ provided\ by\ Github\ Actions\ for\ the\ execution\ of\ this\ script.\ Its\ rights\ are\ assigned\ in\ the\ script\ by\ the}permission` entry: here, the right to write content to the project.
 
 \subsection{Confidential data in a public repository}\label{sec:confidentielCI}
 
@@ -9181,23 +9181,25 @@ jobs:
           bookdown::render_book("index.Rmd", "bookdown::gitbook")
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ghpages
           path: docs
   deploy:
     runs-on: ubuntu-latest
     needs: render
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ghpages
           path: docs
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: ${{ secrets.EMAIL }}
           build_dir: docs
@@ -9240,23 +9242,25 @@ jobs:
               rmarkdown::render(file, "all")' ${RMD_PATH[*]}
           Rscript -e 'memoiR::build_githubpages(bundle = "TinyTeX")'
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ghpages
           path: docs
   deploy:
     runs-on: ubuntu-latest
     needs: render
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ghpages
           path: docs
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: ${{ secrets.EMAIL }}
           build_dir: docs
@@ -9319,7 +9323,7 @@ The \enquote{Upload artifact} step is modified to run despite the failure of the
 \begin{verbatim}
       - name: Upload artifact
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: _book
           path: docs/
@@ -9376,16 +9380,18 @@ jobs:
           blogdown::build_site(local = TRUE, build_rmd = TRUE)
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: _website
           path: public/
   deploy:
     runs-on: ubuntu-latest
     needs: buildsite
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           # Artifact name
           name: _website
@@ -9394,7 +9400,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           build_dir: public
           email: ${{ secrets.EMAIL }}
