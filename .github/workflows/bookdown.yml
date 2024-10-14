@@ -38,7 +38,7 @@ jobs:
           bookdown::render_book("index.Rmd", "bookdown::bs4_book")
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: _book
           path: docs/
@@ -47,7 +47,7 @@ jobs:
     needs: renderbook
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           # Artifact name
           name: _book

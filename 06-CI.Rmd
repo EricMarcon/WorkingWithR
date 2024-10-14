@@ -278,7 +278,7 @@ The last step of the production job uses the `upload-artifact` action for this.
 
 ```
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: _book
           path: docs/
@@ -298,9 +298,11 @@ Publishing the artifact to the `gh-pages` branch of the project requires another
   deploy:
     runs-on: ubuntu-latest
     needs: renderbook
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           # Artifact name
           name: _book
@@ -309,7 +311,7 @@ Publishing the artifact to the `gh-pages` branch of the project requires another
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: ${{ secrets.EMAIL }}
           build_dir: docs
@@ -332,6 +334,8 @@ To avoid exposing the address publicly, it has been stored in a project secret.
 - *buid_dir*: the directory to publish.
 - *jekyll:no* to create an empty file named `.nojekyll` that tells GitHub pages not to try to treat their content as a Jekyll website.
 
+GITHUB_TOKEN` is an authentication token provided by Github Actions for the execution of this script.
+Its rights are assigned in the script by the `permission` entry: here, the right to write content to the project.
 
 
 ### Confidential data in a public repository {#sec:confidentielCI}
@@ -409,23 +413,25 @@ jobs:
           bookdown::render_book("index.Rmd", "bookdown::gitbook")
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ghpages
           path: docs
   deploy:
     runs-on: ubuntu-latest
     needs: render
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ghpages
           path: docs
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: ${{ secrets.EMAIL }}
           build_dir: docs
@@ -469,23 +475,25 @@ jobs:
               rmarkdown::render(file, "all")' ${RMD_PATH[*]}
           Rscript -e 'memoiR::build_githubpages(bundle = "TinyTeX")'
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ghpages
           path: docs
   deploy:
     runs-on: ubuntu-latest
     needs: render
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ghpages
           path: docs
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           email: ${{ secrets.EMAIL }}
           build_dir: docs
@@ -543,7 +551,7 @@ The "Upload artifact" step is modified to run despite the failure of the previou
 ```
       - name: Upload artifact
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: _book
           path: docs/
@@ -601,16 +609,18 @@ jobs:
           blogdown::build_site(local = TRUE, build_rmd = TRUE)
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: _website
           path: public/
   deploy:
     runs-on: ubuntu-latest
     needs: buildsite
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           # Artifact name
           name: _website
@@ -619,7 +629,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           build_dir: public
           email: ${{ secrets.EMAIL }}
