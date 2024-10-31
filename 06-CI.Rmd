@@ -53,7 +53,10 @@ In order for GitHub to do this, a few settings are required.
 
 To write to GitHub, the continuous integration service will have to authenticate with a Personal Access Token (PAT) whose creation is described in section \@ref(sec:pat).
 
-Generate a new token, describe it as "GitHub Actions" and give it "repo" authorization, i.e. modify *all* repositories (it is not possible to limit access to a particular repository).
+Generate a new token, describe it as "GitHub Actions" and give it the following authorizations:
+
+- "repo", i.e. modify *all* repositories (it is not possible to limit access to a particular repository).
+- "workflow", i.e. run continuous integration scripts.
 
 
 ### Project secrets {#sec:secrets-ci}
