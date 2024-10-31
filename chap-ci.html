@@ -7,7 +7,7 @@
 <title>6 Continuous integration | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="Continuous integration is the process of assigning an external service to verify a package, produce Markdown documents for web pages in a GitHub repository, or completely knit a website from code....">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
 <meta property="og:title" content="6 Continuous integration | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-ci.html">
@@ -146,7 +146,11 @@ When documents are produced locally, they are placed in the <code>docs</code> fo
 <span class="header-section-number">6.2.1</span> Getting a personal access token<a class="anchor" aria-label="anchor" href="#getting-a-personal-access-token"><i class="fas fa-link"></i></a>
 </h3>
 <p>To write to GitHub, the continuous integration service will have to authenticate with a Personal Access Token (PAT) whose creation is described in section <a href="chap-logiciels.html#sec:pat">1.4.4</a>.</p>
-<p>Generate a new token, describe it as “GitHub Actions” and give it “repo” authorization, i.e. modify <em>all</em> repositories (it is not possible to limit access to a particular repository).</p>
+<p>Generate a new token, describe it as “GitHub Actions” and give it the following authorizations:</p>
+<ul>
+<li>“repo”, i.e. modify <em>all</em> repositories (it is not possible to limit access to a particular repository).</li>
+<li>“workflow”, i.e. run continuous integration scripts.</li>
+</ul>
 </div>
 <div id="sec:secrets-ci" class="section level3" number="6.2.2">
 <h3>
@@ -894,7 +898,7 @@ Paste the Markdown code:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 10/14/2024.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 10/31/2024.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
