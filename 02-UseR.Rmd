@@ -27,7 +27,8 @@ The most common is S3, but it is not the only one[^206].
 
 The core of R is the primitive functions and basic data structures like the `sum` function and `matrix` data:
 
-```{r Core}
+```{r}
+#| label: Core
 pryr::otype(sum)
 typeof(sum)
 pryr::otype(matrix(1))
@@ -51,7 +52,8 @@ S3 is the most used language, often the only one known by R users.
 
 It is an object-oriented language in which classes, i.e. the type of objects, are declarative.
 
-```{r S3-1}
+```{r}
+#| label: S3-1
 MyFirstName <- "Eric"
 class(MyFirstName) <- "FirstName"
 ```
@@ -62,7 +64,8 @@ Unlike the way a classical object-oriented language works[^210], S3 methods are 
 
 [^210]: https://www.troispointzero.fr/le-blog/introduction-a-la-programmation-orientee-objet-poo/
 
-```{r S3-2, echo=TRUE}
+```{r}
+#| label: S3-2
 # Default display
 MyFirstName
 print.Firstname <- function(x) cat("The first name is", x) 
@@ -76,23 +79,27 @@ In R, methods are defined from generic methods.
 
 `print` is a generic method ("a generic") declared in **base**.
 
-```{r print-otype}
+```{r}
+#| label: print-otype
 pryr::otype(print)
 ```
 
 Its code is just a `UseMethod("print")` declaration:
-```{r print-code}
+```{r}
+#| label: print-code
 print
 ```
 
 There are many S3 methods for `print`:
 ```{r printS3}
+#| label: printS3
 head(methods("print"))
 ```
 
 Each applies to a class. `print.default` is used as a last resort and relies on the type of the object, not its S3 class.
 
-```{r print.defaut, echo=TRUE}
+```{r}
+#| label: print.defaut
 typeof(MyFirstName)
 pryr::otype(MyFirstName)
 ```
@@ -101,7 +108,8 @@ An object can belong to several classes, which allows a form of inheritance of m
 In a classical object oriented language, inheritance allows to define more precise classes ("FrenchFirstName") which inherit from more general classes ("FirstName") and thus benefit from their methods without having to redefine them.
 In R, inheritance is simply declaring a vector of increasingly broad classes for an object:
 
-```{r S3-3, echo=TRUE}
+```{r}
+#| label: S3-3
 # Definition of classes by a vector
 class(MyFirstName) <- c("FrenchFirstName", "FirstName")
 # Alternative code, with inherits()
@@ -111,7 +119,8 @@ inherits(MyFirstName, what = "FirstName")
 
 The generic looks for a method for each class, in the order of their declaration.
 
-```{r S3-4, echo=TRUE}
+```{r}
+#| label: S3-4
 print.FrenchFirstName <- function(x) cat("French first name:", x) 
 MyFirstName
 ```
@@ -120,9 +129,10 @@ In summary, S3 is the common language of R.
 Almost all packages are written in S3.
 Generics are everywhere but go unnoticed, for example in packages:
 
-```{r S3-5, echo=TRUE}
+```{r}
+#| label: S3-5
 library("entropart")
-.S3methods(class="SpeciesDistribution")
+.S3methods(class = "SpeciesDistribution")
 ```
 
 The `.S3methods()` function displays all available methods for a class, as opposed to `methods()` which displays all classes for which the method passed as an argument is defined.
@@ -141,21 +151,26 @@ S4 is an evolution of S3 that structures classes to get closer to a classical ob
 
 Using the previous example, the S4 syntax is as follows:
 
-```{r S4-Class, tidy=FALSE}
+```{r}
+#| label: S4-Class
 # Definition of the class Person, with its slots
-setClass("Person",  
-         slots = list(LastName = "character", FirstName = "character"))
+setClass(
+  "Person",  
+  slots = list(LastName = "character", FirstName = "character")
+)
 #  Construction of an instance
 Me <- new("Person", LastName = "Marcon", FirstName = "Eric")
-# Langage
+# Language
 pryr::otype(Me)
 ```
 
 Methods always belong to functions.
 They are declared by the `setMethod()` function:
-```{r S4-print}
-setMethod("print",
-  signature="Person",
+```{r}
+#| label: S4-print
+setMethod(
+  "print",
+  signature = "Person",
   function(x, ...) {
     cat("The person is:", x@FirstName, x@LastName) 
   }
@@ -175,14 +190,17 @@ RC was introduced in R 2.12 (2010) with the **methods** package.
 
 Methods belong to classes, as in C++: they are declared in the class and called from the objects.
 
-```{r RC-Class, tidy=FALSE}
+```{r}
+#| label: RC-Class
 library("methods")
 # Declaration of the class
-PersonRC <- setRefClass("PersonRC", 
-    fields = list(LastName = "character", FirstName = "character"),
-    methods = list(print = function() cat(FirstName, LastName)))
+PersonRC <- setRefClass(
+  "PersonRC", 
+  fields = list(LastName = "character", FirstName = "character"),
+  methods = list(print = function() cat(FirstName, LastName))
+)
 # Constructeur
-MeRC <- new("PersonRC", LastName = "Marcon", FirstName ="Eric")
+MeRC <- new("PersonRC", LastName = "Marcon", FirstName = "Eric")
 # Language
 pryr::otype(MeRC)
 # Call the print method
@@ -201,14 +219,22 @@ S6[^211] enhances RC but is not included in R: it requires installing its packag
 Attributes and methods can be public or private.
 An `initialize()` method is used as a constructor.
 
-```{r S6-Class}
+```{r}
+#| label: S6-Class
 library("R6")
-PersonR6 <- R6Class("PersonR6", 
-                      public = list(LastName="character", FirstName="character",
-                                    initialize = function(LastName=NA, FirstName=NA) {
-                                      self$LastName <- LastName ; self$FirstName <- FirstName},
-                                    print = function() cat(self$FirstName, self$LastName)))
-MeR6 <- PersonR6$new(LastName = "Marcon", FirstName ="Eric")
+PersonR6 <- R6Class(
+  "PersonR6", 
+  public = list(
+    LastName = "character", 
+    FirstName = "character",
+    initialize = function(LastName = NA, FirstName = NA) {
+      self$LastName <- LastName
+      self$FirstName <- FirstName
+    },
+    print = function() cat(self$FirstName, self$LastName)
+  )
+)
+MeR6 <- PersonR6$new(LastName = "Marcon", FirstName = "Eric")
 MeR6$print()
 ```
 
@@ -218,7 +244,8 @@ The performances of S6 are much better than those of RC but are inferior to thos
 [^212]: https://r6.r-lib.org/articles/Performance.html
 
 The non-inclusion of R6 to R is shown by **pryr**:
-```{r otype}
+```{r}
+#| label: otype
 pryr::otype(MeR6)
 ```
 
@@ -227,7 +254,8 @@ pryr::otype(MeR6)
 
 The tidyverse is a set of coherent packages that have evolved the way R is programmed.
 The set of essential packages can be loaded by the **tidyverse** package which has no other use:
-```{r tidyverse}
+```{r}
+#| label: tidyverse
 library("tidyverse")
 ```
 
@@ -241,19 +269,21 @@ Its most visible contribution for the user is the sequence of commands in a flow
 [^221]: https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html
 
 In standard programming, the sequence of functions is written by successive nesting, which makes it difficult to read, especially when arguments are needed:
-```{r log_mean_runif}
+```{r}
+#| label: log_mean_runif
 # Base-2 logarithm of the mean of 100 random numbers in a uniform distribution
-log(mean(runif(100)), base=2)
+log(mean(runif(100)), base = 2)
 ```
 
 In the tidyverse, the functions are chained together, which often better matches the programmer's thinking about data processing:
-```{r tidylog, tidy=FALSE}
+```{r}
+#| label: tidylog
 # 100 random numbers in a uniform distribution
 runif(100) %>% 
   # Mean
   mean %>% 
   # Base-2 logarithm
-  log(base=2)
+  log(base = 2)
 ```
 
 The pipe `%>%` is an operator that calls the next function by passing it as first argument the result of the previous function.
@@ -290,7 +320,9 @@ The set formed by the pipeline and **ggplot2** allows complex processing in a re
 Figure \@ref(fig:diamonds) shows the result of the following code:
 
 (ref:diamonds) Price of diamonds according to their weight. Demonstration of the **ggplot2** code combined with tidyverse data processing.
-```{r diamonds, fig.cap="(ref:diamonds)", echo=TRUE, tidy=FALSE, message=FALSE}
+```{r}
+#| label: diamonds
+#| fig.cap: "(ref:diamonds)"
 # Diamonds data provided by ggplot2
 diamonds %>% 
   # Keep only diamonds larger than half a carat
@@ -325,13 +357,15 @@ Each loaded package creates a child environment to form a stack of environments,
 
 The console is in the global environment, the child of the last loaded package.
 
-```{r search}
+```{r}
+#| label: search
 search()
 ```
 
 The code of a function called from the console runs in a child environment of the global environment:
 
-```{r environment}
+```{r}
+#| label: environment
 # Current environment
 environment()
 # The function f displays its environment
@@ -349,7 +383,8 @@ The search for ab object starts in the local environment.
 If it is not found, it is searched in the parent environment, then in the parent of the parent, until the environments are exhausted, which generates an error indicating that the object was not found.
 
 Example:
-```{r GlobalEnv}
+```{r}
+#| label: GlobalEnv
 # Variable q defined in the global environment
 q <- "GlobalEnv"
 # Function defining q in its environment
@@ -394,7 +429,8 @@ They are usually called by the `library()` function, which does two things:
 
 It is possible to detach a package with the `unloadNamespace()` function to remove it from the environment stack.
 Example:
-```{r unloadNamespace}
+```{r}
+#| label: unloadNamespace
 # entropart loaded and attached
 library("entropart")
 # is it attached?
@@ -402,7 +438,7 @@ isNamespaceLoaded("entropart")
 # stack of environments
 search()
 # Diversity(), a function exported by entropart is found
-Diversity(1, CheckArguments=FALSE)
+Diversity(1, CheckArguments = FALSE)
 # Detach and unload entropart
 unloadNamespace("entropart")
 # Is it attached?
@@ -412,7 +448,7 @@ search()
 # Diversity() cannot be found
 tryCatch(Diversity(1), error = function(e) print(e))
 # but can be called with its full name
-entropart::Diversity(1, CheckArguments=FALSE)
+entropart::Diversity(1, CheckArguments = FALSE)
 ```
 
 Calling `entropart::Diversity()` loads the package (i.e., implicitly executes `loadNamespace("entropart")`) but does not attach it.
@@ -425,7 +461,8 @@ The **stats** package is usually loaded before **dplyr**, a package in the tidyv
 Thus, `stats::filter()` must be called explicitly.
 
 However, the **dplyr** or **tidyverse** package (which attaches all the tidyverse packages) can be loaded systematically by creating a `.RProfile` at the root of the project containing the command:
-```{r tidyverse2, eval=FALSE}
+```{r}
+#| label: tidyverse2
 library("tidyverse")
 ```
 
@@ -442,9 +479,10 @@ For very short execution times, it is necessary to repeat the measurement: this 
 
 The function returns the execution time of the code.
 
-```{r system.time}
+```{r}
+#| label: system.time
 # Mean absolute deviation of 1000 values in a uniform distribution, repeated 100 times
-system.time(for(i in 1:100) mad(runif(1000)))
+system.time(for (i in 1:100) mad(runif(1000)))
 ```
 
 
@@ -454,9 +492,10 @@ The **microbenchmark** package is the most advanced.
 
 The goal is to compare the speed of computing the square of a vector (or a number) by multiplying it by itself ($x \times x$) or by raising it to the power of 2 ($x^2$).
 
-```{r microbenchmark}
+```{r}
+#| label: microbenchmark
 # Functions to test
-f1 <- function(x) x*x
+f1 <- function(x) x * x
 f2 <- function(x) x^2
 f3 <- function(x) x^2.1
 f4 <- function(x) x^3
@@ -475,20 +514,23 @@ The test result, a `microbenchmark` object, is a raw table of execution times.
 The statistical analysis is done by the `print` and `summary` methods.
 To choose the columns to display, use the following syntax:
 
-```{r mb_summary}
+```{r}
+#| label: mb_summary
 summary(mb)[, c("expr", "median")]
 ```
 
 To make calculations on these results, we must store them in a variable.
 To prevent the results from being displayed in the console, the simplest solution is to use the `capture.output` function by assigning its result to a variable.
 
-```{r capture.output}
+```{r}
+#| label: capture.output
 dummy <- capture.output(mbs <- summary(mb))
 ```
 
 The previous test is displayed again.
 
-```{r mb_summary2}
+```{r}
+#| label: mb_summary2
 summary(mb)[, c("expr", "median")]
 ```
 
@@ -498,7 +540,8 @@ The computation of the power 2 is therefore optimized by R to avoid the use of l
 
 Two graphical representations are available: the violins represent the probability density of the execution time; the boxplots are classical.
 
-```{r boxplot, message=FALSE}
+```{r}
+#| label: boxplot
 library("ggplot2")
 autoplot(mb)
 boxplot(mb)
@@ -513,14 +556,15 @@ It tracks the execution time of each line of code and the memory used.
 The goal is to detect slow code portions that need to be improved.
 
 
-```{r profvis}
+```{r}
+#| label: profvis
 library(profvis)
 p <- profvis({
   # Cosine calculations
   cos(runif(10^7))
   # 1/2 second pause
-  pause(1/2)
-  })
+  pause(1 / 2)
+})
 htmlwidgets::saveWidget(p, "docs/profile.html")
 ```
 
@@ -544,20 +588,22 @@ The most frequent case of long code to execute is loops: the same code is repeat
 Most of R's functions are vector functions: loops are processed internally, extremely fast.
 Therefore, you should think in terms of vectors rather than scalars.
 
-```{r vector}
+```{r}
+#| label: vector
 # Draw two vectors of three random numbers between 0 and 1
 x1 <- runif(3)
 x2 <- runif(3)
 # Square root of the three numbers in x1
 sqrt(x1)
 # Respective sums of the three numbers of x1 and x2
-x1+x2
+x1 + x2
 ```
 
 We also have to write vector functions on their first argument.
 The function `lnq` of the package **entropart** returns the deformed logarithm of order $q$ of a number $x$.
 
-```{r lnq}
+```{r}
+#| label: lnq
 # Code of the function
 entropart::lnq
 ```
@@ -577,12 +623,18 @@ There are several versions of this function:
 - `sapply()` returns a dataframe by collapsing the lists (this is done by the `simplify2array()` function).
 - `vapply()` is almost identical but requires that the data type of the result be provided.
 
-```{r l_s_v_apply}
+```{r}
+#| label: l_s_v_apply
 # Draw 1000 values in a uniform distribution
 x1 <- runif(1000)
 # The square root can be calculated for the vector or each value 
-identical(sqrt(x1), sapply(x1, FUN=sqrt))
-mb <- microbenchmark(sqrt(x1), lapply(x1, FUN=sqrt), sapply(x1, FUN=sqrt), vapply(x1, FUN=sqrt, FUN.VALUE = 0))
+identical(sqrt(x1), sapply(x1, FUN = sqrt))
+mb <- microbenchmark(
+  sqrt(x1), 
+  lapply(x1, FUN = sqrt), 
+  sapply(x1, FUN = sqrt), 
+  vapply(x1, FUN = sqrt, FUN.VALUE = 0)
+)
 summary(mb)[, c("expr", "median")]
 ```
 
@@ -600,46 +652,50 @@ The default level is 3: all functions are compiled, and loops in the code are co
 
 To evaluate the performance gain, the following code removes all automatic compilation, and compares the same loop compiled or not.
 
-```{r compiler}
+```{r}
+#| label: compiler
 library("compiler")
 # No automatic compilation
-enableJIT(level=0)
+enableJIT(level = 0)
 # Loop to calculate the square root of a vector
-Loop <- function(x) {
+loop <- function(x) {
   # Initialization of the result vector, essential
-  Root <- vector("numeric", length=length(x))
+  root <- vector("numeric", length = length(x))
   # Loop
-  for(i in 1:length(x)) Root[i] <- sqrt(x[i])
-  return(Root)
+  for (i in 1:length(x)) root[i] <- sqrt(x[i])
+  return(root)
 }
 # Compiled version
-Loop2 <- cmpfun(Loop)
+loop2 <- cmpfun(loop)
 # Comparison
-mb <- microbenchmark(Loop(x1), Loop2(x1))
+mb <- microbenchmark(loop(x1), loop2(x1))
 (mbs <- summary(mb)[, c("expr", "median")])
 # Automatic compilation by default since version 3.5
-enableJIT(level=3)
+enableJIT(level = 3)
 ```
 
 The gain is considerable: from 1 to ```r format(mbs[1,2]/mbs[2,2], digits=1)```.
 
 For loops are now much faster than `vapply`.
 
-```{r for_mb}
+```{r}
+#| label: for_mb
 # Test
-mb <- microbenchmark(vapply(x1, FUN=sqrt, 0), Loop(x1))
+mb <- microbenchmark(vapply(x1, FUN = sqrt, 0), loop(x1))
 summary(mb)[, c("expr", "median")]
 ```
 
 Be careful, the performance test can be misleading:
 
-```{r deceptive, tidy=FALSE}
+```{r}
+#| label: deceptive
 # Preparing the result vector
-Root <- vector("numeric", length = length(x1))
+root <- vector("numeric", length = length(x1))
 # Test
-mb <- microbenchmark(vapply(x1, FUN = sqrt, 0), 
-                     for(i in 1:length(x1)) 
-                       Root[i] <- sqrt(x1[i]))
+mb <- microbenchmark(
+  vapply(x1, FUN = sqrt, 0), 
+  for (i in 1:length(x1)) root[i] <- sqrt(x1[i])
+)
 summary(mb)[, c("expr", "median")]
 ```
 
@@ -648,19 +704,20 @@ In this code, the for loop is not compiled so it is much slower than in its norm
 The long loops allow tracking of their progress by a text bar, which is another advantage.
 The following function executes pauses of one tenth of a second for the time passed in parameter (in seconds).
 
-```{r BoucleSuivie}
-MonitoredLoop <- function(duration=1) {
+```{r }
+#| label: BoucleSuivie
+loop_monitored <- function(duration = 1) {
   # Progress bar
-  pgb <- txtProgressBar(min = 0, max = duration*10)
-  # Boucle
-  for(i in 1:(duration*10)) {
+  pgb <- txtProgressBar(min = 0, max = duration * 10)
+  # Loop
+  for (i in 1:(duration * 10)) {
     # Pause for a tenth of a second
-    Sys.sleep(1/10)
+    Sys.sleep(1 / 10)
     # Track progress
     setTxtProgressBar(pgb, i)
   }
 }
-MonitoredLoop()
+loop_monitored()
 ```
 
 
@@ -668,13 +725,15 @@ MonitoredLoop()
 
 `replicate()` repeats a statement.
 
-```{r replicate}
+```{r}
+#| label: replicate
 replicate(3, runif(1))
 ```
 
 This code is equivalent to `runif(3)`, with performance similar to `vapply`: 50 to 100 times slower than a vector function.
 
-```{r replicate_mb}
+```{r}
+#| label: replicate_mb
 mb <- microbenchmark(replicate(1E3, runif(1)), runif(1E3))
 summary(mb)[, c("expr", "median")]
 ```
@@ -692,17 +751,20 @@ Write the loops instead.
 
 `colSums` and similar functions (`rowSums`, `colMeans`, `rowMeans`) are optimized.
 
-```{r BoucleSomme, tidy=FALSE}
+```{r}
+#| label: BoucleSomme
 # Sum of the numeric columns of the diamonds dataset of ggplot2
 # Loop identical to the action of apply(, 2, )
-SumLoop <- function(Table) {
-  Sum <- vector("numeric", length = ncol(Table))
-  for (i in 1:ncol(Table)) Sum[i] <- sum(Table[, i])
-  return(Sum)
+loop_sum <- function(table) {
+  the_sum <- vector("numeric", length = ncol(table))
+  for (i in 1:ncol(table)) the_sum[i] <- sum(table[, i])
+  return(the_sum)
 }
-mb <- microbenchmark(SumLoop(diamonds[-(2:4)]), 
-                     apply(diamonds[-(2:4)], 2, sum), 
-                     colSums(diamonds[-(2:4)]))
+mb <- microbenchmark(
+  loop_sum(diamonds[-(2:4)]),
+  apply(diamonds[-(2:4)], 2, sum), 
+  colSums(diamonds[-(2:4)])
+)
 summary(mb)[, c("expr", "median")]
 ```
 
@@ -714,7 +776,7 @@ summary(mb)[, c("expr", "median")]
 Integrating C++ code into R is greatly simplified by the **Rcpp** package but is still difficult to debug and therefore should be reserved for very simple code (to avoid errors) repeated a large number of times (to be worth the effort).
 The preparation and verification of the data must be done in R, as well as the processing and presentation of the results.
 
-The common practise is to include C++ code in a package, but  running it outside a package is possible:
+The common practice is to include C++ code in a package, but  running it outside a package is possible:
 
 - C++ code can be included in a C++ document (file with extension `.cpp`): it is compiled by the `sourceCpp()` command, which creates the R functions to call the C++ code.
 - In an RMarkdown document, Rcpp code snippets can be created to insert the C++ code: they are compiled and interfaced to R at the time of knitting.
@@ -722,6 +784,7 @@ The common practise is to include C++ code in a package, but  running it outside
 The following example shows how to create a C++ function to calculate the double of a numerical vector.
 
 ```{Rcpp}
+#| label: Rcpp
 #include <Rcpp.h>
 using namespace Rcpp;
 
@@ -733,7 +796,8 @@ NumericVector timesTwo(NumericVector x) {
   
 An R function with the same name as the C++ function is now available.
 
-```{r timesTwo}
+```{r}
+#| label: timesTwo
 timesTwo(1:5)
 ```
 
@@ -763,8 +827,8 @@ The `mclapply` function of the **parallel** package has the same syntax as `lapp
 On Windows, it has no effect since the system does not allow _fork_: it simply calls `lapply`.
 However, a workaround exists to emulate `mclapply` on Windows by calling `parLapply`, which uses a cluster.
 
-```{r, tidy=FALSE}
-##
+```{r}
+#| label: mclapply.hack.R
 ## mclapply.hack.R
 ##
 ## Nathan VanHoudnos
@@ -783,47 +847,62 @@ require(parallel)
 mclapply.hack <- function(..., mc.cores=detectCores()) {
   ## Create a cluster
   size.of.list <- length(list(...)[[1]])
-  cl <- makeCluster( min(size.of.list, mc.cores) )
+  cl <- makeCluster(min(size.of.list, mc.cores))
   
   ## Find out the names of the loaded packages 
   loaded.package.names <- c(
     ## Base packages
     sessionInfo()$basePkgs,
     ## Additional packages
-    names( sessionInfo()$otherPkgs ))
+    names( sessionInfo()$otherPkgs )
+  )
   
-  tryCatch( {
-    
-    ## Copy over all of the objects within scope to
-    ## all clusters. 
-    this.env <- environment()
-    while( identical( this.env, globalenv() ) == FALSE ) {
-      clusterExport(cl,
-                    ls(all.names=TRUE, env=this.env),
-                    envir=this.env)
-      this.env <- parent.env(environment())
+  tryCatch(
+    {
+      ## Copy over all of the objects within scope to
+      ## all clusters. 
+      this.env <- environment()
+      while (identical(this.env, globalenv()) == FALSE ) {
+        clusterExport(
+          cl,
+          ls(all.names = TRUE, env = this.env),
+          envir = this.env
+        )
+        this.env <- parent.env(environment())
+      }
+      clusterExport(
+        cl,
+        ls(all.names = TRUE, env = globalenv()),
+        envir = globalenv()
+      )
+      
+      ## Load the libraries on all the clusters
+      ## N.B. length(cl) returns the number of clusters
+      parLapply(
+        cl = cl, 
+        X = 1:length(cl), 
+        fun = function(xx){
+          lapply(
+            loaded.package.names, 
+            FUN = function(yy) {
+              require(yy, character.only = TRUE)
+            }
+          )
+        }
+      )
+      
+      ## Run the lapply in parallel 
+      return(parLapply(cl, ...))
+    }, 
+    finally = {        
+      ## Stop the cluster
+      stopCluster(cl)
     }
-    clusterExport(cl,
-                  ls(all.names=TRUE, env=globalenv()),
-                  envir=globalenv())
-    
-    ## Load the libraries on all the clusters
-    ## N.B. length(cl) returns the number of clusters
-    parLapply( cl, 1:length(cl), function(xx){
-      lapply(loaded.package.names, function(yy) {
-        require(yy , character.only=TRUE)})
-    })
-    
-    ## Run the lapply in parallel 
-    return( parLapply( cl, ...) )
-  }, finally = {        
-    ## Stop the cluster
-    stopCluster(cl)
-  })
+  )
 }
 
 ## Warn the user if they are using Windows
-if( Sys.info()[['sysname']] == 'Windows' ){
+if (Sys.info()[['sysname']] == 'Windows') {
   message(paste(
     "\n", 
     "   *** Microsoft Windows detected ***\n",
@@ -836,73 +915,82 @@ if( Sys.info()[['sysname']] == 'Windows' ){
     "   with a wrapper to parLapply() for this R session. Please see\n\n",
     "     http://www.stat.cmu.edu/~nmv/2014/07/14/
     implementing-mclapply-on-windows \n\n",
-    "   for details.\n\n"))
+    "   for details.\n\n")
+  )
 }
 
 ## If the OS is Windows, set mclapply to the
 ## the hackish version. Otherwise, leave the
 ## definition alone. 
-mclapply <- switch( Sys.info()[['sysname']],
-                    Windows = {mclapply.hack}, 
-                    Linux   = {mclapply},
-                    Darwin  = {mclapply})
-
-## end mclapply.hack.R
+mclapply <- switch(
+  Sys.info()[['sysname']],
+  Windows = {mclapply.hack}, 
+  Linux   = {mclapply},
+  Darwin  = {mclapply}
+)
 ```
 
 The following code tests the parallelization of a function that returns its argument unchanged after a quarter-second pause.
 This is knitted with ```r parallel::detectCores()``` cores, all of which are used except for one so as not to saturate the system.
 
-```{r detectCores}
-f <- function(x, time=.25) {
+```{r}
+#| label: detectCores
+f <- function(x, time = .25) {
   Sys.sleep(time)
   return(x)
 }
 
 #Leave one core out for the system
- nbCores <- detectCores()-1
+n_cores <- detectCores() - 1
 
-# Serial : theoretical time = nbCores/4 seconds
-(tserie <- system.time(lapply(1:nbCores, f)))
+# Serial : theoretical time = n_cores / 4 seconds
+(tserial <- system.time(lapply(1:n_cores, f)))
 # Parallel : theoretical time = 1/4 second
-(tparallele <- system.time(mclapply(1:nbCores, f, mc.cores=nbCores)))
+(tparallel <- system.time(mclapply(1:n_cores, f, mc.cores = n_cores)))
 ```
 
-Setting up parallelization has a cost of about ```r format(tparallele[3]-1/4, digits=2)``` seconds here.
+Setting up parallelization has a cost of about ```r format(tparallel[3] - 1 / 4, digits = 2)``` seconds here.
 The execution time is much longer in parallel on Windows because setting up the cluster takes much more time than parallelization saves.
 Parallelization is interesting for longer tasks, such as a one second break.
 
-```{r serie_parallele}
+```{r}
+#| label: serie_parallele
 # Serial
-system.time(lapply(1:nbCores, f, time=1))
+system.time(lapply(1:n_cores, f, time = 1))
 # Parallel
-system.time(mclapply(1:nbCores, f, time=1, mc.cores=nbCores))
+system.time(mclapply(1:n_cores, f, time = 1, mc.cores = n_cores))
 ```
 
 The additional time required for parallel execution of the new code is relatively smaller: the costs become less than the savings when the time of each task increases.
 
 If the number of parallel tasks exceeds the number of cores used, performance collapses because the additional task must be executed after the first ones.
 
-```{r nbCoeurs}
-system.time(mclapply(1:nbCores, f, time=1, mc.cores=nbCores))
-system.time(mclapply(1:(nbCores+1), f, time=1, mc.cores=nbCores))
+```{r}
+#| label: nbCoeurs
+system.time(mclapply(1:n_cores, f, time = 1, mc.cores = n_cores))
+system.time(mclapply(1:(n_cores + 1), f, time = 1, mc.cores = n_cores))
 ```
 
 The time then remains stable until the number of cores is doubled.
 Figure \@ref(fig:r-parallele) shows the evolution of the computation time according to the number of tasks.
 
-(ref:r-parallele) Parallel execution time of tasks requiring one second (each task is a one second pause). The number of tasks varies from 1 to twice the number of cores used (equal to ```r nbCores```) plus one. 
-```{r r-parallele, fig.cap="(ref:r-parallele)", fig.scap="Execution time in parallel", tidy=FALSE}
-Tasks <- 1:(2 * nbCores+1)
-Time <- sapply(Tasks, function(nbTasks) {
-      system.time(mclapply(1:nbTasks, f, time=1, mc.cores=nbCores))
-              })
+(ref:r-parallele) Parallel execution time of tasks requiring one second (each task is a one second pause). The number of tasks varies from 1 to twice the number of cores used (equal to ```r n_cores```) plus one. 
+```{r}
+#| label: r-parallele
+#| fig.cap: "(ref:r-parallele)"
+#| fig.scap: "Execution time in parallel"
+tasks <- 1:(2 * n_cores + 1)
+time <- sapply(
+  tasks, 
+  function(n_tasks) {
+    system.time(mclapply(1:n_tasks, f, time = 1, mc.cores = n_cores))
+  }
+)
 library("tidyverse")
-tibble(Tasks, Time=Time["elapsed", ]) %>% 
+tibble(tasks, time = time["elapsed", ]) %>% 
   ggplot +
-  geom_line(aes(x = Tasks, y = Time)) +
-  geom_vline(xintercept = nbCores, col = "red", lty = 2) +
-  geom_vline(xintercept = 2 * nbCores, col = "red", lty = 2)
+  geom_line(aes(x = tasks, y = time)) +
+  geom_vline(xintercept = (1:2) * n_cores, col = "red", lty = 2)
 ```
 
 The theoretical shape of this curve is as follows:
@@ -928,7 +1016,9 @@ For everyday use, `mclapply` is faster, except on Windows, and simpler (includin
 
 The **foreach** package allows advanced use of parallelization.
 Read its vignettes.
-```{r foreach_v, eval=FALSE}
+```{r}
+#| label: foreach_v
+#| eval: false
 # Manual
 vignette("foreach", "foreach")
 # Nested loops
@@ -937,13 +1027,14 @@ vignette("nested", "foreach")
 
 Regardless of parallelization, **foreach** redefines *for* loops.
 
-```{r foreach}
+```{r}
+#| label: foreach
 for (i in 1:3) {
   f(i)
 }
 # becomes
 library("foreach")
-foreach (i=1:3) %do% {
+foreach(i = 1:3) %do% {
   f(i)
 }
 ```
@@ -951,8 +1042,9 @@ foreach (i=1:3) %do% {
 The `foreach` function returns a list containing the results of each loop.
 The elements of the list can be combined by any function, such as `c`.
 
-```{r foreach2}
-foreach (i=1:3, .combine="c") %do% {
+```{r}
+#| label: foreach2
+foreach(i = 1:3, .combine = "c") %do% {
   f(i)
 }
 ```
@@ -960,9 +1052,10 @@ foreach (i=1:3, .combine="c") %do% {
 The `foreach` function is capable of using iterators, that is, functions that pass to the loop only the data it needs without loading the rest into memory.
 Here, the `icount` iterator passes the values 1, 2 and 3 individually, without loading the 1:3 vector into memory.
 
-```{r iterators}
+```{r}
+#| label: iterators
 library("iterators")
-foreach (i=icount(3), .combine="c") %do% {
+foreach(i = icount(3), .combine = "c") %do% {
   f(i)
 }
 ```
@@ -975,13 +1068,18 @@ It is therefore very useful when each object of the loop uses a large amount of 
 Replacing the `%do%` operator with `%dopar%` parallelizes loops, provided that an adapter, i.e. an intermediate package between `foreach` and a package implementing parallelization, is loaded.
 **doParallel** is an adapter for using the **parallel** package that comes with R.
 
-```{r doParallel}
+```{r}
+#| label: doParallel
 library(doParallel)
-registerDoParallel(cores = nbCores)
+registerDoParallel(cores = n_cores)
 # Serial
-system.time(foreach (i=icount(nbCores), .combine="c") %do% {f(i)})
+system.time(
+  foreach(i = icount(n_cores), .combine = "c") %do% {f(i)}
+)
 # Parallel
-system.time(foreach (i=icount(nbCores), .combine="c") %dopar% {f(i)})
+system.time(
+  foreach(i = icount(n_cores), .combine = "c") %dopar% {f(i)}
+)
 ```
 
 The fixed cost of parallelization is low.
@@ -1001,7 +1099,8 @@ Other strategies are available for using physical clusters (several computers pr
 
 Here we will use the `multisession` strategy, which works on the local computer, whatever its operating system.
 
-```{r future}
+```{r}
+#| label: future
 library("future")
 # Socket strategy on all available cores except 1
 usedCores <- availableCores() - 1
@@ -1010,21 +1109,26 @@ plan(multisession, workers = usedCores)
 
 The **future.apply** package allows all `*apply()` and `replicate()` loops to be effortlessly parallelized by prefixing their names with `future_`.
 
-```{r future.apply}
+```{r}
+#| label: future.apply
 library("future.apply")
 system.time(future_replicate(usedCores - 1, f(usedCores)))
 ```
 
 foreach loops can be parallelized with the **doFuture** package by simply replacing `%dopar%` with `%dofuture%`.
 
-```{r doFuture}
+```{r}
+#| label: doFuture
 library("doFuture")
-system.time(foreach (i = icount(nbCores), .combine="c") %dofuture% {f(i)})
+system.time(
+  foreach(i = icount(n_cores), .combine = "c") %dofuture% {f(i)}
+)
 ```
 
 The strategy is reset to `sequential` at the end.
 
-```{r sequential}
+```{r}
+#| label: sequential
 plan(sequential)
 ```
 
@@ -1043,10 +1147,11 @@ It is equal to $\frac{2+\sqrt{2}+5\ln{(1+\sqrt{2})}}{15} \approx 0.5214$.
 
 The point set is created with the **spatstat** package.
 
-```{r spatstat, message=FALSE}
-NbPoints <- 1000
+```{r}
+#| label: spatstat
+n_points <- 1000
 library("spatstat")
-X <- runifpoint(NbPoints)
+X <- runifpoint(n_points)
 ```
 
 ### Spatstat
@@ -1054,24 +1159,35 @@ X <- runifpoint(NbPoints)
 The `pairdist()` function of **spatstat** returns the matrix of distances between points.
 The average distance is calculated by dividing the sum by the number of pairs of distinct points.
 
-```{r pairdist, message=FALSE}
-mb <- microbenchmark(d <- sum(pairdist(X))/NbPoints/(NbPoints-1))
-# suppressMessages to eliminate useless messages
-suppressMessages(autoplot(mb))
+```{r}
+#| label: pairdist
+mb <- microbenchmark(d <- sum(pairdist(X)) / n_points / (n_points - 1))
+autoplot(mb)
 d
 ```
 
-The function is fast because it is coded in C language in the **spatstat** package for the core of its calculations.
+The function is fast because it is coded in C in the **spatstat** package for the core of its calculations.
 
 
 ### apply
 
 The distance can be calculated by two nested `sapply()`.
 
-```{r fsapply1}
+```{r}
+#| label: fsapply1
 fsapply1 <- function() {
-  distances <- sapply(1:NbPoints, function(i) sapply(1:NbPoints, function(j) sqrt((X$x[i]-X$x[j])^2 + (X$y[i]-X$y[j])^2)))
-  return(sum(distances)/NbPoints/(NbPoints-1))
+  distances <- sapply(
+    1:n_points, 
+    FUN = function(i) {
+      sapply(
+        1:n_points, 
+        FUN = function(j) {
+          sqrt((X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2)
+        }
+      )
+    } 
+  )
+  return(sum(distances) / n_points / (n_points - 1))
 }
 system.time(d <- fsapply1())
 d
@@ -1080,10 +1196,23 @@ d
 Some time can be saved by replacing `sapply` with `vapply`: the format of the results does not have to be determined by the function.
 The gain is negligible on a long computation like this one but important for short computations.
 
-```{r fsapply2}
+```{r}
+#| label: fsapply2
 fsapply2 <- function() {
-  distances <- vapply(1:NbPoints, function(i) vapply(1:NbPoints, function(j) sqrt((X$x[i]-X$x[j])^2 + (X$y[i]-X$y[j])^2), 0.0), 1:1000+0.0)
-  return(sum(distances)/NbPoints/(NbPoints-1))
+  distances <- vapply(
+    1:n_points, 
+    FUN = function(i) {
+      vapply(
+        1:n_points, 
+        FUN = function(j) {
+          sqrt((X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2)
+        }, 
+        FUN.VALUE = 0
+      )
+    }, 
+    FUN.VALUE = 1:1000 + 0
+  )
+  return(sum(distances) / n_points / (n_points - 1))
 }
 system.time(d <- fsapply2())
 d
@@ -1092,14 +1221,27 @@ d
 The output format is not always obvious to write: 
 
 - it must respect the size of the data: a vector of size 1000 for the outer loop, a scalar for the inner loop.
-- it must respect the type: `0` for an integer, `0.0` for a real number. In the outer loop, adding `0.0` to the vector of integers turns it into a vector of real numbers.
+- it must respect the type: `0L` for an integer, `0` for a real number. In the outer loop, adding `0` to the vector of integers turns it into a vector of real numbers.
 
 A more significant improvement is to compute the square roots only at the end of the loop, to take advantage of the vectorization of the function.
 
-```{r fsapply3}
+```{r}
+#| label: fsapply3
 fsapply3 <- function() {
-  distances <- vapply(1:NbPoints, function(i) vapply(1:NbPoints, function(j) (X$x[i]-X$x[j])^2 + (X$y[i]-X$y[j])^2, 0.0), 1:1000+0.0)
-  return(sum(sqrt(distances))/NbPoints/(NbPoints-1))
+  distances <- vapply(
+    1:n_points, 
+    FUN = function(i) {
+      vapply(
+        1:n_points, 
+        FUN = function(j) {
+          (X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2
+        }, 
+        FUN.VALUE = 0
+      )
+    }, 
+    FUN.VALUE = 1:1000 + 0
+  )
+  return(sum(sqrt(distances)) / n_points / (n_points - 1))
 }
 system.time(d <- fsapply3())
 d
@@ -1107,18 +1249,27 @@ d
 
 The computations are performed twice (distance between points $i$ and $j$, but also between points $j$ and $i$): a test on the indices allows to divide the time almost by 2 (not quite because the loops without computation, which return $0$, take time).
 
-```{r fsapply4}
+```{r}
+#| label: fsapply4
 fsapply4 <- function() {
-  distances <- vapply(1:NbPoints, function(i) {
-    vapply(1:NbPoints, function(j) {
-      if (j>i) {
-        (X$x[i]-X$x[j])^2 + (X$y[i]-X$y[j])^2
-      } else {
-        0
-      }
-    }, 0.0)
-  }, 1:1000+0.0)
-  return(sum(sqrt(distances))/NbPoints/(NbPoints-1)*2)
+  distances <- vapply(
+    1:n_points, 
+    FUN = function(i) {
+      vapply(
+        1:n_points, 
+        FUN = function(j) {
+          if (j > i) {
+            (X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2
+          } else {
+            0
+          }
+        }, 
+        FUN.VALUE = 0
+      )
+    }, 
+    FUN.VALUE = 1:1000 + 0
+  )
+  return(sum(sqrt(distances)) / n_points / (n_points - 1) * 2)
 }
 system.time(d <- fsapply4())
 d
@@ -1127,18 +1278,30 @@ d
 In parallel, the computation time is not improved on Windows because the individual tasks are too short.
 On MacOS or Linux, the computation is accelerated.
 
-```{r fsapply5}
+```{r}
+#| label: fsapply5
 fsapply5 <- function() {
-  distances <- mclapply(1:NbPoints, function(i) {
-    vapply(1:NbPoints, function(j) {
-      if (j>i) {
-        (X$x[i]-X$x[j])^2 + (X$y[i]-X$y[j])^2
-      } else {
-        0
-      }
-    }, 0.0)
-  })
-  return(sum(sqrt(simplify2array(distances)))/NbPoints/(NbPoints-1)*2)
+  distances <- mclapply(
+    1:n_points, 
+    # Avoid naming the argument because it is named FUN in mclapply()
+    # but fun in parLapply() used by  mclapply.hack()
+    function(i) {
+      vapply(
+        1:n_points, 
+        FUN = function(j) {
+          if (j > i) {
+            (X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2
+          } else {
+            0
+          }
+        },
+        FUN.VALUE = 0
+      )
+    }
+  )
+  return(
+    sum(sqrt(simplify2array(distances))) / n_points / (n_points - 1) * 2
+  )
 }
 system.time(d <- fsapply5())
 d
@@ -1151,20 +1314,29 @@ The `fsapply4()` function optimised above can be parallelled directly by prefixi
 Only the main loop is parallelized: nesting `future_vapply()` would collapse performance.
 
 ```{r}
+#| label: future.vapply
 library("future.apply")
 # Socket strategy on all available cores except 1
 plan(multisession, workers = availableCores() - 1)
 future_fsapply4_ <- function() {
-  distances <- future_vapply(1:NbPoints, function(i) {
-    vapply(1:NbPoints, function(j) {
-      if (j>i) {
-        (X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2
-      } else {
-        0
-      }
-    }, 0.0)
-  }, 1:1000+0.0)
-  return(sum(sqrt(distances)) / NbPoints / (NbPoints - 1) * 2)
+  distances <- future_vapply(
+    1:n_points, 
+    FUN = function(i) {
+      vapply(
+        1:n_points, 
+        FUN = function(j) {
+          if (j > i) {
+            (X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2
+          } else {
+            0
+          }
+        }, 
+        FUN.VALUE = 0
+      )
+    }, 
+    FUN.VALUE = 1:1000 + 0
+  )
+  return(sum(sqrt(distances)) / n_points / (n_points - 1) * 2)
 }
 system.time(d <- future_fsapply4_())
 d
@@ -1176,15 +1348,16 @@ plan(sequential)
 
 A for loop is faster and consumes less memory because it does not store the distance matrix.
 
-```{r distance}
-distance <- 0.0
+```{r}
+#| label: distance
+distance <- 0
 ffor <- function() {
-  for (i in 1:(NbPoints-1)) {
-    for (j in (i+1):NbPoints) {
-        distance <- distance + sqrt((X$x[i]-X$x[j])^2 + (X$y[i]-X$y[j])^2)
+  for (i in 1:(n_points - 1)) {
+    for (j in (i + 1):n_points) {
+      distance <- distance + sqrt((X$x[i] - X$x[j])^2 + (X$y[i] - X$y[j])^2)
     }
   }
-  return(distance/NbPoints/(NbPoints-1)*2)
+  return(distance / n_points / (n_points - 1) * 2)
 }
 # Calculation time, stored
 (for_time <- system.time(d <- ffor()))
@@ -1198,19 +1371,17 @@ This is the simplest and most efficient way to write this code with core R and n
 Parallelization executes for loops inside a foreach loop, which is quite efficient.
 However, distances are calculated twice.
 
-```{r registerDoParallel, tidy=FALSE}
+```{r}
+#| label: registerDoParallel
 registerDoParallel(cores = detectCores())
 fforeach3 <- function(Y) {
-  distances <- foreach(
-    i = icount(Y$n), 
-    .combine = '+') %dopar% {
-      distance <- 0
-      for (j in 1:Y$n) {
-        distance <- distance + 
-          sqrt((Y$x[i] - Y$x[j])^2 + (Y$y[i] - Y$y[j])^2)
-      }
-      distance
+  distances <- foreach(i = icount(Y$n), .combine = '+') %dopar% {
+    distance <- 0
+    for (j in 1:Y$n) {
+      distance <- distance + sqrt((Y$x[i] - Y$x[j])^2 + (Y$y[i] - Y$y[j])^2)
     }
+    distance
+  }
   return(distances / Y$n / (Y$n - 1))
 }
 system.time(d <- fforeach3(X))
@@ -1221,18 +1392,19 @@ It is possible to nest two foreach loops, but they are extremely slow compared w
 The test is run here with 10 times fewer points, so 100 times fewer distances to calculate.
 
 ```{r}
-NbPointsReduit <- 100
-Y <- runifpoint(NbPointsReduit)
+#| label: n_points_reduced
+n_points_reduced <- 100
+Y <- runifpoint(n_points_reduced)
 fforeach1 <- function(Y) {
-  distances <- foreach(i=1:NbPointsReduit, .combine='cbind') %:%
-    foreach(j=1:NbPointsReduit, .combine='c') %do% {
-      if (j>i) {
-        (Y$x[i]-Y$x[j])^2 + (Y$y[i]-Y$y[j])^2
+  distances <- foreach(i = 1:n_points_reduced, .combine = 'cbind') %:%
+    foreach(j = 1:n_points_reduced, .combine = 'c') %do% {
+      if (j > i) {
+        (Y$x[i] - Y$x[j])^2 + (Y$y[i] - Y$y[j])^2
       } else {
         0
       }
     }
-  return(sum(sqrt(distances))/NbPointsReduit/(NbPointsReduit-1)*2)
+  return(sum(sqrt(distances)) / n_points_reduced / (n_points_reduced - 1) * 2)
 }
 system.time(d <- fforeach1(Y))
 d
@@ -1246,32 +1418,33 @@ Nested foreach loops should be reserved for very long tasks (several seconds at 
 The C++ function to calculate distances is the following.
 
 ```{Rcpp}
+#| label: RCpp_C
 #include <Rcpp.h>
 using namespace Rcpp;
 
 // [[Rcpp::export]]
 double MeanDistance(NumericVector x, NumericVector y) {
-  double distance=0;
+  double distance = 0;
   double dx, dy;
-  for (int i=0; i < (x.length()-1); i++) {
-    for (int j=i+1; j < x.length(); j++) {
+  for (int i = 0; i < (x.length() - 1); i++) {
+    for (int j = i + 1; j < x.length(); j++) {
     // Calculate distance
-        dx = x[i]-x[j];
-        dy = y[i]-y[j];
-        distance += sqrt(dx*dx + dy*dy);
+        dx = x[i] - x[j];
+        dy = y[i] - y[j];
+        distance += sqrt(dx * dx + dy * dy);
     }
   }
-  return distance/(double)(x.length()/2*(x.length()-1));
+  return distance / (double)(x.length() / 2 * (x.length() - 1));
 }
 ```
 
 It is called in R very simply. 
 The computation time is very short.
 
-```{r RCpp}
+```{r}
+#| label: RCpp
 mb <- microbenchmark(d <- MeanDistance(X$x, X$y))
-# suppressMessages to eliminate superfluous messages
-suppressMessages(autoplot(mb))
+autoplot(mb)
 d
 ```
 
@@ -1293,6 +1466,7 @@ Two (C++) parallelization functions are available for two types of tasks:
 The syntax of the `Worker` is a bit tricky but simple enough to adapt: the constructors initialize the C variables from the values passed by R and declare the parallelization.
 
 ```{Rcpp}
+#| label: RcppParallel_C
 // [[Rcpp::depends(RcppParallel)]]
 #include <Rcpp.h>
 #include <RcppParallel.h>
@@ -1321,11 +1495,11 @@ struct TotalDistanceWrkr : public Worker
     unsigned int Npoints = Rx.length();
 
     for (unsigned int i = begin; i < end; i++) {
-      for (unsigned int j=i+1; j < Npoints; j++) {
+      for (unsigned int j = i + 1; j < Npoints; j++) {
           // Calculate squared distance
-          dx = Rx[i]-Rx[j];
-          dy = Ry[i]-Ry[j];
-          distance += sqrt(dx*dx + dy*dy);
+          dx = Rx[i] - Rx[j];
+          dy = Ry[i] - Ry[j];
+          distance += sqrt(dx * dx + dy * dy);
       }
     }
   }
@@ -1355,10 +1529,13 @@ double TotalDistance(NumericVector x, NumericVector y) {
 
 The usage in R is identical to the usage of C++ functions interfaced by **RCpp**. 
 
-```{r RcppParallel}
-(mb <- microbenchmark(d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints-1)*2))
+```{r}
+#| label: RcppParallel
+(mb <- microbenchmark(
+  d <- TotalDistance(X$x, X$y) / n_points / (n_points - 1) * 2
+))
 # suppressMessages to eliminate superfluous messages
-suppressMessages(autoplot(mb))
+autoplot(mb)
 d
 ```
 
@@ -1366,17 +1543,21 @@ The setup time for parallel tasks is much longer than the serial computation tim
 
 Multiplying the number of points by 50, the serial computation time must be multiplied by about 2500.
 
-```{r Rcpp50, message=FALSE}
-NbPoints <- 50000
-X <- runifpoint(NbPoints)
+```{r}
+#| label: Rcpp50
+n_points <- 50000
+X <- runifpoint(n_points)
 system.time(d <- MeanDistance(X$x, X$y))
 ```
 
 In parallel, the time increases little: parallelization becomes really efficient.
 This time is to be compared to that of the reference for loop, multiplied by 2500, that is ```r format(as.integer(for_time["elapsed"]*2500), digits=1)``` seconds.
 
-```{r RcppParallel50}
-system.time(d <- TotalDistance(X$x, X$y)/NbPoints/(NbPoints-1)*2)
+```{r}
+#| label: RcppParallel50
+system.time(
+  d <- TotalDistance(X$x, X$y) / n_points / (n_points - 1) * 2
+)
 ```
 
 ### Conclusions on code speed optimization
@@ -1386,7 +1567,7 @@ From this case study, several lessons can be learned:
 - A for loop is a good basis for repetitive calculations, faster than `vapply()`, simple to read and write.
 - **foreach** loops are extremely effective for parallelizing for loops;
 - Optimized functions may exist in R packages for common tasks (here, the `pairdist()` function of **spatstat** is two orders of magnitude faster than the for loop).
-- the **future.apply** package makes it very easy to parallelize code that has already been written with `*apply()` functions, regardless of the hardware used;
+- The **future.apply** package makes it very easy to parallelize code that has already been written with `*apply()` functions, regardless of the hardware used;
 - The use of C++ code allows to speed up the calculations significantly, by three orders of magnitude here.
 - Parallelization of the C++ code further divides the computation time by about half the number of cores for long computations.
 
@@ -1443,22 +1624,24 @@ A map of the points is also drawn.
 Each of these three operations is a target in the vocabulary of **targets**. 
 
 The workflow file is therefore the following:
-```{r targets, eval=FALSE, tidy=FALSE}
+```{r}
+#| label: targets
+#| eval: false
 # File _targets.R 
 library("targets")
 tar_option_set(packages = c("spatstat", "dbmss"))
 list(
   # Draw points
   tar_target(X,
-    runifpoint(NbPoints)
+    runifpoint(n_points)
   ),
   # Choose Parameters
-  tar_target(NbPoints,
+  tar_target(n_points,
     1000
   ),
   # Average Distance
   tar_target(d,
-    sum(pairdist(X)) / NbPoints / (NbPoints - 1)
+    sum(pairdist(X)) / n_points / (n_points - 1)
   ),
   # Map
   tar_target(map, 
@@ -1468,7 +1651,9 @@ list(
 ```
 
 
-```{r ecrire_targets, include=FALSE}
+```{r}
+#| label: ecrire_targets
+#| include: false
 # Write the file _targets.R to disk
 usethis::write_over("_targets.R", c(
   'library(targets)',
@@ -1476,15 +1661,15 @@ usethis::write_over("_targets.R", c(
   'list(',
   '  # Draw points',
   '  tar_target(X,',
-  '    runifpoint(NbPoints)',
+  '    runifpoint(n_points)',
   '  ),',
   '  # Parameterize',
-  '  tar_target(NbPoints,',
+  '  tar_target(n_points,',
   '    1000',
   '  ),',
   '  # Average Distance',
   '  tar_target(d,',
-  '    sum(pairdist(X))/NbPoints/(NbPoints-1)',
+  '    sum(pairdist(X))/n_points/(n_points-1)',
   '  ),',
   '  # Map',
   '  tar_target(map,',
@@ -1492,7 +1677,7 @@ usethis::write_over("_targets.R", c(
   '  )',
   ')'
   ),
-  quiet=TRUE)
+  quiet = TRUE)
 
 # Destroy previous executions for demonstration
 targets::tar_destroy()
@@ -1509,7 +1694,8 @@ When this is not the case, each target can be written as a function, stored in a
 
 The `tar_visnetwork` command displays the sequence of targets and their possibly obsolete status.
 
-```{r tar_visnetwork}
+```{r}
+#| label: tar_visnetwork
 library("targets")
 tar_visnetwork()
 ```
@@ -1517,18 +1703,21 @@ tar_visnetwork()
 The order of declaration of the targets in the list is not important: they are ordered automatically.
 
 The workflow is run by `tar_make()`.
-```{r tar_make}
+```{r}
+#| label: tar_make
 tar_make()
 ```
 
 The workflow is now up to date and `tar_make()` does not recompute anything.
-```{r tar_visnetwork2}
+```{r}
+#| label: tar_visnetwork2
 tar_visnetwork()
 tar_make()
 ```
 
 The results are read by `tar_read()`.
-```{r tar_read}
+```{r}
+#| label: tar_read
 tar_read(d)
 tar_read(map)
 ```

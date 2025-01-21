@@ -40,7 +40,9 @@ It is possible to create this structure manually but specialized packages can do
 
 
 All three are to be installed first:
-```{r install_pkg, eval=FALSE}
+```{r}
+#| label: install_pkg
+#| eval: false
 install.packages(c("usethis", "roxygen2", "devtools"))
 ```
 
@@ -83,22 +85,25 @@ The choice made here is the following:
 
 The first function, `double()`, is created and stored in the `functions.R` file:
 
-```{r double}
+```{r}
+#| label: double
 double <- function(number) {
-  return(2*number)
+  return(2 * number)
 }
 ```
 
 At this point, the function is internal to the package and is not accessible from the working environment. 
 To be sure, build the package (*Install and Restart*) and check that the function works:
 
-```{r double2, eval=FALSE}
+```{r}
+#| label: double2
 double(2)
 ```
 
 The result is a vector composed of two 0's because the called function is a homonym of the **base** package (see its documentation by typing `?double`):
 
-```{r base_double}
+```{r}
+#| label: base_double
 base::double(2)
 ```
 
@@ -107,7 +112,9 @@ This is the job of **roxygen2** which manages the documentation of each function
 To activate it, place the cursor in the function and call the menu "Code > Insert Roxygen Skeleton".
 Comments are added before the function:
 
-```{r double_f, eval=FALSE}
+```{r}
+#| label: double_f
+#| eval: false
 #' Title
 #'
 #' @param number 
@@ -117,7 +124,7 @@ Comments are added before the function:
 #'
 #' @examples
 double <- function(number) {
-  return(2*number)
+  return(2 * number)
 }
 ```
 
@@ -133,7 +140,9 @@ Comments to **roxygen2** begin with `#'`:
 
 The documentation must be completed:
 
-```{r double_roxy, eval=FALSE}
+```{r}
+#| label: double_roxy
+#| eval: false
 #' double
 #' 
 #' Double value of numbers.
@@ -150,7 +159,7 @@ The documentation must be completed:
 #' double(2)
 #' double(1:4)
 double <- function(number) {
-  return(2*number)
+  return(2 * number)
 }
 ```
 
@@ -165,7 +174,9 @@ Taking into account the changes in the documentation requires calling the `roxyg
 In the *Build* window, the "More > Document" menu allows you to do this.
 Then build the package (*Install and Restart*) and check the result by running the function and displaying its help:
 
-```{r double_help, eval=FALSE, tidy=FALSE}
+```{r}
+#| label: double_help
+#| eval: false
 double(2)
 ?double
 ```
@@ -195,7 +206,9 @@ Erreur : R CMD check found WARNINGs
 ```
 To correct it, update, run the update license command, starting with your name:
 
-```{r use_gpl3_license, eval=FALSE}
+```{r}
+#| label: use_gpl3_license
+#| eval: false
 options(usethis.full_name = "Eric Marcon")
 usethis::use_gpl3_license()
 ```
@@ -232,7 +245,10 @@ The development of the package is punctuated by many commits at each modificatio
 The `package.R` file is intended to receive the R code and especially the comments for **roxygen2** which concern the whole package.
 This file can also be named `multiple-package.R`, prefixed with the package name, for compatibility with **usethis**.
 It can be created under this name with the command:
-```{r use_package_doc, eval=FALSE}
+
+```{r}
+#| label: use_package_doc
+#| eval: false
 usethis::use_package_doc()
 ```
 
@@ -340,7 +356,9 @@ Then, the entry corresponding to this version remains frozen and a new entry is 
 
 A vignette is essential to document the package correctly:
 
-```{r use_vignette, eval=FALSE}
+```{r}
+#| label: use_vignette
+#| eval: false
 usethis::use_vignette("multiple")
 ```
 
@@ -359,7 +377,9 @@ An introduction to the use of the package should be written in this document, in
 
 During the development of the package, the vignette can be built manually by running:
 
-```{r build_vignettes, eval=FALSE}
+```{r}
+#| label: build_vignettes
+#| eval: false
 devtools::build_vignettes("multiple") 
 ```
 
@@ -371,13 +391,17 @@ For a complete installation, two solutions are possible:
 - Build the package source file ("Build > More > Build Source Package") and then install it ("Packages > Install > Install from > Package Archive file").
 The source file is next to the project file.
 - Push the package code on GitHub and then run:
-```{r install_github_5, eval=FALSE}
+```{r}
+#| label: install_github_5
+#| eval: false
 remotes::install_github("multiple", build_vignettes = TRUE)
 ```
 
 The vignette can then be displayed by the command:
 
-```{r vignette_multiple, eval=FALSE}
+```{r}
+#| label: vignette_multiple
+#| eval: false
 vignette("multiple")
 ```
 
@@ -391,13 +415,18 @@ The **pkgdown** package creates a companion site to the package[^505], which inc
 
 Create the site with **usethis**:
 
-```{r use_pkgdown, eval=FALSE}
+```{r}
+#| label: use_pkgdown
+#| eval: false
 usethis::use_pkgdown()
 ```
 
 Then build the site.
 This command will be executed again at each version change of the package:
-```{r build_site_5, eval=FALSE}
+
+```{r}
+#| label: build_site_5
+#| eval: false
 pkgdown::build_site()
 ```
 
@@ -447,9 +476,10 @@ The added complexity is to be compared to the gain: a simple homepage (without c
 
 Let's create a new function in `functions.R` that adds random noise to the double value:
 
-```{r fuzzydouble}
-fuzzydouble <- function(number, sd=1) {
-  return(2*number + rnorm(length(number), 0, sd))
+```{r}
+#| label: fuzzydouble
+fuzzydouble <- function(number, sd = 1) {
+  return(2 * number + rnorm(length(number), 0, sd))
 }
 ```
 The noise is drawn in a centered normal distribution of standard deviation `sd` and added to the calculated value.
@@ -470,7 +500,8 @@ Then, the `rnorm()` function must be found in the **multiple** package environme
 There are several ways to fulfill this requirement.
 First, the following comment could be provided for **roxygen2**:
 
-```{r stats}
+```{r}
+#| label: stats
 #' @import stats
 ```
 
@@ -480,7 +511,8 @@ Note that the notion of import used here is different from that of `DESCRIPTION`
  
 It is best to import only the `rnorm()` function by declaring it in the function documentation:
 
-```{r rnorm}
+```{r}
+#| label: rnorm
 #' @importFrom stats rnorm
 ```
 
@@ -490,7 +522,9 @@ The best practice is to import nothing (in the sense of **roxygen2**) and to sys
 This is the solution chosen here because the `@importFrom` directive would import the function in the whole **multiple** package, not only in the `fuzzydouble()` function, at the risk of creating side effects (modifying the behavior of another function of the package which would not assume the import of `rnorm()`).
 Finally, the code of the function is as follows:
 
-```{r fuzzydouble_roxy, eval=FALSE}
+```{r}
+#| label: fuzzydouble_roxy
+#| eval: false
 #' fuzzydouble
 #' 
 #' Double value of numbers with an error
@@ -509,8 +543,8 @@ Finally, the code of the function is as follows:
 #' fuzzydouble(2)
 #' fuzzydouble(1:4)
 
-fuzzydouble <- function(number, sd=1) {
-  return(2*number + stats::rnorm(length(number), 0, sd))
+fuzzydouble <- function(number, sd = 1) {
+  return(2 * number + stats::rnorm(length(number), 0, sd))
 }
 ```
 
@@ -523,7 +557,8 @@ S3 methods are presented in section \@ref(sec:S3).
 
 Objects belong to classes:
 
-```{r class}
+```{r}
+#| label: class
 # Class of a number
 class(2)
 # Class of a function
@@ -538,7 +573,8 @@ In addition to the basic classes, developers can create others.
 The point of creating new classes is to adapt existing methods to them, the most common case being `plot()`.
 This is a generic method, i.e. a function template, without code, to be adapted to the class of object to be processed.
 
-```{r plot}
+```{r}
+#| label: plot
 plot
 ```
 
@@ -547,8 +583,9 @@ There are many variations of `plot` in R, which are functions with names of the 
 Many packages create classes tailored to their objects and provide a `plot` method for each class.
 The functions can be listed:
 
-```{r methods}
-# Some functions plot()
+```{r}
+#| label: methods
+# A few plot() functions
 head(methods(plot))
 # Total number
 length(methods(plot))
@@ -557,20 +594,23 @@ length(methods(plot))
 Conversely, the available methods for a class can be displayed:
 
 ```{r}
+#| label: methods_class
 methods(class = "lm")
 ```
 
 The `print` method is used to display any object (it is implicit when only the name of an object is entered):
 
-```{r print}
-my_lm <- lm(dist~speed, data=cars)
+```{r}
+#| label: print
+my_lm <- lm(dist ~ speed, data = cars)
 # Equivalent to "> my_lm"
 print(my_lm)
 ```
 
 The `summary` method displays a readable summary of the object:
 
-```{r summary}
+```{r}
+#| label: summary
 summary(my_lm)
 ```
 
@@ -581,7 +621,8 @@ The other methods have been created specifically for the needs of the **stats** 
 
 In order for an object to belong to a class, it is sufficient to declare it:
 
-```{r MyClass}
+```{r}
+#| label: MyClass
 x <- 1
 class(x) <- "MyClass"
 class(x)
@@ -589,7 +630,8 @@ class(x)
 
 A more elegant way to do this is to add the new class to the set of classes to which the object already belongs:
 
-```{r MyClass2}
+```{r}
+#| label: MyClass2
 y <- 1
 class(y) <- c("MyClass", class(y))
 class(y)
@@ -598,9 +640,10 @@ class(y)
 There is no consistency check between the real structure of the object and a structure of the class that would be declared elsewhere: the developer must make sure that the methods will find the right data in the objects that declare to belong to it.
 If not, errors will occur:
 
-```{r tryCatch}
+```{r}
+#| label: tryCatch
 class(y) <- "lm"
-tryCatch(print(y), error= function(e) print(e))
+tryCatch(print(y), error = function(e) print(e))
 ```
 
 
@@ -613,9 +656,10 @@ New generic methods can be created and declined according to the classes.
 As an example, let's create a generic method `triple` which will calculate the triple of numbers in the package **multiple**, declined in two distinct functions: one for integers and one for reals.
 Calculations on integers are faster than those on reals, which justifies (at least in theory) the effort of writing two versions of the code.
 
-```{r UseMethod}
-# Generic Method
-triple <- function (x, ...) {
+```{r}
+#| label: UseMethod
+# Generic Mthod
+triple <- function(x, ...) {
   UseMethod("triple")
 }
 ```
@@ -626,11 +670,12 @@ As the nature of the first argument will depend on the class of each object, it 
 
 The method is declined in two functions:
 
-```{r triple, tidy=FALSE}
-triple.integer<- function (x, ...){
+```{r}
+#| label: triple
+triple.integer <- function(x, ...){
   return(x * 3L)
 }
-triple.numeric<- function (x, ...){
+triple.numeric <- function(x, ...){
   return(x * 3.0)
 }
 
@@ -642,7 +687,8 @@ Under R, `3` without further specification is understood as a real.
 
 The choice of function depends on the class of the object passed as argument.
 
-```{r triple.x}
+```{r}
+#| label: triple.x
 # Integer argument
 class(2L)
 # Integer result by the function triple.integer
@@ -652,7 +698,8 @@ class(2)
 # Real result by the function triple.numeric
 class(triple(2))
 # Performance
-microbenchmark::microbenchmark(triple.integer(2L), triple.numeric(2), triple(2L))
+library("microbenchmark")
+microbenchmark(triple.integer(2L), triple.numeric(2), triple(2L))
 ```
 
 The performance measurement by the **microbenchmark** package shows no difference between the functions `triple.integer()` and `triple.numeric` as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
@@ -669,12 +716,13 @@ For each class created, the `print`, `summary` and `plot` methods (if a graphica
 
 Let's write a function `multiple()` whose result will be an object of a new class, `multiple`, which will be a list storing the values to multiply, the multiplier and the result.
 
-```{r multiple}
-multiple <- function(number, times=1) {
+```{r}
+#| label: multiple
+multiple <- function(number, times = 1) {
   # Calculate the multiples
   y <- number * times
   # Save in a list
-  result <- list(x=number, y=y, times=times)
+  result <- list(x = number, y = y, times = times)
   # Set the class
   class(result) <- c("multiple", class(result))
   return(result)
@@ -687,13 +735,15 @@ class(my_multiple)
 The call to the `multiple()` function returns an object of class `multiple`, which is also of class `list`.
 In the absence of a `print.multiple()` function, R looks for the `print.list()` function, which does not exist, and falls back on the `print.default()` function:
 
-```{r my_multiple}
+```{r}
+#| label: my_multiple
 my_multiple
 ```
 
 The `print.multiple` function must therefore be written for a readable display, limited to the result:
 
-```{r print.multiple}
+```{r}
+#| label: print.multiple
 print.multiple <- function(x, ...) {
   print.default(x$y)
 }
@@ -704,7 +754,8 @@ my_multiple
 
 Details can be presented in the `summary` function:
 
-```{r summary.multiple}
+```{r}
+#| label: summary.multiple
 summary.multiple <- function(object, ...) {
   print.default(object$x)
   cat("multiplied by", object$times, "is:\n")
@@ -717,18 +768,23 @@ summary(my_multiple)
 
 Finally, a `plot` function and an `autoplot` function complete the set:
 
-```{r plot.multiple, tidy=FALSE}
+```{r}
+#| label: plot.multiple
 plot.multiple <- function(x, y, ...) {
-  plot.default(y=x$y, x=x$x, type = "p", 
-    main = paste("Multiplication by", x$times), ...)
+  plot.default(
+    x = x$x, 
+    y = x$y, 
+    type = "p", 
+    main = paste("Multiplication by", x$times), 
+    ...
+  )
 }
 
 autoplot.multiple <- function(object, ...) {
   data.frame(x = object$x, y = object$y) %>% 
     ggplot2::ggplot() +
     ggplot2::geom_point(ggplot2::aes(x = .data$x, y = .data$y)) +
-    ggplot2::labs(title = paste("Multiplication by", 
-                                object$times))
+    ggplot2::labs(title = paste("Multiplication by", object$times))
 }
 
 plot(my_multiple)
@@ -755,16 +811,13 @@ Namespace management is a bit more complex:
 #' @method plot multiple
 #' @export
 ```
-
 - Since version 3 of **roxygen2**, the declaration ` @method` is useless as long as the function name is unambiguously decomposable, like `plot.multiple`: `@export` is sufficient.
 If the derived function name has multiple dots, **roxygen2** may not automatically detect the generic and the object and ` @method` must be maintained.
-
 - Functions derived from generic methods from another package need to import the generic method, unless it is provided by **base** (`print` is provided by **base** and is therefore not affected):
 ```
 #' @importFrom graphics plot
 #' @importFrom ggplot2 autoplot
 ```
-
 - The generics imported in this way must be re-exported by a directive to be placed for example just after the code of the derived function:
 
 ```
@@ -774,11 +827,11 @@ graphics::plot
 #' @export
 ggplot2::autoplot
 ```
-
 - **roxygen2** automatically creates a help file `reexports.Rd` in which there is a link to the original documentation of the re-exported generics.
 
 
 In `DESCRIPTION`, the original package for each generic must be listed in the `Imports:` directive:
+
 ```
 Imports: ggplot2, graphics
 ```
@@ -794,20 +847,25 @@ Imports: magrittr, rlang, stats
 ```
 
 - Since it is not possible to prefix the `%>%` with the package name, the function must be imported using the delimiters provided for functions whose names contain special characters:
-```{r importFrom1}
+
+```{r}
+#| label: importFrom1
 #' @importFrom magrittr `%>%`
 ```
 
 - Functions in the tidyverse that use column names from tibbles or dataframes generate warnings at package check time because these names are confused with undefined variable names.
 To avoid this confusion, the `.data` object of the **rlang** package is helpful (for example in `aes()` seen above).
 It must be imported:
-```{r importFrom2}
+```{r}
+#| label: importFrom2
 #' @importFrom rlang .data
 ```
 
 
 Finally, the complete code is as follows:
-```{r multiple_roxy, tidy=FALSE}
+
+```{r}
+#| label: multiple_roxy
 #' Multiplication of a numeric vector
 #'
 #' @param number a numeric vector
@@ -868,8 +926,13 @@ summary.multiple <- function(object, ...) {
 #' @examples
 #' plot(multiple(2,3))
 plot.multiple <- function(x, y, ...) {
-  plot.default(y=x$y, x=x$x, type = "p", 
-               main = paste("Multiplication by", x$times), ...)
+  plot.default(
+    x = x$x, 
+    y = x$y, 
+    type = "p", 
+    main = paste("Multiplication by", x$times), 
+    ...
+  )
 }
 #' @export
 graphics::plot
@@ -893,8 +956,7 @@ autoplot.multiple <- function(object, ...) {
   data.frame(x = object$x, y = object$y) %>%
     ggplot2::ggplot() +
     ggplot2::geom_point(ggplot2::aes(x = .data$x, y = .data$y)) +
-    ggplot2::labs(title = paste("Multiplication by", 
-                                object$times))
+    ggplot2::labs(title = paste("Multiplication by", object$times))
 }
 #' @export
 ggplot2::autoplot
@@ -908,7 +970,9 @@ To integrate these functions in a package, the following rules must be respected
 
 - The `.cpp` files containing the code are placed in the `/src` folder of the project.
 - The code is commented for **roxygen2** in the same way as for R functions, but with the C language comment marker:
-```{Rcpp Rcpp_timesTwo, eval=FALSE}
+```{Rcpp}
+#| label: Rcpp_timesTwo
+#| eval: false
 #include <Rcpp.h>
 using namespace Rcpp;
 
@@ -931,7 +995,8 @@ Imports: Rcpp, RcppParallel
 LinkingTo: Rcpp, RcppParallel
 ```
 - Comments for **roxygen2** should be added to `package.R` ("multiple" is the package name):
-```{r useDynLib}
+```{r}
+#| label: useDynLib
 #' @importFrom Rcpp sourceCpp
 #' @importFrom RcppParallel RcppParallelLibs
 #' @useDynLib multiple, .registration = TRUE
@@ -947,7 +1012,9 @@ src/*.dll
 
 These changes are partly done automatically, for **Rcpp** only, by **usethis**, but manual insertion of the code is faster and more reliable: do not use this command.
 
-```{r use_rcpp, eval=FALSE}
+```{r}
+#| label: use_rcpp
+#| eval: false
 # usethis::use_rcpp()
 ```
 
@@ -988,7 +1055,8 @@ Imports: magrittr, stats, Rcpp, Rdpack
 
 Finally, import the `reprompt()` function from **Rdpack** by adding the following lines to the documentation for **roxygen2** in `package.R`:
 
-```{r importFrom3}
+```{r}
+#| label: importFrom3
 #' @importFrom Rdpack reprompt
 ```
 
@@ -1000,7 +1068,8 @@ References are cited by the command `\insertCite{key}{package}` in the documenta
 `key` is the identifier of the reference in the file.
 The following example[^507] is from the documentation of the **divent** package hosted on GitHub, in its `.R` file:
 
-```{r Citations}
+```{r}
+#| label: Citations
 #' divent
 #'
 #' Measures of Diversity and Entropy
@@ -1041,7 +1110,8 @@ To cite several references (necessarily from the same package), separate them wi
 
 At the end of the documentation of an object using citations, systematically add a list of references:
 
-```{r insertAllCited}
+```{r}
+#| label: insertAllCited
 #' @references
 #' \insertAllCited{}
 ```
@@ -1054,7 +1124,9 @@ Data can be embedded in a package, especially for the clarity of the examples.
 The simplest method is to use **usethis**.
 Create variables containing the data to be saved and then save them:
 
-```{r use_data, eval=FALSE}
+```{r}
+#| label: use_data
+#| eval: false
 seq1_10 <- 1:10
 seq1_100 <- 1:100
 usethis::use_data(seq1_10, seq1_100)
@@ -1065,7 +1137,9 @@ With the `LazyData` option enabled in `DESCRIPTION`, variables will be available
 
 Each variable must be documented in the `package.R` file:
 
-```{r use_data_roxy, eval=FALSE}
+```{r}
+#| label: use_data_roxy
+#| eval: false
 #' seq1_10
 #'
 #' A sequence of numbers from 1 to 10
@@ -1091,11 +1165,15 @@ Ideally, all code included in a package should be tested in multiple ways:
 Unit tests are used for the last two objectives.
 They are based on **testthat** to be integrated in the package:
 
-```{r use_testthat, eval=FALSE}
+```{r}
+#| label: use_testthat
+#| eval: false
 usethis::use_testthat()
 ```
 
-```{r testthat, echo=FALSE}
+```{r}
+#| label: testthat
+#| echo: false
 # Load testthat, needed for the following examples
 library("testthat")
 ```
@@ -1104,21 +1182,24 @@ The tests must be added as `.R` files whose names must begin with `test' in the 
 
 Each test (so the content of each file) starts with its context, i.e. a set of tests. For example, in a file `test_double.R`:
 
-```{r context, eval=FALSE}
+```{r}
+#| label: context
+#| eval: false
 context("function double")
 ```
 
 The tests are contained in files that group them by topic, for example `test_double.R`.
 The name of each test is passed as an argument to the function `test_that()`:
 
-```{r test_that2}
+```{r}
+#| label: test_that2
 test_that("Double values are correct", {
   skip_on_cran()
 
   x <- 1:2
 
   # 2 x 2 should be 4
-  expect_equal(double(x), c(2,4))
+  expect_equal(double(x), c(2, 4))
   # The result should be a number (type = "double")
   expect_type(double(x), "double")
   # Error management

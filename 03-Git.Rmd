@@ -15,7 +15,10 @@ The standard tool today is *git*.
 The git commands can be executed in the RStudio terminal.
 
 (ref:git-Status) Screenshot of the RStudio terminal. The `git status` command, which is supposed to describe the state of the repository, returns an error if the R project is not under source control.
-```{r git-Status, fig.cap="(ref:git-Status)", echo=FALSE}
+```{r}
+#| label: git-Status
+#| echo: false
+#| fig.cap: "(ref:git-Status)"
 knitr::include_graphics('images/git-Status.png')
 ```
 
@@ -49,7 +52,10 @@ The command executed is `git init`.
 Restart RStudio on demand.
 
 (ref:git-Project) Activation of source control in the menu "Tools > Project Options...".
-```{r git-Project, fig.cap="(ref:git-Project)", echo=FALSE}
+```{r}
+#| label: git-Project
+#| echo: false
+#| fig.cap: "(ref:git-Project)"
 knitr::include_graphics('images/git-Project.png')
 ```
 
@@ -57,7 +63,10 @@ A new *Git* window appears in the upper right panel.
 It contains the list of project files (figure \@ref(fig:git-Fichiers)).
 
 (ref:git-Fichiers) Project files, not yet taken into account by git.
-```{r git-Fichiers, fig.cap="(ref:git-Fichiers)", echo=FALSE}
+```{r}
+#| label: git-Fichiers
+#| echo: false
+#| fig.cap: "(ref:git-Fichiers)"
 knitr::include_graphics('images/git-Fichiers.png')
 ```
 
@@ -82,7 +91,10 @@ The files taken into account are part of the git *index*.
 ### Committing changes
 
 (ref:git-Commit) Commit window.
-```{r git-Commit, fig.cap="(ref:git-Commit)", echo=FALSE}
+```{r}
+#| label: git-Commit
+#| echo: false
+#| fig.cap: "(ref:git-Commit)"
 knitr::include_graphics('images/git-Commit.png')
 ```
 
@@ -98,7 +110,10 @@ For the readability of the project history, each commit corresponds to an action
 The command executed is `git commit -m "Commit message"`.
 
 (ref:git-id) Identification window.
-```{r git-id, fig.cap="(ref:git-id)", echo=FALSE}
+```{r}
+#| label: git-id
+#| echo: false
+#| fig.cap: "(ref:git-id)"
 knitr::include_graphics('images/git-id.png')
 ```
 
@@ -130,7 +145,10 @@ In git vocabulary, it consists of three *trees* (figure \@ref(fig:git-Trees)):
 * The head, which contains the validated files.
 
 (ref:git-Trees) git's trees. Source: https://rogerdudler.github.io/git-guide/index.fr.html
-```{r git-Trees, fig.cap="(ref:git-Trees)", echo=FALSE}
+```{r}
+#| label: git-Trees
+#| echo: false
+#| fig.cap: "(ref:git-Trees)"
 knitr::include_graphics('images/git-Trees.png')
 ```
 
@@ -144,7 +162,10 @@ It is possible, although better to avoid it, to modify again a file that has bee
 ### Create an empty repository on GitHub
 
 (ref:CreateRepo) Create a repository on GitHub.
-```{r CreateRepo, fig.cap="(ref:CreateRepo)", echo=FALSE}
+```{r}
+#| label: CreateRepo
+#| echo: false
+#| fig.cap: "(ref:CreateRepo)"
 knitr::include_graphics('images/CreateRepo.png')
 ```
 
@@ -209,7 +230,10 @@ The above command lines provided by GitHub therefore replace `master` with `main
 If HTTPS authentication is chosen, the first time RStudio connects to GitHub, a window allows you to enter your GitHub credentials (figure \@ref(fig:git-PAT)).
 
 (ref:git-PAT) Identification HTTPS sur GitHub.
-```{r git-PAT, fig.cap="(ref:git-PAT)", echo=FALSE}
+```{r}
+#| label: git-PAT
+#| echo: false
+#| fig.cap: "(ref:git-PAT)"
 knitr::include_graphics('images/git-PAT.png')
 ```
 
@@ -251,7 +275,10 @@ stability-work_in_progress-lightgrey.svg)
 ### Clone a repository from GitHub
 
 (ref:git-Clone) Cloning a repository from *GitHub.*
-```{r git-Clone, fig.cap="(ref:git-Clone)", echo=FALSE}
+```{r}
+#| label: git-Clone
+#| echo: false
+#| fig.cap: "(ref:git-Clone)"
 knitr::include_graphics('images/git-Clone.png')
 ```
 
@@ -265,7 +292,10 @@ The created project is linked to the remote repository on GitHub.
 To work with several people on the same project, the project owner must give access to the project to collaborators (figure \@ref(fig:git-Access)), i.e. other GitHub users in the repository settings.
 
 (ref:git-Access) Assigning access rights on GitHub.
-```{r git-Access, fig.cap="(ref:git-Access)", echo=FALSE}
+```{r}
+#| label: git-Access
+#| echo: false
+#| fig.cap: "(ref:git-Access)"
 knitr::include_graphics('images/git-Access.png')
 ```
 
@@ -313,7 +343,10 @@ To limit conflicts in a document containing text (typically, an R Markdown docum
 In the RStudio *Git* window, the context menu (displayed by right-clicking) "Diff" can be used to display the changes made to each file (figure \@ref(fig:git-diff)).
 
 (ref:git-diff) Differences between the working directory and the head.
-```{r git-diff, fig.cap="(ref:git-diff)", echo=FALSE}
+```{r}
+#| label: git-diff
+#| echo: false
+#| fig.cap: "(ref:git-diff)"
 knitr::include_graphics('images/git-diff.png')
 ```
 
@@ -329,7 +362,10 @@ It is not easy to go back beyond the last validation because the modifications m
 The clock-shaped button in the RStudio *Git* window displays the history of the project (figure \@ref(fig:git-history)).
 
 (ref:git-history) History of commits in the repository.
-```{r git-history, fig.cap="(ref:git-history)", echo=FALSE}
+```{r}
+#| label: git-history
+#| echo: false
+#| fig.cap: "(ref:git-history)"
 knitr::include_graphics('images/git-historique.png')
 ```
 
@@ -672,14 +708,17 @@ The use of the secret is described in section \@ref(sec:secrets-ci).
 
 ### Creating a safe
 
-```{r unlink_vault, include=FALSE}
-# Deleting the pre-existing vault
+```{r}
+#| label: unlink_vault
+#| include: false
+# Delete the pre-existing vault
 unlink("vault", recursive = TRUE, force = TRUE)
 ```
 
 Execute:
 
-```{r create_vault}
+```{r}
+#| label: create_vault
 library("secret")
 vault <- "vault"
 create_vault(vault)
@@ -690,7 +729,8 @@ create_vault(vault)
 
 The owner of the project is added from his public key stored on GitHub, which is the third one in our example.
 
-```{r add_github_user}
+```{r}
+#| label: add_github_user
 # GitHub ID of the project owner
 github_user <- "EricMarcon"
 # Read and store the key, i is the key number
@@ -699,7 +739,8 @@ add_github_user(github_user, vault = vault, i = 3)
 
 The generic project user's key is added by:
 
-```{r add_user}
+```{r}
+#| label: add_user
 library("openssl")
 project_id <- "ProjectName"
 # Read the key
@@ -713,7 +754,8 @@ add_user(project_id, public_key = rsa_project, vault = vault)
 The data, stored in R variables, are stored one by one by the `add_secret()` function.
 In the following example, the variable is called `X` and equals 1.
 
-```{r add_secret, tidy=FALSE}
+```{r}
+#| label: add_secret
 X <- 1
 add_secret(
   # Name of the data
@@ -723,12 +765,14 @@ add_secret(
   # Authorized users: owner and generic
   users = c(paste0("github-", github_user), project_id), 
   # Vault
-  vault = vault)
+  vault = vault
+)
 ```
 
 The contents of the vault can be checked:
 
-```{r list_secrets}
+```{r}
+#| label: list_secrets
 # List of vault data
 list_secrets(vault = vault)
 # List of owners of the data "X
@@ -738,7 +782,8 @@ list_owners("X", vault = vault)
 The data will be read into the project code by the `get_secret()` command.
 The private key of the generic project user, communicated by a secure means to the owners, must be in the project folder.
 
-```{r get_secret}
+```{r}
+#| label: get_secret
 # Select the private key
 Sys.setenv(USER_KEY = usethis::proj_path(paste0(project_id, ".rsa")))
 # Read the data "X
@@ -747,7 +792,8 @@ get_secret("X", vault = vault)
 
 The key can be verified:
 
-```{r local_key}
+```{r}
+#| label: local_key
 local_key()
 ```
 
@@ -806,6 +852,8 @@ Their Markdown code is as follows:
 The **usethis** package simplifies their creation by placing the necessary code in the clipboard.
 Then just paste it into the file.
 
-```{r use_lifecycle_badge, eval=FALSE}
+```{r}
+#| label: use_lifecycle_badge
+#| eval: false
 usethis::use_lifecycle_badge("maturing")
 ```

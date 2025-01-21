@@ -22,7 +22,10 @@ The application file named `app.R` contains two functions: `ui()` which defines 
 The application can be launched by clicking on `Run App` in the code window.
 
 (ref:shiny-geiser) Shiny Application *Old Faithful Geyser Data*.
-```{r shiny-geiser, fig.cap="(ref:shiny-geiser)", echo=FALSE}
+```{r}
+#| label: shiny-geiser
+#| echo: false
+#| fig.cap: "(ref:shiny-geiser)"
 knitr::include_graphics('images/shiny-geiser.png')
 ```
 
@@ -66,7 +69,9 @@ The full application, with graphical output in addition to its simplified versio
 
 The beginning of the code consists of preparing the application to run by loading the necessary packages:
 
-```{r shiny_pkg, eval=FALSE}
+```{r}
+#| label: shiny_pkg
+#| eval: false
 # Prepare the application ####
 
 # Load packages
@@ -78,7 +83,9 @@ The code of the complete application includes a function to install the missing 
 
 The user interface is as follows:
 
-```{r UI, eval=FALSE, tidy=FALSE}
+```{r}
+#| label: UI
+#| eval: false
 # UI ####
 ui <- fluidPage(
   # Application title
@@ -116,41 +123,43 @@ The main panel contains two graphical output controls, `plotOutput()` whose argu
 
 The code to execute to process the inputs and produce the outputs is in the `server()` function.
 
-```{r server, eval=FALSE, tidy=FALSE}
+```{r}
+#| label: server
+#| eval: false
 # Server logic ####
 server <- function(input, output) {
   # Run the get_profile function only once ####
   # Store the author profile
   AuthorProfile <- reactiveVal()
   # Update it when input$AuthorID is changed
-  observeEvent(input$AuthorID, 
-               AuthorProfile(get_profile(input$AuthorID)))
+  observeEvent(
+    input$AuthorID, 
+    AuthorProfile(get_profile(input$AuthorID))
+  )
   
   # Output ####
   output$name <- renderUI({
     h2(AuthorProfile()$name)
   })
   
-  output$h <-
-    renderUI({
-      a(href = paste0(
-        "https://scholar.google.com/citations?user=", 
-        input$AuthorID),
-        paste("h index:", AuthorProfile()$h_index),
-        target = "_blank"
-      )
-    })
+  output$h <- renderUI({
+    a(href = paste0(
+      "https://scholar.google.com/citations?user=", 
+      input$AuthorID),
+      paste("h index:", AuthorProfile()$h_index),
+      target = "_blank"
+    )
+  })
   
   output$citations <- renderPlot({
     get_citation_history(input$AuthorID)  %>%
       ggplot(aes(year, cites)) +
-      geom_segment(aes(xend = year, yend = 0),
-                   size = 1,
-                   color =
-                     'darkgrey') +
-      geom_point(size = 3, color = 'firebrick') +
-      labs(title = "Citations per year",
-           caption = "Source: Google Scholar")
+      geom_segment(aes(xend = year, yend = 0), size = 1, color = 'darkgrey') +
+      geom_point(size = 3, color = "firebrick") +
+      labs(
+        title = "Citations per year",
+        caption = "Source: Google Scholar"
+      )
   })
   
   output$network <- renderPlot({
@@ -164,7 +173,9 @@ This function queries the author's Google Scholar web page and extracts the valu
 
 The simplest code to do this would be as follows:
 
-```{r AuthorProfile1, eval=FALSE, tidy=FALSE}
+```{r}
+#| label: AuthorProfile1
+#| eval: false
   # Run the get_profile function only once ####
   # Store the author profile
   AuthorProfile <- get_profile(input$AuthorID)
@@ -178,7 +189,9 @@ In practice, the execution of the code is started by modifying an input control 
 The code referring to one of these controls must be permanently waiting for a modification: it must therefore be placed in particular functions like `renderPlot()` in the *Old Faithful Geyser Data* application or `renderUI()` here.
 The following code would run without error:
 
-```{r AuthorProfile2, eval=FALSE}
+```{r}
+#| label: AuthorProfile2
+#| eval: false
   # Output ####
   output$name <- renderUI({
     AuthorProfile <- get_profile(input$AuthorID)
@@ -199,7 +212,9 @@ Two functions are very useful:
 
 So the optimal code creates a reactive variable to store the result of the Google Scholar query in:
 
-```{r reactiveVal, eval=FALSE}
+```{r}
+#| label: reactiveVal
+#| eval: false
   # Store the author profile
   AuthorProfile <- reactiveVal()
 ```
@@ -208,14 +223,18 @@ The reactive variable is empty at this point.
 Its use is then that of a function: `AuthorProfile(x)` assigns it the value `x` and `AuthorProfile()`, without arguments, returns its value.
 The `observeEvent()` function is triggered when `input$AuthorID` is modified and executes the code passed as the second argument, in this case the update of `AuthorProfile`.
 
-```{r observeEvent, eval=FALSE}
+```{r}
+#| label: observeEvent
+#| eval: false
   # Update it when input$AuthorID is changed
   observeEvent(input$AuthorID, AuthorProfile(get_profile(input$AuthorID)))
 ```
 
 Finally, the `renderUI()` functions that provide output control values use the value of `AuthorProfile`:
 
-```{r renderUI, eval=FALSE}
+```{r}
+#| label: renderUI
+#| eval: false
   # Output ####
   output$name <- renderUI({
      h2(AuthorProfile()$name)
@@ -226,14 +245,17 @@ Note the parentheses in `AuthorProfile()`, a reactive variable, as opposed to th
 
 The value of `output$h` is an internet link, `<a href=...` in HTML, written by the `a()` function of the **htmltools** package used by `renderUI()`.
 
-```{r htmltools, eval=FALSE}
-  output$h <-
-    renderUI({
-      a(href = paste0("https://scholar.google.com/citations?user=", input$AuthorID),
-        paste("h index:", AuthorProfile()$h_index),
-        target = "_blank"
-      )
-    })
+```{r}
+#| label: htmltools
+#| eval: false
+  output$h <- renderUI({
+    a(href = paste0(
+        "https://scholar.google.com/citations?user=", input$AuthorID
+      ),
+      paste("h index:", AuthorProfile()$h_index),
+      target = "_blank"
+    )
+  })
 ```
 
 The link is to the author's Google Scholar page.
@@ -259,10 +281,14 @@ Shinyapps.io[^704] is a service from RStudio that allows to host 5 Shiny applica
 First of all, you have to open an account on the site, preferably with your GitHub identifiers.
 To allow the management of online applications directly from RStudio, you must then install the **rsconnect** package and set it up:
 
-```{r setAccountInfo, eval=FALSE}
-rsconnect::setAccountInfo(name='prenom.nom',
-			  token='xxx',
-			  secret='<SECRET>')
+```{r}
+#| label: setAccountInfo
+#| eval: false
+rsconnect::setAccountInfo(
+  name='firstname.name',
+	token='xxx',
+	secret='<SECRET>'
+)
 ```
 
 The exact code, along with the username and token to use, are displayed on the Shinyapps.io homepage: click on "Show Secret", copy the code and paste it into the RStudio console to run it.
@@ -270,7 +296,10 @@ A "Publish" button is available just to the right of the "Run App" button.
 Click on it and validate the publication (figure \@ref(fig:shiny-publish)).
 
 (ref:shiny-publish) Publication of the Shiny application on Shinyapps.io.
-```{r shiny-publish, fig.cap="(ref:shiny-publish)", echo=FALSE}
+```{r}
+#| label: shiny-publish
+#| echo: false
+#| fig.cap: "(ref:shiny-publish)"
 knitr::include_graphics('images/shiny-publish.png')
 ```
 

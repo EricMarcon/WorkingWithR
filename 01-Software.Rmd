@@ -34,11 +34,14 @@ On Mac, the installation of R is sufficient from version 4.0.0.
 On Windows, the installation must be completed by the "Rtools", which contain the development tools, including those necessary to compile packages containing C++ code.
 
 The path of the Rtools (before version 4.2) must be declared to R, by executing the following command in the RStudio console (adapted to version 4.0 of the Rtools):
-```{r rtools, tidy=FALSE}
+```{r}
+#| label: rtools
 # Rtools : path declaration, 
 # requires restarting RStudio
-writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"',
-           con = "~/.Renviron")
+writeLines(
+  'PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"',
+  con = "~/.Renviron"
+)
 ```
 
 Since version 4.2, this action is unnecessary.
@@ -87,7 +90,8 @@ From version 4.2 onwards, there is no reason to change the default operation: lo
 If the user library is selected, you must remember to empty the folder corresponding to the old version of R in case of minor version change.
 
 The location of the libraries is given by the function `.libPaths()`:
-```{r libPaths}
+```{r}
+#| label: libPaths
 .libPaths()
 ```
 
@@ -121,7 +125,8 @@ Files encoded in another format will not be displayed correctly: they can be reo
 
 The default working folder is the user's home folder, called `~` by RStudio:
 
-```{r R_USER}
+```{r}
+#| label: R_USER
 Sys.getenv("R_USER")
 ```
 
@@ -133,7 +138,9 @@ You should always work in subfolders of `~`, for example: `~/Training`.
 For *RTools* to work properly, the full name of the working directory must not contain spaces (use underscores `_`) or special characters.
 The current working directory is obtained by the command `getwd()`.
 
-```{r getwd, eval=FALSE}
+```{r}
+#| label: getwd
+#| eval: false
 getwd()
 ```
 
@@ -158,7 +165,11 @@ To create it, run `md %LOCALAPPDATA%\RProjects` in a command prompt.
 Pin this folder to the quick access of the file explorer (figure \@ref(fig:R-ProjetsR)): paste `%LOCALAPPDATA%\RProjects` in the address bar of the file explorer, validate, then right click on "Quick Access" and pin the folder.
 
 (ref:R-ProjetsR) Folder for projects under source control, on Windows.
-```{r R-ProjetsR, fig.cap="(ref:R-ProjetsR)", echo=FALSE, out.width='100%'}
+```{r}
+#| label: R-ProjetsR
+#| echo: false
+#| fig.cap: "(ref:R-ProjetsR)"
+#| out.width: '100%'
 knitr::include_graphics('images/R-ProjetsR.png')
 ```
 
@@ -184,7 +195,10 @@ They must then be put in binary format for Windows (in a `.zip' file), which tak
 When asked to install a package on Windows, CRAN proposes the source version rather than the binary version if it is more recent (figure \@ref(fig:R-BinaryPkg)).
 
 (ref:R-BinaryPkg) Choice of the version of the packages to install.
-```{r R-BinaryPkg, fig.cap="(ref:R-BinaryPkg)", echo=FALSE}
+```{r}
+#| label: R-BinaryPkg
+#| echo: false
+#| fig.cap: "(ref:R-BinaryPkg)"
 knitr::include_graphics('images/R-BinaryPkg.png')
 ```
 
@@ -215,7 +229,9 @@ It can also be useful to install a development version of a package published on
 The installation is handled by the **remotes** package.
 The `build_vignettes` argument is needed to create the vignettes of the package.
 
-```{r install_github, eval=FALSE}
+```{r}
+#| label: install_github
+#| eval: false
 remotes::install_github("EricMarcon/memoiR", build_vignettes = TRUE)
 ```
 
@@ -230,7 +246,9 @@ Bioconductor is a complementary platform to CRAN that hosts packages specialized
 Installing packages from Bioconductor requires the **BiocManager** package for its `install()` function.
 The first argument of the function is a vector of characters containing the names of the packages to be installed, for example:
 
-```{r Bioconductor, eval=FALSE}
+```{r}
+#| label: Bioconductor
+#| eval: false
 BiocManager::install(c("GenomicFeatures", "AnnotationDbi"))
 ```
 
@@ -243,51 +261,57 @@ At each minor update of R, all packages must be reinstalled.
 The most efficient way to do this is to create a `Packages.R` script to place in `~\R`.
 It contains a function that checks if each package is already installed so that it is not redone unnecessarily.
 
-```{r InstallPackages, eval=FALSE, tidy=FALSE}
+```{r}
+#| label: InstallPackages
+#| eval: false
 # Install R packages ####
-
-# Install packages if necessary ####
-InstallPackages <- function(Packages) {
-  sapply(Packages, function(Package) 
-    if (!Package %in% installed.packages()[, 1]) 
-      {install.packages(Package)})
+install_packages <- function(packages) {
+  install_package <- function(package) {
+    if (!package %in% installed.packages()[, 1]) {
+      install.packages(package, repos = "https://cran.rstudio.com/")
+    }
+  }
+  invisible(sapply(packages, install_package))
 }
 
-
 # Development tools ####
-InstallPackages(c(
-  # Development tools. Import remotes, etc.
-  "devtools",
-  # Run Check by RStudio
-  "rcmdcheck",
-  # Formatting R code (used by knitr)
-  "formatR",
-  # Documentation of packages in /docs on GitHub
-  "pkgdown",
-  # Bibliography with roxygen
-  "Rdpack",
-  # Performance measurement
-  "rbenchmark",
-  # Automatic package documentation
-  "roxygen2",
-  # Package testing
-  "testthat"
-  ))
+install_packages(
+  c(
+    # Development tools. Import remotes, etc.
+    "devtools",
+    # Run Check by RStudio
+    "rcmdcheck",
+    # Formatting R code (used by knitr)
+    "formatR",
+    # Documentation of packages in /docs on GitHub
+    "pkgdown",
+    # Bibliography with roxygen
+    "Rdpack",
+    # Performance measurement
+    "rbenchmark",
+    # Automatic package documentation
+    "roxygen2",
+    # Package testing
+    "testthat"
+  )
+)
 
 # Markdown ####
-InstallPackages(c(
-  # Knit
-  "knitr",
-  # Complex markdown documents
-  "bookdown",
-  # Websites
-  "blogdown",
-  # Document templates
-  "memoiR"
-  ))
+install_packages(
+  c(
+    # Knit
+    "knitr",
+    # Complex markdown documents
+    "bookdown",
+    # Websites
+    "blogdown",
+    # Document templates
+    "memoiR"
+  )
+)
 
 # Tidyverse ####
-InstallPackages("tidyverse")
+install_packages("tidyverse")
 ```
 
 The last part of the script is to be completed with the packages used regularly.
@@ -425,7 +449,9 @@ MiKTeX is a very good solution for Windows and Mac.
 
 Install the package and run it:
 
-```{r install_tinytex, eval=FALSE}
+```{r}
+#| label: install_tinytex
+#| eval: false
 install_tinytex()
 ```
 
@@ -433,7 +459,9 @@ Adding LaTeX packages not included in the minimal starting distribution is autom
 
 The distribution can be updated by the command:
 
-```{r tlmgr_update, eval=FALSE}
+```{r}
+#| label: tlmgr_update
+#| eval: false
 tinytex::tlmgr_update()
 ```
 

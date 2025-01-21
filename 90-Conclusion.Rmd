@@ -8,14 +8,19 @@ The presentation of results is ensured by GitHub pages and document templates co
 
 For breaks, R even provides some games in the **fun** package, including the famous Minesweeper:
 
-```{r mine_sweeper, eval=FALSE}
+```{r}
+#| label: mine_sweeper
+#| eval: false
 # Install the package
 install.packages("fun")
 # Open an X window and run
 if (interactive()) {
-    if (.Platform$OS.type == "windows") 
-        x11() else x11(type = "Xlib")
-    fun::mine_sweeper()
+  if (.Platform$OS.type == "windows") {
+    x11() 
+  } else { 
+    x11(type = "Xlib")
+  }
+  fun::mine_sweeper()
 }
 ```
 

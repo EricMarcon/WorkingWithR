@@ -404,7 +404,9 @@ jobs:
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
-          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))
+          install.packages(
+            c("distill", "downlit", "memoiR", "rmdformats", "tinytex")
+          )
           tinytex::install_tinytex(bundle = "TinyTeX")
         shell: Rscript {0}
       - name: Render pdf book
@@ -542,7 +544,9 @@ The LaTeX compiler is indeed more demanding than pandoc (which produces the HTML
 The first check consists in knitting the problematic document into PDF locally, on your workstation, with **tinytex**.
 The LaTeX packages must be updated to be the same as those used by the GitHub actions: to do this, run:
 
-```{r tlmgr_update_6, eval=FALSE}
+```{r}
+#| label: tlmgr_update_6
+#| eval: false
 tinytex::tlmgr_update()
 ```
 
@@ -771,7 +775,9 @@ jobs:
         run: |
           options(pkgType = "binary")
           options(install.packages.check.source = "no")
-          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))
+          install.packages(
+            c("distill", "downlit", "memoiR", "rmdformats", "tinytex")
+          )
           tinytex::install_tinytex(bundle = "TinyTeX")
         shell: Rscript {0}
       - name: Render pdf book

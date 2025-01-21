@@ -104,7 +104,10 @@ More elaborate document templates than the notepad are provided by packages, inc
 They are accessible via the menu "File > New File > R Markdown..." (figure \@ref(fig:e-rmd1)).
 
 (ref:e-rmd1) New Markdown document from a template.
-```{r e-rmd1, fig.cap="(ref:e-rmd1)", echo=FALSE}
+```{r}
+#| label: e-rmd1
+#| echo: false
+#| fig.cap: "(ref:e-rmd1)"
 knitr::include_graphics('images/e-rmd1.png')
 ```
 
@@ -207,7 +210,9 @@ In a document such as a scientific article, which does not display its code, it 
 
 #### Figures
 
-```{r pressure, fig.cap="Figure Title"}
+```{r}
+#| label: pressure
+#| fig.cap: "Figure caption"
 plot(pressure)
 ```
 
@@ -218,7 +223,9 @@ References are made with the command `\@ref(fig:xxx)`.
 The header of the code snippet of the figure \@ref(fig:pressure) is:
 
 ````
-```{r pressure, fig.cap="Caption of the figure"}`r ''`
+```{r}`r ''`
+#| label: pressure
+#| fig.cap: "Figure caption"
 ```
 ````
 
@@ -229,7 +236,10 @@ For more elaborate captions, it is possible to declare the caption in a separate
 Figure \@ref(fig:pressure2) benefits from an improved caption.
 
 (ref:pressure2) Title with _italic_, math ($\sqrt\pi$) and a reference to figure \@ref(fig:pressure)
-```{r pressure2, fig.cap="(ref:pressure2)", echo=FALSE}
+```{r}
+#| label: pressure2
+#| echo: false
+#| fig.cap: "(ref:pressure2)"
 plot(pressure)
 ```
 
@@ -250,12 +260,27 @@ Tables can also be produced by R code.
 The content of the table is in a dataframe.
 The `kbl` function in the _kableExtra_ package prepares the table for display and passes the result to the `kable_styling` function for final formatting.
 
-```{r kable, echo=TRUE, warning=FALSE}
+```{r}
+#| label: kable
 library("tidyverse")
 my_iris <- head(iris)
-names(my_iris) <- c("Sepal length ($l_s$)", "Width", "Petal length", "Width", "Species")
-kableExtra::kbl(my_iris, caption="Table created by kable", booktabs = TRUE, escape = FALSE) %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
+names(my_iris) <- c(
+  "Sepal length ($l_s$)", 
+  "Width", 
+  "Petal length", 
+  "Width", 
+  "Species"
+)
+kableExtra::kbl(
+  my_iris, 
+  caption = "Table created by kable", 
+  booktabs = TRUE, 
+  escape = FALSE
+) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = "striped", 
+    full_width = FALSE
+  )
 ```
 
 The caption is specified by the `caption` argument and referencing is possible because the table is given a label whose name is `tab:` followed by the name of the code snippet (table \@ref(tab:kable)).
@@ -270,7 +295,8 @@ Last, the `full_width = FALSE` option allows to adjust the width of the table to
 
 The **flextable** package allows creating more elaborate tables, as in the following example which displays the long sepals in color.
 
-```{r flextable}
+```{r}
+#| label: flextable
 library("flextable")
 # iris dataset
 iris %>%
@@ -279,13 +305,15 @@ iris %>%
   # Create a flextable object
   flextable() %>%
   # Column titles
-  set_header_labels(Sepal.Length="Sepal Length",
-                    Sepal.Width="Width", 
-                    Petal.Length="Petal Length",
-                    Petal.Width="Width",
-                    Species="Species") %>%
+  set_header_labels(
+    Sepal.Length = "Sepal Length",
+    Sepal.Width = "Width", 
+    Petal.Length = "Petal Length",
+    Petal.Width = "Width",
+    Species = "Species"
+  ) %>%
   # Select long sepals (>5) and display them in red
-  color(~Sepal.Length > 5, ~Sepal.Length, color="red")
+  color(~Sepal.Length > 5, ~Sepal.Length, color = "red")
 ```
 
 The package documentation[^411] is available online, as well as a gallery[^412].
@@ -575,16 +603,19 @@ In HTML, a space will be added between the two pieces of code.
 R code snippets are automatically formatted by **knitr** when the `tidy=TRUE` option is applied to them.
 The default behavior is specified in the **knitr** options, in a code snippet at the beginning of the `index.Rmd` file:
 
-```{r opts_chunk, eval=FALSE, tidy=FALSE}
+```{r}
+#| label: opts_chunk
+#| eval: false
 # knitr options
 knitr::opts_chunk$set(
-  cache=TRUE, warning=FALSE, echo = TRUE,
-  fig.env='SCfigure', fig.asp=.75, 
-  fig.align='center', out.width='80%', 
-  tidy=TRUE, 
-  tidy.opts=list(blank=FALSE, width.cutoff=55), 
-    size="scriptsize",
-  knitr.graphics.auto_pdf = TRUE)
+  cache = TRUE, warning = FALSE, echo = TRUE,
+  fig.env = 'SCfigure', fig.asp = .75, 
+  fig.align = 'center', out.width = '80%', 
+  tidy = TRUE, 
+  tidy.opts = list(blank = FALSE, width.cutoff = 55), 
+  size = "scriptsize", 
+  knitr.graphics.auto_pdf = TRUE
+)
 ```
 
 The maximum width of a line of formatted code here is 55 characters, optimal for the template.
@@ -776,13 +807,17 @@ The structure of the website is simple:
 
 The first step is to install the **blogdown** package in R.
 
-```{r blogdown, eval=FALSE}
+```{r}
+#| label: blogdown
+#| eval: false
 install.packages('blogdown') 
 ```
 
 **blogdown** is able to install Hugo on Windows, macOS or Linux.
 
-```{r Hugo, eval=FALSE}
+```{r}
+#| label: Hugo
+#| eval: false
 blogdown::install_hugo()
 ```
 
@@ -811,8 +846,10 @@ Create the repository.
 Copy the repository address by clicking on the "Code" button and then on the button to the right of the address (figure \@ref(fig:rediger-GitHub-Clone)).
 
 (ref:rediger-GitHub-Clone) Copy of the address of a repository to clone on GitHub.
-
-```{r rediger-GitHub-Clone, fig.cap="(ref:rediger-GitHub-Clone)", echo=FALSE}
+```{r}
+#| label: rediger-GitHub-Clone
+#| echo: false
+#| fig.cap: "(ref:rediger-GitHub-Clone)"
 knitr::include_graphics('images/rediger-GitHub-Clone.png')
 ```
 
@@ -820,7 +857,10 @@ In RStudio, create a new project from GitHub: in the projects menu on the top ri
 Select the folder in which the project will be created by clicking on "Browse" and finally click on "Create Project".
 
 (ref:rediger-Projet-GitHub) Copy the address of a repository to clone to GitHub.
-```{r rediger-Projet-GitHub, fig.cap="(ref:rediger-Projet-GitHub)", echo=FALSE}
+```{r}
+#| label: rediger-Projet-GitHub
+#| echo: false
+#| fig.cap: "(ref:rediger-Projet-GitHub)"
 knitr::include_graphics('images/rediger-Projet-GitHub.png')
 ```
 
@@ -858,16 +898,19 @@ Take into account these modifications in git by making a commit.
 ### Building the site
 
 Run
-
-```{r build_site, eval=FALSE}
+```{r}
+#| label: build_site
+#| eval: false
 blogdown::build_site(build_rmd = TRUE)
 ```
 
 to build the website, including its future R Markdown pages.
 
-To display the site, run :
+To display the site, run:
 
-```{r serve_site, eval=FALSE}
+```{r}
+#| label: serve_site
+#| eval: false
 blogdown:::serve_site()
 ```
 
@@ -875,7 +918,9 @@ It appears in the RStudio *Viewer* window, which can be viewed in the system's d
 
 To modify the content of the site, it is best to stop the web server with the command:
 
-```{r stop_server, eval=FALSE}
+```{r}
+#| label: stop_server
+#| eval: false
 blogdown:::stop_server()
 ```
 
@@ -1034,7 +1079,10 @@ The component type indicates that this is a component page, in which the other c
 `headless = true` means that the page has no header.
 
 (ref:rediger-demo) Component `demo` in Academic.
-```{r rediger-demo, fig.cap="(ref:rediger-demo)", echo=FALSE}
+```{r}
+#| label: rediger-demo
+#| echo: false
+#| fig.cap: "(ref:rediger-demo)"
 knitr::include_graphics('images/rediger-demo.png')
 ```
 
@@ -1048,7 +1096,10 @@ active = false  # Activate this widget? true/false
 ```
 
 (ref:rediger-about) The `about` component in Academic.
-```{r rediger-about, fig.cap="(ref:rediger-about)", echo=FALSE}
+```{r}
+#| label: rediger-about
+#| echo: false
+#| fig.cap: "(ref:rediger-about)"
 knitr::include_graphics('images/rediger-about.png')
 ```
 
@@ -1072,7 +1123,10 @@ Its organization is quite clear: modify its content from the example provided.
 If `ai` type icons are used, enable the Academicons icon package in `config/_default/params.toml`.
 
 (ref:rediger-skills) The `skills` component in Academic.
-```{r rediger-skills, fig.cap="(ref:rediger-skills)", echo=FALSE}
+```{r}
+#| label: rediger-skills
+#| echo: false
+#| fig.cap: "(ref:rediger-skills)"
 knitr::include_graphics('images/rediger-skills.png')
 ```
 
@@ -1080,7 +1134,10 @@ The skills component (figure \@ref(fig:rediger-skills)) presents the author's sk
 A collection of icons is available, and new icons can be added.
 
 (ref:rediger-experience) The `experience` component in Academic.
-```{r rediger-experience, fig.cap="(ref:rediger-experience)", echo=FALSE}
+```{r}
+#| label: rediger-experience
+#| echo: false
+#| fig.cap: "(ref:rediger-experience)"
 knitr::include_graphics('images/rediger-experience.png')
 ```
 
@@ -1221,7 +1278,9 @@ The `blogdown::new_post()` command can also be used, but it does not handle mult
 Rebuilding the site does not by default update pages based on a `.Rmd` file.
 To do this, you must force the `build_site()` command.
 
-```{r blog, eval=FALSE}
+```{r}
+#| label: blog
+#| eval: false
 blogdown::build_site(build_rmd = TRUE)
 blogdown::serve_site()
 ```
@@ -1392,7 +1451,9 @@ The Academic theme is updated regularly.
 The version used is indicated in the `go.mod` file.
 To use the latest official version, run the following command in the R console:
 
-```{r majAcademic, eval=FALSE}
+```{r}
+#| label: majAcademic
+#| eval: false
 blogdown::hugo_cmd("mod get -u")
 ```
 
@@ -1404,7 +1465,9 @@ Each version change may require adaptations to the site content, referenced in t
 
 Update Hugo at the same time:
 
-```{r majHugo, eval=FALSE}
+```{r}
+#| label: majHugo
+#| eval: false
 blogdown::update_hugo()
 ```
 
@@ -1426,12 +1489,18 @@ The `image()` function used to display maps uses polygons rather than points by 
 Figure \@ref(fig:volcano) shows the result of the following code:
 
 (ref:volcano) Maunga Whau volcano contours, code provided as an example of the `image()` function help.
-```{r volcano, fig.cap="(ref:volcano)", echo=TRUE}
-x <- 10*(1:nrow(volcano))
-y <- 10*(1:ncol(volcano))
+```{r}
+#| label: volcano
+#| echo: false
+#| fig.cap: "(ref:volcano)"
+x <- 10 * (1:nrow(volcano))
+y <- 10 * (1:ncol(volcano))
 image(x, y, volcano, col = hcl.colors(100, "terrain"), axes = FALSE)
-contour(x, y, volcano, levels = seq(90, 200, by = 5),
-        add = TRUE, col = "brown")
+contour(
+  x, y, volcano, 
+  levels = seq(90, 200, by = 5), 
+  add = TRUE, col = "brown"
+)
 axis(1, at = seq(100, 800, by = 100))
 axis(2, at = seq(100, 600, by = 100))
 box()
@@ -1451,7 +1520,8 @@ Other graphics require another method.
 The `postscript()` function produces an EPS file.
 The R code must call the function to create the file, produce the figure, and then close the file, for example:
 
-```{r postscript}
+```{r}
+#| label: postscript
 # Open the file
 postscript("Fig1.eps", width = 6, height = 4, horizontal = FALSE)
 # Create the figure
@@ -1484,20 +1554,25 @@ Markdown R documents produce PNG images for their HTML version.
 **ragg** improves their quality: the package must be installed and `dev = "ragg_png"` must be added to the **knitr** options.
 For this document, the options declared in `index.Rmd` are the following:
 
-```{r ragg, eval=FALSE, tidy=FALSE}
+```{r}
+#| label: ragg
+#| eval: false
+# knitr options
 knitr::opts_chunk$set(
-  cache=FALSE, # Cache chunk results
-  echo = TRUE, # Show/Hide R chunks
-  warning=FALSE, # Show/Hide warnings
+  cache =   FALSE,    # Cache chunk results
+  include = TRUE,     # Show/Hide chunks
+  echo =    TRUE,     # Show/Hide code
+  warning = FALSE,    # Show/Hide warnings
+  message = FALSE,    # Show/Hide messages
   # Figure alignment and size
-  fig.align='center', out.width='80%', fig.asp=.75,
+  fig.align = 'center', out.width = '80%', fig.asp = .75,
   # Graphic devices (ragg_png is better than standard png)
   dev = c("ragg_png", "pdf"),
   # Code chunk format
-  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=60),
-  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  tidy = FALSE, tidy.opts = list(blank = FALSE, width.cutoff = 60),
+  size = "scriptsize", knitr.graphics.auto_pdf = TRUE
   )
-options(width=60)
+options(width = 60)
 ```
 
 Finally, **ragg** can be used as the default graphics renderer in RStudio starting with version 1.4 (Menu "Tools > Global Options > General > Graphics > Backend").
@@ -1507,7 +1582,8 @@ Finally, **ragg** can be used as the default graphics renderer in RStudio starti
 
 A workflow (see section \@ref(sec:targets)) can be embedded in an R Markdown document starting with version 0.5 of the **targets** package.
 
-```{r targets_41}
+```{r}
+#| label: targets_41
 library("targets")
 ```
 
@@ -1519,13 +1595,16 @@ These code snippets are used to create the `_targets.R` file when they are run i
 If they are run in interactive mode, for example in R Studio, their code is executed.
 The `tar_interactive = FALSE` option in their header allows them to be tested without knitting the whole document.
 
-```{r targets_42, include=FALSE}
+```{r}
+#| label: targets_42
+#| include: false
 # Remove _targets.R produced by chapter 2
 file.remove(usethis::proj_path("_targets.R"))
 ```
 
 Any old workflow must be removed before writing the new one:
-```{r tar_unscript}
+```{r}
+#| label: tar_unscript
 tar_unscript()
 ```
 
@@ -1539,7 +1618,11 @@ tar_option_set(packages = c("spatstat", "dbmss"))
 ```
 ````
 
-```{targets targets_global, tar_globals=TRUE, include=FALSE, tar_interactive = FALSE}
+```{targets}
+#| label: targets_global
+#| tar_globals: true 
+#| include: false
+#| tar_interactive: false
 tar_option_set(packages = c("spatstat", "dbmss"))
 ```
 
@@ -1551,7 +1634,7 @@ The targets themselves are declared in code snippets whose name is that of the d
 
 ````
 ```{targets X, tar_simple=TRUE}`r ''`
-runifpoint(NbPoints)
+runifpoint(n_points)
 ```
 ````
 
@@ -1560,8 +1643,11 @@ The value of the target is the last value returned, just like a function that wo
 
 During knitting, this simplified code (`tar_simple=TRUE`) is automatically transformed into a target code:
 
-```{targets X, tar_simple=TRUE, tar_interactive = FALSE}
-runifpoint(NbPoints)
+```{targets}
+#| label: X
+#| tar_simple: true 
+#| tar_interactive: false
+runifpoint(n_points)
 ```
 
 The document readability is impaired  by this particular syntax: **targets** is not useful for documents whose code, quick to execute, must be displayed in the text.
@@ -1569,18 +1655,18 @@ On the other hand, if the code is long to execute and is not displayed, it is of
 
 The other bits of code needed to complete the flow are the following:
 
-- `NbPoints`:
-```{targets NbPoints, tar_simple=TRUE, tar_interactive = FALSE}
+- `n_points`:
+```{targets n_points, tar_simple=TRUE, tar_interactive=FALSE}
   1000
 ```
 
 - `d`:
-```{targets d, tar_simple=TRUE, tar_interactive = FALSE}
-  sum(pairdist(X))/NbPoints/(NbPoints-1)
+```{targets d, tar_simple=TRUE, tar_interactive=FALSE}
+  sum(pairdist(X)) / n_points / (n_points - 1)
 ```
 
 - `map`:
-```{targets map, tar_simple=TRUE, tar_interactive = FALSE}
+```{targets map, tar_simple=TRUE, tar_interactive=FALSE}
   autoplot(as.wmppp(X))
 ```
 
@@ -1588,12 +1674,15 @@ The other bits of code needed to complete the flow are the following:
 
 To start the target calculation, a standard piece of code (`{r}`) must call `tar_make()`:
 
-```{r tar_destroy_4, include=FALSE}
+```{r}
+#| label: tar_destroy_4
+#| include: false
 # Destroy targets for demonstration
 tar_destroy()
 ```
 
-```{r tar_visnetwork_4}
+```{r}
+#| label: tar_visnetwork_4
 tar_visnetwork()
 tar_make()
 ```
@@ -1605,7 +1694,8 @@ When the document is finally produced, the `include=FALSE` option can be added t
 
 Code snippets that use target values must read them with `tar_read()`:
 
-```{r tar_read_4}
+```{r}
+#| label: tar_read_4
 tar_read(map)
 ```
 
