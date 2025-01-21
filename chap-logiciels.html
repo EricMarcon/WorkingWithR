@@ -7,7 +7,7 @@
 <title>1 Software | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="The central tool is obviously R, but its operation is today difficult to consider without its development environment RStudio. For source control, git and GitHub are the de facto standards. The...">
-<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta name="generator" content="bookdown 0.42 with bs4_book()">
 <meta property="og:title" content="1 Software | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-logiciels.html">
@@ -129,8 +129,10 @@ To get the latest version, you have to use a CRAN mirror as a source for the pac
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Rtools : path declaration, </span></span>
 <span><span class="co"># requires restarting RStudio</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html">writeLines</a></span><span class="op">(</span><span class="st">'PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"'</span>,</span>
-<span>           con <span class="op">=</span> <span class="st">"~/.Renviron"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html">writeLines</a></span><span class="op">(</span></span>
+<span>  <span class="st">'PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"'</span>,</span>
+<span>  con <span class="op">=</span> <span class="st">"~/.Renviron"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>Since version 4.2, this action is unnecessary.</p>
 <p>The Rtools must be completed by some missing utilities, to be installed when the need appears (usually a warning from R that the software is not installed).</p>
@@ -337,49 +339,53 @@ It contains a function that checks if each package is already installed so that 
 <p></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install R packages ####</span></span>
-<span></span>
-<span><span class="co"># Install packages if necessary ####</span></span>
-<span><span class="va">InstallPackages</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">Packages</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">Packages</span>, <span class="kw">function</span><span class="op">(</span><span class="va">Package</span><span class="op">)</span> </span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="va">Package</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span> </span>
-<span>      <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">Package</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="va">install_packages</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">packages</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">install_package</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="va">package</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"https://cran.rstudio.com/"</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html">invisible</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">packages</span>, <span class="va">install_package</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span></span>
 <span><span class="co"># Development tools ####</span></span>
-<span><span class="fu">InstallPackages</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>  <span class="co"># Development tools. Import remotes, etc.</span></span>
-<span>  <span class="st">"devtools"</span>,</span>
-<span>  <span class="co"># Run Check by RStudio</span></span>
-<span>  <span class="st">"rcmdcheck"</span>,</span>
-<span>  <span class="co"># Formatting R code (used by knitr)</span></span>
-<span>  <span class="st">"formatR"</span>,</span>
-<span>  <span class="co"># Documentation of packages in /docs on GitHub</span></span>
-<span>  <span class="st">"pkgdown"</span>,</span>
-<span>  <span class="co"># Bibliography with roxygen</span></span>
-<span>  <span class="st">"Rdpack"</span>,</span>
-<span>  <span class="co"># Performance measurement</span></span>
-<span>  <span class="st">"rbenchmark"</span>,</span>
-<span>  <span class="co"># Automatic package documentation</span></span>
-<span>  <span class="st">"roxygen2"</span>,</span>
-<span>  <span class="co"># Package testing</span></span>
-<span>  <span class="st">"testthat"</span></span>
-<span>  <span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">install_packages</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Development tools. Import remotes, etc.</span></span>
+<span>    <span class="st">"devtools"</span>,</span>
+<span>    <span class="co"># Run Check by RStudio</span></span>
+<span>    <span class="st">"rcmdcheck"</span>,</span>
+<span>    <span class="co"># Formatting R code (used by knitr)</span></span>
+<span>    <span class="st">"formatR"</span>,</span>
+<span>    <span class="co"># Documentation of packages in /docs on GitHub</span></span>
+<span>    <span class="st">"pkgdown"</span>,</span>
+<span>    <span class="co"># Bibliography with roxygen</span></span>
+<span>    <span class="st">"Rdpack"</span>,</span>
+<span>    <span class="co"># Performance measurement</span></span>
+<span>    <span class="st">"rbenchmark"</span>,</span>
+<span>    <span class="co"># Automatic package documentation</span></span>
+<span>    <span class="st">"roxygen2"</span>,</span>
+<span>    <span class="co"># Package testing</span></span>
+<span>    <span class="st">"testthat"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Markdown ####</span></span>
-<span><span class="fu">InstallPackages</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span>  <span class="co"># Knit</span></span>
-<span>  <span class="st">"knitr"</span>,</span>
-<span>  <span class="co"># Complex markdown documents</span></span>
-<span>  <span class="st">"bookdown"</span>,</span>
-<span>  <span class="co"># Websites</span></span>
-<span>  <span class="st">"blogdown"</span>,</span>
-<span>  <span class="co"># Document templates</span></span>
-<span>  <span class="st">"memoiR"</span></span>
-<span>  <span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">install_packages</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="co"># Knit</span></span>
+<span>    <span class="st">"knitr"</span>,</span>
+<span>    <span class="co"># Complex markdown documents</span></span>
+<span>    <span class="st">"bookdown"</span>,</span>
+<span>    <span class="co"># Websites</span></span>
+<span>    <span class="st">"blogdown"</span>,</span>
+<span>    <span class="co"># Document templates</span></span>
+<span>    <span class="st">"memoiR"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Tidyverse ####</span></span>
-<span><span class="fu">InstallPackages</span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">install_packages</span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The last part of the script is to be completed with the packages used regularly.</p>
 <p>This script is to be executed each time R is updated, after having activated the right to write in the system library if needed (see section <a href="chap-logiciels.html#sec:librairies">1.1.4</a>).</p>
@@ -632,7 +638,7 @@ At the end of the installation, run the command <code>go version</code> in a ter
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 10/31/2024.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 01/21/2025.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

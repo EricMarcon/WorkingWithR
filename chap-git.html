@@ -7,7 +7,7 @@
 <title>3 Git and GitHub | Working with R</title>
 <meta name="author" content="Eric Marcon">
 <meta name="description" content="Source control consists in recording all the modifications made on the tracked files. The advantages are numerous: traceability and security of the project, possibility to collaborate efficiently,...">
-<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta name="generator" content="bookdown 0.42 with bs4_book()">
 <meta property="og:title" content="3 Git and GitHub | Working with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://ericmarcon.github.io/WorkingWithR/chap-git.html">
@@ -710,7 +710,7 @@ Apply the procedure in section <a href="chap-ci.html#sec:secrets-ci">6.2.2</a> t
 </h3>
 <p>Execute:</p>
 <p></p>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/gaborcsardi/secret#readme">"secret"</a></span><span class="op">)</span></span>
 <span><span class="va">vault</span> <span class="op">&lt;-</span> <span class="st">"vault"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/secret/man/create_package_vault.html">create_vault</a></span><span class="op">(</span><span class="va">vault</span><span class="op">)</span></span></code></pre></div>
@@ -722,7 +722,7 @@ Apply the procedure in section <a href="chap-ci.html#sec:secrets-ci">6.2.2</a> t
 </h3>
 <p>The owner of the project is added from his public key stored on GitHub, which is the third one in our example.</p>
 <p></p>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># GitHub ID of the project owner</span></span>
 <span><span class="va">github_user</span> <span class="op">&lt;-</span> <span class="st">"EricMarcon"</span></span>
 <span><span class="co"># Read and store the key, i is the key number</span></span>
@@ -730,13 +730,11 @@ Apply the procedure in section <a href="chap-ci.html#sec:secrets-ci">6.2.2</a> t
 <p></p>
 <p>The generic project user’s key is added by:</p>
 <p></p>
-<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://jeroen.r-universe.dev/openssl">"openssl"</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Linking to: OpenSSL 3.2.2 4 Jun 2024</code></pre>
-<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">project_id</span> <span class="op">&lt;-</span> <span class="st">"ProjectName"</span></span>
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://jeroen.r-universe.dev/openssl">"openssl"</a></span><span class="op">)</span></span>
+<span><span class="va">project_id</span> <span class="op">&lt;-</span> <span class="st">"ProjectName"</span></span>
 <span><span class="co"># Read the key</span></span>
-<span><span class="va">rsa_project</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/openssl/man/read_key.html">read_pubkey</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">project_id</span>, <span class="st">".rsa.pub"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">rsa_project</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://jeroen.r-universe.dev/openssl/reference/read_key.html">read_pubkey</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">project_id</span>, <span class="st">".rsa.pub"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Add to the vault</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/secret/man/add_user.html">add_user</a></span><span class="op">(</span><span class="va">project_id</span>, public_key <span class="op">=</span> <span class="va">rsa_project</span>, vault <span class="op">=</span> <span class="va">vault</span><span class="op">)</span></span></code></pre></div>
 <p></p>
@@ -748,7 +746,7 @@ Apply the procedure in section <a href="chap-ci.html#sec:secrets-ci">6.2.2</a> t
 <p>The data, stored in R variables, are stored one by one by the <code><a href="https://rdrr.io/pkg/secret/man/add_secret.html">add_secret()</a></code> function.
 In the following example, the variable is called <code>X</code> and equals 1.</p>
 <p></p>
-<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/secret/man/add_secret.html">add_secret</a></span><span class="op">(</span></span>
 <span>  <span class="co"># Name of the data</span></span>
@@ -758,36 +756,34 @@ In the following example, the variable is called <code>X</code> and equals 1.</p
 <span>  <span class="co"># Authorized users: owner and generic</span></span>
 <span>  users <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"github-"</span>, <span class="va">github_user</span><span class="op">)</span>, <span class="va">project_id</span><span class="op">)</span>, </span>
 <span>  <span class="co"># Vault</span></span>
-<span>  vault <span class="op">=</span> <span class="va">vault</span><span class="op">)</span></span></code></pre></div>
+<span>  vault <span class="op">=</span> <span class="va">vault</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p></p>
 <p>The contents of the vault can be checked:</p>
 <p></p>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># List of vault data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/secret/man/list_secrets.html">list_secrets</a></span><span class="op">(</span>vault <span class="op">=</span> <span class="va">vault</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##   secret        email
 ## 1      X github-E....</code></pre>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># List of owners of the data 'X</span></span>
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># List of owners of the data "X</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/secret/man/list_owners.html">list_owners</a></span><span class="op">(</span><span class="st">"X"</span>, vault <span class="op">=</span> <span class="va">vault</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "github-EricMarcon" "ProjectName"</code></pre>
 <p></p>
 <p>The data will be read into the project code by the <code><a href="https://rdrr.io/pkg/secret/man/get_secret.html">get_secret()</a></code> command.
 The private key of the generic project user, communicated by a secure means to the owners, must be in the project folder.</p>
 <p></p>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Select the private key</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>USER_KEY <span class="op">=</span> <span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/proj_utils.html">proj_path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">project_id</span>, <span class="st">".rsa"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## ✔ Setting active project to
-##   "/Users/runner/work/WorkingWithR/WorkingWithR".</code></pre>
-<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Read the data 'X</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>USER_KEY <span class="op">=</span> <span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/proj_utils.html">proj_path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">project_id</span>, <span class="st">".rsa"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Read the data "X</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/secret/man/get_secret.html">get_secret</a></span><span class="op">(</span><span class="st">"X"</span>, vault <span class="op">=</span> <span class="va">vault</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p></p>
 <p>The key can be verified:</p>
 <p></p>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/secret/man/local_key.html">local_key</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [4096-bit rsa private key]
 ## md5: e81dcb0745a755286c2dc1fc4c6ad117
@@ -833,7 +829,7 @@ The corresponding badges are listed on the Tidyverse site<a class="footnote-ref"
 <p>The <strong>usethis</strong> package simplifies their creation by placing the necessary code in the clipboard.
 Then just paste it into the file.</p>
 <p></p>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/badges.html">use_lifecycle_badge</a></span><span class="op">(</span><span class="st">"maturing"</span><span class="op">)</span></span></code></pre></div>
 <p></p>
 
@@ -924,7 +920,7 @@ Then just paste it into the file.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 10/31/2024.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 01/21/2025.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
