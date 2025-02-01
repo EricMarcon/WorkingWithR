@@ -941,7 +941,7 @@ f <- function(x, time = .25) {
 }
 
 #Leave one core out for the system
-n_cores <- detectCores() - 1
+n_cores <- max(1, detectCores() - 1)
 
 # Serial : theoretical time = n_cores / 4 seconds
 (tserial <- system.time(lapply(1:n_cores, f)))
@@ -1103,7 +1103,7 @@ Here we will use the `multisession` strategy, which works on the local computer,
 #| label: future
 library("future")
 # Socket strategy on all available cores except 1
-usedCores <- availableCores() - 1
+usedCores <- availableCores(omit = 1)
 plan(multisession, workers = usedCores)
 ```
 
@@ -1317,7 +1317,7 @@ Only the main loop is parallelized: nesting `future_vapply()` would collapse per
 #| label: future.vapply
 library("future.apply")
 # Socket strategy on all available cores except 1
-plan(multisession, workers = availableCores() - 1)
+plan(multisession, workers = availableCores(omit = 1))
 future_fsapply4_ <- function() {
   distances <- future_vapply(
     1:n_points, 
