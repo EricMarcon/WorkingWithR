@@ -530,7 +530,7 @@ Finally, in Zotero's advanced options ("Edit > Settings", "Advanced"), choose th
 
 [^120]: https://www.zotero.org/
 [^121]: https://retorque.re/zotero-better-bibtex/installation/
-[^122]: http://https://github.com/wileyyugioh/zotmoov/
+[^122]: https://github.com/wileyyugioh/zotmoov/
 
 
 ## Go
