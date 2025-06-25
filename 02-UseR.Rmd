@@ -91,7 +91,7 @@ print
 ```
 
 There are many S3 methods for `print`:
-```{r printS3}
+```{r}
 #| label: printS3
 head(methods("print"))
 ```
