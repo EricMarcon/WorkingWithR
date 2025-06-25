@@ -727,14 +727,14 @@ create_vault(vault)
 
 ### Adding users
 
-The owner of the project is added from his public key stored on GitHub, which is the third one in our example.
+The owner of the project is added from his public key stored on GitHub, which is the second one in our example.
 
 ```{r}
 #| label: add_github_user
 # GitHub ID of the project owner
 github_user <- "EricMarcon"
 # Read and store the key, i is the key number
-add_github_user(github_user, vault = vault, i = 3)
+add_github_user(github_user, vault = vault, i = 2)
 ```
 
 The generic project user's key is added by:
