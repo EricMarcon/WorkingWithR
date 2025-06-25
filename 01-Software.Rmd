@@ -380,48 +380,36 @@ Finally, a global web site is provided for each user at https://GitHubID.github.
 
 Communication between git (installed on the local computer) and GitHub (online platform) requires authentication.
 
-Two methods are available: HTTPS (also called SSL) and SSH.
-SSH is the most robust but requires the creation of a private key.
+Two methods are available: HTTPS (also known as SSL) and SSH.
+SSH is the most robust, but requires the creation of a private key.
 
-In the RStudio terminal, run:
-```
-ssh-keygen -t ed25519 -C "user.email"
-```
+Display RStudio's global options (“Tools > Global Options...” menu): select *Git/SVN* then click on the “Create SSH Key...” button and choose the “ed25519” key type.
+You can add a password (*passphrase*) to the key, which must be typed in the first time each session is used.
+If the computer is properly secured (no physical access by third parties), leaving it empty will increase fluidity.
 
-The email address (which replaces "user.email") must be the one registered in the git configuration and the GitHub account.
-The key is saved in the `.ssh` folder of the user's home directory.
-It is possible to add a passphrase to the key, which will have to be typed the first time each work session is used.
-If the computer is properly secured (no physical access by third parties), leaving it empty allows to gain fluidity.
+The private key is stored in the `.ssh' folder of the user's home directory.
+The corresponding public key must be uploaded to GitHub: click on the “View public key” link and copy the key to the clipboard.
 
-Warning: the private key is strictly confidential and must not be copied anywhere where it could be read by a third party (beware of automatic backups in particular).
-It does not need to be well backed up: in case of loss, it will be easily replaced.
+On GitHub, display your account settings (“Settings” menu), select “SSH and GPG Keys”, click on “New SSH Key” and paste the public key into the “Key” field.
+Give the key a name in the “Title” field.
+The name can be that of the computer on which the key was created.
 
-Keys are normally stored in the `~/.ssh` folder, regardless of the operating system, but the location of the `~` home folder is ambiguous on Windows: for R, it is the `Documents` folder, but for other software, it is the user's root folder, parent of `Documents`.
+Warning: the private key is strictly confidential and must not be copied anywhere where it could be read by a third party (be careful with automatic backups in particular).
+It does not need to be backed up: if lost, it can be easily replaced.
+The key must not be copied to multiple computers: if necessary, create a new key on each workstation used.
 
-In the RStudio terminal, check that the key is working correctly:
+In the RStudio terminal, check that the key is working properly:
 ```
 ssh -T git@github.com
 ```
 
-If an error message indicates that no key is found, there are two possible solutions:
-
-- Duplicate the `.ssh` folder (with File Explorer) in `Documents`.
-- Duplicate the `.ssh` folder in the RStudio program folder (usually `C:\Program Files\RStudio`), in `resourcesterminalbash`.
-
-If successful, a message indicates that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
-Check with GitHub that the server's fingerprint is correct[^112] and type `yes`.
-The server is automatically added to the list of known servers, in the `known_hosts` file.
+If successful, a message will indicate that the authenticity of the GitHub server cannot be verified: a manual check is required for the first connection.
+Check with GitHub that the server fingerprint is correct[^112] and type `yes`.
+The server is automatically added to the list of known servers in the `known_hosts` file.
 
 [^112]: https://docs.github.com/en/github/authenticating-to-github/githubs-ssh-key-fingerprints
 
-In the `.ssh` folder, two files are created: one contains the private key, the other, with the `.pub` extension, the corresponding public key.
-Open the second one with a text editor and copy the public key to the clipboard.
-On GitHub, display the settings of your account ("Settings" menu), select "SSH and GPG Keys", click on "New SSH Key" and paste the key in the "Key" field.
-Give a name to the key in the "Title" field.
-The name can be the name of the computer on which the key was created.
-The key must not be copied on several computers: if necessary, create a new key on each workstation used.
-
-If the key is compromised (lost or loaned from the computer that contains it), delete it on GitHub and create a new one.
+If the key is compromised (lost or the computer containing it is loaned to someone else), delete it from GitHub and create a new one.
 
 ### Obtaining a personal access token {#sec:pat}
 
