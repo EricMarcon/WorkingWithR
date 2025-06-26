@@ -70,7 +70,7 @@ On the GitHub Classrooms website[^807], click on "Sign in" and use your GitHub a
 ### Organizations
 
 The next step is to create a GitHub organization.
-A GitHub organization basically contains members (GitHub account holders) and repositories that can be accessed at https://github.com/<Organization>/<RepoID>.
+A GitHub organization basically contains members (GitHub account holders) and repositories that can be accessed at `https://github.com/<Organization>/<RepoID>`.
 
 The simplest way to work is to create an organization per course, but other approaches are possible in structures that use the tool extensively.
 The organization created for the example here is "Cours-R"[^808].
