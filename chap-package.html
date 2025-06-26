@@ -571,7 +571,7 @@ This is a generic method, i.e. a function template, without code, to be adapted
 <code class="sourceCode R"><span><span class="va">plot</span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x12500f8c8&gt;
+## &lt;bytecode: 0x12e3302c0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p></p>
 <p>There are many variations of <code>plot</code> in R, which are functions with names of the form <code>plot.class()</code>.
@@ -739,9 +739,9 @@ Under R, <code>3</code> without further specification is understood as a real.</
 <span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">triple.integer</span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span>, <span class="fu">triple.numeric</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, <span class="fu">triple</span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Unit: nanoseconds
 ##                expr min  lq    mean median  uq    max neval
-##  triple.integer(2L) 123 123  161.54    164 164    492   100
-##   triple.numeric(2) 123 123 9499.70    164 164 933857   100
-##          triple(2L) 492 533 7589.10    533 574 702494   100</code></pre>
+##  triple.integer(2L) 123 123  166.05    164 164    533   100
+##   triple.numeric(2)  82 123 9799.82    164 164 963623   100
+##          triple(2L) 533 533 7870.36    574 574 729472   100</code></pre>
 <p></p>
 <p>The performance measurement by the <strong>microbenchmark</strong> package shows no difference between the functions <code>triple.integer()</code> and <code>triple.numeric</code> as expected because the time spent on the computation itself is negligible compared to the time spent calling the function.
 The generic method consumes much more time than the very simple calculations here.
@@ -980,7 +980,7 @@ It must be imported:</li>
 <span><span class="fu">graphics</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span></span></code></pre></div>
 <pre><code>## function (x, y, ...) 
 ## UseMethod("plot")
-## &lt;bytecode: 0x12500f8c8&gt;
+## &lt;bytecode: 0x12e3302c0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' autoplot</span></span>
@@ -1010,7 +1010,7 @@ It must be imported:</li>
 ## {
 ##     UseMethod("autoplot")
 ## }
-## &lt;bytecode: 0x1371baac8&gt;
+## &lt;bytecode: 0x12b221cf0&gt;
 ## &lt;environment: namespace:ggplot2&gt;</code></pre>
 <p></p>
 </div>
@@ -1382,7 +1382,7 @@ Otherwise, the package is archived.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 06/25/2025.</p>
+    <p>"<strong>Working with R</strong>" was written by Eric Marcon. It was last built on 06/26/2025.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
